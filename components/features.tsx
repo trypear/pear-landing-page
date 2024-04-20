@@ -5,9 +5,9 @@ export default function Features() {
         <div className="py-12 md:py-20">
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20" data-aos="fade-up" data-aos-delay="1000">
             <h2 className="h2 mb-4">Oh - and it's all Open Sourced.</h2>
-            <p className="text-xl text-gray-400">Made by developers for developers.</p>
+            <p className="text-xl text-gray-400">Pear is made by developers, for developers.</p>
           </div>
 
           {/* Items */}
@@ -86,7 +86,7 @@ export default function Features() {
                 </g>
               </svg>
               <h4 className="h4 mb-2">AI-Powered Debugging</h4>
-              <p className="text-lg text-gray-400 text-center">Pear will automatically place and remove logging in your code to help you debug code.</p>
+              <p className="text-lg text-gray-400 text-center">Pear will automatically place and remove logging in your code to help you debug.</p>
             </div>
 
           </div>

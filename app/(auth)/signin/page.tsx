@@ -56,7 +56,7 @@ export default function SignIn() {
                       <input type="checkbox" className="form-checkbox" />
                       <span className="text-gray-400 ml-2">Keep me signed in</span>
                     </label>
-                    <Link href="/reset-password" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Forgot Password?</Link>
+                    <Link href="/" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Forgot Password?</Link>
                   </div>
                 </div>
               </div>
@@ -67,7 +67,7 @@ export default function SignIn() {
               </div>
             </form>
             <div className="text-gray-400 text-center mt-6">
-              Don’t you have an account? <Link href="/signup" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Sign up</Link>
+              Don’t you have an account? <Link href="/" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Sign up</Link>
             </div>
           </div>
 
