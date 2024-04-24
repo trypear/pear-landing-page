@@ -45,8 +45,8 @@ export default function Features() {
                   <circle className="stroke-current text-purple-100" cx="11" cy="11" r="11" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Predict Your Next Move</h4>
-              <p className="text-lg text-gray-400 text-center">Pear comes with a built-in Copilot that sees your recent changes and generates the next edit.</p>
+              <h4 className="h4 mb-2">Familiar Feel</h4>
+              <p className="text-lg text-gray-400 text-center">Pear is a fork of VSCode, so you can pick up exactly where you left off.</p>
             </div>
 
             {/* 4th item */}
