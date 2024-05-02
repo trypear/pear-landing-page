@@ -21,7 +21,7 @@ export default function Features() {
                 <path className="stroke-current text-purple-300" d="M43 42h-9M43 37h-9" strokeLinecap="square" strokeWidth="2" />
               </svg>
               <h4 className="h4 mb-2">Knows your code.</h4>
-              <p className="text-lg text-gray-400 text-center">Avoid looking for code with answers tailored to your repository.</p>
+              <p className="text-lg text-gray-400 text-center">Pear has context on your database so you can talk to your code.</p>
             </div>
 
             {/* 2nd item */}
@@ -58,8 +58,8 @@ export default function Features() {
                   <circle className="stroke-current text-purple-300" cx="13" cy="9" r="3" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">CI/CD</h4>
-              <p className="text-lg text-gray-400 text-center">Use AI to supercharge the CI/CD process.</p>
+              <h4 className="h4 mb-2">Never Start From Scratch Again</h4>
+              <p className="text-lg text-gray-400 text-center">Pear comes with high-quality templates and boilerplate code for any type of project.</p>
             </div>
 
             {/* 5th item */}
@@ -72,7 +72,7 @@ export default function Features() {
                 </g>
               </svg>
               <h4 className="h4 mb-2">Terminal Integration</h4>
-              <p className="text-lg text-gray-400 text-center">Pear comes integrated with the terminal, and will run commands automatically.</p>
+              <p className="text-lg text-gray-400 text-center">Pear comes integrated with the terminal, and will suggest commands automatically.</p>
             </div>
 
             {/* 6th item */}
