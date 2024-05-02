@@ -6,8 +6,11 @@ export default function Features() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20" data-aos="fade-up" data-aos-delay="1000">
-            <h2 className="h2 mb-4">Oh - and it's all Open Sourced.</h2>
+          <h2 className="h2 mb-4">Oh - and it's all <a href="https://github.com/trypear/pearai" className="text-purple-600 hover:text-purple-800">Open Sourced</a>.</h2>
             <p className="text-xl text-gray-400">Pear is made by developers, for developers.</p>
+            <div data-aos="fade-up" data-aos-delay="600" style={{ marginTop: '20px' }}>  
+              <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="https://forms.gle/5APwrsWLZ8VTvuKE7">Apply For Moderation Role</a>
+            </div>
           </div>
 
           {/* Items */}

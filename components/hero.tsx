@@ -30,9 +30,6 @@ export default function Hero() {
               <div data-aos="fade-up" data-aos-delay="400">
                 <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</a>
               </div>
-              <div data-aos="fade-up" data-aos-delay="600">
-                <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="https://forms.gle/5APwrsWLZ8VTvuKE7">Apply For Moderation Role</a>
-              </div>
             </div>
           </div>
         </div>
