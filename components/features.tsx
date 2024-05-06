@@ -61,7 +61,7 @@ export default function Features() {
                   <circle className="stroke-current text-purple-300" cx="13" cy="9" r="3" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Never Start From Scratch Again</h4>
+              <h4 className="h4 mb-2 text-center">Never Start From Scratch</h4>
               <p className="text-lg text-gray-400 text-center">Pear comes with high-quality templates and boilerplate code for any type of project.</p>
             </div>
 
