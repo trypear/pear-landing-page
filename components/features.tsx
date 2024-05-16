@@ -7,7 +7,7 @@ export default function Features() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20" data-aos="fade-up" data-aos-delay="1000">
           <h2 className="h2 mb-4">Oh - and it's all <a href="https://github.com/trypear/pearai" className="text-purple-600 hover:text-purple-800">Open Sourced</a>.</h2>
-            <p className="text-xl text-gray-400">Pear is made by developers, for developers.</p>
+            <p className="text-xl text-gray-400">Pear is made by developers, for developers. Help us out by giving the repo a star!</p>
             <div data-aos="fade-up" data-aos-delay="600" style={{ marginTop: '20px' }}>  
               <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="https://forms.gle/5APwrsWLZ8VTvuKE7">Apply For Moderation Role</a>
             </div>
@@ -24,7 +24,7 @@ export default function Features() {
                 <path className="stroke-current text-purple-300" d="M43 42h-9M43 37h-9" strokeLinecap="square" strokeWidth="2" />
               </svg>
               <h4 className="h4 mb-2">Knows your code.</h4>
-              <p className="text-lg text-gray-400 text-center">Pear has context on your database so you can talk to your code.</p>
+              <p className="text-lg text-gray-400 text-center">Pear has context on your database so you can ask questions about your code.</p>
             </div>
 
             {/* 2nd item */}
@@ -48,8 +48,8 @@ export default function Features() {
                   <circle className="stroke-current text-purple-100" cx="11" cy="11" r="11" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Familiar Feel</h4>
-              <p className="text-lg text-gray-400 text-center">Pear is a fork of VSCode, so you can pick up exactly where you left off.</p>
+              <h4 className="h4 mb-2">UI/UX Focused</h4>
+              <p className="text-lg text-gray-400 text-center">Pear puts the user experience first, making developing as seamless as possible.</p>
             </div>
 
             {/* 4th item */}
@@ -74,8 +74,8 @@ export default function Features() {
                   <path className="stroke-current text-purple-300" d="M22 30h4v12h-4z" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">Terminal Integration</h4>
-              <p className="text-lg text-gray-400 text-center">Pear comes integrated with the terminal, and will suggest commands automatically.</p>
+              <h4 className="h4 mb-2">Batteries Included</h4>
+              <p className="text-lg text-gray-400 text-center">Pear comes fully setup with shortcuts and terminal plugins used to supercharge development productivity.</p>
             </div>
 
             {/* 6th item */}
@@ -88,8 +88,8 @@ export default function Features() {
                   <path className="stroke-current text-purple-100" d="M8.86 1.18C3.8 1.988 0 5.6 0 10c0 5 4.9 9 11 9a10.55 10.55 0 003.1-.4L20 21l-.6-5.2a9.125 9.125 0 001.991-2.948" />
                 </g>
               </svg>
-              <h4 className="h4 mb-2">AI-Powered Debugging</h4>
-              <p className="text-lg text-gray-400 text-center">Pear will automatically place and remove logging in your code to help you debug.</p>
+              <h4 className="h4 mb-2">Familiar Feel</h4>
+              <p className="text-lg text-gray-400 text-center">Pear is a fork of VSCode, so you can pick up exactly where you left off.</p>
             </div>
 
           </div>
