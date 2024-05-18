@@ -35,7 +35,7 @@ export default function Features() {
                 <path className="stroke-current text-purple-300" d="M26 28h12M26 32h12M26 36h5" strokeWidth="2" strokeLinecap="square" />
               </svg>
               <h4 className="h4 mb-2">Auto-Implement Features</h4>
-              <p className="text-lg text-gray-400 text-center">Ask for a feature and recieve a PR implementing it.</p>
+              <p className="text-lg text-gray-400 text-center">Ask for a feature and receive a PR implementing it.</p>
             </div>
 
             {/* 3rd item */}
