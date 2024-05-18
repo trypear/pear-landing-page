@@ -31,7 +31,7 @@ export default function Testimonials() {
               </div>
               <blockquote className="text-lg text-gray-400 grow"> Pear is awesome! Someone finally put GPT into a code editor in a seamless way. It's so elegant and easy. I'm an hour in and already hooked. </blockquote>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                <cite className="text-gray-200 not-italic">Anastasia Dan</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">See Tweet</a>
+                <cite className="text-gray-200 not-italic">Anastasia Dan</cite>
               </div>
             </div>
 
@@ -49,7 +49,7 @@ export default function Testimonials() {
 
 I just asked it to write a README for a project I've been working on - analyzed the code-base and worked first time.</blockquote>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                <cite className="text-gray-200 not-italic">Ryan Simmons</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">See Tweet</a>
+                <cite className="text-gray-200 not-italic">Ryan Simmons</cite>
               </div>
             </div>
 
@@ -66,7 +66,7 @@ I just asked it to write a README for a project I've been working on - analyzed 
               <blockquote className="text-lg text-gray-400 grow">started using Pear yesterday & i'm blown away. it's how Copilot should feel. i'm completely off VSCode now.
 </blockquote>
               <div className="text-gray-700 font-medium mt-6 pt-5 border-t border-gray-700">
-                <cite className="text-gray-200 not-italic">Matthew Armstrong</cite> - <a className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out" href="#0">See Tweet</a>
+                <cite className="text-gray-200 not-italic">Matthew Armstrong</cite> 
               </div>
             </div>
 
