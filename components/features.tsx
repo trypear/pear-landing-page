@@ -5,13 +5,18 @@ export default function Features() {
         <div className="py-12 md:py-20">
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20" data-aos="fade-up" data-aos-delay="1000">
-          <h2 className="h2 mb-4">Oh - and it's all Open Sourced.</h2>
-            <p className="text-xl text-gray-400">Pear is made by developers, for developers. Help us out by giving <a href="https://github.com/trypear/pearai-app" className="text-purple-600 hover:text-purple-800">the repo</a> a star!</p>
-            <div data-aos="fade-up" data-aos-delay="600" style={{ marginTop: '20px' }}>  
-              <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="https://forms.gle/5APwrsWLZ8VTvuKE7">Apply For Moderation Role</a>
-            </div>
-          </div>
+<div className="max-w-3xl mx-auto text-center pb-12 md:pb-20" data-aos="fade-up" data-aos-delay="1000">
+  <h2 className="h2 mb-4">Oh - and it's all Open Sourced.</h2>
+  <p className="text-xl text-gray-400">
+    Pear is made by developers, for developers. Help us out by giving
+    <a href="https://github.com/trypear/pearai-extension" className="text-purple-600 hover:text-purple-800"> the repo </a>
+    a star!
+  </p>
+  <div className="flex justify-center space-x-4 mt-4" data-aos="fade-up" data-aos-delay="600">
+    <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full sm:w-auto" href="https://forms.gle/5APwrsWLZ8VTvuKE7">Apply For Moderation Role</a>
+    <a className="btn text-white bg-gray-700 hover:bg-gray-800 w-full sm:w-auto" href="https://docs.google.com/presentation/d/1zR9-7DTlb2PcsnapryZw8jHSkLTs9JxeXth4nyeemAQ/edit?usp=sharing">Contributing 101</a>
+  </div>
+</div>
 
           {/* Items */}
           <div className="max-w-sm mx-auto grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-16 items-start md:max-w-2xl lg:max-w-none" data-aos-id-blocks>
