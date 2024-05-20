@@ -9,7 +9,7 @@ export default function Features() {
   <h2 className="h2 mb-4">Oh - and it's all Open Sourced.</h2>
   <p className="text-xl text-gray-400">
     Pear is made by developers, for developers. Help us out by giving
-    <a href="https://github.com/trypear/pearai" className="text-purple-600 hover:text-purple-800"> the repo </a>
+    <a href="https://github.com/trypear/pearai-app" className="text-purple-600 hover:text-purple-800"> the repo </a>
     a star!
   </p>
   <div className="flex justify-center space-x-4 mt-4" data-aos="fade-up" data-aos-delay="600">

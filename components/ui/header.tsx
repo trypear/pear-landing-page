@@ -22,7 +22,7 @@ export default function Header() {
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
-                  href="https://github.com/trypear/pearai-extension"
+                  href="https://github.com/trypear/pearai-app"
                   className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   GitHub
