@@ -29,7 +29,7 @@ export default function Features() {
                 <path className="stroke-current text-purple-300" d="M43 42h-9M43 37h-9" strokeLinecap="square" strokeWidth="2" />
               </svg>
               <h4 className="h4 mb-2">Knows your code.</h4>
-              <p className="text-lg text-gray-400 text-center">Pear has context on your database so you can ask questions about your code.</p>
+              <p className="text-lg text-gray-400 text-center">Pear has context on your codebase so you can ask questions about your code.</p>
             </div>
 
             {/* 2nd item */}
