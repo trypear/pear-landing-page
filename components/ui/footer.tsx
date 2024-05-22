@@ -13,8 +13,8 @@ export default function Footer() {
           <div className="grid md:grid-cols-12 gap-8 lg:gap-20 mb-8 md:mb-12">
 
             {/* 1st block */}
-            <div className="md:col-span-4 lg:col-span-5">
-              <div className="mb-2">
+            <div className="flex md:block flex-col md:flex-row items-center justify-center md:col-span-4 lg:col-span-5">
+              <div className="mb-2 ">
                 {/* Logo */}
                 <Link href="/" className="inline-block" aria-label="Cruip">
                   <svg className="w-8 h-8 fill-current text-purple-600" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +36,8 @@ export default function Footer() {
           </div>
 
           {/* Bottom area */}
-          <div className="md:flex md:items-center md:justify-between">
+
+          <div className="md:items-center md:justify-between flex max-sm:flex-col justify-center gap-2 items-center  ">
 
             {/* Social links */}
             <ul className="flex mb-4 md:order-1 md:ml-4 md:mb-0">
