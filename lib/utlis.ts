@@ -6,14 +6,14 @@ type MetadataProps = {
 }
 
 export const constructMetadata = ({
-  title = "Home - pear.ai",
+  title,
   description = "The best AI-powered code editor",
   canonical = "/",
   ogImage = "",
 }: MetadataProps) => {
   return {
     metadataBase: new URL("https://trypear.ai/"),
-    title,
+    title: title ? `${title} - pear.ai` : "Home - pear.ai",
     description,
     keywords: ["code editor", "ai code editor", "ai", "pearai"],
     alternates: {
