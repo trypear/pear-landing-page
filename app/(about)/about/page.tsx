@@ -1,9 +1,12 @@
-export const metadata = {
-  title: 'pear.ai - About',
-  description: 'Page description',
-}
+import AboutComponent from "@/components/about"
+import { constructMetadata } from "@/lib/utlis"
+import { Metadata } from "next/types"
 
-import AboutComponent from '@/components/about'
+export const metadata: Metadata = constructMetadata({
+  title: "About",
+  description: "About the team behind pear.ai",
+  canonical: "/about",
+})
 
 export default function About() {
   return (
