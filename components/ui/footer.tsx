@@ -22,7 +22,7 @@ export default function Footer() {
                   </svg>
                 </Link>
               </div>
-              <div className="text-gray-400">Supercharge your development in an editor designed for less coding, with AI.</div>
+              <div className="text-gray-400 max-sm:text-center text-left">Supercharge your development in an editor designed for less coding, with AI.</div>
             </div>
 
             {/* 2nd, 3rd and 4th blocks */}
