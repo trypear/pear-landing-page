@@ -65,7 +65,7 @@ export default function Footer() {
             </ul>
 
             {/* Copyrights note */}
-            <div className="text-gray-400 text-sm mr-4">&copy; Pear AI - All rights reserved.</div>
+            <div className="text-gray-400 text-sm max-sm:text-center md:text-left">&copy; Pear AI - All rights reserved.</div>
 
           </div>
 
