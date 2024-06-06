@@ -8,6 +8,7 @@ export default function SignIn() {
   
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setErrorMessage(null);
     const formData = new FormData(e.currentTarget);
     const response = await signin(formData);
     if (response) {
