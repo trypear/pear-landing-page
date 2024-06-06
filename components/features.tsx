@@ -10,7 +10,7 @@ export default function Features() {
   <p className="text-xl text-gray-400">
     Pear is made by developers, for developers. Help us out by giving
     <a href="https://github.com/trypear/pearai-app" className="text-purple-600 hover:text-purple-800"> the repo </a>
-    a star!
+    a star! If you have questions, you can join our <a href="https://discord.gg/7QMraJUsQt" className="text-purple-600 hover:text-purple-800">Discord</a> and ask us directly.
   </p>
   <div className="flex justify-center space-x-4 mt-4" data-aos="fade-up" data-aos-delay="600">
     <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full sm:w-auto" href="https://forms.gle/5APwrsWLZ8VTvuKE7">Apply For Moderation Role</a>
