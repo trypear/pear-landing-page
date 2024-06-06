@@ -7,7 +7,7 @@ type MetadataProps = {
 
 export const constructMetadata = ({
   title,
-  description = "The best AI-powered code editor",
+  description = "The open source AI-powered code editor",
   canonical = "/",
   ogImage = "",
 }: MetadataProps) => {

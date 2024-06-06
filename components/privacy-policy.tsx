@@ -163,9 +163,9 @@ Please note that due to the open source nature of our products, services, and co
 <h2 className="h2 my-4">Contacting PearAI About Your Privacy</h2>
 The relevant data controller for any personal information processed in connection with our Apps is PearAI Inc.
 
-If you have any questions about this Privacy Policy or our privacy and security practices or you wish to make a complaint about our compliance with applicable privacy laws, please feel free to contact us at trypeakhours@gmail.com.
+If you have any questions about this Privacy Policy or our privacy and security practices or you wish to make a complaint about our compliance with applicable privacy laws, please feel free to contact us at trypearai@gmail.com.
 
-If you have questions or concerns about the way we are handling your personal information, or would like to exercise your privacy rights, please email us with the subject line "Privacy Concern" at trypeakhours@gmail.com.
+If you have questions or concerns about the way we are handling your personal information, or would like to exercise your privacy rights, please email us with the subject line "Privacy Concern" at trypearai@gmail.com.
 
 In most cases, we will respond within 30 days of receiving your message but please note for promptest response, we recommend emailing us.
 
