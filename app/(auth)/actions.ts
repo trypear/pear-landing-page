@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-// TODO: better error handling. For now, we're just redirecting to an error page
 export async function signin(formData: FormData) {
   const supabase = createClient();
 
@@ -18,8 +17,7 @@ export async function signin(formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
-    console.error(error.message);
-    redirect("/error");
+    return {error: error.message };
   }
 
   revalidatePath("/", "layout");
@@ -40,8 +38,7 @@ export async function signup(formData: FormData) {
   const { error } = await supabase.auth.signUp(data);
 
   if (error) {
-    console.error(error.message);
-    redirect("/error");
+    return {error: error.message };
   }
 
   revalidatePath("/", "layout");
@@ -59,7 +56,6 @@ export async function signinWithGoogle() {
     redirect(data.url) 
   }
   if (error) {
-    console.error(error.message);
     redirect("/error");
   }
 
