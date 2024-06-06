@@ -10,8 +10,7 @@ export default function SignIn() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const response = await signin(formData);
-    console.log(response);
-    if (response.error) {
+    if (response) {
       setErrorMessage(response.error);
     }
   };
@@ -69,7 +68,7 @@ export default function SignIn() {
                       <input type="checkbox" className="form-checkbox" />
                       <span className="text-gray-400 ml-2">Keep me signed in</span>
                     </label>
-                    <Link href="/" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Forgot Password?</Link>
+                    <Link href="/reset-password" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Forgot Password?</Link>
                   </div>
                 </div>
               </div>

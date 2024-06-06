@@ -1,11 +1,19 @@
-export const metadata = {
-  title: 'Reset Password - Open PRO',
-  description: 'Page description',
-}
-
+'use client';
 import Link from 'next/link'
+import {useState} from 'react'
+import { resetPassword } from '../actions'
 
 export default function ResetPassword() {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const response = await resetPassword(formData);
+    if (response) {
+      setErrorMessage(response.error);
+    }
+  };
   return (
     <section className="relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -19,13 +27,14 @@ export default function ResetPassword() {
 
           {/* Form */}
           <div className="max-w-sm mx-auto">
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
                   <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                  <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="you@yourcompany.com" required />
+                  <input id="email" type="email" name="email" className="form-input w-full text-gray-300" placeholder="you@yourcompany.com" required />
                 </div>
               </div>
+              {errorMessage && <div className="text-red-500 text-sm text-center">{errorMessage}</div>}
               <div className="flex flex-wrap -mx-3 mt-6">
                 <div className="w-full px-3">
                   <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Reset Password</button>

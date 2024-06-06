@@ -10,8 +10,7 @@ export default function SignUp() {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const response = await signup(formData);
-    console.log(response);
-    if (response.error) {
+    if (response) {
       setErrorMessage(response.error);
     }
   };

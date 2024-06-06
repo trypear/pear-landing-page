@@ -36,7 +36,7 @@ export async function signup(formData: FormData) {
   };
 
   const { error } = await supabase.auth.signUp(data);
-
+  
   if (error) {
     return {error: error.message };
   }
@@ -57,6 +57,20 @@ export async function signinWithGoogle() {
   }
   if (error) {
     redirect("/error");
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/");
+}
+
+// Reset password
+export async function resetPassword(formData: FormData) {
+  const supabase = createClient();
+
+  const { data, error } = await supabase.auth.resetPasswordForEmail(formData.get("email") as string);
+
+  if (error) {
+    return {error: error.message };
   }
 
   revalidatePath("/", "layout");
