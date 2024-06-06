@@ -51,12 +51,16 @@ export async function signinWithGoogle() {
 
   const {data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
+    options: {
+      redirectTo: `/auth/callback`,
+    }
   });
-  if (data.url) {
-    redirect(data.url) 
-  }
   if (error) {
     redirect("/error");
+  }
+
+  if (data.url) {
+    redirect(data.url) 
   }
 
   revalidatePath("/", "layout");
