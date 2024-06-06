@@ -2,6 +2,7 @@ import "./css/style.css"
 import { Inter, Architects_Daughter } from "next/font/google"
 import Header from "@/components/ui/header"
 import { Toaster } from "@/components/ui/sonner"
+import { Button } from "@/components/ui/button"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Toaster position="bottom-right" />
+          <Button>check</Button>
         </div>
       </body>
     </html>
