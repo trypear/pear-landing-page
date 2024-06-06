@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import DocumentIcon from './document.svg';
+import PrivacyPolicyComponent from '../privacy-policy';
 
 
 export default function Footer() {
@@ -14,6 +15,7 @@ export default function Footer() {
 
             {/* 1st block */}
             <div className="md:col-span-4 lg:col-span-5">
+              <div className="flex items-center mb-2">
               <div className="mb-2">
                 {/* Logo */}
                 <Link href="/" className="inline-block" aria-label="Cruip">
@@ -22,6 +24,8 @@ export default function Footer() {
                   </svg>
                 </Link>
               </div>
+                <Link href="/privacy-policy" >Privacy Policy</Link>
+              </div>
               <div className="text-gray-400">Supercharge your development in an editor designed for less coding, with AI.</div>
             </div>
 
@@ -29,7 +33,6 @@ export default function Footer() {
             <div className="md:col-span-8 lg:col-span-7 grid sm:grid-cols-3 gap-8">
 
 
-            
 
             </div>
 
