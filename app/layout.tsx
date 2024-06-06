@@ -1,4 +1,5 @@
 import "./css/style.css"
+import "./globals.css"
 import { Inter, Architects_Daughter } from "next/font/google"
 import Header from "@/components/ui/header"
 import { Toaster } from "@/components/ui/sonner"
