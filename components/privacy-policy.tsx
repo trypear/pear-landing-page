@@ -23,28 +23,28 @@ export default function PrivacyPolicyComponent() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">Privacy Policy</h1>
-            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">
-            Introduction
-This privacy policy (“Privacy Policy”) applies to all visitors and users of the PearAI desktop app and websites (collectively, “Cursor,” “App” or “Apps”), which are offered by PearAI Inc. and/or any of its affiliates (“Anysphere” or “we” or “us”) and describes how we process your personal information in connection with those Apps, and how we collect information through the use of cookies and related technologies. It also tells you how you can access and update your personal information and describes the data protection rights that may be available under your country's or state's laws. Please read this Privacy Policy carefully. By accessing or using any part of the App, you acknowledge you have been informed of and consent to our practices with regard to your personal information and data.
+            <p className="text-xl text-gray-400 mb-8 text-left" data-aos="fade-up" data-aos-delay="200">
+            <h2 className="h2 my-4">Introduction</h2>
+This privacy policy (“Privacy Policy”) applies to all visitors and users of the PearAI desktop app and websites (collectively, PearAI,” “App” or “Apps”), which are offered by PearAI Inc. and/or any of its affiliates (“Anysphere” or “we” or “us”) and describes how we process your personal information in connection with those Apps, and how we collect information through the use of cookies and related technologies. It also tells you how you can access and update your personal information and describes the data protection rights that may be available under your country's or state's laws. Please read this Privacy Policy carefully. By accessing or using any part of the App, you acknowledge you have been informed of and consent to our practices with regard to your personal information and data.
 
-Applicability of this Privacy Policy
+<h2 className="h2 my-4">Applicability of this Privacy Policy</h2>
 If you are a customer of PearAI, this Privacy Policy does not apply to personal information or other data and information that we process on your behalf (if any) as your service provider (collectively, “Customer Data”). We will only use Customer Data (including any personal information contained therein) to provide you with the Services, and our use of your Customer Data shall instead be governed by the terms and conditions of the separate customer agreement or terms of service that you have agreed to with us.
 
 If you are using the Services as an employee, contractor or other representative of one of our customers and you have any questions about our privacy practices or would like to exercise any rights with respect to your personal information that we process on behalf of our customers, please contact the corresponding customer as we only process your personal information in our capacity as a service provider to our customer.
 
-Personal information we collect
+<h2 className="h2 my-4">Personal information we collect</h2>
 You may choose to interact with our Apps in ways that provide us with your personal information. In some instances, a User ID is generated for form and URL tracking, page views, page pings and usage counts in order to ascertain product performance and development. The amount and type of information that PearAI gathers depends on the nature of your interaction with us, as well as the amount of information you choose to share. For example, we ask visitors who use our community Discord, or our forum, to provide a username and email address. We will also collect the information you provide with us in connection with creating an account on the App. In each case, PearAI collects such personal information only insofar as is necessary or appropriate to fulfill the purpose of your interaction with or your request to PearAI. We will not disclose your personal information other than as described in this Privacy Policy.
 
 Like most website operators, PearAI automatically collects (i) technical information about your device including your device's internet protocol (IP) address, device type (e.g., phone, tablet), unique identifiers (including identifiers used for advertising purposes), language settings, mobile device carrier, radio/network information (e.g., WiFi, LTE, 4G), and general location information such as city, state or geographic area; and (ii) information about your visit to our Apps and online activity data (such as the referral URL, the content viewed and the content interacted with). Some of this information is collected using cookies, web beacons and related local storage technologies. See below for further information on these technologies. We collect this information to better understand how visitors use our Apps, to improve our Apps and experience for visitors, and to monitor the security of the Apps.
 
 We may aggregate all information (including your personal information) collected from our Apps for our own statistical and analytics purposes and share such aggregated information with third parties for our own promotional purposes (e.g. by publishing a report on trends in the usage of our Apps).
 
-Information PearAI does not collect
+<h2 className="h2 my-4">Information PearAI does not collect</h2>
 PearAI does not intentionally collect sensitive or special category personal information, such as genetic data, biometric data for the purposes of uniquely identifying a natural person, health information, or religious information.
 
 PearAI does not knowingly collect information from or direct any of our App or content specifically to children under the age of 18. If we learn or have reason to suspect that a user is under the age of 18, we will close that account.
 
-Lawful basis and purposes for processing your personal information
+<h2 className="h2 my-4">Lawful basis and purposes for processing your personal information</h2>
 If you are an individual in the United Kingdom or European Economic Area (EEA), we collect and process information about you only where we have legal bases for doing so under applicable United Kingdom and/or EU laws. The legal bases depend on the Services you use and how you use them. This means we collect and use your information only where:
 
 To fulfil a contract or take steps linked to a contract with you
@@ -75,7 +75,7 @@ where we have obtained your consent to place cookies or similar technologies; an
 on other occasions where we ask for your consent, for the purpose we explain at the time.
 You may withdraw your consent at any time through the unsubscribe feature provided with the relevant marketing email or by contacting us using the details in the 'Contacting PearAI About Your Privacy' section of this Privacy Policy.
 
-How PearAI uses and protects your personal information
+<h2 className="h2 my-4">How PearAI uses and protects your personal information</h2>
 Sharing your information
 PearAI may share your personal information with the third-parties listed below for the purposes that are described in this Privacy Policy or otherwise with your consent.
 
@@ -99,17 +99,17 @@ Legal Requirements. We may disclose personal information to government authoriti
 
 PearAI takes measures reasonably necessary to protect your personal information against any unauthorized access, use, alteration, or destruction.
 
-Cross-border transfer of personal information
+<h2 className="h2 my-4">Cross-border transfer of personal information</h2>
 The Apps are hosted in the United States and the personal information we collect will be stored and processed on our servers in the United States. Our employees, contractors and affiliated organizations that process information for us as described above may be located in the United States or in other countries outside of your home country which may have different data protection standards to those which apply in your home country.
 
 Where your personal information is transferred outside of the EEA, Switzerland and UK and where this is to a country which is not subject to an adequacy decision by the EU Commission or considered adequate as determined by applicable data protection laws, we will take steps to ensure your personal information is adequately protected by safeguards such as Standard Contractual Clauses (“SCCs”) approved by the EU Commission or by the UK Government. A copy of the relevant mechanism can be obtained for your review on request by using the contact details in the 'Contacting PearAI About Your Privacy' section of this Privacy Policy.
 
-PearAI communications with you
+<h2 className="h2 my-4">PearAI communications with you</h2>
 If you are a registered user of the Apps and have supplied your email address, PearAI may occasionally send you an email to tell you about security, system information, new features, solicit your feedback, or just keep you up to date with what's going on with PearAI and our products. We primarily use our blog to communicate this type of information, so we expect to keep this type of email to a minimum. There's an unsubscribe link located at the bottom of each of the marketing emails we send you so you can stop receiving such emails at any time.
 
 If you send us a request (for example via a support email or via one of our feedback mechanisms), we reserve the right to publish your request in order to help us clarify or respond to your request or to help us support other users. We will not publish your personal information in connection with your request.
 
-Your choices
+<h2 className="h2 my-4">Your choices</h2>
 In this section, we describe the rights and choices available to all users.
 
 Opt out of marketing communications. You may opt out of marketing-related communications by following the opt-out or unsubscribe instructions within the marketing communication we send you.
@@ -133,7 +133,7 @@ Digital Advertising Alliance
 Network Advertising Initiative
 Do Not Track. Some Internet browsers may be configured to send “Do Not Track” signals to the online services that you visit. We currently do not respond to “Do Not Track” or similar signals. To find out more about “Do Not Track,” please visit http://www.allaboutdnt.com.
 
-Global privacy practices and your rights
+<h2 className="h2 my-4">Global privacy practices and your rights</h2>
 Information we collect may be stored and processed in the United States in accordance with this Privacy Policy but we understand that users from other countries may have different expectations and rights with regard to their privacy. For all App visitors and users, no matter their country of location, we will:
 
 provide clear methods of unambiguous, informed consent when we do collect your personal information and where required by applicable law;
@@ -153,14 +153,14 @@ Where we collect personal information to administer your accounts or your contra
 
 To exercise your privacy rights, you can email us at the address given below in the 'Contacting PearAI About Your Privacy' section of this Privacy Policy.
 
-Data retention and deletion
+<h2 className="h2 my-4">Data retention and deletion</h2>
 If you already have an account on the Apps, you may access, update, alter, or delete your basic user profile information by logging into your account and updating profile settings.
 
 PearAI will retain your information for as long as your account is active or as needed to perform our contractual obligations, provide you services through the App, to comply with legal obligations, resolve disputes, preserve legal rights, or enforce our agreements. Retention periods will be determined taking into account the type of information that is collected and the purpose for which it is collected, bearing in mind the requirements applicable to the situation and the need to destroy outdated, unused information at the earliest reasonable opportunity. For instance, in respect of data held for the management of customers and potential customers, we consider the lead time necessary to develop and maintain our commercial relationships and how recent our interactions are with you. We may rectify, update or remove incomplete or inaccurate information, at any time and at our own discretion. For more information on our retention periods you can contact us using the details in the 'Contacting PearAI About Your Privacy' section of this Privacy Policy.
 
 Please note that due to the open source nature of our products, services, and community, we may retain limited personal information indefinitely in order to ensure transactional integrity and nonrepudiation. For example, if you provide your information in connection with a blog post, GitHub issue or comment, we may display that information even if you have deleted your account as we do not automatically delete community posts.
 
-Contacting PearAI About Your Privacy
+<h2 className="h2 my-4">Contacting PearAI About Your Privacy</h2>
 The relevant data controller for any personal information processed in connection with our Apps is PearAI Inc.
 
 If you have any questions about this Privacy Policy or our privacy and security practices or you wish to make a complaint about our compliance with applicable privacy laws, please feel free to contact us at trypeakhours@gmail.com.
@@ -169,7 +169,7 @@ If you have questions or concerns about the way we are handling your personal in
 
 In most cases, we will respond within 30 days of receiving your message but please note for promptest response, we recommend emailing us.
 
-Privacy policy changes
+<h2 className="h2 my-4">Privacy policy changes</h2>
 PearAI may change its privacy policy from time to time, and in PearAI's sole discretion.
 
 If we make material changes to this Privacy Policy, we will notify you by updating the date of this Privacy Policy . Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.
