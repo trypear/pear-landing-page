@@ -27,7 +27,7 @@ export default function SignUp() {
 
           {/* Page header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h1 className="h1">Welcome. We exist to make entrepreneurship easier.</h1>
+            <h1 className="h1">Ready to speed up your development experience?</h1>
           </div>
 
           {/* Form */}
@@ -59,14 +59,14 @@ export default function SignUp() {
               </div>
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
-                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">Company Name <span className="text-red-600">*</span></label>
-                  <input id="company-name" type="text" name="company-name" className="form-input w-full text-gray-300" placeholder="Your company or app name" required />
+                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">Company Name</label>
+                  <input id="company-name" type="text" name="company-name" className="form-input w-full text-gray-300" placeholder="Your company or app name"  />
                 </div>
               </div>
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
-                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Work Email <span className="text-red-600">*</span></label>
-                  <input id="email" type="email" name="email" className="form-input w-full text-gray-300" placeholder="you@yourcompany.com" required />
+                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
+                  <input id="email" type="email" name="email" className="form-input w-full text-gray-300" placeholder="helloworld@email.com" required />
                 </div>
               </div>
               <div className="flex flex-wrap -mx-3 mb-4">
@@ -76,7 +76,7 @@ export default function SignUp() {
                 </div>
               </div>
               <div className="text-sm text-gray-500 text-center">
-                I agree to be contacted by Open PRO about this offer as per the Open PRO <Link href="#" className="underline text-gray-400 hover:text-gray-200 hover:no-underline transition duration-150 ease-in-out">Privacy Policy</Link>.
+                <Link href="/privacy-policy" className="underline text-gray-400 hover:text-gray-200 hover:no-underline transition duration-150 ease-in-out">Privacy Policy</Link>
               </div>
               {errorMessage && <div className="text-red-600 text-sm text-center">{errorMessage}</div>}
               <div className="flex flex-wrap -mx-3 mt-6">
@@ -86,7 +86,7 @@ export default function SignUp() {
               </div>
             </form>
             <div className="text-gray-400 text-center mt-6">
-              Already using Open PRO? <Link href="/signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Sign in</Link>
+              Already using PearAI? <Link href="/signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Sign in</Link>
             </div>
           </div>
 
