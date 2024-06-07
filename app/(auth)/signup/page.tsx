@@ -6,7 +6,7 @@ import { signinWithGoogle, signup } from '../actions'
 export default function SignUp() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrorMessage(null);
     const formData = new FormData(e.currentTarget);
@@ -50,7 +50,7 @@ export default function SignUp() {
               <div className="text-gray-400">Or, register with your email</div>
               <div className="border-t border-gray-700 border-dotted grow ml-3" aria-hidden="true"></div>
             </div>
-            <form onSubmit={handleSignup}>
+            <form onSubmit={handleSignUp}>
               <div className="flex flex-wrap -mx-3 mb-4">
                 <div className="w-full px-3">
                   <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="full-name">Full Name <span className="text-red-600">*</span></label>

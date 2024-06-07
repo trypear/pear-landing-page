@@ -1,9 +1,17 @@
 import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 import Link from "next/link";
 
 export default async function AuthButton() {
   const supabase = createClient();
   const { data, error } = await supabase.auth.getUser();
+
+  const handleSignOut = async () => {
+    "use server";
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    redirect("/");
+  }
 
   return (
     <div className="hidden md:flex">
@@ -23,12 +31,13 @@ export default async function AuthButton() {
           </Link>
         </>
       ) : (
-        <Link
-          href="/"
-          className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
-        >
-          Sign out
-        </Link>
+        <form action={handleSignOut}>
+          <button
+            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
+          >
+            Sign out
+          </button>
+        </form>
       )}
     </div>
   );
