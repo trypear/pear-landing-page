@@ -1,5 +1,6 @@
-import Link from 'next/link'
-import MobileMenu from './mobile-menu'
+import Link from "next/link";
+import MobileMenu from "./mobile-menu";
+import AuthButton from "./authbutton";
 // import DocumentIcon from './document.svg'
 
 export default function Header() {
@@ -42,11 +43,10 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-
+          <AuthButton />
           <MobileMenu />
-
         </div>
       </div>
     </header>
-  )
+  );
 }
