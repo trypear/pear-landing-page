@@ -43,7 +43,7 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-          <AuthButton />
+          {process.env.NODE_ENV !== 'production' && <AuthButton />} {/* AuthButton is hidden in production */} 
           <MobileMenu />
         </div>
       </div>
