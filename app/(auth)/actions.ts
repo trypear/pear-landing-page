@@ -49,10 +49,10 @@ export async function signup(formData: FormData) {
 export async function signinWithGoogle() {
   const supabase = createClient();
 
-  const {data, error } = await supabase.auth.signInWithOAuth({
+  const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `/auth/callback`,
+      redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/auth/callback`,
     }
   });
   if (error) {
