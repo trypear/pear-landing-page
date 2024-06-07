@@ -14,7 +14,7 @@ export default function Footer() {
 
             {/* 1st block */}
             <div className="md:col-span-4 lg:col-span-5">
-              <div className="flex items-center mb-2">
+              <div className="flex items-center">
               <div className="mb-2">
                 {/* Logo */}
                 <Link href="/" className="inline-block" aria-label="Cruip">
