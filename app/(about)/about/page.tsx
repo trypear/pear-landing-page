@@ -1,5 +1,5 @@
 import AboutComponent from "@/components/about"
-import { constructMetadata } from "@/lib/utlis"
+import { constructMetadata } from "@/lib/utils"
 import { Metadata } from "next/types"
 
 export const metadata: Metadata = constructMetadata({
