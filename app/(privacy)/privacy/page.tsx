@@ -5,8 +5,8 @@ import { Metadata } from "next/types"
 
 export const metadata: Metadata = constructMetadata({
   title: "Privacy Policy",
-  description: "The privacy policy for our website.",
-  canonical: "/privacy-policy",
+  description: "The privacy policy for PearAI.",
+  canonical: "/privacy",
 })
 
 export default function PrivacyPolicy() {
