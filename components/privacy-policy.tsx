@@ -21,9 +21,8 @@ export default function PrivacyPolicyComponent() {
         <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
 
           {/* Section header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
+          <div className="max-w-3xl mx-auto pb-12 md:pb-16 text-left">
             <h1 className="h1 mb-4" data-aos="fade-up">Privacy Policy</h1>
-            <p className="text-xl text-gray-400 mb-8 text-left" data-aos="fade-up" data-aos-delay="200">
             <h2 className="h2 my-4">Introduction</h2>
 This privacy policy (“Privacy Policy”) applies to all visitors and users of the PearAI desktop app and websites (collectively, PearAI,” “App” or “Apps”), which are offered by PearAI Inc. and/or any of its affiliates (“Anysphere” or “we” or “us”) and describes how we process your personal information in connection with those Apps, and how we collect information through the use of cookies and related technologies. It also tells you how you can access and update your personal information and describes the data protection rights that may be available under your country's or state's laws. Please read this Privacy Policy carefully. By accessing or using any part of the App, you acknowledge you have been informed of and consent to our practices with regard to your personal information and data.
 
@@ -173,7 +172,6 @@ In most cases, we will respond within 30 days of receiving your message but plea
 PearAI may change its privacy policy from time to time, and in PearAI's sole discretion.
 
 If we make material changes to this Privacy Policy, we will notify you by updating the date of this Privacy Policy . Your continued use of this site after any change in this Privacy Policy will constitute your acceptance of such change.
-            </p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center sm:gap-4">
 
             </div>

@@ -76,7 +76,7 @@ export default function SignUp() {
                 </div>
               </div>
               <div className="text-sm text-gray-500 text-center">
-                <Link href="/privacy-policy" className="underline text-gray-400 hover:text-gray-200 hover:no-underline transition duration-150 ease-in-out">Privacy Policy</Link>
+                <Link href="/privacy" className="underline text-gray-400 hover:text-gray-200 hover:no-underline transition duration-150 ease-in-out">Privacy Policy</Link>
               </div>
               {errorMessage && <div className="text-red-600 text-sm text-center">{errorMessage}</div>}
               <div className="flex flex-wrap -mx-3 mt-6">
