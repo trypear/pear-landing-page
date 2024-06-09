@@ -24,8 +24,8 @@ export default function Footer() {
                   <PearLightLogo/>
                 </Link>
               </div>
-                <Link href="/privacy-policy" className="ml-3" >Privacy Policy</Link>            
-                {/* <Link href="/tos" className="ml-2" >Terms of Service</Link> */}
+                <Link href="/privacy" className="ml-3" >Privacy Policy</Link>            
+                <Link href="/terms-of-service" className="ml-2" >Terms of Service</Link>
               </div>
               
               <div className="text-gray-400">Supercharge your development in an editor designed for less coding, with AI.</div>
