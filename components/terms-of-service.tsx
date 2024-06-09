@@ -21,11 +21,10 @@ export default function TermsOfServiceComponent() {
           <div className="relative pt-32 pb-10 md:pt-40 md:pb-16">
   
             {/* Section header */}
-            <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-              <h1 className="h1 mb-4" data-aos="fade-up">Terms of Service</h1>
-              <p className="text-xl text-gray-400 mb-8 text-left" data-aos="fade-up" data-aos-delay="200">
+            <div className="max-w-3xl mx-auto text-left md:pb-16">
+              <h1 className="h1" data-aos="fade-up">Terms of Service</h1>
 
-              <div className="[&_p]:mb-4 space-y-4 prose prose-base !m-0 pt-20 md:pt-[140px] pb-10 md:pb-[140px] max-w-full "><h1>Terms of Service: Teams</h1>
+              <div className="[&_p]:mb-4 space-y-4 prose prose-base pt-6 text-left">
 <p><strong>Last updated June 9th, 2024</strong></p>
 <p>Welcome, and thank you for your interest in PearAI, Inc. (PearAI,” “we,” or “us”) and our website at&nbsp;<a href="http://www.trypear.ai">www.trypear.ai</a>, along with the Software (as defined below), our related websites, hosted applications or other downloadable applications, and other services provided by us (collectively, the “Service”). These Terms and Conditions, including PearAI’s Privacy Policy (available at:&nbsp;<a href="https://trypear.ai/privacy">https://trypear.ai/privacy</a>), (together, these “Terms”) are a legally binding contract between you and PearAI regarding your use of the Service.</p>
 <p><strong>PLEASE READ THE FOLLOWING TERMS CAREFULLY:</strong></p>
@@ -110,7 +109,6 @@ export default function TermsOfServiceComponent() {
 <p>16.8. <strong>International Use</strong>. The Service is intended for visitors located within the United States. We make no representation that the Service is appropriate or available for use outside of the United States. Access to the Service from countries or territories or by individuals where such access is illegal is prohibited.</p>
 </li>
 </ol></div>
-              </p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center sm:gap-4">
   
               </div>
