@@ -6,11 +6,7 @@ This product is run by [nang](https://youtube.com/nang88) and [FryingPan](https:
 
 ## Contributing
 
-## How to install locally
-
-1. Fork this repo
-
-You can fork this repo by [clicking here](https://github.com/trypear/pear-landing-page/fork)
+1. Fork this repo. You can fork this repo by [clicking here](https://github.com/trypear/pear-landing-page/fork)
 
 2. Clone on your local machine
 
@@ -24,7 +20,7 @@ https://github.com/<USERNAME>/pear-landing-page.git
 cd pear-landing-page
 ```
 
-3. Create a new Branch
+3. Create a new branch
 
 ```
 git checkout -b my-new-branch
@@ -44,8 +40,8 @@ if you dont have yarn just do `npm i -g yarn@latest`
 yarn dev
 ```
 
-check `http://localhost:3000`
+Visit http://localhost:3000
 
 ## Ask for help
 
-For any help or questions, please join [discord](https://discord.com/invite/7QMraJUsQt)
+For any help or questions, please join [Discord](https://discord.com/invite/7QMraJUsQt)
