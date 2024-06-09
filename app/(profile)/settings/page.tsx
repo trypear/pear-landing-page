@@ -8,6 +8,7 @@ export default async function Settings() {
   if (error || !data?.user) {
     redirect('/signin')
   }
+  console.log(data)
 
   return (
     <section className="relative">
@@ -23,7 +24,12 @@ export default async function Settings() {
           <div className="max-w-sm mx-auto">
             <div className="flex flex-wrap -mx-3 mb-4">
               <div className="w-full px-3">
-
+                <p className="text-gray-300 text-sm font-medium mb-1">
+                  Full Name: {data.user.user_metadata.full_name}
+                </p>
+                <p className="text-gray-300 text-sm font-medium mb-1">
+                  Email: {data.user.email}
+                </p>
               </div>
             </div>
           </div>
