@@ -1,5 +1,6 @@
-import Link from 'next/link'
-import MobileMenu from './mobile-menu'
+import Link from "next/link";
+import MobileMenu from "./mobile-menu";
+import AuthButton from "./authbutton";
 import PearLightLogo from './PearLight70x70.svg'
 
 export default function Header() {
@@ -41,11 +42,10 @@ export default function Header() {
               </li>
             </ul>
           </nav>
-
+          {process.env.NODE_ENV !== 'production' && <AuthButton />} {/* AuthButton is hidden in production */} 
           <MobileMenu />
-
         </div>
       </div>
     </header>
-  )
+  );
 }
