@@ -1121,50 +1121,10 @@
   resolved "https://registry.npmjs.org/@next/env/-/env-14.2.2.tgz"
   integrity sha512-sk72qRfM1Q90XZWYRoJKu/UWlTgihrASiYw/scb15u+tyzcze3bOuJ/UV6TBOQEeUaxOkRqGeuGUdiiuxc5oqw==
 
-"@next/swc-win32-x64-msvc@14.2.2":
+"@next/swc-darwin-arm64@14.2.2":
   version "14.2.2"
-  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-14.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-14.2.2.tgz#55e395b0db6dd5ea2dc92818260ff3a399f1a056"
   integrity sha512-3iPgMhzbalizGwHNFUcGnDhFPSgVBHQ8aqSTAMxB5BvJG0oYrDf1WOJZlbXBgunOEj/8KMVbejEur/FpvFsgFQ==
-
-"@next/swc-darwin-x64@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/swc-darwin-x64/-/swc-darwin-x64-14.2.2.tgz#f96fb65510be798c03b0432129792c6ac8885bc8"
-  integrity sha512-x7Afi/jt0ZBRUZHTi49yyej4o8znfIMHO4RvThuoc0P+uli8Jd99y5GKjxoYunPKsXL09xBXEM1+OQy2xEL0Ag==
-
-"@next/swc-linux-arm64-gnu@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-gnu/-/swc-linux-arm64-gnu-14.2.2.tgz#443f0d4ab9d1aa4338e40f77ca4e182d60e88448"
-  integrity sha512-zbfPtkk7L41ODMJwSp5VbmPozPmMMQrzAc0HAUomVeVIIwlDGs/UCqLJvLNDt4jpWgc21SjjyIn762lNGrMaUA==
-
-"@next/swc-linux-arm64-musl@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-arm64-musl/-/swc-linux-arm64-musl-14.2.2.tgz#182c00b3d2f3ed4eaacdd385d07b230252c64de9"
-  integrity sha512-wPbS3pI/JU16rm3XdLvvTmlsmm1nd+sBa2ohXgBZcShX4TgOjD4R+RqHKlI1cjo/jDZKXt6OxmcU0Iys0OC/yg==
-
-"@next/swc-linux-x64-gnu@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-14.2.2.tgz#e826a08085dcc61685ff42884ad4032e71ac154f"
-  integrity sha512-NqWOHqqq8iC9tuHvZxjQ2tX+jWy2X9y8NX2mcB4sj2bIccuCxbIZrU/ThFPZZPauygajZuVQ6zediejQHwZHwQ==
-
-"@next/swc-linux-x64-musl@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-14.2.2.tgz#42f921ca6d93fdfb2b13de70cd8a44ba5526b318"
-  integrity sha512-lGepHhwb9sGhCcU7999+iK1ZZT+6rrIoVg40MP7DZski9GIZP80wORSbt5kJzh9v2x2ev2lxC6VgwMQT0PcgTA==
-
-"@next/swc-win32-arm64-msvc@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-arm64-msvc/-/swc-win32-arm64-msvc-14.2.2.tgz#9c8f60da8e3882c4c66f21747abf944a627d05ff"
-  integrity sha512-TZSh/48SfcLEQ4rD25VVn2kdIgUWmMflRX3OiyPwGNXn3NiyPqhqei/BaqCYXViIQ+6QsG9R0C8LftMqy8JPMA==
-
-"@next/swc-win32-ia32-msvc@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-ia32-msvc/-/swc-win32-ia32-msvc-14.2.2.tgz#fdb0b5f74e6dc0dcb34b7f7d24775ad034d915e8"
-  integrity sha512-M0tBVNMEBJN2ZNQWlcekMn6pvLria7Sa2Fai5znm7CCJz4pP3lrvlSxhKdkCerk0D9E0bqx5yAo3o2Q7RrD4gA==
-
-"@next/swc-win32-x64-msvc@14.2.2":
-  version "14.2.2"
-  resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-14.2.2.tgz#95cc0dad2c7ac5177fa6eeab070dccfa30532353"
-  integrity sha512-a/20E/wtTJZ3Ykv3f/8F0l7TtgQa2LWHU2oNB9bsu0VjqGuGGHmm/q6waoUNQYTVPYrrlxxaHjJcDV6aiSTt/w==
 
 "@next/swc-darwin-x64@14.2.2":
   version "14.2.2"
@@ -1226,71 +1186,6 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
-
-"@supabase/auth-js@2.64.2":
-  version "2.64.2"
-  resolved "https://registry.npmjs.org/@supabase/auth-js/-/auth-js-2.64.2.tgz"
-  integrity sha512-s+lkHEdGiczDrzXJ1YWt2y3bxRi+qIUnXcgkpLSrId7yjBeaXBFygNjTaoZLG02KNcYwbuZ9qkEIqmj2hF7svw==
-  dependencies:
-    "@supabase/node-fetch" "^2.6.14"
-
-"@supabase/functions-js@2.3.1":
-  version "2.3.1"
-  resolved "https://registry.npmjs.org/@supabase/functions-js/-/functions-js-2.3.1.tgz"
-  integrity sha512-QyzNle/rVzlOi4BbVqxLSH828VdGY1RElqGFAj+XeVypj6+PVtMlD21G8SDnsPQDtlqqTtoGRgdMlQZih5hTuw==
-  dependencies:
-    "@supabase/node-fetch" "^2.6.14"
-
-"@supabase/node-fetch@^2.6.14", "@supabase/node-fetch@2.6.15":
-  version "2.6.15"
-  resolved "https://registry.npmjs.org/@supabase/node-fetch/-/node-fetch-2.6.15.tgz"
-  integrity sha512-1ibVeYUacxWYi9i0cf5efil6adJ9WRyZBLivgjs+AUpewx1F3xPi7gLgaASI2SmIQxPoCEjAsLAzKPgMJVgOUQ==
-  dependencies:
-    whatwg-url "^5.0.0"
-
-"@supabase/postgrest-js@1.15.2":
-  version "1.15.2"
-  resolved "https://registry.npmjs.org/@supabase/postgrest-js/-/postgrest-js-1.15.2.tgz"
-  integrity sha512-9/7pUmXExvGuEK1yZhVYXPZnLEkDTwxgMQHXLrN5BwPZZm4iUCL1YEyep/Z2lIZah8d8M433mVAUEGsihUj5KQ==
-  dependencies:
-    "@supabase/node-fetch" "^2.6.14"
-
-"@supabase/realtime-js@2.9.5":
-  version "2.9.5"
-  resolved "https://registry.npmjs.org/@supabase/realtime-js/-/realtime-js-2.9.5.tgz"
-  integrity sha512-TEHlGwNGGmKPdeMtca1lFTYCedrhTAv3nZVoSjrKQ+wkMmaERuCe57zkC5KSWFzLYkb5FVHW8Hrr+PX1DDwplQ==
-  dependencies:
-    "@supabase/node-fetch" "^2.6.14"
-    "@types/phoenix" "^1.5.4"
-    "@types/ws" "^8.5.10"
-    ws "^8.14.2"
-
-"@supabase/ssr@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/@supabase/ssr/-/ssr-0.3.0.tgz"
-  integrity sha512-lcVyQ7H6eumb2FB1Wa2N+jYWMfq6CFza3KapikT0fgttMQ+QvDgpNogx9jI8bZgKds+XFSMCojxFvFb+gwdbfA==
-  dependencies:
-    cookie "^0.5.0"
-    ramda "^0.29.0"
-
-"@supabase/storage-js@2.5.5":
-  version "2.5.5"
-  resolved "https://registry.npmjs.org/@supabase/storage-js/-/storage-js-2.5.5.tgz"
-  integrity sha512-OpLoDRjFwClwc2cjTJZG8XviTiQH4Ik8sCiMK5v7et0MDu2QlXjCAW3ljxJB5+z/KazdMOTnySi+hysxWUPu3w==
-  dependencies:
-    "@supabase/node-fetch" "^2.6.14"
-
-"@supabase/supabase-js@^2.33.1", "@supabase/supabase-js@^2.43.4":
-  version "2.43.4"
-  resolved "https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-2.43.4.tgz"
-  integrity sha512-/pLPaxiIsn5Vaz3s32HC6O/VNwfeddnzS0bZRpOW0AKcPuXroD8pT9G8mpiBlZfpKsMmq6k7tlhW7Sr1PAQ1lw==
-  dependencies:
-    "@supabase/auth-js" "2.64.2"
-    "@supabase/functions-js" "2.3.1"
-    "@supabase/node-fetch" "2.6.15"
-    "@supabase/postgrest-js" "1.15.2"
-    "@supabase/realtime-js" "2.9.5"
-    "@supabase/storage-js" "2.5.5"
 
 "@radix-ui/number@1.0.1":
   version "1.0.1"
@@ -1681,6 +1576,71 @@
   integrity sha512-fyrgCaedtvMg9NK3en0pnOYJdtfwxUcNolezkNPUsoX57X8oQk+NkqcvzHXD2uKNij6GXmWU9NDru2IWjrO4BQ==
   dependencies:
     "@babel/runtime" "^7.13.10"
+
+"@supabase/auth-js@2.64.2":
+  version "2.64.2"
+  resolved "https://registry.npmjs.org/@supabase/auth-js/-/auth-js-2.64.2.tgz"
+  integrity sha512-s+lkHEdGiczDrzXJ1YWt2y3bxRi+qIUnXcgkpLSrId7yjBeaXBFygNjTaoZLG02KNcYwbuZ9qkEIqmj2hF7svw==
+  dependencies:
+    "@supabase/node-fetch" "^2.6.14"
+
+"@supabase/functions-js@2.3.1":
+  version "2.3.1"
+  resolved "https://registry.npmjs.org/@supabase/functions-js/-/functions-js-2.3.1.tgz"
+  integrity sha512-QyzNle/rVzlOi4BbVqxLSH828VdGY1RElqGFAj+XeVypj6+PVtMlD21G8SDnsPQDtlqqTtoGRgdMlQZih5hTuw==
+  dependencies:
+    "@supabase/node-fetch" "^2.6.14"
+
+"@supabase/node-fetch@2.6.15", "@supabase/node-fetch@^2.6.14":
+  version "2.6.15"
+  resolved "https://registry.npmjs.org/@supabase/node-fetch/-/node-fetch-2.6.15.tgz"
+  integrity sha512-1ibVeYUacxWYi9i0cf5efil6adJ9WRyZBLivgjs+AUpewx1F3xPi7gLgaASI2SmIQxPoCEjAsLAzKPgMJVgOUQ==
+  dependencies:
+    whatwg-url "^5.0.0"
+
+"@supabase/postgrest-js@1.15.2":
+  version "1.15.2"
+  resolved "https://registry.npmjs.org/@supabase/postgrest-js/-/postgrest-js-1.15.2.tgz"
+  integrity sha512-9/7pUmXExvGuEK1yZhVYXPZnLEkDTwxgMQHXLrN5BwPZZm4iUCL1YEyep/Z2lIZah8d8M433mVAUEGsihUj5KQ==
+  dependencies:
+    "@supabase/node-fetch" "^2.6.14"
+
+"@supabase/realtime-js@2.9.5":
+  version "2.9.5"
+  resolved "https://registry.npmjs.org/@supabase/realtime-js/-/realtime-js-2.9.5.tgz"
+  integrity sha512-TEHlGwNGGmKPdeMtca1lFTYCedrhTAv3nZVoSjrKQ+wkMmaERuCe57zkC5KSWFzLYkb5FVHW8Hrr+PX1DDwplQ==
+  dependencies:
+    "@supabase/node-fetch" "^2.6.14"
+    "@types/phoenix" "^1.5.4"
+    "@types/ws" "^8.5.10"
+    ws "^8.14.2"
+
+"@supabase/ssr@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.npmjs.org/@supabase/ssr/-/ssr-0.3.0.tgz"
+  integrity sha512-lcVyQ7H6eumb2FB1Wa2N+jYWMfq6CFza3KapikT0fgttMQ+QvDgpNogx9jI8bZgKds+XFSMCojxFvFb+gwdbfA==
+  dependencies:
+    cookie "^0.5.0"
+    ramda "^0.29.0"
+
+"@supabase/storage-js@2.5.5":
+  version "2.5.5"
+  resolved "https://registry.npmjs.org/@supabase/storage-js/-/storage-js-2.5.5.tgz"
+  integrity sha512-OpLoDRjFwClwc2cjTJZG8XviTiQH4Ik8sCiMK5v7et0MDu2QlXjCAW3ljxJB5+z/KazdMOTnySi+hysxWUPu3w==
+  dependencies:
+    "@supabase/node-fetch" "^2.6.14"
+
+"@supabase/supabase-js@^2.43.4":
+  version "2.43.4"
+  resolved "https://registry.npmjs.org/@supabase/supabase-js/-/supabase-js-2.43.4.tgz"
+  integrity sha512-/pLPaxiIsn5Vaz3s32HC6O/VNwfeddnzS0bZRpOW0AKcPuXroD8pT9G8mpiBlZfpKsMmq6k7tlhW7Sr1PAQ1lw==
+  dependencies:
+    "@supabase/auth-js" "2.64.2"
+    "@supabase/functions-js" "2.3.1"
+    "@supabase/node-fetch" "2.6.15"
+    "@supabase/postgrest-js" "1.15.2"
+    "@supabase/realtime-js" "2.9.5"
+    "@supabase/storage-js" "2.5.5"
 
 "@svgr/babel-plugin-add-jsx-attribute@8.0.0":
   version "8.0.0"
@@ -2298,6 +2258,11 @@ fs.realpath@^1.0.0:
   resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
 
+fsevents@~2.3.2:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
+  integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
+
 function-bind@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.2.tgz"
@@ -2766,7 +2731,7 @@ ramda@^0.29.0:
   resolved "https://registry.npmjs.org/ramda/-/ramda-0.29.1.tgz"
   integrity sha512-OfxIeWzd4xdUNxlWhgFazxsA/nl3mS4/jGZI5n00uWOoSSFRhC1b6gl6xvmzUamgmqELraWp0J/qqVlXYPDPyA==
 
-"react-dom@^16 || ^17 || ^18", react-dom@^18.2.0, react-dom@18.2.0:
+react-dom@18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
