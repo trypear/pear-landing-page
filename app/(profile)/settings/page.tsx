@@ -8,8 +8,7 @@ export default async function Settings() {
   if (error || !data?.user) {
     redirect('/signin')
   }
-  console.log(data)
-
+  
   return (
     <section className="relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
