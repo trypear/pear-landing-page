@@ -31,13 +31,21 @@ export default async function AuthButton() {
           </Link>
         </>
       ) : (
+        <>
+          <Link
+            href="/settings"
+            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 mx-4 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
+          >
+            Settings
+          </Link>
         <form action={handleSignOut}>
           <button
-            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 ml-4 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
+            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2  rounded-sm text-white bg-gray-700 hover:bg-gray-800 transition duration-150 ease-in-out"
           >
             Sign out
           </button>
         </form>
+        </>
       )}
     </div>
   );
