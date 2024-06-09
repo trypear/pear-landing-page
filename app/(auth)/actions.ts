@@ -5,8 +5,10 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
 import { SignUpWithPasswordCredentials } from "@supabase/supabase-js";
+
+const supabase = createClient();
+
 export async function signin(formData: FormData) {
-  const supabase = createClient();
 
   // type-casting here for convenience
   // in practice, you should validate your inputs
@@ -26,7 +28,6 @@ export async function signin(formData: FormData) {
 }
 
 export async function signup(formData: FormData) {
-  const supabase = createClient();
   // type-casting here for convenience
   // in practice, you should validate your inputs
   const data: SignUpWithPasswordCredentials = {
@@ -52,7 +53,6 @@ export async function signup(formData: FormData) {
 
 // Google OAuth sign-in
 export async function signinWithGoogle() {
-  const supabase = createClient();
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
@@ -74,7 +74,6 @@ export async function signinWithGoogle() {
 
 // Reset password
 export async function resetPassword(formData: FormData) {
-  const supabase = createClient();
 
   const { data, error } = await supabase.auth.resetPasswordForEmail(formData.get("email") as string);
 
