@@ -5,7 +5,7 @@ import { Metadata } from "next/types"
 
 export const metadata: Metadata = constructMetadata({
   title: "Terms of Service",
-  description: "The terms of service for PearAI.",
+  description: "The terms of service for PearAI",
   canonical: "/terms-of-service",
 })
 
