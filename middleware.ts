@@ -3,8 +3,10 @@ import { updateSession } from "./utils/supabase/middleware"
 
 export async function middleware(request: NextRequest) {
   if (
-    request.nextUrl.pathname.startsWith("/signin") ||
-    request.nextUrl.pathname.startsWith("/signup")
+    (request.nextUrl.pathname.startsWith("/signin") ||
+    request.nextUrl.pathname.startsWith("/signup"))
+    // FEATURE FLAG
+    && process.env.NODE_ENV === "production"
   ) {
     return NextResponse.redirect(new URL("/", request.url))
   }
