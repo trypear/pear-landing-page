@@ -1,8 +1,8 @@
-# pear.ai Landing Page
+# PearAI Landing Page
 
-This is the landing page for pear.ai: the best AI-powered code editor. The live site can be found at
+This is the landing page for PearAI: the Open Source AI-powered code editor (https://trypear.ai).
 
-This product is run by [nang](https://youtube.com/nang88) and [FryingPan](https://youtube.com/FryingPan)
+This product is ran by [Nang](https://youtube.com/nang88) and [Pan](https://youtube.com/FryingPan).
 
 ## Contributing
 
