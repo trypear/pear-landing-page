@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useState } from 'react';
 import { signin, signinWithGoogle } from "@/app/(auth)/actions";
 
-const SignIn = () => {
+export default function SignIn() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -90,5 +90,3 @@ const SignIn = () => {
     </section>
   )
 }
-
-export default SignIn;
