@@ -51,15 +51,15 @@ export async function signup(formData: FormData) {
   redirect("/");
 }
 
-// Google OAuth sign-in
-export async function signinWithGoogle() {
-
+// OAuth sign-in with Google or GitHub
+export async function signinWithOAuth(provider: 'google' | 'github') {
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: 'google',
+    provider: provider,
     options: {
       redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/auth/callback`,
     }
   });
+
   if (error) {
     redirect("/error");
   }
