@@ -1,15 +1,15 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { updateSession } from "./utils/supabase/middleware";
+import { NextResponse, type NextRequest } from "next/server"
+import { updateSession } from "./utils/supabase/middleware"
 
 export async function middleware(request: NextRequest) {
   if (
     request.nextUrl.pathname.startsWith("/signin") ||
     request.nextUrl.pathname.startsWith("/signup")
   ) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/", request.url))
   }
   // temp redirect to home page in production until we have a proper backend auth flow
-  return await updateSession(request);
+  return await updateSession(request)
 }
 
 export const config = {
@@ -18,4 +18,4 @@ export const config = {
     "/signin",
     "/signup",
   ],
-};
+}

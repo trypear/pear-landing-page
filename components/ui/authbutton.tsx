@@ -11,7 +11,7 @@ export default async function AuthButton() {
     const supabase = createClient();
     await supabase.auth.signOut();
     redirect("/");
-  };
+  }
 
   return (
     <div className="hidden md:flex">
@@ -19,20 +19,22 @@ export default async function AuthButton() {
         <>
           <Link
             href="/signin"
-            className="mx-4 my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-purple-700"
+            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 mx-4 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
           >
             Sign in
           </Link>
           <Link
             href="/signup"
-            className="my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-gray-700 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-gray-800"
+            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2  rounded-sm text-white bg-gray-700 hover:bg-gray-800 transition duration-150 ease-in-out"
           >
             Sign up
           </Link>
         </>
       ) : (
         <form action={handleSignOut}>
-          <button className="my-2 ml-4 inline-flex items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-purple-700">
+          <button
+            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 ml-4 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
+          >
             Sign out
           </button>
         </form>

@@ -1,15 +1,15 @@
 import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import AuthButton from "./authbutton";
-import PearLightLogo from "./PearLight70x70.svg";
+import PearLightLogo from './PearLight70x70.svg'
 
 export default function Header() {
   return (
-    <header className="absolute z-30 w-full">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex h-20 items-center justify-between">
+    <header className="absolute w-full z-30">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-20">
           {/* Site branding */}
-          <div className="mr-4 shrink-0">
+          <div className="shrink-0 mr-4">
             {/* Logo */}
             <Link href="/" className="block" aria-label="Cruip">
               {/* <svg className="w-8 h-8 fill-current text-purple-600" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
@@ -17,15 +17,17 @@ export default function Header() {
               </svg> */}
               <PearLightLogo />
             </Link>
+
           </div>
+
           {/* Desktop navigation */}
           <nav className="hidden md:flex md:grow">
             {/* Desktop sign in links */}
-            <ul className="flex grow flex-wrap items-center justify-end">
+            <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <Link
                   href="https://github.com/trypear/pearai-app"
-                  className="flex items-center px-4 py-3 font-medium text-purple-600 transition duration-150 ease-in-out hover:text-gray-200"
+                  className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   GitHub
                 </Link>
@@ -33,15 +35,14 @@ export default function Header() {
               <li>
                 <Link
                   href="/about"
-                  className="flex items-center px-4 py-3 font-medium text-purple-600 transition duration-150 ease-in-out hover:text-gray-200"
+                  className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   About
                 </Link>
               </li>
             </ul>
           </nav>
-          {process.env.NODE_ENV !== "production" && <AuthButton />}{" "}
-          {/* AuthButton is hidden in production */}
+          {process.env.NODE_ENV !== 'production' && <AuthButton />} {/* AuthButton is hidden in production */} 
           <MobileMenu />
         </div>
       </div>
