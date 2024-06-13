@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
 import { Provider, SignUpWithPasswordCredentials } from "@supabase/supabase-js";
-import { getURL } from "next/dist/shared/lib/utils";
+
 const supabase = createClient();
 
 export async function signin(formData: FormData) {
