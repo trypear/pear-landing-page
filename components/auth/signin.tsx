@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import { useState } from 'react';
 import { signin, signinWithOAuth } from "@/app/(auth)/actions";
+import { Provider } from '@supabase/supabase-js';
 
 export default function SignIn() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -16,7 +17,7 @@ export default function SignIn() {
     }
   };
 
-  const handleOAuthSignIn = async (provider: 'google' | 'github') => {
+  const handleOAuthSignIn = async (provider: Provider) => {
     await signinWithOAuth(provider);
   }
   return (

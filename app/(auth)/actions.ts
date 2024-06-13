@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import { SignUpWithPasswordCredentials } from "@supabase/supabase-js";
+import { Provider, SignUpWithPasswordCredentials } from "@supabase/supabase-js";
 
 const supabase = createClient();
 
@@ -52,7 +52,7 @@ export async function signup(formData: FormData) {
 }
 
 // OAuth sign-in with Google or GitHub
-export async function signinWithOAuth(provider: 'google' | 'github') {
+export async function signinWithOAuth(provider: Provider) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
