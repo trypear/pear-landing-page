@@ -3,9 +3,9 @@ import { constructMetadata } from "@/lib/utils"
 import { Metadata } from "next/types"
 
 export const metadata: Metadata = constructMetadata({
-  title: 'Sign In',
-  description: 'Sign in to your account',
-  canonical: '/signin',
+  title: 'Settings',
+  description: 'Settings for your account.',
+  canonical: '/settings',
 })
 
 export default Page;
