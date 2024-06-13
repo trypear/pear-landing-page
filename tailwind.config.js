@@ -40,6 +40,50 @@ module.exports = {
           800: "#38379C",
           900: "#262668",
         },
+        primary: {
+          50: '#F1FEFB',
+          100: '#E3FCF6',
+          200: '#C3F9EC',
+          300: '#9EF5E0',
+          400: '#75F0D3',
+          500: '#3CEAC1',
+          600: '#17D4A8',
+          700: '#14BD95',
+        },
+        secondary: {
+          500: '#7D7D7D',
+          "main": '#000000',
+        },
+        tertiary: {
+          50: '#F2F2F2',
+          100: '#E8E8E8',
+          200: '#CCCCCC',
+          300: '#ABABAB',
+        },
+        blue: {
+          50: '#F6FCFD',
+          100: '#F2FAFD',
+          200: '#E5F5FA',
+          300: '#D4EEF7',
+          400: '#C7E8F4',
+        },
+        beige: {
+          100: '#FFFDFA',
+          200: '#FEFCFS', // This is the main color according to the image
+          300: '#FEFDEC',
+          400: '#FDF7E7',
+          500: '#FDF6E3',
+          600: '#FADE96',
+        },
+        white: {
+          50: '#FCFDFD',
+          100: '#F9FBFB',
+          200: '#FOF4F5',
+          300: '#F3FBFB',
+          400: '#EDEGER',
+          500: '#F8DE96',
+          "main": "#FFFFFF"
+        },
         spacing: {
           "9/16": "56.25%",
           "3/4": "75%",
@@ -86,14 +130,14 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
+        // primary: {
+        //   DEFAULT: "hsl(var(--primary))",
+        //   foreground: "hsl(var(--primary-foreground))",
+        // },
+        // secondary: {
+        //   DEFAULT: "hsl(var(--secondary))",
+        //   foreground: "hsl(var(--secondary-foreground))",
+        // },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
