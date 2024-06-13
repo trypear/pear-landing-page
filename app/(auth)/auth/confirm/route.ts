@@ -28,6 +28,6 @@ export async function GET(request: NextRequest) {
   }
 
   // return the user to an error page with some instructions
-  redirectTo.pathname = '/login?message=Could not verify OTP'
+  redirectTo.pathname = '/signin?message=Could not verify OTP'
   return NextResponse.redirect(redirectTo)
 }
