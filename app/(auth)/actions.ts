@@ -24,7 +24,7 @@ export async function signin(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/settings");
 }
 
 export async function signup(formData: FormData) {
@@ -48,7 +48,7 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/signin");
 }
 
 // Google OAuth sign-in
@@ -82,5 +82,5 @@ export async function resetPassword(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect("/signin");
 }
