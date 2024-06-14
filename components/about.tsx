@@ -25,13 +25,13 @@ export default function AboutComponent() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">Run by nang and FryingPan</h1>
-            <p className="text-xl text-gray-400 mb-8" data-aos="fade-up" data-aos-delay="200">Building in Public</p>
+            <p className="text-xl text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="200">Building in Public</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center sm:gap-4">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="https://www.youtube.com/nang88" target="_blank">Watch Nang</a>
+                <a className="btn text-white-main bg-primary-500 hover:bg-primary-600 w-full mb-4 sm:w-auto sm:mb-0" href="https://www.youtube.com/nang88" target="_blank">Watch Nang</a>
               </div>
               <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-purple-600 hover:bg-purple-700 w-full mb-4 sm:w-auto sm:mb-0" href="https://www.youtube.com/@PansDay" target="_blank">Watch Pan</a>
+                <a className="btn text-white-main bg-secondary-main hover:bg-gray-800 w-full mb-4 sm:w-auto sm:mb-0" href="https://www.youtube.com/@PansDay" target="_blank">Watch Pan</a>
               </div>
             </div>
           </div>

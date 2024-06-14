@@ -13,7 +13,7 @@ export default function Features() {
     a star! If you have questions, you can join our <a href="https://discord.gg/7QMraJUsQt" className="text-primary-500 hover:text-primary-700">Discord</a> and ask us directly.
   </p>
   <div className="flex justify-center space-x-4 mt-4" data-aos="fade-up" data-aos-delay="600">
-    <a className="btn text-white bg-primary-500 hover:bg-primary-600 w-full sm:w-auto" href="https://forms.gle/5APwrsWLZ8VTvuKE7">Apply For Moderation Role</a>
+    <a className="btn text-white-main bg-primary-500 hover:bg-primary-600 w-full sm:w-auto" href="https://forms.gle/5APwrsWLZ8VTvuKE7">Apply For Moderation Role</a>
     <a className="btn text-white-main bg-secondary-main hover:bg-gray-800 w-full sm:w-auto" href="https://docs.google.com/presentation/d/1zR9-7DTlb2PcsnapryZw8jHSkLTs9JxeXth4nyeemAQ/edit?usp=sharing">Contributing 101</a>
   </div>
 </div>

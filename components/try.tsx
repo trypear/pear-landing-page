@@ -19,7 +19,7 @@ export default function TryPear() {
             <h1 className="h1 mb-4" data-aos="fade-up">Try Pear.AI For Free</h1>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-primary-500 hover:bg-primary-600 w-full mb-4 sm:w-auto sm:mb-0" href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</a>
+                <a className="btn text-white-main bg-primary-500 hover:bg-primary-600 w-full mb-4 sm:w-auto sm:mb-0" href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</a>
               </div>
               <div data-aos="fade-up" data-aos-delay="400">
                 <a className="btn text-white-main bg-secondary-main hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">More details</a>

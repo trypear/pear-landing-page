@@ -19,7 +19,7 @@ export default async function AuthButton() {
         <>
           <Link
             href="/signin"
-            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 mx-4 rounded-sm text-secondary-main bg-primary-500 hover:bg-primary-600 transition duration-150 ease-in-out"
+            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 mx-4 rounded-sm text-white-main bg-primary-500 hover:bg-primary-600 transition duration-150 ease-in-out"
           >
             Sign in
           </Link>

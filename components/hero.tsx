@@ -26,7 +26,7 @@ export default function Hero() {
             <p className="text-xl text-secondary-main mb-8" data-aos="fade-up" data-aos-delay="200">Supercharge your development in an editor designed for less coding, with AI.</p>
             <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a className="btn text-white bg-primary-500 hover:bg-primary-600 w-full mb-4 sm:w-auto sm:mb-0" href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</a>
+                <a className="btn text-white-main bg-primary-500 hover:bg-primary-600 w-full mb-4 sm:w-auto sm:mb-0" href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</a>
               </div>
               <div data-aos="fade-up" data-aos-delay="600">
                 <a className="btn text-white bg-secondary-main text-white-main hover:bg-gray-800 w-full sm:w-auto sm:ml-4" href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">More details</a>
