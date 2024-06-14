@@ -1,42 +1,42 @@
 /* Typography */
 .h1 {
-    @apply text-4xl font-extrabold leading-tight tracking-tighter;
+  @apply text-4xl font-extrabold leading-tight tracking-tighter;
 }
 
 .h2 {
-    @apply text-3xl font-extrabold leading-tight tracking-tighter;
+  @apply text-3xl font-extrabold leading-tight tracking-tighter;
 }
 
 .h3 {
-    @apply text-3xl font-bold leading-tight;
+  @apply text-3xl font-bold leading-tight;
 }
 
 .h4 {
-    @apply text-2xl font-bold leading-snug tracking-tight;
+  @apply text-2xl font-bold leading-snug tracking-tight;
 }
 
 @screen md {
-    .h1 {
-        @apply text-5xl;
-    }
+  .h1 {
+    @apply text-5xl;
+  }
 
-    .h2 {
-        @apply text-4xl;
-    }
+  .h2 {
+    @apply text-4xl;
+  }
 }
 
 /* Buttons */
 .btn,
 .btn-sm {
-    @apply font-medium inline-flex items-center justify-center border border-transparent rounded-sm leading-snug transition duration-150 ease-in-out;
+  @apply inline-flex items-center justify-center rounded-sm border border-transparent font-medium leading-snug transition duration-150 ease-in-out;
 }
 
 .btn {
-    @apply px-8 py-3;
+  @apply px-8 py-3;
 }
 
 .btn-sm {
-    @apply px-4 py-2;
+  @apply px-4 py-2;
 }
 
 /* Forms */
@@ -46,7 +46,7 @@
 .form-select,
 .form-checkbox,
 .form-radio {
-    @apply bg-transparent border border-gray-700 focus:border-gray-500;
+  @apply border border-gray-700 bg-transparent focus:border-gray-500;
 }
 
 .form-input,
@@ -54,26 +54,26 @@
 .form-multiselect,
 .form-select,
 .form-checkbox {
-    @apply rounded-sm;
+  @apply rounded-sm;
 }
 
 .form-input,
 .form-textarea,
 .form-multiselect,
 .form-select {
-    @apply py-3 px-4;
+  @apply px-4 py-3;
 }
 
 .form-input,
 .form-textarea {
-    @apply placeholder-gray-500;
+  @apply placeholder-gray-500;
 }
 
 .form-select {
-    @apply pr-10;
+  @apply pr-10;
 }
 
 .form-checkbox,
 .form-radio {
-    @apply text-purple-600;
+  @apply text-purple-600;
 }

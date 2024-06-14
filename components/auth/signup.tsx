@@ -1,7 +1,7 @@
-'use client';
-import Link from 'next/link'
-import { useState } from 'react';
-import { signinWithGoogle, signup } from "@/app/(auth)/actions";    
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { signinWithGoogle, signup } from "@/app/(auth)/actions";
 
 export default function SignUp() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -19,79 +19,158 @@ export default function SignUp() {
   const handleGoogleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await signinWithGoogle();
-  }
+  };
   return (
     <section className="relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
-
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           {/* Page header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h1 className="h1">Ready to speed up your development experience?</h1>
+          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
+            <h1 className="h1">
+              Ready to speed up your development experience?
+            </h1>
           </div>
 
           {/* Form */}
-          <div className="max-w-sm mx-auto">
+          <div className="mx-auto max-w-sm">
             <form onSubmit={handleGoogleSignUp}>
-              <div className="flex flex-wrap -mx-3">
+              <div className="-mx-3 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center" >
-                    <svg className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <button className="btn relative flex w-full items-center bg-red-600 px-0 text-white hover:bg-red-700">
+                    <svg
+                      className="mx-4 h-4 w-4 shrink-0 fill-current text-white opacity-75"
+                      viewBox="0 0 16 16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
                       <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" />
                     </svg>
-                    <span className="h-6 flex items-center border-r border-white border-opacity-25 mr-4" aria-hidden="true"></span>
-                    <span className="flex-auto pl-16 pr-8 -ml-16">Sign up with Google</span>
+                    <span
+                      className="mr-4 flex h-6 items-center border-r border-white border-opacity-25"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="-ml-16 flex-auto pl-16 pr-8">
+                      Sign up with Google
+                    </span>
                   </button>
                 </div>
               </div>
             </form>
-            <div className="flex items-center my-6">
-              <div className="border-t border-gray-700 border-dotted grow mr-3" aria-hidden="true"></div>
+            <div className="my-6 flex items-center">
+              <div
+                className="mr-3 grow border-t border-dotted border-gray-700"
+                aria-hidden="true"
+              ></div>
               <div className="text-gray-400">Or, register with your email</div>
-              <div className="border-t border-gray-700 border-dotted grow ml-3" aria-hidden="true"></div>
+              <div
+                className="ml-3 grow border-t border-dotted border-gray-700"
+                aria-hidden="true"
+              ></div>
             </div>
             <form onSubmit={handleSignUp}>
-              <div className="flex flex-wrap -mx-3 mb-4">
+              <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
-                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="full-name">Full Name <span className="text-red-600">*</span></label>
-                  <input id="full-name" type="text" name="full-name" className="form-input w-full text-gray-300" placeholder="First and last name" required />
+                  <label
+                    className="mb-1 block text-sm font-medium text-gray-300"
+                    htmlFor="full-name"
+                  >
+                    Full Name <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    id="full-name"
+                    type="text"
+                    name="full-name"
+                    className="form-input w-full text-gray-300"
+                    placeholder="First and last name"
+                    required
+                  />
                 </div>
               </div>
-              <div className="flex flex-wrap -mx-3 mb-4">
+              <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
-                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="company-name">Company Name</label>
-                  <input id="company-name" type="text" name="company-name" className="form-input w-full text-gray-300" placeholder="Your company or app name"  />
+                  <label
+                    className="mb-1 block text-sm font-medium text-gray-300"
+                    htmlFor="company-name"
+                  >
+                    Company Name
+                  </label>
+                  <input
+                    id="company-name"
+                    type="text"
+                    name="company-name"
+                    className="form-input w-full text-gray-300"
+                    placeholder="Your company or app name"
+                  />
                 </div>
               </div>
-              <div className="flex flex-wrap -mx-3 mb-4">
+              <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
-                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email <span className="text-red-600">*</span></label>
-                  <input id="email" type="email" name="email" className="form-input w-full text-gray-300" placeholder="helloworld@email.com" required />
+                  <label
+                    className="mb-1 block text-sm font-medium text-gray-300"
+                    htmlFor="email"
+                  >
+                    Email <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    className="form-input w-full text-gray-300"
+                    placeholder="helloworld@email.com"
+                    required
+                  />
                 </div>
               </div>
-              <div className="flex flex-wrap -mx-3 mb-4">
+              <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
-                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="password">Password <span className="text-red-600">*</span></label>
-                  <input id="password" type="password" name="password" className="form-input w-full text-gray-300" placeholder="Password (at least 10 characters)" required />
+                  <label
+                    className="mb-1 block text-sm font-medium text-gray-300"
+                    htmlFor="password"
+                  >
+                    Password <span className="text-red-600">*</span>
+                  </label>
+                  <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    className="form-input w-full text-gray-300"
+                    placeholder="Password (at least 10 characters)"
+                    required
+                  />
                 </div>
               </div>
-              <div className="text-sm text-gray-500 text-center">
-                <Link href="/privacy" className="underline text-gray-400 hover:text-gray-200 hover:no-underline transition duration-150 ease-in-out">Privacy Policy</Link>
+              <div className="text-center text-sm text-gray-500">
+                <Link
+                  href="/privacy"
+                  className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-200 hover:no-underline"
+                >
+                  Privacy Policy
+                </Link>
               </div>
-              {errorMessage && <div className="text-red-600 text-sm text-center">{errorMessage}</div>}
-              <div className="flex flex-wrap -mx-3 mt-6">
+              {errorMessage && (
+                <div className="text-center text-sm text-red-600">
+                  {errorMessage}
+                </div>
+              )}
+              <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Sign up</button>
+                  <button className="btn w-full bg-purple-600 text-white hover:bg-purple-700">
+                    Sign up
+                  </button>
                 </div>
               </div>
             </form>
-            <div className="text-gray-400 text-center mt-6">
-              Already using PearAI? <Link href="/signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Sign in</Link>
+            <div className="mt-6 text-center text-gray-400">
+              Already using PearAI?{" "}
+              <Link
+                href="/signin"
+                className="text-purple-600 transition duration-150 ease-in-out hover:text-gray-200"
+              >
+                Sign in
+              </Link>
             </div>
           </div>
-
         </div>
       </div>
     </section>
-  )
+  );
 }
