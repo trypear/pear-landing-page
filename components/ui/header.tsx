@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import AuthButton from "./authbutton";
-import PearLightLogo from './PearLight70x70.svg'
+import PearLightLogo from "./PearLight70x70.svg";
 
 export default function Header() {
   return (
@@ -17,9 +17,7 @@ export default function Header() {
               </svg> */}
               <PearLightLogo />
             </Link>
-
           </div>
-
           {/* Desktop navigation */}
           <nav className="hidden md:flex md:grow">
             {/* Desktop sign in links */}
@@ -40,9 +38,18 @@ export default function Header() {
                   About
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/signin"
+                  className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  Signin
+                </Link>
+              </li>
             </ul>
           </nav>
-          {process.env.NODE_ENV !== 'production' && <AuthButton />} {/* AuthButton is hidden in production */} 
+          {process.env.NODE_ENV !== "production" && <AuthButton />}
+          {/* AuthButton is hidden in production */}
           <MobileMenu />
         </div>
       </div>
