@@ -46,8 +46,8 @@ export default function Testimonials() {
               <blockquote className="grow text-lg text-gray-400">
                 {" "}
                 Pear is awesome! Someone finally put GPT into a code editor in a
-                seamless way. It's so elegant and easy. I'm an hour in and
-                already hooked.{" "}
+                seamless way. It&apos;s so elegant and easy. I&apos;m an hour in
+                and already hooked.{" "}
               </blockquote>
               <div className="mt-6 border-t border-gray-700 pt-5 font-medium text-gray-700">
                 <cite className="not-italic text-gray-200">Anastasia Dan</cite>
@@ -79,10 +79,10 @@ export default function Testimonials() {
                 </div>
               </div>
               <blockquote className="grow text-lg text-gray-400">
-                Pear is the best product I've used in a while - it's an AI
-                enabled editor. I just asked it to write a README for a project
-                I've been working on - analyzed the code-base and worked first
-                time.
+                Pear is the best product I&apos;ve used in a while - it&apos;s
+                an AI enabled editor. I just asked it to write a README for a
+                project I&apos;ve been working on - analyzed the code-base and
+                worked first time.
               </blockquote>
               <div className="mt-6 border-t border-gray-700 pt-5 font-medium text-gray-700">
                 <cite className="not-italic text-gray-200">Ryan Simmons</cite>
@@ -114,8 +114,8 @@ export default function Testimonials() {
                 </div>
               </div>
               <blockquote className="grow text-lg text-gray-400">
-                started using Pear yesterday & i'm blown away. it's how Copilot
-                should feel. i'm completely off VSCode now.
+                started using Pear yesterday & i&apos;m blown away. it&apos;s
+                how Copilot should feel. i&apos;m completely off VSCode now.
               </blockquote>
               <div className="mt-6 border-t border-gray-700 pt-5 font-medium text-gray-700">
                 <cite className="not-italic text-gray-200">

@@ -5,7 +5,7 @@ export default function Blocks() {
         <div className="border-t border-gray-800 py-12 md:py-20">
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
-            <h2 className="h2 mb-4">Oh - and it's all Open Sourced.</h2>
+            <h2 className="h2 mb-4">Oh - and it&apos;s all Open Sourced.</h2>
             <p className="text-xl text-gray-400">
               Made by developers for developers.
             </p>

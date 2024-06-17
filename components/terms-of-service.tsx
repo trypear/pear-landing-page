@@ -187,14 +187,14 @@ export default function TermsOfServiceComponent() {
                     <a href="https://stripe.com/legal">
                       https://stripe.com/legal
                     </a>{" "}
-                    and Stripe’s Global Privacy Policy available at:{" "}
+                    and Stripe&apos;s Global Privacy Policy available at:{" "}
                     <a href="https://stripe.com/privacy">
                       https://stripe.com/privacy
                     </a>{" "}
-                    (collectively, the "<strong>Stripe Agreements</strong>"). By
-                    agreeing to these Terms, users that use the payment
-                    functions of the Service also agree to be bound by the
-                    Stripe Agreements, as the same may be modified by Stripe
+                    (collectively, the &quot;<strong>Stripe Agreements</strong>
+                    &quot;). By agreeing to these Terms, users that use the
+                    payment functions of the Service also agree to be bound by
+                    the Stripe Agreements, as the same may be modified by Stripe
                     from time to time. You hereby authorize Stripe to store and
                     continue billing your specified payment method even after
                     such payment method has expired, to avoid interruptions in

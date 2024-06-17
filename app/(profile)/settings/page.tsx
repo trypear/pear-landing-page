@@ -1,32 +1,31 @@
-import { redirect } from 'next/navigation'
-import { createClient } from '@/utils/supabase/server'
+import { redirect } from "next/navigation";
+import { createClient } from "@/utils/supabase/server";
 
 export default async function Settings() {
-  const supabase = createClient()
+  const supabase = createClient();
 
-  const { data, error } = await supabase.auth.getUser()
+  const { data, error } = await supabase.auth.getUser();
   if (error || !data?.user) {
-    redirect('/signin')
+    redirect("/signin");
   }
-  
+
   return (
     <section className="relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
-
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           {/* Page header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-          <h1 className="h1">Settings</h1>
+          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
+            <h1 className="h1">Settings</h1>
           </div>
 
           {/* Settings */}
-          <div className="max-w-sm mx-auto">
-            <div className="flex flex-wrap -mx-3 mb-4">
+          <div className="mx-auto max-w-sm">
+            <div className="-mx-3 mb-4 flex flex-wrap">
               <div className="w-full px-3">
-                <p className="text-gray-300 text-sm font-medium mb-1">
+                <p className="mb-1 text-sm font-medium text-gray-300">
                   Full Name: {data.user.user_metadata.full_name}
                 </p>
-                <p className="text-gray-300 text-sm font-medium mb-1">
+                <p className="mb-1 text-sm font-medium text-gray-300">
                   Email: {data.user.email}
                 </p>
               </div>
@@ -35,5 +34,5 @@ export default async function Settings() {
         </div>
       </div>
     </section>
-  )
+  );
 }

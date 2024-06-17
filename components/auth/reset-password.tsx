@@ -23,7 +23,7 @@ export default function ResetPassword() {
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
             <h1 className="h1 mb-4">Forgot your password?</h1>
             <p className="text-xl text-gray-400">
-              We'll email you instructions on how to reset it.
+              We&apos;ll email you instructions on how to reset it.
             </p>
           </div>
 

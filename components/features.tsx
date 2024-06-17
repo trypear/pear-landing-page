@@ -9,7 +9,7 @@ export default function Features() {
             data-aos="fade-up"
             data-aos-delay="1000"
           >
-            <h2 className="h2 mb-4">Oh - and it's all Open Sourced.</h2>
+            <h2 className="h2 mb-4">Oh - and it&apos;s all Open Sourced.</h2>
             <p className="text-xl text-gray-400">
               Pear is made by developers, for developers. Help us out by giving
               <a
