@@ -26,6 +26,7 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+  - [Environment Variables](#environment-variables-description)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Contact](#contact)
@@ -68,6 +69,30 @@ To get a local copy up and running follow these simple steps.
     yarn install
     ```
     <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Project Configuration
+
+This project requires environment variables to be set up in a `.env.local` file for proper configuration and operation. Below are the required environment variables and instructions on how to set them up.
+
+### Required Environment Variables
+
+1. `NEXT_PUBLIC_SUPABASE_URL`
+2. `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+3. `NEXT_PUBLIC_REDIRECT_URL`
+
+### Environment Variables Description
+
+- **NEXT_PUBLIC_SUPABASE_URL**: This is the URL of your Supabase project.
+
+  Example: `NEXT_PUBLIC_SUPABASE_URL=https://xyzcompany.supabase.co`
+
+- **NEXT_PUBLIC_SUPABASE_ANON_KEY**: This is the anonymous public key for your Supabase project. This key allows your frontend application to interact with the Supabase backend.
+
+  Example: `NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key`
+
+- **NEXT_PUBLIC_REDIRECT_URL**: This is the URL to which users will be redirected after certain actions, such as authentication. During development, this is typically `http://localhost:3000`. For production, replace it with your actual production URL.
+
+  Example: `NEXT_PUBLIC_REDIRECT_URL=http://localhost:3000`
 
 ## Usage
 
