@@ -33,16 +33,16 @@ export default function SignIn() {
             <form onSubmit={handleGoogleSignIn}>
               <div className="-mx-3 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn relative flex w-full items-center bg-red-600 px-0 text-white hover:bg-red-700">
+                  <button className="btn text-white relative flex w-full items-center bg-red-600 px-0 hover:bg-red-700">
                     <svg
-                      className="mx-4 h-4 w-4 shrink-0 fill-current text-white opacity-75"
+                      className="text-white mx-4 h-4 w-4 shrink-0 fill-current opacity-75"
                       viewBox="0 0 16 16"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" />
                     </svg>
                     <span
-                      className="mr-4 flex h-6 items-center border-r border-white border-opacity-25"
+                      className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
                       aria-hidden="true"
                     ></span>
                     <span className="-ml-16 flex-auto pl-16 pr-8">
@@ -125,7 +125,7 @@ export default function SignIn() {
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn w-full bg-purple-600 text-white hover:bg-purple-700">
+                  <button className="btn text-white w-full bg-purple-600 hover:bg-purple-700">
                     Sign in
                   </button>
                 </div>
