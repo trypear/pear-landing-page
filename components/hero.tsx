@@ -89,7 +89,7 @@ export default function Hero() {
                   className="mt-2 rounded-full border border-primary-600 text-primary-600 sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
-                    More details
+                    More Details
                   </Link>
                 </Button>
               </div>
