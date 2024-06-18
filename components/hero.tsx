@@ -37,11 +37,11 @@ export default function Hero() {
         <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
           {/* Section header */}
           <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
-            <h1 className="h1 mb-8 font-bold" data-aos="fade-up">
+            <h1 className="h1 mb-8 font-semibold" data-aos="fade-up">
               {/* TODO: ADD LOGO TO LEFT OF "PearAI:" TEXT */}
               <div>
                 <span className="text-primary-600">PearAI:</span>{" "}
-                <span>The Open-Source AI-Powered Code Editor</span>
+                <span>The Open Source AI-Powered Code Editor</span>
               </div>
             </h1>
             <div className="max-w-lg">
