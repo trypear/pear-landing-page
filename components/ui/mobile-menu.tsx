@@ -61,7 +61,7 @@ export default function MobileMenu() {
       <nav
         id="mobile-nav"
         ref={mobileNav}
-        className="absolute md:bg-transparent bg-white-50 md:backdrop-blur-sm left-0 top-full z-20 flex w-full flex-col items-center justify-center space-y-6 overflow-hidden px-4 text-2xl text-black  transition-all duration-300 ease-in-out sm:px-6"
+        className="animate-fadein-opacity absolute left-0 top-full z-20 flex w-full flex-col items-center justify-center space-y-6 overflow-hidden bg-white-50 px-4 text-2xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-sm"
         style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
         <Link

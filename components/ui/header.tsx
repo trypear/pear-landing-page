@@ -5,7 +5,7 @@ import PearLightLogo from "./PearLight70x70.svg";
 
 export default function Header() {
   return (
-    <header className="fixed top-0 z-30 w-full md:bg-transparent bg-white-50 md:backdrop-blur-sm">
+    <header className="fixed top-0 z-30 w-full md:bg-transparent animate-fadein-opacity bg-white-50 md:backdrop-blur-sm">
       <div className="mx-auto  max-w-screen-xl px-4 py-4 sm:px-6">
         <div className="roboto-medium flex h-20 items-center justify-between text-2xl md:text-xl text-black transition ease-in-out hover:text-gray-600">
           {/* Site branding */}
