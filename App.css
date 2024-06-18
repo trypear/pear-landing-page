@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+
+.App-header {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: #f5f5f5;
+}
+
+
+@font-face {
+  font-family: 'Roboto';
+}
+
+h1{
+  font-family:'Roboto';
+  font-size: 48px;
+  position: relative;
+}
+
+h2{
+  font-family: 'Roboto';
+  font-size: 20px;
+  position: absolute;
+  font-weight: 300;
+  color: #666666;
+}
+
+h3{
+  font-family: 'Roboto';
+  font-weight: 100;
+  color: #4CC9A7;
+  font-size: 24px;
+}
+
+h4{
+    font-family: 'Roboto';
+    font-weight: 500;
+    color: #242424;
+    font-size: 24px;
+}
+
+h5{
+  font-family: 'Roboto';
+  font-weight: 300;
+  color: #666666;
+  font-size: 16px;
+}
+
+h6{
+  font-weight: 500;
+  font-size: 44px;
+  color: #242424;
+}
+
