@@ -1,5 +1,5 @@
-import PearLightLogo from "@/components/ui/PearPrimary70x70.svg";
-import { Button, buttonVariants } from "./ui/button";
+import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
+import { Button } from "./ui/button";
 import Link from "next/link";
 export default function Hero() {
   return (
@@ -37,16 +37,23 @@ export default function Hero() {
         <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
           {/* Section header */}
           <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
-            <h1 className="h1 mb-8 font-semibold" data-aos="fade-up">
-              {/* TODO: ADD LOGO TO LEFT OF "PearAI:" TEXT */}
-              <div>
-                <span className="text-primary-600">PearAI:</span>{" "}
-                <span>The Open Source AI-Powered Code Editor</span>
+            <div className="flex flex-col space-x-2 text-2xl font-semibold md:items-center md:text-4xl">
+              <div className="flex flex-row items-end space-x-2">
+                <PearHeroLogo />
+                <span className="text-primary-600">PearAI:</span>
+                <span className="sm:hidden">The Open Source </span>
+                <span className="hidden sm:block">
+                  The Open Source AI-Powered
+                </span>{" "}
               </div>
-            </h1>
-            <div className="max-w-lg">
+              <span className="sm:hidden">AI-Powered Code Editor</span>
+              <span className="hidden sm:block">Code Editor</span>{" "}
+              {/*
+            </h1> */}
+            </div>
+            <div className="mt-8 max-w-lg">
               <p
-                className="mb-2 text-lg text-secondary-500"
+                className="text-md mb-2 text-secondary-500 sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -54,7 +61,7 @@ export default function Hero() {
                 into your workflow 🚀
               </p>
               <p
-                className="mb-4 text-lg text-secondary-500"
+                className="text-md mb-4 text-secondary-500 sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
