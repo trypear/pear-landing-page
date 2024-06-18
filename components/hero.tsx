@@ -1,7 +1,8 @@
 export default function Hero() {
   return (
     <section>
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+      {/* the extra mt-20 is here because the top navbar has been changed to "fixed" so the height of navbar is removed, thus moving the down content shift upwards */}
+      <div className="relative mx-auto mt-20 max-w-6xl px-4 sm:px-6">
         {/* Illustration behind hero content */}
         <div
           className="pointer-events-none absolute bottom-0 left-0 -ml-20 hidden lg:block"

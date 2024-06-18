@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function AuthButton() {
   const supabase = createClient();
@@ -14,25 +15,40 @@ export default async function AuthButton() {
   };
 
   return (
-    <div className="hidden md:flex">
+    <div className="hidden flex-row items-center space-x-1 md:flex">
       {error || !data?.user ? (
         <>
-          <Link
-            href="/signin"
-            className="mx-4 my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-primary-500 px-4 py-2 font-medium text-white-main transition duration-150 ease-in-out hover:bg-primary-600"
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
           >
-            Sign in
-          </Link>
-          <Link
-            href="/signup"
-            className="my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-secondary-main px-4 py-2 font-medium text-white-main transition duration-150 ease-in-out hover:bg-gray-800"
-          >
-            Sign up
-          </Link>
+            <g clip-path="url(#clip0_255_904)">
+              <path
+                d="M11.9941 23.9883C13.6326 23.9883 15.175 23.6747 16.6213 23.0475C18.0677 22.4204 19.3435 21.5542 20.4488 20.4488C21.5542 19.3435 22.4204 18.0677 23.0475 16.6213C23.6747 15.175 23.9883 13.6326 23.9883 11.9941C23.9883 10.3557 23.6747 8.81334 23.0475 7.36699C22.4204 5.92064 21.5542 4.64479 20.4488 3.53944C19.3435 2.4341 18.0657 1.56786 16.6154 0.940717C15.1651 0.313572 13.6208 0 11.9824 0C10.344 0 8.80159 0.313572 7.35523 0.940717C5.90888 1.56786 4.63499 2.4341 3.53357 3.53944C2.43215 4.64479 1.56786 5.92064 0.940717 7.36699C0.313572 8.81334 0 10.3557 0 11.9941C0 13.6326 0.313572 15.175 0.940717 16.6213C1.56786 18.0677 2.4341 19.3435 3.53944 20.4488C4.64479 21.5542 5.92064 22.4204 7.36699 23.0475C8.81334 23.6747 10.3557 23.9883 11.9941 23.9883ZM11.9941 21.9892C10.6066 21.9892 9.30918 21.7306 8.10193 21.2132C6.89468 20.6958 5.8344 19.9805 4.92112 19.0672C4.00785 18.1539 3.29447 17.0937 2.78099 15.8864C2.26752 14.6792 2.01078 13.3817 2.01078 11.9941C2.01078 10.6066 2.26752 9.30918 2.78099 8.10193C3.29447 6.89468 4.00589 5.83245 4.91525 4.91525C5.8246 3.99804 6.88291 3.28271 8.09017 2.76923C9.29742 2.25576 10.5948 1.99903 11.9824 1.99903C13.37 1.99903 14.6674 2.25576 15.8746 2.76923C17.0819 3.28271 18.1441 3.99804 19.0613 4.91525C19.9785 5.83245 20.6958 6.89468 21.2132 8.10193C21.7306 9.30918 21.9892 10.6066 21.9892 11.9941C21.9892 13.3817 21.7325 14.6792 21.2191 15.8864C20.7056 17.0937 19.9922 18.1539 19.0789 19.0672C18.1656 19.9805 17.1034 20.6958 15.8922 21.2132C14.6811 21.7306 13.3817 21.9892 11.9941 21.9892ZM6.60854 17.9441H17.3563C17.5914 17.9441 17.7658 17.8755 17.8795 17.7383C17.9931 17.6012 18.05 17.4228 18.05 17.2034C18.05 16.8819 17.9265 16.4645 17.6796 15.9511C17.4327 15.4376 17.0603 14.9241 16.5625 14.4106C16.0647 13.8971 15.4356 13.464 14.6752 13.1113C13.9147 12.7585 13.0171 12.5821 11.9824 12.5821C10.9476 12.5821 10.05 12.7585 9.28958 13.1113C8.52917 13.464 7.90007 13.8971 7.40227 14.4106C6.90447 14.9241 6.5321 15.4376 6.28517 15.9511C6.03823 16.4645 5.91476 16.8819 5.91476 17.2034C5.91476 17.4228 5.97159 17.6012 6.08526 17.7383C6.19893 17.8755 6.37336 17.9441 6.60854 17.9441ZM11.9824 11.6179C12.539 11.6257 13.0465 11.4846 13.5051 11.1945C13.9638 10.9045 14.3283 10.5106 14.5987 10.0128C14.8692 9.51496 15.0044 8.95249 15.0044 8.32534C15.0044 7.7374 14.8692 7.19845 14.5987 6.70849C14.3283 6.21853 13.9638 5.82657 13.5051 5.5326C13.0465 5.23862 12.539 5.09164 11.9824 5.09164C11.4258 5.09164 10.9182 5.23862 10.4596 5.5326C10.001 5.82657 9.63647 6.21853 9.36602 6.70849C9.09556 7.19845 8.96034 7.7374 8.96034 8.32534C8.96034 8.95249 9.09556 9.513 9.36602 10.0069C9.63647 10.5008 10.001 10.8927 10.4596 11.1828C10.9182 11.4728 11.4258 11.6179 11.9824 11.6179Z"
+                fill="black"
+                fill-opacity="0.85"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_255_904">
+                <rect width="23.9883" height="24" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+
+          <Link href={"/signin"}>Sign in</Link>
+          <div>/</div>
+          <Link href={"/signup"}>Sign up</Link>
         </>
       ) : (
         <>
-          <Link
+          <Link href={"/settings"}>Settings</Link>
+          <div>/</div>
+          <div onClick={handleSignOut}>Sign out</div>
+          {/* <Link
             href="/settings"
             className="text-white mx-4 my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium transition duration-150 ease-in-out hover:bg-purple-700"
           >
@@ -42,7 +58,7 @@ export default async function AuthButton() {
             <button className="text-white my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-gray-700 px-4 py-2 font-medium transition duration-150 ease-in-out hover:bg-gray-800">
               Sign out
             </button>
-          </form>
+          </form> */}
         </>
       )}
     </div>

@@ -61,33 +61,23 @@ export default function MobileMenu() {
       <nav
         id="mobile-nav"
         ref={mobileNav}
-        className="absolute left-0 top-full z-20 w-full overflow-hidden px-4 transition-all duration-300 ease-in-out sm:px-6"
-        style={
-          mobileNavOpen
-            ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 }
-            : { maxHeight: 0, opacity: 0.8 }
-        }
+        className="absolute md:bg-transparent bg-white-50 md:backdrop-blur-sm left-0 top-full z-20 flex w-full flex-col items-center justify-center space-y-6 overflow-hidden px-4 text-2xl text-black  transition-all duration-300 ease-in-out sm:px-6"
+        style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
-        <ul className="bg-gray-800 px-4 py-2">
-          <li>
-            <Link
-              href="/"
-              className="flex w-full justify-center py-2 font-medium text-purple-600 hover:text-gray-200"
-              onClick={() => setMobileNavOpen(false)}
-            >
-              Sign in
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="text-white my-2 inline-flex w-full items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium transition duration-150 ease-in-out hover:bg-purple-700"
-              onClick={() => setMobileNavOpen(false)}
-            >
-              Sign up
-            </Link>
-          </li>
-        </ul>
+        <Link
+          className="h-full w-full rounded-md bg-primary-500 py-5 text-center backdrop-blur-3xl"
+          onClick={() => setMobileNavOpen(false)}
+          href={"/"}
+        >
+          Sign In
+        </Link>
+        <Link
+          className="h-full w-full rounded-md bg-black py-5 text-center text-white-50 backdrop-blur-3xl"
+          onClick={() => setMobileNavOpen(false)}
+          href={"/"}
+        >
+          Sign Out
+        </Link>
       </nav>
     </div>
   );
