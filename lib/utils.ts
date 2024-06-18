@@ -1,16 +1,16 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 type MetadataProps = {
-  title?: string
-  description?: string
-  canonical: string
-  ogImage?: string
-}
+  title?: string;
+  description?: string;
+  canonical: string;
+  ogImage?: string;
+};
 
 export const constructMetadata = ({
   title,
@@ -69,5 +69,5 @@ export const constructMetadata = ({
     //   site: "trypear.ai",
     //   card: "summary_large_image",
     // },
-  }
-}
+  };
+};
