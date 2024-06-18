@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import AuthButton from "./authbutton";
-import PearLightLogo from "./PearLight70x70.svg";
+import PearLightLogo from "./PearPrimary70x70.svg";
 
 export default function Header() {
   return (

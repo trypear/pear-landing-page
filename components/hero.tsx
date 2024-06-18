@@ -1,3 +1,6 @@
+import PearLightLogo from "@/components/ui/PearPrimary70x70.svg"
+import { Button, buttonVariants } from "./ui/button";
+import Link from "next/link";
 export default function Hero() {
   return (
     <section>
@@ -35,32 +38,43 @@ export default function Hero() {
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-16">
             <h1 className="h1 mb-4" data-aos="fade-up">
-              Pear: The Open-Source AI-Powered Code Editor
+              <PearLightLogo />
+              <span className="text-primary-600">PearAI:</span> The Open-Source AI-Powered Code Editor
             </h1>
             <p
-              className="mb-8 text-xl text-secondary-main"
+              className="mb-8 text-secondary-main text-lg"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              Supercharge your development in an editor designed for less
-              coding, with AI.
+              Speed up your development process by seamlessly integrating AI into your workflow 🚀
+            </p>
+            <p
+              className="mb-8 text-secondary-main text-lg"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              Afraid of switching editors? No need, Pear is a fork of VSCode and retains all its features, you'll feel right at home 😏
             </p>
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a
-                  className="btn mb-4 w-full bg-primary-500 text-white-main hover:bg-primary-600 sm:mb-0 sm:w-auto"
-                  href="https://forms.gle/171UyimgQJhEJbhU7"
-                >
-                  Join Waitlist
-                </a>
+                <Button asChild size={"lg"} className="rounded-full bg-primary-600 text-white-50 hover:bg-primary-700">
+                  <Link
+                    href="https://forms.gle/171UyimgQJhEJbhU7"
+                  >
+                    Join Waitlist
+                  </Link>
+                </Button>
               </div>
               <div data-aos="fade-up" data-aos-delay="600">
-                <a
-                  className="btn text-white w-full bg-secondary-main text-white-main hover:bg-gray-800 sm:ml-4 sm:w-auto"
-                  href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
-                >
-                  More details
-                </a>
+                {/* TODO: ADD HOVER COLOR */}
+                <Button asChild size={"lg"} className="bg-secondary-200 border border-primary-600 text-primary-600 rounded-full"> 
+                  <Link
+                    className="sm:ml-4 sm:w-auto"
+                    href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
+                  >
+                    More details
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
