@@ -1,4 +1,4 @@
-import PearLightLogo from "@/components/ui/PearPrimary70x70.svg"
+import PearLightLogo from "@/components/ui/PearPrimary70x70.svg";
 import { Button, buttonVariants } from "./ui/button";
 import Link from "next/link";
 export default function Hero() {
@@ -36,42 +36,52 @@ export default function Hero() {
         {/* Hero content */}
         <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
           {/* Section header */}
-          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">
-              <PearLightLogo />
-              <span className="text-primary-600">PearAI:</span> The Open-Source AI-Powered Code Editor
+          <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
+            <h1 className="h1 mb-8 font-bold" data-aos="fade-up">
+              {/* TODO: ADD LOGO TO LEFT OF "PearAI:" TEXT */}
+              <div>
+                <span className="text-primary-600">PearAI:</span>{" "}
+                <span>The Open-Source AI-Powered Code Editor</span>
+              </div>
             </h1>
-            <p
-              className="mb-8 text-secondary-main text-lg"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              Speed up your development process by seamlessly integrating AI into your workflow 🚀
-            </p>
-            <p
-              className="mb-8 text-secondary-main text-lg"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              Afraid of switching editors? No need, Pear is a fork of VSCode and retains all its features, you'll feel right at home 😏
-            </p>
+            <div className="max-w-lg">
+              <p
+                className="mb-2 text-lg text-secondary-500"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                Speed up your development process by seamlessly integrating AI
+                into your workflow 🚀
+              </p>
+              <p
+                className="mb-4 text-lg text-secondary-500"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                Afraid of switching editors? No need, Pear is a fork of VSCode
+                and retains all its features, you'll feel right at home 😏
+              </p>
+            </div>
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <Button asChild size={"lg"} className="rounded-full bg-primary-600 text-white-50 hover:bg-primary-700">
-                  <Link
-                    href="https://forms.gle/171UyimgQJhEJbhU7"
-                  >
+                <Button
+                  asChild
+                  size={"lg"}
+                  className="rounded-full bg-primary-600 text-white-50 hover:bg-primary-700"
+                >
+                  <Link href="https://forms.gle/171UyimgQJhEJbhU7">
                     Join Waitlist
                   </Link>
                 </Button>
               </div>
-              <div data-aos="fade-up" data-aos-delay="600">
-                {/* TODO: ADD HOVER COLOR */}
-                <Button asChild size={"lg"} className="bg-secondary-200 border border-primary-600 text-primary-600 rounded-full"> 
-                  <Link
-                    className="sm:ml-4 sm:w-auto"
-                    href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
-                  >
+              <div data-aos="fade-up" data-ao s-delay="600">
+                {/* TODO: ADD HOVER COLOR? */}
+                <Button
+                  asChild
+                  size={"lg"}
+                  className="mt-2 rounded-full border border-primary-600 text-primary-600 sm:ml-4 sm:mt-0 sm:w-auto"
+                >
+                  <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     More details
                   </Link>
                 </Button>
