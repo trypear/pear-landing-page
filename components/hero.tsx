@@ -73,7 +73,7 @@ export default function Hero() {
                 data-aos-delay="200"
               >
                 Afraid of switching editors? No need, Pear is a fork of VSCode
-                and retains all its features, you'll feel right at home 😏
+                and retains all its features, you&apos;ll feel right at home 😏
               </p>
             </div>
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
