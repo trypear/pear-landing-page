@@ -49,8 +49,6 @@ export default function Hero() {
               </div>
               <span className="sm:hidden">AI-Powered Code Editor</span>
               <span className="hidden sm:block">Code Editor</span>
-              {/*
-            </h1> */}
             </div>
             <div className="mt-8 max-w-md sm:max-w-lg">
               <p
