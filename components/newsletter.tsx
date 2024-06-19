@@ -43,7 +43,7 @@ export default function Newsletter() {
           <div className="relative flex flex-col items-center justify-between lg:flex-row">
             {/* CTA content */}
             <div className="mb-6 text-center lg:mb-0 lg:mr-16 lg:w-1/2 lg:text-left">
-              <h3 className="h3 mb-2 text-white">Stay in the loop</h3>
+              <h3 className="h3 text-white mb-2">Stay in the loop</h3>
               <p className="text-lg text-purple-200">
                 Join our newsletter to get top news before anyone else.
               </p>
@@ -54,12 +54,12 @@ export default function Newsletter() {
               <div className="mx-auto flex max-w-xs flex-col justify-center sm:max-w-md sm:flex-row lg:max-w-none">
                 <input
                   type="email"
-                  className="mb-2 w-full appearance-none rounded-sm border border-purple-500 bg-purple-700 px-4 py-3 text-white placeholder-purple-400 focus:border-purple-300 sm:mb-0 sm:mr-2"
+                  className="text-white mb-2 w-full appearance-none rounded-sm border border-purple-500 bg-purple-700 px-4 py-3 placeholder-purple-400 focus:border-purple-300 sm:mb-0 sm:mr-2"
                   placeholder="Your best email…"
                   aria-label="Your best email…"
                 />
                 <a
-                  className="btn bg-purple-100 text-purple-600 shadow hover:bg-white"
+                  className="btn hover:bg-white bg-purple-100 text-purple-600 shadow"
                   href="#0"
                 >
                   Subscribe

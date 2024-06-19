@@ -81,7 +81,7 @@ export default function MobileMenu() {
           <li>
             <Link
               href="/"
-              className="my-2 inline-flex w-full items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-purple-700"
+              className="text-white my-2 inline-flex w-full items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium transition duration-150 ease-in-out hover:bg-purple-700"
               onClick={() => setMobileNavOpen(false)}
             >
               Sign up

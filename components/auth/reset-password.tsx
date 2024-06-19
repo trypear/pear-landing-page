@@ -55,7 +55,7 @@ export default function ResetPassword() {
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn w-full bg-purple-600 text-white hover:bg-purple-700">
+                  <button className="btn text-white w-full bg-purple-600 hover:bg-purple-700">
                     Reset Password
                   </button>
                 </div>
