@@ -1,5 +1,5 @@
-import Image from "next/image"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
+import Image from "next/image";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 export default function Features() {
   const featureInfo = [
@@ -13,7 +13,7 @@ export default function Features() {
 
     {
       header: "No more tedious changes,\nor forgetting language\nsyntax",
-      description: "Directly make changes inline by pressing CMD+I (ALT+L on Windows), and choose what you want to keep. \n\n Here, we ask Pear to help us handl edge cases 😏",
+      description: "Directly make changes inline by pressing CMD+I (ALT+L on Windows), and choose what you want to keep. \n\n Here, we ask Pear to help us handle edge cases 😏",
       imageWidth:866.52,
       imageSource: "https://s3-alpha-sig.figma.com/img/9229/8c19/f69e8c788124e01751223a500df85aea?Expires=1719792000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=nBte2jUC56Kr11M1WApQo-LQyYWAIYyxrmSVNyOgOZKMPAfN0Wem7dACcXkpI8T-ytGA~pA-CHwyZ9fxKAlD88kBI1ZAgFmDEDCsIhuBBOVYtc0XyPkC2S0R~yQAqgUUMUqG8Si34HvSDfq4N9x1vcZi3osCfpbPY7vFKJCze-E538Hw-7aA4wWAC1h-MLnPM0XvMZoFwPwBXB95ogiKaG8qGfFlSegAnupb2sqR2TmfLse6dG5jqk-dOpzUF3zbnH-9Q-nkJK9Fmdw~LHvj4z3wcpN75bWpNSgzyuXR3GXwJPxamvxs9Af9VNj8l2DCS~p4YLe-C1iouGrkV-h-yw__"
     },
@@ -30,7 +30,7 @@ export default function Features() {
 
 
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col justify-evenly">
       {featureInfo.map((info, index) => (
         <SingleFeature key={index} info={info}/>
       ))}
@@ -41,20 +41,17 @@ export default function Features() {
 function SingleFeature(props) {
 
   return (
-    <div>
-      <div className="flex m-24 justify-between max-w-full" style={{height:"36.426rem"}}>
-          <div className="flex flex-col justify-center content-evenly">
-              <h1 className="text-4xl" style={{ color:"#4CC9A7", fontWeight:"500", whiteSpace: "pre-line" }} data-aos="fade-up" data-aos-delay="600">{props.info.header}</h1>
+      <div className="flex flex-col m-24 items-center lg:flex-row lg:max-w-full lg:justify-around">
+          <div className="flex flex-col justify-center content-evenly text-center lg:text-left mb-8 lg:mb-0">
+              <h1 className="text-xl lg:text-4xl" style={{ color:"#4CC9A7", fontWeight:"500", whiteSpace: "pre-line" }} data-aos="fade-up" data-aos-delay="600">{props.info.header}</h1>
               <br/>
               <div className="text-base" style={{ whiteSpace: "pre-line" }} data-aos="fade-up" data-aos-delay="600"> {props.info.description} </div>
           </div>
-
-          <div style={{width: props.info.imageWidth}}>
+          <div className=" lg:w-[870px] md:w-[600px] :w-[325px]">
               <AspectRatio ratio={3 / 2}>
                   <Image src={props.info.imageSource} alt="Image" className="rounded-lg object-cover" fill data-aos="fade-up" data-aos-delay="600"/>
               </AspectRatio>
           </div>
       </div>
-  </div>
   )
 }
