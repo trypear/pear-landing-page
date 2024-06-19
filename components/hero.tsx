@@ -39,8 +39,16 @@ export default function Hero() {
           <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
             <div className="flex flex-col space-x-2 text-3xl font-semibold md:items-center md:text-4xl">
               <div className="flex flex-row items-center space-x-2">
-                <PearHeroLogo width="26" className="hidden sm:block" />
-                <PearHeroLogo width="22" className="sm:hidden" />
+                <PearHeroLogo
+                  width="26"
+                  className="hidden sm:block"
+                  alt="PearAI Logo"
+                />
+                <PearHeroLogo
+                  width="22"
+                  className="sm:hidden"
+                  alt="PearAI Logo"
+                />
                 <span className="text-primary-700">PearAI:</span>
                 <span className="sm:hidden">The Open Source </span>
                 <span className="hidden sm:block">
@@ -73,7 +81,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="hover:bg-primary-800 rounded-full bg-primary-700 text-white-50"
+                  className="rounded-full bg-primary-700 text-white-50 hover:bg-primary-800"
                 >
                   <Link href="https://forms.gle/171UyimgQJhEJbhU7">
                     Join Waitlist
