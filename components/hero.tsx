@@ -50,7 +50,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="mt-8 max-w-md sm:max-w-lg">
+            <div className="mt-6 max-w-md sm:max-w-lg">
               <p
                 className="mb-2 text-sm text-secondary-500 sm:text-lg"
                 data-aos="fade-up"
@@ -73,7 +73,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="rounded-full bg-primary-700 text-white-50 hover:bg-primary-800"
+                  className="rounded-full bg-primary-700 text-white-50 hover:bg-primary-800 hover:shadow-sm"
                 >
                   <Link href="https://forms.gle/171UyimgQJhEJbhU7">
                     Join Waitlist
@@ -85,7 +85,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="mt-2 rounded-full border border-primary-700 text-primary-700 sm:ml-4 sm:mt-0 sm:w-auto"
+                  className="mt-2 rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     More Details
