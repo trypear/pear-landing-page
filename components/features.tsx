@@ -45,19 +45,38 @@ export default function Features() {
 }
 
 function SingleFeature(props: SingleFeatureProps) {
-
   return (
-      <div className="flex flex-col m-24 items-center lg:flex-row lg:max-w-full lg:justify-around">
-          <div className="flex flex-col justify-center content-evenly text-center lg:text-left mb-8 lg:mb-0">
-              <h1 className="text-xl lg:text-4xl" style={{ color:"#4CC9A7", fontWeight:"500", whiteSpace: "pre-line" }} data-aos="fade-up" data-aos-delay="600">{props.info.header}</h1>
-              <br/>
-              <div className="text-base" style={{ whiteSpace: "pre-line" }} data-aos="fade-up" data-aos-delay="600"> {props.info.description} </div>
-          </div>
-          <div className=" lg:w-[870px] md:w-[600px] :w-[325px]">
-              <AspectRatio ratio={3 / 2}>
-                  <Image src={props.info.imageSource} alt="Image" className="rounded-lg object-cover" fill data-aos="fade-up" data-aos-delay="600" unoptimized/>
-              </AspectRatio>
-          </div>
+    <div className="m-24 flex flex-col items-center lg:max-w-full lg:flex-row lg:justify-around">
+      <div className="mb-8 flex flex-col content-evenly justify-center text-center lg:mb-0 lg:text-left">
+        <h1
+          className="whitespace-pre-line text-xl font-medium text-[#4CC9A7] lg:text-4xl"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
+          {props.info.header}
+        </h1>
+        <br />
+        <div
+          className="whitespace-pre-line text-base"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
+          {props.info.description}
+        </div>
       </div>
-  )
+      <div className="w-[325px] md:w-[600px] lg:w-[870px]">
+        <AspectRatio ratio={3 / 2}>
+          <Image
+            src={props.info.imageSource}
+            alt="Image"
+            className="rounded-lg object-cover"
+            unoptimized
+            fill
+            data-aos="fade-up"
+            data-aos-delay="600"
+          />
+        </AspectRatio>
+      </div>
+    </div>
+  );
 }
