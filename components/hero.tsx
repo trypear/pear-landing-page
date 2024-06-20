@@ -81,7 +81,6 @@ export default function Hero() {
                 </Button>
               </div>
               <div data-aos="fade-up" data-ao s-delay="600">
-                {/* TODO: ADD HOVER COLOR? */}
                 <Button
                   asChild
                   size={"lg"}
