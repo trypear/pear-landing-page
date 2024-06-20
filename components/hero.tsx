@@ -1,6 +1,7 @@
 import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
+
 export default function Hero() {
   return (
     <section>
@@ -36,28 +37,19 @@ export default function Hero() {
         {/* Hero content */}
         <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
           {/* Section header */}
-          <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
-            <div className="flex flex-col space-x-2 text-3xl font-semibold md:items-center md:text-4xl">
-              <div className="flex flex-row items-center space-x-2">
+          <div className="mx-auto flex max-w-2xl flex-col items-center pb-12 text-center md:pb-16">
+            <div className="text-4xl font-semibold">
+              <div>
                 <PearHeroLogo
                   width="26"
-                  className="hidden sm:block"
                   alt="PearAI Logo"
+                  className="-mt-4 mr-2 inline-flex"
                 />
-                <PearHeroLogo
-                  width="22"
-                  className="sm:hidden"
-                  alt="PearAI Logo"
-                />
-                <span className="text-primary-700">PearAI:</span>
-                <span className="sm:hidden">The Open Source </span>
-                <span className="hidden sm:block">
-                  The Open Source AI-Powered
-                </span>
+                <span className="text-primary-700">PearAI: </span>
+                The Open Source AI-Powered Code Editor
               </div>
-              <span className="sm:hidden">AI-Powered Code Editor</span>
-              <span className="hidden sm:block">Code Editor</span>
             </div>
+
             <div className="mt-8 max-w-md sm:max-w-lg">
               <p
                 className="mb-2 text-sm text-secondary-500 sm:text-lg"
