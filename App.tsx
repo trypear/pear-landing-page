@@ -1,102 +1,80 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Box,Button } from '@mui/material';
-import { Container } from '@mui/material';
+import './input.css';
+import { Button } from '@/components/ui/button';
+import Box from '@/components/ui/box';
 
-
- import '@mui/icons-material'
-
- 
 
 function App() {
-
   function download() {
     alert('download');
   }
- 
+
   return (
+    <div>
+      <Box className="bg-gray-100 h-[2000px] flex items-center relative">
+        <h1 className="absolute left-[27%] top-[215px] text-center">Fair pricing, unfair advantage.</h1>
+        <h2 className="absolute top-[325px] left-[430px]">Download PearAI today and get your coding efficiency to a new level</h2>
+        <h4 className="absolute top-[600px] left-[400px]">Want to use it on a professional level? Contact us for custom plans!</h4>
+      </Box>
 
-
-<div>
-
-  
-
-    <Box sx={{backgroundColor: '#f5f5f5', height: '2000px', alignItems:'center', display:'flex', position:'relative'}}>
-   
-   
-    <h1 style={{justifyContent: 'center', left:'27%', position:'absolute', top:'215px',display:'flex'}}>Fair pricing, unfair advantage.</h1>
-    <h2 style={{top:'325px',left:'430px',display:'flex'}}>Download PearAI today and get your coding efficiency to a new level</h2>
-   
-    <h4 style={{marginTop:'600px',marginLeft:'400px', position:'absolute'}}>Want to use it on a professional level? Contact us for custom plans!</h4>
-
-     </Box>
-
-     
       <div>
-             <Box sx={{backgroundColor:'#ffffff', display:'flex', height:'591px',width:'400px',alignItems:'center',position:'absolute', top:'600px',borderRadius:'10px',left:'80px',border:'1.5px solid #70c6a9'}}> 
-             <h3 style={{color:'#4CC9A7', marginTop:'-465px', marginLeft:'40px'}}>Free</h3>
-             <h5 style={{marginLeft:'-46px',marginTop:'-390px'}}>Bring your api keys and use Pear AI for free!</h5>
-             <h6 style={{marginLeft:'-309px',marginTop:'-140px'}}>$0</h6> 
-             <h4 style={{marginTop:'-197px',marginLeft:'10px'}}>/month</h4>
-        
-         <button onClick={download} style={{border:'none',background:'#4CC9A7',borderRadius:'25px', width:'330px',height:'49px',marginLeft:'-150px'}}> <h2 style={{color:'#ffffff',marginLeft:'70px',marginTop:'-11px'}}>Download for Mac</h2> </button>
-         
-          <h5 style={{marginTop:'183px',marginLeft:'-280px'}}>Pro two-week trial</h5>
-          <h5 style={{marginTop:'268px',marginLeft:'-127px'}}>Unlimited Copilot++ completions</h5>
-          <h5 style={{marginTop:'350px',marginLeft:'85px', position:'absolute'}}>Pro two-week trial</h5>
-          <h5 style={{marginTop:'430px',marginLeft:'85px', position:'absolute'}}>OpenAI zero-data retention</h5>
-          
-          <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'158px', position:'absolute'}}/>
-          <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'243px', position:'absolute'}}/>
-          <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'326px', position:'absolute'}}/>
-          <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'406px', position:'absolute'}}/>
-         </Box>   
-             <Box sx={{backgroundColor:'#ffffff', display:'flex', height:'591px',width:'400px',alignItems:'center',position:'absolute',left:'540px',top:'600px',borderRadius:'10px',border:'1.5px solid #70c6a9'}}>
-             <h3 style={{color:'#4CC9A7', marginTop:'-465px', marginLeft:'40px'}}>Yearly</h3>
-             <h5 style={{marginLeft:'-64px',marginTop:'-390px'}}>Pay yearly and get ... add text here</h5>
-             <h6 style={{marginLeft:'-238px',marginTop:'-140px'}}>$14</h6>
-             <h4 style={{marginTop:'-197px',marginLeft:'10px'}}>/month</h4>
-         
-          <button onClick={download} style={{border:'none',background:'#4CC9A7',borderRadius:'25px', width:'330px',height:'49px',marginLeft:'-174px'}}> <h2 style={{color:'#ffffff',marginLeft:'70px',marginTop:'-11px'}}>Download for Mac</h2> </button>
-         
-          <h5 style={{marginTop:'183px',marginLeft:'-280px'}}>Pro two-week trial</h5>
-          <h5 style={{marginTop:'268px',marginLeft:'-127px'}}>Unlimited Copilot++ completions</h5>
-          <h5 style={{marginTop:'350px',marginLeft:'85px', position:'absolute'}}>Pro two-week trial</h5>
-          <h5 style={{marginTop:'430px',marginLeft:'85px', position:'absolute'}}>OpenAI zero-data retention</h5>
+        <Box className="bg-white flex h-[591px] w-[400px] items-center absolute top-[600px] left-[80px] rounded-[10px] border-[1.5px] border-green-300">
+          <h3 className="text-green-500 mt-[-465px] ml-[40px]">Free</h3>
+          <h5 className="ml-[-46px] mt-[-390px]">Bring your api keys and use Pear AI for free!</h5>
+          <h6 className="ml-[-309px] mt-[-140px]">$0</h6>
+          <h4 className="mt-[-197px] ml-[10px]">/month</h4>
+          <button onClick={download} className="border-none bg-green-500 rounded-[25px] w-[330px] h-[49px] ml-[-150px]">
+            <h2 className="text-white ml-[70px] mt-[-11px]">Download for Mac</h2>
+          </button>
+          <h5 className="mt-[183px] ml-[-280px]">Pro two-week trial</h5>
+          <h5 className="mt-[268px] ml-[-127px]">Unlimited Copilot++ completions</h5>
+          <h5 className="absolute mt-[350px] ml-[85px]">Pro two-week trial</h5>
+          <h5 className="absolute mt-[430px] ml-[85px]">OpenAI zero-data retention</h5>
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[158px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[243px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[326px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[406px]" />
+        </Box>
 
-          <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'158px', position:'absolute'}}/>
-          <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'243px', position:'absolute'}}/>
-          <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'326px', position:'absolute'}}/>
-          <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'406px', position:'absolute'}}/>
-       
-         </Box> 
-             <Box sx={{backgroundColor:'#ffffff', display:'flex', height:'591px',width:'400px',alignItems:'center',position:'absolute',right:'90px',top:'600px',borderRadius:'10px',border:'1.5px solid #70c6a9'}}>
-             <h3 style={{color:'#4CC9A7', marginTop:'-465px', marginLeft:'40px',position:'absolute'}}>Monthly</h3>
-             <h5 style={{marginLeft:'41px',marginTop:'-380px'}}>The most supercharged code editor assistant.</h5>
-             <h6 style={{marginLeft:'-317px',marginTop:'-142px'}}>$19</h6>
-             <h4 style={{marginTop:'-197px',marginLeft:'10px'}}>/month</h4>
-          
-          <button onClick={download} style={{border:'none',background:'#4CC9A7',borderRadius:'25px', width:'330px',height:'49px',marginLeft:'-180px'}}> <h2 style={{color:'#ffffff',marginLeft:'70px',marginTop:'-11px'}}>Download for Mac</h2> </button>
-            
-             <h5 style={{marginTop:'183px',marginLeft:'-280px'}}>Pro two-week trial</h5>
-             <h5 style={{marginTop:'268px',marginLeft:'-127px'}}>Unlimited Copilot++ completions</h5>
-             <h5 style={{marginTop:'350px',marginLeft:'85px', position:'absolute'}}>Pro two-week trial</h5>
-             <h5 style={{marginTop:'430px',marginLeft:'85px', position:'absolute'}}>OpenAI zero-data retention</h5>
+        <Box className="bg-white flex h-[591px] w-[400px] items-center absolute top-[600px] left-[540px] rounded-[10px] border-[1.5px] border-green-300">
+          <h3 className="text-green-500 mt-[-465px] ml-[40px]">Yearly</h3>
+          <h5 className="ml-[-64px] mt-[-390px]">Pay yearly and get ... add text here</h5>
+          <h6 className="ml-[-238px] mt-[-140px]">$14</h6>
+          <h4 className="mt-[-197px] ml-[10px]">/month</h4>
+          <button onClick={download} className="border-none bg-green-500 rounded-[25px] w-[330px] h-[49px] ml-[-174px]">
+            <h2 className="text-white ml-[70px] mt-[-11px]">Download for Mac</h2>
+          </button>
+          <h5 className="mt-[183px] ml-[-280px]">Pro two-week trial</h5>
+          <h5 className="mt-[268px] ml-[-127px]">Unlimited Copilot++ completions</h5>
+          <h5 className="absolute mt-[350px] ml-[85px]">Pro two-week trial</h5>
+          <h5 className="absolute mt-[430px] ml-[85px]">OpenAI zero-data retention</h5>
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[158px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[243px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[326px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[406px]" />
+        </Box>
 
-             <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'158px', position:'absolute'}}/>
-             <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'243px', position:'absolute'}}/>
-             <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'326px', position:'absolute'}}/>
-             <img src={'images/Vector.png'} style={{marginLeft:'42px', marginTop:'406px', position:'absolute'}}/>
-       
-     </Box> 
+        <Box className="bg-white flex h-[591px] w-[400px] items-center absolute top-[600px] right-[90px] rounded-[10px] border-[1.5px] border-green-300">
+          <h3 className="text-green-500 absolute mt-[-465px] ml-[40px]">Monthly</h3>
+          <h5 className="ml-[41px] mt-[-380px]">The most supercharged code editor assistant.</h5>
+          <h6 className="ml-[-317px] mt-[-142px]">$19</h6>
+          <h4 className="mt-[-197px] ml-[10px]">/month</h4>
+          <button onClick={download} className="border-none bg-green-500 rounded-[25px] w-[330px] h-[49px] ml-[-180px]">
+            <h2 className="text-white ml-[70px] mt-[-11px]">Download for Mac</h2>
+          </button>
+          <h5 className="mt-[183px] ml-[-280px]">Pro two-week trial</h5>
+          <h5 className="mt-[268px] ml-[-127px]">Unlimited Copilot++ completions</h5>
+          <h5 className="absolute mt-[350px] ml-[85px]">Pro two-week trial</h5>
+          <h5 className="absolute mt-[430px] ml-[85px]">OpenAI zero-data retention</h5>
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[158px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[243px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[326px]" />
+          <img src="images/Vector.png" className="absolute ml-[42px] mt-[406px]" />
+        </Box>
       </div>
-      
-           
- </div>
-
- 
+    </div>
   );
-};
- 
+}
+
 export default App;
