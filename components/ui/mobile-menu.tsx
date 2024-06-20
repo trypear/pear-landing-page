@@ -40,7 +40,7 @@ export default function MobileMenu() {
       {/* Hamburger button */}
       <button
         ref={trigger}
-        className={`hamburger ${mobileNavOpen && "active"}`}
+        className={`hamburger className="hover:text-gray-600" ${mobileNavOpen && "active"}`}
         aria-controls="mobile-nav"
         aria-expanded={mobileNavOpen}
         onClick={() => setMobileNavOpen(!mobileNavOpen)}
@@ -61,22 +61,22 @@ export default function MobileMenu() {
       <nav
         id="mobile-nav"
         ref={mobileNav}
-        className="animate-fadein-opacity absolute left-0 top-full z-20 flex w-full flex-col items-center justify-center space-y-6 overflow-hidden bg-white-50 px-4 text-2xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-sm"
+        className="animate-fadein-opacity absolute left-0 top-full z-20 flex w-full flex-col items-center justify-center space-y-6 overflow-hidden bg-white-50 px-4 text-xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-[2px]"
         style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
         <Link
-          className="h-full w-full rounded-md bg-primary-500 py-5 text-center backdrop-blur-3xl"
+          className="h-full w-full rounded-md bg-primary-500 py-3 text-center backdrop-blur-3xl"
           onClick={() => setMobileNavOpen(false)}
           href={"/"}
         >
           Sign In
         </Link>
         <Link
-          className="h-full w-full rounded-md bg-black py-5 text-center text-white-50 backdrop-blur-3xl"
+          className="h-full w-full rounded-md bg-black py-3 text-center text-white-50 backdrop-blur-3xl"
           onClick={() => setMobileNavOpen(false)}
           href={"/"}
         >
-          Sign Out
+          Sign Up
         </Link>
       </nav>
     </div>
