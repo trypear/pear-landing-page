@@ -12,14 +12,6 @@ const nextConfiguration = {
   
       return config;
     },
-    images: {
-        remotePatterns: [
-          {
-            protocol: 'https',
-            hostname: 's3-alpha-sig.figma.com',
-          },
-      ],
-    },
   };
   
   module.exports = nextConfiguration;
