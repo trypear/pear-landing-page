@@ -52,7 +52,7 @@ export default function Hero() {
 
             <div className="mt-6 max-w-md sm:max-w-lg">
               <p
-                className="mb-2 text-sm text-secondary-500 sm:text-lg"
+                className="text-secondary-400 mb-2 text-sm sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -60,7 +60,7 @@ export default function Hero() {
                 into your workflow 🚀
               </p>
               <p
-                className="mb-4 text-sm text-secondary-500 sm:text-lg"
+                className="text-secondary-400 mb-4 text-sm sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
