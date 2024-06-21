@@ -58,7 +58,10 @@ export default function Hero() {
                   />
                   <span className="text-primary-700">PearAI </span>
                 </div>
-                <span>The Open Source AI-Powered Code Editor</span>
+                <span className="flex flex-col text-3xl">
+                  <span>The Open Source</span>{" "}
+                  <span>AI-Powered Code Editor</span>
+                </span>
               </div>
             </div>
 
