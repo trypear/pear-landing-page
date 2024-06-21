@@ -19,7 +19,7 @@ export default function TryPear() {
         <div className="relative pb-2 pt-32 md:pb-4 md:pt-40">
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-16">
-            <h1 className="mb-4 text-4xl font-bold" data-aos="fade-up">
+            <h1 className="mb-4 text-4xl font-semibold" data-aos="fade-up">
               Interested in contributing to PearAI?
             </h1>
             <p
@@ -31,7 +31,7 @@ export default function TryPear() {
               questions, or would like to discuss, you can join our{" "}
               <Link
                 href="https://discord.gg/7QMraJUsQt"
-                className="hover:text-primary-800 text-primary-700"
+                className="hover:text-primary-800 font-medium text-primary-700"
               >
                 Discord
               </Link>{" "}
@@ -45,7 +45,7 @@ export default function TryPear() {
               Help the community out by giving{" "}
               <Link
                 href="https://github.com/trypear/pearai-app"
-                className="hover:text-primary-800 text-primary-700"
+                className="hover:text-primary-800 font-medium text-primary-700"
               >
                 the repo
               </Link>{" "}
@@ -56,7 +56,7 @@ export default function TryPear() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="hover:bg-primary-800 mb-4 w-full rounded-full bg-primary-700 text-white-main sm:mb-0 sm:w-auto"
+                  className="w-full rounded-full bg-primary-700 text-white-main hover:shadow-sm sm:w-auto"
                 >
                   <Link href="https://docs.google.com/presentation/d/1zR9-7DTlb2PcsnapryZw8jHSkLTs9JxeXth4nyeemAQ/edit?usp=sharing">
                     Contributing 101
@@ -67,7 +67,7 @@ export default function TryPear() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="w-full rounded-full border border-primary-700 text-primary-700 hover:bg-gray-100 sm:ml-4 sm:w-auto"
+                  className="hover:border-primary-800 hover:text-primary-800 mt-2 w-full rounded-full border border-primary-700 text-primary-700 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     PearAI Master Doc
