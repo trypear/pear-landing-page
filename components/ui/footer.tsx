@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="md:flex md:justify-between">
             {/* Left side - privacy, tos, copyright */}
             <div className="md:col-span-4 lg:col-span-5">
-              <div className="flex items-center mb-2">
+              <div className="mb-2 flex items-center">
                 <Link
                   href="/privacy"
                   className="ml-3 hover:text-gray-500"

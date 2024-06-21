@@ -61,18 +61,18 @@ export default function MobileMenu() {
       <nav
         id="mobile-nav"
         ref={mobileNav}
-        className="animate-fadein-opacity bg-white-50 absolute left-0 top-full z-20 flex w-full flex-col items-center justify-center space-y-2 overflow-hidden px-4 text-xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-[2px]"
+        className="absolute left-0 top-full z-20 flex w-full animate-fadein-opacity flex-col items-center justify-center space-y-2 overflow-hidden bg-white-50 px-4 text-xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-[2px]"
         style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
         <Link
-          className="bg-primary-500 h-full w-full rounded-md py-3 text-center backdrop-blur-3xl"
+          className="h-full w-full rounded-md bg-primary-500 py-3 text-center backdrop-blur-3xl"
           onClick={() => setMobileNavOpen(false)}
           href={"/"}
         >
           Sign In
         </Link>
         <Link
-          className="text-white-50 h-full w-full rounded-md bg-black py-3 text-center backdrop-blur-3xl"
+          className="h-full w-full rounded-md bg-black py-3 text-center text-white-50 backdrop-blur-3xl"
           onClick={() => setMobileNavOpen(false)}
           href={"/"}
         >

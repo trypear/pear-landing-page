@@ -23,7 +23,7 @@ export default function TryPear() {
               Interested in contributing to PearAI?
             </h1>
             <p
-              className="text-secondary-400 mb-4 text-sm sm:text-lg"
+              className="mb-4 text-sm text-secondary-400 sm:text-lg"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -31,21 +31,21 @@ export default function TryPear() {
               questions, or would like to discuss, you can join our{" "}
               <Link
                 href="https://discord.gg/7QMraJUsQt"
-                className="hover:text-primary-800 font-medium text-primary-700"
+                className="font-medium text-primary-700 hover:text-primary-800"
               >
                 Discord
               </Link>{" "}
               and talk to us directly! 🗣️
             </p>
             <p
-              className="text-secondary-400 mb-8 text-sm sm:text-lg"
+              className="mb-8 text-sm text-secondary-400 sm:text-lg"
               data-aos="fade-up"
               data-aos-delay="200"
             >
               Help the community out by giving{" "}
               <Link
                 href="https://github.com/trypear/pearai-app"
-                className="hover:text-primary-800 font-medium text-primary-700"
+                className="font-medium text-primary-700 hover:text-primary-800"
               >
                 the repo
               </Link>{" "}
@@ -67,7 +67,7 @@ export default function TryPear() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="hover:border-primary-800 hover:text-primary-800 mt-2 w-full rounded-full border border-primary-700 text-primary-700 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
+                  className="mt-2 w-full rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     PearAI Master Doc

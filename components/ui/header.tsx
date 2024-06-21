@@ -11,7 +11,7 @@ export default function Header() {
     { label: "Github", path: "https://github.com/trypear/pearai-app" },
   ];
   return (
-    <header className="animate-fadein-opacity bg-white-50 md:from-white-50 fixed top-0 z-30 w-full md:bg-opacity-40 md:bg-gradient-to-b md:backdrop-blur-[2px]">
+    <header className="fixed top-0 z-30 w-full animate-fadein-opacity bg-white-50 md:bg-opacity-40 md:bg-gradient-to-b md:from-white-50 md:backdrop-blur-[2px]">
       <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6">
         <div className="flex h-10 items-center justify-between text-xl text-black transition ease-in-out">
           {/* Site branding */}
