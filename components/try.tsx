@@ -1,5 +1,5 @@
-import VideoThumb from "@/public/images/hero-image-01.jpg";
-import ModalVideo from "@/components/modal-video";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function TryPear() {
   return (
@@ -16,28 +16,63 @@ export default function TryPear() {
         </div>
 
         {/* Content area */}
-        <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
+        <div className="relative pb-2 pt-32 md:pb-4 md:pt-40">
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-16">
-            <h1 className="h1 mb-4" data-aos="fade-up">
-              Try Pear.AI For Free
+            <h1 className="mb-4 text-4xl font-semibold" data-aos="fade-up">
+              Interested in contributing to PearAI?
             </h1>
+            <p
+              className="mb-4 text-sm text-secondary-400 sm:text-lg"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              Pear is built by a large community of developers. If you have
+              questions, or would like to discuss, you can join our{" "}
+              <Link
+                href="https://discord.gg/7QMraJUsQt"
+                className="font-medium text-primary-700 hover:text-primary-800"
+              >
+                Discord
+              </Link>{" "}
+              and talk to us directly! 🗣️
+            </p>
+            <p
+              className="mb-8 text-sm text-secondary-400 sm:text-lg"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              Help the community out by giving{" "}
+              <Link
+                href="https://github.com/trypear/pearai-app"
+                className="font-medium text-primary-700 hover:text-primary-800"
+              >
+                the repo
+              </Link>{" "}
+              a star! 🤩
+            </p>
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <a
-                  className="btn mb-4 w-full bg-purple-600 text-white hover:bg-purple-700 sm:mb-0 sm:w-auto"
-                  href="https://forms.gle/171UyimgQJhEJbhU7"
+                <Button
+                  asChild
+                  size={"lg"}
+                  className="w-full rounded-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm sm:w-auto"
                 >
-                  Join Waitlist
-                </a>
+                  <Link href="https://docs.google.com/presentation/d/1zR9-7DTlb2PcsnapryZw8jHSkLTs9JxeXth4nyeemAQ/edit?usp=sharing">
+                    Contributing 101
+                  </Link>
+                </Button>
               </div>
               <div data-aos="fade-up" data-aos-delay="400">
-                <a
-                  className="btn w-full bg-gray-700 text-white hover:bg-gray-800 sm:ml-4 sm:w-auto"
-                  href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
+                <Button
+                  asChild
+                  size={"lg"}
+                  className="mt-2 w-full rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
                 >
-                  More details
-                </a>
+                  <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
+                    PearAI Master Doc
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>

@@ -1,6 +1,3 @@
-import VideoThumb from "@/public/images/hero-image-01.jpg";
-import ModalVideo from "@/components/modal-video";
-
 export default function AboutComponent() {
   return (
     <section>
@@ -50,7 +47,7 @@ export default function AboutComponent() {
               Run by nang and FryingPan
             </h1>
             <p
-              className="mb-8 text-xl text-gray-400"
+              className="mb-8 text-xl text-gray-600"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -59,7 +56,7 @@ export default function AboutComponent() {
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center sm:gap-4">
               <div data-aos="fade-up" data-aos-delay="400">
                 <a
-                  className="btn mb-4 w-full bg-purple-600 text-white hover:bg-purple-700 sm:mb-0 sm:w-auto"
+                  className="btn mb-4 w-full bg-primary-500 text-white-main hover:bg-primary-600 sm:mb-0 sm:w-auto"
                   href="https://www.youtube.com/nang88"
                   target="_blank"
                 >
@@ -68,7 +65,7 @@ export default function AboutComponent() {
               </div>
               <div data-aos="fade-up" data-aos-delay="400">
                 <a
-                  className="btn mb-4 w-full bg-purple-600 text-white hover:bg-purple-700 sm:mb-0 sm:w-auto"
+                  className="btn mb-4 w-full bg-secondary-main text-white-main hover:bg-gray-800 sm:mb-0 sm:w-auto"
                   href="https://www.youtube.com/@PansDay"
                   target="_blank"
                 >

@@ -1,6 +1,8 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
+import { CircleUserRound } from "lucide-react";
 
 export default async function AuthButton() {
   const supabase = createClient();
@@ -14,35 +16,40 @@ export default async function AuthButton() {
   };
 
   return (
-    <div className="hidden md:flex">
+    <div className="hidden flex-row items-center space-x-1 md:flex">
       {error || !data?.user ? (
-        <>
+        <div className="flex flex-row items-center space-x-1">
+          <CircleUserRound className="h-5 w-5" />
+
           <Link
-            href="/signin"
-            className="mx-4 my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-purple-700"
+            className="transition duration-150 ease-in-out hover:text-gray-600"
+            href={"/signin"}
           >
             Sign in
           </Link>
+          <span className="text-gray-600">/</span>
           <Link
-            href="/signup"
-            className="my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-gray-700 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-gray-800"
+            className="transition duration-150 ease-in-out hover:text-gray-600"
+            href={"/signup"}
           >
             Sign up
           </Link>
-        </>
+        </div>
       ) : (
         <>
           <Link
-            href="/settings"
-            className="mx-4 my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-purple-700"
+            className="transition duration-150 ease-in-out hover:text-gray-600"
+            href={"/settings"}
           >
             Settings
           </Link>
-          <form action={handleSignOut}>
-            <button className="my-2 inline-flex items-center justify-center rounded-sm border border-transparent bg-gray-700 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-gray-800">
-              Sign out
-            </button>
-          </form>
+          <span className="text-gray-600">/</span>
+          <button
+            className="transition duration-150 ease-in-out hover:text-gray-600"
+            onClick={handleSignOut}
+          >
+            Sign out
+          </button>
         </>
       )}
     </div>

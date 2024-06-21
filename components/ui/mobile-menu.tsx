@@ -40,7 +40,7 @@ export default function MobileMenu() {
       {/* Hamburger button */}
       <button
         ref={trigger}
-        className={`hamburger ${mobileNavOpen && "active"}`}
+        className={`hamburger hover:text-gray-600 ${mobileNavOpen && "active"}`}
         aria-controls="mobile-nav"
         aria-expanded={mobileNavOpen}
         onClick={() => setMobileNavOpen(!mobileNavOpen)}
@@ -61,33 +61,24 @@ export default function MobileMenu() {
       <nav
         id="mobile-nav"
         ref={mobileNav}
-        className="absolute left-0 top-full z-20 w-full overflow-hidden px-4 transition-all duration-300 ease-in-out sm:px-6"
-        style={
-          mobileNavOpen
-            ? { maxHeight: mobileNav.current?.scrollHeight, opacity: 1 }
-            : { maxHeight: 0, opacity: 0.8 }
-        }
+        className="absolute left-0 top-full z-20 flex w-full animate-fadein-opacity flex-col items-center justify-center space-y-2 overflow-hidden bg-white-50 px-4 text-xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-[2px]"
+        style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
-        <ul className="bg-gray-800 px-4 py-2">
-          <li>
-            <Link
-              href="/"
-              className="flex w-full justify-center py-2 font-medium text-purple-600 hover:text-gray-200"
-              onClick={() => setMobileNavOpen(false)}
-            >
-              Sign in
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/"
-              className="my-2 inline-flex w-full items-center justify-center rounded-sm border border-transparent bg-purple-600 px-4 py-2 font-medium text-white transition duration-150 ease-in-out hover:bg-purple-700"
-              onClick={() => setMobileNavOpen(false)}
-            >
-              Sign up
-            </Link>
-          </li>
-        </ul>
+        <Link
+          className="h-full w-full rounded-md bg-primary-500 py-3 text-center backdrop-blur-3xl"
+          onClick={() => setMobileNavOpen(false)}
+          href={"/"}
+        >
+          Sign In
+        </Link>
+        <Link
+          className="h-full w-full rounded-md bg-black py-3 text-center text-white-50 backdrop-blur-3xl"
+          onClick={() => setMobileNavOpen(false)}
+          href={"/"}
+        >
+          Sign Up
+        </Link>
+        <p>{""}</p>
       </nav>
     </div>
   );
