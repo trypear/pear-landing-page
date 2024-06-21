@@ -39,7 +39,7 @@ export default function Hero() {
           {/* Section header */}
           <div className="mx-auto flex max-w-2xl flex-col items-center pb-12 text-center md:pb-16">
             <div className="text-4xl font-semibold">
-              <div>
+              <div className="hidden sm:block">
                 <PearHeroLogo
                   width="26"
                   alt="PearAI Logo"
@@ -47,6 +47,18 @@ export default function Hero() {
                 />
                 <span className="text-primary-700">PearAI: </span>
                 The Open Source AI-Powered Code Editor
+              </div>
+              {/* Mobile Layout - Logo + PearAI on it's own line*/}
+              <div className="sm:hidden">
+                <div>
+                  <PearHeroLogo
+                    width="26"
+                    alt="PearAI Logo"
+                    className="-mt-3 mr-2 inline-flex"
+                  />
+                  <span className="text-primary-700">PearAI </span>
+                </div>
+                <span>The Open Source AI-Powered Code Editor</span>
               </div>
             </div>
 
@@ -73,7 +85,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="hover:bg-primary-800 rounded-full bg-primary-700 text-white-50 hover:shadow-sm"
+                  className="rounded-full bg-primary-700 text-white-50 hover:bg-primary-800 hover:shadow-sm"
                 >
                   <Link href="https://forms.gle/171UyimgQJhEJbhU7">
                     Join Waitlist
@@ -84,7 +96,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="hover:border-primary-800 hover:text-primary-800 mt-2 rounded-full border border-primary-700 text-primary-700 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
+                  className="mt-2 rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     More Details
