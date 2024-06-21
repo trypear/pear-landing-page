@@ -1,35 +1,65 @@
 import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
-interface FeatureInfo {
+type FeatureInfo = {
   header: string;
-  description: string;
+  description: React.ReactNode;
   imageSource: string;
-}
-interface SingleFeatureProps {
+};
+type SingleFeatureProps = {
   info: FeatureInfo;
-}
+};
 
 export default function Features() {
   const featureInfo = [
     {
       header: "No more switching\nbetween files",
-      description:
-        "To add missing context: directly reference code by including other files in the chat by adding '@filename'. \n\n This also works for folders, docs, terminal content, codebase, and more 😈 ",
+      description: (
+        <>
+          To add missing context: directly reference code by including other
+          files in the chat by adding &nbsp;
+          <b>
+            <code>@filename</code>
+          </b>
+          . <br />
+          <br />
+          This also works for folders, docs, terminal content, codebase, and
+          more 😈
+        </>
+      ),
       imageSource: "/gifs/pearai-@file.gif",
     },
 
     {
       header: "No more tedious changes,\nor forgetting language\nsyntax",
-      description:
-        "Directly make changes inline by pressing CMD+I (ALT+L on Windows), and choose what you want to keep. \n\n Here, we ask Pear to help us handle edge cases 😏",
+      description: (
+        <>
+          Directly make changes inline by pressing&nbsp;
+          <b>
+            <code>CMD+I</code>
+          </b>
+          &nbsp;(<code>ALT+L</code> on Windows), and choose what you want to
+          keep. <br />
+          <br /> Here, we ask Pear to help us handle edge cases 😏
+        </>
+      ),
       imageSource: "/gifs/pearai-CMD+I.gif",
     },
 
     {
       header: "No more tiresome\ncopy pasting.",
-      description:
-        "Directly bring your code to the chat by selecting it and pressing CMD+L (ALT+L on Windows).\n\n Prompt it right away 😎",
+      description: (
+        <>
+          Directly bring your code to the chat by selecting it and
+          pressing&nbsp;
+          <b>
+            <code>CMD+L</code>
+          </b>
+          &nbsp;(<code>ALT+L</code> on Windows).
+          <br />
+          <br /> Prompt it right away 😎
+        </>
+      ),
       imageSource: "/gifs/pearai-CMD+L2.gif",
     },
   ];
@@ -45,8 +75,8 @@ export default function Features() {
 
 function SingleFeature(props: SingleFeatureProps) {
   return (
-    <div className="m-12 flex flex-col items-center lg:m-24 lg:max-w-full lg:flex-row lg:justify-center">
-      <div className="mb-8 flex flex-col content-center justify-center text-left lg:mb-0 lg:ml-1.5 lg:w-[450px]">
+    <div className="m-12 flex flex-col items-start lg:m-24 lg:max-w-full lg:flex-row lg:justify-center">
+      <div className="justify mb-8 flex flex-col content-center pr-8 text-left lg:mb-0 lg:ml-1.5 lg:w-[450px]">
         <h1
           className="whitespace-pre-line text-xl font-medium text-[#4CC9A7] lg:text-4xl"
           data-aos="fade-up"
@@ -56,7 +86,7 @@ function SingleFeature(props: SingleFeatureProps) {
         </h1>
         <br />
         <div
-          className="whitespace-pre-line text-sm"
+          className="whitespace-pre-line text-lg"
           data-aos="fade-up"
           data-aos-delay="600"
         >
