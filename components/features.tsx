@@ -34,7 +34,7 @@ export default function Features() {
       header: "No more tedious changes,\nor forgetting language\nsyntax",
       description: (
         <>
-          Directly make changes inline by pressing&nbsp;
+          Directly make changes inline by pressing{" "}
           <b>
             <code>CMD+I</code>
           </b>
