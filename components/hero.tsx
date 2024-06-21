@@ -5,7 +5,8 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section>
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+      {/* the extra mt-20 is here because the top navbar has been changed to "fixed" so the height of navbar is removed, thus moving the down content shift upwards */}
+      <div className="relative mx-auto mt-20 max-w-6xl px-4 sm:px-6">
         {/* Illustration behind hero content */}
         <div
           className="pointer-events-none absolute bottom-0 left-0 -ml-20 hidden lg:block"
@@ -88,7 +89,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="rounded-full bg-primary-700 text-white-50 hover:bg-primary-800 hover:shadow-sm"
+                  className="bg-primary-700 text-white-50 hover:bg-primary-800 rounded-full hover:shadow-sm"
                 >
                   <Link href="https://forms.gle/171UyimgQJhEJbhU7">
                     Join Waitlist
@@ -99,7 +100,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="mt-2 rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
+                  className="border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 mt-2 rounded-full border hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     More Details
