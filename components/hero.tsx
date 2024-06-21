@@ -39,7 +39,7 @@ export default function Hero() {
               Pear: The Open-Source AI-Powered Code Editor
             </h1>
             <p
-              className="mb-8 text-xl text-secondary-main"
+              className="text-secondary-main mb-8 text-xl"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -49,7 +49,7 @@ export default function Hero() {
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
                 <a
-                  className="btn mb-4 w-full bg-primary-500 text-white-main hover:bg-primary-600 sm:mb-0 sm:w-auto"
+                  className="btn bg-primary-500 text-white-main hover:bg-primary-600 mb-4 w-full sm:mb-0 sm:w-auto"
                   href="https://forms.gle/171UyimgQJhEJbhU7"
                 >
                   Join Waitlist
@@ -57,7 +57,7 @@ export default function Hero() {
               </div>
               <div data-aos="fade-up" data-aos-delay="600">
                 <a
-                  className="btn text-white w-full bg-secondary-main text-white-main hover:bg-gray-800 sm:ml-4 sm:w-auto"
+                  className="btn bg-secondary-main text-white-main w-full text-white hover:bg-gray-800 sm:ml-4 sm:w-auto"
                   href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
                 >
                   More details
