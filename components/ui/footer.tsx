@@ -5,10 +5,10 @@ export default function Footer() {
     <footer>
       <div className="py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="md:flex md:items-center md:justify-between">
+          <div className="md:flex md:justify-between">
             {/* Left side - privacy, tos, copyright */}
             <div className="md:col-span-4 lg:col-span-5">
-              <div className="flex items-center">
+              <div className="flex items-center mb-2">
                 <Link
                   href="/privacy"
                   className="ml-3 hover:text-gray-500"
@@ -29,7 +29,7 @@ export default function Footer() {
               </div>
             </div>
             {/* Right side - social links */}
-            <ul className="mb-4 flex md:order-1 md:mb-0 md:ml-4">
+            <ul className="mb-4 mt-2 flex md:order-1 md:mb-0 md:ml-4 md:mt-0">
               <li className="ml-4">
                 <Link
                   href="https://github.com/orgs/trypear/repositories"

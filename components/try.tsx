@@ -56,7 +56,7 @@ export default function TryPear() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="w-full rounded-full bg-primary-700 text-white-main hover:shadow-sm sm:w-auto"
+                  className="w-full rounded-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm sm:w-auto"
                 >
                   <Link href="https://docs.google.com/presentation/d/1zR9-7DTlb2PcsnapryZw8jHSkLTs9JxeXth4nyeemAQ/edit?usp=sharing">
                     Contributing 101
