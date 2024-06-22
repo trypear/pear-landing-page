@@ -5,7 +5,7 @@ export default function Footer() {
     <footer>
       <div className="py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="md:flex md:justify-between">
+          <div className="flex flex-col-reverse md:flex-row md:justify-between">
             {/* Left side - privacy, tos, copyright */}
             <div className="md:col-span-4 lg:col-span-5">
               <div className="mb-2 flex items-center">
