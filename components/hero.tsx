@@ -39,7 +39,7 @@ export default function Hero() {
         <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
           {/* Section header */}
           <div className="mx-auto flex max-w-2xl flex-col items-center pb-12 text-center md:pb-16">
-            <div className="text-4xl font-semibold">
+            <div className="text-4xl font-semibold sm:text-5xl">
               <div className="hidden sm:block">
                 <PearHeroLogo
                   width="26"
@@ -47,7 +47,7 @@ export default function Hero() {
                   className="-mt-3 mr-2 inline-flex"
                 />
                 <span className="text-primary-700">PearAI: </span>
-                The Open Source AI-Powered Code Editor
+                The Open Source AI&#8209;Powered Code Editor{" "}
               </div>
               {/* Mobile Layout - Logo + PearAI on it's own line*/}
               <div className="sm:hidden">
@@ -61,7 +61,7 @@ export default function Hero() {
                 </div>
                 <span className="flex flex-col text-3xl">
                   <span>The Open Source</span>{" "}
-                  <span>AI-Powered Code Editor</span>
+                  <span>AI&#8209;Powered Code Editor</span>
                 </span>
               </div>
             </div>
