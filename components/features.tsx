@@ -75,25 +75,23 @@ export default function Features() {
 
 function SingleFeature(props: SingleFeatureProps) {
   return (
-    <div className="m-12 flex flex-col items-start lg:m-24 lg:max-w-full lg:flex-row lg:justify-center">
+    <div className="m-4 min-[425px]:m-8 sm:m-12 flex flex-col items-start lg:m-24 lg:max-w-full lg:flex-row lg:justify-center">
       <div className="justify mb-8 flex flex-col content-center pr-8 text-left lg:mb-0 lg:ml-1.5 lg:w-[450px]">
         <h1
           className="whitespace-pre-line text-2xl font-medium text-[#4CC9A7] lg:text-4xl"
           data-aos="fade-up"
-          data-aos-delay="600"
         >
           {props.info.header}
         </h1>
         <br />
         <div
-          className="sm:text-md whitespace-pre-line lg:text-lg"
+          className="text-md whitespace-pre-line lg:text-lg"
           data-aos="fade-up"
-          data-aos-delay="600"
         >
           {props.info.description}
         </div>
       </div>
-      <div className="w-[325px] md:w-[600px] lg:w-[800px]">
+      <div className="w-[290px] min-[375px]:w-[350px] md:w-[600px] lg:w-[800px]">
         <AspectRatio ratio={3 / 2}>
           <Image
             src={props.info.imageSource}
@@ -102,7 +100,6 @@ function SingleFeature(props: SingleFeatureProps) {
             unoptimized
             fill
             data-aos="fade-up"
-            data-aos-delay="600"
           />
         </AspectRatio>
       </div>
