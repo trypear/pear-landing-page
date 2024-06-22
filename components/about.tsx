@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription } from "@/components/ui/card";
 const AboutComponent: React.FC = () => {
   return (
     <section
-      className="to-white mt-20 bg-gradient-to-b from-gray-50 px-4 py-12 pt-20"
+      className="to-white bg-gradient-to-b from-gray-50 px-4 py-12 pt-20"
       data-aos="fade-up"
       data-aos-delay="200"
     >
@@ -35,18 +35,23 @@ const AboutComponent: React.FC = () => {
               <li>And many more!</li>
             </ul>
             <h2 className="mb-4 text-2xl font-bold">Founders</h2>
-            <p className="mb-4 text-gray-600">
-              PearAI is founded by Pan and Nang, both former software engineers
-              who worked on developer tooling at companies like Meta, Coinbase,
-              and high-frequency trading firms. Passionate about empowering
-              individuals, they recognize code and media as the most scalable
-              tools a single person can utilize. With a combined following of
-              over 500k subscribers and over 30 million views, they&apos;ve
-              decided to combine media and code, bringing the developer
-              community along for the ride. They&apos;re building the next
-              open-source AI-powered code editor, PearAI, with full transparency
-              through videos, livestreams, and direct Discord calls/chats.
-            </p>
+            <div className="space-y-4 text-gray-600">
+              <p>
+                PearAI is founded by Pan and Nang, both former software
+                engineers who worked on developer tooling at companies like
+                Meta, Coinbase, and high-frequency trading firms.
+              </p>
+              <p>
+                Passionate about empowering individuals, they recognize code and
+                media as the most scalable tools a single person can utilize.
+                With a combined following of over 500k subscribers and over 30
+                million views, they&apos;ve decided to combine media and code,
+                bringing the developer community along for the ride.
+                They&apos;re building the next open-source AI-powered code
+                editor, PearAI, with full transparency through videos,
+                livestreams, and direct Discord calls/chats.
+              </p>
+            </div>
           </div>
 
           {/* Right column */}
@@ -75,9 +80,9 @@ interface VideoCardProps {
 }
 
 const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
-  <Card className="mb-8 bg-beige-300">
-    <CardContent className="p-4">
-      <div className="relative pb-[56.25%]">
+  <Card className="mb-8 mt-4">
+    <CardContent className="flex flex-col-reverse p-4 sm:flex-col">
+      <div className="relative mt-4 pb-[56.25%] sm:mb-4 sm:mt-0">
         <iframe
           className="absolute left-0 top-0 h-full w-full rounded"
           src={src}
@@ -86,7 +91,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
           allowFullScreen
         />
       </div>
-      <CardDescription className="mt-4 text-lg text-gray-700">
+      <CardDescription className="text-lg text-gray-700">
         {description}
       </CardDescription>
     </CardContent>
