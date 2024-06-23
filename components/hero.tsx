@@ -96,7 +96,7 @@ export default function Hero() {
                   </Link>
                 </Button>
               </div>
-              <div data-aos="fade-up" data-ao s-delay="600">
+              <div data-aos="fade-up" data-aos-delay="500">
                 <Button
                   asChild
                   size={"lg"}
