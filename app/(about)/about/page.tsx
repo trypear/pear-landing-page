@@ -4,7 +4,7 @@ import { Metadata } from "next/types";
 
 export const metadata: Metadata = constructMetadata({
   title: "About",
-  description: "About the team behind pear.ai",
+  description: "About PearAI",
   canonical: "/about",
 });
 
