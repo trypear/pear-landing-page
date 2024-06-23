@@ -38,8 +38,8 @@ export default function Hero() {
         {/* Hero content */}
         <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
           {/* Section header */}
-          <div className="mx-auto flex max-w-2xl flex-col items-center pb-12 text-center md:pb-16">
-            <div className="text-4xl font-semibold">
+          <div className="mx-auto flex max-w-4xl flex-col items-center pb-12 text-center md:pb-16">
+            <div className="text-4xl font-semibold sm:text-5xl">
               <div className="hidden sm:block">
                 <PearHeroLogo
                   width="26"
@@ -47,7 +47,8 @@ export default function Hero() {
                   className="-mt-3 mr-2 inline-flex"
                 />
                 <span className="text-primary-700">PearAI: </span>
-                The Open Source AI-Powered Code Editor
+                The Open Source AI&#8209;Powered
+                <div>Code Editor </div>
               </div>
               {/* Mobile Layout - Logo + PearAI on it's own line*/}
               <div className="sm:hidden">
@@ -61,14 +62,14 @@ export default function Hero() {
                 </div>
                 <span className="flex flex-col text-3xl">
                   <span>The Open Source</span>{" "}
-                  <span>AI-Powered Code Editor</span>
+                  <span>AI&#8209;Powered Code Editor</span>
                 </span>
               </div>
             </div>
 
             <div className="mt-6 max-w-md sm:max-w-lg">
               <p
-                className="mb-2 text-sm text-secondary-400 sm:text-lg"
+                className="text-secondary-400 mb-2 text-sm sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -76,7 +77,7 @@ export default function Hero() {
                 into your workflow 🚀
               </p>
               <p
-                className="mb-4 text-sm text-secondary-400 sm:text-lg"
+                className="text-secondary-400 mb-4 text-sm sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -89,7 +90,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="rounded-full bg-primary-700 text-white-50 hover:bg-primary-800 hover:shadow-sm"
+                  className="bg-primary-700 text-white-50 hover:bg-primary-800 rounded-full hover:shadow-sm"
                 >
                   <Link href="https://forms.gle/171UyimgQJhEJbhU7">
                     Join Waitlist
@@ -100,7 +101,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="mt-2 rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
+                  className="border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 mt-2 rounded-full border hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     More Details
