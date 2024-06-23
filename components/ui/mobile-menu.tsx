@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "./button";
+import { HamburgerMenuIcon } from "./icons";
 
 export default function MobileMenu() {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
@@ -47,15 +48,7 @@ export default function MobileMenu() {
         onClick={() => setMobileNavOpen(!mobileNavOpen)}
       >
         <span className="sr-only">Menu</span>
-        <svg
-          className="h-6 w-6 fill-current text-gray-300 transition duration-150 ease-in-out hover:text-gray-200"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect y="4" width="24" height="2" rx="1" />
-          <rect y="11" width="24" height="2" rx="1" />
-          <rect y="18" width="24" height="2" rx="1" />
-        </svg>
+        <HamburgerMenuIcon className="h-6 w-6 text-gray-300 transition duration-150 ease-in-out hover:text-gray-200" />
       </button>
 
       {/*Mobile navigation */}
