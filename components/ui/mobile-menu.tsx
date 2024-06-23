@@ -41,7 +41,7 @@ export default function MobileMenu() {
       {/* Hamburger button */}
       <button
         ref={trigger}
-        className={`hamburger hover:text-gray-600 ${mobileNavOpen && "active"} flex`}
+        className={`hamburger hover:text-gray-600 ${mobileNavOpen ? "active" : ""} flex`}
         aria-controls="mobile-nav"
         aria-expanded={mobileNavOpen}
         onClick={() => setMobileNavOpen(!mobileNavOpen)}

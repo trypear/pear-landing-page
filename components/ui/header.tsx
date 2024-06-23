@@ -1,7 +1,7 @@
 import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import AuthButton from "./authbutton";
-import PearDarkLogo from "./PearDark26x24.svg";
+import PearDarkLogo from "./PearDark.svg";
 
 export default function Header() {
   // navigation bar links
@@ -11,7 +11,7 @@ export default function Header() {
     { label: "Github", path: "https://github.com/trypear/pearai-app" },
   ];
   return (
-    <header className="md: fixed top-0 z-30 w-full animate-fadein-opacity bg-white-50 bg-opacity-80 shadow-sm backdrop-blur-[16px]">
+    <header className="fixed top-0 z-30 w-full animate-fadein-opacity bg-white-50 bg-opacity-80 shadow-sm backdrop-blur-[16px]">
       <div className="mx-auto max-w-screen-xl px-4 py-1 sm:px-6 sm:py-2">
         <div className="text-md flex h-10 items-center justify-between text-secondary-600 transition ease-in-out sm:text-lg">
           {/* Site branding */}
@@ -24,7 +24,7 @@ export default function Header() {
             <div className="flex space-x-2">
               {navLinks.map((link, index) => (
                 <Link
-                  key={index}
+                  key={link.label}
                   className="hover:text-secondary-400"
                   href={link.path}
                 >
