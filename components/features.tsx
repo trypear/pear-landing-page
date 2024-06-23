@@ -13,7 +13,7 @@ type SingleFeatureProps = {
 export default function Features() {
   const featureInfo = [
     {
-      header: "No more switching\nbetween files",
+      header: "Talk to your codebase directly",
       description: (
         <>
           To add missing context: directly reference code by including other
