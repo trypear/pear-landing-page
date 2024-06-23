@@ -1,7 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { CircleUserRound } from "lucide-react";
 
 export default async function AuthButton() {
@@ -16,20 +15,20 @@ export default async function AuthButton() {
   };
 
   return (
-    <div className="hidden flex-row items-center space-x-1 md:flex">
+    <div className="hidden flex-row items-center space-x-1 text-secondary-600 md:flex">
       {error || !data?.user ? (
         <div className="flex flex-row items-center space-x-1">
           <CircleUserRound className="h-5 w-5" />
 
           <Link
-            className="transition duration-150 ease-in-out hover:text-gray-600"
+            className="transition duration-150 ease-in-out hover:text-secondary-400"
             href={"/signin"}
           >
             Sign in
           </Link>
-          <span className="text-gray-600">/</span>
+          <span className="text-secondary-600">/</span>
           <Link
-            className="transition duration-150 ease-in-out hover:text-gray-600"
+            className="transition duration-150 ease-in-out hover:text-secondary-400"
             href={"/signup"}
           >
             Sign up
@@ -37,19 +36,19 @@ export default async function AuthButton() {
         </div>
       ) : (
         <>
+          <CircleUserRound className="h-5 w-5" />
           <Link
-            className="transition duration-150 ease-in-out hover:text-gray-600"
+            className="transition duration-150 ease-in-out hover:text-secondary-400"
             href={"/settings"}
           >
             Settings
           </Link>
-          <span className="text-gray-600">/</span>
-          <button
-            className="transition duration-150 ease-in-out hover:text-gray-600"
-            onClick={handleSignOut}
-          >
-            Sign out
-          </button>
+          <span className="text-secondary-600">/</span>
+          <form action={handleSignOut}>
+            <button className="transition duration-150 ease-in-out hover:text-secondary-400">
+              Sign out
+            </button>
+          </form>
         </>
       )}
     </div>
