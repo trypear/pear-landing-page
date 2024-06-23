@@ -47,8 +47,7 @@ export default function Hero() {
                   className="-mt-3 mr-2 inline-flex"
                 />
                 <span className="text-primary-700">PearAI: </span>
-                The Open Source AI&#8209;Powered
-                <div>Code Editor </div>
+                The Open Source AI&#8209;Powered Code Editor
               </div>
               {/* Mobile Layout - Logo + PearAI on it's own line*/}
               <div className="sm:hidden">
@@ -69,7 +68,7 @@ export default function Hero() {
 
             <div className="mt-6 max-w-md sm:max-w-lg">
               <p
-                className="text-secondary-400 mb-2 text-sm sm:text-lg"
+                className="mb-2 text-sm text-secondary-400 sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -77,7 +76,7 @@ export default function Hero() {
                 into your workflow 🚀
               </p>
               <p
-                className="text-secondary-400 mb-4 text-sm sm:text-lg"
+                className="mb-4 text-sm text-secondary-400 sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -90,7 +89,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="bg-primary-700 text-white-50 hover:bg-primary-800 rounded-full hover:shadow-sm"
+                  className="rounded-full bg-primary-700 text-white-50 hover:bg-primary-800 hover:shadow-sm"
                 >
                   <Link href="https://forms.gle/171UyimgQJhEJbhU7">
                     Join Waitlist
@@ -101,7 +100,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size={"lg"}
-                  className="border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 mt-2 rounded-full border hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
+                  className="mt-2 rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     More Details
