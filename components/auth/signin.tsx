@@ -3,22 +3,35 @@ import Link from "next/link";
 import { useState } from "react";
 import { signin, signinWithGoogle } from "@/app/(auth)/actions";
 import { GoogleLogo } from "../ui/icons";
+import { useSearchParams } from "next/navigation";
 
 export default function SignIn() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const redirectUrl: string = searchParams?.get("redirect" || "/") || "/";
+
+  searchParams.forEach((value, key) => {
+    console.log(`${key} : ${value} `);
+  });
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setErrorMessage(null);
     const formData = new FormData(e.currentTarget);
+    formData.append("redirect", redirectUrl);
+
     const response = await signin(formData);
     if (response) {
       setErrorMessage(response.error);
     }
   };
+
   const handleGoogleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await signinWithGoogle();
+    const formData = new FormData();
+    formData.append("redirect", redirectUrl);
+
+    await signinWithGoogle(formData);
   };
   return (
     <section className="relative">
