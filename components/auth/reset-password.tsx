@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { resetPassword } from "@/app/(auth)/actions";
+import { Button } from "@/components/ui/button";
 
 export default function ResetPassword() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -55,16 +56,19 @@ export default function ResetPassword() {
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white w-full bg-purple-600 hover:bg-purple-700">
+                  <Button
+                    size={"lg"}
+                    className="text-white-main w-full bg-primary-700 hover:bg-primary-800 hover:shadow-sm"
+                  >
                     Reset Password
-                  </button>
+                  </Button>
                 </div>
               </div>
             </form>
             <div className="mt-6 text-center text-gray-400">
               <Link
                 href="/"
-                className="text-purple-600 transition duration-150 ease-in-out hover:text-gray-200"
+                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Cancel
               </Link>

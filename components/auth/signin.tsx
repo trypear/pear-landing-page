@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { signin, signinWithGoogle } from "@/app/(auth)/actions";
+import { Button } from "@/components/ui/button";
 
 export default function SignIn() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -33,9 +34,11 @@ export default function SignIn() {
             <form onSubmit={handleGoogleSignIn}>
               <div className="-mx-3 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white relative flex w-full items-center bg-red-600 px-0 hover:bg-red-700">
+                  <Button 
+                    size={"lg"}
+                    className="text-white-main relative flex w-full items-center bg-red-600 px-0 hover:bg-red-700 hover:shadow-sm">
                     <svg
-                      className="text-white mx-4 h-4 w-4 shrink-0 fill-current opacity-75"
+                      className="text-white mx-4 h-4 w-4 shrink-0 fill-current"
                       viewBox="0 0 16 16"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -48,7 +51,7 @@ export default function SignIn() {
                     <span className="-ml-16 flex-auto pl-16 pr-8">
                       Sign in with Google
                     </span>
-                  </button>
+                  </Button>
                 </div>
               </div>
             </form>
@@ -111,7 +114,7 @@ export default function SignIn() {
                     </label>
                     <Link
                       href="/reset-password"
-                      className="text-purple-600 transition duration-150 ease-in-out hover:text-gray-200"
+                      className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
                     >
                       Forgot Password?
                     </Link>
@@ -125,9 +128,12 @@ export default function SignIn() {
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white w-full bg-purple-600 hover:bg-purple-700">
-                    Sign in
-                  </button>
+                  <Button
+                  size={"lg"}
+                  className="text-white-main w-full bg-primary-700 hover:bg-primary-800 hover:shadow-sm"
+                >
+                  Sign in
+                </Button>
                 </div>
               </div>
             </form>
@@ -135,7 +141,7 @@ export default function SignIn() {
               Don’t you have an account?{" "}
               <Link
                 href="/signup"
-                className="text-purple-600 transition duration-150 ease-in-out hover:text-gray-200"
+                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign up
               </Link>

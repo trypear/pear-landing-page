@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { signinWithGoogle, signup } from "@/app/(auth)/actions";
+import { Button } from "@/components/ui/button";
 
 export default function SignUp() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -36,9 +37,11 @@ export default function SignUp() {
             <form onSubmit={handleGoogleSignUp}>
               <div className="-mx-3 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white relative flex w-full items-center bg-red-600 px-0 hover:bg-red-700">
+                  <Button 
+                    size={"lg"}
+                    className="text-white-main relative flex w-full items-center bg-red-600 px-0 hover:bg-red-700 hover:shadow-sm">
                     <svg
-                      className="text-white mx-4 h-4 w-4 shrink-0 fill-current opacity-75"
+                      className="text-white mx-4 h-4 w-4 shrink-0 fill-current"
                       viewBox="0 0 16 16"
                       xmlns="http://www.w3.org/2000/svg"
                     >
@@ -51,7 +54,7 @@ export default function SignUp() {
                     <span className="-ml-16 flex-auto pl-16 pr-8">
                       Sign up with Google
                     </span>
-                  </button>
+                  </Button>
                 </div>
               </div>
             </form>
@@ -141,7 +144,7 @@ export default function SignUp() {
               <div className="text-center text-sm text-gray-500">
                 <Link
                   href="/privacy"
-                  className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-200 hover:no-underline"
+                  className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-500 hover:no-underline"
                 >
                   Privacy Policy
                 </Link>
@@ -153,9 +156,12 @@ export default function SignUp() {
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white w-full bg-purple-600 hover:bg-purple-700">
-                    Sign up
-                  </button>
+                <Button
+                  size={"lg"}
+                  className="text-white-main w-full bg-primary-700 hover:bg-primary-800 hover:shadow-sm"
+                >
+                  Sign up
+                </Button>
                 </div>
               </div>
             </form>
@@ -163,7 +169,7 @@ export default function SignUp() {
               Already using PearAI?{" "}
               <Link
                 href="/signin"
-                className="text-purple-600 transition duration-150 ease-in-out hover:text-gray-200"
+                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign in
               </Link>
