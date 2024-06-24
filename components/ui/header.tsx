@@ -17,21 +17,21 @@ export default function Header() {
           {/* Site branding */}
           <div className="flex flex-row items-start space-x-2">
             {/* Logo */}
-            <Link className="-mt-0.5 sm:mt-0" href={"/"}>
+            <Link className="-mt-0.5 sm:mt-0" href="/">
               <PearDarkLogo />
             </Link>
-            {/* Nav titles */}
-            <div className="flex space-x-2">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={link.label}
-                  className="hover:text-secondary-400"
-                  href={link.path}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            {/* Navigation */}
+            <nav>
+              <ul className="flex space-x-2">
+                {navLinks.map((link) => (
+                  <li key={link.label}>
+                    <Link className="hover:text-secondary-400" href={link.path}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
           {process.env.NODE_ENV !== "production" && <AuthButton />}{" "}
           {/* AuthButton is hidden in production */}
