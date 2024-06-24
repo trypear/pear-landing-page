@@ -24,13 +24,13 @@ export default function Footer() {
                   Terms of Service
                 </Link>
               </div>
-              <div className="ml-4 mr-4 text-sm text-gray-600">
+              <div className="ml-3 mr-4 mt-4 text-sm text-gray-600 md:mt-0">
                 &copy; Pear AI - All rights reserved.
               </div>
             </div>
             {/* Right side - social links */}
             <ul className="mb-4 mt-2 flex md:order-1 md:mb-0 md:ml-4 md:mt-0">
-              <li className="ml-4">
+              <li className="ml-3">
                 <Link
                   href="https://github.com/orgs/trypear/repositories"
                   target="_blank"
