@@ -31,7 +31,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-           </div>
+          </div>  
           </ul>
           {process.env.NODE_ENV !== "production" && <AuthButton />}{" "}
           {/* AuthButton is hidden in production */}
