@@ -3,3 +3,4 @@ node_modules/
 .swc/
 .*.env
 .env*.local
+.DS_Store

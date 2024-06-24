@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
+import { CircleUserRound } from "lucide-react";
 
 export default async function AuthButton() {
   const supabase = createClient();
@@ -11,33 +12,44 @@ export default async function AuthButton() {
     const supabase = createClient();
     await supabase.auth.signOut();
     redirect("/");
-  }
+  };
 
   return (
-    <div className="hidden md:flex">
+    <div className="hidden flex-row items-center space-x-1 text-secondary-600 md:flex">
       {error || !data?.user ? (
-        <>
+        <div className="flex flex-row items-center space-x-1">
+          <CircleUserRound className="h-5 w-5" />
+
           <Link
-            href="/signin"
-            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 mx-4 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
+            className="transition duration-150 ease-in-out hover:text-secondary-400"
+            href={"/signin"}
           >
             Sign in
           </Link>
+          <span className="text-secondary-600">/</span>
           <Link
-            href="/signup"
-            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2  rounded-sm text-white bg-gray-700 hover:bg-gray-800 transition duration-150 ease-in-out"
+            className="transition duration-150 ease-in-out hover:text-secondary-400"
+            href={"/signup"}
           >
             Sign up
           </Link>
-        </>
+        </div>
       ) : (
-        <form action={handleSignOut}>
-          <button
-            className="font-medium inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 ml-4 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out"
+        <>
+          <CircleUserRound className="h-5 w-5" />
+          <Link
+            className="transition duration-150 ease-in-out hover:text-secondary-400"
+            href={"/settings"}
           >
-            Sign out
-          </button>
-        </form>
+            Settings
+          </Link>
+          <span className="text-secondary-600">/</span>
+          <form action={handleSignOut}>
+            <button className="transition duration-150 ease-in-out hover:text-secondary-400">
+              Sign out
+            </button>
+          </form>
+        </>
       )}
     </div>
   );
