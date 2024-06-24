@@ -8,7 +8,7 @@ export default function Header() {
   const navLinks = [
     { label: "About", path: "/about" },
     { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
-    { label: "Github", path: "https://github.com/trypear/pearai-app" },
+    { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
   ];
   return (
     <header className="fixed top-0 z-30 w-full animate-fadein-opacity bg-white-50 bg-opacity-80 shadow-sm backdrop-blur-[16px]">

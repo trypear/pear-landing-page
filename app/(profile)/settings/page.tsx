@@ -22,11 +22,13 @@ export default async function Settings() {
           <div className="mx-auto max-w-sm">
             <div className="-mx-3 mb-4 flex flex-wrap">
               <div className="w-full px-3">
-                <p className="mb-1 text-sm font-medium text-gray-300">
-                  Full Name: {data.user.user_metadata.full_name}
+                <p className="mb-1 text-sm font-medium">
+                  <span className="text-gray-500">Full Name:</span>{" "}
+                  {data.user.user_metadata.full_name}
                 </p>
-                <p className="mb-1 text-sm font-medium text-gray-300">
-                  Email: {data.user.email}
+                <p className="mb-1 text-sm font-medium">
+                  <span className="text-gray-500">Email:</span>{" "}
+                  {data.user.email}
                 </p>
               </div>
             </div>

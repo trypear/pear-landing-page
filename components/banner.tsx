@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { XMark } from "./ui/icons";
+import { XMarkIcon } from "./ui/icons";
 
 export default function Banner() {
   const [bannerOpen, setBannerOpen] = useState<boolean>(true);
@@ -35,7 +35,7 @@ export default function Banner() {
               onClick={() => setBannerOpen(false)}
             >
               <span className="sr-only">Close</span>
-              <XMark className="h-4 w-4 shrink-0" />
+              <XMarkIcon className="h-4 w-4 shrink-0" />
             </button>
           </div>
         </div>
