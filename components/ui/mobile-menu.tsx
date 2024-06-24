@@ -62,11 +62,11 @@ export default function MobileMenu() {
             About
           </Link>
 
-          <Link onClick={() => setMobileNavOpen(false)} href={"/https://discord.gg/AKy5FmqCkF"}>
+          <Link onClick={() => setMobileNavOpen(false)} href={"https://discord.gg/AKy5FmqCkF"}>
             Discord
           </Link>
 
-          <Link onClick={() => setMobileNavOpen(false)} href={"/https://github.com/trypear/pearai-app"}>
+          <Link onClick={() => setMobileNavOpen(false)} href={"https://github.com/trypear/pearai-app"}>
             GitHub
           </Link>
         <Button
