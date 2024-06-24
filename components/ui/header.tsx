@@ -21,6 +21,7 @@ export default function Header() {
               <PearDarkLogo />
             </Link>
             {/* Nav titles */}
+            <div className="hidden md:flex flex-row items-start space-x-2">
             {navLinks.map((link, index) => (
               <Link
                 key={index}
@@ -30,6 +31,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+           </div>
           </ul>
           {process.env.NODE_ENV !== "production" && <AuthButton />}{" "}
           {/* AuthButton is hidden in production */}
