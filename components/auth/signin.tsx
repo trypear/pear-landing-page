@@ -26,7 +26,7 @@ export default function SignIn() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           {/* Page header */}
-          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
+          <div className="md:pb-17 mx-auto max-w-3xl pb-10 text-center text-3xl lg:text-4xl">
             <h1 className="h1">Welcome back</h1>
           </div>
 
@@ -94,7 +94,7 @@ export default function SignIn() {
                     type="password"
                     name="password"
                     className="form-input w-full text-gray-700"
-                    placeholder="Password (at least 10 characters)"
+                    placeholder="********"
                     required
                   />
                 </div>

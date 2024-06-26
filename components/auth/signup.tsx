@@ -27,7 +27,7 @@ export default function SignUp() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           {/* Page header */}
-          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
+          <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
             <h1 className="h1">
               Ready to speed up your development experience?
             </h1>
@@ -78,7 +78,7 @@ export default function SignUp() {
                     id="full-name"
                     type="text"
                     name="full-name"
-                    className="form-input w-full text-gray-700"
+                    className="form-input w-full rounded-md text-gray-700"
                     placeholder="First and last name"
                     required
                   />
@@ -96,7 +96,7 @@ export default function SignUp() {
                     id="company-name"
                     type="text"
                     name="company-name"
-                    className="form-input w-full text-gray-700"
+                    className="form-input w-full rounded-md text-gray-700"
                     placeholder="Your company or app name"
                   />
                 </div>
@@ -113,7 +113,7 @@ export default function SignUp() {
                     id="email"
                     type="email"
                     name="email"
-                    className="form-input w-full text-gray-700"
+                    className="form-input w-full rounded-md text-gray-700"
                     placeholder="helloworld@email.com"
                     required
                   />
@@ -131,8 +131,8 @@ export default function SignUp() {
                     id="password"
                     type="password"
                     name="password"
-                    className="form-input w-full text-gray-700"
-                    placeholder="Password (at least 10 characters)"
+                    className="form-input w-full rounded-md text-gray-700"
+                    placeholder="Password (at least 8 characters)"
                     required
                   />
                 </div>
@@ -162,7 +162,7 @@ export default function SignUp() {
               </div>
             </form>
             <div className="mt-6 text-center text-gray-400">
-              Already using PearAI?{" "}
+              Already have an account?{" "}
               <Link
                 href="/signin"
                 className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
