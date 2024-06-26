@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier --write .",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prebuild": "yarn format"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
