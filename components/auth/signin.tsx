@@ -56,7 +56,7 @@ export default function SignIn() {
                 className="mr-3 grow border-t border-dotted border-gray-700"
                 aria-hidden="true"
               ></div>
-              <div className="text-gray-400">Or, sign in with your email</div>
+              <div className="text-gray-700">Or, sign in with your email</div>
               <div
                 className="ml-3 grow border-t border-dotted border-gray-700"
                 aria-hidden="true"
@@ -66,7 +66,7 @@ export default function SignIn() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="email"
                   >
                     Email
@@ -75,7 +75,7 @@ export default function SignIn() {
                     id="email"
                     type="email"
                     name="email"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full text-gray-700"
                     placeholder="helloworld@email.com"
                     required
                   />
@@ -84,7 +84,7 @@ export default function SignIn() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="password"
                   >
                     Password
@@ -93,7 +93,7 @@ export default function SignIn() {
                     id="password"
                     type="password"
                     name="password"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full text-gray-700"
                     placeholder="Password (at least 10 characters)"
                     required
                   />
@@ -104,7 +104,7 @@ export default function SignIn() {
                   <div className="flex justify-between">
                     <label className="flex items-center">
                       <input type="checkbox" className="form-checkbox" />
-                      <span className="ml-2 text-gray-400">
+                      <span className="ml-2 text-gray-500">
                         Keep me signed in
                       </span>
                     </label>
@@ -134,7 +134,7 @@ export default function SignIn() {
               </div>
             </form>
             <div className="mt-6 text-center text-gray-400">
-              Don’t you have an account?{" "}
+              Don’t have an account?{" "}
               <Link
                 href="/signup"
                 className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"

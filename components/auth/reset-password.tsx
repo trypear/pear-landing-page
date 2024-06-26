@@ -34,7 +34,7 @@ export default function ResetPassword() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="email"
                   >
                     Email

@@ -59,7 +59,7 @@ export default function SignUp() {
                 className="mr-3 grow border-t border-dotted border-gray-700"
                 aria-hidden="true"
               ></div>
-              <div className="text-gray-400">Or, register with your email</div>
+              <div className="text-gray-700">Or, register with your email</div>
               <div
                 className="ml-3 grow border-t border-dotted border-gray-700"
                 aria-hidden="true"
@@ -69,7 +69,7 @@ export default function SignUp() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="full-name"
                   >
                     Full Name <span className="text-red-600">*</span>
@@ -78,7 +78,7 @@ export default function SignUp() {
                     id="full-name"
                     type="text"
                     name="full-name"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full text-gray-700"
                     placeholder="First and last name"
                     required
                   />
@@ -87,7 +87,7 @@ export default function SignUp() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="company-name"
                   >
                     Company Name
@@ -96,7 +96,7 @@ export default function SignUp() {
                     id="company-name"
                     type="text"
                     name="company-name"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full text-gray-700"
                     placeholder="Your company or app name"
                   />
                 </div>
@@ -104,7 +104,7 @@ export default function SignUp() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="email"
                   >
                     Email <span className="text-red-600">*</span>
@@ -113,7 +113,7 @@ export default function SignUp() {
                     id="email"
                     type="email"
                     name="email"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full text-gray-700"
                     placeholder="helloworld@email.com"
                     required
                   />
@@ -122,7 +122,7 @@ export default function SignUp() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="password"
                   >
                     Password <span className="text-red-600">*</span>
@@ -131,7 +131,7 @@ export default function SignUp() {
                     id="password"
                     type="password"
                     name="password"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full text-gray-700"
                     placeholder="Password (at least 10 characters)"
                     required
                   />
