@@ -77,3 +77,9 @@
 .form-radio {
   @apply text-purple-600;
 }
+
+/* can add more to this - currently made to serve signin/signup/reset-password pages */
+.form-input,
+.form-checkbox {
+  @apply focus:border-primary-800 focus:ring-primary-800 !important;
+}
