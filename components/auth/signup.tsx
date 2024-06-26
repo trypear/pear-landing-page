@@ -2,26 +2,55 @@
 import Link from "next/link";
 import { useState } from "react";
 import { signinWithGoogle, signup } from "@/app/(auth)/actions";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Input } from "../ui/input";
 import { Button } from "@/components/ui/button";
 import { GoogleLogo } from "../ui/icons";
+import { signUpSchema, SignUpFormData, ErrorMessages } from "@/utils/form-schema";
 
 export default function SignUp() {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors } } = useForm<SignUpFormData>({
+      resolver: zodResolver(signUpSchema),
+      defaultValues: {
+        full_name: "",
+        email: "",
+        company_name: "",
+        password: ""
+      }
+    })
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({})
 
-  const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setErrorMessage(null);
-    const formData = new FormData(e.currentTarget);
+  const handleSignUp = async (data: SignUpFormData) => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    const formData = new FormData();
+    formData.append("full-name", data.full_name);
+    formData.append("email", data.email);
+    formData.append("company-name", data.company_name);
+    formData.append("password", data.password);
+
     const response = await signup(formData);
-    if (response) {
-      setErrorMessage(response.error);
+
+    if (response?.error) {
+      setErrorMessages({ form: response.error });
+    } else {
+      setErrorMessages({ full_name: "", email: "", password: "", form: "" });
     }
+
+    setIsSubmitting(false);
   };
 
   const handleGoogleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await signinWithGoogle();
   };
+
   return (
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -65,7 +94,7 @@ export default function SignUp() {
                 aria-hidden="true"
               ></div>
             </div>
-            <form onSubmit={handleSignUp}>
+            <form onSubmit={handleSubmit(handleSignUp)}>
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
@@ -74,14 +103,19 @@ export default function SignUp() {
                   >
                     Full Name <span className="text-red-600">*</span>
                   </label>
-                  <input
+                  <Input
                     id="full-name"
                     type="text"
-                    name="full-name"
+                    {...register("full_name")}
                     className="form-input w-full rounded-md text-gray-700"
                     placeholder="First and last name"
                     required
                   />
+                  {errors.full_name && (
+                    <div className="mt-2 text-sm text-red-600">
+                      {errors.full_name.message}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="-mx-3 mb-4 flex flex-wrap">
@@ -92,10 +126,10 @@ export default function SignUp() {
                   >
                     Company Name
                   </label>
-                  <input
+                  <Input
                     id="company-name"
                     type="text"
-                    name="company-name"
+                    {...register("company_name")}
                     className="form-input w-full rounded-md text-gray-700"
                     placeholder="Your company or app name"
                   />
@@ -109,14 +143,19 @@ export default function SignUp() {
                   >
                     Email <span className="text-red-600">*</span>
                   </label>
-                  <input
+                  <Input
                     id="email"
                     type="email"
-                    name="email"
+                    {...register("email")}
                     className="form-input w-full rounded-md text-gray-700"
                     placeholder="helloworld@email.com"
                     required
                   />
+                  {errors.email && (
+                    <span className="mt-3 text-sm text-red-600">
+                      {errors.email.message}
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="-mx-3 mb-4 flex flex-wrap">
@@ -127,14 +166,19 @@ export default function SignUp() {
                   >
                     Password <span className="text-red-600">*</span>
                   </label>
-                  <input
+                  <Input
                     id="password"
                     type="password"
-                    name="password"
+                    {...register("password")}
                     className="form-input w-full rounded-md text-gray-700"
                     placeholder="Password (at least 8 characters)"
                     required
                   />
+                  {errors.password && (
+                    <span className="mt-3 text-sm text-red-600">
+                      {errors.password.message}
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="text-center text-sm text-gray-500">
@@ -145,9 +189,9 @@ export default function SignUp() {
                   Privacy Policy
                 </Link>
               </div>
-              {errorMessage && (
-                <div className="text-center text-sm text-red-600">
-                  {errorMessage}
+              {errorMessages.form && (
+                <div className="mt-2 text-sm text-red-600 text-center">
+                  {errorMessages.form}
                 </div>
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
@@ -155,8 +199,9 @@ export default function SignUp() {
                   <Button
                     size={"lg"}
                     className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                    disabled={isSubmitting}
                   >
-                    Sign up
+                    {isSubmitting ? "Signing up..." : "Sign Up"}
                   </Button>
                 </div>
               </div>

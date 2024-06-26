@@ -2,19 +2,44 @@
 import Link from "next/link";
 import { useState } from "react";
 import { resetPassword } from "@/app/(auth)/actions";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { Input } from "../ui/input";
+import { ResetPasswordFormData, resetPasswordSchema, ErrorMessages } from "@/utils/form-schema";
 
 export default function ResetPassword() {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors } } = useForm<ResetPasswordFormData>({
+      resolver: zodResolver(resetPasswordSchema),
+      defaultValues: {
+        email: "",
+      }
+    })
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setErrorMessage(null);
-    const formData = new FormData(e.currentTarget);
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({})
+
+
+  const handleResetPassword = async (data: ResetPasswordFormData) => {
+
+    if (isSubmitting) return;
+    setIsSubmitting(true)
+
+    const formData = new FormData();
+    formData.append("email", data.email);
+
     const response = await resetPassword(formData);
-    if (response) {
-      setErrorMessage(response.error);
+
+    if (response?.error) {
+      setErrorMessages({ form: response.error });
+    } else {
+      setErrorMessages({ email: "", });
     }
+
+    setIsSubmitting(false)
   };
   return (
     <section className="relative">
@@ -30,7 +55,7 @@ export default function ResetPassword() {
 
           {/* Form */}
           <div className="mx-auto max-w-sm">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(handleResetPassword)}>
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
@@ -39,19 +64,24 @@ export default function ResetPassword() {
                   >
                     Email
                   </label>
-                  <input
+                  <Input
                     id="email"
                     type="email"
-                    name="email"
+                    {...register("email")}
                     className="form-input w-full text-gray-300"
                     placeholder="you@yourcompany.com"
                     required
                   />
+                  {errors.email && (
+                    <span className="mt-3 text-sm text-red-600">
+                      {errors.email.message}
+                    </span>
+                  )}
                 </div>
               </div>
-              {errorMessage && (
-                <div className="text-center text-sm text-red-500">
-                  {errorMessage}
+              {errorMessages.form && (
+                <div className="mt-2 text-sm text-red-500">
+                  {errorMessages.form}
                 </div>
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
@@ -59,8 +89,9 @@ export default function ResetPassword() {
                   <Button
                     size={"lg"}
                     className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                    disabled={isSubmitting}
                   >
-                    Reset Password
+                    {isSubmitting ? "Resetting" : "Reset Password"}
                   </Button>
                 </div>
               </div>

@@ -1,26 +1,53 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from 'react-hook-form'
 import { signin, signinWithGoogle } from "@/app/(auth)/actions";
 import { Button } from "@/components/ui/button";
+import { Input } from "../ui/input";
 import { GoogleLogo } from "../ui/icons";
+import { SignInFormData, signInSchema, ErrorMessages } from "@/utils/form-schema";
 
 export default function SignIn() {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors } } = useForm<SignInFormData>({
+      resolver: zodResolver(signInSchema),
+      defaultValues: {
+        email: "",
+        password: ""
+      }
+    })
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({})
 
-  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setErrorMessage(null);
-    const formData = new FormData(e.currentTarget);
+  const handleSignIn = async (data: SignInFormData) => {
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    {/*Convert data to type formData*/ }
+    const formData = new FormData();
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+
     const response = await signin(formData);
-    if (response) {
-      setErrorMessage(response.error);
+    if (response?.error) {
+      setErrorMessages({ form: response.error });
+    } else {
+      setErrorMessages({ email: "", password: "", form: "" });
     }
+
+    setIsSubmitting(false);
   };
+
   const handleGoogleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     await signinWithGoogle();
   };
+
   return (
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -62,7 +89,7 @@ export default function SignIn() {
                 aria-hidden="true"
               ></div>
             </div>
-            <form onSubmit={handleSignIn}>
+            <form onSubmit={handleSubmit(handleSignIn)}>
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
@@ -71,14 +98,19 @@ export default function SignIn() {
                   >
                     Email
                   </label>
-                  <input
+                  <Input
                     id="email"
                     type="email"
-                    name="email"
+                    {...register("email")}
                     className="form-input w-full text-gray-700"
                     placeholder="helloworld@email.com"
                     required
                   />
+                  {errors.email && (
+                    <span className="mt-3 text-sm text-red-600">
+                      {errors.email.message}
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="-mx-3 mb-4 flex flex-wrap">
@@ -89,14 +121,19 @@ export default function SignIn() {
                   >
                     Password
                   </label>
-                  <input
+                  <Input
                     id="password"
                     type="password"
-                    name="password"
+                    {...register("password")}
                     className="form-input w-full text-gray-700"
                     placeholder="********"
                     required
                   />
+                  {errors.password && (
+                    <span className="mt-3 text-sm text-red-600">
+                      {errors.password.message}
+                    </span>
+                  )}
                 </div>
               </div>
               <div className="-mx-3 mb-4 flex flex-wrap">
@@ -117,9 +154,9 @@ export default function SignIn() {
                   </div>
                 </div>
               </div>
-              {errorMessage && (
-                <div className="text-center text-sm text-red-600">
-                  {errorMessage}
+              {errorMessages.form && (
+                <div className="mt-2 text-sm text-red-600">
+                  {errorMessages.form}
                 </div>
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
@@ -127,8 +164,9 @@ export default function SignIn() {
                   <Button
                     size={"lg"}
                     className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                    disabled={isSubmitting}
                   >
-                    Sign in
+                    {isSubmitting ? "Signing in..." : "Sign In"}
                   </Button>
                 </div>
               </div>
