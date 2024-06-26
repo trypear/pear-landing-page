@@ -1,12 +1,12 @@
 import { RedirectType, redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
-import SignInComponent from "@/components/auth/signin";
+import ExtensionCallbackComponent from "@/components/auth/extension-callback";
 
 type Props = {
   searchParams: { redirect?: string };
 };
 
-export default async function SignIn({ searchParams }: Props) {
+export default async function ExtensionCallback({ searchParams }: Props) {
   const supabase = createClient();
   const { data } = await supabase.auth.getUser();
   let redirectUrl: string = searchParams?.redirect ?? "/";
@@ -24,7 +24,7 @@ export default async function SignIn({ searchParams }: Props) {
   }
   return (
     <>
-      <SignInComponent />
+      <ExtensionCallbackComponent authenticated={false} />
     </>
   );
 }

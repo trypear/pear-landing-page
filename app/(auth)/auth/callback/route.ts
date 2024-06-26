@@ -27,9 +27,16 @@ export async function GET(request: Request) {
         },
       },
     );
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) {
-      return NextResponse.redirect(`${origin}${next}`);
+
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+    const { session } = data;
+
+    if (!error && session) {
+      const token = session.access_token;
+      const redirectUrl = new URL(`${origin}${next}`);
+      redirectUrl.searchParams.append("token", token);
+
+      return NextResponse.redirect(redirectUrl.toString());
     }
   }
 
