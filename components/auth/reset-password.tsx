@@ -58,7 +58,7 @@ export default function ResetPassword() {
                 <div className="w-full px-3">
                   <Button
                     size={"lg"}
-                    className="text-white-main w-full bg-primary-700 hover:bg-primary-800 hover:shadow-sm"
+                    className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
                   >
                     Reset Password
                   </Button>

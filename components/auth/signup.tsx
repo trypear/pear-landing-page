@@ -38,9 +38,10 @@ export default function SignUp() {
             <form onSubmit={handleGoogleSignUp}>
               <div className="-mx-3 flex flex-wrap">
                 <div className="w-full px-3">
-                  <Button 
+                  <Button
                     size={"lg"}
-                    className="text-white-main relative flex w-full items-center bg-red-600 px-0 hover:bg-red-700 hover:shadow-sm">
+                    className="relative flex w-full items-center bg-red-600 px-0 text-white-main hover:bg-red-700 hover:shadow-sm"
+                  >
                     <GoogleLogo className="text-white mx-4 h-4 w-4 shrink-0" />
                     <span
                       className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
@@ -151,12 +152,12 @@ export default function SignUp() {
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                <Button
-                  size={"lg"}
-                  className="text-white-main w-full bg-primary-700 hover:bg-primary-800 hover:shadow-sm"
-                >
-                  Sign up
-                </Button>
+                  <Button
+                    size={"lg"}
+                    className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                  >
+                    Sign up
+                  </Button>
                 </div>
               </div>
             </form>
