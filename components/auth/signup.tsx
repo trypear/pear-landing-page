@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { signinWithGoogle, signup } from "@/app/(auth)/actions";
+import { Button } from "@/components/ui/button";
 import { GoogleLogo } from "../ui/icons";
 
 export default function SignUp() {
@@ -26,7 +27,7 @@ export default function SignUp() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           {/* Page header */}
-          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
+          <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
             <h1 className="h1">
               Ready to speed up your development experience?
             </h1>
@@ -37,8 +38,11 @@ export default function SignUp() {
             <form onSubmit={handleGoogleSignUp}>
               <div className="-mx-3 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white relative flex w-full items-center bg-red-600 px-0 hover:bg-red-700">
-                    <GoogleLogo className="text-white mx-4 h-4 w-4 shrink-0 opacity-75" />
+                  <Button
+                    size={"lg"}
+                    className="relative flex w-full items-center bg-red-600 px-0 text-white-main hover:bg-red-700 hover:shadow-sm"
+                  >
+                    <GoogleLogo className="text-white mx-4 h-4 w-4 shrink-0" />
                     <span
                       className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
                       aria-hidden="true"
@@ -46,7 +50,7 @@ export default function SignUp() {
                     <span className="-ml-16 flex-auto pl-16 pr-8">
                       Sign up with Google
                     </span>
-                  </button>
+                  </Button>
                 </div>
               </div>
             </form>
@@ -55,7 +59,7 @@ export default function SignUp() {
                 className="mr-3 grow border-t border-dotted border-gray-700"
                 aria-hidden="true"
               ></div>
-              <div className="text-gray-400">Or, register with your email</div>
+              <div className="text-gray-700">Or, register with your email</div>
               <div
                 className="ml-3 grow border-t border-dotted border-gray-700"
                 aria-hidden="true"
@@ -65,7 +69,7 @@ export default function SignUp() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="full-name"
                   >
                     Full Name <span className="text-red-600">*</span>
@@ -74,7 +78,7 @@ export default function SignUp() {
                     id="full-name"
                     type="text"
                     name="full-name"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full rounded-md text-gray-700"
                     placeholder="First and last name"
                     required
                   />
@@ -83,7 +87,7 @@ export default function SignUp() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="company-name"
                   >
                     Company Name
@@ -92,7 +96,7 @@ export default function SignUp() {
                     id="company-name"
                     type="text"
                     name="company-name"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full rounded-md text-gray-700"
                     placeholder="Your company or app name"
                   />
                 </div>
@@ -100,7 +104,7 @@ export default function SignUp() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="email"
                   >
                     Email <span className="text-red-600">*</span>
@@ -109,7 +113,7 @@ export default function SignUp() {
                     id="email"
                     type="email"
                     name="email"
-                    className="form-input w-full text-gray-300"
+                    className="form-input w-full rounded-md text-gray-700"
                     placeholder="helloworld@email.com"
                     required
                   />
@@ -118,7 +122,7 @@ export default function SignUp() {
               <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
                   <label
-                    className="mb-1 block text-sm font-medium text-gray-300"
+                    className="mb-1 block text-sm font-medium text-gray-700"
                     htmlFor="password"
                   >
                     Password <span className="text-red-600">*</span>
@@ -127,8 +131,8 @@ export default function SignUp() {
                     id="password"
                     type="password"
                     name="password"
-                    className="form-input w-full text-gray-300"
-                    placeholder="Password (at least 10 characters)"
+                    className="form-input w-full rounded-md text-gray-700"
+                    placeholder="Password (at least 8 characters)"
                     required
                   />
                 </div>
@@ -136,7 +140,7 @@ export default function SignUp() {
               <div className="text-center text-sm text-gray-500">
                 <Link
                   href="/privacy"
-                  className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-200 hover:no-underline"
+                  className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-500 hover:no-underline"
                 >
                   Privacy Policy
                 </Link>
@@ -148,17 +152,20 @@ export default function SignUp() {
               )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white w-full bg-purple-600 hover:bg-purple-700">
+                  <Button
+                    size={"lg"}
+                    className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                  >
                     Sign up
-                  </button>
+                  </Button>
                 </div>
               </div>
             </form>
             <div className="mt-6 text-center text-gray-400">
-              Already using PearAI?{" "}
+              Already have an account?{" "}
               <Link
                 href="/signin"
-                className="text-purple-600 transition duration-150 ease-in-out hover:text-gray-200"
+                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign in
               </Link>
