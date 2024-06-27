@@ -1,7 +1,8 @@
-'use client';
-import Link from 'next/link'
-import {useState} from 'react'
+"use client";
+import Link from "next/link";
+import { useState } from "react";
 import { resetPassword } from "@/app/(auth)/actions";
+import { Button } from "@/components/ui/button";
 
 export default function ResetPassword() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -17,38 +18,64 @@ export default function ResetPassword() {
   };
   return (
     <section className="relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
-
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           {/* Page header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
+          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
             <h1 className="h1 mb-4">Forgot your password?</h1>
-            <p className="text-xl text-gray-400">We'll email you instructions on how to reset it.</p>
+            <p className="text-xl text-gray-400">
+              We&apos;ll email you instructions on how to reset it.
+            </p>
           </div>
 
           {/* Form */}
-          <div className="max-w-sm mx-auto">
+          <div className="mx-auto max-w-sm">
             <form onSubmit={handleSubmit}>
-              <div className="flex flex-wrap -mx-3 mb-4">
+              <div className="-mx-3 mb-4 flex flex-wrap">
                 <div className="w-full px-3">
-                  <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                  <input id="email" type="email" name="email" className="form-input w-full text-gray-300" placeholder="you@yourcompany.com" required />
+                  <label
+                    className="mb-1 block text-sm font-medium text-gray-700"
+                    htmlFor="email"
+                  >
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    className="form-input w-full text-gray-300"
+                    placeholder="you@yourcompany.com"
+                    required
+                  />
                 </div>
               </div>
-              {errorMessage && <div className="text-red-500 text-sm text-center">{errorMessage}</div>}
-              <div className="flex flex-wrap -mx-3 mt-6">
+              {errorMessage && (
+                <div className="text-center text-sm text-red-500">
+                  {errorMessage}
+                </div>
+              )}
+              <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
-                  <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Reset Password</button>
+                  <Button
+                    size={"lg"}
+                    className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                  >
+                    Reset Password
+                  </Button>
                 </div>
               </div>
             </form>
-            <div className="text-gray-400 text-center mt-6">
-              <Link href="/" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Cancel</Link>
+            <div className="mt-6 text-center text-gray-400">
+              <Link
+                href="/"
+                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
+              >
+                Cancel
+              </Link>
             </div>
           </div>
-
         </div>
       </div>
     </section>
-  )
+  );
 }
