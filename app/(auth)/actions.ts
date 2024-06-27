@@ -38,25 +38,24 @@ export async function signin(formData: FormData) {
   }
 }
 
-export async function signinWithGoogle(formData: FormData) {
-  const redirectUrl: URL = new URL(formData.get("redirect")?.toString() ?? "/");
-
-  try {
-    const { data }: OAuthResponse = await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/auth/callback?next=${encodeURIComponent(redirectUrl.toString())}`,
-      },
-    });
-    if (data.url) {
-      redirect(data.url);
-    }
-    revalidatePath("/", "layout");
-  } catch (error) {
+export async function signinWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/auth/callback`,
+    },
+  });
+  if (error) {
     redirect("/error");
   }
-}
 
+  if (data.url) {
+    redirect(data.url);
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/");
+}
 export async function resetPassword(formData: FormData) {
   try {
     await supabase.auth.resetPasswordForEmail(formData.get("email") as string);
@@ -85,11 +84,12 @@ export async function signup(formData: FormData) {
   try {
     await supabase.auth.signUp(data);
     revalidatePath("/", "layout");
-    redirect("/");
   } catch (error) {
     if (error instanceof AuthError) {
       return { error: error.message };
     }
     return { error: "An error occurred while signing up" };
+  } finally {
+    redirect("/");
   }
 }

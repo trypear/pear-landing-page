@@ -3,6 +3,11 @@ import { createClient } from "@/utils/supabase/server";
 
 export default async function Settings() {
   const supabase = createClient();
+  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+  
+  if (sessionError || !sessionData?.session) {
+    redirect("/signin");
+  }
 
   const { data, error } = await supabase.auth.getUser();
   if (error || !data?.user) {
@@ -22,11 +27,14 @@ export default async function Settings() {
           <div className="mx-auto max-w-sm">
             <div className="-mx-3 mb-4 flex flex-wrap">
               <div className="w-full px-3">
-                <p className="mb-1 text-sm font-medium text-gray-300">
+                <p className="mb-1 text-sm font-medium text-black-300">
                   Full Name: {data.user.user_metadata.full_name}
                 </p>
-                <p className="mb-1 text-sm font-medium text-gray-300">
+                <p className="mb-1 text-sm font-medium text-black-300">
                   Email: {data.user.email}
+                </p>
+                <p className="mb-1 text-sm font-medium text-black-300">
+                  PearAI Token: {sessionData.session.access_token}
                 </p>
               </div>
             </div>
