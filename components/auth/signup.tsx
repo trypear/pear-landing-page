@@ -7,23 +7,28 @@ import { useForm } from "react-hook-form";
 import { Input } from "../ui/input";
 import { Button } from "@/components/ui/button";
 import { GoogleLogo } from "../ui/icons";
-import { signUpSchema, SignUpFormData, ErrorMessages } from "@/utils/form-schema";
+import {
+  signUpSchema,
+  SignUpFormData,
+  ErrorMessages,
+} from "@/utils/form-schema";
 
 export default function SignUp() {
   const {
     register,
     handleSubmit,
-    formState: { errors } } = useForm<SignUpFormData>({
-      resolver: zodResolver(signUpSchema),
-      defaultValues: {
-        full_name: "",
-        email: "",
-        company_name: "",
-        password: ""
-      }
-    })
+    formState: { errors },
+  } = useForm<SignUpFormData>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      full_name: "",
+      email: "",
+      company_name: "",
+      password: "",
+    },
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({})
+  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({});
 
   const handleSignUp = async (data: SignUpFormData) => {
     if (isSubmitting) return;
@@ -190,7 +195,7 @@ export default function SignUp() {
                 </Link>
               </div>
               {errorMessages.form && (
-                <div className="mt-2 text-sm text-red-600 text-center">
+                <div className="mt-2 text-center text-sm text-red-600">
                   {errorMessages.form}
                 </div>
               )}

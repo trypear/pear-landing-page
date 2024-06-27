@@ -1,34 +1,37 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from 'react-hook-form'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { signin, signinWithGoogle } from "@/app/(auth)/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
 import { GoogleLogo } from "../ui/icons";
-import { SignInFormData, signInSchema, ErrorMessages } from "@/utils/form-schema";
+import {
+  SignInFormData,
+  signInSchema,
+  ErrorMessages,
+} from "@/utils/form-schema";
 
 export default function SignIn() {
   const {
     register,
     handleSubmit,
-    formState: { errors } } = useForm<SignInFormData>({
-      resolver: zodResolver(signInSchema),
-      defaultValues: {
-        email: "",
-        password: ""
-      }
-    })
+    formState: { errors },
+  } = useForm<SignInFormData>({
+    resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({})
+  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({});
 
   const handleSignIn = async (data: SignInFormData) => {
-
     if (isSubmitting) return;
     setIsSubmitting(true);
 
-    {/*Convert data to type formData*/ }
     const formData = new FormData();
     formData.append("email", data.email);
     formData.append("password", data.password);

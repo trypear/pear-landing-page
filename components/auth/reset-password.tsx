@@ -6,27 +6,30 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
-import { ResetPasswordFormData, resetPasswordSchema, ErrorMessages } from "@/utils/form-schema";
+import {
+  ResetPasswordFormData,
+  resetPasswordSchema,
+  ErrorMessages,
+} from "@/utils/form-schema";
 
 export default function ResetPassword() {
   const {
     register,
     handleSubmit,
-    formState: { errors } } = useForm<ResetPasswordFormData>({
-      resolver: zodResolver(resetPasswordSchema),
-      defaultValues: {
-        email: "",
-      }
-    })
+    formState: { errors },
+  } = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema),
+    defaultValues: {
+      email: "",
+    },
+  });
 
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({})
-
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({});
 
   const handleResetPassword = async (data: ResetPasswordFormData) => {
-
     if (isSubmitting) return;
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     const formData = new FormData();
     formData.append("email", data.email);
@@ -36,10 +39,10 @@ export default function ResetPassword() {
     if (response?.error) {
       setErrorMessages({ form: response.error });
     } else {
-      setErrorMessages({ email: "", });
+      setErrorMessages({ email: "" });
     }
 
-    setIsSubmitting(false)
+    setIsSubmitting(false);
   };
   return (
     <section className="relative">
