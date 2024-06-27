@@ -98,7 +98,7 @@ export default function ResetPassword() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                  className="w-full rounded-md"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Resetting..." : "Reset Password"}
