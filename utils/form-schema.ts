@@ -1,27 +1,38 @@
 import { z } from "zod";
 
-export const signUpSchema = z.object({
-  full_name: z.string().min(1, { message: "Name is required." }),
+export const emailSchema = z.object({
   email: z.string().email({ message: "Email address is invalid." }),
-  company_name: z.string().min(1),
+});
+
+export const passwordSchema = z.object({
   password: z.string().min(8, { message: "Password not long enough." }),
 });
 
+export const signUpSchema = z.object({
+  full_name: z
+    .string()
+    .min(1, { message: "Name is required." })
+    .max(100, { message: "Name is too long." }),
+  email: emailSchema.shape.email,
+  company_name: z
+    .string()
+    .min(1, { message: "Company name is required" })
+    .max(100, { message: "Company name is too long." }),
+  password: passwordSchema.shape.password,
+});
+
 export const signInSchema = z.object({
-  email: z.string().email({ message: "Email address is invalid." }),
-  password: z.string().min(8, { message: "Password is not long enough." }),
+  email: emailSchema.shape.email,
+  password: passwordSchema.shape.password,
 });
 
 export const resetPasswordSchema = z.object({
-  email: z.string().email("Email address is invalid."),
+  email: emailSchema.shape.email,
 });
 
 export type SignUpFormData = z.infer<typeof signUpSchema>;
 export type SignInFormData = z.infer<typeof signInSchema>;
 export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 export type ErrorMessages = {
-  full_name?: string;
-  email?: string;
-  password?: string;
-  form?: string;
+  [key in keyof SignUpFormData | "form"]?: string;
 };

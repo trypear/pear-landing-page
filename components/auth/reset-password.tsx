@@ -82,11 +82,6 @@ export default function ResetPassword() {
                   )}
                 </div>
               </div>
-              {errorMessages.form && (
-                <div className="mt-2 text-sm text-red-500">
-                  {errorMessages.form}
-                </div>
-              )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
                   <Button

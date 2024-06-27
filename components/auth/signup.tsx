@@ -41,7 +41,6 @@ export default function SignUp() {
     formData.append("password", data.password);
 
     const response = await signup(formData);
-
     if (response?.error) {
       setErrorMessages({ form: response.error });
     } else {
@@ -194,11 +193,6 @@ export default function SignUp() {
                   Privacy Policy
                 </Link>
               </div>
-              {errorMessages.form && (
-                <div className="mt-2 text-center text-sm text-red-600">
-                  {errorMessages.form}
-                </div>
-              )}
               <div className="-mx-3 mt-6 flex flex-wrap">
                 <div className="w-full px-3">
                   <Button
