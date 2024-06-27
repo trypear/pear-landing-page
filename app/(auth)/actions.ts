@@ -81,10 +81,5 @@ export async function resetPassword(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-<<<<<<< HEAD
   redirect("/signin");
 }
-=======
-  redirect("/");
-}
->>>>>>> main
