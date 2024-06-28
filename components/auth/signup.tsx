@@ -6,16 +6,19 @@ import { Button } from "@/components/ui/button";
 import { GoogleLogo } from "../ui/icons";
 
 export default function SignUp() {
+  const [isSigningUp, setIsSigningUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSigningUp(true);
     setErrorMessage(null);
     const formData = new FormData(e.currentTarget);
     const response = await signup(formData);
     if (response) {
       setErrorMessage(response.error);
     }
+    setIsSigningUp(false);
   };
 
   const handleGoogleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -155,6 +158,8 @@ export default function SignUp() {
                   <Button
                     size={"lg"}
                     className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                    disabled={isSigningUp}
+                    isLoading={isSigningUp}
                   >
                     Sign up
                   </Button>

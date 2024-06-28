@@ -1,21 +1,24 @@
 "use client";
-import Link from "next/link";
-import { useState } from "react";
 import { signin, signinWithGoogle } from "@/app/(auth)/actions";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useState } from "react";
 import { GoogleLogo } from "../ui/icons";
 
 export default function SignIn() {
+  const [isSigningIn, setIsSigningIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSigningIn(true);
     setErrorMessage(null);
     const formData = new FormData(e.currentTarget);
     const response = await signin(formData);
     if (response) {
       setErrorMessage(response.error);
     }
+    setIsSigningIn(false);
   };
   const handleGoogleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -127,6 +130,8 @@ export default function SignIn() {
                   <Button
                     size={"lg"}
                     className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                    disabled={isSigningIn}
+                    isLoading={isSigningIn}
                   >
                     Sign in
                   </Button>

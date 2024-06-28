@@ -5,16 +5,19 @@ import { resetPassword } from "@/app/(auth)/actions";
 import { Button } from "@/components/ui/button";
 
 export default function ResetPassword() {
+  const [isResettingPassword, setIsResettingPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsResettingPassword(true);
     setErrorMessage(null);
     const formData = new FormData(e.currentTarget);
     const response = await resetPassword(formData);
     if (response) {
       setErrorMessage(response.error);
     }
+    setIsResettingPassword(false);
   };
   return (
     <section className="relative">
@@ -59,6 +62,8 @@ export default function ResetPassword() {
                   <Button
                     size={"lg"}
                     className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                    disabled={isResettingPassword}
+                    isLoading={isResettingPassword}
                   >
                     Reset Password
                   </Button>
