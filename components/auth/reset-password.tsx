@@ -20,6 +20,10 @@ import {
 } from "@/utils/form-schema";
 
 export default function ResetPassword() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
   const form = useForm<ResetPasswordFormData>({
     resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
@@ -27,27 +31,30 @@ export default function ResetPassword() {
     },
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleResetPassword = async (data: ResetPasswordFormData) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
+    setErrorMessage(null);
+    setSuccessMessage(null);
 
-    const formData = new FormData();
-    formData.append("email", data.email);
+    try {
+      const formData = new FormData();
+      formData.append("email", data.email);
 
-    const response = await resetPassword(formData);
-
-    if (response?.error) {
-      form.setError("email", {
-        type: "manual",
-        message: response.error,
-      });
-    } else {
-      form.reset({ email: "" });
+      const response = await resetPassword(formData);
+      if (response?.error) {
+        setErrorMessage(response.error);
+      } else {
+        setSuccessMessage(
+          "Password reset instructions have been sent to your email.",
+        );
+        form.reset();
+      }
+    } catch (error) {
+      setErrorMessage("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
   };
 
   return (
@@ -65,42 +72,47 @@ export default function ResetPassword() {
           {/* Form */}
           <div className="mx-auto max-w-sm">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(handleResetPassword)}>
-                <div className="-mx-3 mb-4 flex flex-wrap">
-                  <div className="w-full px-3">
-                    <FormField
-                      name="email"
-                      control={form.control}
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input
-                              id="email"
-                              type="email"
-                              {...field}
-                              placeholder="you@yourcompany.com"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-                </div>
-                <div className="-mx-3 mt-6 flex flex-wrap">
-                  <div className="w-full px-3">
-                    <Button
-                      size={"lg"}
-                      className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Resetting" : "Reset Password"}
-                    </Button>
-                  </div>
-                </div>
+              <form
+                onSubmit={form.handleSubmit(handleResetPassword)}
+                className="space-y-4"
+              >
+                <FormField
+                  name="email"
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel htmlFor="email">Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="you@yourcompany.com"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Resetting..." : "Reset Password"}
+                </Button>
+
+                {errorMessage && (
+                  <p className="text-center text-red-500">{errorMessage}</p>
+                )}
+                {successMessage && (
+                  <p className="text-center text-green-500">{successMessage}</p>
+                )}
               </form>
             </Form>
+
             <div className="mt-6 text-center text-gray-400">
               <Link
                 href="/"
