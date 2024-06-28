@@ -8,11 +8,22 @@ export async function GET(request: NextRequest) {
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
   const next = searchParams.get("next") ?? "/settings";
+  const redirectUrl = searchParams.get("redirectUrl");
 
   const redirectTo = request.nextUrl.clone();
-  redirectTo.pathname = next;
+
+  // If redirectUrl is present, decode it and use it as the redirection path
+  if (redirectUrl) {
+    const decodedRedirectUrl = decodeURIComponent(redirectUrl);
+    redirectTo.href = decodedRedirectUrl;
+  } else {
+    redirectTo.pathname = next;
+  }
+
   redirectTo.searchParams.delete("token_hash");
   redirectTo.searchParams.delete("type");
+  redirectTo.searchParams.delete("next");
+  redirectTo.searchParams.delete("redirectUrl");
 
   if (token_hash && type) {
     const supabase = createClient();
@@ -22,12 +33,12 @@ export async function GET(request: NextRequest) {
       token_hash,
     });
     if (!error) {
-      redirectTo.searchParams.delete("next");
       return NextResponse.redirect(redirectTo);
     }
   }
 
-  // return the user to an error page with some instructions
+  // If verification fails or parameters are missing, redirect to an error or sign-in page
+  // Consider handling redirectUrl even in error scenarios if applicable
   redirectTo.pathname = "/signin?message=cannot-verify-otp";
   return NextResponse.redirect(redirectTo);
 }

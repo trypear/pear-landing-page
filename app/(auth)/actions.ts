@@ -83,10 +83,10 @@ export async function resetPassword(formData: FormData) {
   if (!exists) {
     return { error: "Email does not exist" };
   }
-  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/update-password`,
   });
-  console.log(data, error);
+
   if (error) {
     return { error: error.message };
   }
