@@ -48,7 +48,7 @@ export default function MobileMenu() {
         onClick={() => setMobileNavOpen(!mobileNavOpen)}
       >
         <span className="sr-only">Menu</span>
-        <HamburgerMenuIcon className="h-6 w-6 text-gray-300 transition duration-150 ease-in-out hover:text-gray-200" />
+        <HamburgerMenuIcon className="h-6 w-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700" />
       </button>
 
       {/*Mobile navigation */}
