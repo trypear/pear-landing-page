@@ -66,7 +66,7 @@ export async function signinWithGoogle() {
   }
 
   revalidatePath("/", "layout");
-  redirect("/confirm");
+  redirect("/");
 }
 
 // Reset password
