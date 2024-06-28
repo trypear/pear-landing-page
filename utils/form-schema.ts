@@ -16,8 +16,8 @@ export const signUpSchema = z.object({
   email: emailSchema.shape.email,
   company_name: z
     .string()
-    .min(1, { message: "Company name is required." })
-    .max(100, { message: "Company name is too long." }),
+    .max(100, { message: "Company name is too long." })
+    .optional(),
   password: passwordSchema.shape.password,
 });
 

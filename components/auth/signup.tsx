@@ -36,7 +36,7 @@ export default function SignUp() {
     const formData = new FormData();
     formData.append("full-name", data.full_name);
     formData.append("email", data.email);
-    formData.append("company-name", data.company_name);
+    formData.append("company-name", data.company_name || "");
     formData.append("password", data.password);
 
     const response = await signup(formData);
