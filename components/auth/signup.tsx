@@ -8,17 +8,17 @@ import { Input } from "../ui/input";
 import { Button } from "@/components/ui/button";
 import { GoogleLogo } from "../ui/icons";
 import {
-  signUpSchema,
-  SignUpFormData,
-  ErrorMessages,
-} from "@/utils/form-schema";
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { signUpSchema, SignUpFormData } from "@/utils/form-schema";
 
 export default function SignUp() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SignUpFormData>({
+  const form = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       full_name: "",
@@ -28,7 +28,6 @@ export default function SignUp() {
     },
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({});
 
   const handleSignUp = async (data: SignUpFormData) => {
     if (isSubmitting) return;
@@ -42,9 +41,24 @@ export default function SignUp() {
 
     const response = await signup(formData);
     if (response?.error) {
-      setErrorMessages({ form: response.error });
+      form.setError("full_name", {
+        type: "manual",
+        message: response.error,
+      });
+      form.setError("email", {
+        type: "manual",
+        message: response.error,
+      });
+      form.setError("company_name", {
+        type: "manual",
+        message: response.error,
+      });
+      form.setError("password", {
+        type: "manual",
+        message: response.error,
+      });
     } else {
-      setErrorMessages({ full_name: "", email: "", password: "", form: "" });
+      form.reset({ full_name: "", email: "", company_name: "", password: "" });
     }
 
     setIsSubmitting(false);
@@ -98,113 +112,115 @@ export default function SignUp() {
                 aria-hidden="true"
               ></div>
             </div>
-            <form onSubmit={handleSubmit(handleSignUp)}>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <label
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                    htmlFor="full-name"
-                  >
-                    Full Name <span className="text-red-600">*</span>
-                  </label>
-                  <Input
-                    id="full-name"
-                    type="text"
-                    {...register("full_name")}
-                    className="form-input w-full rounded-md text-gray-700"
-                    placeholder="First and last name"
-                    required
-                  />
-                  {errors.full_name && (
-                    <div className="mt-2 text-sm text-red-600">
-                      {errors.full_name.message}
-                    </div>
-                  )}
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleSignUp)}>
+                <div className="-mx-3 mb-4 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <FormField
+                      name="full_name"
+                      control={form.control}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Full Name</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="full_name"
+                              {...field}
+                              placeholder="First and last name"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <label
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                    htmlFor="company-name"
-                  >
-                    Company Name
-                  </label>
-                  <Input
-                    id="company-name"
-                    type="text"
-                    {...register("company_name")}
-                    className="form-input w-full rounded-md text-gray-700"
-                    placeholder="Your company or app name"
-                  />
+                <div className="-mx-3 mb-4 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <FormField
+                      name="company_name"
+                      control={form.control}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Company Name</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="company_name"
+                              {...field}
+                              placeholder="Your company or app name"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <label
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                    htmlFor="email"
-                  >
-                    Email <span className="text-red-600">*</span>
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    {...register("email")}
-                    className="form-input w-full rounded-md text-gray-700"
-                    placeholder="helloworld@email.com"
-                    required
-                  />
-                  {errors.email && (
-                    <span className="mt-3 text-sm text-red-600">
-                      {errors.email.message}
-                    </span>
-                  )}
+                <div className="-mx-3 mb-4 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <FormField
+                      name="email"
+                      control={form.control}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="email"
+                              type="email"
+                              {...field}
+                              placeholder="helloworld@email.com"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <label
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                    htmlFor="password"
-                  >
-                    Password <span className="text-red-600">*</span>
-                  </label>
-                  <Input
-                    id="password"
-                    type="password"
-                    {...register("password")}
-                    className="form-input w-full rounded-md text-gray-700"
-                    placeholder="Password (at least 8 characters)"
-                    required
-                  />
-                  {errors.password && (
-                    <span className="mt-3 text-sm text-red-600">
-                      {errors.password.message}
-                    </span>
-                  )}
+                <div className="-mx-3 mb-4 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <FormField
+                      name="password"
+                      control={form.control}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Password</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="password"
+                              type="password"
+                              {...field}
+                              placeholder="Password (at least 8 characters)"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="text-center text-sm text-gray-500">
-                <Link
-                  href="/privacy"
-                  className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-500 hover:no-underline"
-                >
-                  Privacy Policy
-                </Link>
-              </div>
-              <div className="-mx-3 mt-6 flex flex-wrap">
-                <div className="w-full px-3">
-                  <Button
-                    size={"lg"}
-                    className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
-                    disabled={isSubmitting}
+                <div className="text-center text-sm text-gray-500">
+                  <Link
+                    href="/privacy"
+                    className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-500 hover:no-underline"
                   >
-                    {isSubmitting ? "Signing up..." : "Sign Up"}
-                  </Button>
+                    Privacy Policy
+                  </Link>
                 </div>
-              </div>
-            </form>
+                <div className="-mx-3 mt-6 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <Button
+                      size={"lg"}
+                      className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Signing up..." : "Sign Up"}
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </Form>
             <div className="mt-6 text-center text-gray-400">
               Already have an account?{" "}
               <Link

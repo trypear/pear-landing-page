@@ -8,17 +8,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
 import { GoogleLogo } from "../ui/icons";
 import {
-  SignInFormData,
-  signInSchema,
-  ErrorMessages,
-} from "@/utils/form-schema";
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { SignInFormData, signInSchema } from "@/utils/form-schema";
 
 export default function SignIn() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SignInFormData>({
+  const form = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       email: "",
@@ -26,7 +26,6 @@ export default function SignIn() {
     },
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({});
 
   const handleSignIn = async (data: SignInFormData) => {
     if (isSubmitting) return;
@@ -38,9 +37,16 @@ export default function SignIn() {
 
     const response = await signin(formData);
     if (response?.error) {
-      setErrorMessages({ form: response.error });
+      form.setError("email", {
+        type: "manual",
+        message: response.error,
+      });
+      form.setError("password", {
+        type: "manual",
+        message: response.error,
+      });
     } else {
-      setErrorMessages({ email: "", password: "", form: "" });
+      form.reset({ email: "", password: "" });
     }
 
     setIsSubmitting(false);
@@ -92,83 +98,84 @@ export default function SignIn() {
                 aria-hidden="true"
               ></div>
             </div>
-            <form onSubmit={handleSubmit(handleSignIn)}>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <label
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    {...register("email")}
-                    className="form-input w-full text-gray-700"
-                    placeholder="helloworld@email.com"
-                    required
-                  />
-                  {errors.email && (
-                    <span className="mt-3 text-sm text-red-600">
-                      {errors.email.message}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <label
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                    htmlFor="password"
-                  >
-                    Password
-                  </label>
-                  <Input
-                    id="password"
-                    type="password"
-                    {...register("password")}
-                    className="form-input w-full text-gray-700"
-                    placeholder="********"
-                    required
-                  />
-                  {errors.password && (
-                    <span className="mt-3 text-sm text-red-600">
-                      {errors.password.message}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <div className="flex justify-between">
-                    <label className="flex items-center">
-                      <input type="checkbox" className="form-checkbox" />
-                      <span className="ml-2 text-gray-500">
-                        Keep me signed in
-                      </span>
-                    </label>
-                    <Link
-                      href="/reset-password"
-                      className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
-                    >
-                      Forgot Password?
-                    </Link>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleSignIn)}>
+                <div className="-mx-3 mb-4 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <FormField
+                      name="email"
+                      control={form.control}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="email"
+                              type="email"
+                              {...field}
+                              placeholder="helloworld@email.com"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
                   </div>
                 </div>
-              </div>
-              <div className="-mx-3 mt-6 flex flex-wrap">
-                <div className="w-full px-3">
-                  <Button
-                    size={"lg"}
-                    className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Signing in..." : "Sign In"}
-                  </Button>
+
+                <div className="-mx-3 mb-4 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <FormField
+                      name="password"
+                      control={form.control}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Password</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="password"
+                              type="password"
+                              {...field}
+                              placeholder="********"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
-              </div>
-            </form>
+                <div className="-mx-3 mb-4 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <div className="flex justify-between">
+                      <label className="flex items-center">
+                        <input type="checkbox" className="form-checkbox" />
+                        <span className="ml-2 text-gray-500">
+                          Keep me signed in
+                        </span>
+                      </label>
+                      <Link
+                        href="/reset-password"
+                        className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
+                      >
+                        Forgot Password?
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="-mx-3 mt-6 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <Button
+                      size={"lg"}
+                      className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Signing in..." : "Sign In"}
+                    </Button>
+                  </div>
+                </div>
+              </form>
+            </Form>
             <div className="mt-6 text-center text-gray-400">
               Don’t have an account?{" "}
               <Link

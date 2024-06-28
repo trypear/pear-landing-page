@@ -16,8 +16,8 @@ export const signUpSchema = z.object({
   email: emailSchema.shape.email,
   company_name: z
     .string()
-    .min(1, { message: "Company name is required" })
-    .max(100, { message: "Company name is too long." }),
+    .max(100, { message: "Company name is too long." })
+    .optional(),
   password: passwordSchema.shape.password,
 });
 
@@ -33,6 +33,3 @@ export const resetPasswordSchema = z.object({
 export type SignUpFormData = z.infer<typeof signUpSchema>;
 export type SignInFormData = z.infer<typeof signInSchema>;
 export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
-export type ErrorMessages = {
-  [key in keyof SignUpFormData | "form"]?: string;
-};

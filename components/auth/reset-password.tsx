@@ -7,17 +7,20 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
 import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import {
   ResetPasswordFormData,
   resetPasswordSchema,
-  ErrorMessages,
 } from "@/utils/form-schema";
 
 export default function ResetPassword() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ResetPasswordFormData>({
+  const form = useForm<ResetPasswordFormData>({
     resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
       email: "",
@@ -25,7 +28,6 @@ export default function ResetPassword() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessages, setErrorMessages] = useState<ErrorMessages>({});
 
   const handleResetPassword = async (data: ResetPasswordFormData) => {
     if (isSubmitting) return;
@@ -37,13 +39,17 @@ export default function ResetPassword() {
     const response = await resetPassword(formData);
 
     if (response?.error) {
-      setErrorMessages({ form: response.error });
+      form.setError("email", {
+        type: "manual",
+        message: response.error,
+      });
     } else {
-      setErrorMessages({ email: "" });
+      form.reset({ email: "" });
     }
 
     setIsSubmitting(false);
   };
+
   return (
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -58,42 +64,43 @@ export default function ResetPassword() {
 
           {/* Form */}
           <div className="mx-auto max-w-sm">
-            <form onSubmit={handleSubmit(handleResetPassword)}>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <label
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    type="email"
-                    {...register("email")}
-                    className="form-input w-full text-gray-300"
-                    placeholder="you@yourcompany.com"
-                    required
-                  />
-                  {errors.email && (
-                    <span className="mt-3 text-sm text-red-600">
-                      {errors.email.message}
-                    </span>
-                  )}
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(handleResetPassword)}>
+                <div className="-mx-3 mb-4 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <FormField
+                      name="email"
+                      control={form.control}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="email"
+                              type="email"
+                              {...field}
+                              placeholder="you@yourcompany.com"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="-mx-3 mt-6 flex flex-wrap">
-                <div className="w-full px-3">
-                  <Button
-                    size={"lg"}
-                    className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Resetting" : "Reset Password"}
-                  </Button>
+                <div className="-mx-3 mt-6 flex flex-wrap">
+                  <div className="w-full px-3">
+                    <Button
+                      size={"lg"}
+                      className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Resetting" : "Reset Password"}
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </Form>
             <div className="mt-6 text-center text-gray-400">
               <Link
                 href="/"
