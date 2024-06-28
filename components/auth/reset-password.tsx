@@ -3,17 +3,24 @@ import Link from "next/link";
 import { useState } from "react";
 import { resetPassword } from "@/app/(auth)/actions";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function ResetPassword() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
     e.preventDefault();
     setErrorMessage(null);
     const formData = new FormData(e.currentTarget);
     const response = await resetPassword(formData);
     if (response) {
+      setLoading(false);
       setErrorMessage(response.error);
+    } else {
+      setLoading(false);
+      toast.success("Password reset instructions sent to your email");
     }
   };
   return (
@@ -59,8 +66,9 @@ export default function ResetPassword() {
                   <Button
                     size={"lg"}
                     className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                    disabled={loading}
                   >
-                    Reset Password
+                    {loading ? "Processing..." : "Reset Password"}
                   </Button>
                 </div>
               </div>

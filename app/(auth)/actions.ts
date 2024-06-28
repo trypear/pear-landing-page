@@ -40,6 +40,12 @@ export async function signup(formData: FormData) {
     },
   };
 
+  const { exists } = await checkEmailExists(data.email);
+
+  if (exists) {
+    return { error: "Email already exists" };
+  }
+
   const { error } = await supabase.auth.signUp(data);
 
   if (error) {
@@ -67,15 +73,44 @@ export async function signinWithGoogle() {
   }
 
   revalidatePath("/", "layout");
-  redirect("/");
 }
 
 // Reset password
 export async function resetPassword(formData: FormData) {
-  const { data, error } = await supabase.auth.resetPasswordForEmail(
-    formData.get("email") as string,
-  );
+  const email = formData.get("email") as string;
+  // Check if email exists
+  const { exists } = await checkEmailExists(email);
+  if (!exists) {
+    return { error: "Email does not exist" };
+  }
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/update-password`,
+  });
+  console.log(data, error);
+  if (error) {
+    return { error: error.message };
+  }
 
+  revalidatePath("/", "layout");
+}
+
+export async function checkEmailExists(email: string) {
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("email")
+    .eq("email", email);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { exists: data.length > 0 };
+}
+
+export async function updateUser(formData: FormData) {
+  const { error } = await supabase.auth.updateUser({
+    password: formData.get("password") as string,
+  });
   if (error) {
     return { error: error.message };
   }
