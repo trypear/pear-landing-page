@@ -58,18 +58,12 @@ export default function MobileMenu() {
         className="absolute left-0 top-full z-20 flex w-full animate-fadein-opacity flex-col items-center justify-center space-y-2 overflow-hidden bg-white-50 px-4 text-xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-[2px]"
         style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
-        <Button
-          asChild
-          className="w-full rounded-full bg-primary-700 text-white-50 hover:bg-primary-800 hover:shadow-sm"
-        >
+        <Button asChild className="w-full rounded-full">
           <Link onClick={() => setMobileNavOpen(false)} href={"/signin"}>
             Sign In
           </Link>
         </Button>
-        <Button
-          asChild
-          className="w-full rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm"
-        >
+        <Button asChild variant="outline" className="w-full">
           <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
             Sign Up
           </Link>
