@@ -47,14 +47,14 @@ export default function SignUp() {
       if (response?.error) {
         setErrorMessage(response.error);
       } else {
+        toast.success(
+          "Account created successfully. Please check your email to verify your account.",
+        );
         form.reset();
       }
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
-      toast.success(
-        "Account created successfully. Please check your email to verify your account.",
-      );
       setIsSubmitting(false);
     }
   };
