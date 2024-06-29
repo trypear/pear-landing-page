@@ -74,7 +74,8 @@ export default function SignIn() {
               <Button
                 type="submit"
                 size="lg"
-                className="relative flex w-full items-center bg-red-600 px-0 text-white-main hover:bg-red-700 hover:shadow-sm"
+                variant="destructive"
+                className="relative flex w-full items-center rounded-md px-0"
               >
                 <GoogleLogo className="text-white mx-4 h-4 w-4 shrink-0" />
                 <span
@@ -160,7 +161,7 @@ export default function SignIn() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+                  className="w-full rounded-md"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Signing in..." : "Sign In"}

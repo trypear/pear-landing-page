@@ -86,11 +86,7 @@ export default function Hero() {
             </div>
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
-                <Button
-                  asChild
-                  size={"lg"}
-                  className="rounded-full bg-primary-700 text-white-50 hover:bg-primary-800 hover:shadow-sm"
-                >
+                <Button asChild size="lg">
                   <Link href="https://forms.gle/171UyimgQJhEJbhU7">
                     Join Waitlist
                   </Link>
@@ -99,8 +95,9 @@ export default function Hero() {
               <div data-aos="fade-up" data-aos-delay="500">
                 <Button
                   asChild
-                  size={"lg"}
-                  className="mt-2 rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm sm:ml-4 sm:mt-0 sm:w-auto"
+                  size="lg"
+                  variant="outline"
+                  className="mt-2 sm:ml-4 sm:mt-0 sm:w-auto"
                 >
                   <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
                     More Details
