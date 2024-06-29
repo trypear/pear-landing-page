@@ -17,6 +17,10 @@ export default async function UpdatePasswordPage() {
   if (error || !data?.user) {
     redirect("/signin");
   }
+  // Redirect to the home page if the user is not using email provider
+  if (data.user.app_metadata.provider !== "email") {
+    redirect("/");
+  }
   return (
     <div className="mx-auto max-w-md pt-44 md:pt-32">
       <h1 className="text-center text-3xl font-semibold md:text-5xl md:font-normal">
