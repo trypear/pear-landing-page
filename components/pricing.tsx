@@ -27,8 +27,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   buttonText,
   isFree = false,
 }) => (
-  // these colors shouldn't be hard coded (ex. border-[#4CC9A7]) so it needs to be fixed but I am just following figma for now
-  <Card className="flex h-full w-full flex-col border border-[#4CC9A7]">
+  <Card className="flex h-full w-full flex-col border border-primary-700">
     <CardHeader className="flex-grow space-y-3 p-6">
       <CardTitle className="text-2xl text-primary-700">{title}</CardTitle>
       <p className="text-sm font-medium text-gray-400 sm:text-base">
