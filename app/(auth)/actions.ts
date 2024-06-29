@@ -8,8 +8,6 @@ import {
   SignInWithPasswordCredentials,
   Provider,
   SignUpWithPasswordCredentials,
-  User,
-  Session,
 } from "@supabase/supabase-js";
 import { UpdatePasswordFormData } from "@/utils/form-schema";
 
@@ -47,13 +45,13 @@ export async function signup(formData: FormData) {
     },
   };
 
-  const { data: authData, error } = await supabase.auth.signUp(data);
-
-  const { exists } = await checkEmailExists(authData);
+  const { exists } = await checkEmailExists(data.email);
 
   if (exists) {
     return { error: "Email already exists" };
   }
+
+  const { error } = await supabase.auth.signUp(data);
 
   if (error) {
     return { error: error.message };
@@ -62,21 +60,13 @@ export async function signup(formData: FormData) {
   revalidatePath("/", "layout");
   redirect("/signin");
 }
-import { headers } from "next/headers";
 
 // OAuth sign-in with Google or GitHub
 export async function signinWithOAuth(provider: Provider) {
-  const headersList = headers();
-  const host = headersList.get("host");
-  const protocol =
-    process.env.VERCEL_ENV === "local" || process.env.VERCEL_ENV == null
-      ? "http"
-      : "https";
-
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
-      redirectTo: `${protocol}://${host}/auth/callback`,
+      redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/auth/callback`,
     },
   });
 
@@ -94,7 +84,11 @@ export async function signinWithOAuth(provider: Provider) {
 // Reset password
 export async function resetPassword(formData: FormData) {
   const email = formData.get("email") as string;
-
+  // Check if email exists
+  const { exists } = await checkEmailExists(email);
+  if (!exists) {
+    return { error: "Email does not exist" };
+  }
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/update-password`,
   });
@@ -106,14 +100,19 @@ export async function resetPassword(formData: FormData) {
   revalidatePath("/", "layout");
 }
 
-export async function checkEmailExists(data: {
-  user: User | null;
-  session: Session | null;
-}) {
-  return {
-    exists:
-      data.user && data.user.identities && data.user.identities.length === 0,
-  };
+export async function checkEmailExists(email: string) {
+  // Normalize email to lowercase before checking in the database
+  email = email.toLowerCase();
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("email")
+    .eq("email", email);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return { exists: data.length > 0 };
 }
 
 export async function updateUser(formData: UpdatePasswordFormData) {
