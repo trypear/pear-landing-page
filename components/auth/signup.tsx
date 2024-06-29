@@ -16,6 +16,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { signUpSchema, SignUpFormData } from "@/utils/form-schema";
+import { toast } from "sonner";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,6 +52,9 @@ export default function SignUp() {
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
+      toast.success(
+        "Account created successfully. Please check your email to verify your account.",
+      );
       setIsSubmitting(false);
     }
   };
