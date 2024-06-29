@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import {
   SignInWithPasswordCredentials,
+  Provider,
   SignUpWithPasswordCredentials,
 } from "@supabase/supabase-js";
 import { UpdatePasswordFormData } from "@/utils/form-schema";
@@ -60,16 +61,17 @@ export async function signup(formData: FormData) {
   redirect("/signin");
 }
 
-// Google OAuth sign-in
-export async function signinWithGoogle() {
+// OAuth sign-in with Google or GitHub
+export async function signinWithOAuth(provider: Provider) {
   const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
+    provider: provider,
     options: {
       redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/auth/callback`,
     },
   });
+
   if (error) {
-    redirect("/error");
+    redirect("/signin?message=Could not authenticate user");
   }
 
   if (data.url) {
