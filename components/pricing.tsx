@@ -140,7 +140,7 @@ const PricingPage: React.FC = () => {
             <p className="text-base text-gray-400 sm:text-lg md:text-xl">
               Want to use it on a professional level?
               <Link
-                href="/contact"
+                href="#"
                 className="ml-2 font-semibold text-primary-700 hover:text-primary-800"
               >
                 Contact us for custom plans!
