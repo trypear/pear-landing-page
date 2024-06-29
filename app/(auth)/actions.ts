@@ -4,14 +4,18 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import { SignUpWithPasswordCredentials } from "@supabase/supabase-js";
+import {
+  SignInWithPasswordCredentials,
+  SignUpWithPasswordCredentials,
+} from "@supabase/supabase-js";
+import { UpdatePasswordFormData } from "@/utils/form-schema";
 
 const supabase = createClient();
 
 export async function signin(formData: FormData) {
   // type-casting here for convenience
   // in practice, you should validate your inputs
-  const data = {
+  const data: SignInWithPasswordCredentials = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
   };
@@ -95,6 +99,8 @@ export async function resetPassword(formData: FormData) {
 }
 
 export async function checkEmailExists(email: string) {
+  // Normalize email to lowercase before checking in the database
+  email = email.toLowerCase();
   const { data, error } = await supabase
     .from("profiles")
     .select("email")
@@ -107,14 +113,14 @@ export async function checkEmailExists(email: string) {
   return { exists: data.length > 0 };
 }
 
-export async function updateUser(formData: FormData) {
+export async function updateUser(formData: UpdatePasswordFormData) {
   const { error } = await supabase.auth.updateUser({
-    password: formData.get("password") as string,
+    password: formData.password,
   });
   if (error) {
     return { error: error.message };
   }
 
   revalidatePath("/", "layout");
-  redirect("/signin");
+  redirect("/settings");
 }
