@@ -6,7 +6,7 @@ export async function middleware(request: NextRequest) {
     (request.nextUrl.pathname.startsWith("/signin") ||
       request.nextUrl.pathname.startsWith("/signup")) &&
     // FEATURE FLAG
-    process.env.NODE_ENV === "production"
+    process.env.VERCEL_ENV === "production"
   ) {
     return NextResponse.redirect(new URL("/", request.url));
   }
