@@ -66,17 +66,19 @@ export default function Verification() {
                 <div className="mt-4 text-gray-400">
                   Make sure to check your spam folder if you don&apos;t see it!
                 </div>
-                <div className="mt-2 text-gray-400">
-                  Didn&apos;t receive an email?{" "}
-                  <Button
-                    onClick={() => handleResendEmail()}
-                    variant={"link"}
-                    className="p-0 text-primary-700 hover:text-primary-800"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "Resending..." : "Resend email"}
-                  </Button>
-                </div>
+                {email && (
+                  <div className="mt-2 text-gray-400">
+                    Didn&apos;t receive an email?{" "}
+                    <Button
+                      onClick={() => handleResendEmail()}
+                      variant={"link"}
+                      className="p-0 text-primary-700 hover:text-primary-800"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Resending..." : "Resend email"}
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
