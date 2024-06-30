@@ -57,13 +57,15 @@ export default async function Settings() {
               <h3 className="mb-3 text-2xl font-semibold">Usage</h3>
 
               {/* Show only if the user already has a subscription */}
-              {/* <p className="font-medium">Coming soon</p> */}
+              <p className="font-small">Coming soon</p>
 
-              {/* Show only if the user does not have a subscription */}
-              <Button asChild size="sm" className="max-w-max">
-                {/* TODO: Link to pricing page */}
-                <Link href="/pricing">Upgrade to Pro</Link>
-              </Button>
+              {process.env.VERCEL_ENV !== "production" && (
+                <Button asChild size="sm" className="max-w-max">
+                  {/* Show only if the user does not have a subscription */}
+                  {/* TODO: Link to pricing page */}
+                  <Link href="/pricing">Upgrade to Pro</Link>
+                </Button>
+              )}
             </div>
           </div>
         </div>
