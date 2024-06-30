@@ -81,13 +81,6 @@ export async function signup(formData: FormData) {
 // OAuth sign-in with Google or GitHub
 export async function signinWithOAuth(provider: Provider) {
   const supabase = createClient();
-  const headersList = headers();
-  const host = headersList.get("host");
-  const protocol =
-    process.env.VERCEL_ENV === "local" || process.env.VERCEL_ENV == null
-      ? "http"
-      : "https";
-
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
