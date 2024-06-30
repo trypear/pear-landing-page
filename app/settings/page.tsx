@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function Settings() {
   const supabase = createClient();
@@ -44,6 +44,11 @@ export default async function Settings() {
                     </tr>
                   </tbody>
                 </table>
+                {data.user.app_metadata.provider === "email" && (
+                  <Button size="sm" className="mt-4">
+                    <Link href="/update-password">Update Password</Link>
+                  </Button>
+                )}
               </div>
             </div>
 
