@@ -73,7 +73,7 @@ export default function ResetPassword() {
           <div className="mx-auto max-w-sm">
             <Form {...form}>
               <form
-                onSubmit={() => form.handleSubmit(handleResetPassword)}
+                onSubmit={form.handleSubmit(handleResetPassword)}
                 className="space-y-4"
               >
                 <FormField
