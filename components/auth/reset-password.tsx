@@ -2,20 +2,61 @@
 import Link from "next/link";
 import { useState } from "react";
 import { resetPassword } from "@/app/(auth)/actions";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { Input } from "../ui/input";
+import {
+  Form,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import {
+  ResetPasswordFormData,
+  resetPasswordSchema,
+} from "@/utils/form-schema";
 
 export default function ResetPassword() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string>("");
+  const form = useForm<ResetPasswordFormData>({
+    resolver: zodResolver(resetPasswordSchema),
+    defaultValues: {
+      email: "",
+    },
+  });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleResetPassword = async (data: ResetPasswordFormData) => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
     setErrorMessage(null);
-    const formData = new FormData(e.currentTarget);
-    const response = await resetPassword(formData);
-    if (response) {
-      setErrorMessage(response.error);
+    setSuccessMessage("");
+
+    try {
+      const formData = new FormData();
+      formData.append("email", data.email);
+
+      const response = await resetPassword(formData);
+      if (response?.error) {
+        setErrorMessage(response.error);
+      } else {
+        setSuccessMessage(
+          "Password reset instructions have been sent to your email.",
+        );
+        form.reset();
+      }
+    } catch (error) {
+      setErrorMessage("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
+    setIsSubmitting(false);
   };
+
   return (
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -30,41 +71,49 @@ export default function ResetPassword() {
 
           {/* Form */}
           <div className="mx-auto max-w-sm">
-            <form onSubmit={handleSubmit}>
-              <div className="-mx-3 mb-4 flex flex-wrap">
-                <div className="w-full px-3">
-                  <label
-                    className="mb-1 block text-sm font-medium text-gray-700"
-                    htmlFor="email"
-                  >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    name="email"
-                    className="form-input w-full text-gray-300"
-                    placeholder="you@yourcompany.com"
-                    required
-                  />
-                </div>
-              </div>
-              {errorMessage && (
-                <div className="text-center text-sm text-red-500">
-                  {errorMessage}
-                </div>
-              )}
-              <div className="-mx-3 mt-6 flex flex-wrap">
-                <div className="w-full px-3">
-                  <Button
-                    size={"lg"}
-                    className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
-                  >
-                    Reset Password
-                  </Button>
-                </div>
-              </div>
-            </form>
+            <Form {...form}>
+              <form
+                onSubmit={() => form.handleSubmit(handleResetPassword)}
+                className="space-y-4"
+              >
+                <FormField
+                  name="email"
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel htmlFor="email">Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="you@yourcompany.com"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full rounded-md"
+                  isLoading={isSubmitting}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Resetting..." : "Reset Password"}
+                </Button>
+
+                {errorMessage && (
+                  <p className="text-center text-red-500">{errorMessage}</p>
+                )}
+                {successMessage !== "" && (
+                  <p className="text-center text-green-500">{successMessage}</p>
+                )}
+              </form>
+            </Form>
+
             <div className="mt-6 text-center text-gray-400">
               <Link
                 href="/"
