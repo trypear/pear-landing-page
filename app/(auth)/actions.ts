@@ -12,12 +12,11 @@ import {
   Session,
 } from "@supabase/supabase-js";
 import { UpdatePasswordFormData } from "@/utils/form-schema";
-
-const supabase = createClient();
+import { headers } from "next/headers";
 
 export async function signin(formData: FormData) {
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+  const supabase = createClient();
+
   const data: SignInWithPasswordCredentials = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
@@ -34,8 +33,8 @@ export async function signin(formData: FormData) {
 }
 
 export async function signup(formData: FormData) {
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
+  const supabase = createClient();
+
   const data: SignUpWithPasswordCredentials = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
@@ -62,10 +61,10 @@ export async function signup(formData: FormData) {
   revalidatePath("/", "layout");
   redirect("/signin");
 }
-import { headers } from "next/headers";
 
 // OAuth sign-in with Google or GitHub
 export async function signinWithOAuth(provider: Provider) {
+  const supabase = createClient();
   const headersList = headers();
   const host = headersList.get("host");
   const protocol =
@@ -93,6 +92,8 @@ export async function signinWithOAuth(provider: Provider) {
 
 // Reset password
 export async function resetPassword(formData: FormData) {
+  const supabase = createClient();
+
   const email = formData.get("email") as string;
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
@@ -117,6 +118,8 @@ export async function checkEmailExists(data: {
 }
 
 export async function updateUser(formData: UpdatePasswordFormData) {
+  const supabase = createClient();
+
   const { error } = await supabase.auth.updateUser({
     password: formData.password,
   });
