@@ -2,12 +2,31 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { resendConfirmationEmail } from "@/app/(auth)/actions";
+import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
+import { useState } from "react";
 
 export default function Verification() {
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
 
   const handleClick = () => {
     router.push("/signin");
+  };
+
+  const handleResendEmail = async () => {
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    const response = await resendConfirmationEmail(email as string);
+    if (response?.error) {
+      toast.error(response.error);
+    } else {
+      toast.success("Email sent successfully");
+    }
+    setIsSubmitting(false);
   };
 
   return (
@@ -44,8 +63,19 @@ export default function Verification() {
                 >
                   Sign in
                 </Button>
-                <div className="mt-2 text-gray-400">
+                <div className="mt-4 text-gray-400">
                   Make sure to check your spam folder if you don&apos;t see it!
+                </div>
+                <div className="mt-2 text-gray-400">
+                  Didn&apos;t receive an email?{" "}
+                  <Button
+                    onClick={() => handleResendEmail()}
+                    variant={"link"}
+                    className="p-0 text-primary-700 hover:text-primary-800"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Resending..." : "Resend email"}
+                  </Button>
                 </div>
               </div>
             </div>
