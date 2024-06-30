@@ -33,7 +33,7 @@ export default function Header() {
               </ul>
             </nav>
           </div>
-          {process.env.VERCEL_ENV !== "production" && <AuthButton />}{" "}
+          <AuthButton />
           {/* AuthButton is hidden in production */}
           <MobileMenu />
         </div>
