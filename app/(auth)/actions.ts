@@ -2,7 +2,6 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-
 import { createClient } from "@/utils/supabase/server";
 import {
   SignInWithPasswordCredentials,
@@ -76,7 +75,7 @@ export async function signup(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/signin");
+  redirect("/verification?email=" + data.email);
 }
 
 // OAuth sign-in with Google or GitHub
@@ -146,4 +145,23 @@ export async function updateUser(formData: UpdatePasswordFormData) {
 
   revalidatePath("/", "layout");
   redirect("/settings");
+}
+
+// resend confirmation email
+export async function resendConfirmationEmail(email: string) {
+  const supabase = createClient();
+
+  const { error } = await supabase.auth.resend({
+    type: "signup",
+    email: email,
+    options: {
+      emailRedirectTo: `${getURL()}/settings`,
+    },
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/", "layout");
 }
