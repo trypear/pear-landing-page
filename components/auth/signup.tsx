@@ -199,6 +199,7 @@ export default function SignUp() {
                   size="lg"
                   className="w-full rounded-md"
                   disabled={isSubmitting}
+                  isLoading={isSubmitting}
                 >
                   {isSubmitting ? "Signing up..." : "Sign Up"}
                 </Button>

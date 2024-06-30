@@ -163,6 +163,7 @@ export default function SignIn() {
                   size="lg"
                   className="w-full rounded-md"
                   disabled={isSubmitting}
+                  isLoading={isSubmitting}
                 >
                   {isSubmitting ? "Signing in..." : "Sign In"}
                 </Button>

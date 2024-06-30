@@ -22,8 +22,7 @@ import {
 export default function ResetPassword() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
-
+  const [successMessage, setSuccessMessage] = useState<string>("");
   const form = useForm<ResetPasswordFormData>({
     resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
@@ -35,7 +34,7 @@ export default function ResetPassword() {
     if (isSubmitting) return;
     setIsSubmitting(true);
     setErrorMessage(null);
-    setSuccessMessage(null);
+    setSuccessMessage("");
 
     try {
       const formData = new FormData();
@@ -55,6 +54,7 @@ export default function ResetPassword() {
     } finally {
       setIsSubmitting(false);
     }
+    setIsSubmitting(false);
   };
 
   return (
@@ -73,7 +73,7 @@ export default function ResetPassword() {
           <div className="mx-auto max-w-sm">
             <Form {...form}>
               <form
-                onSubmit={form.handleSubmit(handleResetPassword)}
+                onSubmit={() => form.handleSubmit(handleResetPassword)}
                 className="space-y-4"
               >
                 <FormField
@@ -99,6 +99,7 @@ export default function ResetPassword() {
                   type="submit"
                   size="lg"
                   className="w-full rounded-md"
+                  isLoading={isSubmitting}
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Resetting..." : "Reset Password"}
@@ -107,7 +108,7 @@ export default function ResetPassword() {
                 {errorMessage && (
                   <p className="text-center text-red-500">{errorMessage}</p>
                 )}
-                {successMessage && (
+                {successMessage !== "" && (
                   <p className="text-center text-green-500">{successMessage}</p>
                 )}
               </form>
