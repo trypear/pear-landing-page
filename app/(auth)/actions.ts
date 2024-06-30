@@ -32,6 +32,14 @@ export async function signin(formData: FormData) {
   redirect("/settings");
 }
 
+// Flow: User signs up with email and password
+// 1. Check if user exists
+// 2. If user exists, attempt to sign in with email and password
+//  - If sign in is successful, return signedIn: true (redirect to /settings on client)
+//  - If sign in fails, return exists: true (toast 'account exists' on client and redirect to /signin)
+// 3. If user does not exist, sign up with email and password and redirect to /signin
+//  - If sign up fails, return error: error.message (toast error on client)
+
 export async function signup(formData: FormData) {
   const supabase = createClient();
 
@@ -51,7 +59,15 @@ export async function signup(formData: FormData) {
   const { exists } = await checkEmailExists(authData);
 
   if (exists) {
-    return { error: "Email already exists" };
+    const signinData: SignInWithPasswordCredentials = {
+      email: data.email,
+      password: data.password,
+    };
+    const { error } = await supabase.auth.signInWithPassword(signinData);
+    if (!error) {
+      return { signedIn: true };
+    }
+    return { exists: true };
   }
 
   if (error) {

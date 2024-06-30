@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/form";
 import { signUpSchema, SignUpFormData } from "@/utils/form-schema";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,6 +32,7 @@ export default function SignUp() {
       password: "",
     },
   });
+  const router = useRouter();
 
   const handleSignUp = async (data: SignUpFormData) => {
     if (isSubmitting) return;
@@ -47,11 +49,23 @@ export default function SignUp() {
       const response = await signup(formData);
       if (response?.error) {
         setErrorMessage(response.error);
+      } else if (!response?.signedIn) {
+        if (response?.exists) {
+          toast.error("An account with this email already exists.");
+          // Redirect to sign in page
+          router.push("/signin");
+        } else {
+          toast.success(
+            "Account created successfully. Please check your email to verify your account.",
+          );
+          form.reset();
+        }
       } else {
-        toast.success(
-          "Account created successfully. Please check your email to verify your account.",
+        // Redirect to settings
+        toast.info(
+          "An account with this email already exists, signing you in...",
         );
-        form.reset();
+        router.push("/settings");
       }
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
