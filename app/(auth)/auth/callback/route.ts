@@ -7,6 +7,7 @@ export async function GET(request: Request) {
   const code = searchParams.get("code");
   // if "next" is in param, use it as the redirect URL
   const next = searchParams.get("next") ?? "/settings";
+  let authError = "";
 
   if (code) {
     const cookieStore = cookies();
@@ -31,8 +32,11 @@ export async function GET(request: Request) {
     if (!error) {
       return NextResponse.redirect(`${origin}${next}`);
     }
+    authError = error?.message;
   }
 
   // return the user to an error page with instructions
-  return NextResponse.redirect(`${origin}/auth/auth-code-error`);
+  return NextResponse.redirect(
+    `${origin}/auth/auth-code-error?error=${authError !== "" ? authError : "No auth code in params"}`,
+  );
 }
