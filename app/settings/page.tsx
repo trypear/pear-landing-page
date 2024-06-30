@@ -53,7 +53,7 @@ export default async function Settings() {
             </div>
 
             {/* Usage */}
-            <div className="flex flex-col justify-between rounded-md border p-3">
+            <div className="flex flex-col rounded-md border p-3">
               <h3 className="mb-3 text-2xl font-semibold">Usage</h3>
 
               {/* Show only if the user already has a subscription */}
