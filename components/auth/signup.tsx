@@ -1,12 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { signup, signinWithOAuth } from "@/app/(auth)/actions";
+import { Provider } from "@supabase/supabase-js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { signup, signinWithGoogle } from "@/app/(auth)/actions";
 import { Button } from "@/components/ui/button";
-import { Input } from "../ui/input";
-import { GoogleLogo } from "../ui/icons";
+import { Input } from "@/components/ui/input";
+import { GitHubLogo, GoogleLogo } from "@/components/ui/icons";
 import {
   Form,
   FormField,
@@ -16,6 +17,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { signUpSchema, SignUpFormData } from "@/utils/form-schema";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -29,6 +32,7 @@ export default function SignUp() {
       password: "",
     },
   });
+  const router = useRouter();
 
   const handleSignUp = async (data: SignUpFormData) => {
     if (isSubmitting) return;
@@ -45,8 +49,23 @@ export default function SignUp() {
       const response = await signup(formData);
       if (response?.error) {
         setErrorMessage(response.error);
+      } else if (!response?.signedIn) {
+        if (response?.exists) {
+          toast.error("An account with this email already exists.");
+          // Redirect to sign in page
+          router.push("/signin");
+        } else {
+          toast.success(
+            "Account created successfully. Please check your email to verify your account.",
+          );
+          form.reset();
+        }
       } else {
-        form.reset();
+        // Redirect to settings
+        toast.info(
+          "An account with this email already exists, signing you in...",
+        );
+        router.push("/settings");
       }
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
@@ -55,13 +74,12 @@ export default function SignUp() {
     }
   };
 
-  const handleGoogleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleOAuthSignUp = async (provider: Provider) => {
     setErrorMessage(null);
     try {
-      await signinWithGoogle();
+      await signinWithOAuth(provider);
     } catch (error) {
-      setErrorMessage("Failed to sign up with Google. Please try again.");
+      setErrorMessage("An unexpected error occurred. Please try again.");
     }
   };
 
@@ -76,7 +94,7 @@ export default function SignUp() {
           </div>
 
           <div className="mx-auto max-w-sm">
-            <form onSubmit={handleGoogleSignUp}>
+            <form onSubmit={(e) => handleOAuthSignUp("google")}>
               <Button
                 type="submit"
                 size="lg"
@@ -93,7 +111,26 @@ export default function SignUp() {
                 </span>
               </Button>
             </form>
-
+            <form onSubmit={(e) => handleOAuthSignUp("github")}>
+              <div className="-mx-3 flex flex-wrap">
+                <div className="mt-6 w-full px-3">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="relative flex w-full items-center rounded-md bg-gray-700 px-0 text-white-main hover:bg-gray-800"
+                  >
+                    <GitHubLogo className="text-white mx-4 h-4 w-4 shrink-0" />
+                    <span
+                      className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
+                      aria-hidden="true"
+                    />
+                    <span className="-ml-16 flex-auto pl-16 pr-8">
+                      Sign up with GitHub
+                    </span>
+                  </Button>
+                </div>
+              </div>
+            </form>
             <div className="my-6 flex items-center">
               <div
                 className="mr-3 grow border-t border-dotted border-gray-700"

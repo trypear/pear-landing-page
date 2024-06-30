@@ -62,7 +62,7 @@ export default async function Settings() {
               {/* Show only if the user does not have a subscription */}
               <Button asChild size="sm" className="max-w-max">
                 {/* TODO: Link to pricing page */}
-                <Link href="#">Upgrade to Pro</Link>
+                <Link href="/pricing">Upgrade to Pro</Link>
               </Button>
             </div>
           </div>

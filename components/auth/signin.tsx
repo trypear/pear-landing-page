@@ -3,10 +3,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { signin, signinWithGoogle } from "@/app/(auth)/actions";
+import { signin, signinWithOAuth } from "@/app/(auth)/actions";
+import { Provider } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
-import { Input } from "../ui/input";
-import { GoogleLogo } from "../ui/icons";
+import { Input } from "@/components/ui/input";
+import { GitHubLogo, GoogleLogo } from "@/components/ui/icons";
 import {
   Form,
   FormField,
@@ -51,13 +52,12 @@ export default function SignIn() {
     }
   };
 
-  const handleGoogleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleOAuthSignIn = async (provider: Provider) => {
     setErrorMessage(null);
     try {
-      await signinWithGoogle();
+      await signinWithOAuth(provider);
     } catch (error) {
-      setErrorMessage("Failed to sign in with Google. Please try again.");
+      setErrorMessage("An unexpected error occurred. Please try again.");
     }
   };
 
@@ -70,7 +70,7 @@ export default function SignIn() {
           </div>
 
           <div className="mx-auto max-w-sm">
-            <form onSubmit={handleGoogleSignIn}>
+            <form onSubmit={(e) => handleOAuthSignIn("google")}>
               <Button
                 type="submit"
                 size="lg"
@@ -87,7 +87,26 @@ export default function SignIn() {
                 </span>
               </Button>
             </form>
-
+            <form onSubmit={(e) => handleOAuthSignIn("github")}>
+              <div className="-mx-3 flex flex-wrap">
+                <div className="mt-6 w-full px-3">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="relative flex w-full items-center rounded-md bg-gray-700 px-0 text-white-main hover:bg-gray-800"
+                  >
+                    <GitHubLogo className="text-white mx-4 h-4 w-4 shrink-0" />
+                    <span
+                      className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
+                      aria-hidden="true"
+                    />
+                    <span className="-ml-16 flex-auto pl-16 pr-8">
+                      Sign in with GitHub
+                    </span>
+                  </Button>
+                </div>
+              </div>
+            </form>
             <div className="my-6 flex items-center">
               <div
                 className="mr-3 grow border-t border-dotted border-gray-700"

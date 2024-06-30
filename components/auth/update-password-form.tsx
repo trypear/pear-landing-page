@@ -18,6 +18,9 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Metadata } from "next";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { updateUser } from "@/app/(auth)/actions";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export const metadata: Metadata = constructMetadata({
   title: "Update password",
@@ -26,6 +29,8 @@ export const metadata: Metadata = constructMetadata({
 });
 
 const UpdatePasswordForm = () => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const form = useForm<UpdatePasswordFormData>({
     resolver: zodResolver(updatePasswordSchema),
     defaultValues: {
@@ -33,6 +38,7 @@ const UpdatePasswordForm = () => {
       confirmPassword: "",
     },
   });
+
   const {
     formState: { isSubmitting },
   } = form;
@@ -40,7 +46,21 @@ const UpdatePasswordForm = () => {
   const handleUpdatePassword: SubmitHandler<
     UpdatePasswordFormData
   > = async () => {
-    // TODO: Handle the update password functionality
+    if (isSubmitting) return;
+    setErrorMessage(null);
+
+    try {
+      const data = form.getValues();
+      const response = await updateUser(data);
+      if (response?.error) {
+        setErrorMessage(response.error);
+      } else {
+        toast.success("Password updated successfully.");
+        form.reset();
+      }
+    } catch (error) {
+      setErrorMessage("An unexpected error occurred. Please try again.");
+    }
   };
 
   return (
@@ -77,7 +97,9 @@ const UpdatePasswordForm = () => {
             </FormItem>
           )}
         />
-
+        {errorMessage && (
+          <p className="text-center text-sm text-red-500">{errorMessage}</p>
+        )}
         <Button
           className="mt-6 w-full rounded-md bg-primary-700 text-white-50 hover:bg-primary-800 hover:shadow-sm"
           disabled={isSubmitting}
