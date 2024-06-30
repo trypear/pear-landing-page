@@ -13,6 +13,7 @@ import {
 } from "@supabase/supabase-js";
 import { UpdatePasswordFormData } from "@/utils/form-schema";
 import { headers } from "next/headers";
+import { getURL } from "@/lib/utils";
 
 export async function signin(formData: FormData) {
   const supabase = createClient();
@@ -91,7 +92,7 @@ export async function signinWithOAuth(provider: Provider) {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
-      redirectTo: `${protocol}://${host}/auth/callback`,
+      redirectTo: `${getURL()}/auth/callback`,
     },
   });
 
@@ -113,7 +114,7 @@ export async function resetPassword(formData: FormData) {
   const email = formData.get("email") as string;
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${process.env.NEXT_PUBLIC_REDIRECT_URL}/update-password`,
+    redirectTo: `${getURL()}/update-password`,
   });
 
   if (error) {
