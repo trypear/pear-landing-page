@@ -12,15 +12,21 @@ type MetadataProps = {
   ogImage?: string;
 };
 
+const defaultMetadata = {
+  title: "PearAI - Open Source AI Code Editor for Fast Development",
+  description:
+    "PearAI is an Open-source AI-powered code editor with features like AI chat, inline prompts, and debugging to accelerate your coding process.",
+};
+
 export const constructMetadata = ({
   title,
-  description = "The open source AI-powered code editor",
+  description = defaultMetadata.description,
   canonical = "/",
   ogImage = "",
 }: MetadataProps) => {
   return {
     metadataBase: new URL("https://trypear.ai/"),
-    title: title ? `${title} - pear.ai` : "Home - pear.ai",
+    title: title ? `${title} - pear.ai` : defaultMetadata.title,
     description,
     keywords: ["code editor", "ai code editor", "ai", "pearai"],
     alternates: {
