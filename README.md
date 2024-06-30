@@ -2,7 +2,7 @@
 
 <div align="center">
   <div align="center">
-    <img src="components/ui/PearLight70x70.svg" alt="PearAI Logo" />
+    <img src="components/ui/PearHeroLogo.svg" alt="PearAI Logo" />
   </div>
   <h3 align="center">PearAI Landing Page</h3>
   <p align="center">
