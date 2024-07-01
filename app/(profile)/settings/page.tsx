@@ -36,6 +36,9 @@ export default async function Settings() {
                 <p className="mb-1 text-sm font-medium text-black-300">
                   PearAI Token: {sessionData.session.access_token}
                 </p>
+                <p className="mb-1 text-sm font-medium text-black-300">
+                  PearAI Refresh Token: {sessionData.session.refresh_token}
+                </p>
               </div>
             </div>
           </div>
