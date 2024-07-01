@@ -22,7 +22,7 @@ export const constructMetadata = ({
   title,
   description = defaultMetadata.description,
   canonical = "/",
-  ogImage = "",
+  ogImage = "/images/og-image.png",
 }: MetadataProps) => {
   return {
     metadataBase: new URL("https://trypear.ai/"),
@@ -43,22 +43,20 @@ export const constructMetadata = ({
         url: "https://github.com/Fryingpannn",
       },
     ],
-
-    // --- need a ogImage design for this ---
-    // openGraph: {
-    //     title,
-    //     description,
-    //     type: "website",
-    //     url: canonical,
-    //     images: [
-    //       {
-    //         url: ogImage,
-    //         width: 1200,
-    //         height: 630,
-    //         alt: "OG Image",
-    //       },
-    //     ],
-    //   },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url: canonical,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: "OG Image",
+        },
+      ],
+    },
 
     // --- will add this once we get the logo ---
     // icons: {
