@@ -20,7 +20,9 @@ export default function SettingsPage({ user }: SettingsPageProps) {
     const refreshToken = searchParams.get("refreshToken");
 
     if (callback && accessToken && refreshToken) {
-      router.push(`${callback}/${accessToken}/${refreshToken}`);
+      router.push(
+        `${callback}?accessToken=${accessToken}&refreshToken=${refreshToken}`,
+      );
       // TODO: clear the tokens from query?
     } else if (callback) {
       // Alert user if callback is present but either accessToken or refreshToken is null
