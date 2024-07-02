@@ -24,16 +24,25 @@ export async function signin(
     password: formData.get("password") as string,
   };
 
-  const { error } = await supabase.auth.signInWithPassword(data);
+  const { data: res, error } = await supabase.auth.signInWithPassword(data);
 
   if (error) {
     return { error: error.message };
   }
 
   revalidatePath("/", "layout");
-  redirect(
-    `/settings${callbackForDesktopApp ? `?callback=${callbackForDesktopApp}` : ""}`,
-  );
+
+  if (callbackForDesktopApp && res) {
+    // if login in from desktop app
+    const accessToken = res.session.access_token;
+    const refreshToken = res.session.refresh_token;
+    const encodedAccessToken = encodeURIComponent(accessToken);
+    const encodedRefreshToken = encodeURIComponent(refreshToken);
+    return redirect(
+      `/settings?callback=${encodeURIComponent(callbackForDesktopApp)}&accessToken=${encodedAccessToken}&refreshToken=${encodedRefreshToken}`,
+    );
+  }
+  redirect(`/settings`);
 }
 
 // Flow: User signs up with email and password
