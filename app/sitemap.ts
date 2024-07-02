@@ -10,7 +10,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/terms-of-service",
     "/signin",
     "/signup",
-  ]; // will auth routes once its done
+    "/reset-password",
+    "/update-password",
+    "/verification",
+  ];
 
   return pages.map((page) => ({
     url: `${baseUrl}${page}`,
