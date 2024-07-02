@@ -1,7 +1,7 @@
 "use client";
 import { User } from "@supabase/supabase-js";
-import { Link } from "lucide-react";
-import { Button } from "./ui/button";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
@@ -74,17 +74,18 @@ export default function SettingsPage({ user }: SettingsPageProps) {
             {/* Usage */}
             <div className="flex flex-col rounded-md border p-3">
               <h3 className="mb-3 text-2xl font-semibold">Usage</h3>
+              <div className="flex h-full flex-col justify-between">
+                {/* Show only if the user already has a subscription */}
+                <p className="font-small">Coming soon</p>
 
-              {/* Show only if the user already has a subscription */}
-              <p className="font-small">Coming soon</p>
-
-              {process.env.VERCEL_ENV !== "production" && (
-                <Button asChild size="sm" className="max-w-max">
-                  {/* Show only if the user does not have a subscription */}
-                  {/* TODO: Link to pricing page */}
-                  <Link href="/pricing">Upgrade to Pro</Link>
-                </Button>
-              )}
+                {process.env.VERCEL_ENV !== "production" && (
+                  <Button asChild size="sm" className="mb-1 max-w-max">
+                    {/* Show only if the user does not have a subscription */}
+                    {/* TODO: Link to pricing page */}
+                    <Link href="/pricing">Upgrade to Pro</Link>
+                  </Button>
+                )}
+              </div>
             </div>
           </div>
         </div>
