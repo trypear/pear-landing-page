@@ -1,3 +1,4 @@
+import Token from "@/components/settings/Token";
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/utils/supabase/server";
 import Link from "next/link";
@@ -50,19 +51,19 @@ export default async function Settings() {
                       </td>
                       <td className="break-all">{data.user.email}</td>
                     </tr>
-                    <tr>
-                      <td colSpan={2}>
-                        <p className="text-black-300 mb-1 break-all text-sm font-medium">
-                          PearAI Token: {sessionData.session.access_token}
-                        </p>
-                        <p className="text-black-300 mb-1 break-all text-sm font-medium">
-                          PearAI Refresh Token:{" "}
-                          {sessionData.session.refresh_token}
-                        </p>
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
+
+                <div className="mt-4 space-y-3">
+                  <Token
+                    name="PearAI Token"
+                    value={sessionData.session.access_token}
+                  />
+                  <Token
+                    name="PearAI Refresh Token"
+                    value={sessionData.session.refresh_token}
+                  />
+                </div>
                 {data.user.app_metadata.provider === "email" && (
                   <Button size="sm" className="mt-4">
                     <Link href="/update-password">Update Password</Link>
