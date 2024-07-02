@@ -14,7 +14,7 @@ export default async function Header() {
   ];
 
   const supabase = createClient();
-  const supabaseUser = await supabase.auth.getUser();
+  const supabaseUserResponse = await supabase.auth.getUser();
 
   const handleSignOut = async () => {
     "use server";
@@ -50,9 +50,9 @@ export default async function Header() {
           {/* AuthButton is hidden in production */}
           <MobileMenu
             supabaseUser={
-              supabaseUser.error != null
-                ? supabaseUser.error.message
-                : supabaseUser
+              supabaseUserResponse.error || !supabaseUserResponse.data.user
+                ? "User not found"
+                : supabaseUserResponse
             }
             handleSignOut={handleSignOut}
           />

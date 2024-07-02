@@ -1,12 +1,22 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, SetStateAction, Dispatch } from "react";
 import Link from "next/link";
 import { Button } from "./button";
 import { HamburgerMenuIcon } from "./icons";
-import AuthButtonMobile from "./authbutton-mobile";
+import { UserResponse } from "@supabase/supabase-js";
 
-export default function MobileMenu({ handleSignOut, supabaseUser }: any) {
+export const USER_NOT_FOUND: string = "User not found";
+
+type SupabaseUserType = UserResponse | typeof USER_NOT_FOUND;
+
+export default function MobileMenu({
+  handleSignOut,
+  supabaseUser,
+}: {
+  handleSignOut: () => Promise<never>;
+  supabaseUser: SupabaseUserType;
+}) {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
 
   const trigger = useRef<HTMLButtonElement>(null);
@@ -68,5 +78,52 @@ export default function MobileMenu({ handleSignOut, supabaseUser }: any) {
         <p>{""}</p>
       </nav>
     </div>
+  );
+}
+
+function AuthButtonMobile({
+  setMobileNavOpen,
+  handleSignOut,
+  supabaseUser,
+}: {
+  setMobileNavOpen: Dispatch<SetStateAction<boolean>>;
+  handleSignOut: () => Promise<never>;
+  supabaseUser: SupabaseUserType;
+}) {
+  if (supabaseUser === USER_NOT_FOUND) {
+    return (
+      <>
+        <Button asChild className="w-full rounded-full">
+          <Link onClick={() => setMobileNavOpen(false)} href={"/signin"}>
+            Sign In
+          </Link>
+        </Button>
+        <Button asChild variant="outline" className="w-full">
+          <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
+            Sign Up
+          </Link>
+        </Button>
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Button asChild className="w-full rounded-full">
+        <Link onClick={() => setMobileNavOpen(false)} href={"/settings"}>
+          Settings
+        </Link>
+      </Button>
+      <Button
+        onClick={() => setMobileNavOpen(false)}
+        asChild
+        variant="outline"
+        className="w-full"
+      >
+        <form action={handleSignOut}>
+          <button className="h-full w-full">Sign Out</button>
+        </form>
+      </Button>
+    </>
   );
 }
