@@ -11,7 +11,6 @@ import {
   Session,
 } from "@supabase/supabase-js";
 import { UpdatePasswordFormData } from "@/utils/form-schema";
-import { headers } from "next/headers";
 import { getURL } from "@/lib/utils";
 
 export async function signin(formData: FormData) {
@@ -93,6 +92,9 @@ export async function signinWithOAuth(provider: Provider) {
   }
 
   if (data.url) {
+    console.log("here");
+    console.log(data);
+    console.log(data.url);
     redirect(data.url);
   }
 
