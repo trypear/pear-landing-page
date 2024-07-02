@@ -95,12 +95,12 @@ function AuthButtonMobile({
       <>
         <Button asChild className="w-full rounded-full">
           <Link onClick={() => setMobileNavOpen(false)} href={"/signin"}>
-            Sign In
+            Sign in
           </Link>
         </Button>
         <Button asChild variant="outline" className="w-full">
           <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
-            Sign Up
+            Sign up
           </Link>
         </Button>
       </>
@@ -121,7 +121,7 @@ function AuthButtonMobile({
         className="w-full"
       >
         <form action={handleSignOut}>
-          <button className="h-full w-full">Sign Out</button>
+          <button className="w-full">Sign out</button>
         </form>
       </Button>
     </>
