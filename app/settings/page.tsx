@@ -11,7 +11,8 @@ export default async function Settings() {
     redirect("/signin");
   }
 
-  const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+  const { data: sessionData, error: sessionError } =
+    await supabase.auth.getSession();
   if (sessionError || !sessionData?.session) {
     redirect("/signin");
   }
@@ -33,13 +34,15 @@ export default async function Settings() {
             <div className="rounded-md border p-4">
               <h3 className="mb-3 text-2xl font-semibold">Basic Info</h3>
               <div className="overflow-x-hidden">
-                <table className="table-auto w-full">
+                <table className="w-full table-auto">
                   <tbody className="text-sm">
                     <tr>
                       <td className="whitespace-nowrap pr-1">
                         <span className="text-gray-500">Full Name:</span>{" "}
                       </td>
-                      <td className="break-all">{data.user.user_metadata.full_name}</td>
+                      <td className="break-all">
+                        {data.user.user_metadata.full_name}
+                      </td>
                     </tr>
                     <tr>
                       <td className="whitespace-nowrap pr-1">
@@ -49,11 +52,12 @@ export default async function Settings() {
                     </tr>
                     <tr>
                       <td colSpan={2}>
-                        <p className="mb-1 text-sm font-medium text-black-300 break-all">
+                        <p className="text-black-300 mb-1 break-all text-sm font-medium">
                           PearAI Token: {sessionData.session.access_token}
                         </p>
-                        <p className="mb-1 text-sm font-medium text-black-300 break-all">
-                          PearAI Refresh Token: {sessionData.session.refresh_token}
+                        <p className="text-black-300 mb-1 break-all text-sm font-medium">
+                          PearAI Refresh Token:{" "}
+                          {sessionData.session.refresh_token}
                         </p>
                       </td>
                     </tr>
@@ -66,8 +70,6 @@ export default async function Settings() {
                 )}
               </div>
             </div>
-
-
 
             {/* Usage */}
             <div className="flex flex-col rounded-md border p-3">
