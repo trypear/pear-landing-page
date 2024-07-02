@@ -92,9 +92,6 @@ export async function signinWithOAuth(provider: Provider) {
   }
 
   if (data.url) {
-    console.log("here");
-    console.log(data);
-    console.log(data.url);
     redirect(data.url);
   }
 
