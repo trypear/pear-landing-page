@@ -13,7 +13,10 @@ import {
 import { UpdatePasswordFormData } from "@/utils/form-schema";
 import { getURL } from "@/lib/utils";
 
-export async function signin(formData: FormData) {
+export async function signin(
+  formData: FormData,
+  callbackForDesktopApp: string,
+) {
   const supabase = createClient();
 
   const data: SignInWithPasswordCredentials = {
@@ -28,7 +31,9 @@ export async function signin(formData: FormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/settings");
+  redirect(
+    `/settings${callbackForDesktopApp ? `?callback=${callbackForDesktopApp}` : ""}`,
+  );
 }
 
 // Flow: User signs up with email and password
@@ -78,12 +83,20 @@ export async function signup(formData: FormData) {
 }
 
 // OAuth sign-in with Google or GitHub
-export async function signinWithOAuth(provider: Provider) {
+export async function signinWithOAuth(
+  provider: Provider,
+  callbackForDesktopApp: string | string[] = "",
+) {
   const supabase = createClient();
+
+  const redirectToUrl = callbackForDesktopApp
+    ? `${getURL()}/auth/callback?callback=${callbackForDesktopApp}`
+    : `${getURL()}/auth/callback`;
+
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: provider,
     options: {
-      redirectTo: `${getURL()}/auth/callback`,
+      redirectTo: redirectToUrl,
     },
   });
 

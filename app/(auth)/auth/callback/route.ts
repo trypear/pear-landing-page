@@ -31,17 +31,19 @@ export async function GET(request: Request) {
       },
     );
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error && data) {
-      if (callback) {
-        // redirect to desktop pearai app
+    if (!error) {
+      const response = NextResponse.redirect(`${origin}${next}`);
+      if (callback && data) {
+        // if login in from desktop app
         const accessToken = data.session.access_token;
         const refreshToken = data.session.refresh_token;
+        const encodedAccessToken = encodeURIComponent(accessToken);
+        const encodedRefreshToken = encodeURIComponent(refreshToken);
         return NextResponse.redirect(
-          `${callback}?accessToken=${accessToken}&refreshToken=${refreshToken}`,
+          `${origin}${next}?callback=${encodeURIComponent(callback)}&accessToken=${encodedAccessToken}&refreshToken=${encodedRefreshToken}`,
         );
-      } else {
-        return NextResponse.redirect(`${origin}${next}`);
       }
+      return response;
     }
     authError =
       error?.message ?? "Error during code exchange for oauth session";
