@@ -2,12 +2,6 @@ import SettingsPage from "@/components/settings";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
-export type PearAiDesktopAppCallback = {
-  callback: string;
-  accessToken: string;
-  refreshToken: string;
-};
-
 export default async function Settings() {
   const supabase = createClient();
 
