@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Download } from "lucide-react";
 import Link from "next/link";
 import { User } from "@supabase/supabase-js";
+import { toast } from "sonner";
 
 interface PricingTierProps {
   title: string;
@@ -38,7 +39,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleCheckout = async () => {
-    if (isSubmitting) return; // Prevent multiple submissions
+    if (!user) {
+      toast.error("Please log in to subscribe to this plan.");
+      return;
+    }
+
+    if (isSubmitting) return;
 
     setIsSubmitting(true);
     try {
@@ -49,7 +55,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
         },
         body: JSON.stringify({
           priceId,
-          userId: user?.id || null,
+          userId: user.id,
         }),
       });
 
@@ -62,12 +68,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
       if (url) {
         window.location.href = url;
       } else {
-        console.error("No URL returned from the server");
-        // Toast error message
+        toast.error("Failed to start checkout process. Please try again.");
       }
     } catch (error) {
-      console.error("Error:", error);
-      // Toast error message
+      toast.error("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
