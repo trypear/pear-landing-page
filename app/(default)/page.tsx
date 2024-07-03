@@ -1,11 +1,8 @@
-import Hero from "@/components/hero";
 import Features from "@/components/features";
-import Newsletter from "@/components/newsletter";
-import Zigzag from "@/components/zigzag";
+import Hero from "@/components/hero";
 import Try from "@/components/try";
-import Testimonials from "@/components/testimonials";
-import { Metadata } from "next/types";
 import { constructMetadata } from "@/lib/utils";
+import { Metadata } from "next/types";
 
 export const metadata: Metadata = constructMetadata({
   canonical: "/",
