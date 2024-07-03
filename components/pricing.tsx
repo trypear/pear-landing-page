@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardContent,
@@ -10,39 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Check, Download } from "lucide-react";
 import Link from "next/link";
-
-const CHECKOUT_URL = "http://127.0.0.1:8000/payment/create-checkout-session";
-
-const addCheckoutSession = async (
-  event: React.FormEvent<HTMLFormElement>,
-  planName: string,
-) => {
-  event.preventDefault();
-
-  const checkoutData = {
-    productPlan: planName,
-  };
-
-  try {
-    const res = await fetch(CHECKOUT_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(checkoutData),
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      window.location.href = data.url;
-    } else {
-      console.error("Failed to checkout");
-    }
-  } catch (err) {
-    console.error("Error", err);
-  }
-};
+import { User } from "@supabase/supabase-js";
 
 interface PricingTierProps {
   title: string;
@@ -51,8 +19,12 @@ interface PricingTierProps {
   features?: string[];
   buttonText?: string;
   isFree?: boolean;
+  priceId?: string;
+  user: User | null;
 }
-
+interface PricingPageProps {
+  user: User | null;
+}
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
   price,
@@ -60,68 +32,103 @@ const PricingTier: React.FC<PricingTierProps> = ({
   features,
   buttonText,
   isFree = false,
-}) => (
-  <Card className="flex h-full w-full flex-col border border-primary-700">
-    <CardHeader className="flex-grow space-y-3 p-6">
-      <CardTitle className="text-2xl text-primary-700">{title}</CardTitle>
-      <p className="text-sm font-medium text-gray-400 sm:text-base">
-        {description}
-      </p>
-    </CardHeader>
-    <CardContent className="flex flex-col space-y-6 p-6">
-      {!isFree && (
-        <p className="text-3xl font-medium sm:text-4xl">
-          ${price}
-          <span className="text-lg font-normal sm:text-xl"> /month</span>
-        </p>
-      )}
-      {isFree ? (
-        <>
-          <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download className="mr-2 h-4 w-4" /> Windows
-          </Button>
-          <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download className="mr-2 h-4 w-4" /> macOS
-          </Button>
-          <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download className="mr-2 h-4 w-4" /> Linux
-          </Button>
-        </>
-      ) : (
-        <form
-          onSubmit={(e) => {
-            addCheckoutSession(e, title);
-          }}
-          method="POST"
-        >
-          <Button
-            type="submit"
-            className="w-full rounded-2xl bg-primary-700 py-4 text-center text-base text-white-50 hover:bg-primary-800"
-          >
-            {buttonText}
-          </Button>
-        </form>
-      )}
-    </CardContent>
-    <CardFooter className="p-6">
-      {!isFree && features && (
-        <ul className="flex-grow space-y-4">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-center">
-              <Check className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700" />
-              <span className="text-sm font-medium text-primary-700 sm:text-base">
-                {feature}
-              </span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </CardFooter>
-  </Card>
-);
+  priceId,
+  user,
+}) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-const PricingPage: React.FC = () => {
-  const tiers: PricingTierProps[] = [
+  const handleCheckout = async () => {
+    if (isSubmitting) return; // Prevent multiple submissions
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          priceId,
+          userId: user?.id || null,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const { url } = await response.json();
+
+      if (url) {
+        window.location.href = url;
+      } else {
+        console.error("No URL returned from the server");
+        // Toast error message
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      // Toast error message
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  return (
+    <Card className="flex h-full w-full flex-col border border-primary-700">
+      <CardHeader className="flex-grow space-y-3 p-6">
+        <CardTitle className="text-2xl text-primary-700">{title}</CardTitle>
+        <p className="text-sm font-medium text-gray-400 sm:text-base">
+          {description}
+        </p>
+      </CardHeader>
+      <CardContent className="flex flex-col space-y-6 p-6">
+        {!isFree && (
+          <p className="text-3xl font-medium sm:text-4xl">
+            ${price}
+            <span className="text-lg font-normal sm:text-xl"> /month</span>
+          </p>
+        )}
+        {isFree ? (
+          <>
+            <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
+              <Download className="mr-2 h-4 w-4" /> Windows
+            </Button>
+            <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
+              <Download className="mr-2 h-4 w-4" /> macOS
+            </Button>
+            <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
+              <Download className="mr-2 h-4 w-4" /> Linux
+            </Button>
+          </>
+        ) : (
+          <Button
+            onClick={handleCheckout}
+            className="w-full rounded-2xl bg-primary-700 py-4 text-center text-base text-white-50 hover:bg-primary-800"
+            disabled={isSubmitting}
+            isLoading={isSubmitting}
+          >
+            {isSubmitting ? "Processing..." : buttonText}
+          </Button>
+        )}
+      </CardContent>
+      <CardFooter className="p-6">
+        {!isFree && features && (
+          <ul className="flex-grow space-y-4">
+            {features.map((feature, index) => (
+              <li key={index} className="flex items-center">
+                <Check className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700" />
+                <span className="text-sm font-medium text-primary-700 sm:text-base">
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </CardFooter>
+    </Card>
+  );
+};
+const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
+  const tiers: Omit<PricingTierProps, "user">[] = [
     {
       title: "Free",
       price: "0",
@@ -141,6 +148,7 @@ const PricingPage: React.FC = () => {
         "Unlimited Copilot++ completions",
       ],
       buttonText: "Get Started",
+      priceId: "price_1PXnJCAglzir3DVbp5mY53gH",
     },
     {
       title: "Yearly",
@@ -153,6 +161,7 @@ const PricingPage: React.FC = () => {
         "Unlimited Copilot++ completions",
       ],
       buttonText: "Get Started",
+      priceId: "price_1PXnJCAglzir3DVbATy9fhLa",
     },
   ];
 
@@ -174,7 +183,7 @@ const PricingPage: React.FC = () => {
           <div className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3">
             {tiers.map((tier, index) => (
               <div key={index} className="w-full">
-                <PricingTier {...tier} />
+                <PricingTier {...tier} user={user} />
               </div>
             ))}
           </div>
