@@ -1,6 +1,7 @@
 import PricingPage from "@/components/pricing";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
+import dynamic from "next/dynamic";
 
 export const metadata: Metadata = constructMetadata({
   title: "Pricing",

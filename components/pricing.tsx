@@ -11,6 +11,39 @@ import { Button } from "@/components/ui/button";
 import { Check, Download } from "lucide-react";
 import Link from "next/link";
 
+const CHECKOUT_URL = "http://127.0.0.1:8000/payment/create-checkout-session";
+
+const addCheckoutSession = async (
+  event: React.FormEvent<HTMLFormElement>,
+  planName: string,
+) => {
+  event.preventDefault();
+
+  const checkoutData = {
+    productPlan: planName,
+  };
+
+  try {
+    const res = await fetch(CHECKOUT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(checkoutData),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      window.location.href = data.url;
+    } else {
+      console.error("Failed to checkout");
+    }
+  } catch (err) {
+    console.error("Error", err);
+  }
+};
+
 interface PricingTierProps {
   title: string;
   price: string;
@@ -19,29 +52,6 @@ interface PricingTierProps {
   buttonText?: string;
   isFree?: boolean;
 }
-
-const CHECKOUT_URL = "http://127.0.0.1:8000/payment/create-checkout-session";
-
-const addCheckoutSession = async (event: React.FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-
-  try {
-    const res = await fetch(CHECKOUT_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (res.ok) {
-      window.location.href = CHECKOUT_URL;
-    } else {
-      console.error("Failed to checkout");
-    }
-  } catch (err) {
-    console.error("Error", err);
-  }
-};
 
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
@@ -78,7 +88,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
           </Button>
         </>
       ) : (
-        <form onSubmit={addCheckoutSession} method="POST">
+        <form
+          onSubmit={(e) => {
+            addCheckoutSession(e, title);
+          }}
+          method="POST"
+        >
           <Button
             type="submit"
             className="w-full rounded-2xl bg-primary-700 py-4 text-center text-base text-white-50 hover:bg-primary-800"
