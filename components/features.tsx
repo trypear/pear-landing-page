@@ -85,7 +85,7 @@ function SingleFeature(props: SingleFeatureProps) {
         </h1>
         <br />
         <div
-          className="text-md whitespace-pre-line lg:text-lg"
+          className="text-md whitespace-pre-line dark:text-gray-300 lg:text-lg"
           data-aos="fade-up"
         >
           {props.info.description}

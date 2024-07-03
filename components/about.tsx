@@ -27,7 +27,7 @@ const videoData: VideoData[] = [
 const AboutComponent: React.FC = () => {
   return (
     <section
-      className="to-white bg-gradient-to-b from-gray-50 px-4 py-12 pt-20"
+      className="to-white bg-gradient-to-b from-gray-50 px-4 py-12 pt-20 dark:bg-none"
       data-aos="fade-up"
       data-aos-delay="200"
     >
@@ -39,7 +39,7 @@ const AboutComponent: React.FC = () => {
               Fully <span className="text-primary-700">transparent</span>,
               PearAI is built in public
             </h2>
-            <p className="mb-4 text-secondary-400">
+            <p className="mb-4 text-secondary-400 dark:text-gray-300">
               PearAI&apos;s goal is to reduce the time it takes for an
               individual to go from idea to creation. Coding itself is a crucial
               tool in product development, and we believe that with the
@@ -50,7 +50,7 @@ const AboutComponent: React.FC = () => {
             <h3 className="mb-2 text-xl font-semibold">
               Current features include:
             </h3>
-            <ul className="mb-8 list-inside list-disc text-secondary-400">
+            <ul className="mb-8 list-inside list-disc text-secondary-400 dark:text-gray-300">
               <li>Codebase context: talk to your code</li>
               <li>Built-in PearAI chat</li>
               <li>Inline AI prompting and diff changes</li>
@@ -64,7 +64,7 @@ const AboutComponent: React.FC = () => {
             </div>
 
             <h2 className="mb-4 text-2xl font-bold">Founders</h2>
-            <div className="space-y-4 text-secondary-400">
+            <div className="space-y-4 text-secondary-400 dark:text-gray-300">
               <p>
                 PearAI is founded by Pan and Nang, both former software
                 engineers who worked on developer tooling at companies like
@@ -115,7 +115,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
           allowFullScreen
         />
       </div>
-      <CardDescription className="text-lg text-secondary-500">
+      <CardDescription className="text-lg text-secondary-500 dark:text-gray-500">
         {description}
       </CardDescription>
     </CardContent>

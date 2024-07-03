@@ -44,13 +44,13 @@ const PricingTier: React.FC<PricingTierProps> = ({
       {isFree ? (
         <>
           <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download className="mr-2 h-4 w-4" /> Windows
+            <Download strokeWidth={1} className="mr-2 h-4 w-4" /> Windows
           </Button>
           <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download className="mr-2 h-4 w-4" /> macOS
+            <Download strokeWidth={1} className="mr-2 h-4 w-4" /> macOS
           </Button>
           <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download className="mr-2 h-4 w-4" /> Linux
+            <Download strokeWidth={1} className="mr-2 h-4 w-4" /> Linux
           </Button>
         </>
       ) : (
@@ -64,7 +64,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
         <ul className="flex-grow space-y-4">
           {features.map((feature, index) => (
             <li key={index} className="flex items-center">
-              <Check className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700" />
+              <Check
+                strokeWidth={1}
+                className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700"
+              />
               <span className="text-sm font-medium text-primary-700 sm:text-base">
                 {feature}
               </span>

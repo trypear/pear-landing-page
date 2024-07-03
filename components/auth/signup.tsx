@@ -133,12 +133,14 @@ export default function SignUp() {
             </form>
             <div className="my-6 flex items-center">
               <div
-                className="mr-3 grow border-t border-dotted border-gray-700"
+                className="mr-3 grow border-t border-dotted border-gray-700 dark:border-gray-500"
                 aria-hidden="true"
               />
-              <div className="text-gray-700">Or, register with your email</div>
+              <div className="text-gray-700 dark:text-gray-500">
+                Or, register with your email
+              </div>
               <div
-                className="ml-3 grow border-t border-dotted border-gray-700"
+                className="ml-3 grow border-t border-dotted border-gray-700 dark:border-gray-500"
                 aria-hidden="true"
               />
             </div>

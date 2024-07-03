@@ -15,20 +15,20 @@ export default async function AuthButton() {
   };
 
   return (
-    <div className="hidden flex-row items-center space-x-1 text-secondary-600 md:flex">
+    <div className="hidden flex-row items-center space-x-1 text-secondary-600 dark:text-white-300 md:flex">
       {error || !data?.user ? (
         <div className="flex flex-row items-center space-x-1">
-          <CircleUserRound className="h-5 w-5" />
+          <CircleUserRound strokeWidth={1} className="h-5 w-5" />
 
           <Link
-            className="transition duration-150 ease-in-out hover:text-secondary-400"
+            className="transition duration-150 ease-in-out hover:text-secondary-400 dark:text-gray-300 dark:hover:text-gray-300"
             href={"/signin"}
           >
             Sign in
           </Link>
-          <span className="text-secondary-600">/</span>
+          <span className="text-secondary-600 dark:text-gray-500">/</span>
           <Link
-            className="transition duration-150 ease-in-out hover:text-secondary-400"
+            className="transition duration-150 ease-in-out hover:text-secondary-400 dark:text-gray-300 dark:hover:text-gray-300"
             href={"/signup"}
           >
             Sign up
@@ -36,16 +36,16 @@ export default async function AuthButton() {
         </div>
       ) : (
         <>
-          <CircleUserRound className="h-5 w-5" />
+          <CircleUserRound strokeWidth={1} className="h-5 w-5" />
           <Link
-            className="transition duration-150 ease-in-out hover:text-secondary-400"
+            className="transition duration-150 ease-in-out hover:text-secondary-400 dark:text-gray-300 dark:hover:text-gray-300"
             href={"/settings"}
           >
             Settings
           </Link>
-          <span className="text-secondary-600">/</span>
+          <span className="text-secondary-600 dark:text-gray-500">/</span>
           <form action={handleSignOut}>
-            <button className="transition duration-150 ease-in-out hover:text-secondary-400">
+            <button className="transition duration-150 ease-in-out hover:text-secondary-400 dark:text-gray-300 dark:hover:text-gray-300">
               Sign out
             </button>
           </form>

@@ -23,7 +23,7 @@ export default function TryPear() {
               Interested in contributing to PearAI?
             </h1>
             <p
-              className="mb-4 text-sm text-secondary-400 sm:text-lg"
+              className="mb-4 text-sm text-secondary-400 dark:text-gray-300 sm:text-lg"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -38,7 +38,7 @@ export default function TryPear() {
               and talk to us directly! 🗣️
             </p>
             <p
-              className="mb-8 text-sm text-secondary-400 sm:text-lg"
+              className="mb-8 text-sm text-secondary-400 dark:text-gray-300 sm:text-lg"
               data-aos="fade-up"
               data-aos-delay="200"
             >

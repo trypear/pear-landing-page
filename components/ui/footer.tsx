@@ -11,14 +11,14 @@ export default function Footer() {
               <div className="mb-2 flex items-center">
                 <Link
                   href="/privacy"
-                  className="ml-3 hover:text-gray-500"
+                  className="ml-3 hover:text-gray-500 dark:hover:text-gray-300"
                   aria-label="Privacy policy"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/terms-of-service"
-                  className="ml-4 hover:text-gray-500"
+                  className="ml-4 hover:text-gray-500 dark:hover:text-gray-300"
                   aria-label="Terms of service"
                 >
                   Terms of Service
