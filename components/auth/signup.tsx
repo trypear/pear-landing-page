@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { GitHubLogo, GoogleLogo } from "@/components/ui/icons";
+import { GitHubLogo, GoogleLogoColored } from "@/components/ui/icons";
 import {
   Form,
   FormField,
@@ -87,7 +87,7 @@ export default function SignUp() {
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
-          <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+          <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl dark:text-gray-300">
             <h1 className="h1">
               Ready to speed up your development experience?
             </h1>
@@ -98,33 +98,34 @@ export default function SignUp() {
               <Button
                 type="submit"
                 size="lg"
-                variant="destructive"
+                variant="authgroup"
                 className="relative flex w-full items-center rounded-md px-0"
               >
-                <GoogleLogo className="text-white mx-4 h-4 w-4 shrink-0" />
-                <span
-                  className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
+                <GoogleLogoColored className="text-white mx-1 h-4 w-4 shrink-0" />
+                {/* <span
+                  className="border-[white] mr-4 flex h-6 items-center border-r border-opacity-50 dark:border-opacity-40"
                   aria-hidden="true"
-                />
-                <span className="-ml-16 flex-auto pl-16 pr-8">
+                /> */}
+                <span className=""> {/* -ml-16 pl-16 pr-8 flex-auto */}
                   Sign up with Google
                 </span>
               </Button>
             </form>
             <form onSubmit={(e) => handleOAuthSignUp("github")}>
               <div className="-mx-3 flex flex-wrap">
-                <div className="mt-6 w-full px-3">
+                <div className="mt-3 w-full px-3">
                   <Button
                     type="submit"
                     size="lg"
-                    className="relative flex w-full items-center rounded-md bg-gray-700 px-0 text-white-main hover:bg-gray-800"
+                    variant="authgroup"
+                    className="relative flex w-full items-center rounded-md px-0"
                   >
-                    <GitHubLogo className="text-white mx-4 h-4 w-4 shrink-0" />
-                    <span
-                      className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
+                    <GitHubLogo className="text-gray-700 dark:text-gray-300 mx-1 h-4 w-4 shrink-0" />
+                    {/* <span
+                      className="border-[white] mr-4 flex h-6 items-center border-r border-opacity-50 dark:border-opacity-40"
                       aria-hidden="true"
-                    />
-                    <span className="-ml-16 flex-auto pl-16 pr-8">
+                    /> */}
+                    <span className=""> {/* -ml-16 pl-16 pr-8 flex-auto */}
                       Sign up with GitHub
                     </span>
                   </Button>
@@ -133,14 +134,14 @@ export default function SignUp() {
             </form>
             <div className="my-6 flex items-center">
               <div
-                className="mr-3 grow border-t border-dotted border-gray-700 dark:border-gray-500"
+                className="mr-3 grow border-t border-dotted border-gray-400 dark:border-gray-600"
                 aria-hidden="true"
               />
-              <div className="text-gray-700 dark:text-gray-500">
+              <div className="text-gray-400 dark:text-gray-600">
                 Or, register with your email
               </div>
               <div
-                className="ml-3 grow border-t border-dotted border-gray-700 dark:border-gray-500"
+                className="ml-3 grow border-t border-dotted border-gray-400 dark:border-gray-600"
                 aria-hidden="true"
               />
             </div>

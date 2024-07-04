@@ -8,7 +8,7 @@ export default function DarkModeToggle() {
 
   useEffect(() => {
     const savedMode = localStorage.getItem("dark");
-    const isDarkMode = JSON.parse(savedMode);
+    const isDarkMode = JSON.parse(savedMode!);
     setDarkMode(isDarkMode);
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
@@ -29,7 +29,8 @@ export default function DarkModeToggle() {
   };
 
   return (
-    <div className="flex h-8 w-8 items-center justify-center text-secondary-600 duration-200 hover:text-secondary-400 dark:text-gray-300 dark:hover:text-white-300">
+    <>
+      <div className="flex h-8 w-8 items-center justify-center text-secondary-600 duration-200 hover:text-secondary-400 dark:text-gray-400 dark:hover:text-white-300">
       <label className="flex h-full w-full cursor-pointer items-center justify-center rounded-full border border-gray-300 duration-200 hover:bg-gray-100 dark:border-gray-500 dark:hover:bg-gray-800">
         <input
           className="hidden"
@@ -50,5 +51,6 @@ export default function DarkModeToggle() {
         )}
       </label>
     </div>
+    </>
   );
 }

@@ -1,4 +1,5 @@
 import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
+import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -6,7 +7,7 @@ export default function Hero() {
   return (
     <section>
       {/* the extra mt-20 is here because the top navbar has been changed to "fixed" so the height of navbar is removed, thus moving the down content shift upwards */}
-      <div className="relative mx-auto mt-20 max-w-6xl px-4 sm:px-6">
+      <div className="relative mx-auto mt-24 max-w-6xl px-4 sm:px-6">
         {/* Illustration behind hero content */}
         <div
           className="pointer-events-none absolute bottom-0 left-0 -ml-20 hidden lg:block"
@@ -36,7 +37,7 @@ export default function Hero() {
         </div>
 
         {/* Hero content */}
-        <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
+        <div className="relative pb-10 pt-32 md:pb-16 md:pt-36">
           {/* Section header */}
           <div className="mx-auto flex max-w-4xl flex-col items-center pb-12 text-center md:pb-16">
             <div className="text-4xl font-semibold sm:text-5xl">
@@ -44,9 +45,14 @@ export default function Hero() {
                 <PearHeroLogo
                   width="26"
                   alt="PearAI Logo"
-                  className="-mt-3 mr-2 inline-flex"
+                  className="inline-flex dark:hidden -mt-3 mr-2"
                 />
-                <span className="text-primary-700">PearAI: </span>
+                <PearDarkHeroLogo
+                  width="26"
+                  alt="PearAI Logo"
+                  className="hidden dark:inline-flex -mt-3 mr-2"
+                />
+                <span className="text-primary-700 dark:text-darkPrimary-500">PearAI: </span>
                 The Open Source AI&#8209;Powered Code Editor
               </div>
               {/* Mobile Layout - Logo + PearAI on it's own line*/}
@@ -55,9 +61,14 @@ export default function Hero() {
                   <PearHeroLogo
                     width="26"
                     alt="PearAI Logo"
-                    className="-mt-3 mr-2 inline-flex"
+                    className="inline-flex dark:hidden -mt-3 mr-2"
                   />
-                  <span className="text-primary-700">PearAI </span>
+                  <PearDarkHeroLogo
+                    width="26"
+                    alt="PearAI Logo"
+                    className="hidden dark:inline-flex -mt-3 mr-2"
+                  />
+                  <span className="text-primary-700 dark:text-darkPrimary-500">PearAI </span>
                 </div>
                 <span className="flex flex-col text-3xl">
                   <span>The Open Source</span>{" "}
@@ -68,7 +79,7 @@ export default function Hero() {
 
             <div className="mt-6 max-w-md sm:max-w-lg">
               <p
-                className="mb-2 text-sm text-secondary-400 dark:text-gray-300 sm:text-lg"
+                className="mb-2 text-sm text-secondary-400 dark:text-gray-400 sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
@@ -76,7 +87,7 @@ export default function Hero() {
                 into your workflow 🚀
               </p>
               <p
-                className="mb-4 text-sm text-secondary-400 dark:text-gray-300 sm:text-lg"
+                className="mb-4 text-sm text-secondary-400 dark:text-gray-400 sm:text-lg"
                 data-aos="fade-up"
                 data-aos-delay="200"
               >

@@ -105,6 +105,7 @@ To run the project locally:
 2. Visit `http://localhost:3000` in your browser.
 
 ### Recommended Extensions
+
 - Prettier
   - Open your command palette, choose your default formatter to be Prettier, and enable format on save.
 - ESLint

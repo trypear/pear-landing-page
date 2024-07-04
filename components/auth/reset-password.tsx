@@ -63,8 +63,8 @@ export default function ResetPassword() {
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           {/* Page header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-20">
-            <h1 className="h1 mb-4">Forgot your password?</h1>
-            <p className="text-xl text-gray-400">
+            <h1 className="h1 mb-4 dark:text-gray-300">Forgot your password?</h1>
+            <p className="text-xl text-secondary-400 dark:text-gray-400">
               We&apos;ll email you instructions on how to reset it.
             </p>
           </div>
@@ -117,7 +117,7 @@ export default function ResetPassword() {
             <div className="mt-6 text-center text-gray-400">
               <Link
                 href="/"
-                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
+                className="text-primary-700 dark:text-darkPrimary-500 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Cancel
               </Link>

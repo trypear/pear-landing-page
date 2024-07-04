@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { XMarkIcon } from "./ui/icons";
+import Link from "next/link";
+
 
 export default function Banner() {
   const [bannerOpen, setBannerOpen] = useState<boolean>(true);
@@ -12,23 +14,23 @@ export default function Banner() {
         <div className="fixed bottom-0 right-0 z-50 w-full md:bottom-8 md:right-12 md:w-auto">
           <div className="flex justify-between bg-slate-800 p-3 text-sm text-slate-50 shadow-lg md:rounded">
             <div className="inline-flex text-slate-500">
-              <a
+              <Link
                 className="font-medium text-slate-50 hover:underline"
                 href="https://github.com/cruip/open-react-template"
                 target="_blank"
                 rel="noreferrer"
               >
                 Download<span className="hidden sm:inline"> on GitHub</span>
-              </a>{" "}
+              </Link>{" "}
               <span className="px-1.5 italic">or</span>{" "}
-              <a
+              <Link
                 className="font-medium text-emerald-400 hover:underline"
                 href="https://cruip.com/open-pro/"
                 target="_blank"
                 rel="noreferrer"
               >
                 Check Premium Version
-              </a>
+              </Link>
             </div>
             <button
               className="ml-3 border-l border-gray-700 pl-2 text-slate-500 hover:text-slate-400"

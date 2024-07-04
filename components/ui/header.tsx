@@ -44,7 +44,7 @@ export default function Header() {
             {/* AuthButton is hidden in production */}
 
             <span
-              className="h-6 w-px rounded-full bg-gray-200 dark:bg-gray-500"
+              className="h-6 w-px rounded-full bg-gray-300 dark:bg-gray-500"
               id="button__divider"
             ></span>
 

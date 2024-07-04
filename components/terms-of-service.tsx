@@ -4,7 +4,7 @@ export default function TermsOfServiceComponent() {
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
         {/* Illustration behind hero content */}
         <div
-          className="pointer-events-none absolute bottom-0 left-0 -ml-20 hidden lg:block"
+          className="pointer-events-none absolute bottom-0 left-0 -ml-20 hidden lg:block hue-rotate-[280deg] saturate-150"
           aria-hidden="true"
           data-aos="fade-up"
           data-aos-delay="400"
@@ -42,14 +42,14 @@ export default function TermsOfServiceComponent() {
         {/* Hero content */}
         <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
           {/* Section header */}
-          <div className="mx-auto max-w-3xl text-left md:pb-16">
-            <h1 className="h1" data-aos="fade-up">
+          <div className="mx-auto max-w-3xl text-left md:pb-16 text-secondary-400 dark:text-gray-400">
+            <h1 className="h1 text-gray-800 dark:text-gray-200" data-aos="fade-up">
               Terms of Service
             </h1>
 
             <div className="prose prose-base space-y-4 pt-6 text-left [&_p]:mb-4">
               <p>
-                <strong>Last updated June 9th, 2024</strong>
+                <strong className="text-gray-700 dark:text-gray-300">Last updated June 9th, 2024</strong>
               </p>
               <p>
                 Welcome, and thank you for your interest in PearAI, Inc.
@@ -67,10 +67,10 @@ export default function TermsOfServiceComponent() {
                 between you and PearAI regarding your use of the Service.
               </p>
               <p>
-                <strong>PLEASE READ THE FOLLOWING TERMS CAREFULLY:</strong>
+                <strong className="text-gray-700 dark:text-gray-300">PLEASE READ THE FOLLOWING TERMS CAREFULLY:</strong>
               </p>
               <p>
-                <strong>
+                <strong className="text-gray-700 dark:text-gray-300">
                   BY CLICKING “I ACCEPT,” SIGNING AN ORDER FORM THAT REFERENCES
                   THESE TERMS, OR BY DOWNLOADING, INSTALLING, OR OTHERWISE
                   ACCESSING OR USING THE SERVICE
@@ -90,7 +90,7 @@ export default function TermsOfServiceComponent() {
                 controls in the event of a conflict with these Terms.
               </p>
               <p>
-                <strong>NOTICE OF ARBITRATION AND CLASS ACTION WAIVER</strong>.
+                <strong className="text-gray-700 dark:text-gray-300">NOTICE OF ARBITRATION AND CLASS ACTION WAIVER</strong>.
                 Except for certain kinds of disputes described in Section 15,
                 you agree that disputes arising under these Terms will be
                 resolved by binding, individual arbitration, and BY ACCEPTING
@@ -101,7 +101,7 @@ export default function TermsOfServiceComponent() {
               <ol>
                 <li>
                   <p>
-                    <strong>PearAI Service Overview</strong>. Our PearAI
+                    <strong className="text-gray-700 dark:text-gray-300">PearAI Service Overview</strong>. Our PearAI
                     platform offers a suite of coding tools driven by machine
                     learning to help developers write code more easily and
                     efficiently and can provide suggested code, outputs or other
@@ -110,7 +110,7 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Eligibility</strong>. You must be at least the age
+                    <strong className="text-gray-700 dark:text-gray-300">Eligibility</strong>. You must be at least the age
                     of majority in your jurisdiction (e.g., 18 years old in the
                     United States). By agreeing to these Terms, you represent
                     and warrant to us that: (a) you are at least 18 years old;
@@ -125,7 +125,7 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Accounts and Registration</strong>. To access most
+                    <strong className="text-gray-700 dark:text-gray-300">Accounts and Registration</strong>. To access most
                     features of the Service, you must register for an account.
                     When you register for an account, you may be required to
                     provide us with some information about yourself, such as
@@ -145,7 +145,7 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>General Payment Terms</strong>. Certain features of
+                    <strong className="text-gray-700 dark:text-gray-300">General Payment Terms</strong>. Certain features of
                     the Service may require you to pay fees. Before you pay any
                     fees, you will have an opportunity to review and accept the
                     fees that you will be charged. Unless otherwise specifically
@@ -155,7 +155,7 @@ export default function TermsOfServiceComponent() {
                     any pricing and payment terms set forth in an Order Form.
                   </p>
                   <p>
-                    4.1. <strong>Price</strong>. PearAI reserves the right to
+                    4.1. <strong className="text-gray-700 dark:text-gray-300">Price</strong>. PearAI reserves the right to
                     determine pricing for the Service. PearAI will make
                     reasonable efforts to keep pricing information published on
                     the Service up to date. We encourage you to check our
@@ -175,12 +175,12 @@ export default function TermsOfServiceComponent() {
                     to your offer or these Terms.
                   </p>
                   <p>
-                    4.2. <strong>Payment Processing</strong>. Notwithstanding
+                    4.2. <strong className="text-gray-700 dark:text-gray-300">Payment Processing</strong>. Notwithstanding
                     any amounts owed to PearAI hereunder, PEARAI DOES NOT
                     DIRECTLY PROCESS PAYMENT FOR ANY SERVICES. To facilitate
                     payment for the Service via bank account, credit card, or
                     debit card, we use Stripe, Inc. and its affiliates (“
-                    <strong>Stripe</strong>”), a third-party payment processor.
+                    <strong className="text-gray-700 dark:text-gray-300">Stripe</strong>”), a third-party payment processor.
                     These payment processing services are provided by Stripe and
                     are subject to&nbsp;the&nbsp;Stripe terms and conditions and
                     other policies available at{" "}
@@ -191,7 +191,7 @@ export default function TermsOfServiceComponent() {
                     <a href="https://stripe.com/privacy">
                       https://stripe.com/privacy
                     </a>{" "}
-                    (collectively, the &quot;<strong>Stripe Agreements</strong>
+                    (collectively, the &quot;<strong className="text-gray-700 dark:text-gray-300">Stripe Agreements</strong>
                     &quot;). By agreeing to these Terms, users that use the
                     payment functions of the Service also agree to be bound by
                     the Stripe Agreements, as the same may be modified by Stripe
@@ -204,27 +204,27 @@ export default function TermsOfServiceComponent() {
                     Service.
                   </p>
                   <p>
-                    4.3. <strong>Subscription Service</strong>. The Service may
+                    4.3. <strong className="text-gray-700 dark:text-gray-300">Subscription Service</strong>. The Service may
                     include certain subscription-based plans with automatically
                     recurring payments for periodic charges (“
-                    <strong>Subscription Service</strong>”). The “
-                    <strong>Subscription Billing Date</strong>” is the date when
+                    <strong className="text-gray-700 dark:text-gray-300">Subscription Service</strong>”). The “
+                    <strong className="text-gray-700 dark:text-gray-300">Subscription Billing Date</strong>” is the date when
                     you purchase your first subscription to the Service. The
                     Subscription Service will begin on the Subscription Billing
                     Date and continue for the subscription period that you
                     select on your account (such period, the “
-                    <strong>Initial Subscription Period</strong>”), and will
+                    <strong className="text-gray-700 dark:text-gray-300">Initial Subscription Period</strong>”), and will
                     automatically renew for successive periods of the same
                     duration as the Initial Subscription Period (the Initial
                     Subscription Period and each such renewal period, each a “
-                    <strong>Subscription Period</strong>”) unless you cancel the
+                    <strong className="text-gray-700 dark:text-gray-300">Subscription Period</strong>”) unless you cancel the
                     Subscription Service or we terminate it. If you activate a
                     Subscription Service, then you authorize PearAI or its
                     third-party payment processors to periodically charge, on a
                     going-forward basis and until cancellation of the
                     Subscription Service, all accrued sums on or before the
                     payment due date. For information on the “
-                    <strong>Subscription Fee</strong>”, please see our pricing
+                    <strong className="text-gray-700 dark:text-gray-300">Subscription Fee</strong>”, please see our pricing
                     page. Your account will be charged automatically on the
                     Subscription Billing Date and thereafter on the renewal date
                     of your Subscription Service for all applicable fees and
@@ -242,7 +242,7 @@ export default function TermsOfServiceComponent() {
                     IN ORDER TO AVOID CHARGE FOR THE NEXT SUBSCRIPTION PERIOD.
                   </p>
                   <p>
-                    4.4. <strong>Delinquent Accounts</strong>. PearAI may
+                    4.4. <strong className="text-gray-700 dark:text-gray-300">Delinquent Accounts</strong>. PearAI may
                     suspend or terminate access to the Service, including
                     fee-based portions of the Service, for any account for which
                     any amount is due but unpaid. In addition to the amount due
@@ -257,12 +257,12 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Customer and Usage Data</strong>
+                    <strong className="text-gray-700 dark:text-gray-300">Customer and Usage Data</strong>
                   </p>
                   <p>
-                    7.1. <strong>Customer Data</strong>. Any data, text, and any
+                    7.1. <strong className="text-gray-700 dark:text-gray-300">Customer Data</strong>. Any data, text, and any
                     other works of authorship or other works, including source
-                    code (collectively, “<strong>Customer Data</strong>”) that
+                    code (collectively, “<strong className="text-gray-700 dark:text-gray-300">Customer Data</strong>”) that
                     you submit, upload, or otherwise post to or transmit (such
                     actions, collectively, “Upload”) to the Service are only
                     used to provide Suggestions to you unless you opt-in to
@@ -277,10 +277,10 @@ export default function TermsOfServiceComponent() {
                     at rest.
                   </p>
                   <p>
-                    7.2. <strong>Usage Data</strong>. PearAI may collect,
+                    7.2. <strong className="text-gray-700 dark:text-gray-300">Usage Data</strong>. PearAI may collect,
                     generate, and derive performance, analytical, or usage data
                     relating to your access to or use of the Service (“
-                    <strong>Usage Data</strong>”). Usage Data will not include
+                    <strong className="text-gray-700 dark:text-gray-300">Usage Data</strong>”). Usage Data will not include
                     any Customer Data. PearAI will only use Usage Data to
                     provide the Service to you, to monitor the performance and
                     stability of the Service, and to prevent or address
@@ -292,12 +292,12 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Third-Party Software</strong>. The Service may
+                    <strong className="text-gray-700 dark:text-gray-300">Third-Party Software</strong>. The Service may
                     include or incorporate third-party software components that
                     are generally available free of charge under licenses
                     granting recipients broad rights to copy, modify, and
                     distribute those components (“
-                    <strong>Third-Party Components</strong>”). Although the
+                    <strong className="text-gray-700 dark:text-gray-300">Third-Party Components</strong>”). Although the
                     Service is provided to you subject to these Terms, nothing
                     in these Terms prevents, restricts, or is intended to
                     prevent or restrict you from obtaining Third-Party
@@ -308,7 +308,7 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Communications; Email</strong>. We may send you
+                    <strong className="text-gray-700 dark:text-gray-300">Communications; Email</strong>. We may send you
                     emails concerning our products and services, as well as
                     those of third parties. You may opt out of promotional
                     emails by following the unsubscribe instructions in the
@@ -317,7 +317,7 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Modification of Terms</strong>. We may, from time to
+                    <strong className="text-gray-700 dark:text-gray-300">Modification of Terms</strong>. We may, from time to
                     time, change these Terms. Please check these Terms
                     periodically for changes. If we make any material
                     modifications, we will notify you by updating the date at
@@ -335,12 +335,12 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>
+                    <strong className="text-gray-700 dark:text-gray-300">
                       Term, Termination, and Modification of the Service
                     </strong>
                   </p>
                   <p>
-                    11.1. <strong>Term</strong>. These Terms are effective
+                    11.1. <strong className="text-gray-700 dark:text-gray-300">Term</strong>. These Terms are effective
                     beginning when you accept the Terms or first download,
                     install, access, or use the Service, and ending on the
                     earlier of: (i) the effective date of termination by either
@@ -350,7 +350,7 @@ export default function TermsOfServiceComponent() {
                     previously executed an Order Form.
                   </p>
                   <p>
-                    11.2. <strong>Termination</strong>. If you violate any
+                    11.2. <strong className="text-gray-700 dark:text-gray-300">Termination</strong>. If you violate any
                     provision of these Terms, then your authorization to access
                     the Service and these Terms automatically terminate. In
                     addition, PearAI may, at its sole discretion, terminate
@@ -367,7 +367,7 @@ export default function TermsOfServiceComponent() {
                     your then-current subscription term.
                   </p>
                   <p>
-                    11.3. <strong>Effect of Termination</strong>. Upon
+                    11.3. <strong className="text-gray-700 dark:text-gray-300">Effect of Termination</strong>. Upon
                     termination of these Terms: (a) your license rights will
                     terminate and you must immediately cease all use of the
                     Service; (b) you will no longer be authorized to access your
@@ -388,7 +388,7 @@ export default function TermsOfServiceComponent() {
                     address or other forms of account verification.
                   </p>
                   <p>
-                    11.4. <strong>Modification of the Service</strong>. PearAI
+                    11.4. <strong className="text-gray-700 dark:text-gray-300">Modification of the Service</strong>. PearAI
                     reserves the right to modify or discontinue all or any
                     portion of the Service at any time (including by limiting or
                     discontinuing certain features of the Service), temporarily
@@ -404,12 +404,12 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Indemnity</strong>. To the fullest extent permitted
+                    <strong className="text-gray-700 dark:text-gray-300">Indemnity</strong>. To the fullest extent permitted
                     by law, you are responsible for your use of the Service, and
                     you will defend and indemnify PearAI, its affiliates and
                     their respective shareholders, directors, managers, members,
                     officers, employees, consultants, and agents (together, the
-                    “<strong>PearAI Entities</strong>”) from and against every
+                    “<strong className="text-gray-700 dark:text-gray-300">PearAI Entities</strong>”) from and against every
                     claim brought by a third party, and any related liability,
                     damage, loss, and expense, including attorneys’ fees and
                     costs, arising out of or connected with: (1) your
@@ -430,7 +430,7 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Disclaimers; No Warranties by PearAI</strong>
+                    <strong className="text-gray-700 dark:text-gray-300">Disclaimers; No Warranties by PearAI</strong>
                   </p>
                   <p>
                     13.1. THE SERVICE AND ALL MATERIALS AND CONTENT AVAILABLE
@@ -473,7 +473,7 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Limitation of Liability</strong>
+                    <strong className="text-gray-700 dark:text-gray-300">Limitation of Liability</strong>
                   </p>
                   <p>
                     14.1. TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT
@@ -513,18 +513,18 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Dispute Resolution By Binding Arbitration</strong>
+                    <strong className="text-gray-700 dark:text-gray-300">Dispute Resolution By Binding Arbitration</strong>
                   </p>
                   <p>
-                    <strong>
+                    <strong className="text-gray-700 dark:text-gray-300">
                       PLEASE READ THIS SECTION CAREFULLY AS IT AFFECTS YOUR
                       RIGHTS.
                     </strong>
                   </p>
                   <p>
-                    15.1. <strong>Agreement to Arbitrate</strong>. This Dispute
+                    15.1. <strong className="text-gray-700 dark:text-gray-300">Agreement to Arbitrate</strong>. This Dispute
                     Resolution by Binding Arbitration section is referred to in
-                    these Terms as the “<strong>Arbitration Agreement</strong>.”
+                    these Terms as the “<strong className="text-gray-700 dark:text-gray-300">Arbitration Agreement</strong>.”
                     You agree that any and all disputes or claims that have
                     arisen or may arise between you and PearAI, whether arising
                     out of or relating to these Terms (including any alleged
@@ -547,7 +547,7 @@ export default function TermsOfServiceComponent() {
                   </p>
                   <p>
                     15.2.{" "}
-                    <strong>
+                    <strong className="text-gray-700 dark:text-gray-300">
                       Prohibition of Class and Representative Actions and
                       Non-Individualized Relief
                     </strong>
@@ -569,7 +569,7 @@ export default function TermsOfServiceComponent() {
                     PROVISION.
                   </p>
                   <p>
-                    15.3. <strong>Pre-Arbitration Dispute Resolution</strong>.
+                    15.3. <strong className="text-gray-700 dark:text-gray-300">Pre-Arbitration Dispute Resolution</strong>.
                     PearAI is always interested in resolving disputes amicably
                     and efficiently, and most customer concerns can be resolved
                     quickly and to the customer’s satisfaction by emailing
@@ -577,9 +577,9 @@ export default function TermsOfServiceComponent() {
                     <a href="mailto:trypearai@gmail.com">trypearai@gmail.com</a>
                     . If such efforts prove unsuccessful, a party who intends to
                     seek arbitration must first send to the other, by certified
-                    mail, a written Notice of Dispute (“<strong>Notice</strong>
+                    mail, a written Notice of Dispute (“<strong className="text-gray-700 dark:text-gray-300">Notice</strong>
                     ”). The Notice to PearAI should be sent to (“
-                    <strong>Notice Address</strong>”). The Notice must (i)
+                    <strong className="text-gray-700 dark:text-gray-300">Notice Address</strong>”). The Notice must (i)
                     describe the nature and basis of the claim or dispute and
                     (ii) set forth the specific relief sought. If PearAI and you
                     do not resolve the claim within sixty (60) calendar days
@@ -591,7 +591,7 @@ export default function TermsOfServiceComponent() {
                     entitled.
                   </p>
                   <p>
-                    15.4. <strong>Arbitration Procedures</strong>. Arbitration
+                    15.4. <strong className="text-gray-700 dark:text-gray-300">Arbitration Procedures</strong>. Arbitration
                     will be conducted by a neutral arbitrator in accordance with
                     the American Arbitration Association’s (“AAA”) rules and
                     procedures, including the AAA’s Consumer Arbitration Rules
@@ -642,9 +642,9 @@ export default function TermsOfServiceComponent() {
                     based.
                   </p>
                   <p>
-                    15.5. <strong>Costs of Arbitration</strong>. Payment of all
+                    15.5. <strong className="text-gray-700 dark:text-gray-300">Costs of Arbitration</strong>. Payment of all
                     filing, administration, and arbitrator fees (collectively,
-                    the “<strong>Arbitration Fees</strong>”) will be governed by
+                    the “<strong className="text-gray-700 dark:text-gray-300">Arbitration Fees</strong>”) will be governed by
                     the AAA Rules, unless otherwise provided in this Arbitration
                     Agreement. To the extent any Arbitration Fees are not
                     specifically allocated to either PearAI or you under the AAA
@@ -663,13 +663,13 @@ export default function TermsOfServiceComponent() {
                     governed by the AAA Rules.
                   </p>
                   <p>
-                    15.6. <strong>Confidentiality</strong>. All aspects of the
+                    15.6. <strong className="text-gray-700 dark:text-gray-300">Confidentiality</strong>. All aspects of the
                     arbitration proceeding, and any ruling, decision, or award
                     by the arbitrator, will be strictly confidential for the
                     benefit of all parties.
                   </p>
                   <p>
-                    15.7. <strong>Severability</strong>. If a court or the
+                    15.7. <strong className="text-gray-700 dark:text-gray-300">Severability</strong>. If a court or the
                     arbitrator decides that any term or provision of this
                     Arbitration Agreement (other than the subsection (b) above
                     titled “Prohibition of Class and Representative Actions and
@@ -690,7 +690,7 @@ export default function TermsOfServiceComponent() {
                   </p>
                   <p>
                     15.8.{" "}
-                    <strong>Future Changes to Arbitration Agreement</strong>{" "}
+                    <strong className="text-gray-700 dark:text-gray-300">Future Changes to Arbitration Agreement</strong>{" "}
                     Notwithstanding any provision in these Terms to the
                     contrary, PearAI agrees that if it makes any future change
                     to this Arbitration Agreement (other than a change to the
@@ -706,10 +706,10 @@ export default function TermsOfServiceComponent() {
                 </li>
                 <li>
                   <p>
-                    <strong>Miscellaneous</strong>
+                    <strong className="text-gray-700 dark:text-gray-300">Miscellaneous</strong>
                   </p>
                   <p>
-                    16.1. <strong>General Terms</strong>. These Terms, including
+                    16.1. <strong className="text-gray-700 dark:text-gray-300">General Terms</strong>. These Terms, including
                     the Privacy Policy, and any other agreements expressly
                     incorporated by reference into these Terms, are the entire
                     and exclusive understanding and agreement between you and
@@ -734,7 +734,7 @@ export default function TermsOfServiceComponent() {
                     parts will remain in full force and effect.
                   </p>
                   <p>
-                    16.2. <strong>Governing Law</strong>. These Terms are
+                    16.2. <strong className="text-gray-700 dark:text-gray-300">Governing Law</strong>. These Terms are
                     governed by the laws of the State of California without
                     regard to conflict of law principles. All disputes and
                     claims arising from these Terms will be governed in
@@ -752,7 +752,7 @@ export default function TermsOfServiceComponent() {
                     in other locations.
                   </p>
                   <p>
-                    16.3. <strong>Privacy Policy</strong>. Please read the
+                    16.3. <strong className="text-gray-700 dark:text-gray-300">Privacy Policy</strong>. Please read the
                     PearAI Privacy Policy (available at:&nbsp;
                     <a href="https://trypear.ai/privacy">
                       https://trypear.ai/privacy
@@ -764,7 +764,7 @@ export default function TermsOfServiceComponent() {
                     these Terms.
                   </p>
                   <p>
-                    16.4. <strong>Consent to Electronic Communications</strong>.
+                    16.4. <strong className="text-gray-700 dark:text-gray-300">Consent to Electronic Communications</strong>.
                     By using the Service, you consent to receiving certain
                     electronic communications from us as further described in
                     our Privacy Policy. Please read our Privacy Policy to learn
@@ -775,7 +775,7 @@ export default function TermsOfServiceComponent() {
                     those communications be in writing.
                   </p>
                   <p>
-                    16.5. <strong>Contact Information</strong>. The Service is
+                    16.5. <strong className="text-gray-700 dark:text-gray-300">Contact Information</strong>. The Service is
                     offered by PearAI, Inc., located at 54 State Street, Ste 804
                     Albany NY 12207. You may contact us by sending
                     correspondence to that address or by emailing us at&nbsp;
@@ -783,7 +783,7 @@ export default function TermsOfServiceComponent() {
                     .
                   </p>
                   <p>
-                    16.6. <strong>Notice to California Residents</strong>. If
+                    16.6. <strong className="text-gray-700 dark:text-gray-300">Notice to California Residents</strong>. If
                     you are a California resident, then under California Civil
                     Code Section 1789.3, you may contact the Complaint
                     Assistance Unit of the Division of Consumer Services of the
@@ -794,13 +794,13 @@ export default function TermsOfServiceComponent() {
                     information regarding use of the Service.
                   </p>
                   <p>
-                    16.7. <strong>No Support</strong>. We are under no
+                    16.7. <strong className="text-gray-700 dark:text-gray-300">No Support</strong>. We are under no
                     obligation to provide support for the Service. In instances
                     where we may offer support, the support will be subject to
                     published policies.
                   </p>
                   <p>
-                    16.8. <strong>International Use</strong>. The Service is
+                    16.8. <strong className="text-gray-700 dark:text-gray-300">International Use</strong>. The Service is
                     intended for visitors located within the United States. We
                     make no representation that the Service is appropriate or
                     available for use outside of the United States. Access to
