@@ -69,61 +69,41 @@ export default function MobileMenu({
         className="absolute left-0 top-full z-20 flex w-full animate-fadein-opacity flex-col items-center justify-center space-y-2 overflow-hidden bg-white-50 px-4 text-xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-[2px]"
         style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
-        <AuthButtonMobile
-          setMobileNavOpen={setMobileNavOpen}
-          handleSignOut={handleSignOut}
-          supabaseUser={supabaseUser}
-        />
+        {supabaseUser === USER_NOT_FOUND ? (
+          <>
+            <Button asChild className="w-full rounded-full">
+              <Link onClick={() => setMobileNavOpen(false)} href={"/signin"}>
+                Sign in
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="w-full">
+              <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
+                Sign up
+              </Link>
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button asChild className="w-full rounded-full">
+              <Link onClick={() => setMobileNavOpen(false)} href={"/settings"}>
+                Settings
+              </Link>
+            </Button>
+            <Button
+              onClick={() => setMobileNavOpen(false)}
+              asChild
+              variant="outline"
+              className="w-full"
+            >
+              <form action={handleSignOut}>
+                <button className="w-full">Sign out</button>
+              </form>
+            </Button>
+          </>
+        )}
 
         <p>{""}</p>
       </nav>
     </div>
-  );
-}
-
-function AuthButtonMobile({
-  setMobileNavOpen,
-  handleSignOut,
-  supabaseUser,
-}: {
-  setMobileNavOpen: Dispatch<SetStateAction<boolean>>;
-  handleSignOut: () => Promise<never>;
-  supabaseUser: SupabaseUserType;
-}) {
-  if (supabaseUser === USER_NOT_FOUND) {
-    return (
-      <>
-        <Button asChild className="w-full rounded-full">
-          <Link onClick={() => setMobileNavOpen(false)} href={"/signin"}>
-            Sign in
-          </Link>
-        </Button>
-        <Button asChild variant="outline" className="w-full">
-          <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
-            Sign up
-          </Link>
-        </Button>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <Button asChild className="w-full rounded-full">
-        <Link onClick={() => setMobileNavOpen(false)} href={"/settings"}>
-          Settings
-        </Link>
-      </Button>
-      <Button
-        onClick={() => setMobileNavOpen(false)}
-        asChild
-        variant="outline"
-        className="w-full"
-      >
-        <form action={handleSignOut}>
-          <button className="w-full">Sign out</button>
-        </form>
-      </Button>
-    </>
   );
 }
