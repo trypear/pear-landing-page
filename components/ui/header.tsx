@@ -6,9 +6,17 @@ import PearDarkLogo from "./PearDark.svg";
 export default function Header() {
   // navigation bar links
   const navLinks = [
-    { label: "About", path: "/about" },
-    { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
-    { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
+    { label: "About", path: "/about", isExternal: false },
+    {
+      label: "Discord",
+      path: "https://discord.gg/AKy5FmqCkF",
+      isExternal: true,
+    },
+    {
+      label: "GitHub",
+      path: "https://github.com/trypear/pearai-app",
+      isExternal: true,
+    },
   ];
   return (
     <header className="fixed top-0 z-30 w-full animate-fadein-opacity bg-white-50 bg-opacity-80 shadow-sm backdrop-blur-[16px]">
@@ -25,7 +33,14 @@ export default function Header() {
               <ul className="flex space-x-2">
                 {navLinks.map((link) => (
                   <li key={link.label}>
-                    <Link className="hover:text-secondary-400" href={link.path}>
+                    <Link
+                      className="hover:text-secondary-400"
+                      href={link.path}
+                      {...(link.isExternal && {
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      })}
+                    >
                       {link.label}
                     </Link>
                   </li>
