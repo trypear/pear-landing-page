@@ -13,18 +13,18 @@ import Link from "next/link";
 import { User } from "@supabase/supabase-js";
 import { toast } from "sonner";
 
-const TEST_MODE_ENABLED = process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === 'true';
+const TEST_MODE_ENABLED = process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === "true";
 
-const STRIPE_WAITLIST_PRICE_ID = TEST_MODE_ENABLED 
-  ? process.env.NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID_TEST 
+const STRIPE_WAITLIST_PRICE_ID = TEST_MODE_ENABLED
+  ? process.env.NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID_TEST
   : process.env.NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID;
 
-const STRIPE_MONTHLY_PRICE_ID = TEST_MODE_ENABLED 
-  ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST 
+const STRIPE_MONTHLY_PRICE_ID = TEST_MODE_ENABLED
+  ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST
   : process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID;
 
-const STRIPE_ANNUAL_PRICE_ID = TEST_MODE_ENABLED 
-  ? process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST 
+const STRIPE_ANNUAL_PRICE_ID = TEST_MODE_ENABLED
+  ? process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST
   : process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID;
 
 interface PricingTierProps {
@@ -146,16 +146,21 @@ const PricingTier: React.FC<PricingTierProps> = ({
   );
 };
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
-  const [stripeMonthlyPriceId, setStripeMonthlyPriceId] = useState<string | undefined>();
-  const [stripeAnnualPriceId, setStripeAnnualPriceId] = useState<string | undefined>();
+  const [stripeMonthlyPriceId, setStripeMonthlyPriceId] = useState<
+    string | undefined
+  >();
+  const [stripeAnnualPriceId, setStripeAnnualPriceId] = useState<
+    string | undefined
+  >();
 
   useEffect(() => {
-    const testModeEnabled = process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === 'true';
-    const monthlyPriceId = testModeEnabled 
-      ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST 
+    const testModeEnabled =
+      process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === "true";
+    const monthlyPriceId = testModeEnabled
+      ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST
       : process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID;
-    const annualPriceId = testModeEnabled 
-      ? process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST 
+    const annualPriceId = testModeEnabled
+      ? process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST
       : process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID;
 
     setStripeMonthlyPriceId(monthlyPriceId);
@@ -198,7 +203,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
       priceId: stripeAnnualPriceId,
     },
   ];
-
 
   return (
     <section className="relative py-8 sm:py-12 md:py-16 lg:py-24">
