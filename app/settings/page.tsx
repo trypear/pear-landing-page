@@ -1,6 +1,14 @@
 import SettingsPage from "@/components/settings";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+import { constructMetadata } from "@/lib/utils";
+import { Metadata } from "next/types";
+
+export const metadata: Metadata = constructMetadata({
+  title: "Settings",
+  description: "Settings for your account.",
+  canonical: "/settings",
+});
 
 export default async function Settings() {
   const supabase = createClient();
@@ -10,5 +18,5 @@ export default async function Settings() {
     redirect("/signin");
   }
 
-  return <SettingsPage user={data.user} />;
+  return <SettingsPage />;
 }

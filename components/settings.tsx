@@ -3,34 +3,69 @@ import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createClient } from "@/utils/supabase/client";
+import { Skeleton } from "./ui/skeleton";
 
-type SettingsPageProps = {
-  user: User;
-};
-
-export default function SettingsPage({ user }: SettingsPageProps) {
+export default function SettingsPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const supabase = createClient();
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Open pearai app on desktop
-    const callback = searchParams.get("callback");
-    const accessToken = searchParams.get("accessToken");
-    const refreshToken = searchParams.get("refreshToken");
+    async function fetchUserAndHandleCallback() {
+      try {
+        const {
+          data: { session },
+          error,
+        } = await supabase.auth.getSession();
+        if (session && !error) {
+          setUser(session.user);
 
-    if (callback && accessToken && refreshToken) {
-      router.push(
-        `${callback}?accessToken=${accessToken}&refreshToken=${refreshToken}`,
-      );
-      // TODO: clear the tokens from query?
-    } else if (callback) {
-      // Alert user if callback is present but either accessToken or refreshToken is null
-      alert(
-        "Access token or refresh token is missing. Cannot open PearAI app.",
-      );
+          // Handle callback
+          const callback = searchParams.get("callback");
+          if (callback) {
+            console.log("Handling callback:", callback);
+            const { access_token, refresh_token } = session;
+
+            // TODO: FIGURE THIS OUT
+            // http://localhost:3000/signin?callback=code-oss://pearai.pearai/auth
+
+            // Here, use a secure method to pass these tokens to your desktop app
+            // For example, if you're using Electron:
+            if (window.electron) {
+              console.log("Sending auth tokens to desktop app");
+              window.electron.send("auth-tokens", {
+                access_token,
+                refresh_token,
+              });
+            }
+
+            // Clear the callback from the URL
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.delete("callback");
+            router.replace(newUrl.toString(), undefined);
+
+            // Redirect to the callback URL
+            window.location.href = callback;
+          }
+        } else {
+          // Handle error or redirect to login
+          console.error("Failed to fetch user:", error);
+          router.push("/signin");
+        }
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+        router.push("/signin");
+      } finally {
+        setLoading(false);
+      }
     }
-  }, [router, searchParams]);
+
+    fetchUserAndHandleCallback();
+  }, [supabase.auth, router, searchParams]);
 
   return (
     <section className="relative">
@@ -55,17 +90,29 @@ export default function SettingsPage({ user }: SettingsPageProps) {
                       <td className="whitespace-nowrap pr-1">
                         <span className="text-gray-500">Full Name:</span>{" "}
                       </td>
-                      <td>{user.user_metadata.full_name}</td>
+                      <td>
+                        {loading ? (
+                          <Skeleton className="h-4 w-[200px]" />
+                        ) : (
+                          user?.user_metadata.full_name
+                        )}
+                      </td>{" "}
                     </tr>
                     <tr>
                       <td className="whitespace-nowrap pr-1">
                         <span className="text-gray-500">Email:</span>{" "}
                       </td>
-                      <td>{user.email}</td>
+                      <td>
+                        {loading ? (
+                          <Skeleton className="h-4 w-[200px]" />
+                        ) : (
+                          user?.email
+                        )}
+                      </td>{" "}
                     </tr>
                   </tbody>
                 </table>
-                {user.app_metadata.provider === "email" && (
+                {user?.app_metadata.provider === "email" && (
                   <Button size="sm" className="mt-4">
                     <Link href="/update-password">Update Password</Link>
                   </Button>
