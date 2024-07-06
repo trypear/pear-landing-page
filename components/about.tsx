@@ -36,8 +36,11 @@ const AboutComponent: React.FC = () => {
           {/* Left column */}
           <div className="lg:w-1/2 lg:pr-8 lg:pt-4">
             <h2 className="mb-4 text-3xl font-bold dark:text-gray-300">
-              Fully <span className="text-primary-700 dark:text-darkPrimary-500">transparent</span>,
-              PearAI is built in public
+              Fully{" "}
+              <span className="text-primary-700 dark:text-darkPrimary-500">
+                transparent
+              </span>
+              , PearAI is built in public
             </h2>
             <p className="mb-4 text-secondary-400 dark:text-gray-400">
               PearAI&apos;s goal is to reduce the time it takes for an
@@ -63,7 +66,9 @@ const AboutComponent: React.FC = () => {
               <VideoCard {...videoData[0]} />
             </div>
 
-            <h2 className="mb-4 text-2xl font-bold dark:text-gray-300">Founders</h2>
+            <h2 className="mb-4 text-2xl font-bold dark:text-gray-300">
+              Founders
+            </h2>
             <div className="space-y-4 text-secondary-400 dark:text-gray-400">
               <p>
                 PearAI is founded by Pan and Nang, both former software

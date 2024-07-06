@@ -4,7 +4,6 @@ import { useState } from "react";
 import { XMarkIcon } from "./ui/icons";
 import Link from "next/link";
 
-
 export default function Banner() {
   const [bannerOpen, setBannerOpen] = useState<boolean>(true);
 

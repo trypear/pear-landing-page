@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+* {
+  font-family: "Figtree", sans-serif !important;
+}
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;

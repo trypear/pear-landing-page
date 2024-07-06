@@ -45,14 +45,16 @@ export default function Hero() {
                 <PearHeroLogo
                   width="26"
                   alt="PearAI Logo"
-                  className="inline-flex dark:hidden -mt-3 mr-2"
+                  className="-mt-3 mr-2 inline-flex dark:hidden"
                 />
                 <PearDarkHeroLogo
                   width="26"
                   alt="PearAI Logo"
-                  className="hidden dark:inline-flex -mt-3 mr-2"
+                  className="-mt-3 mr-2 hidden dark:inline-flex"
                 />
-                <span className="text-primary-700 dark:text-darkPrimary-500">PearAI: </span>
+                <span className="text-primary-700 dark:text-darkPrimary-500">
+                  PearAI:{" "}
+                </span>
                 The Open Source AI&#8209;Powered Code Editor
               </div>
               {/* Mobile Layout - Logo + PearAI on it's own line*/}
@@ -61,14 +63,16 @@ export default function Hero() {
                   <PearHeroLogo
                     width="26"
                     alt="PearAI Logo"
-                    className="inline-flex dark:hidden -mt-3 mr-2"
+                    className="-mt-3 mr-2 inline-flex dark:hidden"
                   />
                   <PearDarkHeroLogo
                     width="26"
                     alt="PearAI Logo"
-                    className="hidden dark:inline-flex -mt-3 mr-2"
+                    className="-mt-3 mr-2 hidden dark:inline-flex"
                   />
-                  <span className="text-primary-700 dark:text-darkPrimary-500">PearAI </span>
+                  <span className="text-primary-700 dark:text-darkPrimary-500">
+                    PearAI{" "}
+                  </span>
                 </div>
                 <span className="flex flex-col text-3xl">
                   <span>The Open Source</span>{" "}

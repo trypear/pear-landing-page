@@ -1,56 +1,34 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { MoonStar, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export default function DarkModeToggle() {
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const savedMode = localStorage.getItem("dark");
-    const isDarkMode = JSON.parse(savedMode!);
-    setDarkMode(isDarkMode);
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    setMounted(true);
   }, []);
 
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    localStorage.setItem("dark", JSON.stringify(newMode));
-    if (newMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  };
+  if (!mounted) return null;
 
   return (
-    <>
-      <div className="flex h-8 w-8 items-center justify-center text-secondary-600 duration-200 hover:text-secondary-400 dark:text-gray-400 dark:hover:text-white-300">
-      <label className="flex h-full w-full cursor-pointer items-center justify-center rounded-full border border-gray-300 duration-200 hover:bg-gray-100 dark:border-gray-500 dark:hover:bg-gray-800">
+    <div className="flex h-8 w-8 items-center justify-center text-secondary-600 duration-200 hover:text-secondary-400 dark:text-gray-400 dark:hover:text-white-300">
+      <label className="flex h-full w-full cursor-pointer items-center justify-center rounded-full border border-gray-200 duration-200 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800">
         <input
           className="hidden"
           type="checkbox"
-          checked={darkMode}
-          onChange={toggleDarkMode}
+          onChange={() => setTheme(theme === "light" ? "dark" : "light")}
+          checked={theme === "dark"}
         />
-        {darkMode ? (
-          <Sun
-            strokeWidth={1}
-            className="flex h-5 w-5 items-center justify-center"
-          />
+        {theme === "light" ? (
+          <Sun strokeWidth={1} className="h-5 w-5" />
         ) : (
-          <MoonStar
-            strokeWidth={1}
-            className="flex h-5 w-5 items-center justify-center"
-          />
+          <MoonStar strokeWidth={1} className="h-5 w-5" />
         )}
       </label>
     </div>
-    </>
   );
 }

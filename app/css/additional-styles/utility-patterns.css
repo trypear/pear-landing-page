@@ -81,9 +81,8 @@
 /* can add more to this - currently made to serve signin/signup/reset-password pages */
 .form-input,
 .form-checkbox {
-  @apply focus:border-primary-800 dark:focus:border-darkPrimary-400 focus:ring-primary-800 dark:focus:ring-darkPrimary-400 !important;
+  @apply focus:border-primary-800 focus:ring-primary-800 dark:focus:border-darkPrimary-400 dark:focus:ring-darkPrimary-400 !important;
 }
-
 
 /* changed the checkbox color to theme green */
 .form-checkbox {

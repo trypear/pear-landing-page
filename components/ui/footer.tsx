@@ -34,7 +34,7 @@ export default function Footer() {
                 <Link
                   href="https://github.com/orgs/trypear/repositories"
                   target="_blank"
-                  className="flex items-center justify-center text-secondary-main dark:text-secondary-300 transition duration-150 ease-in-out hover:text-gray-500"
+                  className="flex items-center justify-center text-secondary-main transition duration-150 ease-in-out hover:text-gray-500 dark:text-secondary-300"
                   aria-label="Github"
                 >
                   GitHub
@@ -44,7 +44,7 @@ export default function Footer() {
                 <Link
                   href="https://discord.gg/7QMraJUsQt"
                   target="_blank"
-                  className="flex items-center justify-center text-secondary-main dark:text-secondary-300 transition duration-150 ease-in-out hover:text-gray-500"
+                  className="flex items-center justify-center text-secondary-main transition duration-150 ease-in-out hover:text-gray-500 dark:text-secondary-300"
                   aria-label="Discord"
                 >
                   Discord
@@ -53,7 +53,7 @@ export default function Footer() {
               <li className="ml-4">
                 <Link
                   href="/about"
-                  className="flex items-center justify-center text-secondary-main dark:text-secondary-300 transition duration-150 ease-in-out hover:text-gray-500"
+                  className="flex items-center justify-center text-secondary-main transition duration-150 ease-in-out hover:text-gray-500 dark:text-secondary-300"
                   aria-label="About"
                 >
                   About

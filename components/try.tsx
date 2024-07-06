@@ -19,7 +19,10 @@ export default function TryPear() {
         <div className="relative pb-2 pt-32 md:pb-4 md:pt-40">
           {/* Section header */}
           <div className="mx-auto max-w-3xl pb-12 text-center md:pb-16">
-            <h1 className="mb-4 text-4xl font-semibold dark:text-gray-300" data-aos="fade-up">
+            <h1
+              className="mb-4 text-4xl font-semibold dark:text-gray-300"
+              data-aos="fade-up"
+            >
               Interested in contributing to PearAI?
             </h1>
             <p
@@ -31,7 +34,7 @@ export default function TryPear() {
               questions, or would like to discuss, you can join our{" "}
               <Link
                 href="https://discord.gg/7QMraJUsQt"
-                className="font-medium text-primary-700 dark:text-darkPrimary-500 hover:text-primary-800"
+                className="font-medium text-primary-700 hover:text-primary-800 dark:text-darkPrimary-500"
               >
                 Discord
               </Link>{" "}
@@ -45,7 +48,7 @@ export default function TryPear() {
               Help the community out by giving{" "}
               <Link
                 href="https://github.com/trypear/pearai-app"
-                className="font-medium text-primary-700 dark:text-darkPrimary-500 hover:text-primary-800"
+                className="font-medium text-primary-700 hover:text-primary-800 dark:text-darkPrimary-500"
               >
                 the repo
               </Link>{" "}
