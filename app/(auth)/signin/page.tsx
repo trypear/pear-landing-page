@@ -10,12 +10,21 @@ export const metadata: Metadata = constructMetadata({
   canonical: "/signin",
 });
 
-export default async function SignIn() {
+export default async function SignIn({
+  searchParams,
+}: {
+  searchParams: { callback?: string };
+}) {
   const supabase = createClient();
   const { data } = await supabase.auth.getUser();
 
   if (data?.user) {
-    redirect("/");
+    if (searchParams.callback?.startsWith("code-oss://pearai.pearai/auth")) {
+      // Redirect to settings page with callback for desktop app
+      redirect("/settings?callback=" + searchParams.callback);
+    } else {
+      redirect("/");
+    }
   }
   return (
     <>

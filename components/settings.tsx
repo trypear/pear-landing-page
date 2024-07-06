@@ -45,14 +45,14 @@ export default function SettingsPage({ initialSession }: SettingsPageProps) {
             // or just send it with the tokens
             // code-oss://pearai.pearai/auth?accessToken=<ACCESS_TOKEN>&refreshToken=<REFRESH_TOKEN>
 
-            // console.log(
-            //   "Redirecting to callback:",
-            //   callback +
-            //     "?accessToken=" +
-            //     access_token +
-            //     "&refreshToken=" +
-            //     refresh_token,
-            // );
+            console.log(
+              "Redirecting to callback:",
+              callback +
+                "?accessToken=" +
+                access_token +
+                "&refreshToken=" +
+                refresh_token,
+            );
             router.push(
               `${callback}?accessToken=${access_token}&refreshToken=${refresh_token}`,
             );
