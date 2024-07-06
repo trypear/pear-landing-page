@@ -14,9 +14,14 @@ export default async function Settings() {
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
+
   if (error || !data?.user) {
     redirect("/signin");
-  }
+  } else {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
 
-  return <SettingsPage />;
+    return <SettingsPage initialSession={session!} />;
+  }
 }

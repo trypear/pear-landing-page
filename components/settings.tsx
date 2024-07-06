@@ -1,27 +1,26 @@
 "use client";
-import { User } from "@supabase/supabase-js";
+import { Session, User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { createClient } from "@/utils/supabase/client";
 import { Skeleton } from "./ui/skeleton";
 
-export default function SettingsPage() {
+type SettingsPageProps = {
+  initialSession: Session;
+};
+
+export default function SettingsPage({ initialSession }: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const supabase = createClient();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const session = initialSession;
 
   useEffect(() => {
     async function fetchUserAndHandleCallback() {
       try {
-        const {
-          data: { session },
-          error,
-        } = await supabase.auth.getSession();
-        if (session && !error) {
+        if (session) {
           setUser(session.user);
 
           // Handle callback
@@ -53,7 +52,7 @@ export default function SettingsPage() {
           }
         } else {
           // Handle error or redirect to login
-          console.error("Failed to fetch user:", error);
+          console.error("Failed to fetch user");
           router.push("/signin");
         }
       } catch (error) {
@@ -65,7 +64,7 @@ export default function SettingsPage() {
     }
 
     fetchUserAndHandleCallback();
-  }, [supabase.auth, router, searchParams]);
+  }, [router, searchParams]);
 
   return (
     <section className="relative">
