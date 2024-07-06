@@ -26,33 +26,8 @@ export default function SettingsPage({ initialSession }: SettingsPageProps) {
           // Handle callback
           const callback = searchParams.get("callback");
           if (callback) {
-            console.log("Handling callback:", callback);
             const { access_token, refresh_token } = session;
 
-            // TODO: FIGURE THIS OUT
-            // http://localhost:3000/signin?callback=code-oss://pearai.pearai/auth
-
-            // Here, use a secure method to pass these tokens to your desktop app
-            // For example, if you're using Electron:
-            // if (window.electron) {
-            //   console.log("Sending auth tokens to desktop app");
-            //   window.electron.send("auth-tokens", {
-            //     access_token,
-            //     refresh_token,
-            //   });
-            // }
-
-            // or just send it with the tokens
-            // code-oss://pearai.pearai/auth?accessToken=<ACCESS_TOKEN>&refreshToken=<REFRESH_TOKEN>
-
-            console.log(
-              "Redirecting to callback:",
-              callback +
-                "?accessToken=" +
-                access_token +
-                "&refreshToken=" +
-                refresh_token,
-            );
             router.push(
               `${callback}?accessToken=${access_token}&refreshToken=${refresh_token}`,
             );
