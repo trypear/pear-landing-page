@@ -54,7 +54,7 @@ export default function SettingsPage({ initialSession }: SettingsPageProps) {
     }
 
     fetchUserAndHandleCallback();
-  }, [router, searchParams]);
+  }, [session, router, searchParams]);
 
   return (
     <section className="relative">
