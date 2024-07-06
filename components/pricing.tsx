@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -12,6 +12,20 @@ import { Check, Download } from "lucide-react";
 import Link from "next/link";
 import { User } from "@supabase/supabase-js";
 import { toast } from "sonner";
+
+const TEST_MODE_ENABLED = process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === 'true';
+
+const STRIPE_WAITLIST_PRICE_ID = TEST_MODE_ENABLED 
+  ? process.env.NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID_TEST 
+  : process.env.NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID;
+
+const STRIPE_MONTHLY_PRICE_ID = TEST_MODE_ENABLED 
+  ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST 
+  : process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID;
+
+const STRIPE_ANNUAL_PRICE_ID = TEST_MODE_ENABLED 
+  ? process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST 
+  : process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID;
 
 interface PricingTierProps {
   title: string;
@@ -132,6 +146,22 @@ const PricingTier: React.FC<PricingTierProps> = ({
   );
 };
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
+  const [stripeMonthlyPriceId, setStripeMonthlyPriceId] = useState<string | undefined>();
+  const [stripeAnnualPriceId, setStripeAnnualPriceId] = useState<string | undefined>();
+
+  useEffect(() => {
+    const testModeEnabled = process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === 'true';
+    const monthlyPriceId = testModeEnabled 
+      ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST 
+      : process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID;
+    const annualPriceId = testModeEnabled 
+      ? process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST 
+      : process.env.NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID;
+
+    setStripeMonthlyPriceId(monthlyPriceId);
+    setStripeAnnualPriceId(annualPriceId);
+  }, []);
+
   const tiers: Omit<PricingTierProps, "user">[] = [
     {
       title: "Free",
@@ -152,7 +182,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
         "Unlimited Copilot++ completions",
       ],
       buttonText: "Get Started",
-      priceId: "price_1PXnJCAglzir3DVbp5mY53gH",
+      priceId: stripeMonthlyPriceId,
     },
     {
       title: "Yearly",
@@ -165,9 +195,10 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
         "Unlimited Copilot++ completions",
       ],
       buttonText: "Get Started",
-      priceId: "price_1PXnJCAglzir3DVbATy9fhLa",
+      priceId: stripeAnnualPriceId,
     },
   ];
+
 
   return (
     <section className="relative py-8 sm:py-12 md:py-16 lg:py-24">
