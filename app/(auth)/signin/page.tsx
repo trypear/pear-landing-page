@@ -10,6 +10,12 @@ export const metadata: Metadata = constructMetadata({
   canonical: "/signin",
 });
 
+export const metadata: Metadata = constructMetadata({
+  title: "Sign In",
+  description: "Sign in to your account",
+  canonical: "/signin",
+});
+
 interface SignInProps {
   searchParams: {
     callback?: string;
