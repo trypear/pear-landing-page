@@ -25,7 +25,14 @@ export default function Header() {
             <nav>
               <ul className="ml-4 flex justify-center space-x-6">
                 {navLinks.map((link) => (
-                  <li key={link.label}>
+                  <li
+                    key={link.label}
+                    className={
+                      link.label === "Priority Waitlist"
+                        ? "hidden sm:block"
+                        : ""
+                    }
+                  >
                     <Link className="hover:text-secondary-400" href={link.path}>
                       {link.label}
                     </Link>
