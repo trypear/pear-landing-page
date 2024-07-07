@@ -9,6 +9,7 @@ export default function Header() {
     { label: "About", path: "/about" },
     { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
     { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
+    { label: "Priority Waitlist", path: "/priority-waitlist" },
   ];
   return (
     <header className="fixed top-0 z-30 w-full animate-fadein-opacity bg-white-50 bg-opacity-80 shadow-sm backdrop-blur-[16px]">
@@ -22,7 +23,7 @@ export default function Header() {
             </Link>
             {/* Navigation */}
             <nav>
-              <ul className="flex space-x-2">
+              <ul className="ml-4 flex justify-center space-x-6">
                 {navLinks.map((link) => (
                   <li key={link.label}>
                     <Link className="hover:text-secondary-400" href={link.path}>
