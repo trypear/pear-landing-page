@@ -27,35 +27,30 @@ export const STRIPE_PRICE_IDS = {
 
 export const PRICING_TIERS: PricingTierData[] = [
   {
-    title: "Free",
+    title: "Script Kiddie (Free)",
     price: "0",
-    description: "Download PearAI and use it for free with your own API keys!",
+    description:
+      "You can download PearAI directly, and use your own API key 🤓",
     isFree: true,
   },
   {
-    title: "Monthly",
+    title: "Junior Engineer (Monthly)",
     price: "18",
     description:
-      "Get the monthly subscription and get your supercharged coding editor assistant",
+      "Get the monthly subscription, and we'll take care of you... 😎",
     features: [
-      "Pro two-week trial",
-      "Unlimited Copilot++ completions",
-      "OpenAI zero-data retention",
-      "Unlimited Copilot++ completions",
+      "1000 GPT4o requests per month (Claude 3.5 Sonnet soon!)",
+      "Direct customer support by the founders and contributors",
+      "Private Discord channel",
     ],
     buttonText: "Get Started",
     priceId: STRIPE_PRICE_IDS.MONTHLY,
   },
   {
-    title: "Yearly",
+    title: "10x Engineer (Yearly)",
     price: "14",
-    description: "Pay yearly and get... add text here",
-    features: [
-      "Pro two-week trial",
-      "Unlimited Copilot++ completions",
-      "OpenAI zero-data retention",
-      "Unlimited Copilot++ completions",
-    ],
+    description: "Pay one lump sum yearly, and you'll be our VIP! 🤩",
+    features: ["Everything from monthly", "Priority for new feature requests"],
     buttonText: "Get Started",
     priceId: STRIPE_PRICE_IDS.ANNUAL,
   },
