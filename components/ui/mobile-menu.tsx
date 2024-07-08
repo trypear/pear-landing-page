@@ -76,7 +76,7 @@ export default function MobileMenu({
                 Sign in
               </Link>
             </Button>
-            <Button asChild variant="outline" className="w-full">
+            <Button asChild className="w-full">
               <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
                 Sign up
               </Link>
@@ -101,7 +101,14 @@ export default function MobileMenu({
             </Button>
           </>
         )}
-
+        <Button asChild className="w-full rounded-full">
+          <Link
+            onClick={() => setMobileNavOpen(false)}
+            href={"/priority-waitlist"}
+          >
+            Priority Waitlist
+          </Link>
+        </Button>
         <p>{""}</p>
       </nav>
     </div>

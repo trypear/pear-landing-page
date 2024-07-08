@@ -104,6 +104,13 @@ To run the project locally:
    ```
 2. Visit `http://localhost:3000` in your browser.
 
+### Recommended Extensions
+- Prettier
+  - Open your command palette, choose your default formatter to be Prettier, and enable format on save.
+- ESLint
+  - When you push a commit, we have a pre-commit hook that automatically runs prettier, eslint, and builds your project to make sure everything is ok.
+- JavaScript and TypeScript Nightly
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing

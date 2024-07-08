@@ -11,6 +11,7 @@ export default async function Header() {
     { label: "About", path: "/about" },
     { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
     { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
+    { label: "Priority Waitlist", path: "/priority-waitlist" },
   ];
 
   const supabase = createClient();
@@ -35,9 +36,16 @@ export default async function Header() {
             </Link>
             {/* Navigation */}
             <nav>
-              <ul className="flex space-x-2">
+              <ul className="ml-4 flex justify-center space-x-6">
                 {navLinks.map((link) => (
-                  <li key={link.label}>
+                  <li
+                    key={link.label}
+                    className={
+                      link.label === "Priority Waitlist"
+                        ? "hidden sm:block"
+                        : ""
+                    }
+                  >
                     <Link className="hover:text-secondary-400" href={link.path}>
                       {link.label}
                     </Link>
