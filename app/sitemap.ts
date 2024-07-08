@@ -1,14 +1,35 @@
 import { MetadataRoute } from "next/types";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://trypear.ai";
-  // will automate the sitemap generation once we have more than 10 routes
-  const pages = ["/", "/about", "/privacy", "/terms-of-service"]; // will auth routes once its done
+const BASE_URL = "https://trypear.ai";
 
-  return pages.map((page) => ({
-    url: `${baseUrl}${page}`,
+const pages: Array<{
+  route: string;
+  priority: number;
+  changeFrequency:
+    | "always"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly"
+    | "yearly"
+    | "never";
+}> = [
+  { route: "/", priority: 1, changeFrequency: "weekly" },
+  { route: "/about", priority: 0.8, changeFrequency: "monthly" },
+  { route: "/privacy", priority: 0.5, changeFrequency: "yearly" },
+  { route: "/terms-of-service", priority: 0.5, changeFrequency: "yearly" },
+  { route: "/signin", priority: 0.6, changeFrequency: "monthly" },
+  { route: "/signup", priority: 0.6, changeFrequency: "monthly" },
+  { route: "/reset-password", priority: 0.4, changeFrequency: "yearly" },
+  { route: "/update-password", priority: 0.4, changeFrequency: "yearly" },
+  { route: "/verification", priority: 0.4, changeFrequency: "yearly" },
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return pages.map(({ route, priority, changeFrequency }) => ({
+    url: `${BASE_URL}${route}`,
     lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 1,
+    changeFrequency,
+    priority,
   }));
 }
