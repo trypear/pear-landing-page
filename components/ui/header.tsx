@@ -9,7 +9,6 @@ export default function Header() {
     { label: "About", path: "/about" },
     { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
     { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
-    { label: "Pricing", path: "/pricing" },
     { label: "Priority Waitlist", path: "/priority-waitlist" },
   ];
   return (

@@ -45,7 +45,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
           </p>
         )}
         {isFree ? (
-          ["Windows", "macOS", "Linux"].map((os) => (
+          ["Windows", "macOS"].map((os) => (
             <Button
               key={os}
               className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base"
@@ -102,11 +102,10 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               id="pricing-heading"
               className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-6xl"
             >
-              Fair pricing, unfair advantage.
+              Pricing
             </h1>
             <p className="text-base font-medium text-gray-400 sm:text-lg md:text-xl lg:text-2xl">
-              Download PearAI today and get your coding efficiency to a new
-              level
+              Pick the plan that&apos;s fits you best
             </p>
           </div>
 
@@ -123,7 +122,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
 
           <div className="text-center">
             <p className="text-base text-gray-400 sm:text-lg md:text-xl">
-              Want to use it on a professional level?
+              Want to use Pear in your business?
               <Link
                 href="#"
                 className="ml-2 font-semibold text-primary-700 hover:text-primary-800"
