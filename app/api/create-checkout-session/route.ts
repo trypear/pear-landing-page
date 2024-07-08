@@ -3,8 +3,7 @@ import { withAuth } from "@/utils/withAuth";
 import { createClient } from "@/utils/supabase/server";
 import { User } from "@supabase/supabase-js";
 
-const PEARAI_SERVER_URL =
-  process.env.PEARAI_SERVER_URL || "http://127.0.0.1:8000";
+const PEARAI_SERVER_URL = process.env.PEARAI_SERVER_URL;
 
 async function createCheckoutSession(request: NextRequest & { user: User }) {
   const supabase = createClient();
