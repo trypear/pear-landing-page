@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 const SERVER_URL = process.env.SERVER_URL || "http://127.0.0.1:8000";
+const TEST_MODE_ENABLED = process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === "true";
 
 export async function POST(request: Request) {
   try {
@@ -9,16 +10,17 @@ export async function POST(request: Request) {
       `Creating checkout session for priceId: ${priceId}, userId: ${userId}`,
     );
 
-    const response = await fetch(
-      `${SERVER_URL}/payment/create-checkout-session`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ priceId, userId }),
+    const endpoint = TEST_MODE_ENABLED
+      ? `${SERVER_URL}/payment/test/create-checkout-session`
+      : `${SERVER_URL}/payment/create-checkout-session`;
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
       },
-    );
+      body: JSON.stringify({ priceId, userId }),
+    });
 
     if (!response.ok) {
       const errorText = await response.text();
