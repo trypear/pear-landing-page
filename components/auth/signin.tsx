@@ -17,10 +17,14 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { SignInFormData, signInSchema } from "@/utils/form-schema";
+import { useSearchParams } from "next/navigation";
 
 export default function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const callbackForDesktopApp = searchParams.get("callback") ?? "";
+
   const form = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -39,7 +43,7 @@ export default function SignIn() {
       formData.append("email", data.email);
       formData.append("password", data.password);
 
-      const response = await signin(formData);
+      const response = await signin(formData, callbackForDesktopApp);
       if (response?.error) {
         setErrorMessage(response.error);
       } else {
@@ -55,7 +59,7 @@ export default function SignIn() {
   const handleOAuthSignIn = async (provider: Provider) => {
     setErrorMessage(null);
     try {
-      await signinWithOAuth(provider);
+      await signinWithOAuth(provider, callbackForDesktopApp);
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
     }

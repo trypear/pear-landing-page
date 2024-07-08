@@ -5,6 +5,8 @@ import { type CookieOptions, createServerClient } from "@supabase/ssr";
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url);
   const code = searchParams.get("code");
+  // if callback in param, means we should redirect to desktop pearai app instead and ignore "next"
+  const callback = searchParams.get("callback");
   // if "next" is in param, use it as the redirect URL
   const next = searchParams.get("next") ?? "/settings";
   let authError = "";
@@ -28,15 +30,29 @@ export async function GET(request: Request) {
         },
       },
     );
-    const { error } = await supabase.auth.exchangeCodeForSession(code);
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
-      return NextResponse.redirect(`${origin}${next}`);
+      const response = NextResponse.redirect(`${origin}${next}`);
+      if (callback && data) {
+        // if login in from desktop app
+        const accessToken = data.session.access_token;
+        const refreshToken = data.session.refresh_token;
+        const encodedAccessToken = encodeURIComponent(accessToken);
+        const encodedRefreshToken = encodeURIComponent(refreshToken);
+        return NextResponse.redirect(
+          `${origin}${next}?callback=${encodeURIComponent(callback)}&accessToken=${encodedAccessToken}&refreshToken=${encodedRefreshToken}`,
+        );
+      }
+      return response;
     }
-    authError = error?.message;
+    authError =
+      error?.message ?? "Error during code exchange for oauth session";
+  } else {
+    authError = "No auth code in params";
   }
 
   // return the user to an error page with instructions
   return NextResponse.redirect(
-    `${origin}/auth/auth-code-error?error=${authError !== "" ? authError : "No auth code in params"}`,
+    `${origin}/auth/auth-code-error?error=${authError}`,
   );
 }
