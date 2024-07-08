@@ -49,10 +49,14 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
     const data = await response.json();
     return NextResponse.json({ url: data.url });
   } catch (error) {
-    return NextResponse.json(
-      { error: "Error creating checkout session" },
-      { status: 500 },
-    );
+    let errMsg = "Error creating checkout session: ";
+    if (error instanceof Error) {
+      errMsg += `: ${error?.message}`;
+    } else if (typeof error === "string") {
+      errMsg += `: ${error}`;
+    }
+
+    return NextResponse.json({ error: errMsg }, { status: 500 });
   }
 }
 
