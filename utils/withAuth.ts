@@ -10,16 +10,16 @@ export function withAuth(handler: AuthenticatedHandler) {
   return async (request: NextRequest) => {
     const supabase = createClient();
     const {
-      data: { session },
-    } = await supabase.auth.getSession();
+      data: { user },
+    } = await supabase.auth.getUser();
 
-    if (!session || !session.user) {
+    if (!user) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
     // add user to request object
     const authenticatedRequest = request as NextRequest & { user: User };
-    authenticatedRequest.user = session.user;
+    authenticatedRequest.user = user;
 
     return handler(authenticatedRequest);
   };
