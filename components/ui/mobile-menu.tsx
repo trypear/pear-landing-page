@@ -62,19 +62,16 @@ export default function MobileMenu() {
             className={`h-6 w-6 transition-opacity duration-300 ease-in-out ${isOpen ? "opacity-0" : "opacity-100"}`}
           />
           <X
-            className={`h-6 w-6 absolute left-0 top-0 transition-opacity duration-300 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
+            className={`absolute left-0 top-0 h-6 w-6 transition-opacity duration-300 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
           />
         </div>
       </button>
 
       <div
         ref={menuRef}
-        className={`
-          absolute left-0 top-full z-20 w-full bg-white-50 border-y border-gray-200 transition-all duration-300 ease-in-out
-          ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}
-        `}
+        className={`absolute left-0 top-full z-20 w-full border-y border-gray-200 bg-white-50 transition-all duration-300 ease-in-out ${isOpen ? "visible opacity-100" : "invisible opacity-0"} `}
       >
-        <ul className="px-4 pt-2 pb-4 space-y-2">
+        <ul className="space-y-2 px-4 pb-4 pt-2">
           {navLinks.map((link) => (
             <li key={link.label}>
               <Link
@@ -87,7 +84,7 @@ export default function MobileMenu() {
             </li>
           ))}
         </ul>
-        <div className="px-4 pt-2 pb-4 space-y-2">
+        <div className="space-y-2 px-4 pb-4 pt-2">
           <Button asChild className="w-full">
             <Link href="/signin" onClick={() => setIsOpen(false)}>
               Sign In
