@@ -28,15 +28,13 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
       ? `${SERVER_URL}/payment/test/create-checkout-session`
       : `${SERVER_URL}/payment/create-checkout-session`;
 
-    const response = await fetch(
-      endpoint,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ priceId, userId: request.user.id }),
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ priceId, userId: request.user.id }),
     });
 
     if (!response.ok) {
