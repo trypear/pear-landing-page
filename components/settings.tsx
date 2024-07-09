@@ -3,15 +3,46 @@ import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { useCancelSubscription } from "@/hooks/useCancelSubscription";
+import { Subscription } from "@/types/subscription";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 type SettingsPageProps = {
   user: User;
+  subscription: Subscription | null;
 };
 
-export default function SettingsPage({ user }: SettingsPageProps) {
+export default function SettingsPage({
+  user,
+  subscription,
+}: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { handleCancelSubscription, isCanceling } = useCancelSubscription(user);
+  // const [isCanceled] = useState(subscription?.cancel_at_period_end);
+  const isCanceled = false; // Uncomment this line to test the cancel subscription dialog
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleCancelClick = () => {
+    setIsDialogOpen(true);
+  };
+
+  const handleConfirmCancel = async () => {
+    try {
+      await handleCancelSubscription(subscription!.subscription_id);
+    } finally {
+      setIsDialogOpen(false);
+    }
+  };
 
   useEffect(() => {
     // Open pearai app on desktop
@@ -77,15 +108,83 @@ export default function SettingsPage({ user }: SettingsPageProps) {
             <div className="flex flex-col rounded-md border p-3">
               <h3 className="mb-3 text-2xl font-semibold">Usage</h3>
               <div className="flex h-full flex-col justify-between">
-                {/* Show only if the user already has a subscription */}
-                <p className="font-small">Coming soon</p>
-
-                {process.env.VERCEL_ENV !== "production" && (
-                  <Button asChild size="sm" className="mb-1 max-w-max">
-                    {/* Show only if the user does not have a subscription */}
-                    {/* TODO: Link to pricing page */}
-                    <Link href="/pricing">Upgrade to Pro</Link>
-                  </Button>
+                {subscription ? (
+                  <>
+                    <div>
+                      <p>
+                        <strong>Current Plan:</strong>{" "}
+                        {subscription.pricing_tier}
+                      </p>
+                      <p>
+                        <strong>Status:</strong> {subscription.status}
+                      </p>
+                      <p>
+                        <strong>Current Period:</strong>{" "}
+                        {new Date(
+                          subscription.current_period_start * 1000,
+                        ).toLocaleDateString()}{" "}
+                        -{" "}
+                        {new Date(
+                          subscription.current_period_end * 1000,
+                        ).toLocaleDateString()}
+                      </p>
+                    </div>
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button
+                          onClick={handleCancelClick}
+                          disabled={isCanceling || isCanceled}
+                          variant="link"
+                          size="sm"
+                          className="mt-4 max-w-max"
+                        >
+                          {isCanceling
+                            ? "Canceling..."
+                            : isCanceled
+                              ? "Subscription Canceled"
+                              : "Cancel Subscription"}
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Cancel Subscription</DialogTitle>
+                          <DialogDescription>
+                            Are you sure you want to cancel your subscription?
+                            You'll lose access to premium features at the end of
+                            your current billing period.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <DialogFooter>
+                          <Button
+                            variant="outline"
+                            onClick={() => setIsDialogOpen(false)}
+                            className="mt-2"
+                          >
+                            Keep Subscription
+                          </Button>
+                          <Button
+                            variant="destructive"
+                            onClick={handleConfirmCancel}
+                            disabled={isCanceling}
+                            className="mb-2 mt-2"
+                          >
+                            {isCanceling
+                              ? "Canceling..."
+                              : "Confirm Cancellation"}
+                          </Button>
+                        </DialogFooter>
+                      </DialogContent>
+                    </Dialog>
+                  </>
+                ) : (
+                  <>
+                    <p className="mb-4">
+                      You are not currently subscribed to any plan.
+                    </p>
+                    <Button asChild size="sm" className="max-w-max">
+                      <Link href="/pricing">Upgrade to Pro</Link>
+                    </Button>
+                  </>
                 )}
               </div>
             </div>
