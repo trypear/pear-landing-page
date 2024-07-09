@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { Subscription } from "@/types/subscription";
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -28,7 +29,7 @@ export default function SettingsPage({
   const searchParams = useSearchParams();
   const router = useRouter();
   const { handleCancelSubscription, isCanceling } = useCancelSubscription(user);
-  const [isCanceled] = useState(subscription?.cancel_at_period_end);
+  const isCanceled = subscription?.cancel_at_period_end;
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleCancelClick = () => {
@@ -56,7 +57,7 @@ export default function SettingsPage({
       // TODO: clear the tokens from query?
     } else if (callback) {
       // Alert user if callback is present but either accessToken or refreshToken is null
-      alert(
+      toast.error(
         "Access token or refresh token is missing. Cannot open PearAI app.",
       );
     }

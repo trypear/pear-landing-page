@@ -31,14 +31,9 @@ export default async function SignIn({ searchParams }: SignInProps) {
     const callbackForDesktopApp = searchParams?.callback ?? "";
     const accessToken = sessionData.session?.access_token ?? "";
     const refreshToken = sessionData.session?.refresh_token ?? "";
-    if (accessToken && refreshToken) {
-      return redirect(
-        `/settings?callback=${encodeURIComponent(callbackForDesktopApp)}&accessToken=${encodeURIComponent(accessToken)}&refreshToken=${encodeURIComponent(refreshToken)}`,
-      );
-    } else {
-      toast.error("Access Token or Refresh Token not found.");
-    }
-    return redirect("/settings");
+    return redirect(
+      `/settings?callback=${encodeURIComponent(callbackForDesktopApp)}&accessToken=${encodeURIComponent(accessToken)}&refreshToken=${encodeURIComponent(refreshToken)}`,
+    );
   }
 
   return (
