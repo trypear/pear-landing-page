@@ -1,23 +1,22 @@
 import SettingsPage from "@/components/settings";
-import { createClient } from "@/utils/supabase/server";
+import { getUserAndSubscription } from "@/lib/data-fetching";
 import { redirect } from "next/navigation";
 
 export default async function Settings() {
-  const supabase = createClient();
+  const {
+    user,
+    subscription,
+    redirect: redirectTo,
+  } = await getUserAndSubscription();
 
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
+  if (redirectTo) {
+    redirect(redirectTo);
+  }
+
+  // Code to appease typecheck, the non user redirect is already performed above.
+  if (!user) {
     redirect("/signin");
   }
 
-  // fetch user subscription data
-  const { data: subscriptionData } = await supabase
-    .from("subscriptions")
-    .select(
-      "subscription_id, pricing_tier, status, current_period_start, current_period_end, cancel_at_period_end, canceled_at",
-    )
-    .eq("user_id", data.user.id)
-    .maybeSingle();
-
-  return <SettingsPage user={data.user} subscription={subscriptionData} />;
+  return <SettingsPage user={user} subscription={subscription} />;
 }

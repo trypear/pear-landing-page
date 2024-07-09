@@ -41,8 +41,10 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
           { status: 401 },
         );
       }
-
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorBody = await response.json();
+      throw new Error(
+        `HTTP error! status: ${response.status}. Error: ${errorBody?.error}`,
+      );
     }
 
     const data = await response.json();
