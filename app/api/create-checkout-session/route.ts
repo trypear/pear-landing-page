@@ -3,7 +3,8 @@ import { withAuth } from "@/utils/withAuth";
 import { createClient } from "@/utils/supabase/server";
 import { User } from "@supabase/supabase-js";
 
-const PEARAI_SERVER_URL = process.env.PEARAI_SERVER_URL;
+const SERVER_URL = process.env.SERVER_URL || "http://127.0.0.1:8000";
+const TEST_MODE_ENABLED = process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === "true";
 
 async function createCheckoutSession(request: NextRequest & { user: User }) {
   const supabase = createClient();
@@ -23,17 +24,18 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
 
     const token = session.access_token;
 
-    const response = await fetch(
-      `${PEARAI_SERVER_URL}/payment/create-checkout-session`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ priceId, userId: request.user.id }),
+    const endpoint = TEST_MODE_ENABLED
+      ? `${SERVER_URL}/payment/test/create-checkout-session`
+      : `${SERVER_URL}/payment/create-checkout-session`;
+
+    const response = await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
-    );
+      body: JSON.stringify({ priceId, userId: request.user.id }),
+    });
 
     if (!response.ok) {
       if (response.status === 401) {
