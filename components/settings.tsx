@@ -84,7 +84,7 @@ export default function SettingsPage({
                   <tbody className="text-sm">
                     <tr>
                       <td className="whitespace-nowrap pr-1">
-                        <span className="text-gray-500">Full Name:</span>{" "}
+                        <span className="text-gray-500">Full name:</span>{" "}
                       </td>
                       <td>{user.user_metadata.full_name}</td>
                     </tr>
@@ -112,21 +112,23 @@ export default function SettingsPage({
                   <>
                     <div>
                       <p>
-                        <strong>Current Plan:</strong>{" "}
+                        <strong>Current plan:</strong>{" "}
                         {subscription.pricing_tier}
                       </p>
                       <p>
                         <strong>Status:</strong> {subscription.status}
                       </p>
                       <p>
-                        <strong>Current Period:</strong>{" "}
+                        <strong>Current period:</strong>{" "}
                         {new Date(
                           subscription.current_period_start * 1000,
                         ).toLocaleDateString()}{" "}
                         -{" "}
-                        {new Date(
-                          subscription.current_period_end * 1000,
-                        ).toLocaleDateString()}
+                        {subscription.current_period_end
+                          ? new Date(
+                              subscription.current_period_end * 1000,
+                            ).toLocaleDateString()
+                          : "Now"}
                       </p>
                     </div>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
