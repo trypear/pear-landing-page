@@ -19,16 +19,34 @@ module.exports = {
     extend: {
       colors: {
         gray: {
-          100: "#EBF1F5", // #EBF1F5
-          200: "#D9E3EA", // #D9E3EA
-          300: "#C5D2DC", // #C5D2DC
-          400: "#9BA9B4", // #9BA9B4
-          500: "#707D86", // #707D86
-          600: "#55595F", // #55595F
-          700: "#33363A", // #33363A
-          800: "#25282C", // #25282C
-          900: "#151719", // #151719
-          950: "#111214", // #111214
+          DEFAULT: 'hsla(var(--gray), <alpha-value>)',
+          foreground: 'hsla(var(--gray-foreground), <alpha-value>)',
+          50: 'hsla(var(--gray-50), <alpha-value>)',
+          100: 'hsla(var(--gray-100), <alpha-value>)',
+          200: 'hsla(var(--gray-200), <alpha-value>)',
+          300: 'hsla(var(--gray-300), <alpha-value>)',
+          400: 'hsla(var(--gray-400), <alpha-value>)',
+          500: 'hsla(var(--gray-500), <alpha-value>)',
+          600: 'hsla(var(--gray-600), <alpha-value>)',
+          700: 'hsla(var(--gray-700), <alpha-value>)',
+          800: 'hsla(var(--gray-800), <alpha-value>)',
+          900: 'hsla(var(--gray-900), <alpha-value>)',
+          950: 'hsla(var(--gray-950), <alpha-value>)',
+        },
+        darkGray: {
+          DEFAULT: 'hsla(var(--darkGray), <alpha-value>)',
+          foreground: 'hsla(var(--darkGray-foreground), <alpha-value>)',
+          50: 'hsla(var(--darkGray-50), <alpha-value>)',
+          100: 'hsla(var(--darkGray-100), <alpha-value>)',
+          200: 'hsla(var(--darkGray-200), <alpha-value>)',
+          300: 'hsla(var(--darkGray-300), <alpha-value>)',
+          400: 'hsla(var(--darkGray-400), <alpha-value>)',
+          500: 'hsla(var(--darkGray-500), <alpha-value>)',
+          600: 'hsla(var(--darkGray-600), <alpha-value>)',
+          700: 'hsla(var(--darkGray-700), <alpha-value>)',
+          800: 'hsla(var(--darkGray-800), <alpha-value>)',
+          900: 'hsla(var(--darkGray-900), <alpha-value>)',
+          950: 'hsla(var(--darkGray-950), <alpha-value>)',
         },
         purple: {
           100: "#F4F4FF",
@@ -42,27 +60,18 @@ module.exports = {
           900: "#262668",
         },
         primary: {
-          50: "#F1FEFB",
-          100: "#E3FCF6",
-          200: "#C3F9EC",
-          300: "#9EF5E0",
-          400: "#75F0D3",
-          500: "#3CEAC1",
-          600: "#17D4A8",
-          700: "#14BD95",
-          800: "#12A885",
-          900: "#089675",
-        },
-        darkPrimary: {
-          50: "#8cd7c5",
-          100: "#65d7bc",
-          200: "#45c2a5",
-          300: "#2cbe9c",
-          400: "#00ab83",
-          500: "#019775",
-          600: "#07785F",
-          700: "#004435",
-          800: "#00281F",
+          DEFAULT: "hsla(var(--primary), <alpha-value>)",
+          foreground: "hsla(var(--primary-foreground), <alpha-value>)",
+          50: "hsla(var(--primary-50), <alpha-value>)",
+          100: "hsla(var(--primary-100), <alpha-value>)",
+          200: "hsla(var(--primary-200), <alpha-value>)",
+          300: "hsla(var(--primary-300), <alpha-value>)",
+          400: "hsla(var(--primary-400), <alpha-value>)",
+          500: "hsla(var(--primary-500), <alpha-value>)",
+          600: "hsla(var(--primary-600), <alpha-value>)",
+          700: "hsla(var(--primary-700), <alpha-value>)",
+          800: "hsla(var(--primary-800), <alpha-value>)",
+          900: "hsla(var(--primary-900), <alpha-value>)",
         },
         secondary: {
           300: "#878787",

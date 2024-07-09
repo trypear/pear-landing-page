@@ -15,20 +15,20 @@ export default async function AuthButton() {
   };
 
   return (
-    <div className="hidden flex-row items-center space-x-1 text-secondary-600 dark:text-white-300 md:flex">
+    <div className="hidden flex-row items-center space-x-1 md:flex">
       {error || !data?.user ? (
         <div className="flex flex-row items-center space-x-1">
           <CircleUserRound strokeWidth={1} className="h-5 w-5" />
 
           <Link
-            className="transition duration-150 ease-in-out hover:text-secondary-400 dark:text-gray-400 dark:hover:text-gray-300"
+            className="transition duration-150 ease-in-out hover:text-darkGray-500"
             href={"/signin"}
           >
             Sign in
           </Link>
-          <span className="text-secondary-600 dark:text-gray-500">/</span>
+          <span className="text-darkGray-400 opacity-50">/</span>
           <Link
-            className="transition duration-150 ease-in-out hover:text-secondary-400 dark:text-gray-400 dark:hover:text-gray-300"
+            className="transition duration-150 ease-in-out hover:text-darkGray-500"
             href={"/signup"}
           >
             Sign up
@@ -38,14 +38,14 @@ export default async function AuthButton() {
         <>
           <CircleUserRound strokeWidth={1} className="h-5 w-5" />
           <Link
-            className="transition duration-150 ease-in-out hover:text-secondary-400 dark:text-gray-400 dark:hover:text-gray-300"
+            className="transition duration-150 ease-in-out hover:text-darkGray-500"
             href={"/settings"}
           >
             Settings
           </Link>
-          <span className="text-secondary-600 dark:text-gray-500">/</span>
+          <span className="text-darkGray-400 opacity-50">/</span>
           <form action={handleSignOut}>
-            <button className="transition duration-150 ease-in-out hover:text-secondary-400 dark:text-gray-400 dark:hover:text-gray-300">
+            <button className="transition duration-150 ease-in-out hover:text-darkGray-500">
               Sign out
             </button>
           </form>

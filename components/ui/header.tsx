@@ -13,9 +13,9 @@ export default function Header() {
     { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
   ];
   return (
-    <header className="fixed top-0 z-30 w-full animate-fadein-opacity dark:border-b border-gray-100 bg-white-50 bg-opacity-60 shadow-md shadow-gray-800/[0.02] backdrop-blur-[16px] dark:border-gray-800 dark:bg-gray-900/60">
+    <header className="fixed top-0 z-30 w-full animate-fadein-opacity border-b border-gray-100 bg-white-50 bg-opacity-60 shadow-md shadow-gray-800/[0.02] backdrop-blur-[16px] dark:border-gray-800 dark:bg-gray-900/60">
       <div className="mx-auto max-w-screen-xl px-4 py-1 sm:px-6 sm:py-2">
-        <div className="text-md flex h-10 items-center justify-between text-secondary-600 transition ease-in-out dark:text-white-300 sm:text-lg">
+        <div className="text-md flex h-10 items-center justify-between text-darkGray-600 transition ease-in-out sm:text-lg">
           {/* Site branding */}
           <div className="flex flex-row items-start space-x-2">
             {/* Logo */}
@@ -28,7 +28,7 @@ export default function Header() {
                 {navLinks.map((link) => (
                   <li key={link.label}>
                     <Link
-                      className="hover:text-secondary-400 dark:text-gray-300 dark:hover:text-gray-300"
+                      className="hover:text-darkGray-500"
                       href={link.path}
                     >
                       {link.label}
@@ -44,7 +44,7 @@ export default function Header() {
             {/* AuthButton is hidden in production */}
 
             <span
-              className="h-6 w-px rounded-full bg-gray-300 dark:bg-gray-500"
+              className="h-6 w-px rounded-full bg-gray-400 opacity-50"
               id="button__divider"
             ></span>
 

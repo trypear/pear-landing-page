@@ -29,7 +29,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
 }) => (
   <Card className="flex h-full w-full flex-col border border-primary-700">
     <CardHeader className="flex-grow space-y-3 p-6">
-      <CardTitle className="text-2xl text-primary-700 dark:text-darkPrimary-500">
+      <CardTitle className="text-2xl text-primary-700">
         {title}
       </CardTitle>
       <p className="text-sm font-medium text-gray-400 sm:text-base">
@@ -68,9 +68,9 @@ const PricingTier: React.FC<PricingTierProps> = ({
             <li key={index} className="flex items-center">
               <Check
                 strokeWidth={1}
-                className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700 dark:text-darkPrimary-500"
+                className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700"
               />
-              <span className="text-sm font-medium text-primary-700 dark:text-darkPrimary-500 sm:text-base">
+              <span className="text-sm font-medium text-primary-700 sm:text-base">
                 {feature}
               </span>
             </li>
@@ -145,7 +145,7 @@ const PricingPage: React.FC = () => {
               Want to use it on a professional level?
               <Link
                 href="#"
-                className="ml-2 font-semibold text-primary-700 hover:text-primary-800 dark:text-darkPrimary-500"
+                className="ml-2 font-semibold text-primary-700 hover:text-primary-800"
               >
                 Contact us for custom plans!
               </Link>

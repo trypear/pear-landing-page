@@ -119,7 +119,7 @@ export default function ResetPassword() {
             <div className="mt-6 text-center text-gray-400">
               <Link
                 href="/"
-                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800 dark:text-darkPrimary-500"
+                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Cancel
               </Link>

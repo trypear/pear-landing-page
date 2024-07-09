@@ -52,7 +52,7 @@ export default function Hero() {
                   alt="PearAI Logo"
                   className="-mt-3 mr-2 hidden dark:inline-flex"
                 />
-                <span className="text-primary-700 dark:text-darkPrimary-500">
+                <span className="text-primary-700">
                   PearAI:{" "}
                 </span>
                 The Open Source AI&#8209;Powered Code Editor
@@ -70,7 +70,7 @@ export default function Hero() {
                     alt="PearAI Logo"
                     className="-mt-3 mr-2 hidden dark:inline-flex"
                   />
-                  <span className="text-primary-700 dark:text-darkPrimary-500">
+                  <span className="text-primary-700">
                     PearAI{" "}
                   </span>
                 </div>

@@ -78,7 +78,7 @@ function SingleFeature(props: SingleFeatureProps) {
     <div className="m-4 flex flex-col items-start min-[425px]:m-8 sm:m-12 lg:m-24 lg:max-w-full lg:flex-row lg:justify-center">
       <div className="justify mb-8 flex flex-col content-center pr-8 text-left lg:mb-0 lg:ml-1.5 lg:w-[450px]">
         <h1
-          className="whitespace-pre-line text-2xl font-medium text-primary-700 dark:text-darkPrimary-400 lg:text-4xl"
+          className="whitespace-pre-line text-2xl font-medium text-primary-700 lg:text-4xl"
           data-aos="fade-up"
         >
           {props.info.header}

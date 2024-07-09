@@ -15,8 +15,8 @@ export default function DarkModeToggle() {
   if (!mounted) return null;
 
   return (
-    <div className="flex h-8 w-8 items-center justify-center text-secondary-600 duration-200 hover:text-secondary-400 dark:text-gray-400 dark:hover:text-white-300">
-      <label className="flex h-full w-full cursor-pointer items-center justify-center rounded-full border border-gray-200 duration-200 hover:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-800">
+    <div className="flex h-8 w-8 items-center justify-center text-darkGray-600 hover:text-darkGray-500 duration-200">
+      <label className="flex h-full w-full cursor-pointer items-center justify-center rounded-full border border-gray-400/50 duration-200 hover:bg-gray-400/20">
         <input
           className="hidden"
           type="checkbox"

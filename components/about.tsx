@@ -37,7 +37,7 @@ const AboutComponent: React.FC = () => {
           <div className="lg:w-1/2 lg:pr-8 lg:pt-4">
             <h2 className="mb-4 text-3xl font-bold dark:text-gray-300">
               Fully{" "}
-              <span className="text-primary-700 dark:text-darkPrimary-500">
+              <span className="text-primary-700">
                 transparent
               </span>
               , PearAI is built in public

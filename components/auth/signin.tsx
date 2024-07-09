@@ -185,7 +185,7 @@ export default function SignIn() {
                   </label>
                   <Link
                     href="/reset-password"
-                    className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800 dark:text-darkPrimary-500"
+                    className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
                   >
                     Forgot Password?
                   </Link>
@@ -211,7 +211,7 @@ export default function SignIn() {
               Don&apos;t have an account?{" "}
               <Link
                 href="/signup"
-                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800 dark:text-darkPrimary-500"
+                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign up
               </Link>

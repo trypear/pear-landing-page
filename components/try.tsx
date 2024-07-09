@@ -34,7 +34,7 @@ export default function TryPear() {
               questions, or would like to discuss, you can join our{" "}
               <Link
                 href="https://discord.gg/7QMraJUsQt"
-                className="font-medium text-primary-700 hover:text-primary-800 dark:text-darkPrimary-500"
+                className="font-medium text-primary-700 hover:text-primary-800"
               >
                 Discord
               </Link>{" "}
@@ -48,7 +48,7 @@ export default function TryPear() {
               Help the community out by giving{" "}
               <Link
                 href="https://github.com/trypear/pearai-app"
-                className="font-medium text-primary-700 hover:text-primary-800 dark:text-darkPrimary-500"
+                className="font-medium text-primary-700 hover:text-primary-800"
               >
                 the repo
               </Link>{" "}
