@@ -5,6 +5,7 @@ import { PHProvider } from "./providers";
 import Header from "@/components/ui/header";
 import { Toaster } from "@/components/ui/sonner";
 import dynamic from "next/dynamic";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -39,6 +40,7 @@ export default function RootLayout({
             <Header />
             {children}
             <Toaster position="bottom-right" richColors />
+            <Analytics />
           </div>
         </body>
       </PHProvider>
