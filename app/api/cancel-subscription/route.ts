@@ -1,16 +1,16 @@
-import { NextRequest, NextResponse } from "next/server";
-import { withAuth } from "@/utils/withAuth";
-import { createClient } from "@/utils/supabase/server";
-import { User } from "@supabase/supabase-js";
 import { TEST_MODE_ENABLED } from "@/utils/constants";
+import { createClient } from "@/utils/supabase/server";
+import { withAuth } from "@/utils/withAuth";
+import { User } from "@supabase/supabase-js";
+import { NextResponse, NextRequest } from "next/server";
 
 const PEARAI_SERVER_URL = process.env.PEARAI_SERVER_URL;
 
-async function createCheckoutSession(request: NextRequest & { user: User }) {
+async function cancelSubscription(request: NextRequest & { user: User }) {
   const supabase = createClient();
 
   try {
-    const { priceId } = await request.json();
+    const { subscriptionId } = await request.json();
     const {
       data: { session },
     } = await supabase.auth.getSession();
@@ -23,7 +23,7 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
     }
 
     const token = session.access_token;
-    const url = `${PEARAI_SERVER_URL}/payment${TEST_MODE_ENABLED ? "/test" : ""}/create-checkout-session`;
+    const url = `${PEARAI_SERVER_URL}/payment${TEST_MODE_ENABLED ? "/test" : ""}/cancel-subscription`;
 
     const response = await fetch(url, {
       method: "POST",
@@ -31,7 +31,7 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ priceId, userId: request.user.id }),
+      body: JSON.stringify({ subscriptionId, userId: request.user.id }),
     });
 
     if (!response.ok) {
@@ -41,16 +41,16 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
           { status: 401 },
         );
       }
-      const errorBody = await response.json();
+      const msgError = await response.json();
       throw new Error(
-        `HTTP error! status: ${response.status}. Error: ${errorBody?.error}`,
+        `HTTP error! status: ${response.status}. Error: ${msgError?.message}`,
       );
     }
 
     const data = await response.json();
-    return NextResponse.json({ url: data.url });
+    return NextResponse.json({ data });
   } catch (error) {
-    let errMsg = "Error creating checkout session: ";
+    let errMsg = "Error cancelling subscription: ";
     if (error instanceof Error) {
       errMsg += `: ${error?.message}`;
     } else if (typeof error === "string") {
@@ -61,4 +61,4 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
   }
 }
 
-export const POST = withAuth(createCheckoutSession);
+export const POST = withAuth(cancelSubscription);
