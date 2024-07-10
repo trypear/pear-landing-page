@@ -19,10 +19,7 @@ export default function Custom404() {
                   playsInline
                   className="h-auto max-w-full"
                 >
-                  <source
-                    src="/gifs/dukepanshake-404.webm"
-                    type="video/webm"
-                  />
+                  <source src="/gifs/dukepanshake-404.webm" type="video/webm" />
                   Your browser does not support the video tag.
                 </video>
               </div>
