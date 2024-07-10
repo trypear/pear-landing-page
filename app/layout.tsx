@@ -6,6 +6,7 @@ import Header from "@/components/ui/header";
 import { Toaster } from "@/components/ui/sonner";
 import dynamic from "next/dynamic";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
             {children}
             <Toaster position="bottom-right" richColors />
             <Analytics />
+            <SpeedInsights />
           </div>
         </body>
       </PHProvider>

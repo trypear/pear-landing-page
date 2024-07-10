@@ -35,9 +35,9 @@ export default function SettingsPage({
   const handleCancelClick = () => {
     if (isCanceled) {
       router.push("/pricing");
-      return;
+    } else {
+      setIsDialogOpen(true);
     }
-    setIsDialogOpen(true);
   };
 
   const handleConfirmCancel = async () => {
