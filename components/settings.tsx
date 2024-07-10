@@ -158,7 +158,7 @@ export default function SettingsPage({
                         </DialogHeader>
                         <DialogFooter>
                           <Button
-                            variant="outline"
+                            variant="default"
                             onClick={() => setIsDialogOpen(false)}
                             className="mt-2"
                           >
