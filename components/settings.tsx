@@ -147,7 +147,7 @@ export default function SettingsPage({
                           {isCanceling
                             ? "Canceling..."
                             : isCanceled
-                              ? "Subscription Canceled, reactivate?"
+                              ? "Subscription canceled, reactivate?"
                               : "Cancel Subscription"}
                         </Button>
                       </DialogTrigger>
