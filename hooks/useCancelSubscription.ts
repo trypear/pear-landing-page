@@ -20,19 +20,15 @@ export const useCancelSubscription = (
       router.push("/signin");
       return;
     }
-
     if (isCanceling) return;
 
     setIsCanceling(true);
-
     try {
       const response = await fetch("/api/cancel-subscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ subscriptionId }),
       });
-
-      console.log("response", response);
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -41,7 +37,6 @@ export const useCancelSubscription = (
       }
 
       const { data } = await response.json();
-      console.log("data", data);
 
       if (data.status === "success") {
         toast.success("Your subscription has been canceled successfully.");

@@ -33,7 +33,7 @@ async function cancelSubscription(request: NextRequest & { user: User }) {
       },
       body: JSON.stringify({ subscriptionId, userId: request.user.id }),
     });
-    console.log("response: ", response);
+
     if (!response.ok) {
       if (response.status === 401) {
         return NextResponse.json(
@@ -41,12 +41,13 @@ async function cancelSubscription(request: NextRequest & { user: User }) {
           { status: 401 },
         );
       }
-
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const msgError = await response.json();
+      throw new Error(
+        `HTTP error! status: ${response.status}. Error: ${msgError?.message}`,
+      );
     }
 
     const data = await response.json();
-    console.log(data);
     return NextResponse.json({ data });
   } catch (error) {
     let errMsg = "Error cancelling subscription: ";
