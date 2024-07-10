@@ -11,7 +11,7 @@ export default async function Verification() {
   }
   return (
     <>
-      <VerificationComponent />;
+      <VerificationComponent />
     </>
   );
 }
