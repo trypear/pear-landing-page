@@ -33,6 +33,10 @@ export default function SettingsPage({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleCancelClick = () => {
+    if (isCanceled) {
+      router.push("/pricing");
+      return;
+    }
     setIsDialogOpen(true);
   };
 
@@ -135,7 +139,7 @@ export default function SettingsPage({
                       <DialogTrigger asChild>
                         <Button
                           onClick={handleCancelClick}
-                          disabled={isCanceling || isCanceled}
+                          disabled={isCanceling}
                           variant="link"
                           size="sm"
                           className="mt-4 max-w-max"
@@ -143,7 +147,7 @@ export default function SettingsPage({
                           {isCanceling
                             ? "Canceling..."
                             : isCanceled
-                              ? "Subscription Canceled"
+                              ? "Subscription Canceled, reactivate?"
                               : "Cancel Subscription"}
                         </Button>
                       </DialogTrigger>
