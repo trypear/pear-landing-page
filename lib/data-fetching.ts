@@ -16,14 +16,20 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
     return { user: null, subscription: null, redirect: "/signin" };
   }
 
-  // fetch user subscription data
-  const { data: subscriptionData } = await supabase
+  // Fetch the most recent user subscription data in case there are multiple
+  const { data: subscriptionData, error } = await supabase
     .from("subscriptions")
     .select(
       "subscription_id, pricing_tier, status, current_period_start, current_period_end, cancel_at_period_end, canceled_at",
     )
     .eq("user_id", userData.user.id)
-    .maybeSingle();
+    .order("current_period_end", { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error) {
+    console.error("Error fetching subscription data:", error);
+  }
 
   return {
     user: userData.user,
