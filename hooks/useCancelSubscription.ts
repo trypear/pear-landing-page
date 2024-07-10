@@ -2,9 +2,16 @@ import { useState } from "react";
 import { User } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Subscription } from "@/types/subscription";
 
-export const useCancelSubscription = (user: User | null) => {
+export const useCancelSubscription = (
+  user: User | null,
+  subscription: Subscription | null,
+) => {
   const [isCanceling, setIsCanceling] = useState(false);
+  const [isCanceled, setIsCanceled] = useState(
+    subscription?.cancel_at_period_end,
+  );
   const router = useRouter();
 
   const handleCancelSubscription = async (subscriptionId: string) => {
@@ -38,6 +45,7 @@ export const useCancelSubscription = (user: User | null) => {
 
       if (data.status === "success") {
         toast.success("Your subscription has been canceled successfully.");
+        setIsCanceled(true);
         router.push("/settings");
       } else {
         toast.error("Failed to cancel subscription. Please try again.");
@@ -50,5 +58,5 @@ export const useCancelSubscription = (user: User | null) => {
     }
   };
 
-  return { handleCancelSubscription, isCanceling };
+  return { handleCancelSubscription, isCanceling, isCanceled };
 };

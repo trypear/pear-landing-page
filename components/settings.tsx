@@ -28,8 +28,8 @@ export default function SettingsPage({
 }: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const { handleCancelSubscription, isCanceling } = useCancelSubscription(user);
-  const isCanceled = subscription?.cancel_at_period_end;
+  const { handleCancelSubscription, isCanceling, isCanceled } =
+    useCancelSubscription(user, subscription);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleCancelClick = () => {
