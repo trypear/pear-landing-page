@@ -3,7 +3,7 @@ import { withAuth } from "@/utils/withAuth";
 import { createClient } from "@/utils/supabase/server";
 import { User } from "@supabase/supabase-js";
 
-const SERVER_URL = process.env.SERVER_URL || "http://127.0.0.1:8000";
+const SERVER_URL = process.env.PEARAI_SERVER_URL;
 const TEST_MODE_ENABLED = process.env.NEXT_PUBLIC_TEST_MODE_ENABLED === "true";
 
 async function createCheckoutSession(request: NextRequest & { user: User }) {
@@ -44,8 +44,10 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
           { status: 401 },
         );
       }
-
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errMsg = await response.json();
+      throw new Error(
+        `HTTP error! status: ${response.status}. Error: ${errMsg?.error}`,
+      );
     }
 
     const data = await response.json();
