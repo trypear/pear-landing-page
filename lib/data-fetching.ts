@@ -23,6 +23,7 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
       "subscription_id, pricing_tier, status, current_period_start, current_period_end, cancel_at_period_end, canceled_at",
     )
     .eq("user_id", userData.user.id)
+    .eq("status", "active") // Ensure the status is active
     .order("current_period_end", { ascending: false })
     .limit(1)
     .single();
