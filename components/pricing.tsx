@@ -43,12 +43,19 @@ const PricingTier: React.FC<PricingTierProps> = ({
             ${price}
             <span className="text-lg font-normal sm:text-xl"> /month</span>
           </p>
-        )}{isFree &&
-                <p className="text-sm font-medium text-gray-400 sm:text-base">
-          <a href="https://forms.gle/171UyimgQJhEJbhU7"     className="text-blue-500 hover:text-blue-600 underline"
-target="_blank">Join the waitlist</a> to be notified when the app is available!
-        </p>
-}
+        )}
+        {isFree && (
+          <p className="text-sm font-medium text-gray-400 sm:text-base">
+            <a
+              href="https://forms.gle/171UyimgQJhEJbhU7"
+              className="text-blue-500 underline hover:text-blue-600"
+              target="_blank"
+            >
+              Join the waitlist
+            </a>{" "}
+            to be notified when the app is available!
+          </p>
+        )}
         {isFree ? (
           ["Windows", "macOS"].map((os) => (
             <Button
