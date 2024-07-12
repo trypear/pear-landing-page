@@ -98,7 +98,7 @@ export default function SignUp() {
               <Button
                 type="submit"
                 size="lg"
-                variant="destructive"
+                variant="danger"
                 className="relative flex w-full items-center rounded-md px-0"
               >
                 <GoogleLogo className="text-white mx-4 h-4 w-4 shrink-0" />

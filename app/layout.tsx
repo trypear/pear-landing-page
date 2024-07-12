@@ -1,8 +1,12 @@
 import "./css/style.css";
 import "./globals.css";
 import { Inter, Architects_Daughter } from "next/font/google";
+import { PHProvider } from "./providers";
 import Header from "@/components/ui/header";
 import { Toaster } from "@/components/ui/sonner";
+import dynamic from "next/dynamic";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,6 +21,10 @@ const architects_daughter = Architects_Daughter({
   display: "swap",
 });
 
+const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
+  ssr: false,
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -24,15 +32,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${architects_daughter.variable} font-inter bg-white-100 tracking-tight text-secondary-main antialiased`}
-      >
-        <div className="flex min-h-screen flex-col overflow-hidden">
-          <Header />
-          {children}
-          <Toaster position="bottom-right" richColors />
-        </div>
-      </body>
+      <PHProvider>
+        <body
+          className={`${inter.variable} ${architects_daughter.variable} font-inter bg-white-100 tracking-tight text-secondary-main antialiased`}
+        >
+          <PostHogPageView />
+          <div className="flex min-h-screen flex-col overflow-hidden">
+            <Header />
+            {children}
+            <Toaster position="bottom-right" richColors />
+            <Analytics />
+            <SpeedInsights />
+          </div>
+        </body>
+      </PHProvider>
     </html>
   );
 }

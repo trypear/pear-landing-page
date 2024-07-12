@@ -12,7 +12,8 @@ const buttonVariants = cva(
         default:
           "rounded-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm",
         destructive:
-          "bg-red-600 text-white-main hover:bg-red-700 hover:shadow-sm",
+          "rounded-full border border-red-600 text-red-600 hover:border-red-700 hover:text-red-700 hover:shadow-sm",
+        danger: "bg-red-600 text-white-main hover:bg-red-700 hover:shadow-sm",
         outline:
           "rounded-full border border-primary-700 text-primary-700 hover:border-primary-800 hover:text-primary-800 hover:shadow-sm",
         secondary:
