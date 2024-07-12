@@ -1,6 +1,7 @@
 import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ExternalLink } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -59,8 +60,13 @@ export default function Hero() {
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
                 <Button asChild size="lg">
-                  <Link href="https://forms.gle/171UyimgQJhEJbhU7">
+                  <Link
+                    href="https://forms.gle/171UyimgQJhEJbhU7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Join Waitlist
+                    <ExternalLink size={"16"} />
                   </Link>
                 </Button>
               </div>
@@ -71,8 +77,13 @@ export default function Hero() {
                   variant="outline"
                   className="mt-2 sm:ml-4 sm:mt-0 sm:w-auto"
                 >
-                  <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
+                  <Link
+                    href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     More Details
+                    <ExternalLink size={"16"} />
                   </Link>
                 </Button>
               </div>

@@ -8,10 +8,22 @@ import { redirect } from "next/navigation";
 export default async function Header() {
   // navigation bar links
   const navLinks = [
-    { label: "About", path: "/about" },
-    { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
-    { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
-    { label: "Priority Waitlist", path: "/priority-waitlist" },
+    { label: "About", path: "/about", isExternal: false },
+    {
+      label: "Discord",
+      path: "https://discord.gg/AKy5FmqCkF",
+      isExternal: true,
+    },
+    {
+      label: "GitHub",
+      path: "https://github.com/trypear/pearai-app",
+      isExternal: true,
+    },
+    {
+      label: "Priority Waitlist",
+      path: "/priority-waitlist",
+      isExternal: false,
+    },
   ];
 
   const supabase = createClient();
@@ -46,7 +58,14 @@ export default async function Header() {
                         : ""
                     }
                   >
-                    <Link className="hover:text-secondary-400" href={link.path}>
+                    <Link
+                      className="hover:text-secondary-400"
+                      href={link.path}
+                      {...(link.isExternal && {
+                        target: "_blank",
+                        rel: "noopener noreferrer",
+                      })}
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -55,7 +74,6 @@ export default async function Header() {
             </nav>
           </div>
           <AuthButton />
-          {/* AuthButton is hidden in production */}
           <MobileMenu
             supabaseUser={
               supabaseUserResponse.error || !supabaseUserResponse.data.user
