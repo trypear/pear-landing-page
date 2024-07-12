@@ -69,7 +69,7 @@ export default function SignIn() {
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
-          <div className="md:pb-17 mx-auto max-w-3xl pb-10 text-center text-3xl dark:text-gray-300 lg:text-4xl">
+          <div className="md:pb-17 mx-auto max-w-3xl pb-10 text-center text-3xl lg:text-4xl">
             <h1 className="h1">Welcome back</h1>
           </div>
 
@@ -102,7 +102,7 @@ export default function SignIn() {
                     variant="authgroup"
                     className="relative flex w-full items-center rounded-md px-0"
                   >
-                    <GitHubLogo className="mx-1 h-4 w-4 shrink-0 text-gray-700 dark:text-gray-300" />
+                    <GitHubLogo className="mx-1 h-4 w-4 shrink-0 text-gray-700" />
                     {/* <span
                       className="border-[white] mr-4 flex h-6 items-center border-r border-opacity-50 dark:border-opacity-40"
                       aria-hidden="true"
@@ -118,14 +118,12 @@ export default function SignIn() {
             </form>
             <div className="my-6 flex items-center">
               <div
-                className="mr-3 grow border-t border-dotted border-gray-400 dark:border-gray-600"
+                className="mr-3 grow border-t border-dotted border-gray-400"
                 aria-hidden="true"
               />
-              <div className="text-gray-400 dark:text-gray-600">
-                Or, sign in with your email
-              </div>
+              <div className="text-gray-400">Or, sign in with your email</div>
               <div
-                className="ml-3 grow border-t border-dotted border-gray-400 dark:border-gray-600"
+                className="ml-3 grow border-t border-dotted border-gray-400"
                 aria-hidden="true"
               />
             </div>
@@ -179,7 +177,7 @@ export default function SignIn() {
                       type="checkbox"
                       className="form-checkbox rounded dark:bg-opacity-50"
                     />
-                    <span className="cursor-poiter ml-2 text-gray-400 dark:text-gray-500">
+                    <span className="cursor-poiter ml-2 text-gray-400">
                       Keep me signed in
                     </span>
                   </label>
@@ -207,7 +205,7 @@ export default function SignIn() {
               </form>
             </Form>
 
-            <div className="mt-6 text-center text-gray-400 dark:text-gray-500">
+            <div className="mt-6 text-center text-gray-400">
               Don&apos;t have an account?{" "}
               <Link
                 href="/signup"

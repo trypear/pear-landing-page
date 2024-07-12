@@ -11,20 +11,20 @@ export default function Footer() {
               <div className="mb-2 flex items-center">
                 <Link
                   href="/privacy"
-                  className="ml-3 hover:text-gray-500 dark:hover:text-gray-300"
+                  className="ml-3 hover:text-gray-500"
                   aria-label="Privacy policy"
                 >
                   Privacy Policy
                 </Link>
                 <Link
                   href="/terms-of-service"
-                  className="ml-4 hover:text-gray-500 dark:hover:text-gray-300"
+                  className="ml-4 hover:text-gray-500"
                   aria-label="Terms of service"
                 >
                   Terms of Service
                 </Link>
               </div>
-              <div className="ml-3 mr-4 mt-4 text-sm text-gray-600 dark:text-gray-500 md:mt-0">
+              <div className="ml-3 mr-4 mt-4 text-sm text-gray-600 md:mt-0">
                 &copy; Pear AI - All rights reserved.
               </div>
             </div>
@@ -34,7 +34,7 @@ export default function Footer() {
                 <Link
                   href="https://github.com/orgs/trypear/repositories"
                   target="_blank"
-                  className="flex items-center justify-center text-secondary-main transition duration-150 ease-in-out hover:text-gray-500 dark:text-secondary-300"
+                  className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                   aria-label="Github"
                 >
                   GitHub
@@ -44,7 +44,7 @@ export default function Footer() {
                 <Link
                   href="https://discord.gg/7QMraJUsQt"
                   target="_blank"
-                  className="flex items-center justify-center text-secondary-main transition duration-150 ease-in-out hover:text-gray-500 dark:text-secondary-300"
+                  className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                   aria-label="Discord"
                 >
                   Discord
@@ -53,7 +53,7 @@ export default function Footer() {
               <li className="ml-4">
                 <Link
                   href="/about"
-                  className="flex items-center justify-center text-secondary-main transition duration-150 ease-in-out hover:text-gray-500 dark:text-secondary-300"
+                  className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                   aria-label="About"
                 >
                   About

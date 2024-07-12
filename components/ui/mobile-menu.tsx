@@ -1,76 +1,134 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, SetStateAction, Dispatch } from "react";
 import Link from "next/link";
 import { Button } from "./button";
-import { HamburgerMenuIcon } from "./icons";
+import { Menu, X } from "lucide-react";
+interface NavLink {
+  label: string;
+  path: string;
+}
+import { UserResponse } from "@supabase/supabase-js";
 
-export default function MobileMenu() {
-  const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
+export const USER_NOT_FOUND: string = "User not found";
 
-  const trigger = useRef<HTMLButtonElement>(null);
-  const mobileNav = useRef<HTMLDivElement>(null);
+type SupabaseUserType = UserResponse | typeof USER_NOT_FOUND;
 
-  // close the mobile menu on click outside
+export default function MobileMenu({
+  handleSignOut,
+  supabaseUser,
+}: {
+  handleSignOut: () => Promise<never>;
+  supabaseUser: SupabaseUserType;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
-    const clickHandler = ({ target }: { target: EventTarget | null }): void => {
-      if (!mobileNav.current || !trigger.current) return;
+    const handleOutsideClick = (event: MouseEvent) => {
       if (
-        !mobileNavOpen ||
-        mobileNav.current.contains(target as Node) ||
-        trigger.current.contains(target as Node)
-      )
-        return;
-      setMobileNavOpen(false);
+        isOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !buttonRef.current?.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
     };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
-  });
 
-  // close the mobile menu if the esc key is pressed
-  useEffect(() => {
-    const keyHandler = ({ keyCode }: { keyCode: number }): void => {
-      if (!mobileNavOpen || keyCode !== 27) return;
-      setMobileNavOpen(false);
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (isOpen && event.key === "Escape") {
+        setIsOpen(false);
+      }
     };
-    document.addEventListener("keydown", keyHandler);
-    return () => document.removeEventListener("keydown", keyHandler);
-  });
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscKey);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscKey);
+    };
+  }, [isOpen]);
+
+  const navLinks: NavLink[] = [
+    { label: "About", path: "/about" },
+    { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
+    { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
+    { label: "Priority Waitlist", path: "/priority-waitlist" },
+  ];
 
   return (
     <div className="md:hidden">
-      {/* Hamburger button */}
       <button
-        ref={trigger}
-        className={`hamburger hover:text-gray-600 ${mobileNavOpen ? "active" : ""} flex`}
-        aria-controls="mobile-nav"
-        aria-expanded={mobileNavOpen}
-        onClick={() => setMobileNavOpen(!mobileNavOpen)}
+        ref={buttonRef}
+        className="flex items-center p-2 text-gray-700 hover:text-gray-600 focus:outline-none"
+        aria-label="Toggle mobile menu"
+        onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="sr-only">Menu</span>
-        <HamburgerMenuIcon className="h-6 w-6 text-gray-700 transition duration-150 ease-in-out hover:text-gray-700" />
+        <div className="relative">
+          <Menu
+            className={`h-6 w-6 transition-opacity duration-300 ease-in-out ${isOpen ? "opacity-0" : "opacity-100"}`}
+          />
+          <X
+            className={`absolute left-0 top-0 h-6 w-6 transition-opacity duration-300 ease-in-out ${isOpen ? "opacity-100" : "opacity-0"}`}
+          />
+        </div>
       </button>
 
-      {/*Mobile navigation */}
-      <nav
-        id="mobile-nav"
-        ref={mobileNav}
-        className="absolute left-0 top-full z-20 flex w-full animate-fadein-opacity flex-col items-center justify-center space-y-2 overflow-hidden bg-white-50 px-4 text-xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-[2px]"
-        style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
+      <div
+        ref={menuRef}
+        className={`absolute left-0 top-full z-20 w-full border-y border-gray-200 bg-white-50 transition-all duration-300 ease-in-out ${isOpen ? "visible opacity-100" : "invisible opacity-0"} `}
       >
-        <Button asChild className="w-full rounded-full">
-          <Link onClick={() => setMobileNavOpen(false)} href={"/signin"}>
-            Sign In
-          </Link>
-        </Button>
-        <Button asChild variant="outline" className="w-full">
-          <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
-            Sign Up
-          </Link>
-        </Button>
-
-        <p>{""}</p>
-      </nav>
+        <ul className="space-y-2 px-4 pb-4 pt-2">
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <Link
+                href={link.path}
+                className="block py-2 text-gray-800 hover:text-gray-600"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="space-y-2 px-4 pb-4 pt-2">
+          {supabaseUser === USER_NOT_FOUND ? (
+            <>
+              <Button asChild className="w-full rounded-full">
+                <Link onClick={() => setIsOpen(false)} href={"/signin"}>
+                  Sign in
+                </Link>
+              </Button>
+              <Button asChild className="w-full">
+                <Link onClick={() => setIsOpen(false)} href={"/signup"}>
+                  Sign up
+                </Link>
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button asChild className="w-full rounded-full">
+                <Link onClick={() => setIsOpen(false)} href={"/settings"}>
+                  Settings
+                </Link>
+              </Button>
+              <Button
+                onClick={() => setIsOpen(false)}
+                asChild
+                variant="outline"
+                className="w-full"
+              >
+                <form action={handleSignOut}>
+                  <button className="w-full">Sign out</button>
+                </form>
+              </Button>
+            </>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

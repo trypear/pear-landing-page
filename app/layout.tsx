@@ -1,13 +1,13 @@
 import "./css/style.css";
 import "./globals.css";
 import { Inter, Architects_Daughter } from "next/font/google";
+// import { PHProvider } from "./providers";
 import Header from "@/components/ui/header";
 import { Toaster } from "@/components/ui/sonner";
+import dynamic from "next/dynamic";
+// import { Analytics } from "@vercel/analytics/react";
 
-import { ThemeProvider } from "@/components/theme-provider";
-
-// delete later
-import Image from "next/image";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,6 +22,10 @@ const architects_daughter = Architects_Daughter({
   display: "swap",
 });
 
+// const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
+//   ssr: false,
+// });
+
 export default function RootLayout({
   children,
 }: {
@@ -30,22 +34,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${architects_daughter.variable} font-inter bg-white-100 tracking-tight text-secondary-main antialiased dark:bg-gray-900 dark:text-white-300`}
+        className={`${inter.variable} ${architects_daughter.variable} font-inter bg-background tracking-tight text-gray-900 antialiased`}
       >
+        {/* <PHProvider> */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed left-0 top-0 z-[999] w-full h-14 pointer-events-none bg-[url(/nka.png)] mix-blend-overlay bg-cover opacity-20 overflow-hidden"></div>
-
           <div className="flex min-h-screen flex-col overflow-hidden">
             <Header />
             {children}
             <Toaster position="bottom-right" richColors />
           </div>
         </ThemeProvider>
+
+        {/* <Analytics /> */}
+        {/* </PHProvider> */}
       </body>
     </html>
   );

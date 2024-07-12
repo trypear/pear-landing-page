@@ -27,7 +27,7 @@ const videoData: VideoData[] = [
 const AboutComponent: React.FC = () => {
   return (
     <section
-      className="to-white bg-gradient-to-b from-gray-50 px-4 py-12 pt-20 dark:bg-none"
+      className="bg-background px-4 py-12 pt-20"
       data-aos="fade-up"
       data-aos-delay="200"
     >
@@ -35,14 +35,11 @@ const AboutComponent: React.FC = () => {
         <div className="flex flex-col lg:flex-row">
           {/* Left column */}
           <div className="lg:w-1/2 lg:pr-8 lg:pt-4">
-            <h2 className="mb-4 text-3xl font-bold dark:text-gray-300">
-              Fully{" "}
-              <span className="text-primary-700">
-                transparent
-              </span>
-              , PearAI is built in public
+            <h2 className="mb-4 text-3xl font-bold">
+              Fully <span className="text-primary-700">transparent</span>,
+              PearAI is built in public
             </h2>
-            <p className="mb-4 text-secondary-400 dark:text-gray-400">
+            <p className="mb-4 text-gray-600">
               PearAI&apos;s goal is to reduce the time it takes for an
               individual to go from idea to creation. Coding itself is a crucial
               tool in product development, and we believe that with the
@@ -53,7 +50,7 @@ const AboutComponent: React.FC = () => {
             <h3 className="mb-2 text-xl font-semibold">
               Current features include:
             </h3>
-            <ul className="mb-8 list-inside list-disc text-secondary-400 dark:text-gray-400">
+            <ul className="mb-8 list-inside list-disc text-gray-600">
               <li>Codebase context: talk to your code</li>
               <li>Built-in PearAI chat</li>
               <li>Inline AI prompting and diff changes</li>
@@ -66,10 +63,8 @@ const AboutComponent: React.FC = () => {
               <VideoCard {...videoData[0]} />
             </div>
 
-            <h2 className="mb-4 text-2xl font-bold dark:text-gray-300">
-              Founders
-            </h2>
-            <div className="space-y-4 text-secondary-400 dark:text-gray-400">
+            <h2 className="mb-4 text-2xl font-bold">Founders</h2>
+            <div className="space-y-4 text-gray-600">
               <p>
                 PearAI is founded by Pan and Nang, both former software
                 engineers who worked on developer tooling at companies like
@@ -120,7 +115,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
           allowFullScreen
         />
       </div>
-      <CardDescription className="text-lg text-secondary-400 dark:text-gray-600">
+      <CardDescription className="text-lg text-gray-600">
         {description}
       </CardDescription>
     </CardContent>

@@ -87,7 +87,7 @@ export default function SignUp() {
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
-          <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl dark:text-gray-300 sm:text-2xl md:text-3xl lg:text-4xl">
+          <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
             <h1 className="h1">
               Ready to speed up your development experience?
             </h1>
@@ -122,7 +122,7 @@ export default function SignUp() {
                     variant="authgroup"
                     className="relative flex w-full items-center rounded-md px-0"
                   >
-                    <GitHubLogo className="mx-1 h-4 w-4 shrink-0 text-gray-700 dark:text-gray-300" />
+                    <GitHubLogo className="mx-1 h-4 w-4 shrink-0 text-gray-700" />
                     {/* <span
                       className="border-[white] mr-4 flex h-6 items-center border-r border-opacity-50 dark:border-opacity-40"
                       aria-hidden="true"
@@ -138,14 +138,12 @@ export default function SignUp() {
             </form>
             <div className="my-6 flex items-center">
               <div
-                className="mr-3 grow border-t border-dotted border-gray-400 dark:border-gray-600"
+                className="mr-3 grow border-t border-dotted border-gray-400"
                 aria-hidden="true"
               />
-              <div className="text-gray-400 dark:text-gray-500 dark:text-gray-600">
-                Or, register with your email
-              </div>
+              <div className="text-gray-400">Or, register with your email</div>
               <div
-                className="ml-3 grow border-t border-dotted border-gray-400 dark:border-gray-600"
+                className="ml-3 grow border-t border-dotted border-gray-400"
                 aria-hidden="true"
               />
             </div>
@@ -232,7 +230,7 @@ export default function SignUp() {
                 <div className="text-center text-sm text-gray-500">
                   <Link
                     href="/privacy"
-                    className="text-gray-400 dark:text-gray-500 underline transition duration-150 ease-in-out hover:text-gray-500 hover:no-underline"
+                    className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-500 hover:no-underline"
                   >
                     Privacy Policy
                   </Link>
@@ -254,7 +252,7 @@ export default function SignUp() {
               </form>
             </Form>
 
-            <div className="mt-6 text-center text-gray-400 dark:text-gray-500">
+            <div className="mt-6 text-center text-gray-400">
               Already have an account?{" "}
               <Link
                 href="/signin"
