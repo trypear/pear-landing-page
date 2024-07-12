@@ -28,6 +28,41 @@ export const signInSchema = z.object({
   password: passwordSchema.shape.password,
 });
 
+// New schema for contact form
+
+export const contactSchema = z.object({
+  first_name: z
+    .string()
+    .min(1, { message: "First name is required." })
+    .max(100, { message: "First name is too long." }),
+  last_name: z
+    .string()
+    .min(1, { message: "Last name is required." })
+    .max(100, { message: "Last name is too long." }),
+  email: emailSchema.shape.email,
+  company_name: z
+    .string()
+    .min(1, { message: "Company name is required." })
+    .max(100, { message: "Company name is too long." }),
+  organisation_size: z
+    .string()
+    .min(1, { message: "Organisation size is required." }),
+  job_title: z
+    .string()
+    .min(1, { message: "Job title is required." })
+    .max(100, { message: "Job title is too long." }),
+  phone_number: z
+    .string()
+    .max(20, { message: "Phone number is too long." })
+    .optional(), // Phone number is an optional field to fill in for now
+  message: z
+    .string()
+    .min(1, { message: "Message is required." })
+  // Do we need a max length for the message?  
+});
+
+
+
 export const resetPasswordSchema = z.object({
   email: emailSchema.shape.email,
 });
@@ -44,5 +79,6 @@ export const updatePasswordSchema = z
 
 export type SignUpFormData = z.infer<typeof signUpSchema>;
 export type SignInFormData = z.infer<typeof signInSchema>;
+export type ContactFormData = z.infer<typeof contactSchema>;
 export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 export type UpdatePasswordFormData = z.infer<typeof updatePasswordSchema>;
