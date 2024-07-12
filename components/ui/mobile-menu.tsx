@@ -1,11 +1,22 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, SetStateAction, Dispatch } from "react";
 import Link from "next/link";
 import { Button } from "./button";
 import { HamburgerMenuIcon } from "./icons";
+import { UserResponse } from "@supabase/supabase-js";
 
-export default function MobileMenu() {
+export const USER_NOT_FOUND: string = "User not found";
+
+type SupabaseUserType = UserResponse | typeof USER_NOT_FOUND;
+
+export default function MobileMenu({
+  handleSignOut,
+  supabaseUser,
+}: {
+  handleSignOut: () => Promise<never>;
+  supabaseUser: SupabaseUserType;
+}) {
   const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false);
 
   const trigger = useRef<HTMLButtonElement>(null);
@@ -58,17 +69,46 @@ export default function MobileMenu() {
         className="absolute left-0 top-full z-20 flex w-full animate-fadein-opacity flex-col items-center justify-center space-y-2 overflow-hidden bg-white-50 px-4 text-xl text-black transition-all duration-300 ease-in-out sm:px-6 md:bg-transparent md:backdrop-blur-[2px]"
         style={mobileNavOpen ? { opacity: 1 } : { maxHeight: 0, opacity: 0.8 }}
       >
+        {supabaseUser === USER_NOT_FOUND ? (
+          <>
+            <Button asChild className="w-full rounded-full">
+              <Link onClick={() => setMobileNavOpen(false)} href={"/signin"}>
+                Sign in
+              </Link>
+            </Button>
+            <Button asChild className="w-full">
+              <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
+                Sign up
+              </Link>
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button asChild className="w-full rounded-full">
+              <Link onClick={() => setMobileNavOpen(false)} href={"/settings"}>
+                Settings
+              </Link>
+            </Button>
+            <Button
+              onClick={() => setMobileNavOpen(false)}
+              asChild
+              variant="outline"
+              className="w-full"
+            >
+              <form action={handleSignOut}>
+                <button className="w-full">Sign out</button>
+              </form>
+            </Button>
+          </>
+        )}
         <Button asChild className="w-full rounded-full">
-          <Link onClick={() => setMobileNavOpen(false)} href={"/signin"}>
-            Sign In
+          <Link
+            onClick={() => setMobileNavOpen(false)}
+            href={"/priority-waitlist"}
+          >
+            Priority Waitlist
           </Link>
         </Button>
-        <Button asChild variant="outline" className="w-full">
-          <Link onClick={() => setMobileNavOpen(false)} href={"/signup"}>
-            Sign Up
-          </Link>
-        </Button>
-
         <p>{""}</p>
       </nav>
     </div>

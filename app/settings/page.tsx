@@ -1,8 +1,9 @@
 import SettingsPage from "@/components/settings";
-import { createClient } from "@/utils/supabase/server";
+import { getUserAndSubscription } from "@/lib/data-fetching";
 import { redirect } from "next/navigation";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
+import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = constructMetadata({
   title: "Settings",
@@ -11,17 +12,21 @@ export const metadata: Metadata = constructMetadata({
 });
 
 export default async function Settings() {
+  const {
+    user,
+    subscription,
+    redirect: redirectTo,
+  } = await getUserAndSubscription();
   const supabase = createClient();
-
-  const { data, error } = await supabase.auth.getUser();
-
-  if (error || !data?.user) {
-    redirect("/signin");
+  console.log("subscription: ", subscription);
+  if (redirectTo || !user) {
+    redirect(redirectTo ?? "/signin");
   } else {
     const {
       data: { session },
     } = await supabase.auth.getSession();
-
-    return <SettingsPage initialSession={session!} />;
+    return (
+      <SettingsPage subscription={subscription!} initialSession={session!} />
+    );
   }
 }
