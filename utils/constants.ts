@@ -28,7 +28,7 @@ export const STRIPE_PRICE_IDS = {
 
 export const PRICING_TIERS: PricingTierData[] = [
   {
-    title: "Script Kiddie (Free)",
+    title: "Intern (Free)",
     price: "0",
     description:
       "You can download PearAI directly, and use your own API key 🤓",
