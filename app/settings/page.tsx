@@ -18,7 +18,7 @@ export default async function Settings() {
     redirect: redirectTo,
   } = await getUserAndSubscription();
   const supabase = createClient();
-  console.log("subscription: ", subscription);
+
   if (redirectTo || !user) {
     redirect(redirectTo ?? "/signin");
   } else {
