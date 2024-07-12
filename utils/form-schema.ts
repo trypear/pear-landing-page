@@ -55,13 +55,9 @@ export const contactSchema = z.object({
     .string()
     .max(20, { message: "Phone number is too long." })
     .optional(), // Phone number is an optional field to fill in for now
-  message: z
-    .string()
-    .min(1, { message: "Message is required." })
-  // Do we need a max length for the message?  
+  message: z.string().min(1, { message: "Message is required." }),
+  // Do we need a max length for the message?
 });
-
-
 
 export const resetPasswordSchema = z.object({
   email: emailSchema.shape.email,
