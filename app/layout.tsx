@@ -33,10 +33,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.variable} ${architects_daughter.variable} font-inter bg-background tracking-tight text-gray-900 antialiased`}
-      >
-        <PHProvider>
+      <PHProvider>
+        <body
+          className={`${inter.variable} ${architects_daughter.variable} font-inter bg-background tracking-tight text-gray-900 antialiased`}
+        >
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -54,8 +54,8 @@ export default function RootLayout({
           </ThemeProvider>
 
           <Analytics />
-        </PHProvider>
-      </body>
+        </body>
+      </PHProvider>
     </html>
   );
 }
