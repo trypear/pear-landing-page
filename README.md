@@ -78,7 +78,6 @@ This project requires environment variables to be set up in a `.env.local` file 
 
 1. `NEXT_PUBLIC_SUPABASE_URL`
 2. `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-3. `NEXT_PUBLIC_REDIRECT_URL`
 
 ### Environment Variables Description
 

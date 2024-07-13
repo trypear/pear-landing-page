@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 export default function TryPear() {
@@ -54,8 +55,13 @@ export default function TryPear() {
             <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
               <div data-aos="fade-up" data-aos-delay="400">
                 <Button asChild size="lg" className="w-full sm:w-auto">
-                  <Link href="https://docs.google.com/presentation/d/1zR9-7DTlb2PcsnapryZw8jHSkLTs9JxeXth4nyeemAQ/edit?usp=sharing">
+                  <Link
+                    href="https://docs.google.com/presentation/d/1zR9-7DTlb2PcsnapryZw8jHSkLTs9JxeXth4nyeemAQ/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Contributing 101
+                    <ExternalLink size={16} />
                   </Link>
                 </Button>
               </div>
@@ -66,8 +72,13 @@ export default function TryPear() {
                   variant="outline"
                   className="mt-2 w-full sm:ml-4 sm:mt-0 sm:w-auto"
                 >
-                  <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
+                  <Link
+                    href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     PearAI Master Doc
+                    <ExternalLink size={16} />
                   </Link>
                 </Button>
               </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, SetStateAction, Dispatch } from "react";
 import Link from "next/link";
 import { Button } from "./button";
 import { Menu, X } from "lucide-react";

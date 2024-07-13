@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { XMarkIcon } from "./ui/icons";
+import { X } from "lucide-react";
 import Link from "next/link";
 
 export default function Banner() {
@@ -36,7 +36,7 @@ export default function Banner() {
               onClick={() => setBannerOpen(false)}
             >
               <span className="sr-only">Close</span>
-              <XMarkIcon className="h-4 w-4 shrink-0" />
+              <X className="h-4 w-4 shrink-0" />
             </button>
           </div>
         </div>

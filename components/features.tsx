@@ -1,10 +1,9 @@
-import Image from "next/image";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 type FeatureInfo = {
   header: string;
   description: React.ReactNode;
-  imageSource: string;
+  videoSource: string;
 };
 type SingleFeatureProps = {
   info: FeatureInfo;
@@ -27,7 +26,7 @@ export default function Features() {
           more 😈
         </>
       ),
-      imageSource: "/gifs/pearai-@file.gif",
+      videoSource: "/webms/pearai-@file.webm",
     },
 
     {
@@ -43,7 +42,7 @@ export default function Features() {
           <br /> Here, we ask Pear to help us handle edge cases 😏
         </>
       ),
-      imageSource: "/gifs/pearai-CMD+I.gif",
+      videoSource: "/webms/pearai-CMD+I.webm",
     },
 
     {
@@ -60,7 +59,7 @@ export default function Features() {
           <br /> Prompt it right away 😎
         </>
       ),
-      imageSource: "/gifs/pearai-CMD+L2.gif",
+      videoSource: "/webms/pearai-CMD+L2.webm",
     },
   ];
 
@@ -93,14 +92,18 @@ function SingleFeature(props: SingleFeatureProps) {
       </div>
       <div className="w-[290px] min-[375px]:w-[350px] md:w-[600px] lg:w-[800px]">
         <AspectRatio ratio={3 / 2}>
-          <Image
-            src={props.info.imageSource}
-            alt="Image"
-            className="rounded-lg object-cover"
-            unoptimized
-            fill
+          <video
+            autoPlay
+            loop
+            muted
+            controls
+            playsInline
+            className="h-full w-full rounded-lg object-cover"
             data-aos="fade-up"
-          />
+          >
+            <source src={props.info.videoSource} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
         </AspectRatio>
       </div>
     </div>
