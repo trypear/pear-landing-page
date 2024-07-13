@@ -70,7 +70,7 @@ export default function SettingsPage({
   }, [router, searchParams]);
 
   const openAppButton = (
-    <Button asChild size="sm" className="mr-2">
+    <Button asChild size="sm" className="mr-1">
       <Link href={openAppUrl}>Open PearAI App</Link>
     </Button>
   );
