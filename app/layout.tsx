@@ -6,7 +6,7 @@ import Header from "@/components/ui/header";
 import { Toaster } from "@/components/ui/sonner";
 import dynamic from "next/dynamic";
 import { Analytics } from "@vercel/analytics/react";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
@@ -43,10 +43,13 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <PostHogPageView />
             <div className="flex min-h-screen flex-col overflow-hidden">
               <Header />
               {children}
               <Toaster position="bottom-right" richColors />
+              <Analytics />
+              <SpeedInsights />
             </div>
           </ThemeProvider>
 

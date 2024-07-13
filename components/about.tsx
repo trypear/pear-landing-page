@@ -62,7 +62,9 @@ const AboutComponent: React.FC = () => {
               <CardInfo>Codebase context: talk to your code</CardInfo>
               <CardInfo>Built-in PearAI chat</CardInfo>
               <CardInfo>Inline AI prompting and diff changes</CardInfo>
-              <CardInfo>AI debugging, including errors shown in terminal</CardInfo>
+              <CardInfo>
+                AI debugging, including errors shown in terminal
+              </CardInfo>
               <CardInfo>And many more!</CardInfo>
             </div>
           </div>
@@ -71,19 +73,19 @@ const AboutComponent: React.FC = () => {
         <h2 className="mb-4 text-2xl font-bold">Founders</h2>
         <div className="space-y-4 text-gray-500">
           <p>
-            PearAI is founded by Pan and Nang, both former software
-            engineers who worked on developer tooling at companies like
-            Meta, Coinbase, and high-frequency trading firms.
+            PearAI is founded by Pan and Nang, both former software engineers
+            who worked on developer tooling at companies like Meta, Coinbase,
+            and high-frequency trading firms.
           </p>
           <p>
             Passionate about empowering individuals, they recognize code and
-            media as the most scalable tools a single person can utilize.
-            With a combined following of over 500k subscribers and over 30
-            million views, they&apos;ve decided to combine media and code,
-            bringing the developer community along for the ride.
-            They&apos;re building the next open-source AI-powered code
-            editor, PearAI, with full transparency through videos,
-            livestreams, and direct Discord calls/chats.
+            media as the most scalable tools a single person can utilize. With a
+            combined following of over 500k subscribers and over 30 million
+            views, they&apos;ve decided to combine media and code, bringing the
+            developer community along for the ride. They&apos;re building the
+            next open-source AI-powered code editor, PearAI, with full
+            transparency through videos, livestreams, and direct Discord
+            calls/chats.
           </p>
         </div>
       </div>
