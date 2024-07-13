@@ -70,7 +70,7 @@ export default function SettingsPage({
   }, [router, searchParams]);
 
   const openAppButton = (
-    <Button asChild size="sm" className="mr-1">
+    <Button asChild size="sm" className="mt-4">
       <Link href={openAppUrl}>Open PearAI App</Link>
     </Button>
   );
@@ -145,7 +145,7 @@ export default function SettingsPage({
                     </div>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>
-                        <div className="row">
+                        <div className="row flex items-center justify-between">
                           {openAppButton}
                           <Button
                             onClick={handleCancelClick}
