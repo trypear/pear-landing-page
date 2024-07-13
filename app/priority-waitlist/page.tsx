@@ -27,12 +27,7 @@ export default function PriorityWaitlist() {
             </div>
             <div className="-mx-3 mt-11 flex flex-wrap">
               <div className="w-full px-3 text-center">
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
-                >
+                <Button asChild size="lg" className="w-full">
                   <Link
                     href="https://buy.stripe.com/4gw9D68ab15M9cQ6oo"
                     target="_blank"
