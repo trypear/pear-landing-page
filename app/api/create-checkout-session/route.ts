@@ -31,7 +31,7 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ priceId, userId: request.user.id }),
+      body: JSON.stringify({ priceId }),
     });
 
     if (!response.ok) {
