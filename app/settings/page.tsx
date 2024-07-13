@@ -7,6 +7,7 @@ export default async function Settings() {
     user,
     subscription,
     redirect: redirectTo,
+    openAppUrl,
   } = await getUserAndSubscription();
 
   if (redirectTo) {
@@ -18,5 +19,11 @@ export default async function Settings() {
     redirect("/signin");
   }
 
-  return <SettingsPage user={user} subscription={subscription} />;
+  return (
+    <SettingsPage
+      user={user}
+      subscription={subscription}
+      openAppUrl={openAppUrl}
+    />
+  );
 }

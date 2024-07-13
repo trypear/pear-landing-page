@@ -5,6 +5,7 @@ import { User } from "@supabase/auth-js";
 type GetUserSubscriptionResult = {
   user: User | null;
   subscription: Subscription | null;
+  openAppUrl: string;
   redirect: string | null;
 };
 
@@ -13,8 +14,15 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
 
   const { data: userData, error: userError } = await supabase.auth.getUser();
   if (userError || !userData?.user) {
-    return { user: null, subscription: null, redirect: "/signin" };
+    return {
+      user: null,
+      openAppUrl: "",
+      subscription: null,
+      redirect: "/signin",
+    };
   }
+  const { data: sessionData } = await supabase.auth.getSession();
+  const openAppUrl = `pearai://pearai.pearai/auth?accessToken=${sessionData?.session?.access_token}&refreshToken=${sessionData?.session?.refresh_token}`;
 
   // Fetch the most recent user subscription data in case there are multiple
   const { data: subscriptionData, error } = await supabase
@@ -35,6 +43,7 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
   return {
     user: userData.user,
     subscription: subscriptionData,
+    openAppUrl,
     redirect: null,
   };
 }
