@@ -27,8 +27,8 @@ const PricingTier: React.FC<PricingTierProps> = ({
   const { handleCheckout, isSubmitting } = useCheckout(user);
 
   return (
-    <Card className="flex h-full w-full flex-col">
-      <CardHeader className="flex-grow space-y-3 p-6">
+    <Card className="flex h-full w-full flex-col border">
+      <CardHeader>
         <CardTitle className="text-2xl text-primary-700">{title}</CardTitle>
         <p className="text-sm font-medium text-gray-400 sm:text-base">
           {description}
@@ -36,39 +36,62 @@ const PricingTier: React.FC<PricingTierProps> = ({
       </CardHeader>
       <CardContent className="flex flex-col space-y-6 p-6">
         {!isFree && (
-          <p className="text-3xl font-medium sm:text-4xl">
+          <p
+            className="text-3xl font-medium sm:text-4xl"
+            aria-label={`Price: $${price} per month`}
+          >
             ${price}
             <span className="text-lg font-normal sm:text-xl"> /month</span>
           </p>
         )}
+        {isFree && (
+          <p className="text-sm font-medium text-gray-400 sm:text-base">
+            <a
+              href="https://forms.gle/171UyimgQJhEJbhU7"
+              className="text-amber-500/80 underline hover:text-amber-600/80"
+              target="_blank"
+            >
+              Join the waitlist
+            </a>{" "}
+            to be notified when the app is available!
+          </p>
+        )}
         {isFree ? (
-          <>
-            <Button className="flex w-full items-center justify-center rounded-md">
-              <Download strokeWidth={1.5} className="mr-2 h-4 w-4" /> Windows
+          ["Windows", "macOS"].map((os) => (
+            <Button
+              key={os}
+              disabled={true}
+              className="w-full rounded-2xl"
+              aria-label={`Download for ${os}`}
+            >
+              <Download className="mr-2 h-4 w-4" aria-hidden="true" /> {os}
             </Button>
-            <Button className="flex w-full items-center justify-center rounded-md">
-              <Download strokeWidth={1.5} className="mr-2 h-4 w-4" /> macOS
-            </Button>
-            <Button className="flex w-full items-center justify-center rounded-md">
-              <Download strokeWidth={1.5} className="mr-2 h-4 w-4" /> Linux
-            </Button>
-          </>
+          ))
         ) : (
-          <Button className="flex w-full items-center justify-center rounded-md">
-            {buttonText}
+          <Button
+            onClick={() => priceId && handleCheckout(priceId)}
+            className="w-full rounded-2xl"
+            disabled={isSubmitting}
+            aria-busy={isSubmitting}
+            aria-label={`Subscribe to ${title} plan`}
+          >
+            {isSubmitting ? "Processing..." : buttonText}
           </Button>
         )}
       </CardContent>
       <CardFooter className="p-6">
         {!isFree && features && (
-          <ul className="flex-grow space-y-4">
+          <ul
+            className="flex-grow space-y-4"
+            aria-label={`Features of ${title} plan`}
+          >
             {features.map((feature, index) => (
               <li key={index} className="flex items-center">
                 <Check
-                  strokeWidth={1.5}
                   className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700"
+                  aria-hidden="true"
                 />
-                <span className="text-sm font-medium text-gray-700 sm:text-base">
+                <span className="text-sm font-medium text-primary-700 sm:text-base">
                   {feature}
                 </span>
               </li>
@@ -79,7 +102,6 @@ const PricingTier: React.FC<PricingTierProps> = ({
     </Card>
   );
 };
-
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   return (
     <section

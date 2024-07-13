@@ -9,9 +9,29 @@ import { redirect } from "next/navigation";
 export default async function Header() {
   // navigation bar links
   const navLinks = [
-    { label: "About", path: "/about" },
-    { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
-    { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
+    { label: "About", path: "/about", isExternal: false },
+    {
+      label: "GitHub",
+      path: "https://github.com/trypear/pearai-app",
+      isExternal: true,
+    },
+    {
+      label: "Discord",
+      path: "https://discord.gg/AKy5FmqCkF",
+      isExternal: true,
+    },
+    {
+      label: "Pricing",
+      path: "/pricing",
+      isExternal: false,
+      mobile: false,
+    },
+    {
+      label: "Priority Waitlist",
+      path: "/priority-waitlist",
+      isExternal: false,
+      mobile: false,
+    },
   ];
 
   const supabase = createClient();
@@ -39,7 +59,10 @@ export default async function Header() {
               <nav className="">
                 <ul className="flex space-x-3.5">
                   {navLinks.map((link) => (
-                    <li key={link.label}>
+                    <li
+                      className={`${link.mobile === false && "hidden sm:block"}`}
+                      key={link.label}
+                    >
                       <Link
                         className="align-middle hover:text-gray-700"
                         href={link.path}

@@ -52,7 +52,7 @@ export default function TryPear() {
               </Link>{" "}
               a star! 🤩
             </p>
-            <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
+            <div className="mx-auto flex max-w-xs items-center justify-center space-x-2.5 sm:max-w-none">
               <div data-aos="fade-up" data-aos-delay="400">
                 <Button asChild size="lg" className="w-full sm:w-auto">
                   <Link
@@ -70,7 +70,7 @@ export default function TryPear() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="mt-2 w-full sm:ml-4 sm:mt-0 sm:w-auto"
+                  className="w-full sm:w-auto"
                 >
                   <Link
                     href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"

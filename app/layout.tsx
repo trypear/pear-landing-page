@@ -1,11 +1,11 @@
 import "./css/style.css";
 import "./globals.css";
 import { Inter, Architects_Daughter } from "next/font/google";
-// import { PHProvider } from "./providers";
+import { PHProvider } from "./providers";
 import Header from "@/components/ui/header";
 import { Toaster } from "@/components/ui/sonner";
 import dynamic from "next/dynamic";
-// import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/react";
 
 import { ThemeProvider } from "next-themes";
 
@@ -22,9 +22,9 @@ const architects_daughter = Architects_Daughter({
   display: "swap",
 });
 
-// const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
-//   ssr: false,
-// });
+const PostHogPageView = dynamic(() => import("./PostHogPageView"), {
+  ssr: false,
+});
 
 export default function RootLayout({
   children,
@@ -36,22 +36,22 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${architects_daughter.variable} font-inter bg-background tracking-tight text-gray-900 antialiased`}
       >
-        {/* <PHProvider> */}
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex min-h-screen flex-col overflow-hidden">
-            <Header />
-            {children}
-            <Toaster position="bottom-right" richColors />
-          </div>
-        </ThemeProvider>
+        <PHProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="flex min-h-screen flex-col overflow-hidden">
+              <Header />
+              {children}
+              <Toaster position="bottom-right" richColors />
+            </div>
+          </ThemeProvider>
 
-        {/* <Analytics /> */}
-        {/* </PHProvider> */}
+          <Analytics />
+        </PHProvider>
       </body>
     </html>
   );
