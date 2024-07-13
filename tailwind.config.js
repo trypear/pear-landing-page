@@ -1,4 +1,7 @@
 /** @type {import('tailwindcss').Config} */
+
+import plugin from "tailwindcss/plugin";
+
 module.exports = {
   darkMode: ["class"],
   content: [
@@ -31,22 +34,6 @@ module.exports = {
           700: "hsla(var(--gray-700), <alpha-value>)",
           800: "hsla(var(--gray-800), <alpha-value>)",
           900: "hsla(var(--gray-900), <alpha-value>)",
-          950: "hsla(var(--gray-950), <alpha-value>)",
-        },
-        darkGray: {
-          DEFAULT: "hsla(var(--darkGray), <alpha-value>)",
-          foreground: "hsla(var(--darkGray-foreground), <alpha-value>)",
-          50: "hsla(var(--darkGray-50), <alpha-value>)",
-          100: "hsla(var(--darkGray-100), <alpha-value>)",
-          200: "hsla(var(--darkGray-200), <alpha-value>)",
-          300: "hsla(var(--darkGray-300), <alpha-value>)",
-          400: "hsla(var(--darkGray-400), <alpha-value>)",
-          500: "hsla(var(--darkGray-500), <alpha-value>)",
-          600: "hsla(var(--darkGray-600), <alpha-value>)",
-          700: "hsla(var(--darkGray-700), <alpha-value>)",
-          800: "hsla(var(--darkGray-800), <alpha-value>)",
-          900: "hsla(var(--darkGray-900), <alpha-value>)",
-          950: "hsla(var(--darkGray-950), <alpha-value>)",
         },
         purple: {
           100: "#F4F4FF",
@@ -215,5 +202,42 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/forms")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/forms"),
+    plugin(function ({ addUtilities, theme, e }) {
+      const colors = theme("colors");
+      const utilities = {};
+
+      // List of colors and shades to generate utilities for
+      const colorList = [
+        "gray",
+        "purple",
+        "primary",
+        "secondary",
+        "tertiary",
+        "blue",
+        "beige",
+        "white",
+      ];
+      const shadeList = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+
+      colorList.forEach((color) => {
+        shadeList.forEach((shade) => {
+          const colorValue = colors[color] && colors[color][shade];
+          if (typeof colorValue === "string") {
+            for (let i = 0; i <= 100; i += 5) {
+              utilities[`.shadow-inset-${color}-${shade}-${i}`] = {
+                boxShadow: colorValue.includes("<alpha-value>")
+                  ? `inset 0 -1.5px 0 0 ${colorValue.replace("<alpha-value>", i / 100)}`
+                  : `inset 0 -1.5px 0 0 ${colorValue}`,
+              };
+            }
+          }
+        });
+      });
+
+      addUtilities(utilities, ["responsive", "hover"]);
+    }),
+  ],
 };

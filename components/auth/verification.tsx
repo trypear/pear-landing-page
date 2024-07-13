@@ -72,7 +72,7 @@ export default function Verification() {
                     <Button
                       onClick={() => handleResendEmail()}
                       variant={"link"}
-                      className="p-0 text-primary-700 hover:text-primary-800"
+                      className="p-0 text-gray-700 hover:text-primary-800"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? "Resending..." : "Resend email"}

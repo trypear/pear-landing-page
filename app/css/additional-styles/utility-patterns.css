@@ -81,11 +81,11 @@
 /* can add more to this - currently made to serve signin/signup/reset-password pages */
 .form-input,
 .form-checkbox {
-  @apply focus:border-primary-800 focus:ring-primary-800 !important;
+  @apply focus:border-primary-400/20 focus:ring-primary-400/20 !important;
 }
 
 /* changed the checkbox color to theme green */
 .form-checkbox {
-  @apply text-primary-700 !important;
-  @apply bg-transparent dark:bg-gray-900;
+  @apply text-gray-700 !important;
+  @apply bg-gray-500/10;
 }

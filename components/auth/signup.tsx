@@ -227,10 +227,10 @@ export default function SignUp() {
                   )}
                 />
 
-                <div className="text-center text-sm text-gray-500">
+                <div className="text-center text-sm text-gray-600">
                   <Link
                     href="/privacy"
-                    className="text-gray-400 underline transition duration-150 ease-in-out hover:text-gray-500 hover:no-underline"
+                    className="underline transition duration-150 ease-in-out hover:text-gray-700 hover:no-underline"
                   >
                     Privacy Policy
                   </Link>
@@ -252,11 +252,11 @@ export default function SignUp() {
               </form>
             </Form>
 
-            <div className="mt-6 text-center text-gray-400">
+            <div className="mt-6 text-center text-gray-600">
               Already have an account?{" "}
               <Link
                 href="/signin"
-                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
+                className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign in
               </Link>

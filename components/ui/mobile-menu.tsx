@@ -1,13 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect, SetStateAction, Dispatch } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { Button } from "./button";
 import { Menu, X } from "lucide-react";
-interface NavLink {
-  label: string;
-  path: string;
-}
 import { UserResponse } from "@supabase/supabase-js";
 
 export const USER_NOT_FOUND: string = "User not found";
@@ -52,10 +48,8 @@ export default function MobileMenu({
     };
   }, [isOpen]);
 
-  const navLinks: NavLink[] = [
-    { label: "About", path: "/about" },
-    { label: "Discord", path: "https://discord.gg/AKy5FmqCkF" },
-    { label: "GitHub", path: "https://github.com/trypear/pearai-app" },
+  const navLinks = [
+    { label: "Pricing", path: "/pricing" },
     { label: "Priority Waitlist", path: "/priority-waitlist" },
   ];
 
@@ -63,7 +57,7 @@ export default function MobileMenu({
     <div className="md:hidden">
       <button
         ref={buttonRef}
-        className="flex items-center p-2 text-gray-700 hover:text-gray-600 focus:outline-none"
+        className="flex items-center py-2 text-gray-700 hover:text-gray-600 focus:outline-none"
         aria-label="Toggle mobile menu"
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -79,14 +73,14 @@ export default function MobileMenu({
 
       <div
         ref={menuRef}
-        className={`absolute left-0 top-full z-20 w-full border-y border-gray-200 bg-white-50 transition-all duration-300 ease-in-out ${isOpen ? "visible opacity-100" : "invisible opacity-0"} `}
+        className={`absolute left-0 top-full z-20 w-full border-b border-gray-400/20 bg-gray-50 transition-all duration-300 ease-in-out ${isOpen ? "visible opacity-100" : "invisible opacity-0"} `}
       >
-        <ul className="space-y-2 px-4 pb-4 pt-2">
+        <ul className="px-4 py-2">
           {navLinks.map((link) => (
             <li key={link.label}>
               <Link
+                className="flex w-full items-center justify-center py-2 text-gray-800 hover:text-gray-600"
                 href={link.path}
-                className="block py-2 text-gray-800 hover:text-gray-600"
                 onClick={() => setIsOpen(false)}
               >
                 {link.label}
@@ -94,22 +88,22 @@ export default function MobileMenu({
             </li>
           ))}
         </ul>
-        <div className="space-y-2 px-4 pb-4 pt-2">
+        <div className="space-y-2 px-4 pb-4">
           {supabaseUser === USER_NOT_FOUND ? (
-            <>
+            <div className="flex items-center justify-center space-x-2.5">
               <Button asChild className="w-full rounded-full">
                 <Link onClick={() => setIsOpen(false)} href={"/signin"}>
                   Sign in
                 </Link>
               </Button>
-              <Button asChild className="w-full">
+              <Button asChild className="w-full" variant="outline">
                 <Link onClick={() => setIsOpen(false)} href={"/signup"}>
                   Sign up
                 </Link>
               </Button>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="flex items-center justify-center space-x-2.5">
               <Button asChild className="w-full rounded-full">
                 <Link onClick={() => setIsOpen(false)} href={"/settings"}>
                   Settings
@@ -125,7 +119,7 @@ export default function MobileMenu({
                   <button className="w-full">Sign out</button>
                 </form>
               </Button>
-            </>
+            </div>
           )}
         </div>
       </div>

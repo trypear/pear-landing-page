@@ -13,13 +13,13 @@ const HeroTitle = ({ theme }: { theme: string }) => (
         <PearDarkHeroLogo
           width="26"
           alt="PearAI Logo"
-          className="-mt-3 mr-2 inline-flex"
+          className="-mt-2.5 mr-2 inline-flex"
         />
       ) : (
         <PearHeroLogo
           width="26"
           alt="PearAI Logo"
-          className="-mt-3 mr-2 inline-flex"
+          className="-mt-2.5 mr-2 inline-flex"
         />
       )}
       <span className="text-primary-700">PearAI: </span>
@@ -30,15 +30,15 @@ const HeroTitle = ({ theme }: { theme: string }) => (
       <div>
         {theme === "dark" ? (
           <PearDarkHeroLogo
-            width="26"
+            width="20"
             alt="PearAI Logo"
-            className="-mt-3 mr-2 inline-flex"
+            className="-mt-2.5 mr-2 inline-flex"
           />
         ) : (
           <PearHeroLogo
-            width="26"
+            width="20"
             alt="PearAI Logo"
-            className="-mt-3 mr-2 inline-flex"
+            className="-mt-2.5 mr-2 inline-flex"
           />
         )}
         <span className="text-primary-700">PearAI </span>
@@ -72,19 +72,14 @@ const HeroDescription = () => (
 );
 
 const HeroButtons = () => (
-  <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
+  <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
     <div data-aos="fade-up" data-aos-delay="400">
       <Button asChild size="lg">
         <Link href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</Link>
       </Button>
     </div>
     <div data-aos="fade-up" data-aos-delay="500">
-      <Button
-        asChild
-        size="lg"
-        variant="outline"
-        className="mt-2 sm:ml-4 sm:mt-0 sm:w-auto"
-      >
+      <Button asChild size="lg" variant="outline" className="sm:w-auto">
         <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
           More Details
         </Link>

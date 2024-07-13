@@ -7,6 +7,8 @@ import { signin, signinWithOAuth } from "@/app/(auth)/actions";
 import { Provider } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { GitHubLogo, GoogleLogoColored } from "@/components/ui/icons";
 import {
   Form,
@@ -172,23 +174,19 @@ export default function SignIn() {
                 />
 
                 <div className="flex justify-between">
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      className="form-checkbox rounded dark:bg-opacity-50"
-                    />
-                    <span className="cursor-poiter ml-2 text-gray-400">
+                  <Label className="flex items-center">
+                    <Checkbox className="rounded" />
+                    <span className="ml-2 cursor-pointer text-gray-600">
                       Keep me signed in
                     </span>
-                  </label>
+                  </Label>
                   <Link
                     href="/reset-password"
-                    className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
+                    className="text-gray-600 transition duration-150 ease-in-out"
                   >
                     Forgot Password?
                   </Link>
                 </div>
-
                 <Button
                   type="submit"
                   size="lg"
@@ -205,11 +203,11 @@ export default function SignIn() {
               </form>
             </Form>
 
-            <div className="mt-6 text-center text-gray-400">
+            <div className="mt-6 text-center text-gray-600">
               Don&apos;t have an account?{" "}
               <Link
                 href="/signup"
-                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
+                className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign up
               </Link>

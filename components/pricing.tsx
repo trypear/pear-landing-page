@@ -27,7 +27,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   buttonText,
   isFree = false,
 }) => (
-  <Card className="flex h-full w-full flex-col border border-primary-700">
+  <Card className="flex h-full w-full flex-col">
     <CardHeader className="flex-grow space-y-3 p-6">
       <CardTitle className="text-2xl text-primary-700">{title}</CardTitle>
       <p className="text-sm font-medium text-gray-400 sm:text-base">
@@ -43,18 +43,18 @@ const PricingTier: React.FC<PricingTierProps> = ({
       )}
       {isFree ? (
         <>
-          <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download strokeWidth={1} className="mr-2 h-4 w-4" /> Windows
+          <Button className="flex w-full items-center justify-center rounded-md">
+            <Download strokeWidth={1.5} className="mr-2 h-4 w-4" /> Windows
           </Button>
-          <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download strokeWidth={1} className="mr-2 h-4 w-4" /> macOS
+          <Button className="flex w-full items-center justify-center rounded-md">
+            <Download strokeWidth={1.5} className="mr-2 h-4 w-4" /> macOS
           </Button>
-          <Button className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base">
-            <Download strokeWidth={1} className="mr-2 h-4 w-4" /> Linux
+          <Button className="flex w-full items-center justify-center rounded-md">
+            <Download strokeWidth={1.5} className="mr-2 h-4 w-4" /> Linux
           </Button>
         </>
       ) : (
-        <Button className="w-full rounded-2xl bg-primary-700 py-4 text-center text-base text-white-50 hover:bg-primary-800">
+        <Button className="flex w-full items-center justify-center rounded-md">
           {buttonText}
         </Button>
       )}
@@ -65,10 +65,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
           {features.map((feature, index) => (
             <li key={index} className="flex items-center">
               <Check
-                strokeWidth={1}
+                strokeWidth={1.5}
                 className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700"
               />
-              <span className="text-sm font-medium text-primary-700 sm:text-base">
+              <span className="text-sm font-medium text-gray-700 sm:text-base">
                 {feature}
               </span>
             </li>
@@ -143,7 +143,7 @@ const PricingPage: React.FC = () => {
               Want to use it on a professional level?
               <Link
                 href="#"
-                className="ml-2 font-semibold text-primary-700 hover:text-primary-800"
+                className="ml-2 font-semibold text-gray-700 hover:text-primary-800"
               >
                 Contact us for custom plans!
               </Link>

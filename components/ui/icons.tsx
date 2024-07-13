@@ -31,7 +31,7 @@ export const GoogleLogoColored: FC<ComponentProps<"svg">> = (props) => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <g clip-path="url(#clip0_1276_2)">
+    <g clipPath="url(#clip0_1276_2)">
       <path
         d="M16 8.19187C16 7.65157 15.9467 7.09385 15.8577 6.57099H8.15782V9.65589H12.5679C12.3901 10.6493 11.8033 11.5208 10.9319 12.0785L13.5638 14.0828C15.1109 12.6711 16 10.6145 16 8.19187Z"
         fill="#4280EF"

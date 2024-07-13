@@ -42,16 +42,11 @@ export default function PrivacyPolicyComponent() {
         {/* Hero content */}
         <div className="relative pb-10 pt-32 md:pb-16 md:pt-40">
           {/* Section header */}
-          <div className="mx-auto max-w-3xl pb-12 text-left text-secondary-400 dark:text-gray-400 md:pb-16">
-            <h1
-              className="h1 mb-4 text-gray-800 dark:text-gray-200"
-              data-aos="fade-up"
-            >
+          <div className="mx-auto max-w-3xl pb-12 text-left text-gray-500 md:pb-16">
+            <h1 className="h1 mb-4 text-gray-800" data-aos="fade-up">
               Privacy Policy
             </h1>
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
-              Introduction
-            </h2>
+            <h2 className="h2 my-4 text-gray-700">Introduction</h2>
             This privacy policy (“Privacy Policy”) applies to all visitors and
             users of the PearAI desktop app and websites (collectively, PearAI,”
             “App” or “Apps”), which are offered by PearAI Inc. and/or any of its
@@ -65,7 +60,7 @@ export default function PrivacyPolicyComponent() {
             part of the App, you acknowledge you have been informed of and
             consent to our practices with regard to your personal information
             and data.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               Applicability of this Privacy Policy
             </h2>
             If you are a customer of PearAI, this Privacy Policy does not apply
@@ -83,7 +78,7 @@ export default function PrivacyPolicyComponent() {
             behalf of our customers, please contact the corresponding customer
             as we only process your personal information in our capacity as a
             service provider to our customer.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               Personal information we collect
             </h2>
             You may choose to interact with our Apps in ways that provide us
@@ -119,7 +114,7 @@ export default function PrivacyPolicyComponent() {
             statistical and analytics purposes and share such aggregated
             information with third parties for our own promotional purposes
             (e.g. by publishing a report on trends in the usage of our Apps).
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               Information PearAI does not collect
             </h2>
             PearAI does not intentionally collect sensitive or special category
@@ -130,7 +125,7 @@ export default function PrivacyPolicyComponent() {
             specifically to children under the age of 18. If we learn or have
             reason to suspect that a user is under the age of 18, we will close
             that account.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               Lawful basis and purposes for processing your personal information
             </h2>
             If you are an individual in the United Kingdom or European Economic
@@ -171,7 +166,7 @@ export default function PrivacyPolicyComponent() {
             unsubscribe feature provided with the relevant marketing email or by
             contacting us using the details in the &apos;Contacting PearAI About
             Your Privacy&apos; section of this Privacy Policy.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               How PearAI uses and protects your personal information
             </h2>
             Sharing your information PearAI may share your personal information
@@ -215,7 +210,7 @@ export default function PrivacyPolicyComponent() {
             (f) or as otherwise required or permitted by law. PearAI takes
             measures reasonably necessary to protect your personal information
             against any unauthorized access, use, alteration, or destruction.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               Cross-border transfer of personal information
             </h2>
             The Apps are hosted in the United States and the personal
@@ -235,7 +230,7 @@ export default function PrivacyPolicyComponent() {
             can be obtained for your review on request by using the contact
             details in the &apos;Contacting PearAI About Your Privacy&apos;
             section of this Privacy Policy.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               PearAI communications with you
             </h2>
             If you are a registered user of the Apps and have supplied your
@@ -251,9 +246,7 @@ export default function PrivacyPolicyComponent() {
             right to publish your request in order to help us clarify or respond
             to your request or to help us support other users. We will not
             publish your personal information in connection with your request.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
-              Your choices
-            </h2>
+            <h2 className="h2 my-4 text-gray-700">Your choices</h2>
             In this section, we describe the rights and choices available to all
             users. Opt out of marketing communications. You may opt out of
             marketing-related communications by following the opt-out or
@@ -304,7 +297,7 @@ export default function PrivacyPolicyComponent() {
             We currently do not respond to “Do Not Track” or similar signals. To
             find out more about “Do Not Track,” please visit
             http://www.allaboutdnt.com.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               Global privacy practices and your rights
             </h2>
             Information we collect may be stored and processed in the United
@@ -347,7 +340,7 @@ export default function PrivacyPolicyComponent() {
             purposes. To exercise your privacy rights, you can email us at the
             address given below in the &apos;Contacting PearAI About Your
             Privacy&apos; section of this Privacy Policy.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               Data retention and deletion
             </h2>
             If you already have an account on the Apps, you may access, update,
@@ -376,7 +369,7 @@ export default function PrivacyPolicyComponent() {
             information in connection with a blog post, GitHub issue or comment,
             we may display that information even if you have deleted your
             account as we do not automatically delete community posts.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
+            <h2 className="h2 my-4 text-gray-700">
               Contacting PearAI About Your Privacy
             </h2>
             The relevant data controller for any personal information processed
@@ -390,9 +383,7 @@ export default function PrivacyPolicyComponent() {
             trypearai@gmail.com. In most cases, we will respond within 30 days
             of receiving your message but please note for promptest response, we
             recommend emailing us.
-            <h2 className="h2 my-4 text-gray-700 dark:text-gray-300">
-              Privacy policy changes
-            </h2>
+            <h2 className="h2 my-4 text-gray-700">Privacy policy changes</h2>
             PearAI may change its privacy policy from time to time, and in
             PearAI&apos;s sole discretion. If we make material changes to this
             Privacy Policy, we will notify you by updating the date of this
