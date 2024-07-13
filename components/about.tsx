@@ -17,10 +17,10 @@ const videoData: VideoData[] = [
       "Nang introduces PearAI, an AI-powered code editor aimed at transforming software development. He shares his journey from a high-paying job to pursuing startups and YouTube, encouraging viewers to chase their dreams.",
   },
   {
-    src: "https://www.youtube.com/embed/ZCzz3UXDazY",
-    title: "FryingPan's Latest YouTube video",
+    src: "https://www.youtube.com/embed/Rzk3GmXUySs?si=2Y25oMlhbQWZpu1K",
+    title: "Frying Pan's Latest YouTube video",
     description:
-      "FryingPan discusses the evolution from a creator-brand connection idea to PearAI, an open-source AI-powered code editor. He highlights how this tool aims to revolutionize developer efficiency.",
+      "Pan shows the journey after just starting to build out PearAI. The product is described and a demo is shown. You also get to see a sneak peak into the founders' week, and see the difficulties, the highs and lows we experience, all in NYC.",
   },
 ];
 
