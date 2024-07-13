@@ -10,13 +10,18 @@ export default async function Header() {
   const navLinks = [
     { label: "About", path: "/about", isExternal: false },
     {
-      label: "Discord",
-      path: "https://discord.gg/AKy5FmqCkF",
+      label: "GitHub",
+      path: "https://github.com/trypear/pearai-app",
       isExternal: true,
     },
     {
-      label: "GitHub",
-      path: "https://github.com/trypear/pearai-app",
+      label: "Pricing",
+      path: "/pricing",
+      isExternal: false,
+    },
+    {
+      label: "Discord",
+      path: "https://discord.gg/AKy5FmqCkF",
       isExternal: true,
     },
     {
