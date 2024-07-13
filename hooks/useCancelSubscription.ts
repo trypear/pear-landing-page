@@ -38,7 +38,7 @@ export const useCancelSubscription = (
 
       const { data } = await response.json();
 
-      if (data.status === "success") {
+      if (data.success) {
         toast.success("Your subscription has been canceled successfully.");
         setIsCanceled(true);
         router.push("/settings");
