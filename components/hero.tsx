@@ -72,13 +72,13 @@ const HeroDescription = () => (
 );
 
 const HeroButtons = () => (
-  <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
+  <div className="mx-auto max-w-sm items-center justify-center sm:flex sm:max-w-none sm:space-x-2.5">
     <div data-aos="fade-up" data-aos-delay="400">
       <Button asChild size="lg">
         <Link href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</Link>
       </Button>
     </div>
-    <div data-aos="fade-up" data-aos-delay="500">
+    <div className="mt-2.5 sm:mt-0" data-aos="fade-up" data-aos-delay="500">
       <Button asChild size="lg" variant="outline" className="sm:w-auto">
         <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
           More Details

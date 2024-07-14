@@ -52,7 +52,7 @@ export default function TryPear() {
               </Link>{" "}
               a star! 🤩
             </p>
-            <div className="mx-auto flex max-w-xs items-center justify-center space-x-2.5 sm:max-w-none">
+            <div className="mx-auto max-w-xs items-center justify-center sm:flex sm:max-w-none sm:space-x-2.5">
               <div data-aos="fade-up" data-aos-delay="400">
                 <Button asChild size="lg" className="w-full sm:w-auto">
                   <Link
@@ -65,7 +65,11 @@ export default function TryPear() {
                   </Link>
                 </Button>
               </div>
-              <div data-aos="fade-up" data-aos-delay="400">
+              <div
+                className="mt-2.5 sm:mt-0"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 <Button
                   asChild
                   size="lg"

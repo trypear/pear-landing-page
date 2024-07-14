@@ -48,16 +48,19 @@ export default async function Header() {
     <>
       <div className="fixed top-0 z-30 w-full animate-fadein-opacity border-b border-gray-400/20 bg-gray-100/10 backdrop-blur-lg">
         <div className="mx-auto max-w-screen-xl px-4 py-1 sm:px-6 sm:py-2">
-          <div className="text-md flex h-10 items-center justify-between transition ease-in-out sm:text-lg">
+          <div className="text-md flex h-10 w-full items-center justify-between transition ease-in-out sm:text-lg">
             {/* Site branding */}
-            <div className="flex flex-row items-center space-x-2">
+            <div className="flex w-[14%] flex-row items-center space-x-2 md:w-[36%]">
               {/* Logo */}
               <Link className="-mt-0.5 dark:invert sm:mt-0" href="/">
                 <PearDarkLogo />
               </Link>
+            </div>
+
+            <div className="flex w-full flex-row items-center space-x-2">
               {/* Navigation */}
-              <nav className="">
-                <ul className="flex space-x-3.5">
+              <nav className="flex w-full items-center justify-start md:justify-center">
+                <ul className="flex w-full items-center justify-start space-x-6 md:justify-center">
                   {navLinks.map((link) => (
                     <li
                       className={`${link.mobile === false && "hidden sm:block"}`}
@@ -75,7 +78,7 @@ export default async function Header() {
               </nav>
             </div>
 
-            <div className="flex items-center justify-end space-x-4">
+            <div className="flex w-[28%] flex-row items-center justify-end space-x-2.5 md:w-[36%]">
               <AuthButton />
               {/* AuthButton is hidden in production */}
 
