@@ -21,14 +21,14 @@ export default async function AuthButton() {
           <CircleUserRound strokeWidth={1} className="h-5 w-5" />
 
           <Link
-            className="transition duration-150 ease-in-out hover:text-gray-700"
+            className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
             href={"/signin"}
           >
             Sign in
           </Link>
           <span className="text-gray-400 opacity-50">/</span>
           <Link
-            className="transition duration-150 ease-in-out hover:text-gray-700"
+            className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
             href={"/signup"}
           >
             Sign up
@@ -38,14 +38,14 @@ export default async function AuthButton() {
         <>
           <CircleUserRound strokeWidth={1} className="h-5 w-5" />
           <Link
-            className="transition duration-150 ease-in-out hover:text-gray-700"
+            className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
             href={"/settings"}
           >
             Settings
           </Link>
           <span className="text-gray-400 opacity-50">/</span>
           <form action={handleSignOut}>
-            <button className="transition duration-150 ease-in-out hover:text-gray-700">
+            <button className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800">
               Sign out
             </button>
           </form>

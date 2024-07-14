@@ -27,7 +27,7 @@ const videoData: VideoData[] = [
 const AboutComponent: React.FC = () => {
   return (
     <section
-      className="to-white bg-gradient-to-b from-gray-50 px-4 py-12 pt-20 dark:bg-none"
+      className="bg-gradient-to-b from-gray-50/50 to-background px-4 py-12 pt-20"
       data-aos="fade-up"
       data-aos-delay="200"
     >

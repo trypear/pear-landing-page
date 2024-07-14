@@ -102,15 +102,7 @@ export default function SignUp() {
                 className="relative flex w-full items-center rounded-md px-0"
               >
                 <GoogleLogoColored className="text-white mx-1 h-4 w-4 shrink-0" />
-                {/* <span
-                  className="border-[white] mr-4 flex h-6 items-center border-r border-opacity-50 dark:border-opacity-40"
-                  aria-hidden="true"
-                /> */}
-                <span className="">
-                  {" "}
-                  {/* -ml-16 pl-16 pr-8 flex-auto */}
-                  Sign up with Google
-                </span>
+                <span>Sign up with GitHub</span>
               </Button>
             </form>
             <form onSubmit={(e) => handleOAuthSignUp("github")}>
@@ -123,15 +115,7 @@ export default function SignUp() {
                     className="relative flex w-full items-center rounded-md px-0"
                   >
                     <GitHubLogo className="mx-1 h-4 w-4 shrink-0 text-gray-700" />
-                    {/* <span
-                      className="border-[white] mr-4 flex h-6 items-center border-r border-opacity-50 dark:border-opacity-40"
-                      aria-hidden="true"
-                    /> */}
-                    <span className="">
-                      {" "}
-                      {/* -ml-16 pl-16 pr-8 flex-auto */}
-                      Sign up with GitHub
-                    </span>
+                    <span>Sign up with Google</span>
                   </Button>
                 </div>
               </div>

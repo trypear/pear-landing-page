@@ -64,7 +64,7 @@ export default async function Header() {
                       key={link.label}
                     >
                       <Link
-                        className="align-middle hover:text-gray-700"
+                        className="align-middle text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
                         href={link.path}
                       >
                         {link.label}
