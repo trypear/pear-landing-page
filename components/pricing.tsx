@@ -48,7 +48,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
           <p className="text-sm font-medium text-gray-400 sm:text-base">
             <a
               href="https://forms.gle/171UyimgQJhEJbhU7"
-              className="text-amber-500/80 underline hover:text-amber-600/80"
+              className="text-link"
               target="_blank"
             >
               Join the waitlist

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
 export default function PriorityWaitlist() {
@@ -26,8 +27,16 @@ export default function PriorityWaitlist() {
               <br />
               <br />
               The 3$ cost can be applied to your PearAI Pro subscription once
-              it&apos;s made available to you &#40;we will send you a coupon
-              code&#41;!
+              it&apos;s made available to you. We will send a coupon to your
+              email, so please make sure you also signed up on the&nbsp;
+              <a
+                href="https://forms.gle/171UyimgQJhEJbhU7"
+                className="text-link"
+                target="_blank"
+              >
+                regular waitlist form
+              </a>{" "}
+              as well.
             </p>
 
             <div className="mt-11">
@@ -36,7 +45,8 @@ export default function PriorityWaitlist() {
                   href="https://buy.stripe.com/4gw9D68ab15M9cQ6oo"
                   target="_blank"
                 >
-                  Join the Priority Waitlist
+                  Confirm Priority Waitlist
+                  <ExternalLink size={"16"} />
                 </Link>
               </Button>
             </div>
