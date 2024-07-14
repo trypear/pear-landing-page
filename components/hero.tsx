@@ -78,13 +78,6 @@ const HeroButtons = () => (
         <Link href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</Link>
       </Button>
     </div>
-    <div className="mt-2.5 sm:mt-0" data-aos="fade-up" data-aos-delay="500">
-      <Button asChild size="lg" variant="outline" className="sm:w-auto">
-        <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
-          More Details
-        </Link>
-      </Button>
-    </div>
   </div>
 );
 
