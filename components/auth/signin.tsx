@@ -7,7 +7,9 @@ import { signin, signinWithOAuth } from "@/app/(auth)/actions";
 import { Provider } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { GitHubLogo, GoogleLogo } from "@/components/ui/icons";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { GitHubLogo, GoogleLogoColored } from "@/components/ui/icons";
 import {
   Form,
   FormField,
@@ -78,47 +80,36 @@ export default function SignIn() {
               <Button
                 type="submit"
                 size="lg"
-                variant="danger"
+                variant="authgroup"
                 className="relative flex w-full items-center rounded-md px-0"
               >
-                <GoogleLogo className="text-white mx-4 h-4 w-4 shrink-0" />
-                <span
-                  className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
-                  aria-hidden="true"
-                />
-                <span className="-ml-16 flex-auto pl-16 pr-8">
-                  Sign in with Google
-                </span>
+                <GoogleLogoColored className="text-white mx-1 h-4 w-4 shrink-0" />
+                <span className="">Sign in with Google</span>
               </Button>
             </form>
             <form onSubmit={(e) => handleOAuthSignIn("github")}>
               <div className="-mx-3 flex flex-wrap">
-                <div className="mt-6 w-full px-3">
+                <div className="mt-3 w-full px-3">
                   <Button
                     type="submit"
                     size="lg"
-                    className="relative flex w-full items-center rounded-md bg-gray-700 px-0 text-white-main hover:bg-gray-800"
+                    variant="authgroup"
+                    className="relative flex w-full items-center rounded-md px-0"
                   >
-                    <GitHubLogo className="text-white mx-4 h-4 w-4 shrink-0" />
-                    <span
-                      className="border-white mr-4 flex h-6 items-center border-r border-opacity-25"
-                      aria-hidden="true"
-                    />
-                    <span className="-ml-16 flex-auto pl-16 pr-8">
-                      Sign in with GitHub
-                    </span>
+                    <GitHubLogo className="mx-1 h-4 w-4 shrink-0 text-gray-700" />
+                    <span className="">Sign in with GitHub</span>
                   </Button>
                 </div>
               </div>
             </form>
             <div className="my-6 flex items-center">
               <div
-                className="mr-3 grow border-t border-dotted border-gray-700"
+                className="mr-3 grow border-t border-dotted border-gray-400"
                 aria-hidden="true"
               />
-              <div className="text-gray-700">Or, sign in with your email</div>
+              <div className="text-gray-400">Or, sign in with your email</div>
               <div
-                className="ml-3 grow border-t border-dotted border-gray-700"
+                className="ml-3 grow border-t border-dotted border-gray-400"
                 aria-hidden="true"
               />
             </div>
@@ -167,20 +158,19 @@ export default function SignIn() {
                 />
 
                 <div className="flex justify-between">
-                  <label className="flex items-center">
-                    <input type="checkbox" className="form-checkbox" />
-                    <span className="ml-2 text-gray-500">
+                  <Label className="flex items-center">
+                    <Checkbox className="rounded" />
+                    <span className="ml-2 cursor-pointer text-gray-600">
                       Keep me signed in
                     </span>
-                  </label>
+                  </Label>
                   <Link
                     href="/reset-password"
-                    className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
+                    className="text-gray-600 transition duration-150 ease-in-out"
                   >
                     Forgot Password?
                   </Link>
                 </div>
-
                 <Button
                   type="submit"
                   size="lg"
@@ -197,11 +187,11 @@ export default function SignIn() {
               </form>
             </Form>
 
-            <div className="mt-6 text-center text-gray-400">
+            <div className="mt-6 text-center text-gray-600">
               Don&apos;t have an account?{" "}
               <Link
                 href="/signup"
-                className="text-primary-700 transition duration-150 ease-in-out hover:text-primary-800"
+                className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign up
               </Link>

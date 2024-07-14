@@ -24,7 +24,7 @@ export default function TryPear() {
               Interested in contributing to PearAI?
             </h1>
             <p
-              className="mb-4 text-sm text-secondary-400 sm:text-lg"
+              className="mb-4 text-sm text-gray-500 sm:text-lg"
               data-aos="fade-up"
               data-aos-delay="200"
             >
@@ -32,31 +32,27 @@ export default function TryPear() {
               questions, or would like to discuss, you can join our{" "}
               <Link
                 href="https://discord.gg/7QMraJUsQt"
-                className="font-medium text-primary-700 hover:text-primary-800"
-                target="_blank"
-                rel="noopener noreferrer"
+                className="font-medium text-gray-700 hover:text-primary-800"
               >
                 Discord
               </Link>{" "}
-              and talk to us directly! 🗣️
+              and talk to us directly! 💬
             </p>
             <p
-              className="mb-8 text-sm text-secondary-400 sm:text-lg"
+              className="mb-8 text-sm text-gray-500 sm:text-lg"
               data-aos="fade-up"
               data-aos-delay="200"
             >
               Help the community out by giving{" "}
               <Link
                 href="https://github.com/trypear/pearai-app"
-                className="font-medium text-primary-700 hover:text-primary-800"
-                target="_blank"
-                rel="noopener noreferrer"
+                className="font-medium text-gray-700 hover:text-primary-800"
               >
                 the repo
               </Link>{" "}
               a star! 🤩
             </p>
-            <div className="mx-auto max-w-xs sm:flex sm:max-w-none sm:justify-center">
+            <div className="mx-auto max-w-xs items-center justify-center sm:flex sm:max-w-none sm:space-x-2.5">
               <div data-aos="fade-up" data-aos-delay="400">
                 <Button asChild size="lg" className="w-full sm:w-auto">
                   <Link
@@ -69,12 +65,16 @@ export default function TryPear() {
                   </Link>
                 </Button>
               </div>
-              <div data-aos="fade-up" data-aos-delay="400">
+              <div
+                className="mt-2.5 sm:mt-0"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
                 <Button
                   asChild
                   size="lg"
                   variant="outline"
-                  className="mt-2 w-full sm:ml-4 sm:mt-0 sm:w-auto"
+                  className="w-full sm:w-auto"
                 >
                   <Link
                     href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"

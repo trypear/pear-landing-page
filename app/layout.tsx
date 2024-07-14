@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/sonner";
 import dynamic from "next/dynamic";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,16 +35,25 @@ export default function RootLayout({
     <html lang="en">
       <PHProvider>
         <body
-          className={`${inter.variable} ${architects_daughter.variable} font-inter bg-white-100 tracking-tight text-secondary-main antialiased`}
+          className={`${inter.variable} ${architects_daughter.variable} font-inter bg-background tracking-tight text-gray-900 antialiased`}
         >
-          <PostHogPageView />
-          <div className="flex min-h-screen flex-col overflow-hidden">
-            <Header />
-            {children}
-            <Toaster position="bottom-right" richColors />
-            <Analytics />
-            <SpeedInsights />
-          </div>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <PostHogPageView />
+            <div className="flex min-h-screen flex-col overflow-hidden">
+              <Header />
+              {children}
+              <Toaster position="bottom-right" richColors />
+              <Analytics />
+              <SpeedInsights />
+            </div>
+          </ThemeProvider>
+
+          <Analytics />
         </body>
       </PHProvider>
     </html>

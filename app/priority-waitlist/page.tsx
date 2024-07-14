@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 
@@ -14,6 +15,7 @@ export default function PriorityWaitlist() {
             <h1 className="h1 text-3xl font-semibold leading-tight lg:text-4xl">
               Priority Pear Waitlist
             </h1>
+            <Badge variant="primary">Early Access</Badge>
           </div>
 
           <div className="mx-auto max-w-xl text-center">
@@ -28,7 +30,7 @@ export default function PriorityWaitlist() {
               email, so please make sure you also signed up on the&nbsp;
               <a
                 href="https://forms.gle/171UyimgQJhEJbhU7"
-                className="text-blue-500 underline hover:text-blue-600"
+                className="text-link"
                 target="_blank"
               >
                 regular waitlist form

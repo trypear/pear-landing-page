@@ -3,7 +3,7 @@ import React from "react";
 export default function PageIllustration() {
   return (
     <div
-      className="pointer-events-none relative mx-auto h-0 max-w-6xl"
+      className="pointer-events-none relative mx-auto h-0 max-w-6xl hue-rotate-[280deg] saturate-150"
       aria-hidden="true"
     >
       <svg

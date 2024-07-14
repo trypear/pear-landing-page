@@ -27,7 +27,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   const { handleCheckout, isSubmitting } = useCheckout(user);
 
   return (
-    <Card className="flex h-full w-full flex-col border border-primary-700">
+    <Card className="flex h-full w-full flex-col border">
       <CardHeader>
         <CardTitle className="text-2xl text-primary-700">{title}</CardTitle>
         <p className="text-sm font-medium text-gray-400 sm:text-base">
@@ -48,7 +48,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
           <p className="text-sm font-medium text-gray-400 sm:text-base">
             <a
               href="https://forms.gle/171UyimgQJhEJbhU7"
-              className="text-blue-500 underline hover:text-blue-600"
+              className="text-link"
               target="_blank"
             >
               Join the waitlist
@@ -61,7 +61,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
             <Button
               key={os}
               disabled={true}
-              className="flex w-full items-center justify-center rounded-2xl bg-primary-700 py-3 text-center text-sm text-white-50 hover:bg-primary-800 sm:py-4 sm:text-base"
+              className="w-full rounded-2xl"
               aria-label={`Download for ${os}`}
             >
               <Download className="mr-2 h-4 w-4" aria-hidden="true" /> {os}
@@ -70,7 +70,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
         ) : (
           <Button
             onClick={() => priceId && handleCheckout(priceId)}
-            className="w-full rounded-2xl bg-primary-700 py-4 text-center text-base text-white-50 hover:bg-primary-800"
+            className="w-full rounded-2xl"
             disabled={isSubmitting}
             aria-busy={isSubmitting}
             aria-label={`Subscribe to ${title} plan`}

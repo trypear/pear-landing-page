@@ -14,7 +14,7 @@ const videoData: VideoData[] = [
     src: "https://www.youtube.com/embed/hHm4mtIp6K0",
     title: "Nang's Latest YouTube video",
     description:
-      "Nang introduces PearAI, an AI-powered code editor aimed at transforming software development. He shares his journey from a high-paying job to pursuing startups and YouTube, encouraging viewers to chase their dreams.",
+      "Nang introduces PearAI, an AI-powered code editor aimed at transforming software development. He shares his journey from a high-paying job to pursuing startups and YouTube, encouraging viewers to chase their dreams with determination.",
   },
   {
     src: "https://www.youtube.com/embed/Rzk3GmXUySs?si=2Y25oMlhbQWZpu1K",
@@ -35,7 +35,7 @@ const AboutComponent: React.FC = () => {
         <h1 className="text-4xl font-bold">
           Fully{" "}
           <span className="relative">
-            <span className="relative z-10">transparent</span>
+            <span className="relative z-10 text-primary-700">transparent</span>
             <span
               className="absolute bottom-0 left-0 w-full"
               style={{
@@ -46,7 +46,7 @@ const AboutComponent: React.FC = () => {
           </span>
           , PearAI is built in public
         </h1>
-        <p className={"mt-4 max-w-2xl text-center"}>
+        <p className="mt-4 max-w-2xl text-center text-gray-500">
           PearAI&apos;s goal is to reduce the time it takes for an individual to
           go from idea to creation. Coding itself is a crucial tool in product
           development, and we believe that with the advancement of AI, it may
@@ -67,7 +67,7 @@ const AboutComponent: React.FC = () => {
         </div>
       </div>
 
-      <div className="m-auto mt-10 flex flex-col items-start justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
+      <div className="m-auto mt-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
         {videoData.map((video, index) => (
           <VideoCard key={index} {...video} />
         ))}
@@ -87,7 +87,7 @@ const AboutComponent: React.FC = () => {
           </span>
         </h2>
 
-        <div className="max-w-2xl">
+        <div className="max-w-2xl text-gray-500">
           <p className="mt-6 text-center">
             PearAI is founded by Pan and Nang, both former software engineers
             who worked on developer tooling at companies like Meta, Coinbase,
@@ -148,9 +148,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
           allowFullScreen
         />
       </div>
-      <CardDescription className="text-secondary-500">
-        {description}
-      </CardDescription>
+      <CardDescription className="text-gray-500">{description}</CardDescription>
     </CardContent>
   </Card>
 );
