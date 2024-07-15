@@ -20,11 +20,13 @@ import { Skeleton } from "./ui/skeleton";
 type SettingsPageProps = {
   subscription: Subscription | null;
   initialSession: Session;
+  openAppUrl: string;
 };
 
 export default function SettingsPage({
   subscription,
   initialSession,
+  openAppUrl,
 }: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -87,6 +89,12 @@ export default function SettingsPage({
 
     fetchUserAndHandleCallback();
   }, [session, router, searchParams]);
+
+  const openAppButton = (
+    <Button asChild size="sm" className="mt-4">
+      <Link href={openAppUrl}>Open PearAI App</Link>
+    </Button>
+  );
 
   return (
     <section className="relative">
@@ -170,19 +178,22 @@ export default function SettingsPage({
                     </div>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>
-                        <Button
-                          onClick={handleCancelClick}
-                          disabled={isCanceling}
-                          variant="link"
-                          size="sm"
-                          className="mt-4 max-w-max"
-                        >
-                          {isCanceling
-                            ? "Canceling..."
-                            : isCanceled
-                              ? "Subscription canceled, reactivate?"
-                              : "Cancel Subscription"}
-                        </Button>
+                        <div className="row flex items-center justify-between">
+                          {openAppButton}
+                          <Button
+                            onClick={handleCancelClick}
+                            disabled={isCanceling}
+                            variant="link"
+                            size="sm"
+                            className="mt-4 max-w-max"
+                          >
+                            {isCanceling
+                              ? "Canceling..."
+                              : isCanceled
+                                ? "Subscription canceled, reactivate?"
+                                : "Cancel Subscription"}
+                          </Button>
+                        </div>
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>

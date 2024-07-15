@@ -16,17 +16,19 @@ export default async function Settings() {
     user,
     subscription,
     redirect: redirectTo,
+    session,
+    openAppUrl,
   } = await getUserAndSubscription();
-  const supabase = createClient();
 
   if (redirectTo || !user) {
-    redirect(redirectTo ?? "/signin");
-  } else {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-    return (
-      <SettingsPage subscription={subscription!} initialSession={session!} />
-    );
+    return redirect(redirectTo ?? "/signin");
   }
+
+  return (
+    <SettingsPage
+      subscription={subscription!}
+      initialSession={session!}
+      openAppUrl={openAppUrl}
+    />
+  );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import MobileMenu from "./mobile-menu";
 import AuthButton from "./authbutton";
 import PearDarkLogo from "./PearDark.svg";
+import DarkModeToggle from "./darkmode-toggle";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
@@ -10,19 +11,26 @@ export default async function Header() {
   const navLinks = [
     { label: "About", path: "/about", isExternal: false },
     {
-      label: "Discord",
-      path: "https://discord.gg/AKy5FmqCkF",
-      isExternal: true,
-    },
-    {
       label: "GitHub",
       path: "https://github.com/trypear/pearai-app",
       isExternal: true,
     },
     {
+      label: "Discord",
+      path: "https://discord.gg/AKy5FmqCkF",
+      isExternal: true,
+    },
+    {
+      label: "Pricing",
+      path: "/pricing",
+      isExternal: false,
+      mobile: false,
+    },
+    {
       label: "Priority Waitlist",
       path: "/priority-waitlist",
       isExternal: false,
+      mobile: false,
     },
   ];
 
@@ -37,53 +45,68 @@ export default async function Header() {
   };
 
   return (
-    <header className="fixed top-0 z-30 w-full animate-fadein-opacity bg-white-50 bg-opacity-80 shadow-sm backdrop-blur-[16px]">
-      <div className="mx-auto max-w-screen-xl px-4 py-1 sm:px-6 sm:py-2">
-        <div className="text-md flex h-10 items-center justify-between text-secondary-600 transition ease-in-out sm:text-lg">
-          {/* Site branding */}
-          <div className="flex flex-row items-start space-x-2">
-            {/* Logo */}
-            <Link className="-mt-0.5 sm:mt-0" href="/">
-              <PearDarkLogo />
-            </Link>
-            {/* Navigation */}
-            <nav>
-              <ul className="ml-4 flex justify-center space-x-6">
-                {navLinks.map((link) => (
-                  <li
-                    key={link.label}
-                    className={
-                      link.label === "Priority Waitlist"
-                        ? "hidden sm:block"
-                        : ""
-                    }
-                  >
-                    <Link
-                      className="hover:text-secondary-400"
-                      href={link.path}
-                      {...(link.isExternal && {
-                        target: "_blank",
-                        rel: "noopener noreferrer",
-                      })}
+    <>
+      <div className="fixed top-0 z-30 w-full animate-fadein-opacity border-b border-gray-400/20 bg-gray-100/10 backdrop-blur-lg">
+        <div className="mx-auto max-w-screen-xl px-4 py-1 sm:px-6 sm:py-2">
+          <div className="text-md flex h-10 w-full items-center justify-between transition ease-in-out sm:text-lg">
+            {/* Site branding */}
+            <div className="flex w-[14%] flex-row items-center space-x-2 md:w-[36%]">
+              {/* Logo */}
+              <Link className="-mt-0.5 dark:invert sm:mt-0" href="/">
+                <PearDarkLogo />
+              </Link>
+            </div>
+
+            <div className="flex w-full flex-row items-center space-x-2">
+              {/* Navigation */}
+              <nav className="flex w-full items-center justify-start md:justify-center">
+                <ul className="flex w-full items-center justify-start space-x-6 md:justify-center">
+                  {navLinks.map((link) => (
+                    <li
+                      className={`${link.mobile === false && "hidden sm:block"}`}
+                      key={link.label}
                     >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+                      <Link
+                        className="align-middle text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
+                        href={link.path}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+
+            <div className="flex w-[28%] flex-row items-center justify-end space-x-2.5 md:w-[36%]">
+              <AuthButton />
+              {/* AuthButton is hidden in production */}
+
+              <span
+                className="hidden h-6 w-px rounded-full bg-gray-300 md:block"
+                id="button__divider"
+              ></span>
+
+              <DarkModeToggle />
+              {/* DARK/LIGHT MODE TOGGLE */}
+
+              <span
+                className="h-6 w-px rounded-full bg-gray-300 md:hidden"
+                id="button__divider"
+              ></span>
+
+              <MobileMenu
+                supabaseUser={
+                  supabaseUserResponse.error || !supabaseUserResponse.data.user
+                    ? "User not found"
+                    : supabaseUserResponse
+                }
+                handleSignOut={handleSignOut}
+              />
+            </div>
           </div>
-          <AuthButton />
-          <MobileMenu
-            supabaseUser={
-              supabaseUserResponse.error || !supabaseUserResponse.data.user
-                ? "User not found"
-                : supabaseUserResponse
-            }
-            handleSignOut={handleSignOut}
-          />
         </div>
       </div>
-    </header>
+    </>
   );
 }
