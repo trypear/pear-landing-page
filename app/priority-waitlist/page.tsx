@@ -15,7 +15,6 @@ export default function PriorityWaitlist() {
             <h1 className="h1 text-3xl font-semibold leading-tight lg:text-4xl">
               Priority Pear Waitlist
             </h1>
-
             <Badge variant="primary">Early Access</Badge>
           </div>
 
