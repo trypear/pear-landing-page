@@ -1,12 +1,11 @@
 "use client";
-import { User } from "@supabase/supabase-js";
+import { Session, User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { Subscription } from "@/types/subscription";
-import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -16,20 +15,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Skeleton } from "./ui/skeleton";
 
 type SettingsPageProps = {
-  user: User;
   subscription: Subscription | null;
+  initialSession: Session;
   openAppUrl: string;
 };
 
 export default function SettingsPage({
-  user,
   subscription,
+  initialSession,
   openAppUrl,
 }: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const session = initialSession;
+
   const { handleCancelSubscription, isCanceling, isCanceled } =
     useCancelSubscription(user, subscription);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -51,23 +55,40 @@ export default function SettingsPage({
   };
 
   useEffect(() => {
-    // Open pearai app on desktop
-    const callback = searchParams.get("callback");
-    const accessToken = searchParams.get("accessToken");
-    const refreshToken = searchParams.get("refreshToken");
+    async function fetchUserAndHandleCallback() {
+      try {
+        if (session) {
+          setUser(session.user);
 
-    if (callback && accessToken && refreshToken) {
-      router.push(
-        `${callback}?accessToken=${accessToken}&refreshToken=${refreshToken}`,
-      );
-      // TODO: clear the tokens from query?
-    } else if (callback) {
-      // Alert user if callback is present but either accessToken or refreshToken is null
-      toast.error(
-        "Access token or refresh token is missing. Cannot open PearAI app.",
-      );
+          // Handle callback
+          const callback = searchParams.get("callback");
+          if (callback) {
+            const { access_token, refresh_token } = session;
+
+            router.push(
+              `${callback}?accessToken=${access_token}&refreshToken=${refresh_token}`,
+            );
+
+            // Clear the callback from the URL
+            const newUrl = new URL(window.location.href);
+            newUrl.searchParams.delete("callback");
+            window.history.replaceState({}, "", newUrl.toString());
+          }
+        } else {
+          // Handle error or redirect to login
+          console.error("Failed to fetch user");
+          router.push("/signin");
+        }
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+        router.push("/signin");
+      } finally {
+        setLoading(false);
+      }
     }
-  }, [router, searchParams]);
+
+    fetchUserAndHandleCallback();
+  }, [session, router, searchParams]);
 
   const openAppButton = (
     <Button asChild size="sm" className="mt-4">
@@ -98,17 +119,29 @@ export default function SettingsPage({
                       <td className="whitespace-nowrap pr-1">
                         <span className="text-gray-500">Full name:</span>{" "}
                       </td>
-                      <td>{user.user_metadata.full_name}</td>
+                      <td>
+                        {loading ? (
+                          <Skeleton className="h-4 w-[200px]" />
+                        ) : (
+                          user?.user_metadata.full_name
+                        )}
+                      </td>{" "}
                     </tr>
                     <tr>
                       <td className="whitespace-nowrap pr-1">
                         <span className="text-gray-500">Email:</span>{" "}
                       </td>
-                      <td>{user.email}</td>
+                      <td>
+                        {loading ? (
+                          <Skeleton className="h-4 w-[200px]" />
+                        ) : (
+                          user?.email
+                        )}
+                      </td>{" "}
                     </tr>
                   </tbody>
                 </table>
-                {user.app_metadata.provider === "email" && (
+                {user?.app_metadata.provider === "email" && (
                   <Button size="sm" className="mt-4">
                     <Link href="/update-password">Update Password</Link>
                   </Button>

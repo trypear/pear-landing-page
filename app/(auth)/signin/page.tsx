@@ -20,22 +20,16 @@ interface SignInProps {
 
 export default async function SignIn({ searchParams }: SignInProps) {
   const supabase = createClient();
-  const { data: userData } = await supabase.auth.getUser();
-  const { data: sessionData } = await supabase.auth.getSession();
+  const { data } = await supabase.auth.getUser();
 
-  if (userData?.user) {
-    if (!searchParams?.callback) {
-      return redirect("/settings");
+  if (data?.user) {
+    if (searchParams.callback?.startsWith("pearai://pearai.pearai/auth")) {
+      // Redirect to settings page with callback for desktop app
+      redirect("/settings?callback=" + searchParams.callback);
+    } else {
+      redirect("/");
     }
-    // If signing in from desktop app
-    const callbackForDesktopApp = searchParams?.callback ?? "";
-    const accessToken = sessionData.session?.access_token ?? "";
-    const refreshToken = sessionData.session?.refresh_token ?? "";
-    return redirect(
-      `/settings?callback=${encodeURIComponent(callbackForDesktopApp)}&accessToken=${encodeURIComponent(accessToken)}&refreshToken=${encodeURIComponent(refreshToken)}`,
-    );
   }
-
   return (
     <>
       <SignInComponent />
