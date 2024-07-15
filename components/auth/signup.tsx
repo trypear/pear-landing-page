@@ -102,7 +102,7 @@ export default function SignUp() {
                 className="relative flex w-full items-center rounded-md px-0"
               >
                 <GoogleLogoColored className="text-white mx-1 h-4 w-4 shrink-0" />
-                <span>Sign up with GitHub</span>
+                <span>Sign up with Google</span>
               </Button>
             </form>
             <form onSubmit={(e) => handleOAuthSignUp("github")}>
@@ -115,7 +115,7 @@ export default function SignUp() {
                     className="relative flex w-full items-center rounded-md px-0"
                   >
                     <GitHubLogo className="mx-1 h-4 w-4 shrink-0 text-gray-700" />
-                    <span>Sign up with Google</span>
+                    <span>Sign up with Github</span>
                   </Button>
                 </div>
               </div>
