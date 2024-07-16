@@ -11,16 +11,16 @@ type VideoCardProps = VideoData;
 
 const videoData: VideoData[] = [
   {
-    src: "https://www.youtube.com/embed/hHm4mtIp6K0",
-    title: "Nang's Latest YouTube video",
-    description:
-      "Nang introduces PearAI, an AI-powered code editor aimed at transforming software development. He shares his journey from a high-paying job to pursuing startups and YouTube, encouraging viewers to chase their dreams with determination.",
-  },
-  {
     src: "https://www.youtube.com/embed/Rzk3GmXUySs?si=2Y25oMlhbQWZpu1K",
     title: "Frying Pan's Latest YouTube video",
     description:
       "Pan shows the journey after just starting to build out PearAI. The product is described and a demo is shown. You also get to see a sneak peak into the founders' week, and see the difficulties, the highs and lows we experience, all in NYC.",
+  },
+  {
+    src: "https://www.youtube.com/embed/hHm4mtIp6K0",
+    title: "Nang's Latest YouTube video",
+    description:
+      "Nang introduces PearAI, an AI-powered code editor aimed at transforming software development. He shares his journey from a high-paying job to pursuing startups and YouTube, encouraging viewers to chase their dreams with determination.",
   },
 ];
 
