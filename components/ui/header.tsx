@@ -14,11 +14,13 @@ export default async function Header() {
       label: "GitHub",
       path: "https://github.com/trypear/pearai-app",
       isExternal: true,
+      target: "_blank",
     },
     {
       label: "Discord",
       path: "https://discord.gg/AKy5FmqCkF",
       isExternal: true,
+      target: "_blank",
     },
     {
       label: "Pricing",
@@ -69,6 +71,7 @@ export default async function Header() {
                       <Link
                         className="align-middle text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
                         href={link.path}
+                        target={link.target}
                       >
                         {link.label}
                       </Link>
