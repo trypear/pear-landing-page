@@ -5,6 +5,7 @@ import Link from "next/link";
 import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
+import { ExternalLink } from "lucide-react";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -72,16 +73,28 @@ const HeroDescription = () => (
 );
 
 const HeroButtons = () => (
-  <div className="mx-auto max-w-sm items-center justify-center sm:flex sm:max-w-none sm:space-x-2.5">
+  <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
     <div data-aos="fade-up" data-aos-delay="400">
       <Button asChild size="lg">
-        <Link href="https://forms.gle/171UyimgQJhEJbhU7">Join Waitlist</Link>
+        <Link
+          href="https://forms.gle/171UyimgQJhEJbhU7"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Join Waitlist
+          <ExternalLink size={16} className="ml-1.5" />
+        </Link>
       </Button>
     </div>
-    <div className="mt-2.5 sm:mt-0" data-aos="fade-up" data-aos-delay="500">
+    <div data-aos="fade-up" data-aos-delay="500">
       <Button asChild size="lg" variant="outline" className="sm:w-auto">
-        <Link href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing">
+        <Link
+          href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           More Details
+          <ExternalLink size={"16"} />
         </Link>
       </Button>
     </div>
