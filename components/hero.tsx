@@ -86,7 +86,7 @@ const HeroButtons = () => (
         </Link>
       </Button>
     </div>
-    
+
     <div data-aos="fade-up" data-aos-delay="500">
       <Button asChild size="lg" variant="outline" className="sm:w-auto">
         <Link
