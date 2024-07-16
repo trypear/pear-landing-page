@@ -71,9 +71,7 @@ const GithubPageComponent: React.FC = () => {
                 }}
               >
                 <p>
-                  <a href="https://github.com/trypear/pearai-app">
-                    app repo
-                  </a>
+                  <a href="https://github.com/trypear/pearai-app">app repo</a>
                 </p>
               </div>
               {/*Submodule Repo Button*/}
@@ -155,7 +153,6 @@ const GithubPageComponent: React.FC = () => {
               <br />
             </div>
 
-
             {/* Quest Boards Section */}
             <h2 className="mb-4 text-3xl font-bold">Quest Boards</h2>
             <div className="mb-8 text-gray-500">
@@ -218,7 +215,6 @@ const GithubPageComponent: React.FC = () => {
                   </a>
                 </p>
               </div>
-
             </div>
           </div>
         </div>
