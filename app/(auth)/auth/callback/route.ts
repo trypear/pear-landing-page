@@ -35,12 +35,8 @@ export async function GET(request: Request) {
       const response = NextResponse.redirect(`${origin}${next}`);
       if (callback && data) {
         // if login in from desktop app
-        const accessToken = data.session.access_token;
-        const refreshToken = data.session.refresh_token;
-        const encodedAccessToken = encodeURIComponent(accessToken);
-        const encodedRefreshToken = encodeURIComponent(refreshToken);
         return NextResponse.redirect(
-          `${origin}${next}?callback=${encodeURIComponent(callback)}&accessToken=${encodedAccessToken}&refreshToken=${encodedRefreshToken}`,
+          `${origin}${next}?callback=${encodeURIComponent(callback)}`,
         );
       }
       return response;

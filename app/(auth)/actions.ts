@@ -34,12 +34,8 @@ export async function signin(
 
   if (callbackForDesktopApp && res) {
     // if login in from desktop app
-    const accessToken = res.session.access_token;
-    const refreshToken = res.session.refresh_token;
-    const encodedAccessToken = encodeURIComponent(accessToken);
-    const encodedRefreshToken = encodeURIComponent(refreshToken);
     return redirect(
-      `/settings?callback=${encodeURIComponent(callbackForDesktopApp)}&accessToken=${encodedAccessToken}&refreshToken=${encodedRefreshToken}`,
+      `/settings?callback=${encodeURIComponent(callbackForDesktopApp)}`,
     );
   }
   redirect(`/settings`);

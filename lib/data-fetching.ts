@@ -1,11 +1,13 @@
 import { Subscription } from "@/types/subscription";
 import { createClient } from "@/utils/supabase/server";
 import { User } from "@supabase/auth-js";
+import { Session } from "@supabase/supabase-js";
 
 type GetUserSubscriptionResult = {
   user: User | null;
   subscription: Subscription | null;
   openAppUrl: string;
+  session: Session | null;
   redirect: string | null;
 };
 
@@ -18,6 +20,7 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
       user: null,
       openAppUrl: "",
       subscription: null,
+      session: null,
       redirect: "/signin",
     };
   }
@@ -44,6 +47,7 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
     user: userData.user,
     subscription: subscriptionData,
     openAppUrl,
+    session: sessionData?.session,
     redirect: null,
   };
 }
