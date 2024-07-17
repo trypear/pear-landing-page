@@ -32,7 +32,9 @@ export default function TryPear() {
               questions, or would like to discuss, you can join our{" "}
               <Link
                 href="https://discord.gg/7QMraJUsQt"
-                className="font-medium text-gray-700 hover:text-primary-800"
+                className="font-medium text-primary-700 hover:text-primary-800"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Discord
               </Link>{" "}
@@ -46,9 +48,11 @@ export default function TryPear() {
               Help the community out by giving{" "}
               <Link
                 href="https://github.com/trypear/pearai-app"
-                className="font-medium text-gray-700 hover:text-primary-800"
+                className="font-medium text-primary-700 hover:text-primary-800"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                the repo
+                The repo
               </Link>{" "}
               a star! 🤩
             </p>
