@@ -86,19 +86,6 @@ const HeroButtons = () => (
         </Link>
       </Button>
     </div>
-
-    <div data-aos="fade-up" data-aos-delay="500">
-      <Button asChild size="lg" variant="outline" className="sm:w-auto">
-        <Link
-          href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          More Details
-          <ExternalLink size={"16"} />
-        </Link>
-      </Button>
-    </div>
   </div>
 );
 
