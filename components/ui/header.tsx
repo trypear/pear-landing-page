@@ -5,6 +5,7 @@ import PearDarkLogo from "./PearDark.svg";
 import DarkModeToggle from "./darkmode-toggle";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
+import { ExternalLink } from "lucide-react";
 
 export default async function Header() {
   // navigation bar links
@@ -57,23 +58,29 @@ export default async function Header() {
               </Link>
             </div>
 
-            <div className="flex w-full flex-row items-center space-x-2">
+            <div className="ml-2 flex w-full flex-row items-center space-x-2 sm:ml-0">
               {/* Navigation */}
               <nav className="flex w-full items-center justify-start md:justify-center">
-                <ul className="flex w-full items-center justify-start space-x-6 md:justify-center">
-                  {navLinks.map((link) => (
-                    <li
-                      className={`${link.mobile === false && "hidden sm:block"}`}
-                      key={link.label}
-                    >
-                      <Link
-                        className="align-middle text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
-                        href={link.path}
+                <ul className="flex w-full items-center justify-start space-x-3.5 sm:space-x-6 md:justify-center">
+                  {navLinks.map((link) => {
+                    return (
+                      <li
+                        className={`${link.mobile === false && "hidden sm:block"}`}
+                        key={link.label}
                       >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
+                        <Link
+                          className="align-middle text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
+                          href={link.path}
+                          {...(link.isExternal && {
+                            target: "_blank",
+                            rel: "noopener noreferrer",
+                          })}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             </div>
