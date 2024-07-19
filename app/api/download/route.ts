@@ -17,12 +17,14 @@ async function downloadFile(request: NextRequest & { user: User }) {
         { status: 401 },
       );
     }
+    const token = session.access_token;
 
     // Request OS appropriate download from python backend
     const res = await fetch("${PEARAI_SERVER_URL}/generate-download-url", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ userId, operatingSystem }), // Windows | MacOS | Linux | Mobile
     });
