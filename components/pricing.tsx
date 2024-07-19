@@ -26,6 +26,27 @@ const PricingTier: React.FC<PricingTierProps> = ({
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
 
+  async function handleDownload() {
+    if (!user) {
+      alert("Please sign in to download for free.");
+    }
+
+    try {
+      const res = await fetch("./api/download", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userId: user!.id }),
+      });
+
+      const data = await res.json();
+      window.location.href = data.downloadUrl;
+    } catch (error) {
+      throw Error("Something went wrong.");
+    }
+  }
+
   return (
     <Card className="flex h-full w-full flex-col border">
       <CardHeader>
@@ -45,22 +66,34 @@ const PricingTier: React.FC<PricingTierProps> = ({
           </p>
         )}
         {isFree && (
-          <p className="text-sm font-medium text-gray-400 sm:text-base">
-            <a
-              href="https://forms.gle/171UyimgQJhEJbhU7"
-              className="text-link"
-              target="_blank"
-            >
-              Join the waitlist
-            </a>{" "}
-            to be notified when the app is available!
-          </p>
+          <>
+            <p className="text-sm font-medium text-gray-400 sm:text-base">
+              <a
+                href="https://forms.gle/171UyimgQJhEJbhU7"
+                className="text-link"
+                target="_blank"
+              >
+                Join the waitlist
+              </a>{" "}
+              to be notified when the app is available!
+            </p>
+            {!user && (
+              <p>
+                Please{" "}
+                <a href="/signin" className="text-link">
+                  log in
+                </a>{" "}
+                to download for free.
+              </p>
+            )}
+          </>
         )}
         {isFree ? (
           ["Windows", "macOS"].map((os) => (
             <Button
               key={os}
-              disabled={true}
+              disabled={user ? false : true}
+              onClick={handleDownload}
               className="w-full rounded-2xl"
               aria-label={`Download for ${os}`}
             >
