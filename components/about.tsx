@@ -152,5 +152,4 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
     </CardContent>
   </Card>
 );
-
 export default AboutComponent;

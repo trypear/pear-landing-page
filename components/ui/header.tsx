@@ -13,8 +13,8 @@ export default async function Header() {
     { label: "About", path: "/about", isExternal: false },
     {
       label: "GitHub",
-      path: "https://github.com/trypear/pearai-app",
-      isExternal: true,
+      path: "/github",
+      isExternal: false,
     },
     {
       label: "Discord",
