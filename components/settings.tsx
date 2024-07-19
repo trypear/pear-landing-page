@@ -31,6 +31,7 @@ export default function SettingsPage({
   const searchParams = useSearchParams();
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
+  const [requestsUsage, setRequestsUsage] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const session = initialSession;
 
@@ -53,6 +54,32 @@ export default function SettingsPage({
       setIsDialogOpen(false);
     }
   };
+
+  const getRequestsUsage = async () => {
+    try {
+      const response = await fetch("REDIS_USAGE_REQUEST_ENDPOINT", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: user?.id }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch requests usage");
+      }
+
+      const data = await response.json();
+      return data.usage;
+    } catch (error) {
+      console.error("Error fetching requests usage", error);
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const usage = await getRequestsUsage();
+      // setRequestsUsage(usage); // uncomment once redis query works
+    })();
+  });
 
   useEffect(() => {
     async function fetchUserAndHandleCallback() {
@@ -95,6 +122,19 @@ export default function SettingsPage({
       <Link href={openAppUrl}>Open PearAI App</Link>
     </Button>
   );
+
+  const ProgressBar = () => {
+    return (
+      <>
+        <div className="w-1/2 rounded-full bg-gray-200 dark:bg-gray-800">
+          <div
+            className="rounded-full bg-[#00705a] p-[2.75px] text-center text-xs font-medium leading-none text-blue-100"
+            style={{ width: `${(requestsUsage / 1000) * 100}%` }}
+          ></div>
+        </div>
+      </>
+    );
+  };
 
   return (
     <section className="relative">
@@ -175,6 +215,10 @@ export default function SettingsPage({
                             ).toLocaleDateString()
                           : "Now"}
                       </p>
+                      <p>
+                        <strong>Usage:</strong> {requestsUsage}/1000
+                      </p>
+                      <ProgressBar />
                     </div>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>
