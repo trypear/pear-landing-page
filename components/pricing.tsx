@@ -26,6 +26,26 @@ const PricingTier: React.FC<PricingTierProps> = ({
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
 
+  function getOS() {
+    const userAgent = navigator.userAgent;
+
+    if (/Windows/.test(userAgent)) {
+      return "Windows";
+    } else if (/Macintosh|Mac OS X/.test(userAgent)) {
+      return "MacOS";
+    } else if (/Linux/.test(userAgent)) {
+      return "Linux";
+    } else if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(
+        userAgent,
+      )
+    ) {
+      return "Mobile"; // This could be further refined
+    } else {
+      return "Unknown";
+    }
+  }
+
   async function handleDownload() {
     if (!user) {
       alert("Please sign in to download for free.");
@@ -37,7 +57,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: user!.id }),
+        body: JSON.stringify({ userId: user!.id, operatingSystem: getOS() }),
       });
 
       const data = await res.json();

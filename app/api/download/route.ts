@@ -6,7 +6,7 @@ async function downloadFile(request: NextRequest & { user: User }) {
   const supabase = createClient();
 
   try {
-    const { userId } = await request.json();
+    const { userId, operatingSystem } = await request.json();
     const {
       data: { session },
     } = await supabase.auth.getSession();
@@ -18,13 +18,13 @@ async function downloadFile(request: NextRequest & { user: User }) {
       );
     }
 
-    // Request download from python backend
+    // Request OS appropriate download from python backend
     const res = await fetch("PEARAI_SERVER_DOWNLOAD_URL", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userId }),
+      body: JSON.stringify({ userId, operatingSystem }), // Windows | MacOS | Linux | Mobile
     });
 
     if (!res) {
