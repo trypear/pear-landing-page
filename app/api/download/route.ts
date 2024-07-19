@@ -19,7 +19,7 @@ async function downloadFile(request: NextRequest & { user: User }) {
     }
 
     // Request OS appropriate download from python backend
-    const res = await fetch("PEARAI_SERVER_DOWNLOAD_URL", {
+    const res = await fetch("${PEARAI_SERVER_URL}/generate-download-url", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
