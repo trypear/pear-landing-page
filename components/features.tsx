@@ -90,7 +90,7 @@ function SingleFeature(props: SingleFeatureProps) {
           {props.info.description}
         </div>
       </div>
-      <div className="w-[290px] min-[375px]:w-[350px] md:w-[600px] lg:w-[800px]">
+      <div className="w-full lg:w-[800px]">
         <AspectRatio ratio={3 / 2}>
           <video
             autoPlay
