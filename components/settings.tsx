@@ -62,17 +62,22 @@ export default function SettingsPage({
 
           // Handle callback
           const callback = searchParams.get("callback");
+
           if (callback) {
             const { access_token, refresh_token } = session;
+            const decodedCallback = decodeURIComponent(callback);
 
-            router.push(
-              `${callback}?accessToken=${access_token}&refreshToken=${refresh_token}`,
-            );
+            // Construct the new URL with the tokens
+            const newUrl = new URL(decodedCallback);
+            newUrl.searchParams.set("accessToken", access_token);
+            newUrl.searchParams.set("refreshToken", refresh_token);
+
+            router.push(newUrl.toString());
 
             // Clear the callback from the URL
-            const newUrl = new URL(window.location.href);
-            newUrl.searchParams.delete("callback");
-            window.history.replaceState({}, "", newUrl.toString());
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.delete("callback");
+            window.history.replaceState({}, "", currentUrl.toString());
           }
         } else {
           // Handle error or redirect to login
