@@ -10,15 +10,15 @@ import {
   Link,
   Section,
   Heading,
-} from "@react-email/components"
-import * as React from "react"
-import { Tailwind } from "@react-email/tailwind"
+} from "@react-email/components";
+import * as React from "react";
+import { Tailwind } from "@react-email/tailwind";
 
 type EmailWrapperProps = {
-  children: React.ReactNode
-  previewText: string
-  dir?: "ltr" | "rtl"
-}
+  children: React.ReactNode;
+  previewText: string;
+  dir?: "ltr" | "rtl";
+};
 
 const EmailWrapper = ({ children, previewText, dir }: EmailWrapperProps) => {
   return (
@@ -65,7 +65,7 @@ const EmailWrapper = ({ children, previewText, dir }: EmailWrapperProps) => {
         </Body>
       </Tailwind>
     </Html>
-  )
-}
+  );
+};
 
-export default EmailWrapper
+export default EmailWrapper;
