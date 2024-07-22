@@ -55,29 +55,23 @@ export default function SettingsPage({
     }
   };
 
-  const getRequestsUsage = async () => {
-    try {
-      const response = await fetch("REDIS_USAGE_REQUEST_ENDPOINT", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: user?.id }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch requests usage");
-      }
-
-      const data = await response.json();
-      return data.usage;
-    } catch (error) {
-      console.error("Error fetching requests usage", error);
-    }
-  };
-
   useEffect(() => {
     (async () => {
-      const usage = await getRequestsUsage();
-      // setRequestsUsage(usage); // uncomment once redis query works
+      try {
+        const response = await fetch("/api/get-requests-usage", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch requests usage.");
+        }
+        const { usage } = await response.json();
+        setRequestsUsage(usage);
+        return;
+      } catch (error) {
+        console.error("Error fetching requests usage", error);
+      }
     })();
   });
 
