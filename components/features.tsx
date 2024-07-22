@@ -4,6 +4,7 @@ type FeatureInfo = {
   header: string;
   description: React.ReactNode;
   videoSource: string;
+  style: string;
 };
 type SingleFeatureProps = {
   info: FeatureInfo;
@@ -13,6 +14,7 @@ export default function Features() {
   const featureInfo = [
     {
       header: "Talk to your codebase directly",
+      style: "lg:flex-row",
       description: (
         <>
           To add missing context: directly reference code by including other
@@ -31,6 +33,7 @@ export default function Features() {
 
     {
       header: "No more tedious changes,\nor forgetting language\nsyntax",
+      style: "lg:flex-row-reverse",
       description: (
         <>
           Directly make changes inline by pressing{" "}
@@ -47,6 +50,7 @@ export default function Features() {
 
     {
       header: "No more tiresome\ncopy pasting.",
+      style: "lg:flex-row",
       description: (
         <>
           Directly bring your code to the chat by selecting it and
@@ -74,8 +78,10 @@ export default function Features() {
 
 function SingleFeature(props: SingleFeatureProps) {
   return (
-    <div className="m-4 flex flex-col items-start min-[425px]:m-8 sm:m-12 lg:m-24 lg:max-w-full lg:flex-row lg:justify-center">
-      <div className="justify mb-8 flex flex-col content-center pr-8 text-left lg:mb-0 lg:ml-1.5 lg:w-[450px]">
+    <div
+      className={`m-4 flex flex-col items-center gap-6 min-[425px]:m-8 sm:m-12 lg:m-24 lg:max-w-full lg:justify-center lg:gap-28 ${props.info.style}`}
+    >
+      <div className="mb-6 flex flex-col text-center lg:mb-0 lg:ml-1.5 lg:w-[450px]">
         <h4
           className="whitespace-pre-line text-2xl font-medium text-primary-700 lg:text-4xl"
           data-aos="fade-up"
