@@ -30,38 +30,34 @@ const PricingTier: React.FC<PricingTierProps> = ({
     const userAgent = navigator.userAgent;
 
     if (/Windows/.test(userAgent)) {
-      return "Windows";
+      return "windows";
     } else if (/Macintosh|Mac OS X/.test(userAgent)) {
-      return "MacOS";
+      return "mac";
     } else if (/Linux/.test(userAgent)) {
-      return "Linux";
+      return "linux";
     } else if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(
         userAgent,
       )
     ) {
-      return "Mobile"; // This could be further refined
+      return "mobile"; // This could be further refined
     } else {
-      return "Unknown";
+      return "unknown";
     }
   }
 
   async function handleDownload() {
-    if (!user) {
-      alert("Please sign in to download for free.");
-    }
-
     try {
       const res = await fetch("./api/download", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ userId: user!.id, operatingSystem: getOS() }),
+        body: JSON.stringify({ os_type: getOS() }),
       });
 
       const data = await res.json();
-      window.location.href = data.downloadUrl;
+      window.location.href = data;
     } catch (error) {
       throw Error("Something went wrong.");
     }
