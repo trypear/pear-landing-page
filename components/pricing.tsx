@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useCheckout } from "@/hooks/useCheckout";
 import { PRICING_TIERS } from "@/utils/constants";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
+import { number, set } from "zod";
 
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
@@ -25,16 +26,21 @@ const PricingTier: React.FC<PricingTierProps> = ({
   user,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
+  const [numberOfDownloads, setNumberOfDownloads] = useState<number>(() => {
+    const storedValue = localStorage.getItem("number_of_downloads");
+    const parsedValue = storedValue ? parseInt(storedValue, 10) : 0;
+    return isNaN(parsedValue) ? 0 : parsedValue;
+  });
 
-  function getOS() {
+  function getOS(): string {
     const userAgent = navigator.userAgent;
 
     if (/Windows/.test(userAgent)) {
-      return "windows";
+      return "Windows";
     } else if (/Macintosh|Mac OS X/.test(userAgent)) {
-      return "mac";
+      return "MacOS";
     } else if (/Linux/.test(userAgent)) {
-      return "linux";
+      return "Linux";
     } else if (
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(
         userAgent,
@@ -46,22 +52,57 @@ const PricingTier: React.FC<PricingTierProps> = ({
     }
   }
 
-  async function handleDownload() {
+  async function handleDownload(os_type: string) {
     try {
-      const res = await fetch("./api/download", {
+      const res = await fetch("/api/download", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ os_type: getOS() }),
+        body: JSON.stringify({ os_type }),
       });
 
       const data = await res.json();
-      window.location.href = data;
-    } catch (error) {
-      throw Error("Something went wrong.");
+      // navigate to the download link
+      if (data.url) {
+        window.open(data.url, "_blank");
+      }
+      localStorage.setItem(
+        "number_of_downloads",
+        String(numberOfDownloads + 1),
+      );
+      setNumberOfDownloads((prev) => prev + 1);
+    } catch (error: any) {
+      throw Error(error.message);
     }
   }
+
+  // param is a () => string type
+  function DownloadButton({ os }: { os: string }) {
+    return (
+      <Button
+        key={os}
+        disabled={user ? false : true}
+        onClick={() => handleDownload(os.toLowerCase())}
+        className="w-full rounded-2xl"
+        aria-label={`Download for ${os}`}
+      >
+        <Download className="mr-2 h-4 w-4" aria-hidden="true" /> {os}
+      </Button>
+    );
+  }
+
+  useEffect(() => {
+    const savedValue = window.localStorage.getItem("number_of_downloads");
+    setNumberOfDownloads(savedValue ? Number(savedValue) : 0);
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(
+      "number_of_downloads",
+      String(numberOfDownloads),
+    );
+  }, [numberOfDownloads]);
 
   return (
     <Card className="flex h-full w-full flex-col border">
@@ -105,17 +146,15 @@ const PricingTier: React.FC<PricingTierProps> = ({
           </>
         )}
         {isFree ? (
-          ["Windows", "macOS"].map((os) => (
-            <Button
-              key={os}
-              disabled={user ? false : true}
-              onClick={handleDownload}
-              className="w-full rounded-2xl"
-              aria-label={`Download for ${os}`}
-            >
-              <Download className="mr-2 h-4 w-4" aria-hidden="true" /> {os}
-            </Button>
-          ))
+          numberOfDownloads < 3 ? (
+            <>
+              <DownloadButton os={getOS()} />
+            </>
+          ) : (
+            <p className="text-sm font-medium text-gray-400 sm:text-base">
+              Thank you for downloading PearAI!
+            </p>
+          )
         ) : (
           <Button
             onClick={() => priceId && handleCheckout(priceId)}
@@ -151,6 +190,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
     </Card>
   );
 };
+
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   return (
     <section

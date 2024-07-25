@@ -1,12 +1,11 @@
 import { createClient } from "@/utils/supabase/server";
-import { User } from "@supabase/supabase-js";
+import { withAuth } from "@/utils/withAuth";
 import { NextRequest, NextResponse } from "next/server";
 
-async function downloadFile(request: NextRequest & { user: User }) {
+async function downloadFile(request: NextRequest) {
   const supabase = createClient();
-
   try {
-    const { userId, operatingSystem } = await request.json();
+    const { os_type } = await request.json();
     const {
       data: { session },
     } = await supabase.auth.getSession();
@@ -20,26 +19,28 @@ async function downloadFile(request: NextRequest & { user: User }) {
     const token = session.access_token;
 
     // Request OS appropriate download from python backend
-    const res = await fetch("${PEARAI_SERVER_URL}/generate-download-url", {
+    const res = await fetch(`${process.env.PEARAI_SERVER_URL}/get-download`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ userId, operatingSystem }), // Windows | MacOS | Linux | Mobile
+      body: JSON.stringify({ os_type }), // windows | mac | linux | mobile
     });
 
-    if (!res) {
+    const { url } = await res.json();
+
+    if (!res.ok) {
       return NextResponse.json(
         { error: "Failed to get download file from server" },
         { status: 500 },
       );
     }
 
-    const { downloadUrl } = await res.json();
-
-    return NextResponse.json({ downloadUrl }, { status: 200 });
-  } catch (error) {
-    throw Error("Something went wrong.");
+    return NextResponse.json({ url });
+  } catch (error: any) {
+    throw Error(error.message);
   }
 }
+
+export const POST = downloadFile;
