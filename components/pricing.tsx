@@ -13,7 +13,6 @@ import Link from "next/link";
 import { useCheckout } from "@/hooks/useCheckout";
 import { PRICING_TIERS } from "@/utils/constants";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
-import { number, set } from "zod";
 
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
@@ -26,11 +25,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   user,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
-  const [numberOfDownloads, setNumberOfDownloads] = useState<number>(() => {
-    const storedValue = localStorage.getItem("number_of_downloads");
-    const parsedValue = storedValue ? parseInt(storedValue, 10) : 0;
-    return isNaN(parsedValue) ? 0 : parsedValue;
-  });
+  const [downloaded, setDownloaded] = useState(false);
 
   function getOS(): string {
     const userAgent = navigator.userAgent;
@@ -65,13 +60,9 @@ const PricingTier: React.FC<PricingTierProps> = ({
       const data = await res.json();
       // navigate to the download link
       if (data.url) {
-        window.open(data.url, "_blank");
+        window.location.href = data.url;
       }
-      localStorage.setItem(
-        "number_of_downloads",
-        String(numberOfDownloads + 1),
-      );
-      setNumberOfDownloads((prev) => prev + 1);
+      setDownloaded(true);
     } catch (error: any) {
       throw Error(error.message);
     }
@@ -91,18 +82,6 @@ const PricingTier: React.FC<PricingTierProps> = ({
       </Button>
     );
   }
-
-  useEffect(() => {
-    const savedValue = window.localStorage.getItem("number_of_downloads");
-    setNumberOfDownloads(savedValue ? Number(savedValue) : 0);
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem(
-      "number_of_downloads",
-      String(numberOfDownloads),
-    );
-  }, [numberOfDownloads]);
 
   return (
     <Card className="flex h-full w-full flex-col border">
@@ -146,14 +125,14 @@ const PricingTier: React.FC<PricingTierProps> = ({
           </>
         )}
         {isFree ? (
-          numberOfDownloads < 3 ? (
-            <>
-              <DownloadButton os={getOS()} />
-            </>
-          ) : (
+          downloaded ? (
             <p className="text-sm font-medium text-gray-400 sm:text-base">
               Thank you for downloading PearAI!
             </p>
+          ) : (
+            <>
+              <DownloadButton os={getOS()} />
+            </>
           )
         ) : (
           <Button
