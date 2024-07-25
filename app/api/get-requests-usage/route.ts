@@ -4,12 +4,11 @@ import { createClient } from "@/utils/supabase/server";
 import { User } from "@supabase/supabase-js";
 import { TEST_MODE_ENABLED } from "@/utils/constants";
 
-const PEARAI_SERVER_URL = process.env.PEARAI_SERVER_URL;
-
-async function getRequestsUsage(request: NextRequest & { user: User }) {
+async function getRequestsUsage(request: NextRequest) {
   const supabase = createClient();
 
   try {
+    const { user_id } = await request.json();
     const {
       data: { session },
     } = await supabase.auth.getSession();
@@ -23,29 +22,30 @@ async function getRequestsUsage(request: NextRequest & { user: User }) {
 
     const token = session.access_token;
 
-    const response = await fetch(`${PEARAI_SERVER_URL}/usage`, {
-      method: "GET",
+    const res = await fetch(`${process.env.PEARAI_SERVER_URL}/get-usage`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify({ user_id }),
     });
 
-    if (!response.ok) {
-      if (response.status === 401) {
+    if (!res.ok) {
+      if (res.status === 401) {
         return NextResponse.json(
           { error: "Unauthorized. Please log in again." },
           { status: 401 },
         );
       }
-      const errorBody = await response.json();
+      const errorBody = await res.json();
       throw new Error(
-        `HTTP error! status: ${response.status}. Error: ${errorBody?.error}`,
+        `HTTP error! status: ${res.status}. Error: ${errorBody?.error}`,
       );
     }
 
-    const { usage } = await response.json();
-    return NextResponse.json({ usage });
+    const data = await res.json();
+    return NextResponse.json(data.usage);
   } catch (error) {
     return NextResponse.json(
       { error: "Error getting requests usage" },
@@ -54,4 +54,4 @@ async function getRequestsUsage(request: NextRequest & { user: User }) {
   }
 }
 
-export const GET = withAuth(getRequestsUsage);
+export const POST = getRequestsUsage;
