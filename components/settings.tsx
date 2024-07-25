@@ -24,6 +24,12 @@ type SettingsPageProps = {
   openAppUrl: string;
 };
 
+type usageType = {
+  max_quota: number | null;
+  used_quota: number | null;
+  quota_remaining: number | null;
+};
+
 export default function SettingsPage({
   subscription,
   initialSession,
@@ -76,13 +82,12 @@ export default function SettingsPage({
             window.history.replaceState({}, "", newUrl.toString());
           }
         } else {
-          // Handle error or redirect to login
-          console.error("Failed to fetch user");
           router.push("/signin");
+          return new Error("Failed to fetch user");
         }
       } catch (error) {
-        console.error("Failed to fetch user:", error);
         router.push("/signin");
+        return new Error("Failed to fetch user: " + error);
       } finally {
         setLoading(false);
       }
@@ -97,46 +102,61 @@ export default function SettingsPage({
     </Button>
   );
 
-  // WIP
-  // ------------------------------
-  // const [requestsUsage, setRequestsUsage] = useState<number>(0);
-  //
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const response = await fetch("/api/get-requests-usage", {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify({ user_id: user!.identities![0].user_id }),
-  //       });
+  // if signed in && subscription, show usage info
+  const UsageInfo = () => {
+    const [info, setInfo] = useState<usageType>({
+      max_quota: null,
+      used_quota: null,
+      quota_remaining: null,
+    });
 
-  //       console.log("bug #2 🐛🐛");
-  //       if (!response.ok) {
-  //         throw new Error("Failed to fetch requests usage.");
-  //       }
-  //       const usage = await response.json();
-  //       setRequestsUsage(usage);
-  //       return;
-  //     } catch (error) {
-  //       console.error("Error fetching requests usage", error);
-  //     }
-  //   })();
-  // }, [user]);
+    useEffect(() => {
+      (async () => {
+        try {
+          const response = await fetch("/api/get-requests-usage", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ user_id: user!.identities![0].user_id }),
+          });
 
-  // const ProgressBar = () => {
-  //   return (
-  //     <>
-  //       <div className="w-1/2 rounded-full bg-gray-200 dark:bg-gray-800">
-  //         <div
-  //           className="rounded-full bg-[#00705a] p-[2.75px] text-center text-xs font-medium leading-none text-blue-100"
-  //           style={{
-  //             width: `${(requestsUsage.used_quota / requestsUsage.max_quota) * 100}%`,
-  //           }}
-  //         ></div>
-  //       </div>
-  //     </>
-  //   );
-  // };
+          if (!response.ok) {
+            throw new Error("Failed to fetch requests usage.");
+          }
+          const usage = await response.json();
+
+          setInfo(usage);
+        } catch (error) {
+          throw new Error("Error fetching requests usage: " + error);
+        }
+      })();
+    }, []);
+
+    return (
+      <div>
+        {info.max_quota !== null ? (
+          <>
+            <p>
+              <strong>Usage: </strong> {info.used_quota}/{info.max_quota}{" "}
+              requests
+            </p>
+            <div className="w-1/2 rounded-full bg-gray-200 dark:bg-gray-800">
+              <div
+                className="rounded-full bg-[#00705a] p-[2.75px] text-center text-xs font-medium leading-none text-blue-100"
+                style={{
+                  width: `${(info.used_quota! / info.max_quota!) * 100}%`,
+                }}
+                id="progressbar"
+              ></div>
+            </div>
+          </>
+        ) : (
+          <p>
+            <strong>Usage: </strong>Loading...
+          </p>
+        )}
+      </div>
+    );
+  };
 
   return (
     <section className="relative">
@@ -159,7 +179,7 @@ export default function SettingsPage({
                   <tbody className="text-sm">
                     <tr>
                       <td className="whitespace-nowrap pr-1">
-                        <span className="text-gray-500">Full name:</span>{" "}
+                        <span className="text-gray-500">Full name: </span>
                       </td>
                       <td>
                         {loading ? (
@@ -167,11 +187,11 @@ export default function SettingsPage({
                         ) : (
                           user?.user_metadata.full_name
                         )}
-                      </td>{" "}
+                      </td>
                     </tr>
                     <tr>
                       <td className="whitespace-nowrap pr-1">
-                        <span className="text-gray-500">Email:</span>{" "}
+                        <span className="text-gray-500">Email: </span>
                       </td>
                       <td>
                         {loading ? (
@@ -179,7 +199,7 @@ export default function SettingsPage({
                         ) : (
                           user?.email
                         )}
-                      </td>{" "}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -199,29 +219,24 @@ export default function SettingsPage({
                   <>
                     <div>
                       <p>
-                        <strong>Current plan:</strong>{" "}
+                        <strong>Current plan: </strong>
                         {subscription.pricing_tier}
                       </p>
                       <p>
                         <strong>Status:</strong> {subscription.status}
                       </p>
                       <p>
-                        <strong>Current period:</strong>{" "}
+                        <strong>Current period: </strong>
                         {new Date(
                           subscription.current_period_start * 1000,
-                        ).toLocaleDateString()}{" "}
-                        -{" "}
+                        ).toLocaleDateString()}
                         {subscription.current_period_end
                           ? new Date(
                               subscription.current_period_end * 1000,
                             ).toLocaleDateString()
                           : "Now"}
                       </p>
-                      {/* WIP -------------------- 
-                      <p>
-                        <strong>Usage:</strong> {requestsUsage.used_quota}/{requestsUsage.max_quota} requests
-                      </p>
-                      <ProgressBar /> */}
+                      <UsageInfo />
                     </div>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>

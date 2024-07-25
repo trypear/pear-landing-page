@@ -45,7 +45,7 @@ async function getRequestsUsage(request: NextRequest) {
     }
 
     const data = await res.json();
-    return NextResponse.json(data.usage);
+    return NextResponse.json(data);
   } catch (error) {
     return NextResponse.json(
       { error: "Error getting requests usage" },
