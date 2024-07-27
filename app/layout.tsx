@@ -44,7 +44,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <PostHogPageView />
-            <div className="flex min-h-screen flex-col overflow-hidden">
+            <div className="flex min-h-screen flex-col">
               <Header />
               {children}
               <Toaster position="bottom-right" richColors />
