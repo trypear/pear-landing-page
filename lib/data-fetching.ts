@@ -40,7 +40,7 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
     .single();
 
   if (error) {
-    console.error("Error fetching subscription data:", error);
+    console.error("Error fetching subscription data:" + error);
   }
 
   return {
