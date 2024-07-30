@@ -234,7 +234,8 @@ export default function SettingsPage({
                         <strong>Current period: </strong>
                         {new Date(
                           subscription.current_period_start * 1000,
-                        ).toLocaleDateString()}
+                        ).toLocaleDateString()}{" "}
+                        -{" "}
                         {subscription.current_period_end
                           ? new Date(
                               subscription.current_period_end * 1000,
