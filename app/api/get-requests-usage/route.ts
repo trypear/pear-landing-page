@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/utils/withAuth";
 import { createClient } from "@/utils/supabase/server";
-import { User } from "@supabase/supabase-js";
-import { TEST_MODE_ENABLED } from "@/utils/constants";
 
-async function getRequestsUsage(request: NextRequest) {
+const getRequestsUsage = async (request: NextRequest) => {
   const supabase = createClient();
 
   try {
@@ -21,7 +19,6 @@ async function getRequestsUsage(request: NextRequest) {
     }
 
     const token = session.access_token;
-
     const res = await fetch(`${process.env.PEARAI_SERVER_URL}/get-usage`, {
       method: "POST",
       headers: {
@@ -52,6 +49,6 @@ async function getRequestsUsage(request: NextRequest) {
       { status: 500 },
     );
   }
-}
+};
 
-export const POST = getRequestsUsage;
+export const POST = withAuth(getRequestsUsage);

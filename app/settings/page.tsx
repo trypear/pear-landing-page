@@ -3,7 +3,6 @@ import { getUserAndSubscription } from "@/lib/data-fetching";
 import { redirect } from "next/navigation";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
-import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = constructMetadata({
   title: "Settings",
@@ -29,6 +28,7 @@ export default async function Settings() {
       subscription={subscription!}
       initialSession={session!}
       openAppUrl={openAppUrl}
+      user={user}
     />
   );
 }

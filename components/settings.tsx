@@ -16,12 +16,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Skeleton } from "./ui/skeleton";
-import { request } from "http";
 
 type SettingsPageProps = {
   subscription: Subscription | null;
   initialSession: Session;
   openAppUrl: string;
+  user: User;
 };
 
 type usageType = {
@@ -34,10 +34,10 @@ export default function SettingsPage({
   subscription,
   initialSession,
   openAppUrl,
+  user,
 }: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const session = initialSession;
 
@@ -65,8 +65,6 @@ export default function SettingsPage({
     async function fetchUserAndHandleCallback() {
       try {
         if (session) {
-          setUser(session.user);
-
           // Handle callback
           const callback = searchParams.get("callback");
 
@@ -121,7 +119,7 @@ export default function SettingsPage({
           const response = await fetch("/api/get-requests-usage", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_id: user!.identities![0].user_id }),
+            body: JSON.stringify({ userId: user.id }),
           });
 
           if (!response.ok) {
