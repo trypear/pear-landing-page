@@ -117,9 +117,8 @@ export default function SettingsPage({
       (async () => {
         try {
           const response = await fetch("/api/get-requests-usage", {
-            method: "POST",
+            method: "GET",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userId: user.id }),
           });
 
           if (!response.ok) {

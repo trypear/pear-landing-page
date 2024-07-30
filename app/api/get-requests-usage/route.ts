@@ -6,7 +6,6 @@ const getRequestsUsage = async (request: NextRequest) => {
   const supabase = createClient();
 
   try {
-    const { user_id } = await request.json();
     const {
       data: { session },
     } = await supabase.auth.getSession();
@@ -20,12 +19,11 @@ const getRequestsUsage = async (request: NextRequest) => {
 
     const token = session.access_token;
     const res = await fetch(`${process.env.PEARAI_SERVER_URL}/get-usage`, {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ user_id }),
     });
 
     if (!res.ok) {
@@ -51,4 +49,4 @@ const getRequestsUsage = async (request: NextRequest) => {
   }
 };
 
-export const POST = withAuth(getRequestsUsage);
+export const GET = withAuth(getRequestsUsage);
