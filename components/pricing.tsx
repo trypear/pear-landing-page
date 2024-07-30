@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useCheckout } from "@/hooks/useCheckout";
 import { PRICING_TIERS } from "@/utils/constants";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
+import { useRouter } from "next/navigation";
 
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
@@ -26,6 +27,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
+  const router = useRouter();
 
   function getOS(): string {
     const userAgent = navigator.userAgent;
@@ -63,6 +65,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
         window.location.href = data.url;
       }
       setDownloaded(true);
+      router.push("/download");
     } catch (error: any) {
       throw Error(error.message);
     }
