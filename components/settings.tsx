@@ -20,26 +20,32 @@ import { Skeleton } from "./ui/skeleton";
 type SettingsPageProps = {
   subscription: Subscription | null;
   initialSession: Session;
-  openAppUrl: string;
+  openAppQueryParams: string;
   user: User;
 };
 
-type usageType = {
+type UsageType = {
   max_quota: number | null;
   used_quota: number | null;
   quota_remaining: number | null;
 };
 
+const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
+
 export default function SettingsPage({
   subscription,
   initialSession,
-  openAppUrl,
+  openAppQueryParams,
   user,
 }: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const session = initialSession;
+  const [usage, setUsage] = useState<UsageType>({
+    max_quota: null,
+    used_quota: null,
+    quota_remaining: null,
+  });
 
   const { handleCancelSubscription, isCanceling, isCanceled } =
     useCancelSubscription(user, subscription);
@@ -62,14 +68,14 @@ export default function SettingsPage({
   };
 
   useEffect(() => {
-    async function fetchUserAndHandleCallback() {
+    const handleCallbackForApp = async () => {
       try {
-        if (session) {
+        if (initialSession) {
           // Handle callback
           const callback = searchParams.get("callback");
 
           if (callback) {
-            const { access_token, refresh_token } = session;
+            const { access_token, refresh_token } = initialSession;
             const decodedCallback = decodeURIComponent(callback);
 
             // Construct the new URL with the tokens
@@ -86,56 +92,49 @@ export default function SettingsPage({
           }
         } else {
           router.push("/signin");
-          return new Error("Failed to fetch user");
+          return new Error("Failed to retrieve session.");
         }
       } catch (error) {
         router.push("/signin");
-        return new Error("Failed to fetch user: " + error);
+        return error;
       } finally {
         setLoading(false);
       }
-    }
+    };
+    const getUserRequestsUsage = async () => {
+      try {
+        const response = await fetch("/api/get-requests-usage", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
 
-    fetchUserAndHandleCallback();
-  }, [session, router, searchParams]);
+        if (!response.ok) {
+          throw new Error("Failed to fetch requests usage.");
+        }
+        const usage = await response.json();
+        setUsage(usage);
+      } catch (error) {
+        throw new Error("Error fetching requests usage: " + error);
+      }
+    };
+
+    handleCallbackForApp();
+    getUserRequestsUsage();
+  }, [initialSession, router, searchParams]);
 
   const openAppButton = (
     <Button asChild size="sm" className="mt-4">
-      <Link href={openAppUrl}>Open PearAI App</Link>
+      <Link href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}>
+        Open PearAI App
+      </Link>
     </Button>
   );
 
   // if signed in && subscription, show usage info
-  const UsageInfo = () => {
-    const [info, setInfo] = useState<usageType>({
-      max_quota: null,
-      used_quota: null,
-      quota_remaining: null,
-    });
-
-    useEffect(() => {
-      (async () => {
-        try {
-          const response = await fetch("/api/get-requests-usage", {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          });
-
-          if (!response.ok) {
-            throw new Error("Failed to fetch requests usage.");
-          }
-          const usage = await response.json();
-
-          setInfo(usage);
-        } catch (error) {
-          throw new Error("Error fetching requests usage: " + error);
-        }
-      })();
-    }, []);
-
+  const UsageInfo = ({ info }: { info: UsageType }) => {
     return (
       <div>
-        {info.max_quota !== null ? (
+        {info?.max_quota ? (
           <>
             <p>
               <strong>Usage: </strong> {info.used_quota}/{info.max_quota}{" "}
@@ -239,7 +238,7 @@ export default function SettingsPage({
                             ).toLocaleDateString()
                           : "Now"}
                       </p>
-                      <UsageInfo />
+                      <UsageInfo info={usage} />
                     </div>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>

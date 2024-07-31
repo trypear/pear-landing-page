@@ -16,7 +16,7 @@ export default async function Settings() {
     subscription,
     redirect: redirectTo,
     session,
-    openAppUrl,
+    openAppQueryParams,
   } = await getUserAndSubscription();
 
   if (redirectTo || !user) {
@@ -27,7 +27,7 @@ export default async function Settings() {
     <SettingsPage
       subscription={subscription!}
       initialSession={session!}
-      openAppUrl={openAppUrl}
+      openAppQueryParams={openAppQueryParams}
       user={user}
     />
   );
