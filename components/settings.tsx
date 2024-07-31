@@ -1,5 +1,5 @@
 "use client";
-import { Session, User } from "@supabase/supabase-js";
+import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -19,7 +19,6 @@ import { Skeleton } from "./ui/skeleton";
 
 type SettingsPageProps = {
   subscription: Subscription | null;
-  initialSession: Session;
   openAppQueryParams: string;
   user: User;
 };
@@ -34,7 +33,6 @@ const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
 
 export default function SettingsPage({
   subscription,
-  initialSession,
   openAppQueryParams,
   user,
 }: SettingsPageProps) {
@@ -69,35 +67,18 @@ export default function SettingsPage({
 
   useEffect(() => {
     const handleCallbackForApp = async () => {
-      try {
-        if (initialSession) {
-          // Handle callback
-          const callback = searchParams.get("callback");
+      // Handle callback
+      const callback = searchParams.get("callback");
+      if (callback) {
+        const decodedCallback = decodeURIComponent(callback);
+        const openAppUrl = `${decodedCallback}?${openAppQueryParams}`;
+        router.push(openAppUrl);
 
-          if (callback) {
-            const { access_token, refresh_token } = initialSession;
-            const decodedCallback = decodeURIComponent(callback);
+        // Clear the callback from the URL
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.delete("callback");
+        window.history.replaceState({}, "", currentUrl.toString());
 
-            // Construct the new URL with the tokens
-            const newUrl = new URL(decodedCallback);
-            newUrl.searchParams.set("accessToken", access_token);
-            newUrl.searchParams.set("refreshToken", refresh_token);
-
-            router.push(newUrl.toString());
-
-            // Clear the callback from the URL
-            const currentUrl = new URL(window.location.href);
-            currentUrl.searchParams.delete("callback");
-            window.history.replaceState({}, "", currentUrl.toString());
-          }
-        } else {
-          router.push("/signin");
-          return new Error("Failed to retrieve session.");
-        }
-      } catch (error) {
-        router.push("/signin");
-        return error;
-      } finally {
         setLoading(false);
       }
     };
@@ -120,7 +101,7 @@ export default function SettingsPage({
 
     handleCallbackForApp();
     getUserRequestsUsage();
-  }, [initialSession, router, searchParams]);
+  }, [router, searchParams]);
 
   const openAppButton = (
     <Button asChild size="sm" className="mt-4">
