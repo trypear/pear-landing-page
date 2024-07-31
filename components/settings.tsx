@@ -16,6 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Skeleton } from "./ui/skeleton";
+import { toast } from "sonner";
 
 type SettingsPageProps = {
   subscription: Subscription | null;
@@ -78,9 +79,8 @@ export default function SettingsPage({
         const currentUrl = new URL(window.location.href);
         currentUrl.searchParams.delete("callback");
         window.history.replaceState({}, "", currentUrl.toString());
-
-        setLoading(false);
       }
+      setLoading(false);
     };
     const getUserRequestsUsage = async () => {
       try {
@@ -90,12 +90,13 @@ export default function SettingsPage({
         });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch requests usage.");
+          toast.error("Failed to fetch requests usage.");
+          return;
         }
         const usage = await response.json();
         setUsage(usage);
       } catch (error) {
-        throw new Error("Error fetching requests usage: " + error);
+        toast.error(`Error fetching requests usage: ${error}`);
       }
     };
 
