@@ -1,5 +1,5 @@
 "use client";
-import { Session, User } from "@supabase/supabase-js";
+import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -16,30 +16,35 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Skeleton } from "./ui/skeleton";
-import { request } from "http";
+import { toast } from "sonner";
 
 type SettingsPageProps = {
   subscription: Subscription | null;
-  initialSession: Session;
-  openAppUrl: string;
+  openAppQueryParams: string;
+  user: User;
 };
 
-type usageType = {
+type UsageType = {
   max_quota: number | null;
   used_quota: number | null;
   quota_remaining: number | null;
 };
 
+const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
+
 export default function SettingsPage({
   subscription,
-  initialSession,
-  openAppUrl,
+  openAppQueryParams,
+  user,
 }: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const session = initialSession;
+  const [usage, setUsage] = useState<UsageType>({
+    max_quota: null,
+    used_quota: null,
+    quota_remaining: null,
+  });
 
   const { handleCancelSubscription, isCanceling, isCanceled } =
     useCancelSubscription(user, subscription);
@@ -62,83 +67,56 @@ export default function SettingsPage({
   };
 
   useEffect(() => {
-    async function fetchUserAndHandleCallback() {
-      try {
-        if (session) {
-          setUser(session.user);
+    const handleCallbackForApp = async () => {
+      // Handle callback
+      const callback = searchParams.get("callback");
+      if (callback) {
+        const decodedCallback = decodeURIComponent(callback);
+        const openAppUrl = `${decodedCallback}?${openAppQueryParams}`;
+        router.push(openAppUrl);
 
-          // Handle callback
-          const callback = searchParams.get("callback");
-
-          if (callback) {
-            const { access_token, refresh_token } = session;
-            const decodedCallback = decodeURIComponent(callback);
-
-            // Construct the new URL with the tokens
-            const newUrl = new URL(decodedCallback);
-            newUrl.searchParams.set("accessToken", access_token);
-            newUrl.searchParams.set("refreshToken", refresh_token);
-
-            router.push(newUrl.toString());
-
-            // Clear the callback from the URL
-            const currentUrl = new URL(window.location.href);
-            currentUrl.searchParams.delete("callback");
-            window.history.replaceState({}, "", currentUrl.toString());
-          }
-        } else {
-          router.push("/signin");
-          return new Error("Failed to fetch user");
-        }
-      } catch (error) {
-        router.push("/signin");
-        return new Error("Failed to fetch user: " + error);
-      } finally {
-        setLoading(false);
+        // Clear the callback from the URL
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.delete("callback");
+        window.history.replaceState({}, "", currentUrl.toString());
       }
-    }
+      setLoading(false);
+    };
+    const getUserRequestsUsage = async () => {
+      try {
+        const response = await fetch("/api/get-requests-usage", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
 
-    fetchUserAndHandleCallback();
-  }, [session, router, searchParams]);
+        if (!response.ok) {
+          toast.error("Failed to fetch requests usage.");
+          return;
+        }
+        const usage = await response.json();
+        setUsage(usage);
+      } catch (error) {
+        toast.error(`Error fetching requests usage: ${error}`);
+      }
+    };
+
+    handleCallbackForApp();
+    getUserRequestsUsage();
+  }, [router, searchParams]);
 
   const openAppButton = (
     <Button asChild size="sm" className="mt-4">
-      <Link href={openAppUrl}>Open PearAI App</Link>
+      <Link href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}>
+        Open PearAI App
+      </Link>
     </Button>
   );
 
   // if signed in && subscription, show usage info
-  const UsageInfo = () => {
-    const [info, setInfo] = useState<usageType>({
-      max_quota: null,
-      used_quota: null,
-      quota_remaining: null,
-    });
-
-    useEffect(() => {
-      (async () => {
-        try {
-          const response = await fetch("/api/get-requests-usage", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_id: user!.identities![0].user_id }),
-          });
-
-          if (!response.ok) {
-            throw new Error("Failed to fetch requests usage.");
-          }
-          const usage = await response.json();
-
-          setInfo(usage);
-        } catch (error) {
-          throw new Error("Error fetching requests usage: " + error);
-        }
-      })();
-    }, []);
-
+  const UsageInfo = ({ info }: { info: UsageType }) => {
     return (
       <div>
-        {info.max_quota !== null ? (
+        {info?.max_quota ? (
           <>
             <p>
               <strong>Usage: </strong> {info.used_quota}/{info.max_quota}{" "}
@@ -242,7 +220,7 @@ export default function SettingsPage({
                             ).toLocaleDateString()
                           : "Now"}
                       </p>
-                      <UsageInfo />
+                      <UsageInfo info={usage} />
                     </div>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>
