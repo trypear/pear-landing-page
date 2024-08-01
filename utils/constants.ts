@@ -40,7 +40,7 @@ export const PRICING_TIERS: PricingTierData[] = [
     description:
       "Get the monthly subscription, and we'll take care of you... 😎",
     features: [
-      "1000 GPT4o requests per month (Claude 3.5 Sonnet soon!)",
+      "1000 chat + autocomplete requests per month (Claude 3.5 Sonnet + GPT4o)",
       "Direct customer support by the founders and contributors",
       "Private Discord channel",
     ],

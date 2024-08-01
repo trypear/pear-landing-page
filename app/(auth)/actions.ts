@@ -139,7 +139,7 @@ export async function checkEmailExists(data: {
 }) {
   return {
     exists:
-      data.user && data.user.identities && data.user.identities.length === 0,
+      data.user && data.user?.identities && data.user?.identities?.length === 0,
   };
 }
 

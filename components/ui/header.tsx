@@ -6,35 +6,9 @@ import DarkModeToggle from "./darkmode-toggle";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { ExternalLink } from "lucide-react";
+import Navigation from "./navLink";
 
 export default async function Header() {
-  // navigation bar links
-  const navLinks = [
-    { label: "About", path: "/about", isExternal: false },
-    {
-      label: "GitHub",
-      path: "https://github.com/trypear/pearai-app",
-      isExternal: true,
-    },
-    {
-      label: "Discord",
-      path: "https://discord.gg/AKy5FmqCkF",
-      isExternal: true,
-    },
-    {
-      label: "Pricing",
-      path: "/pricing",
-      isExternal: false,
-      mobile: false,
-    },
-    {
-      label: "Priority Waitlist",
-      path: "/priority-waitlist",
-      isExternal: false,
-      mobile: false,
-    },
-  ];
-
   const supabase = createClient();
   const supabaseUserResponse = await supabase.auth.getUser();
 
@@ -60,42 +34,20 @@ export default async function Header() {
 
             <div className="ml-2 flex w-full flex-row items-center space-x-2 sm:ml-0">
               {/* Navigation */}
-              <nav className="flex w-full items-center justify-start md:justify-center">
-                <ul className="flex w-full items-center justify-start space-x-3.5 sm:space-x-6 md:justify-center">
-                  {navLinks.map((link) => {
-                    return (
-                      <li
-                        className={`${link.mobile === false && "hidden sm:block"}`}
-                        key={link.label}
-                      >
-                        <Link
-                          className="align-middle text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
-                          href={link.path}
-                          {...(link.isExternal && {
-                            target: "_blank",
-                            rel: "noopener noreferrer",
-                          })}
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
+              <Navigation />
             </div>
 
             <div className="flex w-[28%] flex-row items-center justify-end space-x-2.5 md:w-[36%]">
-              <AuthButton />
               {/* AuthButton is hidden in production */}
+              <AuthButton />
 
               <span
                 className="hidden h-6 w-px rounded-full bg-gray-300 md:block"
                 id="button__divider"
               ></span>
 
-              <DarkModeToggle />
               {/* DARK/LIGHT MODE TOGGLE */}
+              <DarkModeToggle />
 
               <span
                 className="h-6 w-px rounded-full bg-gray-300 md:hidden"

@@ -52,6 +52,15 @@ export default function Footer() {
               </li>
               <li className="ml-4">
                 <Link
+                  href="/changelog"
+                  className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
+                  aria-label="About"
+                >
+                  Changelog
+                </Link>
+              </li>
+              <li className="ml-4">
+                <Link
                   href="/about"
                   className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
                   aria-label="About"

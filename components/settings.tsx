@@ -1,5 +1,5 @@
 "use client";
-import { Session, User } from "@supabase/supabase-js";
+import { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -16,23 +16,35 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Skeleton } from "./ui/skeleton";
+import { toast } from "sonner";
 
 type SettingsPageProps = {
   subscription: Subscription | null;
-  initialSession: Session;
-  openAppUrl: string;
+  openAppQueryParams: string;
+  user: User;
 };
+
+type UsageType = {
+  max_quota: number | null;
+  used_quota: number | null;
+  quota_remaining: number | null;
+};
+
+const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
 
 export default function SettingsPage({
   subscription,
-  initialSession,
-  openAppUrl,
+  openAppQueryParams,
+  user,
 }: SettingsPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const session = initialSession;
+  const [usage, setUsage] = useState<UsageType>({
+    max_quota: null,
+    used_quota: null,
+    quota_remaining: null,
+  });
 
   const { handleCancelSubscription, isCanceling, isCanceled } =
     useCancelSubscription(user, subscription);
@@ -55,46 +67,79 @@ export default function SettingsPage({
   };
 
   useEffect(() => {
-    async function fetchUserAndHandleCallback() {
-      try {
-        if (session) {
-          setUser(session.user);
+    const handleCallbackForApp = async () => {
+      // Handle callback
+      const callback = searchParams.get("callback");
+      if (callback) {
+        const decodedCallback = decodeURIComponent(callback);
+        const openAppUrl = `${decodedCallback}?${openAppQueryParams}`;
+        router.push(openAppUrl);
 
-          // Handle callback
-          const callback = searchParams.get("callback");
-          if (callback) {
-            const { access_token, refresh_token } = session;
-
-            router.push(
-              `${callback}?accessToken=${access_token}&refreshToken=${refresh_token}`,
-            );
-
-            // Clear the callback from the URL
-            const newUrl = new URL(window.location.href);
-            newUrl.searchParams.delete("callback");
-            window.history.replaceState({}, "", newUrl.toString());
-          }
-        } else {
-          // Handle error or redirect to login
-          console.error("Failed to fetch user");
-          router.push("/signin");
-        }
-      } catch (error) {
-        console.error("Failed to fetch user:", error);
-        router.push("/signin");
-      } finally {
-        setLoading(false);
+        // Clear the callback from the URL
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.delete("callback");
+        window.history.replaceState({}, "", currentUrl.toString());
       }
-    }
+      setLoading(false);
+    };
+    const getUserRequestsUsage = async () => {
+      try {
+        const response = await fetch("/api/get-requests-usage", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
 
-    fetchUserAndHandleCallback();
-  }, [session, router, searchParams]);
+        if (!response.ok) {
+          toast.error("Failed to fetch requests usage.");
+          return;
+        }
+        const usage = await response.json();
+        setUsage(usage);
+      } catch (error) {
+        toast.error(`Error fetching requests usage: ${error}`);
+      }
+    };
+
+    handleCallbackForApp();
+    getUserRequestsUsage();
+  }, [router, searchParams]);
 
   const openAppButton = (
     <Button asChild size="sm" className="mt-4">
-      <Link href={openAppUrl}>Open PearAI App</Link>
+      <Link href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}>
+        Open PearAI App
+      </Link>
     </Button>
   );
+
+  // if signed in && subscription, show usage info
+  const UsageInfo = ({ info }: { info: UsageType }) => {
+    return (
+      <div>
+        {info?.max_quota ? (
+          <>
+            <p>
+              <strong>Usage: </strong> {info.used_quota}/{info.max_quota}{" "}
+              requests
+            </p>
+            <div className="w-1/2 rounded-full bg-gray-200 dark:bg-gray-800">
+              <div
+                className="rounded-full bg-[#00705a] p-[2.75px] text-center text-xs font-medium leading-none text-blue-100"
+                style={{
+                  width: `${(info.used_quota! / info.max_quota!) * 100}%`,
+                }}
+                id="progressbar"
+              ></div>
+            </div>
+          </>
+        ) : (
+          <p>
+            <strong>Usage: </strong>Loading...
+          </p>
+        )}
+      </div>
+    );
+  };
 
   return (
     <section className="relative">
@@ -117,7 +162,7 @@ export default function SettingsPage({
                   <tbody className="text-sm">
                     <tr>
                       <td className="whitespace-nowrap pr-1">
-                        <span className="text-gray-500">Full name:</span>{" "}
+                        <span className="text-gray-500">Full name: </span>
                       </td>
                       <td>
                         {loading ? (
@@ -125,11 +170,11 @@ export default function SettingsPage({
                         ) : (
                           user?.user_metadata.full_name
                         )}
-                      </td>{" "}
+                      </td>
                     </tr>
                     <tr>
                       <td className="whitespace-nowrap pr-1">
-                        <span className="text-gray-500">Email:</span>{" "}
+                        <span className="text-gray-500">Email: </span>
                       </td>
                       <td>
                         {loading ? (
@@ -137,7 +182,7 @@ export default function SettingsPage({
                         ) : (
                           user?.email
                         )}
-                      </td>{" "}
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -157,14 +202,14 @@ export default function SettingsPage({
                   <>
                     <div>
                       <p>
-                        <strong>Current plan:</strong>{" "}
+                        <strong>Current plan: </strong>
                         {subscription.pricing_tier}
                       </p>
                       <p>
                         <strong>Status:</strong> {subscription.status}
                       </p>
                       <p>
-                        <strong>Current period:</strong>{" "}
+                        <strong>Current period: </strong>
                         {new Date(
                           subscription.current_period_start * 1000,
                         ).toLocaleDateString()}{" "}
@@ -175,6 +220,7 @@ export default function SettingsPage({
                             ).toLocaleDateString()
                           : "Now"}
                       </p>
+                      <UsageInfo info={usage} />
                     </div>
                     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                       <DialogTrigger asChild>
