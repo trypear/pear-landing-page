@@ -31,7 +31,7 @@ async function cancelSubscription(request: NextRequest & { user: User }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ subscriptionId, userId: request.user.id }),
+      body: JSON.stringify({ subscriptionId }),
     });
 
     if (!response.ok) {

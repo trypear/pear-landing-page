@@ -3,7 +3,6 @@ import { getUserAndSubscription } from "@/lib/data-fetching";
 import { redirect } from "next/navigation";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
-import { createClient } from "@/utils/supabase/server";
 
 export const metadata: Metadata = constructMetadata({
   title: "Settings",
@@ -16,8 +15,7 @@ export default async function Settings() {
     user,
     subscription,
     redirect: redirectTo,
-    session,
-    openAppUrl,
+    openAppQueryParams,
   } = await getUserAndSubscription();
 
   if (redirectTo || !user) {
@@ -27,8 +25,8 @@ export default async function Settings() {
   return (
     <SettingsPage
       subscription={subscription!}
-      initialSession={session!}
-      openAppUrl={openAppUrl}
+      openAppQueryParams={openAppQueryParams}
+      user={user}
     />
   );
 }
