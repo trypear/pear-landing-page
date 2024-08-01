@@ -13,6 +13,7 @@ import Link from "next/link";
 import { useCheckout } from "@/hooks/useCheckout";
 import { PRICING_TIERS } from "@/utils/constants";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
+import { set } from "zod";
 
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
@@ -26,26 +27,8 @@ const PricingTier: React.FC<PricingTierProps> = ({
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
-
-  function getOS(): string {
-    const userAgent = navigator.userAgent;
-
-    if (/Windows/.test(userAgent)) {
-      return "Windows";
-    } else if (/Macintosh|Mac OS X/.test(userAgent)) {
-      return "MacOS";
-    } else if (/Linux/.test(userAgent)) {
-      return "Linux";
-    } else if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(
-        userAgent,
-      )
-    ) {
-      return "mobile"; // This could be further refined
-    } else {
-      return "unknown";
-    }
-  }
+  const [operatingSystem, setOperatingSystem] = useState("");
+  const [waitlistInfo, setWaitlistInfo] = useState({});
 
   async function handleDownload(os_type: string) {
     try {
@@ -74,7 +57,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
       <Button
         key={os}
         disabled={user ? false : true}
-        onClick={() => handleDownload(os.toLowerCase())}
+        onClick={() => handleDownload(operatingSystem)}
         className="w-full rounded-2xl"
         aria-label={`Download for ${os}`}
       >
@@ -82,6 +65,50 @@ const PricingTier: React.FC<PricingTierProps> = ({
       </Button>
     );
   }
+
+  useEffect(() => {
+    function getOS(): string {
+      const userAgent = navigator.userAgent;
+
+      if (/Windows/.test(userAgent)) {
+        return "Windows";
+      } else if (/Macintosh|Mac OS X/.test(userAgent)) {
+        return "MacOS";
+      } else if (/Linux/.test(userAgent)) {
+        return "Linux";
+      } else if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(
+          userAgent,
+        )
+      ) {
+        return "mobile"; // This could be further refined
+      } else {
+        return "unknown";
+      }
+    }
+
+    async function getWaitlistInfo() {
+      const res = await fetch("/api/get-waitlist-info", {
+        method: "GET",
+      });
+
+      const data = await res.json();
+
+      return data;
+    }
+
+    console.log("Bug #2 🐛🐛");
+    (async () => {
+      setWaitlistInfo(await getWaitlistInfo());
+      setOperatingSystem(getOS());
+    })();
+  }, []);
+
+  useEffect(() => {
+    console.log(user);
+    console.log(waitlistInfo);
+    console.log(operatingSystem);
+  }, [operatingSystem, waitlistInfo]);
 
   return (
     <Card className="flex h-full w-full flex-col border">
@@ -131,7 +158,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
             </p>
           ) : (
             <>
-              <DownloadButton os={getOS()} />
+              <DownloadButton os={operatingSystem} />
             </>
           )
         ) : (
