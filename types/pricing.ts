@@ -10,7 +10,7 @@ export interface PricingTierProps {
   priceId?: string;
   user: User | null;
   waitlistAccess?: boolean;
-  isLoading?: boolean;
+  isWaitlistInfoLoading?: boolean;
 }
 
 export interface PricingPageProps {

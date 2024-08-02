@@ -48,13 +48,15 @@ const PricingTier: React.FC<PricingTierProps> = ({
   priceId,
   user,
   waitlistAccess,
-  isLoading,
+  isWaitlistInfoLoading,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const router = useRouter();
 
   const handleDownload = async (os_type: string) => {
+    setIsDownloading(true);
     try {
       const res = await fetch(`/api/download?os_type=${os_type}`, {
         method: "GET",
@@ -74,6 +76,8 @@ const PricingTier: React.FC<PricingTierProps> = ({
       setDownloaded(true);
     } catch (error: any) {
       toast.error(error.message);
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -138,7 +142,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
               Thank you for downloading PearAI! Your download should have
               started :)
             </p>
-          ) : isLoading ? (
+          ) : isWaitlistInfoLoading || isDownloading ? (
             <div className="mx-auto">
               <Spinner />
             </div>
@@ -187,11 +191,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   const [waitlistInfo, setWaitlistInfo] = useState<WaitlistEntry>();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isWaitlistInfoLoading, setIsWaitlistInfoLoading] = useState(true);
 
   useEffect(() => {
     // Check if user is in waitlist
-    setIsLoading(false);
     const getWaitlistInfo = async () => {
       try {
         const res = await fetch("/api/waitlist-info", {
@@ -212,6 +215,8 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
         toast.error(
           `Cannot obtain info on whether the user is on waitlist or not: ${error.message}`,
         );
+      } finally {
+        setIsWaitlistInfoLoading(false);
       }
     };
 
@@ -247,7 +252,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                   {...tier}
                   user={user}
                   waitlistAccess={waitlistInfo?.access_given}
-                  isLoading={isLoading}
+                  isWaitlistInfoLoading={isWaitlistInfoLoading}
                 />
               </div>
             ))}
