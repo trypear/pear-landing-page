@@ -102,7 +102,7 @@ export default function SettingsPage({
 
     handleCallbackForApp();
     getUserRequestsUsage();
-  }, [router, searchParams]);
+  }, [router, searchParams, openAppQueryParams]);
 
   const openAppButton = (
     <Button asChild size="sm" className="mt-4">

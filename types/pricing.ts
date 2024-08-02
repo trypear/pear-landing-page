@@ -9,6 +9,8 @@ export interface PricingTierProps {
   isFree?: boolean;
   priceId?: string;
   user: User | null;
+  waitlistAccess?: boolean;
+  isWaitlistInfoLoading?: boolean;
 }
 
 export interface PricingPageProps {
