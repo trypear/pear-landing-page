@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default:
           "rounded-full bg-primary-800 text-white-main hover:bg-primary-800/80 hover:shadow-sm",
         destructive:
-          "bg-red-600/90 dark:bg-red-600/70 border border-red-700 dark:border-red-600 text-white-main hover:bg-red-700 hover:shadow-sm",
+          "rounded-full bg-red-600/90 dark:bg-red-600/70 border border-red-700 dark:border-red-600 text-white-main hover:bg-red-700 hover:shadow-sm",
         outline:
           "rounded-full ring-1 ring-gray-400/40 bg-gray-300/10 hover:bg-gray-300/20 backdrop-blur-md",
         secondary:
