@@ -151,6 +151,6 @@
 }
 
 .thin-bullets ul li::marker {
-  font-weight: normal; 
-  font-size: 0.75em; 
+  font-weight: normal;
+  font-size: 0.75em;
 }
