@@ -13,7 +13,29 @@ import Link from "next/link";
 import { useCheckout } from "@/hooks/useCheckout";
 import { PRICING_TIERS } from "@/utils/constants";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
-import { set } from "zod";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+
+type SupportedOS = {
+  name: string;
+  os: string;
+};
+
+const SUPPORTED_OS: SupportedOS[] = [
+  { name: "Download for Mac (Apple silicon)", os: "darwin-arm64" },
+  { name: "Download for Mac (Intel chip)", os: "intel-x64" },
+  { name: "Download for Windows", os: "windows" },
+];
+
+type WaitlistEntry = {
+  id: string;
+  name: string;
+  email: string;
+  payment_intent_id: string;
+  created_at?: Date;
+  priority: boolean;
+  access_given: boolean;
+};
 
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
@@ -27,88 +49,70 @@ const PricingTier: React.FC<PricingTierProps> = ({
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
-  const [operatingSystem, setOperatingSystem] = useState("");
-  const [waitlistInfo, setWaitlistInfo] = useState({});
+  const [waitlistInfo, setWaitlistInfo] = useState<WaitlistEntry>();
+  const router = useRouter();
 
-  async function handleDownload(os_type: string) {
+  const handleDownload = async (os_type: string) => {
     try {
-      const res = await fetch("/api/download", {
+      const res = await fetch(`/api/download?os_type=${os_type}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ os_type }),
       });
 
-      const data = await res.json();
-      // navigate to the download link
-      if (data.url) {
-        window.location.href = data.url;
+      if (!res.ok) {
+        throw Error(res.statusText);
+      }
+
+      const downloadLink = await res.json();
+      if (downloadLink?.url) {
+        router.push(downloadLink.url);
       }
       setDownloaded(true);
     } catch (error: any) {
-      throw Error(error.message);
+      toast.error(error.message);
     }
-  }
+  };
 
-  // param is a () => string type
-  function DownloadButton({ os }: { os: string }) {
+  const DownloadButton = ({ os }: { os: SupportedOS }) => {
     return (
       <Button
-        key={os}
-        disabled={user ? false : true}
-        onClick={() => handleDownload(operatingSystem)}
+        key={os.os}
+        disabled={waitlistInfo && waitlistInfo?.access_given ? false : true}
+        onClick={() => handleDownload(os.os)}
         className="w-full rounded-2xl"
-        aria-label={`Download for ${os}`}
+        aria-label={`Download for ${os.os}`}
       >
-        <Download className="mr-2 h-4 w-4" aria-hidden="true" /> {os}
+        <Download className="mr-2 h-4 w-4" aria-hidden="true" /> {os.name}
       </Button>
     );
-  }
+  };
 
   useEffect(() => {
-    function getOS(): string {
-      const userAgent = navigator.userAgent;
-
-      if (/Windows/.test(userAgent)) {
-        return "Windows";
-      } else if (/Macintosh|Mac OS X/.test(userAgent)) {
-        return "MacOS";
-      } else if (/Linux/.test(userAgent)) {
-        return "Linux";
-      } else if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/.test(
-          userAgent,
-        )
-      ) {
-        return "mobile"; // This could be further refined
-      } else {
-        return "unknown";
+    // Check if user is in waitlist
+    const getWaitlistInfo = async () => {
+      try {
+        const res = await fetch("/api/waitlist-info", {
+          method: "GET",
+        });
+        if (!res.ok) {
+          console.log(res);
+          throw Error(res.statusText);
+        }
+        const data = await res.json();
+        setWaitlistInfo(data);
+        return data;
+      } catch (error: any) {
+        console.log(error);
+        toast.error(
+          `Cannot obtain info on whether the user is on waitlist or not: ${error.message}`,
+        );
       }
-    }
+    };
 
-    async function getWaitlistInfo() {
-      const res = await fetch("/api/get-waitlist-info", {
-        method: "GET",
-      });
-
-      const data = await res.json();
-
-      return data;
-    }
-
-    console.log("Bug #2 🐛🐛");
-    (async () => {
-      setWaitlistInfo(await getWaitlistInfo());
-      setOperatingSystem(getOS());
-    })();
+    getWaitlistInfo();
   }, []);
-
-  useEffect(() => {
-    console.log(user);
-    console.log(waitlistInfo);
-    console.log(operatingSystem);
-  }, [operatingSystem, waitlistInfo]);
 
   return (
     <Card className="flex h-full w-full flex-col border">
@@ -158,7 +162,9 @@ const PricingTier: React.FC<PricingTierProps> = ({
             </p>
           ) : (
             <>
-              <DownloadButton os={operatingSystem} />
+              {SUPPORTED_OS.map((os) => (
+                <DownloadButton os={os} key={os.os} />
+              ))}
             </>
           )
         ) : (
