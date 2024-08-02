@@ -30,16 +30,16 @@ async function downloadFile(request: NextRequest) {
       },
     );
 
-    const { url } = await res.json();
+    const { download_link } = await res.json();
 
-    if (!res.ok) {
+    if (!res.ok || !download_link) {
       return NextResponse.json(
         { error: "Failed to get download file from server" },
         { status: 500 },
       );
     }
 
-    return NextResponse.json({ url });
+    return NextResponse.json({ url: download_link });
   } catch (error: any) {
     let errMsg = "Error downloading file: ";
     if (error instanceof Error) {

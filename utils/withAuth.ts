@@ -20,7 +20,6 @@ export function withAuth(handler: AuthenticatedHandler) {
     // add user to request object
     const authenticatedRequest = request as NextRequest & { user: User };
     authenticatedRequest.user = user;
-
     return handler(authenticatedRequest);
   };
 }

@@ -46,16 +46,16 @@ const PricingTier: React.FC<PricingTierProps> = ({
   isFree = false,
   priceId,
   user,
+  waitlistAccess,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
-  const [waitlistInfo, setWaitlistInfo] = useState<WaitlistEntry>();
   const router = useRouter();
 
   const handleDownload = async (os_type: string) => {
     try {
       const res = await fetch(`/api/download?os_type=${os_type}`, {
-        method: "POST",
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
         },
@@ -79,7 +79,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
     return (
       <Button
         key={os.os}
-        disabled={waitlistInfo && waitlistInfo?.access_given ? false : true}
+        disabled={waitlistAccess ? false : true}
         onClick={() => handleDownload(os.os)}
         className="w-full rounded-2xl"
         aria-label={`Download for ${os.os}`}
@@ -88,31 +88,6 @@ const PricingTier: React.FC<PricingTierProps> = ({
       </Button>
     );
   };
-
-  useEffect(() => {
-    // Check if user is in waitlist
-    const getWaitlistInfo = async () => {
-      try {
-        const res = await fetch("/api/waitlist-info", {
-          method: "GET",
-        });
-        if (!res.ok) {
-          console.log(res);
-          throw Error(res.statusText);
-        }
-        const data = await res.json();
-        setWaitlistInfo(data);
-        return data;
-      } catch (error: any) {
-        console.log(error);
-        toast.error(
-          `Cannot obtain info on whether the user is on waitlist or not: ${error.message}`,
-        );
-      }
-    };
-
-    getWaitlistInfo();
-  }, []);
 
   return (
     <Card className="flex h-full w-full flex-col border">
@@ -158,7 +133,8 @@ const PricingTier: React.FC<PricingTierProps> = ({
         {isFree ? (
           downloaded ? (
             <p className="text-sm font-medium text-gray-400 sm:text-base">
-              Thank you for downloading PearAI!
+              Thank you for downloading PearAI! Your download should have
+              started :)
             </p>
           ) : (
             <>
@@ -204,6 +180,36 @@ const PricingTier: React.FC<PricingTierProps> = ({
 };
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
+  const [waitlistInfo, setWaitlistInfo] = useState<WaitlistEntry>();
+
+  useEffect(() => {
+    // Check if user is in waitlist
+    const getWaitlistInfo = async () => {
+      try {
+        const res = await fetch("/api/waitlist-info", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (!res.ok) {
+          if (res.status === 404) {
+            return;
+          }
+          throw Error(res.statusText);
+        }
+        const data = await res.json();
+        setWaitlistInfo(data);
+        return data;
+      } catch (error: any) {
+        toast.error(
+          `Cannot obtain info on whether the user is on waitlist or not: ${error.message}`,
+        );
+      }
+    };
+
+    getWaitlistInfo();
+  }, []);
+
   return (
     <section
       className="relative py-8 sm:py-12 md:py-16 lg:py-24"
@@ -229,7 +235,11 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           >
             {PRICING_TIERS.map((tier, index) => (
               <div key={index} role="listitem">
-                <PricingTier {...tier} user={user} />
+                <PricingTier
+                  {...tier}
+                  user={user}
+                  waitlistAccess={waitlistInfo?.access_given}
+                />
               </div>
             ))}
           </div>

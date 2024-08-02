@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/utils/withAuth";
 
 async function waitlistInfo(request: NextRequest) {
-  console.log("Bug #1 🐛🐛");
   const supabase = createClient();
   try {
     const {
@@ -17,7 +16,6 @@ async function waitlistInfo(request: NextRequest) {
       );
     }
     const token = session.access_token;
-    console.log(session);
     const res = await fetch(`${process.env.PEARAI_SERVER_URL}/waitlist-info`, {
       method: "GET",
       headers: {
@@ -29,8 +27,14 @@ async function waitlistInfo(request: NextRequest) {
     const data = await res.json();
 
     if (!res.ok) {
+      if (res.status === 404) {
+        return NextResponse.json(
+          { error: "User not in waitlist" },
+          { status: 404 },
+        );
+      }
       return NextResponse.json(
-        { error: "Failed to get download file from server" },
+        { error: `Failed to get download file from server: ${data?.error}` },
         { status: 500 },
       );
     }
