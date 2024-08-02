@@ -131,9 +131,9 @@ export default function TermsOfServiceComponent() {
                   notify us at&nbsp;
                   <a
                     className="font-medium text-gray-900 underline"
-                    href="mailto:trypearai@gmail.com"
+                    href="mailto:pear@trypear.ai"
                   >
-                    trypearai@gmail.com
+                    pear@trypear.ai
                   </a>
                   .
                 </li>
@@ -276,9 +276,9 @@ export default function TermsOfServiceComponent() {
                         in your billing menu or by contacting us at&nbsp;
                         <a
                           className="font-medium text-gray-900 underline"
-                          href="mailto:trypearai@gmail.com"
+                          href="mailto:pear@trypear.ai"
                         >
-                          trypearai@gmail.com
+                          pear@trypear.ai
                         </a>
                         . YOUR CANCELLATION MUST BE RECEIVED BEFORE THE RENEWAL
                         DATE IN ORDER TO AVOID CHARGE FOR THE NEXT SUBSCRIPTION
@@ -731,9 +731,9 @@ export default function TermsOfServiceComponent() {
                         by emailing customer support at&nbsp;
                         <a
                           className="font-medium text-gray-900 underline"
-                          href="mailto:trypearai@gmail.com"
+                          href="mailto:pear@trypear.ai"
                         >
-                          trypearai@gmail.com
+                          pear@trypear.ai
                         </a>
                         . If such efforts prove unsuccessful, a party who
                         intends to seek arbitration must first send to the
@@ -1020,9 +1020,9 @@ export default function TermsOfServiceComponent() {
                         emailing us at&nbsp;
                         <a
                           className="font-medium text-gray-900 underline"
-                          href="mailto:trypearai@gmail.com"
+                          href="mailto:pear@trypear.ai"
                         >
-                          trypearai@gmail.com
+                          pear@trypear.ai
                         </a>
                         .
                       </p>

@@ -707,13 +707,13 @@ export default function PrivacyPolicyComponent() {
                 If you have any questions about this Privacy Policy or our
                 privacy and security practices or you wish to make a complaint
                 about our compliance with applicable privacy laws, please feel
-                free to contact us at trypearai@gmail.com.
+                free to contact us at pear@trypear.ai.
               </p>
               <p>
                 If you have questions or concerns about the way we are handling
                 your personal information, or would like to exercise your
                 privacy rights, please email us with the subject line
-                &quot;Privacy Concern&quot; at trypearai@gmail.com.
+                &quot;Privacy Concern&quot; at pear@trypear.ai.
               </p>
               <p>
                 In most cases, we will respond within 30 days of receiving your

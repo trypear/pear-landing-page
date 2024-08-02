@@ -137,7 +137,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
             <p className="text-base text-gray-400 sm:text-lg md:text-xl">
               Want to use Pear in your business?
               <Link
-                href="mailto:trypearai@gmail.com"
+                href="mailto:pear@trypear.ai"
                 className="ml-2 font-semibold text-primary-700 hover:text-primary-800"
                 aria-label="Contact us for custom plans"
               >
