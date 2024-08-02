@@ -135,3 +135,22 @@
 .text-link:hover {
   color: hsla(var(--blue-400), 0.8);
 }
+
+::selection {
+  color: hsl(var(--foreground));
+  background: hsl(var(--gray-300));
+}
+
+.dark ::selection {
+  color: hsl(var(--foreground));
+  background: hsl(var(--gray-100));
+}
+
+.thin-bullets ul {
+  list-style-type: disc;
+}
+
+.thin-bullets ul li::marker {
+  font-weight: normal; 
+  font-size: 0.75em; 
+}

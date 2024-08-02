@@ -29,7 +29,7 @@ export default function PricingSuccess() {
               ></div>
               <div className="text-center text-gray-700">
                 We hope you enjoy using Pear. Feel free to send any suggestions
-                our way at trypearai@gmail.com.
+                our way at pear@trypear.ai.
               </div>
               <div
                 className="ml-3 grow border-t border-dotted border-gray-700"
