@@ -15,6 +15,7 @@ import { PRICING_TIERS } from "@/utils/constants";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import Spinner from "./ui/spinner";
 
 type SupportedOS = {
   name: string;
@@ -47,6 +48,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   priceId,
   user,
   waitlistAccess,
+  isLoading,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
@@ -136,6 +138,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
               Thank you for downloading PearAI! Your download should have
               started :)
             </p>
+          ) : isLoading ? (
+            <div className="mx-auto">
+              <Spinner />
+            </div>
           ) : (
             <>
               {SUPPORTED_OS.map((os) => (
@@ -181,9 +187,11 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   const [waitlistInfo, setWaitlistInfo] = useState<WaitlistEntry>();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Check if user is in waitlist
+    setIsLoading(false);
     const getWaitlistInfo = async () => {
       try {
         const res = await fetch("/api/waitlist-info", {
@@ -239,6 +247,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                   {...tier}
                   user={user}
                   waitlistAccess={waitlistInfo?.access_given}
+                  isLoading={isLoading}
                 />
               </div>
             ))}
