@@ -191,11 +191,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   const [waitlistInfo, setWaitlistInfo] = useState<WaitlistEntry>();
-  const [isWaitlistInfoLoading, setIsWaitlistInfoLoading] = useState(true);
+  const [isWaitlistInfoLoading, setIsWaitlistInfoLoading] = useState(false);
 
   useEffect(() => {
     // Check if user is in waitlist
     const getWaitlistInfo = async () => {
+      setIsWaitlistInfoLoading(true);
       try {
         const res = await fetch("/api/waitlist-info", {
           method: "GET",
@@ -219,8 +220,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
         setIsWaitlistInfoLoading(false);
       }
     };
-
-    getWaitlistInfo();
+    if (user) {
+      getWaitlistInfo();
+    }
   }, []);
 
   return (
