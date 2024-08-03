@@ -253,7 +253,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                 <PricingTier
                   {...tier}
                   user={user}
-                  waitlistAccess={waitlistInfo?.access_given}
+                  waitlistAccess={!!waitlistInfo?.email}
                   isWaitlistInfoLoading={isWaitlistInfoLoading}
                 />
               </div>
