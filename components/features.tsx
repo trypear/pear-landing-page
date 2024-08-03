@@ -4,7 +4,6 @@ type FeatureInfo = {
   header: string;
   description: React.ReactNode;
   videoSource: string;
-  style: string;
 };
 type SingleFeatureProps = {
   info: FeatureInfo;
@@ -78,9 +77,7 @@ export default function Features() {
 
 function SingleFeature(props: SingleFeatureProps) {
   return (
-    <div
-      className={`m-4 flex flex-col items-center gap-6 min-[425px]:m-8 sm:m-12 lg:m-24 lg:max-w-full lg:justify-center lg:gap-28 ${props.info.style}`}
-    >
+    <div className="m-4 flex flex-col items-center gap-6 min-[425px]:m-8 min-[425px]:items-start sm:m-12 lg:m-24 lg:max-w-full lg:flex-row lg:justify-center lg:gap-28">
       <div className="mb-6 flex flex-col text-center lg:mb-0 lg:ml-1.5 lg:w-[450px]">
         <h4
           className="whitespace-pre-line text-2xl font-medium text-primary-700 lg:text-4xl"
