@@ -73,7 +73,22 @@ export default function SettingsPage({
       const callback = searchParams.get("callback");
       if (callback) {
         const decodedCallback = decodeURIComponent(callback);
-        const openAppUrl = `${decodedCallback}?${openAppQueryParams}`;
+
+        // Parse the decoded callback URL
+        const callbackUrl = new URL(decodedCallback);
+
+        // Append the openAppQueryParams to the existing query parameters
+        const newSearchParams = new URLSearchParams(callbackUrl.search);
+        const openAppParams = new URLSearchParams(openAppQueryParams);
+
+        openAppParams.forEach((value, key) => {
+          newSearchParams.append(key, value);
+        });
+
+        // Construct the new URL with updated query parameters
+        callbackUrl.search = newSearchParams.toString();
+        const openAppUrl = callbackUrl.toString();
+
         router.push(openAppUrl);
 
         // Clear the callback from the URL
