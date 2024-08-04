@@ -53,6 +53,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadLink, setDownloadLink] = useState<string>();
   const router = useRouter();
 
   const handleDownload = async (os_type: string) => {
@@ -69,9 +70,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
         throw Error(res.statusText);
       }
 
-      const downloadLink = await res.json();
-      if (downloadLink?.url) {
-        router.push(downloadLink.url);
+      const download = await res.json();
+      if (download?.url) {
+        setDownloadLink(download.url);
+        router.push(download.url);
       }
       setDownloaded(true);
     } catch (error: any) {
@@ -140,7 +142,14 @@ const PricingTier: React.FC<PricingTierProps> = ({
           downloaded ? (
             <p className="text-sm font-medium text-gray-400 sm:text-base">
               Thank you for downloading PearAI! Your download should have
-              started :)
+              started! :)
+              <br />
+              <br />
+              If it didn&apos;t, you can click{" "}
+              <a className="text-link" href={downloadLink}>
+                here
+              </a>
+              .
             </p>
           ) : isWaitlistInfoLoading || isDownloading ? (
             <div className="mx-auto">
@@ -151,6 +160,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
               {SUPPORTED_OS.map((os) => (
                 <DownloadButton os={os} key={os.os} />
               ))}
+              <p className="mt-2 text-xs italic text-gray-400">
+                If you&apos;re having trouble installing, try a different
+                browser.
+              </p>
             </>
           )
         ) : (
@@ -223,7 +236,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
     if (user) {
       getWaitlistInfo();
     }
-  }, []);
+  }, [user]);
 
   return (
     <section
