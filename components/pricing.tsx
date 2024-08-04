@@ -160,10 +160,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
               {SUPPORTED_OS.map((os) => (
                 <DownloadButton os={os} key={os.os} />
               ))}
-              <p className="mt-2 text-xs italic text-gray-400">
-                If you&apos;re having trouble installing, try a different
-                browser.
-              </p>
+              {waitlistAccess ?? (
+                <p className="mt-2 text-xs italic text-gray-400">
+                  If you&apos;re having trouble installing, try a different
+                  browser.
+                </p>
+              )}
             </>
           )
         ) : (
