@@ -125,7 +125,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
               </a>{" "}
               to be notified when the app is available!
             </p>
-            {!user && (
+            {/* {!user && (
               <p>
                 Please{" "}
                 <a href="/signin" className="text-link">
@@ -133,7 +133,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
                 </a>{" "}
                 to download for free.
               </p>
-            )}
+            )} */}
           </>
         )}
         {isFree ? (
