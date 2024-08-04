@@ -20,22 +20,28 @@ export default function PriorityWaitlist() {
 
           <div className="mx-auto max-w-xl text-center">
             <p className="text-gray-700">
-              By confirming your spot in the Priority Pear Waitlist, you will
-              receive priority to get off the waitlist and use PearAI this
-              month.
+              By confirming your spot in the Priority Pear Waitlist, you will be
+              able to get off the waitlist immediately.
               <br />
               <br />
-              The 3$ cost can be applied to your PearAI Pro subscription once
-              it&apos;s made available to you. We will send a coupon to your
-              email, so please make sure you also signed up on the&nbsp;
+              For a 1st month free coupon, join the{" "}
+              <a
+                className="text-link"
+                target="_blank"
+                href="https://discord.com/invite/7QMraJUsQt"
+              >
+                Discord
+              </a>
+              , and ping Pan or Nang directly 👀. Please make sure you also
+              signed up on the&nbsp;
               <a
                 href="https://forms.gle/171UyimgQJhEJbhU7"
                 className="text-link"
                 target="_blank"
               >
                 regular waitlist form
-              </a>{" "}
-              as well.
+              </a>
+              .
             </p>
 
             <div className="mt-11">
