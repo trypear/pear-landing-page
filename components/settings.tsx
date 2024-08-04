@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { Skeleton } from "./ui/skeleton";
 import { toast } from "sonner";
+import { capitalizeInital } from "@/lib/utils";
 
 type SettingsPageProps = {
   subscription: Subscription | null;
@@ -203,10 +204,11 @@ export default function SettingsPage({
                     <div>
                       <p>
                         <strong>Current plan: </strong>
-                        {subscription.pricing_tier}
+                        {capitalizeInital(subscription.pricing_tier)}
                       </p>
                       <p>
-                        <strong>Status:</strong> {subscription.status}
+                        <strong>Status:</strong>{" "}
+                        {capitalizeInital(subscription.status)}
                       </p>
                       <p>
                         <strong>Current period: </strong>

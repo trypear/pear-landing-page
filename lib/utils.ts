@@ -88,3 +88,15 @@ export const getURL = () => {
   url = url.endsWith("/") ? url.slice(0, -1) : url;
   return url;
 };
+
+export function capitalizeInital(input: unknown): string | undefined {
+  if (typeof input !== "string") {
+    return "";
+  }
+  if (input.length === 0) {
+    return "";
+  } else if (input.length === 1) {
+    return input.toUpperCase();
+  }
+  return input.charAt(0).toUpperCase() + input.slice(1);
+}
