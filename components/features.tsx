@@ -37,7 +37,7 @@ export default function Features() {
           <b>
             <code>CMD+I</code>
           </b>
-          &nbsp;(<code>ALT+L</code> on Windows), and choose what you want to
+          &nbsp;(<code>CTRL+L</code> on Windows), and choose what you want to
           keep. <br />
           <br /> Here, we ask Pear to help us handle edge cases 😏
         </>
@@ -54,7 +54,7 @@ export default function Features() {
           <b>
             <code>CMD+L</code>
           </b>
-          &nbsp;(<code>ALT+L</code> on Windows).
+          &nbsp;(<code>CTRL+L</code> on Windows).
           <br />
           <br /> Prompt it right away 😎
         </>
