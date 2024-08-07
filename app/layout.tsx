@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <PHProvider>
         <body
-          className={`font-sans bg-background tracking-tight text-gray-900 antialiased`}
+          className={`bg-background font-sans tracking-tight text-gray-900 antialiased`}
         >
           <ThemeProvider
             attribute="class"
