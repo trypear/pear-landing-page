@@ -1,11 +1,14 @@
-import Head from "next/head";
+import { constructMetadata } from "@/lib/utils";
+import { Metadata } from "next";
 
+export const metadata: Metadata = constructMetadata({
+  title: "Page Not Found",
+  description: "The requested page could not be found.",
+  canonical: "/404",
+});
 export default function Custom404() {
   return (
     <>
-      <Head>
-        <title>404 - Page Not Found</title>
-      </Head>
       <section className="relative">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="pb-12 pt-32 md:pb-20 md:pt-20">
