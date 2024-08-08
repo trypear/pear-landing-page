@@ -25,22 +25,22 @@ export default function PriorityWaitlist() {
               <br />
               <br />
               For a 1st month free coupon, join the{" "}
-              <a
+              <Link
+                href="https://discord.com/invite/7QMraJUsQt"
                 className="text-link"
                 target="_blank"
-                href="https://discord.com/invite/7QMraJUsQt"
               >
                 Discord
-              </a>
+              </Link>
               , and ping Pan or Nang directly 👀. Please make sure you also
               signed up on the&nbsp;
-              <a
+              <Link
                 href="https://forms.gle/171UyimgQJhEJbhU7"
                 className="text-link"
                 target="_blank"
               >
                 regular waitlist form
-              </a>
+              </Link>
               .
             </p>
 

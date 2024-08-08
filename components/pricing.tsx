@@ -118,24 +118,15 @@ const PricingTier: React.FC<PricingTierProps> = ({
         {isFree && (
           <>
             <p className="text-sm font-medium text-gray-400 sm:text-base">
-              <a
+              <Link
                 href="https://forms.gle/171UyimgQJhEJbhU7"
                 className="text-link"
                 target="_blank"
               >
                 Join the waitlist
-              </a>{" "}
+              </Link>{" "}
               to be notified when the app is available!
             </p>
-            {/* {!user && (
-              <p>
-                Please{" "}
-                <a href="/signin" className="text-link">
-                  log in
-                </a>{" "}
-                to download for free.
-              </p>
-            )} */}
           </>
         )}
         {isFree ? (
@@ -146,9 +137,11 @@ const PricingTier: React.FC<PricingTierProps> = ({
               <br />
               <br />
               If it didn&apos;t, you can click{" "}
-              <a className="text-link" href={downloadLink}>
-                here
-              </a>
+              {downloadLink && (
+                <Link href={downloadLink} className="text-link">
+                  here
+                </Link>
+              )}
               .
             </p>
           ) : isWaitlistInfoLoading || isDownloading ? (
