@@ -21,8 +21,9 @@ const NavLink: React.FC<NavLinkProps> = ({
   return (
     <Link
       href={href}
-      className={`text-nowrap align-middle text-gray-800 transition duration-150 ease-in-out hover:text-primary-800 ${isActive ? "text-primary-800" : ""
-        }`}
+      className={`text-nowrap align-middle text-gray-800 transition duration-150 ease-in-out hover:text-primary-800 ${
+        isActive ? "text-primary-800" : ""
+      }`}
       {...(isExternal && {
         target: "_blank",
         rel: "noopener noreferrer",

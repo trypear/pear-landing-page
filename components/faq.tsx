@@ -38,10 +38,6 @@ const faqData: FAQItem[] = [
     answer:
       "PearAI is an app and requires you to download it. Being a VSCode extension severely limits the modifications we can do. In order to provide the best UX possible, we need full control of code changes within the app.",
   },
-  {
-    question: "How can I contribute to PearAI?",
-    answer: "See the contributors' section.",
-  },
 ];
 
 const FAQ: React.FC = () => {

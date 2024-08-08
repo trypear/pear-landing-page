@@ -3,7 +3,7 @@
 import FAQ from "@/components/faq";
 
 const FAQPage: React.FC = () => {
-    return <FAQ />;
+  return <FAQ />;
 };
 
 export default FAQPage;
