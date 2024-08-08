@@ -9,6 +9,8 @@ type SingleFeatureProps = {
   info: FeatureInfo;
 };
 
+
+
 export default function Features() {
   const featureInfo = [
     {
