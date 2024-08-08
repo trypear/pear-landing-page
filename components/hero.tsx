@@ -14,13 +14,13 @@ const HeroTitle = ({ theme }: { theme: string }) => (
         <PearDarkHeroLogo
           width="26"
           alt="PearAI Logo"
-          className="-mt-2.5 mr-2 inline-flex"
+          className="mb-4 mr-2 inline-flex"
         />
       ) : (
         <PearHeroLogo
           width="26"
           alt="PearAI Logo"
-          className="-mt-2.5 mr-2 inline-flex"
+          className="mb-4 mr-2 inline-flex"
         />
       )}
       <span className="text-primary-700">PearAI: </span>
@@ -33,13 +33,13 @@ const HeroTitle = ({ theme }: { theme: string }) => (
           <PearDarkHeroLogo
             width="20"
             alt="PearAI Logo"
-            className="-mt-2.5 mr-2 inline-flex"
+            className="mb-3 mr-2 inline-flex"
           />
         ) : (
           <PearHeroLogo
             width="20"
             alt="PearAI Logo"
-            className="-mt-2.5 mr-2 inline-flex"
+            className="mb-3 mr-2 inline-flex"
           />
         )}
         <span className="text-primary-700">PearAI </span>
