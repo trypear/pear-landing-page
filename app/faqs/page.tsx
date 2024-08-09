@@ -68,7 +68,7 @@ const FAQ: React.FC = () => {
       </div>
       <Accordion type="single" collapsible>
         {faqData.map((item, index) => (
-          <AccordionItem key={index} value={`{${index + 1}}`}>
+          <AccordionItem key={index} value={String(index + 1)}>
             <AccordionTrigger className="text-left font-semibold">
               {item.question}
             </AccordionTrigger>
