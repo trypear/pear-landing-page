@@ -60,6 +60,12 @@ const Navigation: React.FC = () => {
       isExternal: false,
       mobile: false,
     },
+    {
+      label: "FAQs",
+      path: "/faqs",
+      isExternal: false,
+      mobile: false,
+    },
   ];
 
   return (
