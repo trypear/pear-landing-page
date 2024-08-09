@@ -44,12 +44,12 @@ const FAQ: React.FC = () => {
   return (
     <div className="mx-auto mt-10 flex w-full max-w-screen-lg flex-col gap-4 px-4 py-8 lg:px-8 lg:py-12">
       <div className="mb-4">
-        <h4
+        <h2
           className="whitespace-pre-line text-2xl font-medium text-primary-700 lg:text-4xl"
           data-aos="fade-up"
         >
           Frequently Asked Questions
-        </h4>
+        </h2>
         <div
           className="whitespace-pre-line text-base text-gray-600 lg:text-base"
           data-aos="fade-up"
