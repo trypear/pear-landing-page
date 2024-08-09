@@ -50,7 +50,7 @@ const FAQ: React.FC = () => {
         >
           Frequently Asked Questions
         </h2>
-        <div
+        <p
           className="whitespace-pre-line text-base text-gray-600 lg:text-base"
           data-aos="fade-up"
         >
@@ -64,7 +64,7 @@ const FAQ: React.FC = () => {
             Discord
           </Link>
           .
-        </div>
+        </p>
       </div>
       <Accordion type="single" collapsible>
         {faqData.map((item, index) => (
