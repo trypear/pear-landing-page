@@ -77,7 +77,7 @@ export default function SubscriptionCard({
               <p>You are not currently subscribed.</p>
             </div>
           </CardContent>
-          <CardFooter className="mt-auto pt-6">
+          <CardFooter className="mt-8 pt-6">
             <Button
               variant="outline"
               asChild
