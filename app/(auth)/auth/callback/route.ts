@@ -8,7 +8,7 @@ export async function GET(request: Request) {
   // if callback in param, means we should redirect to desktop pearai app instead and ignore "next"
   const callback = searchParams.get("callback");
   // if "next" is in param, use it as the redirect URL
-  const next = searchParams.get("next") ?? "/settings";
+  const next = searchParams.get("next") ?? "/dashboard";
   let authError = "";
 
   if (code) {
