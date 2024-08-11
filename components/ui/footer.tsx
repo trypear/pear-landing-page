@@ -10,11 +10,11 @@ export default function Footer() {
             <div className="md:col-span-4 lg:col-span-5">
               <div className="mb-2 flex items-center">
                 <Link
-                  href="/faqs"
+                  href="/faq"
                   className="ml-3 hover:text-gray-500"
                   aria-label="Privacy policy"
                 >
-                  FAQs
+                  FAQ
                 </Link>
                 <Link
                   href="/privacy"

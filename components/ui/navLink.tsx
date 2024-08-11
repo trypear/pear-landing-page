@@ -61,8 +61,8 @@ const Navigation: React.FC = () => {
       mobile: false,
     },
     {
-      label: "FAQs",
-      path: "/faqs",
+      label: "FAQ",
+      path: "/faq",
       isExternal: false,
       mobile: false,
     },
