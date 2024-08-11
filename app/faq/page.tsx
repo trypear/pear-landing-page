@@ -11,15 +11,15 @@ import Link from "next/link";
 
 const FAQ: React.FC = () => {
   return (
-    <div className="mx-auto mt-10 flex w-full max-w-screen-lg flex-col gap-4 px-4 py-8 lg:px-8 lg:py-12">
+     <section className="mx-auto mt-10 flex w-full max-w-screen-lg flex-col gap-4 px-4 py-8 lg:px-8 lg:py-12">
       <div className="mb-4">
-        <h4
+        <h2
           className="whitespace-pre-line text-2xl font-medium text-primary-700 lg:text-4xl"
           data-aos="fade-up"
         >
           Frequently Asked Questions
-        </h4>
-        <div
+        </h2>
+        <p
           className="whitespace-pre-line text-base text-gray-600 lg:text-base"
           data-aos="fade-up"
         >
@@ -33,11 +33,11 @@ const FAQ: React.FC = () => {
             Discord
           </Link>
           .
-        </div>
+        </p>
       </div>
       <Accordion type="single" collapsible>
         {faqData.map((item, index) => (
-          <AccordionItem key={index} value={`{${index + 1}}`}>
+          <AccordionItem key={index} value={String(index + 1)}>
             <AccordionTrigger className="text-left font-semibold">
               {item.question}
             </AccordionTrigger>
@@ -63,7 +63,7 @@ const FAQ: React.FC = () => {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </div>
+    </section>
   );
 };
 
