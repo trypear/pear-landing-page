@@ -45,7 +45,7 @@ export default function FreeTrialCard({
             <Progress
               value={(usage.used_quota! / (usage.max_quota! || 30)) * 100}
               className="mb-2 mt-2 h-2 w-full"
-              indicatorColor="bg-primary-800 bg-opacity-50"
+              indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm text-muted-foreground">
               You&apos;ve used {usage.used_quota} requests out of your{" "}
