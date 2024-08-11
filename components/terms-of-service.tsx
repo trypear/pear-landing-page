@@ -1,4 +1,4 @@
-import Footer from "./footer";
+import Link from "next/link";
 
 export default function TermsOfServiceComponent() {
   return (
@@ -25,23 +25,23 @@ export default function TermsOfServiceComponent() {
               <p>
                 Welcome, and thank you for your interest in PearAI, Inc.
                 (PearAI,” “we,” or “us”) and our website at&nbsp;
-                <a
-                  className="font-medium text-gray-900 underline"
+                <Link
                   href="http://www.trypear.ai"
+                  className="font-medium text-gray-900 underline"
                 >
                   www.trypear.ai
-                </a>
+                </Link>
                 , along with the Software (as defined below), our related
                 websites, hosted applications or other downloadable
                 applications, and other services provided by us (collectively,
                 the “Service”). These Terms and Conditions, including PearAI’s
                 Privacy Policy (available at:&nbsp;
-                <a
-                  className="font-medium text-gray-900 underline"
+                <Link
                   href="https://trypear.ai/privacy"
+                  className="font-medium text-gray-900 underline"
                 >
                   https://trypear.ai/privacy
-                </a>
+                </Link>
                 ), (together, these “Terms”) are a legally binding contract
                 between you and PearAI regarding your use of the Service.
               </p>
@@ -129,12 +129,12 @@ export default function TermsOfServiceComponent() {
                   activities that occur under your account. If you believe that
                   your account is no longer secure, then you should immediately
                   notify us at&nbsp;
-                  <a
-                    className="font-medium text-gray-900 underline"
+                  <Link
                     href="mailto:pear@trypear.ai"
+                    className="font-medium text-gray-900 underline"
                   >
                     pear@trypear.ai
-                  </a>
+                  </Link>
                   .
                 </li>
 
@@ -191,19 +191,19 @@ export default function TermsOfServiceComponent() {
                         processing services are provided by Stripe and are
                         subject to&nbsp;the&nbsp;Stripe terms and conditions and
                         other policies available at{" "}
-                        <a
-                          className="font-medium text-gray-900 underline"
+                        <Link
                           href="https://stripe.com/legal"
+                          className="font-medium text-gray-900 underline"
                         >
                           https://stripe.com/legal
-                        </a>{" "}
+                        </Link>{" "}
                         and Stripe&apos;s Global Privacy Policy available at:{" "}
-                        <a
-                          className="font-medium text-gray-900 underline"
+                        <Link
                           href="https://stripe.com/privacy"
+                          className="font-medium text-gray-900 underline"
                         >
                           https://stripe.com/privacy
-                        </a>{" "}
+                        </Link>{" "}
                         (collectively, the &quot;
                         <strong className="text-gray-900">
                           Stripe Agreements
@@ -274,12 +274,12 @@ export default function TermsOfServiceComponent() {
                         provide to us. You may cancel the Subscription Service
                         by using the cancellation functionality made available
                         in your billing menu or by contacting us at&nbsp;
-                        <a
-                          className="font-medium text-gray-900 underline"
+                        <Link
                           href="mailto:pear@trypear.ai"
+                          className="font-medium text-gray-900 underline"
                         >
                           pear@trypear.ai
-                        </a>
+                        </Link>
                         . YOUR CANCELLATION MUST BE RECEIVED BEFORE THE RENEWAL
                         DATE IN ORDER TO AVOID CHARGE FOR THE NEXT SUBSCRIPTION
                         PERIOD.
@@ -395,12 +395,12 @@ export default function TermsOfServiceComponent() {
                     material modifications, we will notify you by updating the
                     date at the top of these Terms and by maintaining a current
                     version of these Terms at{" "}
-                    <a
-                      className="font-medium text-gray-900 underline"
+                    <Link
                       href="https://trypear.ai/terms-of-service"
+                      className="font-medium text-gray-900 underline"
                     >
                       https://trypear.ai/terms-of-service
-                    </a>
+                    </Link>
                     . All modifications will be effective when they are posted,
                     and your continued accessing or use of the Service will
                     serve as confirmation of your acceptance of those
@@ -729,12 +729,12 @@ export default function TermsOfServiceComponent() {
                         amicably and efficiently, and most customer concerns can
                         be resolved quickly and to the customer’s satisfaction
                         by emailing customer support at&nbsp;
-                        <a
-                          className="font-medium text-gray-900 underline"
+                        <Link
                           href="mailto:pear@trypear.ai"
+                          className="font-medium text-gray-900 underline"
                         >
                           pear@trypear.ai
-                        </a>
+                        </Link>
                         . If such efforts prove unsuccessful, a party who
                         intends to seek arbitration must first send to the
                         other, by certified mail, a written Notice of Dispute (“
@@ -767,21 +767,21 @@ export default function TermsOfServiceComponent() {
                         the AAA’s Consumer Arbitration Rules (collectively, the
                         “AAA Rules”), as modified by this Arbitration Agreement.
                         For information on the AAA, please visit its website,{" "}
-                        <a
-                          className="font-medium text-gray-900 underline"
+                        <Link
                           href="https://www.adr.org"
+                          className="font-medium text-gray-900 underline"
                         >
                           https://www.adr.org
-                        </a>
+                        </Link>
                         . Information about the AAA Rules and fees for consumer
                         disputes can be found at the AAA’s consumer arbitration
                         page,{" "}
-                        <a
-                          className="font-medium text-gray-900 underline"
+                        <Link
                           href="https://www.adr.org/consumer"
+                          className="font-medium text-gray-900 underline"
                         >
                           https://www.adr.org/consumer
-                        </a>
+                        </Link>
                         . If there is any inconsistency between any term of the
                         AAA Rules and any term of this Arbitration Agreement,
                         the applicable terms of this Arbitration Agreement will
@@ -978,12 +978,12 @@ export default function TermsOfServiceComponent() {
                         </strong>
                         . Please read the PearAI Privacy Policy (available
                         at:&nbsp;
-                        <a
-                          className="font-medium text-gray-900 underline"
+                        <Link
                           href="https://trypear.ai/privacy"
+                          className="font-medium text-gray-900 underline"
                         >
                           https://trypear.ai/privacy
-                        </a>
+                        </Link>
                         ) (the “Privacy Policy”) carefully for information
                         relating to our collection, use, storage, and disclosure
                         of your personal information. The PearAI Privacy Policy
@@ -1018,12 +1018,12 @@ export default function TermsOfServiceComponent() {
                         State Street, Ste 804 Albany NY 12207. You may contact
                         us by sending correspondence to that address or by
                         emailing us at&nbsp;
-                        <a
-                          className="font-medium text-gray-900 underline"
+                        <Link
                           href="mailto:pear@trypear.ai"
+                          className="font-medium text-gray-900 underline"
                         >
                           pear@trypear.ai
-                        </a>
+                        </Link>
                         .
                       </p>
                     </li>

@@ -1,5 +1,4 @@
-import Footer from "./footer";
-
+import Link from "next/link";
 export default function PrivacyPolicyComponent() {
   return (
     <section>
@@ -409,33 +408,33 @@ export default function PrivacyPolicyComponent() {
                 </p>
                 <ul className="list-disc space-y-2 pl-8 font-medium text-gray-900">
                   <li>
-                    <a
-                      className="underline"
+                    <Link
                       href="https://support.mozilla.org/en-US/kb/enhanced-tracking-protection-firefox-desktop"
+                      className="underline"
                     >
                       Firefox
-                    </a>
+                    </Link>
                     ;{" "}
-                    <a
-                      className="underline"
+                    <Link
                       href="https://support.google.com/chrome/answer/95647"
+                      className="underline"
                     >
                       Chrome
-                    </a>
+                    </Link>
                     ;{" "}
-                    <a
-                      className="underline"
+                    <Link
                       href="https://support.microsoft.com/en-us/microsoft-edge/learn-about-tracking-prevention-in-microsoft-edge-5ac125e8-9b90-8d59-fa2c-7f2e9a44d869"
+                      className="underline"
                     >
                       Microsoft Edge
-                    </a>
+                    </Link>
                     ;{" "}
-                    <a
-                      className="underline"
+                    <Link
                       href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
+                      className="underline"
                     >
                       Safari
-                    </a>
+                    </Link>
                   </li>
                 </ul>
                 <li>
@@ -449,62 +448,67 @@ export default function PrivacyPolicyComponent() {
                   understand how people engage with our Services by collecting
                   information and creating reports about how users use our
                   Services. For more information on Google Analytics, click{" "}
-                  <a
-                    className="font-medium text-gray-900 underline"
+                  <Link
                     href="https://marketingplatform.google.com/about/analytics/"
+                    className="font-medium text-gray-900 underline"
                   >
                     here
-                  </a>
+                  </Link>
                   . For more information about Google&apos;s privacy practices,
                   click{" "}
-                  <a
-                    className="font-medium text-gray-900 underline"
+                  <Link
                     href="https://www.google.com/policies/privacy/partners/"
+                    className="font-medium text-gray-900 underline"
                   >
                     here
-                  </a>
+                  </Link>
                   . You can opt out of Google Analytics by downloading and
                   installing the browser plug-in available at:
-                  https://tools.google.com/dlpage/gaoptout.
+                  <Link
+                    href="https://tools.google.com/dlpage/gaoptout"
+                    className="font-medium text-gray-900 underline"
+                  >
+                    https://tools.google.com/dlpage/gaoptout
+                  </Link>
                 </li>
                 <li>
                   Using privacy plug-ins or browsers. You can block our Services
                   from setting cookies used for interest-based ads by using a
                   browser with privacy features, like{" "}
-                  <a
-                    className="font-medium text-gray-900 underline"
+                  <Link
                     href="https://brave.com/"
+                    className="font-medium text-gray-900 underline"
                   >
                     Brave
-                  </a>
+                  </Link>
                   , or installing browser plugins like{" "}
-                  <a
-                    className="font-medium text-gray-900 underline"
+                  <Link
                     href="https://www.eff.org/privacybadger"
+                    className="font-medium text-gray-900 underline"
                   >
                     Privacy Badger
-                  </a>
+                  </Link>
                   ,{" "}
-                  <a
-                    className="font-medium text-gray-900 underline"
+                  <Link
                     href="https://duckduckgo.com/"
+                    className="font-medium text-gray-900 underline"
                   >
                     DuckDuckGo
-                  </a>
+                  </Link>
                   ,{" "}
-                  <a
-                    className="font-medium text-gray-900 underline"
+                  <Link
                     href="https://ghostery.com/"
+                    className="font-medium text-gray-900 underline"
                   >
                     Ghostery
-                  </a>{" "}
+                  </Link>{" "}
                   or{" "}
-                  <a
-                    className="font-medium text-gray-900 underline"
+                  <Link
                     href="https://ublock.org/"
+                    className="font-medium text-gray-900 underline"
                   >
                     uBlock Origin
-                  </a>
+                  </Link>
                   , and configuring them to block third party cookies/trackers.
                 </li>
                 <li>
@@ -516,20 +520,20 @@ export default function PrivacyPolicyComponent() {
                 </li>
                 <ul className="list-disc space-y-2 pl-8">
                   <li>
-                    <a
-                      className="font-medium text-gray-900 underline"
+                    <Link
                       href="https://adssettings.google.com/"
+                      className="font-medium text-gray-900 underline"
                     >
                       Google
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      className="font-medium text-gray-900 underline"
+                    <Link
                       href="https://www.facebook.com/about/ads/"
+                      className="font-medium text-gray-900 underline"
                     >
                       Facebook
-                    </a>
+                    </Link>
                   </li>
                 </ul>
                 <li>
@@ -540,20 +544,20 @@ export default function PrivacyPolicyComponent() {
                 </li>
                 <ul className="list-disc space-y-2 pl-8">
                   <li>
-                    <a
-                      className="font-medium text-gray-900 underline"
+                    <Link
                       href="https://optout.aboutads.info/"
+                      className="font-medium text-gray-900 underline"
                     >
                       Digital Advertising Alliance
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      className="font-medium text-gray-900 underline"
+                    <Link
                       href="https://optout.networkadvertising.org/?c=1"
+                      className="font-medium text-gray-900 underline"
                     >
                       Network Advertising Initiative
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </ul>
