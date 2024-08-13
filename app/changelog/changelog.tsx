@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 type ChangelogEntry = {
@@ -15,6 +16,32 @@ type ChangelogEntry = {
 
 const updates: ChangelogEntry[] = [
   {
+    date: "xx xxxx xxxx",
+    title: "🚧 Model switch feature & Bug Fixes",
+    version: "v0.0.3",
+    description: (
+      <ul className="text-gray-60 list-disc space-y-1 ps-6 text-sm">
+        <li>
+          <Link
+            href="https://github.com/trypear/pearai-submodule/pull/137"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline-offset-4 hover:underline"
+          >
+            Huge refactor
+          </Link>{" "}
+          & Fixed multiple bugs
+        </li>
+      </ul>
+    ),
+    screenshot: {
+      src: "/images/modelSwitch- v.0.0.3.png",
+      alt: "Screenshot of performance enhancements",
+      width: 300,
+      height: 300,
+    },
+  },
+  {
     date: "2 August 2024",
     title: "🌟 Claude Sonnet Model, UI/UX improvements",
     version: "v0.0.2",
@@ -28,7 +55,7 @@ const updates: ChangelogEntry[] = [
       </ul>
     ),
     screenshot: {
-      src: "/images/shortcutBar- v.0.0.2.png",
+      src: "/images/shortcutBar- v0.0.2.png",
       alt: "Screenshot of Claude Sonnet Model and UI improvements",
       width: 300,
       height: 300,
@@ -46,7 +73,7 @@ const updates: ChangelogEntry[] = [
       </ul>
     ),
     screenshot: {
-      src: "/images/includeFile - v.0.0.2.png",
+      src: "/images/includeFile - v0.0.1.png",
       alt: "Screenshot of initial launch features",
       width: 300,
       height: 300,
