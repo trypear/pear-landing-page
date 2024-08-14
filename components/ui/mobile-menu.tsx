@@ -105,8 +105,8 @@ export default function MobileMenu({
           ) : (
             <div className="flex items-center justify-center space-x-2.5">
               <Button asChild className="w-full rounded-full">
-                <Link onClick={() => setIsOpen(false)} href={"/settings"}>
-                  Settings
+                <Link onClick={() => setIsOpen(false)} href={"/dashboard"}>
+                  Dashboard
                 </Link>
               </Button>
               <Button

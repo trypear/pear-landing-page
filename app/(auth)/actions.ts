@@ -35,16 +35,16 @@ export async function signin(
   if (callbackForDesktopApp && res) {
     // if login in from desktop app
     return redirect(
-      `/settings?callback=${encodeURIComponent(callbackForDesktopApp)}`,
+      `/dashboard?callback=${encodeURIComponent(callbackForDesktopApp)}`,
     );
   }
-  redirect(`/settings`);
+  redirect(`/dashboard`);
 }
 
 // Flow: User signs up with email and password
 // 1. Check if user exists
 // 2. If user exists, attempt to sign in with email and password
-//  - If sign in is successful, return signedIn: true (redirect to /settings on client)
+//  - If sign in is successful, return signedIn: true (redirect to /dashboard on client)
 //  - If sign in fails, return exists: true (toast 'account exists' on client and redirect to /signin)
 // 3. If user does not exist, sign up with email and password and redirect to /signin
 //  - If sign up fails, return error: error.message (toast error on client)
@@ -154,7 +154,7 @@ export async function updateUser(formData: UpdatePasswordFormData) {
   }
 
   revalidatePath("/", "layout");
-  redirect("/settings");
+  redirect("/dashboard");
 }
 
 // resend confirmation email
@@ -165,7 +165,7 @@ export async function resendConfirmationEmail(email: string) {
     type: "signup",
     email: email,
     options: {
-      emailRedirectTo: `${getURL()}/settings`,
+      emailRedirectTo: `${getURL()}/dashboard`,
     },
   });
 

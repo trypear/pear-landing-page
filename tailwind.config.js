@@ -20,6 +20,10 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
+      },
       colors: {
         gray: {
           DEFAULT: "hsla(var(--gray), <alpha-value>)",
@@ -105,13 +109,7 @@ module.exports = {
           "3/4": "75%",
           "1/1": "100%",
         },
-        fontFamily: {
-          inter: ["var(--font-inter)", "sans-serif"],
-          "architects-daughter": [
-            "var(--font-architects-daughter)",
-            "sans-serif",
-          ],
-        },
+
         fontSize: {
           xs: "0.75rem",
           sm: "0.875rem",

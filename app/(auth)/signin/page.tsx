@@ -23,9 +23,9 @@ export default async function SignIn({ searchParams }: SignInProps) {
   const { data } = await supabase.auth.getUser();
 
   if (data?.user) {
-    if (searchParams.callback?.startsWith("pearai://pearai.pearai/auth")) {
-      // Redirect to settings page with callback for desktop app
-      redirect("/settings?callback=" + searchParams.callback);
+    if (searchParams.callback?.includes("://pearai.pearai/auth")) {
+      // Redirect to dashboard page with callback for desktop app
+      redirect("/dashboard?callback=" + searchParams.callback);
     } else {
       redirect("/");
     }

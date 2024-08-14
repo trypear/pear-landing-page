@@ -8,7 +8,7 @@ export default function PricingSuccess() {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push("/settings?checkout=success");
+    router.push("/dashboard?checkout=success");
   };
 
   return (

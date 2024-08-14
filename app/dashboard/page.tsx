@@ -1,16 +1,16 @@
-import SettingsPage from "@/components/settings";
+import DashboardPage from "@/components/dashboard";
 import { getUserAndSubscription } from "@/lib/data-fetching";
 import { redirect } from "next/navigation";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Settings",
-  description: "Settings for your account.",
-  canonical: "/settings",
+  title: "Dashboard",
+  description: "Manage your account, billing, and team preferences.",
+  canonical: "/dashboard",
 });
 
-export default async function Settings() {
+export default async function Dashboard() {
   const {
     user,
     subscription,
@@ -23,8 +23,8 @@ export default async function Settings() {
   }
 
   return (
-    <SettingsPage
-      subscription={subscription!}
+    <DashboardPage
+      subscription={subscription}
       openAppQueryParams={openAppQueryParams}
       user={user}
     />
