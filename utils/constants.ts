@@ -28,15 +28,17 @@ export const STRIPE_PRICE_IDS = {
 
 export const PRICING_TIERS: PricingTierData[] = [
   {
-    title: "Intern (Free)",
+    title: "Intern",
     price: "0",
     description:
       "You can download PearAI directly, and use your own API key 🤓",
     isFree: true,
+    index: 0,
   },
   {
-    title: "Junior Engineer (Monthly)",
-    price: "18",
+    title: "Junior Engineer",
+    price: "15",
+    prevPrice: "18",
     description:
       "Get the monthly subscription, and we'll take care of you... 😎",
     features: [
@@ -44,15 +46,18 @@ export const PRICING_TIERS: PricingTierData[] = [
       "Direct customer support by the founders and contributors",
       "Private Discord channel",
     ],
-    buttonText: "Get Started",
+    buttonText: "Get Started for Free",
     priceId: STRIPE_PRICE_IDS.MONTHLY,
+    index: 1,
   },
   {
-    title: "10x Engineer (Yearly)",
-    price: "14",
+    title: "10x Engineer",
+    price: "10",
+    prevPrice: "14",
     description: "Pay one lump sum yearly, and you'll be our VIP! 🤩",
     features: ["Everything from monthly", "Priority for new feature requests"],
-    buttonText: "Get Started",
+    buttonText: "Get Started for Free",
     priceId: STRIPE_PRICE_IDS.ANNUAL,
+    index: 2,
   },
 ];

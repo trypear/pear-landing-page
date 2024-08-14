@@ -58,8 +58,8 @@
 
     --radius: 0.5rem;
 
-    --blue-400: 217, 91%, 60%;
-    --blue-500: 217, 79%, 53%;
+    --blue-400: 216, 64%, 54%;
+    --blue-500: 216, 79%, 53%;
   }
 
   .dark {
@@ -127,8 +127,13 @@
   }
 }
 
+*::selection {
+  background-color: hsla(var(--primary-700), 10%) !important;
+  color: hsla(var(--primary-700), 100%) !important;
+}
+
 .text-link {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   color: hsla(var(--blue-400), 0.8);
 }
 
