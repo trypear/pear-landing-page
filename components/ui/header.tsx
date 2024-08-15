@@ -27,7 +27,7 @@ export default async function Header() {
             {/* Site branding */}
             <div className="flex w-[14%] flex-row items-center space-x-2 md:w-[36%]">
               {/* Logo */}
-              <Link className="-mt-0.5 dark:invert sm:mt-0" href="/">
+              <Link className="-mt-0.5 sm:mt-0 dark:invert" href="/">
                 <PearDarkLogo />
               </Link>
             </div>
