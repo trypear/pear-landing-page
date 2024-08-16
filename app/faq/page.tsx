@@ -30,7 +30,8 @@ const FAQ: React.FC = () => {
             className="whitespace-pre-line text-base text-gray-600 lg:text-base"
             data-aos="fade-up"
           >
-            Can&apos;t find the answer you&apos;re looking for? Join our{" "}
+            Can&apos;t find the answer you&apos;re looking for? Ask us directly
+            in our{" "}
             <Link
               className="underline"
               rel="noopener noreferrer"
@@ -48,7 +49,7 @@ const FAQ: React.FC = () => {
               <AccordionTrigger className="text-left font-semibold">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-base text-gray-600">
+              <AccordionContent className="whitespace-pre-line text-base text-gray-600">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

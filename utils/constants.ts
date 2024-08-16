@@ -70,8 +70,7 @@ export const faqData: FAQItem[] = [
   },
   {
     question: "Why should I switch to PearAI?",
-    answer:
-      "PearAI is a fork of VSCode, and possess all of its functionalities, but also adds more to it by integrating AI functionalities to speed up your coding workflow. Current users have expressed that their coding workflow accelerated by at least 3-4x.",
+    answer: `PearAI is a fork of VSCode, and possess all of its functionalities, but also adds more to it by integrating AI functionalities to speed up your coding workflow. Current users have expressed that their coding workflow accelerated by at least 3-4x.\n\n By switching to PearAI, you can speed up your product development, and not lack behind in terms of AI tooling compared to your peers.`,
   },
   {
     question:
