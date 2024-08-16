@@ -61,11 +61,11 @@ export default function SignUp() {
           form.reset();
         }
       } else {
-        // Redirect to settings
+        // Redirect to dashboard
         toast.info(
           "An account with this email already exists, signing you in...",
         );
-        router.push("/settings");
+        router.push("/dashboard");
       }
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");

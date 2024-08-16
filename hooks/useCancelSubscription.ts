@@ -41,7 +41,7 @@ export const useCancelSubscription = (
       if (data.status === "success") {
         toast.success("Your subscription has been canceled successfully.");
         setIsCanceled(true);
-        router.push("/settings");
+        router.push("/dashboard");
       } else {
         toast.error("Failed to cancel subscription. Please try again.");
       }

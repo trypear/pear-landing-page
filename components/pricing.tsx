@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Download } from "lucide-react";
 import Link from "next/link";
 import { useCheckout } from "@/hooks/useCheckout";
-import { PRICING_TIERS } from "@/utils/constants";
+import { PRICING_TIERS, CONTACT_EMAIL } from "@/utils/constants";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -227,15 +227,6 @@ const PricingTier: React.FC<PricingTierProps> = ({
               </a>{" "}
               to be notified when the app is available!
             </p>
-            {/* {!user && (
-              <p>
-                Please{" "}
-                <a href="/signin" className="text-link">
-                  log in
-                </a>{" "}
-                to download for free.
-              </p>
-            )} */}
           </>
         )}
         {isFree ? (
@@ -246,9 +237,11 @@ const PricingTier: React.FC<PricingTierProps> = ({
               <br />
               <br />
               If it didn&apos;t, you can click{" "}
-              <a className="text-link" href={downloadLink}>
-                here
-              </a>
+              {downloadLink && (
+                <Link href={downloadLink} className="text-link">
+                  here
+                </Link>
+              )}
               .
             </p>
           ) : isWaitlistInfoLoading || isDownloading ? (
@@ -400,13 +393,16 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           <div className="text-center">
             <p className="text-base text-gray-400 sm:text-lg md:text-xl">
               Want to use Pear in your business?
-              <Link
-                href="mailto:pear@trypear.ai"
-                className="ml-2 font-semibold text-primary-700 hover:text-primary-800"
+              <button
+                className="ml-2 font-semibold text-primary-700 transition-colors hover:text-primary-800"
                 aria-label="Contact us for custom plans"
+                onClick={() => {
+                  navigator.clipboard.writeText(CONTACT_EMAIL);
+                  toast.success("Email copied to clipboard!");
+                }}
               >
                 Contact us for custom plans!
-              </Link>
+              </button>
             </p>
           </div>
         </div>

@@ -24,8 +24,8 @@ export default async function SignIn({ searchParams }: SignInProps) {
 
   if (data?.user) {
     if (searchParams.callback?.includes("://pearai.pearai/auth")) {
-      // Redirect to settings page with callback for desktop app
-      redirect("/settings?callback=" + searchParams.callback);
+      // Redirect to dashboard page with callback for desktop app
+      redirect("/dashboard?callback=" + searchParams.callback);
     } else {
       redirect("/");
     }

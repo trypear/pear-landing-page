@@ -51,6 +51,7 @@ export default function MobileMenu({
   const navLinks = [
     { label: "Pricing", path: "/pricing" },
     { label: "Priority Waitlist", path: "/priority-waitlist" },
+    { label: "FAQ", path: "/faq" },
   ];
 
   return (
@@ -105,8 +106,8 @@ export default function MobileMenu({
           ) : (
             <div className="flex items-center justify-center space-x-2.5">
               <Button asChild className="w-full rounded-full">
-                <Link onClick={() => setIsOpen(false)} href={"/settings"}>
-                  Settings
+                <Link onClick={() => setIsOpen(false)} href={"/dashboard"}>
+                  Dashboard
                 </Link>
               </Button>
               <Button
