@@ -30,8 +30,12 @@ const updates: ChangelogEntry[] = [
           >
             Huge refactor
           </Link>{" "}
-          & Fixed multiple bugs
+          & Performance improvements
         </li>
+        <li>Added Mistral AI support</li>
+        <li>Easy model switching</li>
+        <li>Settings page revamp</li>
+        <li>Added FAQ Page</li>
       </ul>
     ),
     screenshot: {
