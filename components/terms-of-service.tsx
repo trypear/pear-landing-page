@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CONTACT_EMAIL } from "@/utils/constants";
 
 export default function TermsOfServiceComponent() {
   return (
@@ -130,10 +131,10 @@ export default function TermsOfServiceComponent() {
                   your account is no longer secure, then you should immediately
                   notify us at&nbsp;
                   <Link
-                    href="mailto:pear@trypear.ai"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="font-medium text-gray-900 underline"
                   >
-                    pear@trypear.ai
+                    {CONTACT_EMAIL}
                   </Link>
                   .
                 </li>
@@ -275,10 +276,10 @@ export default function TermsOfServiceComponent() {
                         by using the cancellation functionality made available
                         in your billing menu or by contacting us at&nbsp;
                         <Link
-                          href="mailto:pear@trypear.ai"
+                          href={`mailto:${CONTACT_EMAIL}`}
                           className="font-medium text-gray-900 underline"
                         >
-                          pear@trypear.ai
+                          {CONTACT_EMAIL}
                         </Link>
                         . YOUR CANCELLATION MUST BE RECEIVED BEFORE THE RENEWAL
                         DATE IN ORDER TO AVOID CHARGE FOR THE NEXT SUBSCRIPTION
@@ -730,10 +731,10 @@ export default function TermsOfServiceComponent() {
                         be resolved quickly and to the customer’s satisfaction
                         by emailing customer support at&nbsp;
                         <Link
-                          href="mailto:pear@trypear.ai"
+                          href={`mailto:${CONTACT_EMAIL}`}
                           className="font-medium text-gray-900 underline"
                         >
-                          pear@trypear.ai
+                          {CONTACT_EMAIL}
                         </Link>
                         . If such efforts prove unsuccessful, a party who
                         intends to seek arbitration must first send to the
@@ -1019,10 +1020,10 @@ export default function TermsOfServiceComponent() {
                         us by sending correspondence to that address or by
                         emailing us at&nbsp;
                         <Link
-                          href="mailto:pear@trypear.ai"
+                          href={`mailto:${CONTACT_EMAIL}`}
                           className="font-medium text-gray-900 underline"
                         >
-                          pear@trypear.ai
+                          {CONTACT_EMAIL}
                         </Link>
                         .
                       </p>

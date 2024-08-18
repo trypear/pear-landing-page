@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+import { CONTACT_EMAIL } from "@/utils/constants";
+import Link from "next/link";
 
 export default function PricingSuccess() {
   const router = useRouter();
@@ -29,7 +30,14 @@ export default function PricingSuccess() {
               ></div>
               <div className="text-center text-gray-700">
                 We hope you enjoy using Pear. Feel free to send any suggestions
-                our way at pear@trypear.ai.
+                our way at{" "}
+                <Link
+                  href={`mailto:{CONTACT_EMAIL}`}
+                  className="font-medium text-gray-900 underline"
+                >
+                  {CONTACT_EMAIL}
+                </Link>
+                .
               </div>
               <div
                 className="ml-3 grow border-t border-dotted border-gray-700"
