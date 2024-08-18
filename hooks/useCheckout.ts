@@ -25,7 +25,10 @@ export const useCheckout = (user: User | null) => {
       });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorData = await response.json();
+        throw new Error(
+          errorData?.error || `HTTP error! status: ${response.status}`,
+        );
       }
 
       const { url } = await response.json();
@@ -36,6 +39,13 @@ export const useCheckout = (user: User | null) => {
         toast.error("Failed to start checkout process. Please try again.");
       }
     } catch (error) {
+      if (
+        error instanceof Error &&
+        error?.message === "User already has an active subscription"
+      ) {
+        toast.error("You already have an active subscription.");
+        return;
+      }
       toast.error("An error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
