@@ -57,7 +57,8 @@ export const PRICING_TIERS: PricingTierData[] = [
     title: "10x Engineer",
     price: "10",
     prevPrice: "14",
-    description: "Pay one lump sum yearly, and you'll be our VIP! 🤩",
+    description:
+      "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
     features: ["Everything from monthly", "Priority for new feature requests"],
     buttonText: "Get Started for Free",
     priceId: STRIPE_PRICE_IDS.ANNUAL,
