@@ -57,7 +57,6 @@ const updates: ChangelogEntry[] = [
       <ul className="text-gray-60 list-disc space-y-1 ps-6 text-sm">
         <li>New AI Model - Claude 3.5 Sonnet</li>
         <li>Shortcuts Bar</li>
-        <li>GPT Autocompletions</li>
         <li>UI/UX improvements</li>
         <li>Bug Fixes including some extensions not working</li>
       </ul>
