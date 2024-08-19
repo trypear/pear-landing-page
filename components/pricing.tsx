@@ -100,7 +100,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
     return (
       <div className="mb-4 flex w-full items-center justify-between">
         <div className="flex w-[10%] items-center justify-start md:w-[20%]">
-          <div className="hidden h-10 w-10 items-center justify-center rounded-full bg-primary-600/10 text-primary-700 md:flex">
+          <div className="hidden h-10 w-10 items-center justify-center rounded-full bg-primary-1000 text-primary-700 md:flex">
             {os.os !== "windows" ? (
               <span className="flex h-5 w-5 items-center justify-center">
                 <AppleLogo />
@@ -125,13 +125,14 @@ const PricingTier: React.FC<PricingTierProps> = ({
               <span className="text-center">{os.name}</span>
               <Download className="ml-2 h-5 w-5" aria-hidden="true" />
             </div>
-            {os.chip && (
-              // make sure to change the color here
-              <Badge className="absolute right-2 top-[-10px] h-5 transform bg-primary-700">
-                {os.chip}
-              </Badge>
-            )}
           </Button>
+
+          {os.chip && (
+            // make sure to change the color here
+            <Badge className="absolute right-2 top-[-9px] h-[1.35rem] transform bg-primary-1000 px-2 font-normal text-primary-700/80">
+              {os.chip}
+            </Badge>
+          )}
         </div>
       </div>
     );

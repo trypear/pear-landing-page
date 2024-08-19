@@ -63,6 +63,7 @@ module.exports = {
           700: "hsla(var(--primary-700), <alpha-value>)",
           800: "hsla(var(--primary-800), <alpha-value>)",
           900: "hsla(var(--primary-900), <alpha-value>)",
+          1000: "hsla(var(--primary-1000), <alpha-value>)",
         },
         secondary: {
           300: "#878787",
