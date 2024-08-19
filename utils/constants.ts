@@ -10,10 +10,10 @@ export const CONTACT_EMAIL = "pear@trypear.ai";
 const NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID = "price_1PZ9X608N4O93LU5yqMbGDtu";
 const NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID_TEST =
   "price_1PZUT208N4O93LU5jItKoEYu";
-const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID = "price_1PZ9Lc08N4O93LU5wVOq1Pv7";
+const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID = "price_1PoZiZ08N4O93LU5kCrdrXvI";
 const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST =
-  "price_1PZUPg08N4O93LU5M8u2GimE";
-const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID = "price_1PZ9Sq08N4O93LU51Ugvig0y";
+  "price_1Ppa9408N4O93LU5irNxLp5p";
+const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID = "price_1PpZUO08N4O93LU5FYFUyh43";
 const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST =
   "price_1PZUSi08N4O93LU5UVdlkfp2";
 
@@ -34,7 +34,7 @@ export const PRICING_TIERS: PricingTierData[] = [
     title: "Intern",
     price: "0",
     description:
-      "You can download PearAI directly, and use your own API key 🤓",
+      "You can download PearAI directly, and use our free trial, or your own API key 🤓",
     isFree: true,
     index: 0,
   },
@@ -59,7 +59,11 @@ export const PRICING_TIERS: PricingTierData[] = [
     prevPrice: "14",
     description:
       "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
-    features: ["Everything from monthly", "Priority for new feature requests"],
+    features: [
+      "Everything from monthly",
+      "Zero data retention from Claude",
+      "Priority for new feature requests",
+    ],
     buttonText: "Get Started for Free",
     priceId: STRIPE_PRICE_IDS.ANNUAL,
     index: 2,

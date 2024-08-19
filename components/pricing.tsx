@@ -142,122 +142,124 @@ const PricingTier: React.FC<PricingTierProps> = ({
     <Card
       className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-600/20 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
     >
-      <CardHeader className="flex-grow-0 px-6 pb-6 pt-6">
-        <CardTitle className="text-2xl leading-6 text-primary-700">
-          {title}
-          <br />
-          <small className="text-xl">
-            {index === 0 && "(Free)"}
-            {index === 1 && "(Monthly)"}
-            {index === 2 && "(Yearly)"}
-          </small>
-        </CardTitle>
-        <p className="text-base font-normal text-gray-600 sm:text-base md:text-sm">
-          {description}
-        </p>
-      </CardHeader>
-      <CardContent className="flex flex-grow flex-col space-y-6 px-6">
-        {!isFree && (
-          <div className="flex flex-col items-start justify-center">
-            <p
-              className="text-2xl text-gray-900 sm:text-3xl"
-              aria-label={`Price: $${price} per month`}
-            >
-              ${price}
-              <small className="text-base text-gray-400 sm:text-lg">
-                /month
-              </small>
-              &nbsp;
-              <small className="text-base text-primary-700 sm:text-lg">
-                &#40;Early Bird&#41;
-              </small>
-            </p>
-            <p
-              className="text-base text-gray-400 sm:text-lg"
-              aria-label={`Original price: $${prevPrice} per month`}
-            >
-              <del>${prevPrice}</del>
-              <small>/month</small>
-            </p>
-          </div>
-        )}
-        {isFree && (
-          <p className="text-sm text-gray-600 sm:text-base">
-            <Link
-              href="https://forms.gle/171UyimgQJhEJbhU7"
-              className="text-link hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Join the waitlist
-            </Link>{" "}
-            to be notified when the app is available!
+      <div className="flex h-auto w-full flex-col">
+        <CardHeader className="flex-grow-0 px-6 pb-6 pt-6">
+          <CardTitle className="text-2xl leading-6 text-primary-700">
+            {title}
+            <br />
+            <small className="text-xl">
+              {index === 0 && "(Free)"}
+              {index === 1 && "(Monthly)"}
+              {index === 2 && "(Yearly)"}
+            </small>
+          </CardTitle>
+          <p className="text-base font-normal text-gray-600 sm:text-base md:text-sm">
+            {description}
           </p>
-        )}
-        <div className="mt-auto">
-          {isFree ? (
-            downloaded ? (
-              <p className="text-sm font-medium text-gray-400 sm:text-base">
-                Thank you for downloading PearAI! Your download should have
-                started! :)
-                <br />
-                <br />
-                If it didn&apos;t, you can click{" "}
-                {downloadLink && (
-                  <Link href={downloadLink} className="text-link">
-                    here
-                  </Link>
-                )}
-                .
+        </CardHeader>
+        <CardContent className="flex flex-grow flex-col px-6">
+          {!isFree && (
+            <div className="flex flex-col items-start justify-center">
+              <p
+                className="text-2xl text-gray-900 sm:text-3xl"
+                aria-label={`Price: $${price} per month`}
+              >
+                ${price}
+                <small className="text-base text-gray-400 sm:text-lg">
+                  /month
+                </small>
+                &nbsp;
+                <small className="text-base text-primary-700 sm:text-lg">
+                  &#40;Early Bird&#41;
+                </small>
               </p>
-            ) : isWaitlistInfoLoading || isDownloading ? (
-              <div className="flex justify-center">
-                <Spinner />
-              </div>
-            ) : (
-              <div className="space-y-4">
-                {SUPPORTED_OS.map((os) => (
-                  <DownloadButton os={os} key={os.os} />
-                ))}
-                {waitlistAccess ?? (
-                  <p className="mt-2 text-xs italic text-gray-400">
-                    If you&apos;re having trouble installing, try a different
-                    browser.
-                  </p>
-                )}
-              </div>
-            )
-          ) : (
-            <Button
-              onClick={() => priceId && handleCheckout(priceId)}
-              className="w-full"
-              disabled={isSubmitting}
-              aria-busy={isSubmitting}
-              aria-label={`Subscribe to ${title} plan`}
-            >
-              {isSubmitting ? "Processing..." : buttonText}
-            </Button>
+              <p
+                className="text-base text-gray-400 sm:text-lg"
+                aria-label={`Original price: $${prevPrice} per month`}
+              >
+                <del>${prevPrice}</del>
+                <small>/month</small>
+              </p>
+            </div>
           )}
-        </div>
-      </CardContent>
-      <CardFooter className="px-6 pb-6">
-        {!isFree && features && (
-          <ul
-            className="w-full space-y-4"
-            aria-label={`Features of ${title} plan`}
-          >
-            {features.map((feature, index) => (
-              <li key={index} className="flex items-center text-primary-700">
-                <Check
-                  className="mr-3 h-4 w-4 flex-shrink-0"
-                  aria-hidden="true"
-                />
-                <span className="text-sm">{feature}</span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </CardFooter>
+          {isFree && (
+            <p className="text-sm text-gray-600 sm:text-base">
+              <Link
+                href="https://forms.gle/171UyimgQJhEJbhU7"
+                className="text-link hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Join the waitlist
+              </Link>{" "}
+              to be notified when the app is available!
+            </p>
+          )}
+          <div className="mt-6">
+            {isFree ? (
+              downloaded ? (
+                <p className="text-sm font-medium text-gray-400 sm:text-base">
+                  Thank you for downloading PearAI! Your download should have
+                  started! :)
+                  <br />
+                  <br />
+                  If it didn&apos;t, you can click{" "}
+                  {downloadLink && (
+                    <Link href={downloadLink} className="text-link">
+                      here
+                    </Link>
+                  )}
+                  .
+                </p>
+              ) : isWaitlistInfoLoading || isDownloading ? (
+                <div className="flex justify-center">
+                  <Spinner />
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {SUPPORTED_OS.map((os) => (
+                    <DownloadButton os={os} key={os.os} />
+                  ))}
+                  {waitlistAccess ?? (
+                    <p className="mt-2 text-xs italic text-gray-400">
+                      If you&apos;re having trouble installing, try a different
+                      browser.
+                    </p>
+                  )}
+                </div>
+              )
+            ) : (
+              <Button
+                onClick={() => priceId && handleCheckout(priceId)}
+                className="w-full"
+                disabled={isSubmitting}
+                aria-busy={isSubmitting}
+                aria-label={`Subscribe to ${title} plan`}
+              >
+                {isSubmitting ? "Processing..." : buttonText}
+              </Button>
+            )}
+          </div>
+        </CardContent>
+        <CardFooter className="px-6 pb-6">
+          {!isFree && features && (
+            <ul
+              className="w-full space-y-4"
+              aria-label={`Features of ${title} plan`}
+            >
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-center text-primary-700">
+                  <Check
+                    className="mr-3 h-4 w-4 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </CardFooter>
+      </div>
     </Card>
   );
 };
@@ -312,7 +314,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
             >
               Start for free,
               <br />
-              pay as you grow
+              pay after you get value
             </h1>
           </header>
 
@@ -320,7 +322,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
             <div className="flex w-full items-center justify-between rounded-md">
               <p className="block w-max items-center justify-start md:flex">
                 <span className="text-primary-700 dark:text-primary-800">
-                  Be the early bird and get a great discount
+                  Be the early bird and get a discount
                 </span>
                 &nbsp;
                 <span className="text-primary-900 dark:text-primary-700">
