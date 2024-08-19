@@ -16,7 +16,7 @@ type ChangelogEntry = {
 
 const updates: ChangelogEntry[] = [
   {
-    date: "xx xxxx xxxx",
+    date: "19 August 2024",
     title: "🚧 Model switch feature & Bug Fixes",
     version: "v0.0.3",
     description: (
@@ -36,10 +36,14 @@ const updates: ChangelogEntry[] = [
         <li>Easy model switching</li>
         <li>Settings page revamp</li>
         <li>Added FAQ Page</li>
+        <li>CMD+I context + options improved</li>
+        <li>@codebase searching enhanced</li>
+        <li>PearAI token refresh bug fixed</li>
+        <li>Onboarding flow revamp</li>
       </ul>
     ),
     screenshot: {
-      src: "/images/modelSwitch- v.0.0.3.png",
+      src: "/images/modelSwitch- v0.0.3.png",
       alt: "Screenshot of performance enhancements",
       width: 300,
       height: 300,
