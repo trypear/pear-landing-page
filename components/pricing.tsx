@@ -311,7 +311,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
             >
               Start for free,
               <br />
-              pay as you grow
+              pay after you get value
             </h1>
           </header>
 
@@ -319,7 +319,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
             <div className="flex w-full items-center justify-between rounded-md">
               <p className="block w-max items-center justify-start md:flex">
                 <span className="text-primary-700 dark:text-primary-800">
-                  Be the early bird and get a great discount
+                  Be the early bird and get a discount
                 </span>
                 &nbsp;
                 <span className="text-primary-900 dark:text-primary-700">
