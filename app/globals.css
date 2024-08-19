@@ -28,6 +28,7 @@
     --primary-700: 167, 80%, 41%;
     --primary-800: 168, 80%, 36%;
     --primary-900: 168, 91%, 31%;
+    --primary-1000: 168, 38%, 85%;
 
     --gray-50: 0, 0%, 98%;
     --gray-100: 0, 0%, 96%;
@@ -58,8 +59,8 @@
 
     --radius: 0.5rem;
 
-    --blue-400: 217, 91%, 60%;
-    --blue-500: 217, 79%, 53%;
+    --blue-400: 216, 64%, 54%;
+    --blue-500: 216, 79%, 53%;
   }
 
   .dark {
@@ -87,6 +88,7 @@
     --primary-700: 168, 95%, 35%;
     --primary-800: 168, 100%, 22%;
     --primary-900: 168, 100%, 17%;
+    --primary-1000: 172, 42%, 10%;
 
     --gray-50: 0, 0%, 10%;
     --gray-100: 0, 0%, 20%;
@@ -127,8 +129,12 @@
   }
 }
 
+*::selection {
+  background-color: hsla(var(--primary-700), 10%) !important;
+  color: hsla(var(--primary-700), 100%) !important;
+}
+
 .text-link {
-  text-decoration: underline;
   color: hsla(var(--blue-400), 0.8);
 }
 
