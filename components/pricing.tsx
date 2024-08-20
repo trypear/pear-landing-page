@@ -266,39 +266,47 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   const [waitlistInfo, setWaitlistInfo] = useState<WaitlistEntry>();
-  const [isWaitlistInfoLoading, setIsWaitlistInfoLoading] = useState(false);
+  const [subscriptionStatus, setSubscriptionStatus] = useState<{ is_valid: boolean, pricing_tier: string | null }>();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Check if user is in waitlist
-    const getWaitlistInfo = async () => {
-      setIsWaitlistInfoLoading(true);
+    const fetchData = async () => {
+      setIsLoading(true);
       try {
-        const res = await fetch("/api/waitlist-info", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
+        const [waitlistRes, subscriptionRes] = await Promise.all([
+          fetch("/api/waitlist-info", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          }),
+          fetch("/api/subscription-status", {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          })
+        ]);
 
-        if (!res.ok) {
-          if (res.status === 404) {
-            return;
-          }
-          throw Error(res.statusText);
+        if (waitlistRes.ok && waitlistRes.status !== 404) {
+          const waitlistData = await waitlistRes.json();
+          setWaitlistInfo(waitlistData);
         }
-        const data = await res.json();
-        setWaitlistInfo(data);
-        return data;
+
+        if (subscriptionRes.ok) {
+          const subscriptionData = await subscriptionRes.json();
+          setSubscriptionStatus(subscriptionData);
+        }
       } catch (error: any) {
-        toast.error(
-          `Cannot obtain info on whether the user is on waitlist or not: ${error.message}`,
-        );
+        toast.error(`Error fetching user data: ${error.message}`);
       } finally {
-        setIsWaitlistInfoLoading(false);
+        setIsLoading(false);
       }
     };
+
     if (user) {
-      getWaitlistInfo();
+      fetchData();
     }
   }, [user]);
+
+  const hasAccess = subscriptionStatus?.is_valid || !!waitlistInfo?.email;
+
 
   return (
     <section
@@ -351,8 +359,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                 <PricingTier
                   {...tier}
                   user={user}
-                  waitlistAccess={!!waitlistInfo?.email}
-                  isWaitlistInfoLoading={isWaitlistInfoLoading}
+                  hasAccess={hasAccess}
+                  isLoading={isLoading}
+                  currentTier={subscriptionStatus?.pricing_tier}
                   index={index}
                 />
               </div>
