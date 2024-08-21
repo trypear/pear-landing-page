@@ -61,7 +61,7 @@ export default function FreeTrialCard({
           </div>
           <div className="mt-8 flex justify-between space-x-4">
             <div className="hidden sm:block">
-              <Button variant="outline" asChild>
+              <Button variant="outline" className="text-primary-800" asChild>
                 <Link
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
                 >

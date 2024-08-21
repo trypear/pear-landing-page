@@ -94,14 +94,8 @@ export default function DashboardPage({
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
             <ProfileCard user={user} />
-            <SubscriptionCard
-              subscription={subscription}
-              usage={usage}
-              openAppQueryParams={openAppQueryParams}
-              user={user}
-            />
             {/* Below commented out until we implement Free Trial */}
-            {/* {subscription ? (
+            {subscription ? (
               <SubscriptionCard
                 subscription={subscription}
                 usage={usage}
@@ -113,7 +107,7 @@ export default function DashboardPage({
                 usage={usage}
                 openAppQueryParams={openAppQueryParams}
               />
-            )} */}
+            )}
           </div>
         </div>
       </div>
