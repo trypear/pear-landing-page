@@ -49,7 +49,7 @@ export default function FreeTrialCard({
             />
             <p className="text-sm text-muted-foreground">
               You&apos;ve used {usage.used_quota} requests out of your{" "}
-              <span className="font-medium">{usage.max_quota || 30}</span> fast
+              <span className="font-medium">{usage.max_quota || 30}</span>{" "}
               requests quota for your free trial.
             </p>
           </div>
