@@ -29,7 +29,7 @@ const SUPPORTED_OS: SupportedOS[] = [
   {
     name: "Download for Mac OS",
     os: "darwin-arm64",
-    chip: "Apple silicon",
+    chip: "Apple silicon (M chip)",
   },
   {
     name: "Download for Mac OS",
