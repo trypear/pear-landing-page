@@ -1,24 +1,33 @@
 "use client";
 
-import { useState, useEffect } from 'react';
-import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
-import { StaticImageData } from 'next/image';
+import { useState, useEffect } from "react";
+import { notFound } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { StaticImageData } from "next/image";
 import placeholderImage from "@/public/images/claude-3.5-sonnet.png";
-import slugify from 'slugify';
+import slugify from "slugify";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CalendarIcon, UserIcon, ArrowLeft, ThumbsUp, MessageSquare, Share2 } from "lucide-react";
+import {
+  CalendarIcon,
+  UserIcon,
+  ArrowLeft,
+  ThumbsUp,
+  MessageSquare,
+  Share2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import { Textarea } from "@/components/ui/textarea";
 
 const blogPosts = [
-    {
-      title: "Implementing Claude 3.5 into PearAI's Ecosystem",
-      slug: slugify("Implementing Claude 3.5 into PearAI's Ecosystem", { lower: true }),
-      content: `
+  {
+    title: "Implementing Claude 3.5 into PearAI's Ecosystem",
+    slug: slugify("Implementing Claude 3.5 into PearAI's Ecosystem", {
+      lower: true,
+    }),
+    content: `
         <article class="space-y-6">
           <p class="text-xl font-semibold text-gray-700 leading-relaxed">
             The integration of Claude 3.5 into PearAI's ecosystem marks a significant milestone in our journey towards more advanced and capable AI systems. This latest iteration of Claude brings unprecedented improvements in natural language understanding, multi-modal processing, and task completion.
@@ -82,26 +91,26 @@ const blogPosts = [
           </p>
         </article>
       `,
-      date: "2024-08-20",
-      author: "Conor Quinlan",
-      authorAvatar: "/path/to/author-avatar.jpg",
-      image: placeholderImage as StaticImageData,
-      readingTime: "5 min read",
-      tags: ["AI", "Machine Learning", "Claude 3.5", "PearAI"],
-    },
-    // Add more blog posts here
-  ];
-  
+    date: "2024-08-20",
+    author: "Conor Quinlan",
+    authorAvatar: "/path/to/author-avatar.jpg",
+    image: placeholderImage as StaticImageData,
+    readingTime: "5 min read",
+    tags: ["AI", "Machine Learning", "Claude 3.5", "PearAI"],
+  },
+  // Add more blog posts here
+];
+
 const BlogPost = ({ params }: { params: { slug: string } }) => {
   const [likes, setLikes] = useState(0);
   const [comments, setComments] = useState<string[]>([]);
-  const [newComment, setNewComment] = useState('');
+  const [newComment, setNewComment] = useState("");
 
   const post = blogPosts.find((p) => p.slug === params.slug);
 
   useEffect(() => {
     setLikes(Math.floor(Math.random() * 100));
-    setComments(['Great article!', 'Very informative, thanks for sharing.']);
+    setComments(["Great article!", "Very informative, thanks for sharing."]);
   }, []);
 
   if (!post) {
@@ -112,7 +121,7 @@ const BlogPost = ({ params }: { params: { slug: string } }) => {
   const handleCommentSubmit = () => {
     if (newComment.trim()) {
       setComments([...comments, newComment]);
-      setNewComment('');
+      setNewComment("");
     }
   };
 
@@ -121,7 +130,7 @@ const BlogPost = ({ params }: { params: { slug: string } }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 py-20 max-w-4xl"
+      className="container mx-auto max-w-4xl px-4 py-20"
     >
       <motion.div
         initial={{ y: -20, opacity: 0 }}
@@ -132,7 +141,6 @@ const BlogPost = ({ params }: { params: { slug: string } }) => {
         <Link href="/blogs" passHref>
           <Button variant="outline" size="sm">
             <ArrowLeft className="mr-2 h-4 w-4" />
-            
           </Button>
         </Link>
       </motion.div>
@@ -143,8 +151,10 @@ const BlogPost = ({ params }: { params: { slug: string } }) => {
       >
         <Card className="shadow-lg">
           <CardHeader>
-            <CardTitle className="text-4xl font-bold mb-4">{post.title}</CardTitle>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
+            <CardTitle className="mb-4 text-4xl font-bold">
+              {post.title}
+            </CardTitle>
+            <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center">
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 <span>{new Date(post.date).toLocaleDateString()}</span>
@@ -157,7 +167,10 @@ const BlogPost = ({ params }: { params: { slug: string } }) => {
             </div>
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag, index) => (
-                <span key={index} className="text-sm bg-gray-100 text-gray-800 rounded-full px-3 py-1">
+                <span
+                  key={index}
+                  className="rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-800"
+                >
                   {tag}
                 </span>
               ))}
@@ -168,7 +181,7 @@ const BlogPost = ({ params }: { params: { slug: string } }) => {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="relative w-full h-96 mb-8 rounded-lg overflow-hidden"
+              className="relative mb-8 h-96 w-full overflow-hidden rounded-lg"
             >
               <Image
                 src={post.image}
@@ -195,7 +208,12 @@ const BlogPost = ({ params }: { params: { slug: string } }) => {
       >
         <Avatar>
           <AvatarImage src={post.authorAvatar} alt={post.author} />
-          <AvatarFallback>{post.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+          <AvatarFallback>
+            {post.author
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </AvatarFallback>
         </Avatar>
         <div>
           <p className="font-semibold">{post.author}</p>
@@ -227,9 +245,9 @@ const BlogPost = ({ params }: { params: { slug: string } }) => {
         transition={{ delay: 1.4 }}
         className="mt-12"
       >
-        <h3 className="text-2xl font-semibold mb-6">Comments</h3>
+        <h3 className="mb-6 text-2xl font-semibold">Comments</h3>
         {comments.map((comment, index) => (
-          <div key={index} className="bg-gray-50 p-4 rounded-lg mb-4 shadow">
+          <div key={index} className="mb-4 rounded-lg bg-gray-50 p-4 shadow">
             <p>{comment}</p>
           </div>
         ))}
