@@ -49,7 +49,7 @@ export default function FreeTrialCard({
             />
             <p className="text-sm text-muted-foreground">
               You&apos;ve used {usage.used_quota} requests out of your{" "}
-              <span className="font-medium">{usage.max_quota || 30}</span> fast
+              <span className="font-medium">{usage.max_quota || 30}</span>{" "}
               requests quota for your free trial.
             </p>
           </div>
@@ -61,7 +61,7 @@ export default function FreeTrialCard({
           </div>
           <div className="mt-8 flex justify-between space-x-4">
             <div className="hidden sm:block">
-              <Button variant="outline" asChild>
+              <Button variant="outline" className="text-primary-800" asChild>
                 <Link
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
                 >
