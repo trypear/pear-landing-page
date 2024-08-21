@@ -3,7 +3,7 @@ import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
 
 export const metadata: Metadata = constructMetadata({
-  title: "WhiteList",
+  title: "Whitelist",
   description: "Secret whitelist Page.",
   canonical: "/whitelist",
 });
