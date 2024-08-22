@@ -183,7 +183,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
             </div>
           )}
           {isFree && (
-            <p className="text-sm text-gray-600 sm:text-base">
+            <p className="text-sm text-gray-600">
               <Link
                 href="https://forms.gle/171UyimgQJhEJbhU7"
                 className="text-link hover:underline"
@@ -192,7 +192,8 @@ const PricingTier: React.FC<PricingTierProps> = ({
               >
                 Join the waitlist
               </Link>{" "}
-              to be notified when the app is available!
+              to be notified when the app is available! If you&apos;re already
+              off the waitlist, make sure you&apos;re signed in 👀
             </p>
           )}
           <div className="mt-6">
