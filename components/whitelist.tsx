@@ -125,8 +125,8 @@ export default function WhitelistPage() {
             )}
             {successMessage && (
               <p className="text-center text-green-500">
-                You&apos;re now off the waitlist! To download PearAI, sign in and go
-                to the{" "}
+                You&apos;re now off the waitlist! To download PearAI, sign in
+                and go to the{" "}
                 <a href="/pricing" className="underline">
                   pricing page
                 </a>
