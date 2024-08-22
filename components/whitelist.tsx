@@ -15,7 +15,7 @@ import {
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export const whitelistSchema = z.object({
   email: z.string().email({ message: "Email address is invalid." }),
@@ -24,10 +24,9 @@ export const whitelistSchema = z.object({
 export type WhitelistFormData = z.infer<typeof whitelistSchema>;
 
 export default function WhitelistPage() {
-  const router = useRouter();
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const form = useForm<WhitelistFormData>({
     resolver: zodResolver(whitelistSchema),
@@ -40,29 +39,35 @@ export default function WhitelistPage() {
     if (isSubmitting) return;
     setIsSubmitting(true);
     setErrorMessage(null);
+    setSuccessMessage(null);
     try {
       const formData = new FormData();
       formData.append("email", data.email);
-      // const response = await fetch("/api/whitelist", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/json" },
-      //   body: JSON.stringify({ email: formData.get("email") }),
-      // });
+      const response = await fetch("/api/whitelist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: formData.get("email") }),
+      });
 
-      // if (!response.ok) {
-      //   const errorData = await response.json();
-      //   throw new Error(
-      //     errorData?.error || `HTTP error! status: ${response.status}`,
-      //   );
-      // }
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(
+          errorData?.error || `HTTP error! status: ${response.status}`,
+        );
+      }
 
-      // const { data } = await response.json();
-      // if  (data.status === "success") {
-      //   router.push("/pricing");
-      // } else {
-      //   toast.error("Failed to add email to whitelist. Make sure it's the one you signed up with.");
-      // }
+      const res = await response.json();
+      if (res?.message === "Successfully added to waitlist") {
+        setSuccessMessage(res.message);
+      } else {
+        toast.error("Failed to add email to whitelist.");
+      }
     } catch (error) {
+      if ((error as any)?.message?.includes("Email is already whitelisted.")) {
+        setErrorMessage((error as any).message);
+        return;
+      }
+      console.log(error);
       setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
@@ -75,9 +80,9 @@ export default function WhitelistPage() {
         <h1 className="mb-6 text-center text-3xl font-semibold md:text-5xl md:font-normal">
           Seems like you found a way to skip the waitlist 👀
         </h1>
-        <p className="text-center">
-          Enter your email below (make sure it&apos;s the one you signed up
-          with), and you&apos;ll be able to download the app{" "}
+        <p className="mb-3 text-center">
+          Make sure your email is the one you&apos;ll sign up with.
+          <br /> After submitting, you&apos;ll be able to download the app{" "}
           <Link className="underline" href="/pricing">
             here
           </Link>
@@ -117,6 +122,16 @@ export default function WhitelistPage() {
             </Button>
             {errorMessage && (
               <p className="text-center text-red-500">{errorMessage}</p>
+            )}
+            {successMessage && (
+              <p className="text-center text-green-500">
+                You&apos;re now off the waitlist! To download PearAI, sign in and go
+                to the{" "}
+                <a href="/pricing" className="underline">
+                  pricing page
+                </a>
+                .
+              </p>
             )}
           </form>
         </Form>
