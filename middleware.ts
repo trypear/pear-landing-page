@@ -8,11 +8,15 @@ export async function middleware(request: NextRequest) {
 
   // Check if the route should be protected
   const protectedPaths = ["/api"];
+  const excludedPaths = ["/api/whitelist"];
   const isProtectedRoute = protectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path),
   );
+  const isExcludedRoute = excludedPaths.some((path) =>
+    request.nextUrl.pathname.startsWith(path),
+  );
 
-  if (isProtectedRoute) {
+  if (isProtectedRoute && !isExcludedRoute) {
     const supabase = createClient();
     const {
       data: { session },
