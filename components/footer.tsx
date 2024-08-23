@@ -1,82 +1,8 @@
+import { footerSections, socialMediaLinks } from "@/utils/constants";
 import Link from "next/link";
 import PearDarkLogo from "./ui/PearDark.svg";
-import {
-  AppleLogo,
-  DiscordLogo,
-  GitHubLogo,
-  LinkedInLogo,
-  WindowsLogo,
-} from "./ui/icons";
 import { Button } from "./ui/button";
-
-const footerSections = [
-  {
-    title: "Company",
-    links: [
-      {
-        text: "About Us",
-        href: "/about",
-      },
-      {
-        text: "Contact",
-        href: "mailto:pear@trypear.ai",
-      },
-      {
-        text: "Priority Waitlist",
-        href: "/priority-waitlist",
-      },
-    ],
-  },
-  {
-    title: "Product",
-    links: [
-      {
-        text: "Features",
-        href: "/#features",
-      },
-      {
-        text: "Pricing",
-        href: "/pricing",
-      },
-      {
-        text: "Changelog",
-        href: "/changelog",
-      },
-    ],
-  },
-  {
-    title: "Support",
-    links: [
-      {
-        text: "FAQ",
-        href: "/faq",
-      },
-      {
-        text: "Privacy Policy",
-        href: "/privacy",
-      },
-      {
-        text: "Terms of Service",
-        href: "/terms-of-service",
-      },
-    ],
-  },
-];
-
-const socialMediaLinks = [
-  {
-    icon: GitHubLogo,
-    link: "https://github.com/trypear/pearai-app",
-  },
-  {
-    icon: DiscordLogo,
-    link: "https://discord.gg/AKy5FmqCkF",
-  },
-  {
-    icon: LinkedInLogo,
-    link: "https://www.linkedin.com/company/trypearai",
-  },
-];
+import { AppleLogo, WindowsLogo } from "./ui/icons";
 
 export default function Footer() {
   return (
@@ -112,20 +38,20 @@ export default function Footer() {
         {/* Download Section */}
         <div>
           <h5 className="font-semibold">Download</h5>
-          <Button asChild className="mt-4">
-            <Link href="/pricing">
-              <AppleLogo className="h-4 w-4" />
-              <span className="sm:hidden">Download Now</span>
-              <span className="hidden sm:inline">Download for Free</span>
-            </Link>
-          </Button>
-          <Button asChild className="mt-3">
-            <Link href="/pricing">
-              <WindowsLogo className="h-4 w-4" />
-              <span className="sm:hidden">Download Now</span>
-              <span className="hidden sm:inline">Download for Free</span>
-            </Link>
-          </Button>
+          <div className="w-full max-w-min">
+            <Button asChild className="mt-4 w-full justify-start">
+              <Link href="/pricing">
+                <AppleLogo className="h-4 w-4" />
+                <span>Windows</span>
+              </Link>
+            </Button>
+            <Button asChild className="mt-3 w-full justify-start">
+              <Link href="/pricing">
+                <WindowsLogo className="h-4 w-4" />
+                <span>Mac</span>
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -139,7 +65,7 @@ export default function Footer() {
               size="icon"
               className="rounded-full"
             >
-              <Link href={link} target="_blank">
+              <Link href={link} target="_blank" rel="noopener noreferrer">
                 <Icon className="h-5 w-5" />
               </Link>
             </Button>
@@ -147,7 +73,9 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <span>&copy; PearAI - All rights reserved.</span>
+        <span>
+          &copy; {new Date().getFullYear()} PearAI - All rights reserved.
+        </span>
       </div>
     </footer>
   );
