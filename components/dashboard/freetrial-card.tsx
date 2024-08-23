@@ -69,9 +69,9 @@ export default function FreeTrialCard({
                   Open PearAI
                 </Link>
               </Button>
-              <div className="mt-5 flex items-center">
-                <Info className="inline text-muted-foreground" size={16} />
-                <p className="ml-1 block text-sm text-muted-foreground">Make sure PearAI is installed</p>
+              <div className="mt-1 flex items-center">
+                <Info className="inline text-muted-foreground" size={14} />
+                <p className="ml-1.5 block text-xs text-muted-foreground">Make sure PearAI is <Button variant='link' asChild className="p-0 text-primary-800 text-xs"><Link href='/pricing'>installed</Link></Button></p>
               </div>
             </div>
             <Button variant="link" asChild className="px-0 text-primary-800">
