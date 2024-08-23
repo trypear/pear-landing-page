@@ -3,13 +3,12 @@ import React, { useState } from "react";
 
 const tabData = [
   {
-    id: "overview",
-    label: "Overview",
-    content: "This is the Overview content.",
+    id: "Quickstart",
+    label: "Quickstart",
+    content: "This is the quickstart content.",
   },
-  { id: "setup", label: "Setup", content: "This is the Setup content." },
-  { id: "usage", label: "Usage", content: "This is the Usage content." },
-  // Add more tabs as needed
+  { id: "demos", label: "Demos", content: "This is the Demo content." },
+  { id: "features", label: "Features", content: "These are the features." },
 ];
 
 const DocsComponent = () => {
