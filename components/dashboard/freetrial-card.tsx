@@ -78,8 +78,9 @@ export default function FreeTrialCard({
                     asChild
                     className="p-0 text-xs text-primary-800"
                   >
-                    <Link href="/pricing">installed</Link>
-                  </Button>
+                    <Link href="/pricing">installed.</Link>
+                  </Button>{" "}
+                  Use this button to open the app and login directly.
                 </p>
               </div>
             </div>
