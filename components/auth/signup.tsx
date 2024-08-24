@@ -94,7 +94,12 @@ export default function SignUp() {
           </div>
 
           <div className="mx-auto max-w-sm">
-            <form onSubmit={(e) => handleOAuthSignUp("google")}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleOAuthSignUp("google");
+              }}
+            >
               <Button
                 type="submit"
                 size="lg"
@@ -105,7 +110,12 @@ export default function SignUp() {
                 <span>Sign up with Google</span>
               </Button>
             </form>
-            <form onSubmit={(e) => handleOAuthSignUp("github")}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleOAuthSignUp("github");
+              }}
+            >
               <div className="-mx-3 flex flex-wrap">
                 <div className="mt-3 w-full px-3">
                   <Button
