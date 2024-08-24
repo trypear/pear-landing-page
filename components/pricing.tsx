@@ -16,15 +16,26 @@ import { PricingPageProps, PricingTierProps } from "@/types/pricing";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Spinner from "./ui/spinner";
+import { Badge } from "./ui/badge";
+import { AppleLogo, WindowsLogo } from "./ui/icons";
 
 type SupportedOS = {
   name: string;
   os: string;
+  chip?: string;
 };
 
 const SUPPORTED_OS: SupportedOS[] = [
-  { name: "Download for Mac (Apple silicon)", os: "darwin-arm64" },
-  { name: "Download for Mac (Intel chip)", os: "intel-x64" },
+  {
+    name: "Download for Mac OS",
+    os: "darwin-arm64",
+    chip: "Apple silicon (M chip)",
+  },
+  {
+    name: "Download for Mac OS",
+    os: "intel-x64",
+    chip: "Intel chip",
+  },
   { name: "Download for Windows", os: "windows" },
 ];
 
@@ -40,6 +51,7 @@ type WaitlistEntry = {
 
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
+  prevPrice,
   price,
   description,
   features,
@@ -49,6 +61,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   user,
   waitlistAccess,
   isWaitlistInfoLoading,
+  index,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
@@ -85,114 +98,169 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
   const DownloadButton = ({ os }: { os: SupportedOS }) => {
     return (
-      <Button
-        key={os.os}
-        disabled={waitlistAccess ? false : true}
-        onClick={() => handleDownload(os.os)}
-        className="w-full rounded-2xl"
-        aria-label={`Download for ${os.os}`}
-      >
-        <Download className="mr-2 h-4 w-4" aria-hidden="true" /> {os.name}
-      </Button>
+      <div className="mb-4 flex w-full items-center justify-between">
+        <div className="flex w-[10%] items-center justify-start md:w-[20%]">
+          <div className="hidden h-10 w-10 items-center justify-center rounded-full bg-primary-1000 text-primary-700 md:flex">
+            {os.os !== "windows" ? (
+              <span className="flex h-5 w-5 items-center justify-center">
+                <AppleLogo />
+              </span>
+            ) : (
+              <span className="flex h-5 w-5 items-center justify-center">
+                <WindowsLogo />
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div className="relative w-[90%] md:w-[80%]">
+          <Button
+            key={os.os}
+            disabled={!waitlistAccess}
+            onClick={() => handleDownload(os.os)}
+            className="relative flex h-12 w-full items-center justify-center px-4"
+            aria-label={`Download for ${os.os}`}
+          >
+            <div className="flex items-center justify-center">
+              <span className="text-center">{os.name}</span>
+              <Download className="ml-2 h-5 w-5" aria-hidden="true" />
+            </div>
+          </Button>
+
+          {os.chip && (
+            // make sure to change the color here
+            <Badge className="absolute right-2 top-[-9px] h-[1.35rem] transform bg-primary-1000 px-2 font-normal text-primary-700/80">
+              {os.chip}
+            </Badge>
+          )}
+        </div>
+      </div>
     );
   };
 
   return (
-    <Card className="flex h-full w-full flex-col border">
-      <CardHeader>
-        <CardTitle className="text-2xl text-primary-700">{title}</CardTitle>
-        <p className="text-sm font-medium text-gray-400 sm:text-base">
-          {description}
-        </p>
-      </CardHeader>
-      <CardContent className="flex flex-col space-y-6 p-6">
-        {!isFree && (
-          <p
-            className="text-3xl font-medium sm:text-4xl"
-            aria-label={`Price: $${price} per month`}
-          >
-            ${price}
-            <span className="text-lg font-normal sm:text-xl"> /month</span>
+    <Card
+      className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-600/20 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
+    >
+      <div className="flex h-auto w-full flex-col">
+        <CardHeader className="flex-grow-0 px-6 pb-6 pt-6">
+          <CardTitle className="text-2xl leading-6 text-primary-700">
+            {title}
+            <br />
+            <small className="text-xl">
+              {index === 0 && "(Free)"}
+              {index === 1 && "(Monthly)"}
+              {index === 2 && "(Yearly)"}
+            </small>
+          </CardTitle>
+          <p className="text-base font-normal text-gray-600 sm:text-base md:text-sm">
+            {description}
           </p>
-        )}
-        {isFree && (
-          <>
-            <p className="text-sm font-medium text-gray-400 sm:text-base">
+        </CardHeader>
+        <CardContent className="flex flex-grow flex-col px-6">
+          {!isFree && (
+            <div className="flex flex-col items-start justify-center">
+              <p
+                className="text-2xl text-gray-900 sm:text-3xl"
+                aria-label={`Price: $${price} per month`}
+              >
+                ${price}
+                <small className="text-base text-gray-400 sm:text-lg">
+                  /month
+                </small>
+                &nbsp;
+                <small className="text-base text-primary-700 sm:text-lg">
+                  &#40;Early Bird&#41;
+                </small>
+              </p>
+              <p
+                className="text-base text-gray-400 sm:text-lg"
+                aria-label={`Original price: $${prevPrice} per month`}
+              >
+                <del>${prevPrice}</del>
+                <small>/month</small>
+              </p>
+            </div>
+          )}
+          {isFree && (
+            <p className="text-sm text-gray-600">
               <Link
                 href="https://forms.gle/171UyimgQJhEJbhU7"
-                className="text-link"
+                className="text-link hover:underline"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Join the waitlist
               </Link>{" "}
-              to be notified when the app is available!
+              to be notified when the app is available! If you&apos;re already
+              off the waitlist, make sure you&apos;re signed in 👀
             </p>
-          </>
-        )}
-        {isFree ? (
-          downloaded ? (
-            <p className="text-sm font-medium text-gray-400 sm:text-base">
-              Thank you for downloading PearAI! Your download should have
-              started! :)
-              <br />
-              <br />
-              If it didn&apos;t, you can click{" "}
-              {downloadLink && (
-                <Link href={downloadLink} className="text-link">
-                  here
-                </Link>
-              )}
-              .
-            </p>
-          ) : isWaitlistInfoLoading || isDownloading ? (
-            <div className="mx-auto">
-              <Spinner />
-            </div>
-          ) : (
-            <>
-              {SUPPORTED_OS.map((os) => (
-                <DownloadButton os={os} key={os.os} />
-              ))}
-              {waitlistAccess ?? (
-                <p className="mt-2 text-xs italic text-gray-400">
-                  If you&apos;re having trouble installing, try a different
-                  browser.
+          )}
+          <div className="mt-6">
+            {isFree ? (
+              downloaded ? (
+                <p className="text-sm font-medium text-gray-400 sm:text-base">
+                  Thank you for downloading PearAI! Your download should have
+                  started! :)
+                  <br />
+                  <br />
+                  If it didn&apos;t, you can click{" "}
+                  {downloadLink && (
+                    <Link href={downloadLink} className="text-link">
+                      here
+                    </Link>
+                  )}
+                  .
                 </p>
-              )}
-            </>
-          )
-        ) : (
-          <Button
-            onClick={() => priceId && handleCheckout(priceId)}
-            className="w-full rounded-2xl"
-            disabled={isSubmitting}
-            aria-busy={isSubmitting}
-            aria-label={`Subscribe to ${title} plan`}
-          >
-            {isSubmitting ? "Processing..." : buttonText}
-          </Button>
-        )}
-      </CardContent>
-      <CardFooter className="p-6">
-        {!isFree && features && (
-          <ul
-            className="flex-grow space-y-4"
-            aria-label={`Features of ${title} plan`}
-          >
-            {features.map((feature, index) => (
-              <li key={index} className="flex items-center">
-                <Check
-                  className="mr-3 h-5 w-5 flex-shrink-0 text-primary-700"
-                  aria-hidden="true"
-                />
-                <span className="text-sm font-medium text-primary-700 sm:text-base">
-                  {feature}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </CardFooter>
+              ) : isWaitlistInfoLoading || isDownloading ? (
+                <div className="flex justify-center">
+                  <Spinner />
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {SUPPORTED_OS.map((os) => (
+                    <DownloadButton os={os} key={os.os} />
+                  ))}
+                  {waitlistAccess ?? (
+                    <p className="mt-2 text-xs italic text-gray-400">
+                      If you&apos;re having trouble installing, try a different
+                      browser.
+                    </p>
+                  )}
+                </div>
+              )
+            ) : (
+              <Button
+                onClick={() => priceId && handleCheckout(priceId)}
+                className="w-full"
+                disabled={isSubmitting}
+                aria-busy={isSubmitting}
+                aria-label={`Subscribe to ${title} plan`}
+              >
+                {isSubmitting ? "Processing..." : buttonText}
+              </Button>
+            )}
+          </div>
+        </CardContent>
+        <CardFooter className="px-6 pb-6">
+          {!isFree && features && (
+            <ul
+              className="w-full space-y-4"
+              aria-label={`Features of ${title} plan`}
+            >
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-center text-primary-700">
+                  <Check
+                    className="mr-3 h-4 w-4 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </CardFooter>
+      </div>
     </Card>
   );
 };
@@ -238,22 +306,45 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
       className="relative py-8 sm:py-12 md:py-16 lg:py-24"
       aria-labelledby="pricing-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
-          <div className="mx-auto mt-16 max-w-4xl space-y-4 text-center sm:mt-0 sm:space-y-6">
+      <div className="mx-auto max-w-7xl px-8 sm:px-6 lg:px-20">
+        <div className="space-y-6 sm:space-y-8 md:space-y-6 lg:space-y-6">
+          <header className="mx-auto mt-16 max-w-4xl space-y-4 text-center sm:mt-0 sm:space-y-6">
             <h1
               id="pricing-heading"
-              className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl lg:text-6xl"
+              className="text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
             >
-              Pricing
+              Start for free,
+              <br />
+              pay after you get value
             </h1>
-            <p className="text-base font-medium text-gray-400 sm:text-lg md:text-xl lg:text-2xl">
-              Pick the plan that&apos;s fits you best
-            </p>
+          </header>
+
+          <div className="flex w-full items-center justify-center rounded-md bg-gray-300/20 bg-gradient-to-l from-primary-800/[0.15] via-gray-100/10 to-transparent to-60% px-6 py-3.5 ring-1 ring-gray-300/60 dark:bg-gray-100/10 dark:ring-gray-100/40">
+            <div className="flex w-full items-center justify-between rounded-md">
+              <p className="block w-max items-center justify-start md:flex">
+                <span className="text-primary-700 dark:text-primary-800">
+                  Be the early bird and get a discount
+                </span>
+                &nbsp;
+                <span className="text-primary-900 dark:text-primary-700">
+                  forever
+                </span>
+              </p>
+
+              <p className="block w-max items-center justify-end text-right md:flex">
+                <strong className="text-lg text-primary-900 dark:text-gray-900">
+                  20-30% off
+                </strong>
+                &nbsp;
+                <span className="font-normal text-primary-700 dark:text-primary-300">
+                  &#40;forever&#41;
+                </span>
+              </p>
+            </div>
           </div>
 
           <div
-            className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3"
+            className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
             role="list"
           >
             {PRICING_TIERS.map((tier, index) => (
@@ -263,12 +354,13 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                   user={user}
                   waitlistAccess={!!waitlistInfo?.email}
                   isWaitlistInfoLoading={isWaitlistInfoLoading}
+                  index={index}
                 />
               </div>
             ))}
           </div>
 
-          <div className="text-center">
+          <footer className="text-center">
             <p className="text-base text-gray-400 sm:text-lg md:text-xl">
               Want to use Pear in your business?
               <button
@@ -282,7 +374,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                 Contact us for custom plans!
               </button>
             </p>
-          </div>
+          </footer>
         </div>
       </div>
     </section>

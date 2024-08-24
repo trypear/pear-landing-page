@@ -24,7 +24,7 @@ const updates: ChangelogEntry[] = [
         <li>Shortcuts Bar</li>
         <li>GPT Autocompletions</li>
         <li>UI/UX improvements</li>
-        <li>Bug Fixes including some extensions not working</li>
+        <li>Bug fixes, including some extensions not working</li>
       </ul>
     ),
     screenshot: {
@@ -40,9 +40,9 @@ const updates: ChangelogEntry[] = [
     version: "v0.0.1",
     description: (
       <ul className="text-gray-60 list-disc space-y-1 ps-6 text-sm">
-        <li>VSCode Fork - feel right at home</li>
+        <li>VSCode Fork - Feel right at home</li>
         <li>Chat with AI models who have full code context</li>
-        <li>tag your files @filename</li>
+        <li>Tag your files @filename</li>
       </ul>
     ),
     screenshot: {

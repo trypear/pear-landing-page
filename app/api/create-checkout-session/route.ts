@@ -22,6 +22,40 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
       );
     }
 
+    // Check if user already has a subscription
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json(
+        { error: "Failed to get user" },
+        { status: 401 },
+      );
+    }
+    const { data: subData, error } = await supabase
+      .from("subscriptions")
+      .select("status")
+      .eq("user_id", user?.id)
+      .eq("status", "active")
+      .limit(1);
+    if (error) {
+      console.error("error checking user existing subscription", error);
+      return NextResponse.json(
+        {
+          error:
+            "Error checking user existing subscription. Please contact PearAI team.",
+        },
+        { status: 500 },
+      );
+    }
+    if (subData && subData.length > 0) {
+      return NextResponse.json(
+        { error: "User already has an active subscription" },
+        { status: 400 },
+      );
+    }
+
+    // Create checkout session
     const token = session.access_token;
     const url = `${PEARAI_SERVER_URL}/payment${TEST_MODE_ENABLED ? "/test" : ""}/create-checkout-session`;
 

@@ -56,7 +56,7 @@ const FAQ: React.FC = () => {
           ))}
           <AccordionItem value={"contribute"}>
             <AccordionTrigger className="text-left font-semibold">
-              How can I contribute to PearAI
+              How can I contribute to PearAI?
             </AccordionTrigger>
             <AccordionContent className="text-base text-gray-600">
               See the contributor&apos;s section.{" "}

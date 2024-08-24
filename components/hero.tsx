@@ -58,8 +58,7 @@ const HeroDescription = () => (
       data-aos="fade-up"
       data-aos-delay="200"
     >
-      Speed up your development process by seamlessly integrating AI into your
-      workflow 🚀
+      Speed up your development by integrating AI the correct way 🚀
     </p>
     <p
       className="mb-4 text-sm text-gray-500 sm:text-lg"
@@ -67,7 +66,7 @@ const HeroDescription = () => (
       data-aos-delay="200"
     >
       Afraid of switching editors? No need, Pear is a fork of VSCode and retains
-      all its features, you&apos;ll feel right at home 😏
+      its features, you&apos;ll feel right at home 😏
     </p>
   </div>
 );
