@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Info } from "lucide-react";
 
 type FreeTrialCardProps = {
   usage: {
@@ -70,6 +71,20 @@ export default function FreeTrialCard({
                   Open PearAI
                 </Link>
               </Button>
+              <div className="mt-1 flex items-center">
+                <Info className="inline text-muted-foreground" size={14} />
+                <p className="ml-1.5 block text-xs text-muted-foreground">
+                  Make sure PearAI is{" "}
+                  <Button
+                    variant="link"
+                    asChild
+                    className="p-0 text-xs text-primary-800"
+                  >
+                    <Link href="/pricing">installed.</Link>
+                  </Button>{" "}
+                  Use this button to open the app and login directly.
+                </p>
+              </div>
             </div>
             <Button variant="link" asChild className="px-0 text-primary-800">
               <Link href="/pricing">Subscribe Now</Link>
