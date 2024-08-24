@@ -76,10 +76,12 @@ export default function SignIn() {
           </div>
 
           <div className="mx-auto max-w-sm">
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              handleOAuthSignIn("google");
-              }}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleOAuthSignIn("google");
+              }}
+            >
               <Button
                 type="submit"
                 size="lg"
@@ -90,10 +92,12 @@ export default function SignIn() {
                 <span className="">Sign in with Google</span>
               </Button>
             </form>
-            <form onSubmit={(e) => {
-              e.preventDefault();
-              handleOAuthSignIn("github");
-              }}>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleOAuthSignIn("github");
+              }}
+            >
               <div className="-mx-3 flex flex-wrap">
                 <div className="mt-3 w-full px-3">
                   <Button
