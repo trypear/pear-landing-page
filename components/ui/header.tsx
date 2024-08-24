@@ -1,8 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import {
+  useState,
+  useEffect,
+  ReactNode,
+  forwardRef,
+  ComponentPropsWithoutRef,
+} from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { LogOut, Menu, Settings } from "lucide-react";
 import PearDarkLogo from "./PearDark.svg";
 import { Button } from "@/components/ui/button";
 import {
@@ -32,6 +38,13 @@ import DarkModeToggle from "./darkmode-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { createClient } from "@/utils/supabase/client";
 import { User } from "@supabase/supabase-js";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./dropdown-menu";
 
 const useUser = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -67,13 +80,7 @@ const useScrollDetection = () => {
   return isScrolled;
 };
 
-const NavItem = ({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) => (
+const NavItem = ({ href, children }: { href: string; children: ReactNode }) => (
   <NavigationMenuItem>
     <NavigationMenuLink className={navigationMenuTriggerStyle()} href={href}>
       {children}
@@ -86,7 +93,7 @@ const DropdownNavItem = ({
   children,
 }: {
   trigger: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => (
   <NavigationMenuItem>
     <NavigationMenuTrigger>{trigger}</NavigationMenuTrigger>
@@ -101,25 +108,28 @@ const MobileNavItem = ({
 }: {
   href: string;
   onClick: () => void;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => (
-  <Link
-    href={href}
-    className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-    onClick={onClick}
-  >
-    {children}
-  </Link>
+  <li>
+    <Link
+      href={href}
+      className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground"
+      onClick={onClick}
+    >
+      {children}
+    </Link>
+  </li>
 );
 
-const ListItem = React.forwardRef<
+const ListItem = forwardRef<
   HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"a"> & { title: string }
->(({ className, title, children, ...props }, ref) => (
+  ComponentPropsWithoutRef<"a"> & { title: string; href: string }
+>(({ className, title, children, href, ...props }, ref) => (
   <li>
     <NavigationMenuLink asChild>
-      <a
+      <Link
         ref={ref}
+        href={href}
         className={cn(
           "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
           className,
@@ -130,7 +140,7 @@ const ListItem = React.forwardRef<
         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
           {children}
         </p>
-      </a>
+      </Link>
     </NavigationMenuLink>
   </li>
 ));
@@ -148,182 +158,224 @@ export default function Header() {
         isScrolled && "bg-background backdrop-blur-sm",
       )}
     >
-      <nav
-        className={cn(
-          "mx-auto max-w-6xl rounded-full border border-border/50 bg-background shadow-lg transition-all duration-300 ease-in-out",
-          isScrolled && "bg-background",
-        )}
-      >
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="flex items-center">
-              <Link href="/" className="flex-shrink-0">
-                <PearDarkLogo className="dark:invert" />
-              </Link>
-              <div className="ml-10 hidden md:block">
-                <NavigationMenu>
-                  <NavigationMenuList className="space-x-1">
-                    <NavItem href="/">Home</NavItem>
-                    <DropdownNavItem trigger="Features">
-                      <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                        <li className="row-span-3">
-                          <NavigationMenuLink asChild>
-                            <a
-                              className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                              href="/features"
-                            >
-                              <div className="mb-2 mt-4 text-lg font-medium">
-                                PearAI Features
-                              </div>
-                              <p className="text-sm leading-tight text-muted-foreground">
-                                Discover how PearAI enhances your coding
-                                workflow with AI-powered features.
-                              </p>
-                            </a>
-                          </NavigationMenuLink>
-                        </li>
-                        <ListItem
-                          href="/features/ai-autocomplete"
-                          title="AI Autocomplete"
-                        >
-                          Intelligent code suggestions powered by AI
-                        </ListItem>
-                        <ListItem
-                          href="/features/code-explanation"
-                          title="Code Explanation"
-                        >
-                          Get instant explanations for complex code snippets
-                        </ListItem>
-                        <ListItem
-                          href="/features/refactoring"
-                          title="AI-Assisted Refactoring"
-                        >
-                          Improve your code quality with AI-driven refactoring
-                          suggestions
-                        </ListItem>
-                      </ul>
-                    </DropdownNavItem>
-                    <DropdownNavItem trigger="Resources">
-                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                        <ListItem href="/documentation" title="Documentation">
-                          Learn how to use PearAI effectively
-                        </ListItem>
-                        <ListItem href="/faq" title="FAQ">
-                          Frequently asked questions about PearAI
-                        </ListItem>
-                        <ListItem href="/blog" title="Blog">
-                          Read about the latest PearAI updates and tips
-                        </ListItem>
-                        <ListItem href="/changelog" title="Changelog">
-                          See what&apos;s new in PearAI
-                        </ListItem>
-                      </ul>
-                    </DropdownNavItem>
-                    <NavItem href="/pricing">Pricing</NavItem>
-                  </NavigationMenuList>
-                </NavigationMenu>
-              </div>
-            </div>
-            <div className="hidden items-center space-x-4 md:flex">
-              {user ? (
-                <>
-                  <Avatar>
-                    <AvatarImage src={user.user_metadata.avatar_url} />
-                    <AvatarFallback>
-                      {user?.user_metadata.full_name?.[0] ||
-                        user?.email?.[0] ||
-                        "U"}
-                    </AvatarFallback>
-                  </Avatar>
-                  <Button variant="outline" onClick={handleLogout}>
-                    Logout
-                  </Button>
-                </>
-              ) : (
-                <Link href="/signup">
-                  <Button variant="outline">Try PearAI Free</Button>
+      <div className="mx-auto max-w-6xl">
+        <nav
+          className={cn(
+            "rounded-full border border-border/50 bg-background shadow-lg transition-all duration-300 ease-in-out",
+            isScrolled && "bg-background",
+          )}
+          aria-label="Main navigation"
+        >
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center justify-between">
+              <div className="flex items-center">
+                <Link
+                  href="/"
+                  className="flex-shrink-0"
+                  aria-label="PearAI Home"
+                >
+                  <PearDarkLogo className="dark:invert" />
                 </Link>
-              )}
-              <DarkModeToggle />
-            </div>
-            <div className="md:hidden">
-              <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="rounded-md">
-                    <Menu className="h-6 w-6" />
-                    <span className="sr-only">Toggle menu</span>
-                  </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                  <SheetHeader>
-                    <SheetTitle>PearAI Menu</SheetTitle>
-                  </SheetHeader>
-                  <div className="py-4">
-                    <div className="space-y-1">
-                      <MobileNavItem href="/" onClick={() => setIsOpen(false)}>
-                        Home
-                      </MobileNavItem>
-                      <Accordion type="single" collapsible>
-                        <AccordionItem value="features">
-                          <AccordionTrigger>Features</AccordionTrigger>
-                          <AccordionContent>
-                            <MobileNavItem
-                              href="/features/ai-autocomplete"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              AI Autocomplete
-                            </MobileNavItem>
-                            <MobileNavItem
-                              href="/features/code-explanation"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              Code Explanation
-                            </MobileNavItem>
-                            <MobileNavItem
-                              href="/features/refactoring"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              AI-Assisted Refactoring
-                            </MobileNavItem>
-                          </AccordionContent>
-                        </AccordionItem>
-                        <AccordionItem value="resources">
-                          <AccordionTrigger>Resources</AccordionTrigger>
-                          <AccordionContent>
-                            <MobileNavItem
-                              href="/resources/documentation"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              Documentation
-                            </MobileNavItem>
-                            <MobileNavItem
-                              href="/resources/api"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              API Reference
-                            </MobileNavItem>
-                            <MobileNavItem
-                              href="/resources/blog"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              Blog
-                            </MobileNavItem>
-                            <MobileNavItem
-                              href="/resources/community"
-                              onClick={() => setIsOpen(false)}
-                            >
-                              Community
-                            </MobileNavItem>
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
-                      <MobileNavItem
-                        href="/pricing"
-                        onClick={() => setIsOpen(false)}
+                <nav className="ml-10 hidden md:block" aria-label="Main menu">
+                  <NavigationMenu>
+                    <NavigationMenuList className="space-x-1">
+                      <NavItem href="/">Home</NavItem>
+                      <DropdownNavItem trigger="Features">
+                        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                          <li className="row-span-3">
+                            <NavigationMenuLink asChild>
+                              <Link
+                                className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                                href="/features"
+                              >
+                                <div className="mb-2 mt-4 text-lg font-medium">
+                                  PearAI Features
+                                </div>
+                                <p className="text-sm leading-tight text-muted-foreground">
+                                  Discover how PearAI enhances your coding
+                                  workflow with AI-powered features.
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <ListItem
+                            href="/features/ai-autocomplete"
+                            title="AI Autocomplete"
+                          >
+                            Intelligent code suggestions powered by AI
+                          </ListItem>
+                          <ListItem
+                            href="/features/code-explanation"
+                            title="Code Explanation"
+                          >
+                            Get instant explanations for complex code snippets
+                          </ListItem>
+                          <ListItem
+                            href="/features/refactoring"
+                            title="AI-Assisted Refactoring"
+                          >
+                            Improve your code quality with AI-driven refactoring
+                            suggestions
+                          </ListItem>
+                        </ul>
+                      </DropdownNavItem>
+                      <DropdownNavItem trigger="Resources">
+                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          <ListItem href="/documentation" title="Documentation">
+                            Learn how to use PearAI effectively
+                          </ListItem>
+                          <ListItem href="/faq" title="FAQ">
+                            Frequently asked questions about PearAI
+                          </ListItem>
+                          <ListItem href="/blog" title="Blog">
+                            Read about the latest PearAI updates and tips
+                          </ListItem>
+                          <ListItem href="/changelog" title="Changelog">
+                            See what&apos;s new in PearAI
+                          </ListItem>
+                        </ul>
+                      </DropdownNavItem>
+                      <NavItem href="/pricing">Pricing</NavItem>
+                    </NavigationMenuList>
+                  </NavigationMenu>
+                </nav>
+              </div>
+              <div className="hidden items-center space-x-4 md:flex">
+                {user ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Avatar className="cursor-pointer">
+                        <AvatarImage
+                          src={user.user_metadata.avatar_url}
+                          alt={user.user_metadata.full_name || "User avatar"}
+                        />
+                        <AvatarFallback>
+                          {user?.user_metadata.full_name?.[0] ||
+                            user?.email?.[0] ||
+                            "U"}
+                        </AvatarFallback>
+                      </Avatar>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem>
+                        <span>{user?.user_metadata.full_name || "User"}</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <Link href="/dashboard" className="flex items-center">
+                          <Settings className="mr-2 h-4 w-4" />
+                          <span>Dashboard</span>
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem
+                        onClick={handleLogout}
+                        className="flex cursor-pointer items-center"
                       >
-                        Pricing
-                      </MobileNavItem>
-                    </div>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        <span>Logout</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Link href="/signup">
+                    <Button variant="outline">Try PearAI Free</Button>
+                  </Link>
+                )}
+                <DarkModeToggle />
+              </div>
+              <div className="md:hidden">
+                <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                  <SheetTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="rounded-md"
+                      aria-label="Open menu"
+                    >
+                      <Menu className="h-6 w-6" />
+                    </Button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                    <SheetHeader>
+                      <SheetTitle>PearAI Menu</SheetTitle>
+                    </SheetHeader>
+                    <nav aria-label="Mobile menu">
+                      <ul className="space-y-1">
+                        <MobileNavItem
+                          href="/"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          Home
+                        </MobileNavItem>
+                        <li>
+                          <Accordion type="single" collapsible>
+                            <AccordionItem value="features">
+                              <AccordionTrigger>Features</AccordionTrigger>
+                              <AccordionContent>
+                                <ul>
+                                  <MobileNavItem
+                                    href="/features/ai-autocomplete"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    AI Autocomplete
+                                  </MobileNavItem>
+                                  <MobileNavItem
+                                    href="/features/code-explanation"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    Code Explanation
+                                  </MobileNavItem>
+                                  <MobileNavItem
+                                    href="/features/refactoring"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    AI-Assisted Refactoring
+                                  </MobileNavItem>
+                                </ul>
+                              </AccordionContent>
+                            </AccordionItem>
+                            <AccordionItem value="resources">
+                              <AccordionTrigger>Resources</AccordionTrigger>
+                              <AccordionContent>
+                                <ul>
+                                  <MobileNavItem
+                                    href="/resources/documentation"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    Documentation
+                                  </MobileNavItem>
+                                  <MobileNavItem
+                                    href="/resources/api"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    API Reference
+                                  </MobileNavItem>
+                                  <MobileNavItem
+                                    href="/resources/blog"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    Blog
+                                  </MobileNavItem>
+                                  <MobileNavItem
+                                    href="/resources/community"
+                                    onClick={() => setIsOpen(false)}
+                                  >
+                                    Community
+                                  </MobileNavItem>
+                                </ul>
+                              </AccordionContent>
+                            </AccordionItem>
+                          </Accordion>
+                        </li>
+                        <MobileNavItem
+                          href="/pricing"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          Pricing
+                        </MobileNavItem>
+                      </ul>
+                    </nav>
                     <div className="mt-6 space-y-1">
                       {user ? (
                         <>
@@ -331,6 +383,9 @@ export default function Header() {
                             <Avatar>
                               <AvatarImage
                                 src={user.user_metadata.avatar_url}
+                                alt={
+                                  user.user_metadata.full_name || "User avatar"
+                                }
                               />
                               <AvatarFallback>
                                 {user?.user_metadata.full_name?.[0] ||
@@ -358,13 +413,13 @@ export default function Header() {
                     <div className="mt-6">
                       <DarkModeToggle />
                     </div>
-                  </div>
-                </SheetContent>
-              </Sheet>
+                  </SheetContent>
+                </Sheet>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }
