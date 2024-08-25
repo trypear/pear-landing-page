@@ -38,20 +38,13 @@ export default function Footer() {
         {/* Download Section */}
         <div>
           <h5 className="font-semibold">Download</h5>
-          <div className="w-full max-w-min">
-            <Button asChild className="mt-4 w-full justify-start">
-              <Link href="/pricing">
-                <AppleLogo className="h-4 w-4" />
-                <span>Windows</span>
-              </Link>
-            </Button>
-            <Button asChild className="mt-3 w-full justify-start">
-              <Link href="/pricing">
-                <WindowsLogo className="h-4 w-4" />
-                <span>Mac</span>
-              </Link>
-            </Button>
-          </div>
+          <p className="mt-4 text-base text-neutral-500 dark:text-neutral-400">
+            Download directly from the{" "}
+            <Link href="/pricing" className="text-primary-700">
+              pricing page
+            </Link>
+            .
+          </p>
         </div>
       </div>
 
