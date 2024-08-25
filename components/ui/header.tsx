@@ -9,7 +9,7 @@ import {
 } from "react";
 import Link from "next/link";
 import { LogOut, Menu, Settings } from "lucide-react";
-import PearDarkLogo from "./PearDark.svg";
+import PearGreenLogo from "./PearGreen.svg";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -171,10 +171,11 @@ export default function Header() {
               <div className="flex items-center">
                 <Link
                   href="/"
-                  className="flex-shrink-0"
+                  className="flex flex-shrink-0 items-center"
                   aria-label="PearAI Home"
                 >
-                  <PearDarkLogo className="dark:invert" />
+                  <PearGreenLogo className="dark:invert" />
+                  <div className="h4 ml-2">PearAI</div>
                 </Link>
                 <nav className="ml-10 hidden md:block" aria-label="Main menu">
                   <NavigationMenu>
@@ -404,6 +405,7 @@ export default function Header() {
                           <Button
                             variant="outline"
                             className="bg-transparent text-primary hover:bg-primary/10"
+                            onClick={() => setIsOpen(false)}
                           >
                             Try PearAI Free
                           </Button>
