@@ -20,7 +20,11 @@ const sidebars = {
     "important-shortcuts",
     "codebase-context",
     "common-use-cases",
-    "changelog",
+    {
+      type: "link",
+      label: "📝 Changelog",
+      href: "https://trypear.ai/changelog",
+    },
     "contributors",
   ],
 };
