@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
+import { Tweet } from "@/components/tweet";
 
 type VideoData = {
   src: string;
@@ -67,6 +68,10 @@ const AboutComponent: React.FC = () => {
         </div>
       </div>
 
+      <div className="m-auto flex max-w-4xl items-center justify-center px-4">
+        <Tweet id="1825456010862956844" />
+      </div>
+
       <div className="m-auto mt-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
         {videoData.map((video, index) => (
           <VideoCard key={index} {...video} />
@@ -112,11 +117,11 @@ const AboutComponent: React.FC = () => {
 const CardInfo = ({ children }: { children: React.ReactNode }) => {
   return (
     <div
-      className="rounded-3xl bg-primary-50 pb-3 pl-6 pr-6 pt-3 text-center"
+      className="rounded-3xl bg-primary-50 px-3 py-1 text-center"
       style={{
         border: "1px solid rgba(20, 189, 149, 0.35)",
         background: "rgba(20, 189, 149, 0.03)",
-        color: "#0F745C",
+        color: "#04AE8C",
       }}
     >
       <p>{children}</p>
