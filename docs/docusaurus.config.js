@@ -101,19 +101,6 @@ const config = {
         style: "dark",
         links: [
           {
-            title: "Extensions",
-            items: [
-              {
-                label: "VS Code",
-                to: "https://marketplace.visualstudio.com/items?itemName=PearAI.continue",
-              },
-              {
-                label: "JetBrains",
-                to: "https://plugins.jetbrains.com/plugin/22707-continue-extension",
-              },
-            ],
-          },
-          {
             title: "Community",
             items: [
               {
@@ -164,29 +151,7 @@ const config = {
     [
       "@docusaurus/plugin-client-redirects",
       {
-        redirects: [
-          // Redirects from old docs
-          {
-            from: "/customization",
-            to: "/customization/overview",
-          },
-          {
-            from: "/getting-started",
-            to: "/quickstart",
-          },
-          {
-            from: "/model-setup/overview",
-            to: "/setup/overview",
-          },
-          {
-            from: "/model-setup/select-model",
-            to: "/setup/select-model",
-          },
-          {
-            from: "/model-setup/configuration",
-            to: "/setup/configuration",
-          },
-        ],
+        redirects: [],
       },
     ],
   ],
