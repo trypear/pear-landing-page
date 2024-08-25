@@ -1,7 +1,7 @@
 ---
 title: ⚙️ Core Features
-description: PearAI is the open-source autopilot for software development
-keywords: [core-features, intro, continue, autopilot, chatgpt]
+description: PearAI is the open-source AI code editor to speed up your development
+keywords: [core-features, intro, pearai, continue, cursor, autopilot, chatgpt]
 ---
 
 # ⚙️ Core Features
@@ -45,7 +45,7 @@ keywords: [core-features, intro, continue, autopilot, chatgpt]
 
            To create a custom function for slash commands, use `config.ts` instead of `config.json`. Push a new `SlashCommand` object to the `slashCommands` list, specifying the "name" (used to invoke the command), "description" (appears in the dropdown menu), and "run" (an async generator function that yields strings to be displayed in the UI). Allows for more advanced functionality, such as generating a commit message based on code changes, by writing custom TypeScript code.
 
-            ```ts title="~/.continue/config.ts"
+            ```ts title="~/.pearai/config.ts"
             export function modifyConfig(config: Config): Config {
               config.slashCommands?.push({
                 name: "commit",
