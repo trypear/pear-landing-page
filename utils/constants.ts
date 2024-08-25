@@ -120,8 +120,8 @@ export const footerSections = [
     title: "Product",
     links: [
       {
-        text: "Features",
-        href: "/#features",
+        text: "Documentation",
+        href: "/docs",
       },
       {
         text: "Pricing",

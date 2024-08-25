@@ -2,7 +2,6 @@ import { footerSections, socialMediaLinks } from "@/utils/constants";
 import Link from "next/link";
 import PearDarkLogo from "./ui/PearDark.svg";
 import { Button } from "./ui/button";
-import { AppleLogo, WindowsLogo } from "./ui/icons";
 
 export default function Footer() {
   return (
