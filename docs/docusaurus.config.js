@@ -67,7 +67,7 @@ const config = {
         },
       ],
       // Replace with your project's social card
-      image: "https://trypear.ai/img/continue-social-card.png",
+      image: "img/og-image.png",
       navbar: {
         title: "PearAI",
         logo: {
