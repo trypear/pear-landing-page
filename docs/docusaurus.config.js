@@ -131,7 +131,7 @@ const config = {
             items: [
               {
                 label: "Twitter",
-                to: "https://twitter.com/continuedev",
+                to: "https://x.com/trypearai",
               },
               {
                 label: "LinkedIn",
