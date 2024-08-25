@@ -362,7 +362,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
 
           <footer className="text-center">
             <p className="text-base text-gray-400 sm:text-lg md:text-xl">
-              Want to use Pear in your business?
+              Want to use PearAI in your business?
               <button
                 className="ml-2 font-semibold text-primary-700 transition-colors hover:text-primary-800"
                 aria-label="Contact us for custom plans"
