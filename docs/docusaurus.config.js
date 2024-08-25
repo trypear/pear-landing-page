@@ -72,9 +72,8 @@ const config = {
         title: "PearAI",
         logo: {
           alt: "PearAI Logo",
-          src: "img/logo-dark.png",
+          src: "img/logo.png",
           href: "https://trypear.ai",
-          srcDark: "img/logo.png",
         },
         items: [
           {
