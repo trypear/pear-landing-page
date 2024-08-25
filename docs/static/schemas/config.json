@@ -1,6 +1,6 @@
 {
   "title": "config.json",
-  "$ref": "#/definitions/SerializedContinueConfig",
+  "$ref": "#/definitions/SerializedPearAIConfig",
   "definitions": {
     "BaseCompletionOptions": {
       "title": "BaseCompletionOptions",
@@ -140,7 +140,7 @@
         },
         "noProxy": {
           "title": "No Proxy",
-          "description": "A list of hostnames for which Continue should not use the proxy specified in requestOptions.proxy",
+          "description": "A list of hostnames for which PearAI should not use the proxy specified in requestOptions.proxy",
           "type": "array",
           "items": {
             "type": "string"
@@ -198,7 +198,7 @@
             "### Cohere\nTo use Cohere, visit the [Cohere dashboard](https://dashboard.cohere.com/api-keys) to create an API key.\n\n> [Reference](https://trypear.ai/reference/Model%20Providers/cohere)",
             "### Bedrock\nTo get started with Bedrock you need to sign up on AWS [here](https://aws.amazon.com/bedrock/claude/)",
             "### Together\nTogether is a hosted service that provides extremely fast streaming of open-source language models. To get started with Together:\n1. Obtain an API key from [here](https://together.ai)\n2. Paste below\n3. Select a model preset\n> [Reference](https://trypear.ai/reference/Model%20Providers/togetherllm)",
-            "### Ollama\nTo get started with Ollama, follow these steps:\n1. Download from [ollama.ai](https://ollama.ai/) and open the application\n2. Open a terminal and run `ollama run <MODEL_NAME>`. Example model names are `codellama:7b-instruct` or `llama2:7b-text`. You can find the full list [here](https://ollama.ai/library).\n3. Make sure that the model name used in step 2 is the same as the one in config.json (e.g. `model=\"codellama:7b-instruct\"`)\n4. Once the model has finished downloading, you can start asking questions through Continue.\n> [Reference](https://trypear.ai/reference/Model%20Providers/ollama)",
+            "### Ollama\nTo get started with Ollama, follow these steps:\n1. Download from [ollama.ai](https://ollama.ai/) and open the application\n2. Open a terminal and run `ollama run <MODEL_NAME>`. Example model names are `codellama:7b-instruct` or `llama2:7b-text`. You can find the full list [here](https://ollama.ai/library).\n3. Make sure that the model name used in step 2 is the same as the one in config.json (e.g. `model=\"codellama:7b-instruct\"`)\n4. Once the model has finished downloading, you can start asking questions through PearAI.\n> [Reference](https://trypear.ai/reference/Model%20Providers/ollama)",
             "### Huggingface TGI\n\n> [Reference](https://trypear.ai/reference/Model%20Providers/huggingfacetgi)",
             "### Huggingface Inference API\n\n> [Reference](https://trypear.ai/reference/Model%20Providers/huggingfaceinferenceapi)",
             "### Llama.cpp\nllama.cpp comes with a [built-in server](https://github.com/ggerganov/llama.cpp/tree/master/examples/server#llamacppexampleserver) that can be run from source. To do this:\n\n1. Clone the repository with `git clone https://github.com/ggerganov/llama.cpp`.\n2. `cd llama.cpp`\n3. Run `make` to build the server.\n4. Download the model you'd like to use and place it in the `llama.cpp/models` directory (the best place to find models is [The Bloke on HuggingFace](https://huggingface.co/TheBloke))\n5. Run the llama.cpp server with the command below (replacing with the model you downloaded):\n\n```shell\n.\\server.exe -c 4096 --host 0.0.0.0 -t 16 --mlock -m models/codellama-7b-instruct.Q8_0.gguf\n```\n\nAfter it's up and running, you can start using PearAI.\n> [Reference](https://trypear.ai/reference/Model%20Providers/llamacpp)",
@@ -213,7 +213,7 @@
             "### Cloudflare Workers AI\n\n[Reference](https://developers.cloudflare.com/workers-ai/)",
             "### Deepseek\n Deepseek's API provides the best pricing for their state-of-the-art Deepseek Coder models. To get started, obtain an API key from [their console](https://platform.deepseek.com/api_keys)",
             "### Azure OpenAI\n Azure OpenAI lets you securely run OpenAI's models on Azure. To get started, follow the steps [here](https://trypear.ai/reference/Model%20Providers/azure)",
-            "### Msty\nMsty is the simplest way to get started with online or local LLMs on all desktop platforms - Windows, Mac, and Linux. No fussing around, one-click and you are up and running. To get started, follow these steps:\n1. Download from [Msty.app](https://msty.app/), open the application, and click 'Setup Local AI'.\n2. Go to the Local AI Module page and download a model of your choice.\n3. Once the model has finished downloading, you can start asking questions through Continue.\n> [Reference](https://pearai.dev/docs/reference/Model%20Providers/Msty)",
+            "### Msty\nMsty is the simplest way to get started with online or local LLMs on all desktop platforms - Windows, Mac, and Linux. No fussing around, one-click and you are up and running. To get started, follow these steps:\n1. Download from [Msty.app](https://msty.app/), open the application, and click 'Setup Local AI'.\n2. Go to the Local AI Module page and download a model of your choice.\n3. Once the model has finished downloading, you can start asking questions through PearAI.\n> [Reference](https://pearai.dev/docs/reference/Model%20Providers/Msty)",
             "### WatsonX\nWatsonx, developed by IBM, offers a variety of pre-trained AI foundation models that can be used for natural language processing (NLP), computer vision, and speech recognition tasks."
           ],
           "type": "string"
@@ -264,7 +264,7 @@
         },
         "promptTemplates": {
           "title": "Prompt Templates",
-          "markdownDescription": "A mapping of prompt template name ('edit' is currently the only one used in Continue) to a string giving the prompt template. See [here](https://trypear.ai/model-setup/configuration#customizing-the-edit-prompt) for an example.",
+          "markdownDescription": "A mapping of prompt template name ('edit' is currently the only one used in PearAI) to a string giving the prompt template. See [here](https://trypear.ai/model-setup/configuration#customizing-the-edit-prompt) for an example.",
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -1354,7 +1354,7 @@
                   },
                   "tokenLimit": {
                     "type": "integer",
-                    "markdownDescription": "By default, Continue doesn't let you edit extremely large ranges (beyond 1,200 tokens), because the LLM is unlikely to succeed. But if you would like to override this limit with the understanding of possible failure you may do so here."
+                    "markdownDescription": "By default, PearAI doesn't let you edit extremely large ranges (beyond 1,200 tokens), because the LLM is unlikely to succeed. But if you would like to override this limit with the understanding of possible failure you may do so here."
                   }
                 }
               }
@@ -1878,7 +1878,7 @@
       ],
       "required": ["name"]
     },
-    "SerializedContinueConfig": {
+    "SerializedPearAIConfig": {
       "title": "config.json",
       "type": "object",
       "properties": {
@@ -2346,7 +2346,7 @@
               "default": "posthog",
               "markdownEnumDescriptions": [
                 "### Posthog\nTo use Posthog, set up an account, obtain your client key, and enter it in the client key field.",
-                "### Logstash\nContinue's Logstash integration uses the TCP input at the specified URL"
+                "### Logstash\nPearAI's Logstash integration uses the TCP input at the specified URL"
               ]
             },
             "url": {
