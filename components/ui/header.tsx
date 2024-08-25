@@ -174,7 +174,7 @@ export default function Header() {
                   className="flex flex-shrink-0 items-center"
                   aria-label="PearAI Home"
                 >
-                  <PearGreenLogo className="dark:invert" />
+                  <PearGreenLogo />
                   <div className="h4 ml-2">PearAI</div>
                 </Link>
                 <nav className="ml-10 hidden md:block" aria-label="Main menu">
