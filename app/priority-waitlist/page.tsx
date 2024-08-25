@@ -24,7 +24,8 @@ export default function PriorityWaitlist() {
               able to get off the waitlist immediately.
               <br />
               <br />
-              For a 1st month free coupon, join the{" "}
+              Simply send your email to pear@trypear.ai or directly ping Pan or
+              Nang in our{" "}
               <Link
                 href="https://discord.com/invite/7QMraJUsQt"
                 className="text-link"
@@ -32,8 +33,7 @@ export default function PriorityWaitlist() {
               >
                 Discord
               </Link>
-              , and ping Pan or Nang directly 👀. Please make sure you also
-              signed up on the&nbsp;
+              . Please make sure you&apos;re also signed up on the&nbsp;
               <Link
                 href="https://forms.gle/171UyimgQJhEJbhU7"
                 className="text-link"
