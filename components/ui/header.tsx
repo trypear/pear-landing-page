@@ -8,7 +8,7 @@ import {
   ComponentPropsWithoutRef,
 } from "react";
 import Link from "next/link";
-import { LogOut, Menu, Settings } from "lucide-react";
+import { LogIn, LogOut, Menu, Settings, SquareArrowRight } from "lucide-react";
 import PearGreenLogo from "./PearGreen.svg";
 import { Button } from "@/components/ui/button";
 import {
@@ -45,10 +45,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./dropdown-menu";
+import { Skeleton } from "./skeleton";
+import { useRouter } from "next/navigation";
 
 const useUser = () => {
   const [user, setUser] = useState<User | null>(null);
+  const [ready, setReady] = useState(false);
   const supabase = createClient();
+  const router = useRouter();
 
   useEffect(() => {
     const checkUser = async () => {
@@ -56,16 +60,18 @@ const useUser = () => {
         data: { user },
       } = await supabase.auth.getUser();
       setUser(user);
+      setReady(true);
     };
     checkUser();
   }, [supabase.auth]);
 
-  const handleLogout = async () => {
+  const handleSignout = async () => {
     await supabase.auth.signOut();
     setUser(null);
+    router.push("/signin");
   };
 
-  return { user, handleLogout };
+  return { user, ready, handleSignout };
 };
 
 const useScrollDetection = () => {
@@ -148,7 +154,7 @@ ListItem.displayName = "ListItem";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, handleLogout } = useUser();
+  const { user, ready, handleSignout } = useUser();
   const isScrolled = useScrollDetection();
 
   return (
@@ -161,7 +167,7 @@ export default function Header() {
       <div className="mx-auto max-w-6xl">
         <nav
           className={cn(
-            "rounded-full border border-border/50 bg-background shadow-lg transition-all duration-300 ease-in-out",
+            "rounded-full border border-border/50 bg-background shadow-md transition-all duration-300 ease-in-out",
             isScrolled && "bg-background",
           )}
           aria-label="Main navigation"
@@ -182,7 +188,7 @@ export default function Header() {
                     <NavigationMenuList className="space-x-1">
                       <NavItem href="/">Home</NavItem>
                       <DropdownNavItem trigger="Features">
-                        <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                        <ul className="grid gap-3 bg-background p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                           <li className="row-span-3">
                             <NavigationMenuLink asChild>
                               <Link
@@ -221,8 +227,8 @@ export default function Header() {
                         </ul>
                       </DropdownNavItem>
                       <DropdownNavItem trigger="Resources">
-                        <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                          <ListItem href="/documentation" title="Documentation">
+                        <ul className="grid w-[400px] gap-3 bg-background p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          <ListItem href="/docs" title="Documentation">
                             Learn how to use PearAI effectively
                           </ListItem>
                           <ListItem href="/faq" title="FAQ">
@@ -242,48 +248,57 @@ export default function Header() {
                 </nav>
               </div>
               <div className="hidden items-center space-x-4 md:flex">
-                {user ? (
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Avatar className="cursor-pointer">
-                        <AvatarImage
-                          src={user.user_metadata.avatar_url}
-                          alt={user.user_metadata.full_name || "User avatar"}
-                        />
-                        <AvatarFallback>
-                          {user?.user_metadata.full_name?.[0] ||
-                            user?.email?.[0] ||
-                            "U"}
-                        </AvatarFallback>
-                      </Avatar>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>
-                        <span>{user?.user_metadata.full_name || "User"}</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <Link href="/dashboard" className="flex items-center">
-                          <Settings className="mr-2 h-4 w-4" />
-                          <span>Dashboard</span>
-                        </Link>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem
-                        onClick={handleLogout}
-                        className="flex cursor-pointer items-center"
-                      >
-                        <LogOut className="mr-2 h-4 w-4" />
-                        <span>Logout</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                {!ready ? (
+                  <div className="flex items-center space-x-4">
+                    <Skeleton className="h-8 w-8 rounded-full" />
+                  </div>
                 ) : (
-                  <Link href="/signup">
-                    <Button variant="outline">Try PearAI Free</Button>
-                  </Link>
+                  <>
+                    {user ? (
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Avatar className="h-8 w-8 cursor-pointer">
+                            <AvatarImage
+                              src={user.user_metadata.avatar_url}
+                              alt={
+                                user.user_metadata.full_name || "User avatar"
+                              }
+                            />
+                            <AvatarFallback className="text-xs">
+                              {user?.user_metadata.full_name?.[0] ||
+                                user?.email?.[0] ||
+                                "U"}
+                            </AvatarFallback>
+                          </Avatar>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem>
+                            <Link
+                              href="/dashboard"
+                              className="flex items-center"
+                            >
+                              <Settings className="mr-2 h-4 w-4" />
+                              <span>Dashboard</span>
+                            </Link>
+                          </DropdownMenuItem>
+                          <DropdownMenuSeparator />
+                          <DropdownMenuItem
+                            onClick={handleSignout}
+                            className="flex cursor-pointer items-center"
+                          >
+                            <LogOut className="mr-2 h-4 w-4" />
+                            <span>Sign out</span>
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    ) : (
+                      <Link href="/signup">
+                        <Button variant="outline">Try PearAI</Button>
+                      </Link>
+                    )}
+                    <DarkModeToggle />
+                  </>
                 )}
-                <DarkModeToggle />
               </div>
               <div className="md:hidden">
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -297,24 +312,31 @@ export default function Header() {
                       <Menu className="h-6 w-6" />
                     </Button>
                   </SheetTrigger>
-                  <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                    <SheetHeader>
-                      <SheetTitle>PearAI Menu</SheetTitle>
-                    </SheetHeader>
-                    <nav aria-label="Mobile menu">
-                      <ul className="space-y-1">
-                        <MobileNavItem
-                          href="/"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          Home
-                        </MobileNavItem>
-                        <li>
-                          <Accordion type="single" collapsible>
+                  <SheetContent
+                    side="right"
+                    className="flex w-[300px] flex-col justify-between sm:w-[400px]"
+                  >
+                    <div>
+                      <SheetHeader className="mb-4">
+                        <SheetTitle>PearAI Menu</SheetTitle>
+                      </SheetHeader>
+                      <nav aria-label="Mobile menu">
+                        <ul className="space-y-1">
+                          <MobileNavItem
+                            href="/"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            Home
+                          </MobileNavItem>
+                          <Accordion
+                            type="single"
+                            collapsible
+                            className="w-full"
+                          >
                             <AccordionItem value="features">
                               <AccordionTrigger>Features</AccordionTrigger>
                               <AccordionContent>
-                                <ul>
+                                <ul className="ml-4 space-y-1">
                                   <MobileNavItem
                                     href="/features/ai-autocomplete"
                                     onClick={() => setIsOpen(false)}
@@ -339,7 +361,7 @@ export default function Header() {
                             <AccordionItem value="resources">
                               <AccordionTrigger>Resources</AccordionTrigger>
                               <AccordionContent>
-                                <ul>
+                                <ul className="ml-4 space-y-1">
                                   <MobileNavItem
                                     href="/resources/documentation"
                                     onClick={() => setIsOpen(false)}
@@ -368,52 +390,67 @@ export default function Header() {
                               </AccordionContent>
                             </AccordionItem>
                           </Accordion>
-                        </li>
-                        <MobileNavItem
-                          href="/pricing"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          Pricing
-                        </MobileNavItem>
-                      </ul>
-                    </nav>
-                    <div className="mt-6 space-y-1">
+                          <MobileNavItem
+                            href="/pricing"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            Pricing
+                          </MobileNavItem>
+                        </ul>
+                      </nav>
+                    </div>
+                    <div className="space-y-4 pb-6">
                       {user ? (
                         <>
-                          <div className="mb-2 flex items-center space-x-2">
-                            <Avatar>
-                              <AvatarImage
-                                src={user.user_metadata.avatar_url}
-                                alt={
-                                  user.user_metadata.full_name || "User avatar"
-                                }
-                              />
-                              <AvatarFallback>
-                                {user?.user_metadata.full_name?.[0] ||
-                                  user?.email?.[0] ||
-                                  "U"}
-                              </AvatarFallback>
-                            </Avatar>
-                            <span>{user.email}</span>
-                          </div>
-                          <Button variant="outline" onClick={handleLogout}>
-                            Logout
+                          <Link
+                            href="/dashboard"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            <Button
+                              variant="outline"
+                              className="w-full justify-start"
+                            >
+                              <Settings className="mr-2 h-4 w-4" />
+                              Dashboard
+                            </Button>
+                          </Link>
+                          <Button
+                            variant="outline"
+                            className="w-full justify-start"
+                            onClick={() => {
+                              handleSignout();
+                              setIsOpen(false);
+                            }}
+                          >
+                            <LogOut className="mr-2 h-4 w-4" />
+                            Sign out
                           </Button>
                         </>
                       ) : (
-                        <Link href="/signup">
-                          <Button
-                            variant="outline"
-                            className="bg-transparent text-primary hover:bg-primary/10"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            Try PearAI Free
-                          </Button>
-                        </Link>
+                        <>
+                          <Link href="/signin" onClick={() => setIsOpen(false)}>
+                            <Button
+                              variant="outline"
+                              className="w-full justify-start"
+                            >
+                              <LogIn className="mr-2 h-4 w-4" />
+                              Sign in
+                            </Button>
+                          </Link>
+                          <Link href="/signup" onClick={() => setIsOpen(false)}>
+                            <Button
+                              variant="outline"
+                              className="mt-4 w-full justify-start"
+                            >
+                              <SquareArrowRight className="mr-2 h-4 w-4" />
+                              Try PearAI
+                            </Button>
+                          </Link>
+                        </>
                       )}
-                    </div>
-                    <div className="mt-6">
-                      <DarkModeToggle />
+                      <div className="flex justify-end">
+                        <DarkModeToggle />
+                      </div>
                     </div>
                   </SheetContent>
                 </Sheet>
