@@ -23,6 +23,7 @@ import {
 import { useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
+import { Info } from "lucide-react";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
@@ -153,13 +154,27 @@ export default function SubscriptionCard({
           </div>
           <div className="mt-8 flex justify-between space-x-4">
             <div className="hidden sm:block">
-              <Button variant="outline" asChild>
+              <Button variant="outline" className="text-primary-800" asChild>
                 <Link
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
                 >
                   Open PearAI
                 </Link>
               </Button>
+              <div className="mt-1 flex items-center">
+                <Info className="inline text-muted-foreground" size={14} />
+                <p className="ml-1.5 block text-xs text-muted-foreground">
+                  Make sure PearAI is{" "}
+                  <Button
+                    variant="link"
+                    asChild
+                    className="p-0 text-xs text-primary-800"
+                  >
+                    <Link href="/pricing">installed.</Link>
+                  </Button>{" "}
+                  Use this button to open the app and login directly.
+                </p>
+              </div>
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>

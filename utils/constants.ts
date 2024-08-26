@@ -1,5 +1,6 @@
 import { PricingTierData } from "@/types/pricing";
 import { FAQItem } from "@/types/faqItems";
+import { DiscordLogo, GitHubLogo, LinkedInLogo } from "@/components/ui/icons";
 
 export const TEST_MODE_ENABLED = ["true", "True", "TRUE"].includes(
   process.env.NEXT_PUBLIC_TEST_MODE_ENABLED ?? "",
@@ -45,11 +46,11 @@ export const PRICING_TIERS: PricingTierData[] = [
     description:
       "Get the monthly subscription, and we'll take care of you... 😎",
     features: [
-      "1000 chat + autocomplete requests per month (Claude 3.5 Sonnet + GPT4o)",
+      "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
       "Direct customer support by the founders and contributors",
       "Private Discord channel",
     ],
-    buttonText: "Get Started for Free",
+    buttonText: "Get Started",
     priceId: STRIPE_PRICE_IDS.MONTHLY,
     index: 1,
   },
@@ -64,7 +65,7 @@ export const PRICING_TIERS: PricingTierData[] = [
       "Zero data retention from Claude",
       "Priority for new feature requests",
     ],
-    buttonText: "Get Started for Free",
+    buttonText: "Get Started",
     priceId: STRIPE_PRICE_IDS.ANNUAL,
     index: 2,
   },
@@ -94,5 +95,74 @@ export const faqData: FAQItem[] = [
     question: "Is PearAI an extension or an app?",
     answer:
       "PearAI is an app and requires you to download it. Being a VSCode extension severely limits the modifications we can do. In order to provide the best UX possible, we need full control of code changes within the app.",
+  },
+];
+
+export const footerSections = [
+  {
+    title: "Company",
+    links: [
+      {
+        text: "About Us",
+        href: "/about",
+      },
+      {
+        text: "Contact",
+        href: "mailto:pear@trypear.ai",
+      },
+      {
+        text: "Priority Waitlist",
+        href: "/priority-waitlist",
+      },
+    ],
+  },
+  {
+    title: "Product",
+    links: [
+      {
+        text: "Documentation",
+        href: "/docs",
+      },
+      {
+        text: "Pricing",
+        href: "/pricing",
+      },
+      {
+        text: "Changelog",
+        href: "/changelog",
+      },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      {
+        text: "FAQ",
+        href: "/faq",
+      },
+      {
+        text: "Privacy Policy",
+        href: "/privacy",
+      },
+      {
+        text: "Terms of Service",
+        href: "/terms-of-service",
+      },
+    ],
+  },
+];
+
+export const socialMediaLinks = [
+  {
+    icon: GitHubLogo,
+    link: "https://github.com/trypear/pearai-app",
+  },
+  {
+    icon: DiscordLogo,
+    link: "https://discord.gg/AKy5FmqCkF",
+  },
+  {
+    icon: LinkedInLogo,
+    link: "https://www.linkedin.com/company/trypearai",
   },
 ];

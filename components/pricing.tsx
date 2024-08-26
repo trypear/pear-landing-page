@@ -29,7 +29,7 @@ const SUPPORTED_OS: SupportedOS[] = [
   {
     name: "Download for Mac OS",
     os: "darwin-arm64",
-    chip: "Apple silicon",
+    chip: "Apple silicon (M chip)",
   },
   {
     name: "Download for Mac OS",
@@ -183,7 +183,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
             </div>
           )}
           {isFree && (
-            <p className="text-sm text-gray-600 sm:text-base">
+            <p className="text-sm text-gray-600">
               <Link
                 href="https://forms.gle/171UyimgQJhEJbhU7"
                 className="text-link hover:underline"
@@ -192,7 +192,8 @@ const PricingTier: React.FC<PricingTierProps> = ({
               >
                 Join the waitlist
               </Link>{" "}
-              to be notified when the app is available!
+              to be notified when the app is available! If you&apos;re already
+              off the waitlist, make sure you&apos;re signed in 👀
             </p>
           )}
           <div className="mt-6">
@@ -361,7 +362,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
 
           <footer className="text-center">
             <p className="text-base text-gray-400 sm:text-lg md:text-xl">
-              Want to use Pear in your business?
+              Want to use PearAI in your business?
               <button
                 className="ml-2 font-semibold text-primary-700 transition-colors hover:text-primary-800"
                 aria-label="Contact us for custom plans"

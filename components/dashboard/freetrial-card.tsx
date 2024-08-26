@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Info } from "lucide-react";
 
 type FreeTrialCardProps = {
   usage: {
@@ -39,17 +40,19 @@ export default function FreeTrialCard({
             <div className="flex justify-between">
               <p className="font-medium">Requests</p>
               <p className="text-muted-foreground">
-                {usage.used_quota} / {usage.max_quota || 30}
+                {usage.used_quota ?? 0} / {usage.max_quota || 30}
               </p>
             </div>
             <Progress
-              value={(usage.used_quota! / (usage.max_quota! || 30)) * 100}
+              value={
+                ((usage.used_quota ?? 0)! / (usage.max_quota! || 30)) * 100
+              }
               className="mb-2 mt-2 h-2 w-full"
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm text-muted-foreground">
-              You&apos;ve used {usage.used_quota} requests out of your{" "}
-              <span className="font-medium">{usage.max_quota || 30}</span> fast
+              You&apos;ve used {usage.used_quota ?? 0} requests out of your{" "}
+              <span className="font-medium">{usage.max_quota || 30}</span>{" "}
               requests quota for your free trial.
             </p>
           </div>
@@ -61,13 +64,27 @@ export default function FreeTrialCard({
           </div>
           <div className="mt-8 flex justify-between space-x-4">
             <div className="hidden sm:block">
-              <Button variant="outline" asChild>
+              <Button variant="outline" className="text-primary-800" asChild>
                 <Link
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
                 >
                   Open PearAI
                 </Link>
               </Button>
+              <div className="mt-1 flex items-center">
+                <Info className="inline text-muted-foreground" size={14} />
+                <p className="ml-1.5 block text-xs text-muted-foreground">
+                  Make sure PearAI is{" "}
+                  <Button
+                    variant="link"
+                    asChild
+                    className="p-0 text-xs text-primary-800"
+                  >
+                    <Link href="/pricing">installed.</Link>
+                  </Button>{" "}
+                  Use this button to open the app and login directly.
+                </p>
+              </div>
             </div>
             <Button variant="link" asChild className="px-0 text-primary-800">
               <Link href="/pricing">Subscribe Now</Link>
