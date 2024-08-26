@@ -1,5 +1,6 @@
 import { PricingTierData } from "@/types/pricing";
 import { FAQItem } from "@/types/faqItems";
+import { DiscordLogo, GitHubLogo, LinkedInLogo } from "@/components/ui/icons";
 
 export const TEST_MODE_ENABLED = ["true", "True", "TRUE"].includes(
   process.env.NEXT_PUBLIC_TEST_MODE_ENABLED ?? "",
@@ -10,10 +11,10 @@ export const CONTACT_EMAIL = "pear@trypear.ai";
 const NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID = "price_1PZ9X608N4O93LU5yqMbGDtu";
 const NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID_TEST =
   "price_1PZUT208N4O93LU5jItKoEYu";
-const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID = "price_1PZ9Lc08N4O93LU5wVOq1Pv7";
+const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID = "price_1PoZiZ08N4O93LU5kCrdrXvI";
 const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST =
-  "price_1PZUPg08N4O93LU5M8u2GimE";
-const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID = "price_1PZ9Sq08N4O93LU51Ugvig0y";
+  "price_1Ppa9408N4O93LU5irNxLp5p";
+const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID = "price_1PpZUO08N4O93LU5FYFUyh43";
 const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST =
   "price_1PZUSi08N4O93LU5UVdlkfp2";
 
@@ -31,32 +32,42 @@ export const STRIPE_PRICE_IDS = {
 
 export const PRICING_TIERS: PricingTierData[] = [
   {
-    title: "Intern (Free)",
+    title: "Intern",
     price: "0",
     description:
-      "You can download PearAI directly, and use your own API key 🤓",
+      "You can download PearAI directly, and use our free trial, or your own API key 🤓",
     isFree: true,
+    index: 0,
   },
   {
-    title: "Junior Engineer (Monthly)",
-    price: "18",
+    title: "Junior Engineer",
+    price: "15",
+    prevPrice: "18",
     description:
       "Get the monthly subscription, and we'll take care of you... 😎",
     features: [
-      "1000 chat + autocomplete requests per month (Claude 3.5 Sonnet + GPT4o)",
+      "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
       "Direct customer support by the founders and contributors",
       "Private Discord channel",
     ],
     buttonText: "Get Started",
     priceId: STRIPE_PRICE_IDS.MONTHLY,
+    index: 1,
   },
   {
-    title: "10x Engineer (Yearly)",
-    price: "14",
-    description: "Pay one lump sum yearly, and you'll be our VIP! 🤩",
-    features: ["Everything from monthly", "Priority for new feature requests"],
+    title: "10x Engineer",
+    price: "10",
+    prevPrice: "14",
+    description:
+      "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
+    features: [
+      "Everything from monthly",
+      "Zero data retention from Claude",
+      "Priority for new feature requests",
+    ],
     buttonText: "Get Started",
     priceId: STRIPE_PRICE_IDS.ANNUAL,
+    index: 2,
   },
 ];
 
@@ -84,5 +95,74 @@ export const faqData: FAQItem[] = [
     question: "Is PearAI an extension or an app?",
     answer:
       "PearAI is an app and requires you to download it. Being a VSCode extension severely limits the modifications we can do. In order to provide the best UX possible, we need full control of code changes within the app.",
+  },
+];
+
+export const footerSections = [
+  {
+    title: "Company",
+    links: [
+      {
+        text: "About Us",
+        href: "/about",
+      },
+      {
+        text: "Contact",
+        href: "mailto:pear@trypear.ai",
+      },
+      {
+        text: "Priority Waitlist",
+        href: "/priority-waitlist",
+      },
+    ],
+  },
+  {
+    title: "Product",
+    links: [
+      {
+        text: "Documentation",
+        href: "/docs",
+      },
+      {
+        text: "Pricing",
+        href: "/pricing",
+      },
+      {
+        text: "Changelog",
+        href: "/changelog",
+      },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      {
+        text: "FAQ",
+        href: "/faq",
+      },
+      {
+        text: "Privacy Policy",
+        href: "/privacy",
+      },
+      {
+        text: "Terms of Service",
+        href: "/terms-of-service",
+      },
+    ],
+  },
+];
+
+export const socialMediaLinks = [
+  {
+    icon: GitHubLogo,
+    link: "https://github.com/trypear/pearai-app",
+  },
+  {
+    icon: DiscordLogo,
+    link: "https://discord.gg/AKy5FmqCkF",
+  },
+  {
+    icon: LinkedInLogo,
+    link: "https://www.linkedin.com/company/trypearai",
   },
 ];

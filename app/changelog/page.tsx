@@ -12,8 +12,10 @@ export const metadata: Metadata = constructMetadata({
 const ChangeLog: React.FC = () => {
   return (
     <div className="mx-2 px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
-      <div className="mx-auto min-h-screen pt-24 lg:w-4/6 lg:py-32">
-        <h1 className="mb-6 text-xl font-bold tracking-wide">Change Logs</h1>
+      <div className="mx-auto min-h-screen pt-8 lg:py-32 lg:pt-28 xl:max-w-5xl">
+        <h1 className="mb-10 text-center text-3xl font-semibold text-primary-700 md:mb-16 lg:text-4xl">
+          Change Logs
+        </h1>
         <main>
           <section>
             {/* <!-- Timeline --> */}

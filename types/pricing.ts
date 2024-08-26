@@ -3,6 +3,7 @@ import { User } from "@supabase/supabase-js";
 export interface PricingTierProps {
   title: string;
   price: string;
+  prevPrice?: string;
   description: string;
   features?: string[];
   buttonText?: string;
@@ -11,6 +12,7 @@ export interface PricingTierProps {
   user: User | null;
   waitlistAccess?: boolean;
   isWaitlistInfoLoading?: boolean;
+  index: number;
 }
 
 export interface PricingPageProps {

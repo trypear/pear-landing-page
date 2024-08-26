@@ -18,16 +18,16 @@ export const metadata: Metadata = constructMetadata({
 const FAQ: React.FC = () => {
   return (
     <>
-      <section className="mx-auto mt-10 flex w-full max-w-screen-lg flex-col gap-4 px-4 py-8 lg:px-8 lg:py-12">
-        <div className="mb-4">
+      <section className="mx-auto mt-10 flex w-full flex-col items-center px-4 py-8 sm:px-8 md:px-16 lg:px-24 lg:py-20 xl:px-32">
+        <div className="mb-8 text-center">
           <h2
-            className="whitespace-pre-line text-2xl font-medium text-primary-700 lg:text-4xl"
+            className="mb-4 whitespace-pre-line text-3xl font-bold text-primary-700 lg:text-5xl"
             data-aos="fade-up"
           >
             Frequently Asked Questions
           </h2>
           <p
-            className="whitespace-pre-line text-base text-gray-600 lg:text-base"
+            className="whitespace-pre-line text-lg text-gray-600 lg:text-xl"
             data-aos="fade-up"
           >
             Can&apos;t find the answer you&apos;re looking for? Ask us directly
@@ -43,22 +43,26 @@ const FAQ: React.FC = () => {
             .
           </p>
         </div>
-        <Accordion type="single" collapsible>
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full max-w-3xl space-y-4 px-4 sm:px-6 md:px-8 lg:px-10"
+        >
           {faqData.map((item, index) => (
             <AccordionItem key={index} value={String(index + 1)}>
-              <AccordionTrigger className="text-left font-semibold">
+              <AccordionTrigger className="text-left text-xl font-semibold">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="whitespace-pre-line text-base text-gray-600">
+              <AccordionContent className="whitespace-pre-line text-lg text-gray-600">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
           ))}
           <AccordionItem value={"contribute"}>
-            <AccordionTrigger className="text-left font-semibold">
-              How can I contribute to PearAI
+            <AccordionTrigger className="text-left text-xl font-semibold">
+              How can I contribute to PearAI?
             </AccordionTrigger>
-            <AccordionContent className="text-base text-gray-600">
+            <AccordionContent className="text-lg text-gray-600">
               See the contributor&apos;s section.{" "}
               <Link
                 rel="noopener noreferrer"
