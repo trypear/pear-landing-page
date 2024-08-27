@@ -53,27 +53,40 @@ import { MoonStar, Sun } from "lucide-react";
 const useUser = () => {
   const [user, setUser] = useState<User | null>(null);
   const [ready, setReady] = useState(false);
-  const supabase = createClient();
   const router = useRouter();
+  const supabase = createClient();
 
   useEffect(() => {
-    const checkUser = async () => {
+    const fetchUser = async () => {
       const {
         data: { user },
       } = await supabase.auth.getUser();
       setUser(user);
       setReady(true);
     };
-    checkUser();
+
+    fetchUser();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === "SIGNED_IN" && session) {
+        setUser(session.user);
+      } else if (event === "SIGNED_OUT") {
+        setUser(null);
+      }
+      setReady(true);
+    });
+
+    return () => subscription.unsubscribe();
   }, [supabase.auth]);
 
-  const handleSignout = async () => {
+  const handleSignOut = async () => {
     await supabase.auth.signOut();
-    setUser(null);
     router.push("/signin");
   };
 
-  return { user, ready, handleSignout };
+  return { user, ready, handleSignOut };
 };
 
 const useScrollDetection = () => {
@@ -139,7 +152,7 @@ const ListItem = forwardRef<
         ref={ref}
         href={href}
         className={cn(
-          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-secondary-300/10 hover:text-accent-foreground focus:bg-secondary-300/10 focus:text-accent-foreground",
           className,
         )}
         {...props}
@@ -157,14 +170,13 @@ ListItem.displayName = "ListItem";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const { user, ready, handleSignout } = useUser();
+  const { user, ready, handleSignOut } = useUser();
   const isScrolled = useScrollDetection();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
-
   return (
     <header
       className={cn(
@@ -194,46 +206,6 @@ export default function Header() {
                 <nav className="ml-10 hidden md:block" aria-label="Main menu">
                   <NavigationMenu>
                     <NavigationMenuList className="space-x-1">
-                      <NavItem href="/">Home</NavItem>
-                      <DropdownNavItem trigger="Features">
-                        <ul className="grid gap-3 bg-background p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                          <li className="row-span-3">
-                            <NavigationMenuLink asChild>
-                              <Link
-                                className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                                href="/features"
-                              >
-                                <div className="mb-2 mt-4 text-lg font-medium">
-                                  PearAI Features
-                                </div>
-                                <p className="text-sm leading-tight text-muted-foreground">
-                                  Discover how PearAI enhances your coding
-                                  workflow with AI-powered features.
-                                </p>
-                              </Link>
-                            </NavigationMenuLink>
-                          </li>
-                          <ListItem
-                            href="/features/ai-autocomplete"
-                            title="AI Autocomplete"
-                          >
-                            Intelligent code suggestions powered by AI
-                          </ListItem>
-                          <ListItem
-                            href="/features/code-explanation"
-                            title="Code Explanation"
-                          >
-                            Get instant explanations for complex code snippets
-                          </ListItem>
-                          <ListItem
-                            href="/features/refactoring"
-                            title="AI-Assisted Refactoring"
-                          >
-                            Improve your code quality with AI-driven refactoring
-                            suggestions
-                          </ListItem>
-                        </ul>
-                      </DropdownNavItem>
                       <DropdownNavItem trigger="Resources">
                         <ul className="grid w-[400px] gap-3 bg-background p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                           <ListItem href="/docs" title="Documentation">
@@ -242,11 +214,11 @@ export default function Header() {
                           <ListItem href="/faq" title="FAQ">
                             Frequently asked questions about PearAI
                           </ListItem>
-                          <ListItem href="/blog" title="Blog">
-                            Read about the latest PearAI updates and tips
-                          </ListItem>
                           <ListItem href="/changelog" title="Changelog">
                             See what&apos;s new in PearAI
+                          </ListItem>
+                          <ListItem href="/about" title="About">
+                            Learn more about PearAI
                           </ListItem>
                         </ul>
                       </DropdownNavItem>
@@ -283,7 +255,7 @@ export default function Header() {
                           className="border border-border/50 bg-background"
                           align="end"
                         >
-                          <DropdownMenuItem className="focus:bg-accent">
+                          <DropdownMenuItem className="focus:bg-secondary-300/10">
                             <Link
                               href="/dashboard"
                               className="flex items-center"
@@ -294,8 +266,8 @@ export default function Header() {
                           </DropdownMenuItem>
                           <DropdownMenuSeparator />
                           <DropdownMenuItem
-                            onClick={handleSignout}
-                            className="flex cursor-pointer items-center focus:bg-accent"
+                            onClick={handleSignOut}
+                            className="flex cursor-pointer items-center focus:bg-secondary-300/10"
                           >
                             <LogOut className="mr-2 h-4 w-4" />
                             <span>Sign out</span>
@@ -307,7 +279,7 @@ export default function Header() {
                         <Button variant="outline">Try PearAI</Button>
                       </Link>
                     )}
-                    <DarkModeToggle />
+                    {mounted && <DarkModeToggle />}
                   </>
                 )}
               </div>
@@ -352,7 +324,7 @@ export default function Header() {
                                   variant="outline"
                                   className="w-full justify-start"
                                   onClick={() => {
-                                    handleSignout();
+                                    handleSignOut();
                                     setIsOpen(false);
                                   }}
                                 >
@@ -390,85 +362,54 @@ export default function Header() {
                             )}
                           </div>
                           <MobileNavItem
-                            href="/"
+                            href="/pricing"
                             onClick={() => setIsOpen(false)}
                           >
-                            Home
+                            Pricing
                           </MobileNavItem>
                           <Accordion
                             type="single"
                             collapsible
                             className="w-full"
                           >
-                            <AccordionItem value="features">
-                              <AccordionTrigger>Features</AccordionTrigger>
-                              <AccordionContent>
-                                <ul className="ml-4 space-y-1">
-                                  <MobileNavItem
-                                    href="/features/ai-autocomplete"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    AI Autocomplete
-                                  </MobileNavItem>
-                                  <MobileNavItem
-                                    href="/features/code-explanation"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    Code Explanation
-                                  </MobileNavItem>
-                                  <MobileNavItem
-                                    href="/features/refactoring"
-                                    onClick={() => setIsOpen(false)}
-                                  >
-                                    AI-Assisted Refactoring
-                                  </MobileNavItem>
-                                </ul>
-                              </AccordionContent>
-                            </AccordionItem>
                             <AccordionItem value="resources">
                               <AccordionTrigger>Resources</AccordionTrigger>
                               <AccordionContent>
                                 <ul className="ml-4 space-y-1">
                                   <MobileNavItem
-                                    href="/resources/documentation"
+                                    href="/docs"
                                     onClick={() => setIsOpen(false)}
                                   >
                                     Documentation
                                   </MobileNavItem>
                                   <MobileNavItem
-                                    href="/resources/api"
+                                    href="/faq"
                                     onClick={() => setIsOpen(false)}
                                   >
-                                    API Reference
+                                    FAQ
                                   </MobileNavItem>
                                   <MobileNavItem
-                                    href="/resources/blog"
+                                    href="/changelog"
                                     onClick={() => setIsOpen(false)}
                                   >
-                                    Blog
+                                    Changelog
                                   </MobileNavItem>
                                   <MobileNavItem
-                                    href="/resources/community"
+                                    href="/about"
                                     onClick={() => setIsOpen(false)}
                                   >
-                                    Community
+                                    About
                                   </MobileNavItem>
                                 </ul>
                               </AccordionContent>
                             </AccordionItem>
                           </Accordion>
-                          <MobileNavItem
-                            href="/pricing"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            Pricing
-                          </MobileNavItem>
                         </ul>
                       </nav>
                     </div>
                     <div className="width-full space-y-4 pb-6">
                       <div className="width-full">
-                        {mounted ? (
+                        {mounted && (
                           <Button
                             variant="outline"
                             className="w-full justify-center"
@@ -488,7 +429,7 @@ export default function Header() {
                               </>
                             )}
                           </Button>
-                        ) : null}
+                        )}
                       </div>
                     </div>
                   </SheetContent>
