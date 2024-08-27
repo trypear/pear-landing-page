@@ -61,12 +61,6 @@ const Navigation: React.FC = () => {
       mobile: false,
     },
     {
-      label: "Priority Waitlist",
-      path: "/priority-waitlist",
-      isExternal: false,
-      mobile: false,
-    },
-    {
       label: "FAQ",
       path: "/faq",
       isExternal: false,
