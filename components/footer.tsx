@@ -1,83 +1,73 @@
+import { footerSections, socialMediaLinks } from "@/utils/constants";
 import Link from "next/link";
+import PearDarkLogo from "./ui/PearDark.svg";
+import { Button } from "./ui/button";
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="py-12 md:py-16">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="flex flex-col-reverse md:flex-row md:justify-between">
-            {/* Left side - privacy, tos, copyright */}
-            <div className="md:col-span-4 lg:col-span-5">
-              <div className="mb-2 flex items-center">
-                <Link
-                  href="/faq"
-                  className="ml-3 hover:text-gray-500"
-                  aria-label="Privacy policy"
-                >
-                  FAQ
-                </Link>
-                <Link
-                  href="/privacy"
-                  className="ml-3 hover:text-gray-500"
-                  aria-label="Privacy policy"
-                >
-                  Privacy Policy
-                </Link>
-                <Link
-                  href="/terms-of-service"
-                  className="ml-4 hover:text-gray-500"
-                  aria-label="Terms of service"
-                >
-                  Terms of Service
-                </Link>
-              </div>
-              <div className="ml-3 mr-4 mt-4 text-sm text-gray-600 md:mt-0">
-                &copy; Pear AI - All rights reserved.
-              </div>
-            </div>
-            {/* Right side - social links */}
-            <ul className="mb-4 mt-2 flex md:order-1 md:mb-0 md:ml-4 md:mt-0">
-              <li className="ml-3">
-                <Link
-                  href="https://github.com/orgs/trypear/repositories"
-                  target="_blank"
-                  className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
-                  aria-label="Github"
-                >
-                  GitHub
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link
-                  href="https://discord.gg/7QMraJUsQt"
-                  target="_blank"
-                  className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
-                  aria-label="Discord"
-                >
-                  Discord
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link
-                  href="/changelog"
-                  className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
-                  aria-label="About"
-                >
-                  Changelog
-                </Link>
-              </li>
-              <li className="ml-4">
-                <Link
-                  href="/about"
-                  className="flex items-center justify-center text-gray-800 transition duration-150 ease-in-out hover:text-gray-500"
-                  aria-label="About"
-                >
-                  About
-                </Link>
-              </li>
+    <footer className="mx-auto w-full max-w-screen-xl px-4 pt-20 sm:px-6">
+      <div className="grid grid-cols-2 gap-x-2 gap-y-8 pb-12 sm:grid-cols-4 sm:gap-6 xl:grid-cols-6">
+        {/* Logo and tagline */}
+        <div className="col-span-full mb-2 sm:mb-8 xl:col-span-2 xl:mb-0">
+          <Link className="-ml-1 inline-block dark:invert" href="/">
+            <PearDarkLogo />
+          </Link>
+          <p className="mt-5 leading-[1.75] text-neutral-500 dark:text-neutral-400">
+            Speed up your development process by seamlessly integrating AI into
+            your workflow.
+          </p>
+        </div>
+
+        {/* Sections with links */}
+        {footerSections.map(({ title, links }, idx) => (
+          <div key={idx}>
+            <h5 className="font-semibold">{title}</h5>
+            <ul className="mt-4 space-y-2 text-neutral-500 dark:text-neutral-400">
+              {links.map(({ text, href }, idx) => (
+                <li key={idx}>
+                  <Link href={href} className="hover:text-primary-600">
+                    {text}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+        ))}
+
+        {/* Download Section */}
+        <div>
+          <h5 className="font-semibold">Download</h5>
+          <p className="mt-4 text-base text-neutral-500 dark:text-neutral-400">
+            Download directly from the{" "}
+            <Link href="/pricing" className="text-primary-700">
+              pricing page
+            </Link>
+            .
+          </p>
         </div>
+      </div>
+
+      <div className="flex flex-col items-center justify-between gap-2.5 border-t py-3.5 text-neutral-500 dark:text-neutral-400 sm:flex-row-reverse">
+        {/* Social media links */}
+        <div className="-mr-2 flex items-center gap-1">
+          {socialMediaLinks.map(({ icon: Icon, link }) => (
+            <Button
+              key={link}
+              variant="ghost"
+              size="icon"
+              className="rounded-full"
+            >
+              <Link href={link} target="_blank" rel="noopener noreferrer">
+                <Icon className="h-5 w-5" />
+              </Link>
+            </Button>
+          ))}
+        </div>
+
+        {/* Copyright */}
+        <span>
+          &copy; {new Date().getFullYear()} PearAI - All rights reserved.
+        </span>
       </div>
     </footer>
   );
