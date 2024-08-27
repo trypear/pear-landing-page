@@ -47,6 +47,8 @@ import {
 } from "./dropdown-menu";
 import { Skeleton } from "./skeleton";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
+import { MoonStar, Sun } from "lucide-react";
 
 const useUser = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -119,7 +121,7 @@ const MobileNavItem = ({
   <li>
     <Link
       href={href}
-      className="block rounded-md px-3 py-2 text-base font-medium text-muted-foreground"
+      className="block rounded-md py-4 text-base font-medium text-foreground"
       onClick={onClick}
     >
       {children}
@@ -154,8 +156,14 @@ ListItem.displayName = "ListItem";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const { user, ready, handleSignout } = useUser();
   const isScrolled = useScrollDetection();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header
@@ -271,8 +279,11 @@ export default function Header() {
                             </AvatarFallback>
                           </Avatar>
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem>
+                        <DropdownMenuContent
+                          className="border border-border/50 bg-background"
+                          align="end"
+                        >
+                          <DropdownMenuItem className="focus:bg-accent">
                             <Link
                               href="/dashboard"
                               className="flex items-center"
@@ -284,7 +295,7 @@ export default function Header() {
                           <DropdownMenuSeparator />
                           <DropdownMenuItem
                             onClick={handleSignout}
-                            className="flex cursor-pointer items-center"
+                            className="flex cursor-pointer items-center focus:bg-accent"
                           >
                             <LogOut className="mr-2 h-4 w-4" />
                             <span>Sign out</span>
@@ -322,6 +333,62 @@ export default function Header() {
                       </SheetHeader>
                       <nav aria-label="Mobile menu">
                         <ul className="space-y-1">
+                          <div className="mb-4 space-y-4">
+                            {user ? (
+                              <>
+                                <Link
+                                  href="/dashboard"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  <Button
+                                    variant="outline"
+                                    className="w-full justify-start"
+                                  >
+                                    <Settings className="mr-2 h-4 w-4" />
+                                    Dashboard
+                                  </Button>
+                                </Link>
+                                <Button
+                                  variant="outline"
+                                  className="w-full justify-start"
+                                  onClick={() => {
+                                    handleSignout();
+                                    setIsOpen(false);
+                                  }}
+                                >
+                                  <LogOut className="mr-2 h-4 w-4" />
+                                  Sign out
+                                </Button>
+                              </>
+                            ) : (
+                              <>
+                                <Link
+                                  href="/signin"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  <Button
+                                    variant="outline"
+                                    className="w-full justify-start"
+                                  >
+                                    <LogIn className="mr-2 h-4 w-4" />
+                                    Sign in
+                                  </Button>
+                                </Link>
+                                <Link
+                                  href="/signup"
+                                  onClick={() => setIsOpen(false)}
+                                >
+                                  <Button
+                                    variant="outline"
+                                    className="mt-4 w-full justify-start"
+                                  >
+                                    <SquareArrowRight className="mr-2 h-4 w-4" />
+                                    Try PearAI
+                                  </Button>
+                                </Link>
+                              </>
+                            )}
+                          </div>
                           <MobileNavItem
                             href="/"
                             onClick={() => setIsOpen(false)}
@@ -399,57 +466,29 @@ export default function Header() {
                         </ul>
                       </nav>
                     </div>
-                    <div className="space-y-4 pb-6">
-                      {user ? (
-                        <>
-                          <Link
-                            href="/dashboard"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            <Button
-                              variant="outline"
-                              className="w-full justify-start"
-                            >
-                              <Settings className="mr-2 h-4 w-4" />
-                              Dashboard
-                            </Button>
-                          </Link>
+                    <div className="width-full space-y-4 pb-6">
+                      <div className="width-full">
+                        {mounted ? (
                           <Button
                             variant="outline"
-                            className="w-full justify-start"
-                            onClick={() => {
-                              handleSignout();
-                              setIsOpen(false);
-                            }}
+                            className="w-full justify-center"
+                            onClick={() =>
+                              setTheme(theme === "light" ? "dark" : "light")
+                            }
                           >
-                            <LogOut className="mr-2 h-4 w-4" />
-                            Sign out
+                            {theme === "light" ? (
+                              <>
+                                <Sun strokeWidth={1} className="h-5 w-5" />
+                                Light
+                              </>
+                            ) : (
+                              <>
+                                <MoonStar strokeWidth={1} className="h-5 w-5" />
+                                Dark
+                              </>
+                            )}
                           </Button>
-                        </>
-                      ) : (
-                        <>
-                          <Link href="/signin" onClick={() => setIsOpen(false)}>
-                            <Button
-                              variant="outline"
-                              className="w-full justify-start"
-                            >
-                              <LogIn className="mr-2 h-4 w-4" />
-                              Sign in
-                            </Button>
-                          </Link>
-                          <Link href="/signup" onClick={() => setIsOpen(false)}>
-                            <Button
-                              variant="outline"
-                              className="mt-4 w-full justify-start"
-                            >
-                              <SquareArrowRight className="mr-2 h-4 w-4" />
-                              Try PearAI
-                            </Button>
-                          </Link>
-                        </>
-                      )}
-                      <div className="flex justify-end">
-                        <DarkModeToggle />
+                        ) : null}
                       </div>
                     </div>
                   </SheetContent>
