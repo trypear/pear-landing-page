@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Tweet } from "@/components/tweet";
+import { components } from "./ui/my-tweet";
 
 type VideoData = {
   src: string;
@@ -69,7 +70,7 @@ const AboutComponent: React.FC = () => {
       </div>
 
       <div className="m-auto flex max-w-4xl items-center justify-center px-4">
-        <Tweet id="1825456010862956844" />
+        <Tweet id="1825456010862956844" components={components} />
       </div>
 
       <div className="m-auto mt-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">

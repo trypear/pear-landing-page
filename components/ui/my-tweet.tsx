@@ -11,6 +11,12 @@ import {
   QuotedTweet,
   enrichTweet,
 } from "react-tweet";
+import Image from "next/image";
+
+export const components: TwitterComponents = {
+  AvatarImg: (props) => <Image {...props} />,
+  MediaImg: (props) => <Image {...props} fill unoptimized />,
+};
 
 type Props = {
   tweet: Tweet;
@@ -21,7 +27,7 @@ export const MyTweet = ({ tweet: t, components }: Props) => {
   const tweet = enrichTweet(t);
   return (
     <TweetContainer>
-      <TweetHeader tweet={tweet} />
+      <TweetHeader tweet={tweet} components={components} />
 
       {tweet.in_reply_to_status_id_str && <TweetInReplyTo tweet={tweet} />}
 
@@ -31,7 +37,9 @@ export const MyTweet = ({ tweet: t, components }: Props) => {
         </div>
 
         <div className="custom-tweet-container -mt-2">
-          {tweet.mediaDetails?.length ? <TweetMedia tweet={tweet} /> : null}
+          {tweet.mediaDetails?.length ? (
+            <TweetMedia tweet={tweet} components={components} />
+          ) : null}
         </div>
       </div>
 
