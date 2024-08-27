@@ -30,8 +30,8 @@ const updates: ChangelogEntry[] = [
     screenshot: {
       src: "/images/shortcutBar- v.0.0.2.png",
       alt: "Screenshot of Claude Sonnet Model and UI improvements",
-      width: 300,
-      height: 300,
+      width: 461,
+      height: 243,
     },
   },
   {
@@ -48,8 +48,8 @@ const updates: ChangelogEntry[] = [
     screenshot: {
       src: "/images/includeFile - v.0.0.2.png",
       alt: "Screenshot of initial launch features",
-      width: 300,
-      height: 300,
+      width: 461,
+      height: 243,
     },
   },
 ];
