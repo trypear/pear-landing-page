@@ -51,7 +51,7 @@ export default function MobileMenu({
   const navLinks = [
     { label: "Documentation", path: "/docs" },
     { label: "Pricing", path: "/pricing" },
-    { label: "Priority Waitlist", path: "/priority-waitlist" },
+    { label: "Download For Free", path: "/pricing" },
     { label: "FAQ", path: "/faq" },
   ];
 

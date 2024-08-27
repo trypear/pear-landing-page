@@ -75,14 +75,7 @@ const HeroButtons = () => (
   <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
     <div data-aos="fade-up" data-aos-delay="400">
       <Button asChild size="lg">
-        <Link
-          href="https://forms.gle/171UyimgQJhEJbhU7"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Join Waitlist
-          <ExternalLink size={16} className="ml-1.5" />
-        </Link>
+        <Link href="/pricing">Download For Free</Link>
       </Button>
     </div>
   </div>
