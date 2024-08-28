@@ -79,16 +79,16 @@ export const PRICING_TIERS: PricingTierData[] = [
 export const faqData: FAQItem[] = [
   {
     question: "Why is it called PearAI?",
-    answer: "Pear programming... Pair programming... PearAI Pair programming!",
+    answer: "Pair programming... Pear Programming... Cupertino... PearAI! ",
   },
   {
     question: "What separates PearAI from Github Copilot?",
     answer:
-      "PearAI will provide better quality responses, and also has a better UX. These are the 2 key factors in accelerating your coding workflow. For both of these factors, you can try the free trial, and you'll be able to see the proof for yourself.",
+      "PearAI offers significant advantages over Copilot in both AI capabilities and user experience: AI Model Flexibility: Unlike Copilot, which is limited to OpenAI's models, PearAI leverages the most advanced AI models available, currently featuring Claude Sonnet 3.5. This flexibility allows us to always use the best-performing model for coding tasks. Enhanced Context Understanding: PearAI incorporates your entire codebase as context, enabling more accurate and relevant code suggestions. Full-fledged Code Editor: As a complete IDE rather than just an extension, PearAI provides a more integrated and refined coding environment. This allows for smoother workflows and more intuitive interactions with AI assistance.",
   },
   {
     question: "Why should I switch to PearAI?",
-    answer: `PearAI is a fork of VSCode, and possess all of its functionalities, but also adds more to it by integrating AI functionalities to speed up your coding workflow. Current users have expressed that their coding workflow accelerated by at least 3-4x.\n\n By switching to PearAI, you can speed up your product development, and not lack behind in terms of AI tooling compared to your peers.`,
+    answer: `PearAI will speed up and improve your development. PearAI is a fork of VSCode, and possess all of its functionalities, but also adds more to it by integrating AI functionalities to speed up your coding workflow. Current users have expressed that their coding workflow accelerated by at least 3-4x.\n\n By switching to PearAI, you can speed up your product development, and not lack behind in terms of AI tooling compared to your peers.`,
   },
   {
     question:
@@ -99,9 +99,15 @@ export const faqData: FAQItem[] = [
   {
     question: "Is PearAI an extension or an app?",
     answer:
-      "PearAI is an app and requires you to download it. Being a VSCode extension severely limits the modifications we can do. In order to provide the best UX possible, we need full control of code changes within the app.",
+      "PearAI is a full-fledged app. Being an app instead of being just an extension provides us the highest degree of freedom to ensure the best, smoothest experience for you!",
+  },
+  {
+    question: "Does PearAI store my code?",
+    answer:
+      "No. PearAI does not store your code. All codebase indexing is done and stored only locally on your machine. Our servers do not save any of your code.",
   },
 ];
+
 
 export const footerSections = [
   {
