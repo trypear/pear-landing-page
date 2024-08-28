@@ -64,7 +64,7 @@ export default function MobileMenu({
           <Button
             variant="ghost"
             size="icon"
-            className="rounded-md"
+            className="rounded-md hover:bg-secondary-300/10"
             aria-label="Open menu"
           >
             <Menu className="h-6 w-6" />
@@ -76,14 +76,14 @@ export default function MobileMenu({
         >
           <div>
             <SheetHeader className="mb-4">
-              <SheetTitle>PearAI Menu</SheetTitle>
+              <SheetTitle className="text-center">PearAI Menu</SheetTitle>
             </SheetHeader>
             <nav aria-label="Mobile menu">
               <ul className="space-y-1">
                 <div className="mb-4 space-y-4">
                   {user ? (
                     <>
-                      <div className="flex hidden items-center space-x-2">
+                      <div className="hidden items-center space-x-2">
                         <Avatar className="h-8 w-8">
                           <AvatarImage
                             src={user.user_metadata.avatar_url}
