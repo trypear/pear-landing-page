@@ -49,7 +49,7 @@ const Navigation: React.FC = () => {
       isExternal: true,
     },
     {
-      label: "Pricing",
+      label: "Download",
       path: "/pricing",
       isExternal: false,
       mobile: false,

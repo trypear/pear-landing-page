@@ -278,9 +278,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               id="pricing-heading"
               className="text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
             >
-              Start for free,
+              Speed up your
               <br />
-              pay after you get value
+              development today.
             </h1>
           </header>
 

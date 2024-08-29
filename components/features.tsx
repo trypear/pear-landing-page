@@ -37,9 +37,9 @@ export default function Features() {
           <b>
             <code>CMD+I</code>
           </b>
-          &nbsp;(<code>CTRL+L</code> on Windows), and choose what you want to
+          &nbsp;(<code>CTRL+I</code> on Windows), and choose what you want to
           keep. <br />
-          <br /> Here, we ask Pear to help us handle edge cases 😏
+          <br /> Here, we ask PearAI to help us handle edge cases 😏
         </>
       ),
       videoSource: "/webms/pearai-CMD+I.webm",
