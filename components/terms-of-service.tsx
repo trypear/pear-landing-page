@@ -1068,6 +1068,16 @@ export default function TermsOfServiceComponent() {
                         illegal is prohibited.
                       </p>
                     </li>
+
+                    <li>
+                      <p>
+                        <strong className="text-gray-900">Features</strong>. The
+                        Service is a fork of VSCode, but does not promise that
+                        all existing features of VSCode will be present. For
+                        example, certain extensions, such as WSL for Windows, is
+                        currently not supported.
+                      </p>
+                    </li>
                   </ol>
                 </li>
               </ol>
