@@ -180,14 +180,14 @@ export default function SubscriptionCard({
               <DialogTrigger asChild>
                 <Button
                   onClick={handleCancelClick}
-                  disabled={isCanceling}
+                  disabled={isCanceling || isCanceled}
                   variant="link"
                   className="px-0"
                 >
                   {isCanceling
                     ? "Canceling..."
                     : isCanceled
-                      ? "Subscription canceled, reactivate?"
+                      ? "Subscription canceled"
                       : "Cancel Subscription"}
                 </Button>
               </DialogTrigger>
