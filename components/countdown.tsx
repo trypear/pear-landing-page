@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useTheme } from "next-themes";
 
-export const LAUNCH_DATE = "2024-08-30T16:00:00Z" //"2024-08-30T16:00:00Z"
+export const LAUNCH_DATE = "2024-08-30T16:00:00Z"; //"2024-08-30T16:00:00Z"
 
 export default function Countdown() {
   const { theme } = useTheme();
