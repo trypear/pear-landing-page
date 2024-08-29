@@ -7,6 +7,7 @@ import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import Countdown from "./countdown";
+import { useEffect, useState } from "react";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -72,15 +73,47 @@ const HeroDescription = () => (
   </div>
 );
 
-const HeroButtons = () => (
-  <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
-    <div data-aos="fade-up" data-aos-delay="400">
-      <Button asChild size="lg">
-        <Link href="/pricing">Download For Free</Link>
-      </Button>
+const HeroButtons = () => {
+  // Countdown related code
+  const [isReleased, setIsReleased] = useState(false);
+
+  useEffect(() => {
+    const checkReleaseStatus = () => {
+      setIsReleased(isAfterReleaseDate());
+    };
+
+    checkReleaseStatus();
+    const timer = setInterval(checkReleaseStatus, 10000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  function isAfterReleaseDate(): boolean {
+    const releaseDate = new Date("2024-08-30T16:00:00Z"); // 12:00 EST is 16:00 UTC
+    const now = new Date();
+    return now >= releaseDate;
+  }
+  // End of Countdown related code
+
+  return (
+    <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
+      <div data-aos="fade-up" data-aos-delay="400">
+        {/* <Button asChild size="lg" disabled={!isReleased}>
+          <Link href="/pricing">Download For Free</Link>
+        </Button> */}
+        {isReleased ? (
+          <Button asChild size="lg">
+            <Link href="/pricing">Download For Free</Link>
+          </Button>
+        ) : (
+          <Button size="lg" disabled>
+            Available August 30, 2024
+          </Button>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Hero() {
   const { theme } = useTheme();

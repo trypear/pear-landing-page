@@ -24,16 +24,16 @@ export default function Countdown() {
     const calculateTimeRemaining = () => {
       const currentTime = new Date();
       const difference = launchDate.getTime() - currentTime.getTime();
+      setHasLaunched(currentTime >= launchDate);
       return difference > 0 ? difference : 0;
     };
 
     const updateCountdown = () => {
-      const remainingMilliseconds = calculateTimeRemaining();
-      setMillisecondsLeft(remainingMilliseconds);
-      setHasLaunched(remainingMilliseconds === 0);
+      setMillisecondsLeft(calculateTimeRemaining());
     };
 
-    updateCountdown();
+    setMillisecondsLeft(calculateTimeRemaining());
+
     const timerInterval = setInterval(() => {
       updateCountdown();
     }, 1000);
@@ -65,15 +65,17 @@ export default function Countdown() {
       }
     };
 
+    setTimeout(() => {
+      setCurrentSeconds(remainingSeconds);
+      setCurrentMinutes(remainingMinutes);
+      setCurrentHours(remainingHours);
+      setCurrentDays(remainingDays);
+    }, 200);
+
     triggerSwipeAnimation(secondsElementRef, currentSeconds, remainingSeconds);
     triggerSwipeAnimation(minutesElementRef, currentMinutes, remainingMinutes);
     triggerSwipeAnimation(hoursElementRef, currentHours, remainingHours);
     triggerSwipeAnimation(daysElementRef, currentDays, remainingDays);
-
-    setCurrentSeconds(remainingSeconds);
-    setCurrentMinutes(remainingMinutes);
-    setCurrentHours(remainingHours);
-    setCurrentDays(remainingDays);
   }, [millisecondsLeft]);
 
   return (
