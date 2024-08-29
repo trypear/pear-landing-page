@@ -10,10 +10,10 @@ const YoutubeEmbed: React.FC<YoutubeEmbedProps> = ({ embedId }) => (
       className="absolute left-0 top-0 h-full w-full rounded-lg"
       width="853"
       height="480"
-      src={`https://www.youtube.com/embed/${embedId}?rel=0`}
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      loading="lazy"
+      src={`https://www.youtube.com/embed/${embedId}`}
       allowFullScreen
-      title="Embedded youtube"
+      title="PearAI demo"
     />
   </div>
 );
