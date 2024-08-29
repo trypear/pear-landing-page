@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/docs/:path*",
+      "source": "/docsu/:path*",
       "destination": "https://documentation-page-pearai-landing-chi.vercel.app/:path*"
     }
   ]
