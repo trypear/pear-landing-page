@@ -60,7 +60,7 @@ export default async function AuthButton() {
             </DropdownMenuTrigger>
             <DropdownMenuContent
               className="border border-border/50 bg-background"
-              align="end"
+              align="center"
             >
               <DropdownMenuItem
                 asChild
