@@ -59,9 +59,12 @@ export default function Countdown() {
       newValue: number,
     ) => {
       if (elementRef.current && previousValue !== newValue) {
-        elementRef.current.classList.remove("animate-swipe");
-        void elementRef.current.offsetWidth;
-        elementRef.current.classList.add("animate-swipe");
+        const textElement = elementRef.current.querySelector(".animate-text");
+        if (textElement) {
+          textElement.classList.remove("animate-swipe");
+          void elementRef.current.offsetWidth;
+          textElement.classList.add("animate-swipe");
+        }
       }
     };
 
@@ -85,55 +88,57 @@ export default function Countdown() {
       data-aos-delay="200"
     >
       <div className="flex justify-center space-x-2 sm:space-x-4">
-        <div
-          ref={daysElementRef}
-          className="countdown-item h-16 w-16 border-secondary-800 text-lg text-primary-700 dark:border-white-main sm:h-20 sm:w-20 sm:text-xl md:h-24 md:w-24 md:text-2xl"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          {currentDays}
+        <div className="flex flex-col items-center">
+          <div
+            ref={daysElementRef}
+            className="countdown-item h-16 w-16 border-secondary-800 text-lg text-primary-700 dark:border-white-main sm:h-20 sm:w-20 sm:text-xl md:h-24 md:w-24 md:text-2xl"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div className="animate-text">{currentDays}</div>
+          </div>
+          <div className="countdown-label mt-2 text-xs text-gray-500 sm:text-sm md:text-base">
+            Days
+          </div>
         </div>
-        <div
-          ref={hoursElementRef}
-          className="countdown-item h-16 w-16 border-secondary-800 text-lg text-primary-700 dark:border-white-main sm:h-20 sm:w-20 sm:text-xl md:h-24 md:w-24 md:text-2xl"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
-          {currentHours}
+        <div className="flex flex-col items-center">
+          <div
+            ref={hoursElementRef}
+            className="countdown-item h-16 w-16 border-secondary-800 text-lg text-primary-700 dark:border-white-main sm:h-20 sm:w-20 sm:text-xl md:h-24 md:w-24 md:text-2xl"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <div className="animate-text">{currentHours}</div>
+          </div>
+          <div className="countdown-label mt-2 text-xs text-gray-500 sm:text-sm md:text-base">
+            Hours
+          </div>
         </div>
-        <div
-          ref={minutesElementRef}
-          className="countdown-item h-16 w-16 border-secondary-800 text-lg text-primary-700 dark:border-white-main sm:h-20 sm:w-20 sm:text-xl md:h-24 md:w-24 md:text-2xl"
-          data-aos="fade-up"
-          data-aos-delay="500"
-        >
-          {currentMinutes}
+        <div className="flex flex-col items-center">
+          <div
+            ref={minutesElementRef}
+            className="countdown-item h-16 w-16 border-secondary-800 text-lg text-primary-700 dark:border-white-main sm:h-20 sm:w-20 sm:text-xl md:h-24 md:w-24 md:text-2xl"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <div className="animate-text">{currentMinutes}</div>
+          </div>
+          <div className="countdown-label mt-2 text-xs text-gray-500 sm:text-sm md:text-base">
+            Minutes
+          </div>
         </div>
-        <div
-          ref={secondsElementRef}
-          className="countdown-item h-16 w-16 border-secondary-800 text-lg text-primary-700 dark:border-white-main sm:h-20 sm:w-20 sm:text-xl md:h-24 md:w-24 md:text-2xl"
-          data-aos="fade-up"
-          data-aos-delay="600"
-        >
-          {currentSeconds}
-        </div>
-      </div>
-      <div
-        className="mt-2 flex justify-center space-x-4"
-        data-aos="fade-up"
-        data-aos-delay="700"
-      >
-        <div className="countdown-label text-xs text-gray-500 sm:text-sm md:text-base">
-          Days
-        </div>
-        <div className="countdown-label text-xs text-gray-500 sm:text-sm md:text-base">
-          Hours
-        </div>
-        <div className="countdown-label text-xs text-gray-500 sm:text-sm md:text-base">
-          Minutes
-        </div>
-        <div className="countdown-label text-xs text-gray-500 sm:text-sm md:text-base">
-          Seconds
+        <div className="flex flex-col items-center">
+          <div
+            ref={secondsElementRef}
+            className="countdown-item h-16 w-16 border-secondary-800 text-lg text-primary-700 dark:border-white-main sm:h-20 sm:w-20 sm:text-xl md:h-24 md:w-24 md:text-2xl"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            <div className="animate-text">{currentSeconds}</div>
+          </div>
+          <div className="countdown-label mt-2 text-xs text-gray-500 sm:text-sm md:text-base">
+            Seconds
+          </div>
         </div>
       </div>
       <div
