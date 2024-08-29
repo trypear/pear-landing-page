@@ -5,9 +5,9 @@ import Link from "next/link";
 import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
 import Countdown, { LAUNCH_DATE } from "./countdown";
 import { useEffect, useState } from "react";
+import Spinner from "./ui/spinner";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -74,12 +74,15 @@ const HeroDescription = () => (
 );
 
 const HeroButtons = () => {
-  // Countdown related code
   const [isReleased, setIsReleased] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const checkReleaseStatus = () => {
-      setIsReleased(isAfterReleaseDate());
+      const releaseDate = new Date(LAUNCH_DATE);
+      const now = new Date();
+      setIsReleased(now >= releaseDate);
+      setIsLoading(false);
     };
 
     checkReleaseStatus();
@@ -87,21 +90,14 @@ const HeroButtons = () => {
 
     return () => clearInterval(timer);
   }, []);
-
-  function isAfterReleaseDate(): boolean {
-    const releaseDate = new Date(LAUNCH_DATE); // 12:00 EST is 16:00 UTC
-    const now = new Date();
-    return now >= releaseDate;
-  }
-  // End of Countdown related code
-
   return (
     <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
       <div data-aos="fade-up" data-aos-delay="400">
-        {/* <Button asChild size="lg" disabled={!isReleased}>
-          <Link href="/pricing">Download For Free</Link>
-        </Button> */}
-        {isReleased ? (
+        {isLoading ? (
+          <div className="flex justify-center">
+            <Spinner />
+          </div>
+        ) : isReleased ? (
           <Button asChild size="lg">
             <Link href="/pricing">Download For Free</Link>
           </Button>
@@ -110,8 +106,8 @@ const HeroButtons = () => {
             Available August 30, 2024
           </Button>
         )}
-      </div>
-    </div>
+            </div>
+          </div>
   );
 };
 

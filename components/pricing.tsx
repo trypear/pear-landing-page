@@ -54,7 +54,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
-  const [isDownloading, setIsDownloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [downloadLink, setDownloadLink] = useState<string>();
   const router = useRouter();
 
@@ -66,12 +66,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
     };
 
     checkReleaseStatus();
-    const timer = setInterval(checkReleaseStatus, 10000);
-
+    const timer = setInterval(checkReleaseStatus, 5000);
+    setIsLoading(false)
     return () => clearInterval(timer);
   }, []);
 
-  function isAfterReleaseDate(): boolean {
+  const isAfterReleaseDate = (): boolean => {
     const releaseDate = new Date(LAUNCH_DATE); // 12:00 EST is 16:00 UTC
     const now = new Date();
     return now >= releaseDate;
@@ -79,7 +79,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   // End of Countdown related code
 
   const handleDownload = async (os_type: string) => {
-    setIsDownloading(true);
+    setIsLoading(true);
     try {
       const res = await fetch(`/api/download?os_type=${os_type}`, {
         method: "GET",
@@ -101,7 +101,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
     } catch (error: any) {
       toast.error(error.message);
     } finally {
-      setIsDownloading(false);
+      setIsLoading(false);
     }
   };
 
@@ -214,7 +214,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
                   )}
                   .
                 </p>
-              ) : isDownloading ? (
+              ) : isLoading ? (
                 <div className="flex justify-center">
                   <Spinner />
                 </div>
