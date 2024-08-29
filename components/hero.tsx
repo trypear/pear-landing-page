@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import Countdown, { LAUNCH_DATE } from "./countdown";
 import { useEffect, useState } from "react";
 import Spinner from "./ui/spinner";
+import YoutubeEmbed from "./ui/YoutubeEmbed";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -125,6 +126,9 @@ export default function Hero() {
             <HeroDescription />
             <HeroButtons />
             <Countdown />
+            <div className="mt-36 w-full">
+              <YoutubeEmbed embedId="Rzk3GmXUySs?si=2Y25oMlhbQWZpu1K" />
+            </div>
           </div>
         </div>
       </div>
