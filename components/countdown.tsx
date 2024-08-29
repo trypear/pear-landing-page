@@ -3,6 +3,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useTheme } from "next-themes";
 
+export const LAUNCH_DATE = "2024-08-30T16:00:00Z" //"2024-08-30T16:00:00Z"
+
 export default function Countdown() {
   const { theme } = useTheme();
 
@@ -19,7 +21,7 @@ export default function Countdown() {
   const daysElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const launchDate = new Date("2024-08-30T16:00:00Z"); // 12 PM EST in UTC (16:00 UTC)
+    const launchDate = new Date(LAUNCH_DATE); // 12 PM EST in UTC (16:00 UTC)
 
     const calculateTimeRemaining = () => {
       const currentTime = new Date();

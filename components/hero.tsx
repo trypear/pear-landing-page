@@ -6,7 +6,7 @@ import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
-import Countdown from "./countdown";
+import Countdown, { LAUNCH_DATE } from "./countdown";
 import { useEffect, useState } from "react";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
@@ -83,13 +83,13 @@ const HeroButtons = () => {
     };
 
     checkReleaseStatus();
-    const timer = setInterval(checkReleaseStatus, 10000);
+    const timer = setInterval(checkReleaseStatus, 5000);
 
     return () => clearInterval(timer);
   }, []);
 
   function isAfterReleaseDate(): boolean {
-    const releaseDate = new Date("2024-08-30T16:00:00Z"); // 12:00 EST is 16:00 UTC
+    const releaseDate = new Date(LAUNCH_DATE); // 12:00 EST is 16:00 UTC
     const now = new Date();
     return now >= releaseDate;
   }

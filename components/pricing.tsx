@@ -18,6 +18,7 @@ import { toast } from "sonner";
 import Spinner from "./ui/spinner";
 import { Badge } from "./ui/badge";
 import { AppleLogo, WindowsLogo } from "./ui/icons";
+import { LAUNCH_DATE } from "./countdown";
 
 type SupportedOS = {
   name: string;
@@ -71,7 +72,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
   }, []);
 
   function isAfterReleaseDate(): boolean {
-    const releaseDate = new Date("2024-08-30T16:00:00Z"); // 12:00 EST is 16:00 UTC
+    const releaseDate = new Date(LAUNCH_DATE); // 12:00 EST is 16:00 UTC
     const now = new Date();
     return now >= releaseDate;
   }
