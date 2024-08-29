@@ -82,9 +82,9 @@ export const faqData: FAQItem[] = [
     answer: "Pair programming... Pear Programming... Cupertino... PearAI! ",
   },
   {
-    question: "What separates PearAI from Github Copilot?",
+    question: "What separates PearAI from Github Copilot and other competitors?",
     answer:
-      "PearAI offers significant advantages over Copilot in both AI capabilities and user experience: AI Model Flexibility: Unlike Copilot, which is limited to OpenAI's models, PearAI leverages the most advanced AI models available, currently featuring Claude Sonnet 3.5. This flexibility allows us to always use the best-performing model for coding tasks. Enhanced Context Understanding: PearAI incorporates your entire codebase as context, enabling more accurate and relevant code suggestions. Full-fledged Code Editor: As a complete IDE rather than just an extension, PearAI provides a more integrated and refined coding environment. This allows for smoother workflows and more intuitive interactions with AI assistance.",
+      "PearAI offers significant advantages over competitors in both AI capabilities and user experience: \n\nAI Model Flexibility: Unlike Copilot, which is limited to OpenAI's models, PearAI leverages the most advanced AI models available, currently featuring Claude Sonnet 3.5. This flexibility allows us to always use the best-performing model for coding tasks. \n\nEnhanced Codebase Context: Using RAG (Retrieval Augmented Generation), PearAI has knowledge of your entire codebase, making answers and suggestions more relevant and useful for you! \n\nUI/UX Focus: As a complete IDE rather than just an extension, PearAI provides a more integrated and refined coding environment. This allows for smoother workflows and more intuitive interactions with AI assistance.\n\nOpen-Source: PearAI is fully transparent and open-source, which means anyone can see, review, and contribute all of our code! This allows for a community-driven product, and mitigates privacy concerns that other similar tools face."
   },
   {
     question: "Why should I switch to PearAI?",
@@ -94,7 +94,7 @@ export const faqData: FAQItem[] = [
     question:
       "Why can't I just use ChatGPT, Claude, Gemini, or another LLM chat directly instead?",
     answer:
-      "You can, and we used to as well. However, the convenience of the chat being integrated into the editor, along with easy access features within the chats such as including other files, applying changes directly, removing the need to copy paste code, prompting with code context, adding other websites or docs links in chat directly, all of this and more, means that you have a much more seamless coding experience, resulting in significant overall faster development. Try it yourself!",
+      "With PearAI, you never need to copy-paste or switch tabs ever again, as it integrates AI in the code editor with inline edits (CMD/CTRL+I) and chat (CMD/CTRL+L). Also, PearAI provides better responses by having context of your codebase achieved through RAG (Retrieval Augemented Generation).  Try it out yourself - we're sure you'll love it!",
   },
   {
     question: "Is PearAI an extension or an app?",
@@ -107,7 +107,6 @@ export const faqData: FAQItem[] = [
       "No. PearAI does not store your code. All codebase indexing is done and stored only locally on your machine. Our servers do not save any of your code.",
   },
 ];
-
 
 export const footerSections = [
   {
