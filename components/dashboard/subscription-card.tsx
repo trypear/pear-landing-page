@@ -66,7 +66,7 @@ export default function SubscriptionCard({
 
   if (!subscription) {
     return (
-      <Card className="flex h-full flex-col overflow-auto bg-gray-100/10 p-6 text-card-foreground">
+      <Card className="flex h-full flex-col overflow-auto bg-gray-100/10 text-card-foreground">
         <div className="grid gap-4">
           <CardHeader className="pb-4">
             <CardTitle className="text-xl font-semibold">
@@ -123,8 +123,7 @@ export default function SubscriptionCard({
                 indicatorColor="bg-primary-800 bg-opacity-75"
               />
               <p className="text-sm text-muted-foreground">
-                You&apos;ve used {usage.used_quota} requests out of your{" "}
-                <span className="font-medium">{usage.max_quota}</span> requests.
+                {usage.used_quota} of {usage.max_quota} requests used
               </p>
             </div>
           )}

@@ -21,28 +21,28 @@ export default function FreeTrialCard({
   openAppQueryParams,
 }: FreeTrialCardProps) {
   return (
-    <Card className="overflow-auto bg-gray-100/10 p-6 text-card-foreground">
+    <Card className="overflow-auto bg-gray-100/10 text-card-foreground">
       <div className="grid gap-4">
         <CardHeader className="flex-row justify-between pb-4">
           <CardTitle className="text-xl font-semibold">
             Subscription & Usage
           </CardTitle>
-          <div className="flex">
-            <Badge
-              variant="secondary"
-              className="border-primary-800 bg-primary-800/10 px-2.5 py-0.5 text-primary-800"
-            >
-              Free Trial
-            </Badge>
-          </div>
+          <Badge
+            variant="secondary"
+            className="border-primary-800 bg-primary-800/10 px-2 py-1 text-sm text-primary-800"
+          >
+            Free Trial
+          </Badge>
         </CardHeader>
         <CardContent>
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Requests</p>
-              <p className="text-muted-foreground">
-                {usage.used_quota ?? 0} /{" "}
-                {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA}
+              <p className="text-sm text-muted-foreground">
+                <strong>
+                  {usage.used_quota ?? 0} /{" "}
+                  {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA}
+                </strong>
               </p>
             </div>
             <Progress
@@ -55,11 +55,9 @@ export default function FreeTrialCard({
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm text-muted-foreground">
-              You&apos;ve used {usage.used_quota ?? 0} requests out of your{" "}
-              <span className="font-medium">
-                {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA}
-              </span>{" "}
-              requests quota for your free trial.
+              {usage.used_quota ?? 0} of{" "}
+              {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA} free trial
+              requests used
             </p>
           </div>
           <div className="mb-4">
@@ -77,24 +75,24 @@ export default function FreeTrialCard({
                   Open PearAI
                 </Link>
               </Button>
-              <div className="mt-1 flex items-center">
-                <Info className="inline text-muted-foreground" size={14} />
-                <p className="ml-1.5 block text-xs text-muted-foreground">
-                  Make sure PearAI is{" "}
-                  <Button
-                    variant="link"
-                    asChild
-                    className="p-0 text-xs text-primary-800"
-                  >
-                    <Link href="/pricing">installed.</Link>
-                  </Button>{" "}
-                  Use this button to open the app and login directly.
-                </p>
-              </div>
             </div>
             <Button variant="link" asChild className="px-0 text-primary-800">
               <Link href="/pricing">Subscribe Now</Link>
             </Button>
+          </div>
+          <div className="flex items-center">
+            <Info className="inline text-muted-foreground" size={14} />
+            <p className="ml-1.5 text-xs text-muted-foreground">
+              Make sure PearAI is{" "}
+              <Button
+                variant="link"
+                asChild
+                className="p-0 text-xs text-primary-800"
+              >
+                <Link href="/pricing">installed.</Link>
+              </Button>{" "}
+              Use this button to open the app and login directly.
+            </p>
           </div>
         </CardContent>
       </div>
