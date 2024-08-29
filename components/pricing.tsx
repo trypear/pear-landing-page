@@ -65,7 +65,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
     };
 
     checkReleaseStatus();
-    const timer = setInterval(checkReleaseStatus, 1000);
+    const timer = setInterval(checkReleaseStatus, 10000);
 
     return () => clearInterval(timer);
   }, []);
