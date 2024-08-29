@@ -79,12 +79,13 @@ export const PRICING_TIERS: PricingTierData[] = [
 export const faqData: FAQItem[] = [
   {
     question: "Why is it called PearAI?",
-    answer: "Pair programming... Pear Programming... Cupertino... PearAI! ",
+    answer: "Pair programming... Pear Programming... Cupertino... AI... PearAI! ",
   },
   {
-    question: "What separates PearAI from Github Copilot and other competitors?",
+    question:
+      "What separates PearAI from Github Copilot and other competitors?",
     answer:
-      "PearAI offers significant advantages over competitors in both AI capabilities and user experience: \n\nAI Model Flexibility: Unlike Copilot, which is limited to OpenAI's models, PearAI leverages the most advanced AI models available, currently featuring Claude Sonnet 3.5. This flexibility allows us to always use the best-performing model for coding tasks. \n\nEnhanced Codebase Context: Using RAG (Retrieval Augmented Generation), PearAI has knowledge of your entire codebase, making answers and suggestions more relevant and useful for you! \n\nUI/UX Focus: As a complete IDE rather than just an extension, PearAI provides a more integrated and refined coding environment. This allows for smoother workflows and more intuitive interactions with AI assistance.\n\nOpen-Source: PearAI is fully transparent and open-source, which means anyone can see, review, and contribute all of our code! This allows for a community-driven product, and mitigates privacy concerns that other similar tools face."
+      "PearAI offers significant advantages over competitors in both AI capabilities and user experience: \n\nAI Model Flexibility: Unlike Copilot, which is limited to OpenAI's models, PearAI leverages the most advanced AI models available, currently featuring Claude Sonnet 3.5. This flexibility allows us to always use the best-performing model for coding tasks. \n\nEnhanced Codebase Context: Using RAG (Retrieval Augmented Generation), PearAI has knowledge of your entire codebase, making answers and suggestions more relevant and useful for you! \n\nUI/UX Focus: As a complete IDE rather than just an extension, PearAI provides a more integrated and refined coding environment. This allows for smoother workflows and more intuitive interactions with AI assistance.\n\nOpen-Source: PearAI is fully transparent and open-source, which means anyone can see, review, and contribute all of our code! This allows for a community-driven product, and mitigates privacy concerns that other similar tools face.",
   },
   {
     question: "Why should I switch to PearAI?",
