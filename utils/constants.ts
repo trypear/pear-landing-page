@@ -1,6 +1,11 @@
 import { PricingTierData } from "@/types/pricing";
 import { FAQItem } from "@/types/faqItems";
-import { DiscordLogo, GitHubLogo, LinkedInLogo } from "@/components/ui/icons";
+import {
+  DiscordLogo,
+  GitHubLogo,
+  LinkedInLogo,
+  TwitterLogo,
+} from "@/components/ui/icons";
 
 export const TEST_MODE_ENABLED = ["true", "True", "TRUE"].includes(
   process.env.NEXT_PUBLIC_TEST_MODE_ENABLED ?? "",
@@ -160,6 +165,10 @@ export const socialMediaLinks = [
   {
     icon: DiscordLogo,
     link: "https://discord.gg/AKy5FmqCkF",
+  },
+  {
+    icon: TwitterLogo,
+    link: "https://x.com/trypearai",
   },
   {
     icon: LinkedInLogo,
