@@ -106,8 +106,8 @@ const HeroButtons = () => {
             Available August 30, 2024
           </Button>
         )}
-            </div>
-          </div>
+      </div>
+    </div>
   );
 };
 

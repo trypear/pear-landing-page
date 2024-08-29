@@ -67,7 +67,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
     checkReleaseStatus();
     const timer = setInterval(checkReleaseStatus, 5000);
-    setIsLoading(false)
+    setIsLoading(false);
     return () => clearInterval(timer);
   }, []);
 
@@ -75,7 +75,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
     const releaseDate = new Date(LAUNCH_DATE); // 12:00 EST is 16:00 UTC
     const now = new Date();
     return now >= releaseDate;
-  }
+  };
   // End of Countdown related code
 
   const handleDownload = async (os_type: string) => {
