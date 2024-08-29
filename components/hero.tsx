@@ -6,6 +6,7 @@ import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
+import Countdown from "./countdown";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -94,6 +95,7 @@ export default function Hero() {
             </div>
             <HeroDescription />
             <HeroButtons />
+            <Countdown />
           </div>
         </div>
       </div>

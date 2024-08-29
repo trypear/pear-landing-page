@@ -57,6 +57,26 @@ const PricingTier: React.FC<PricingTierProps> = ({
   const [downloadLink, setDownloadLink] = useState<string>();
   const router = useRouter();
 
+  //Countdown related code
+  const [isReleased, setIsReleased] = useState(false);
+  useEffect(() => {
+    const checkReleaseStatus = () => {
+      setIsReleased(isAfterReleaseDate());
+    };
+
+    checkReleaseStatus();
+    const timer = setInterval(checkReleaseStatus, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  function isAfterReleaseDate(): boolean {
+    const releaseDate = new Date("2024-08-30T16:00:00Z"); // 12:00 EST is 16:00 UTC
+    const now = new Date();
+    return now >= releaseDate;
+  }
+  // End of Countdown related code
+
   const handleDownload = async (os_type: string) => {
     setIsDownloading(true);
     try {
@@ -107,10 +127,17 @@ const PricingTier: React.FC<PricingTierProps> = ({
             onClick={() => handleDownload(os.os)}
             className="relative flex h-12 w-full items-center justify-center px-4"
             aria-label={`Download for ${os.os}`}
+            // Disable download button if the release date has not passed
+            disabled={!isReleased}
           >
             <div className="flex items-center justify-center">
-              <span className="text-center">{os.name}</span>
-              <Download className="ml-2 h-5 w-5" aria-hidden="true" />
+              {/*<span className="text-center">{os.name}</span>*/}
+              <span className="text-center">
+                {isReleased ? os.name : "Available August 30, 2024"}
+              </span>
+              {isReleased && (
+                <Download className="ml-2 h-5 w-5" aria-hidden="true" />
+              )}
             </div>
           </Button>
 
