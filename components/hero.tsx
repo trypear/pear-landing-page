@@ -5,7 +5,9 @@ import Link from "next/link";
 import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
+import Countdown, { LAUNCH_DATE } from "./countdown";
+import { useEffect, useState } from "react";
+import Spinner from "./ui/spinner";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -71,22 +73,43 @@ const HeroDescription = () => (
   </div>
 );
 
-const HeroButtons = () => (
-  <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
-    <div data-aos="fade-up" data-aos-delay="400">
-      <Button asChild size="lg">
-        <Link
-          href="https://forms.gle/171UyimgQJhEJbhU7"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Join Waitlist
-          <ExternalLink size={16} className="ml-1.5" />
-        </Link>
-      </Button>
+const HeroButtons = () => {
+  const [isReleased, setIsReleased] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const checkReleaseStatus = () => {
+      const releaseDate = new Date(LAUNCH_DATE);
+      const now = new Date();
+      setIsReleased(now >= releaseDate);
+      setIsLoading(false);
+    };
+
+    checkReleaseStatus();
+    const timer = setInterval(checkReleaseStatus, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+  return (
+    <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
+      <div data-aos="fade-up" data-aos-delay="400">
+        {isLoading ? (
+          <div className="flex justify-center">
+            <Spinner />
+          </div>
+        ) : isReleased ? (
+          <Button asChild size="lg">
+            <Link href="/pricing">Download For Free</Link>
+          </Button>
+        ) : (
+          <Button size="lg" disabled>
+            Available August 30, 2024
+          </Button>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Hero() {
   const { theme } = useTheme();
@@ -101,6 +124,7 @@ export default function Hero() {
             </div>
             <HeroDescription />
             <HeroButtons />
+            <Countdown />
           </div>
         </div>
       </div>

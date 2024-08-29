@@ -115,10 +115,6 @@ export const footerSections = [
         text: "Contact",
         href: "mailto:pear@trypear.ai",
       },
-      {
-        text: "Priority Waitlist",
-        href: "/priority-waitlist",
-      },
     ],
   },
   {
