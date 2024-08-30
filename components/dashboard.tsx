@@ -84,7 +84,7 @@ export default function DashboardPage({
 
   return (
     <section className="relative">
-      <div className="mx-auto max-w-full overflow-auto p-4 pt-12 sm:p-8 md:p-16 lg:px-32">
+      <div className="mx-auto max-w-full overflow-auto p-4 pt-24 sm:p-8 md:p-16 md:pt-28 lg:px-32">
         <div className="bg-background p-4 text-foreground sm:p-6">
           <div className="mb-6">
             <h1 className="text-4xl font-bold">Dashboard</h1>
