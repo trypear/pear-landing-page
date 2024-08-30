@@ -119,8 +119,12 @@ export const footerSections = [
         href: "/about",
       },
       {
-        text: "Contact",
-        href: "mailto:pear@trypear.ai",
+        text: "Privacy Policy",
+        href: "/privacy",
+      },
+      {
+        text: "Terms of Service",
+        href: "/terms-of-service",
       },
     ],
   },
@@ -149,12 +153,12 @@ export const footerSections = [
         href: "/faq",
       },
       {
-        text: "Privacy Policy",
-        href: "/privacy",
+        text: "Email",
+        href: "mailto:pear@trypear.ai",
       },
       {
-        text: "Terms of Service",
-        href: "/terms-of-service",
+        text: "Discord",
+        href: "https://discord.gg/7QMraJUsQt",
       },
     ],
   },
