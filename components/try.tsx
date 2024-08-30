@@ -59,11 +59,7 @@ export default function TryPear() {
             <div className="mx-auto max-w-xs items-center justify-center sm:flex sm:max-w-none sm:space-x-2.5">
               <div data-aos="fade-up" data-aos-delay="400">
                 <Button asChild size="lg" className="w-full sm:w-auto">
-                  <Link
-                    href="/docs/contributors"
-                  >
-                    Contributing 101
-                  </Link>
+                  <Link href="/docs/contributors">Contributing 101</Link>
                 </Button>
               </div>
             </div>
