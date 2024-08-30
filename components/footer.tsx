@@ -39,7 +39,10 @@ export default function Footer() {
           <h5 className="font-semibold">Download</h5>
           <p className="mt-4 text-base text-neutral-500 dark:text-neutral-400">
             Download directly from the{" "}
-            <Link href="/pricing" className="text-primary-700">
+            <Link
+              href="/pricing"
+              className="text-primary-700 hover:text-primary-800"
+            >
               pricing page
             </Link>
             .
