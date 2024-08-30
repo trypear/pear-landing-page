@@ -1,16 +1,74 @@
+import { ReactNode, forwardRef, ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
-import MobileMenu from "./mobile-menu";
-import AuthButton from "./authbutton";
-import PearDarkLogo from "./PearDark.svg";
+import PearGreenLogo from "./PearGreen.svg";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
 import DarkModeToggle from "./darkmode-toggle";
-import { createClient } from "@/utils/supabase/server";
+import AuthButton from "./authbutton";
+import MobileMenu from "./mobile-menu";
 import { redirect } from "next/navigation";
-import { ExternalLink } from "lucide-react";
-import Navigation from "./navLink";
+import { createClient } from "@/utils/supabase/server";
+
+const NavItem = ({ href, children }: { href: string; children: ReactNode }) => (
+  <NavigationMenuItem>
+    <NavigationMenuLink className={navigationMenuTriggerStyle()} href={href}>
+      {children}
+    </NavigationMenuLink>
+  </NavigationMenuItem>
+);
+
+const DropdownNavItem = ({
+  trigger,
+  children,
+}: {
+  trigger: string;
+  children: ReactNode;
+}) => (
+  <NavigationMenuItem>
+    <NavigationMenuTrigger>{trigger}</NavigationMenuTrigger>
+    <NavigationMenuContent>{children}</NavigationMenuContent>
+  </NavigationMenuItem>
+);
+
+const ListItem = forwardRef<
+  HTMLAnchorElement,
+  ComponentPropsWithoutRef<"a"> & { title: string; href: string }
+>(({ className, title, children, href, ...props }, ref) => (
+  <li>
+    <NavigationMenuLink asChild>
+      <Link
+        ref={ref}
+        href={href}
+        className={cn(
+          "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-secondary-300/10 hover:text-accent-foreground focus:bg-secondary-300/10 focus:text-accent-foreground",
+          className,
+        )}
+        {...props}
+      >
+        <div className="text-sm font-medium leading-none">{title}</div>
+        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+          {children}
+        </p>
+      </Link>
+    </NavigationMenuLink>
+  </li>
+));
+ListItem.displayName = "ListItem";
 
 export default async function Header() {
   const supabase = createClient();
-  const supabaseUserResponse = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
 
   const handleSignOut = async () => {
     "use server";
@@ -20,52 +78,58 @@ export default async function Header() {
   };
 
   return (
-    <>
-      <div className="fixed top-0 z-30 w-full animate-fadein-opacity border-b border-gray-400/20 bg-gray-100/10 backdrop-blur-lg">
-        <div className="mx-auto max-w-screen-xl px-4 py-1 sm:px-6 sm:py-2">
-          <div className="text-md flex h-10 w-full items-center justify-between transition ease-in-out sm:text-lg">
-            {/* Site branding */}
-            <div className="flex w-[14%] flex-row items-center space-x-2 md:w-[36%]">
-              {/* Logo */}
-              <Link className="-mt-0.5 dark:invert sm:mt-0" href="/">
-                <PearDarkLogo />
-              </Link>
-            </div>
-
-            <div className="ml-2 flex w-full flex-row items-center space-x-2 sm:ml-0">
-              {/* Navigation */}
-              <Navigation />
-            </div>
-
-            <div className="flex w-[28%] flex-row items-center justify-end space-x-2.5 md:w-[36%]">
-              {/* AuthButton is hidden in production */}
-              <AuthButton />
-
-              <span
-                className="hidden h-6 w-px rounded-full bg-gray-300 md:block"
-                id="button__divider"
-              ></span>
-
-              {/* DARK/LIGHT MODE TOGGLE */}
-              <DarkModeToggle />
-
-              <span
-                className="h-6 w-px rounded-full bg-gray-300 md:hidden"
-                id="button__divider"
-              ></span>
-
-              <MobileMenu
-                supabaseUser={
-                  supabaseUserResponse.error || !supabaseUserResponse.data.user
-                    ? "User not found"
-                    : supabaseUserResponse
-                }
-                handleSignOut={handleSignOut}
-              />
+    <header className="fixed left-0 right-0 top-0 z-50 p-3 transition-all duration-300 ease-in-out">
+      <div className="mx-auto max-w-6xl">
+        <nav
+          className="rounded-full border border-border/50 bg-background shadow-md transition-all duration-300 ease-in-out"
+          aria-label="Main navigation"
+        >
+          <div className="px-4 sm:px-6 lg:px-8">
+            <div className="flex h-16 items-center justify-between">
+              <div className="flex items-center">
+                <Link
+                  href="/"
+                  className="flex flex-shrink-0 items-center"
+                  aria-label="PearAI Home"
+                >
+                  <PearGreenLogo />
+                  <div className="h4 ml-2">PearAI</div>
+                </Link>
+                <nav className="ml-10 hidden md:block" aria-label="Main menu">
+                  <NavigationMenu>
+                    <NavigationMenuList className="space-x-1">
+                      <DropdownNavItem trigger="Resources">
+                        <ul className="grid w-[400px] gap-3 bg-background p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                          <ListItem href="/about" title="About">
+                            Learn more about PearAI
+                          </ListItem>
+                          <ListItem href="/docs" title="Documentation">
+                            Learn how to use PearAI effectively
+                          </ListItem>
+                          <ListItem href="/faq" title="FAQ">
+                            Frequently asked questions about PearAI
+                          </ListItem>
+                          <ListItem href="/changelog" title="Changelog">
+                            See what&apos;s new in PearAI
+                          </ListItem>
+                        </ul>
+                      </DropdownNavItem>
+                      <NavItem href="/pricing">Pricing / Download</NavItem>
+                    </NavigationMenuList>
+                  </NavigationMenu>
+                </nav>
+              </div>
+              <div className="hidden items-center space-x-4 md:flex">
+                <AuthButton />
+                <DarkModeToggle />
+              </div>
+              <div className="md:hidden">
+                <MobileMenu user={user} handleSignOut={handleSignOut} />
+              </div>
             </div>
           </div>
-        </div>
+        </nav>
       </div>
-    </>
+    </header>
   );
 }
