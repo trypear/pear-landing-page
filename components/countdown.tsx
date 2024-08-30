@@ -2,8 +2,10 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useTheme } from "next-themes";
+import Confetti from "react-confetti";
 
-export const LAUNCH_DATE = "2024-08-30T16:00:00Z"; //"2024-08-30T16:00:00Z"
+export const LAUNCH_DATE = "2024-08-30T16:00:00Z";
+const TEST_DATE = "2024-08-29T22:46:00Z"; // 6:46 PM EST on 8/29/2024
 
 export default function Countdown() {
   const { theme } = useTheme();
@@ -14,31 +16,39 @@ export default function Countdown() {
   const [currentHours, setCurrentHours] = useState<number>(0);
   const [currentDays, setCurrentDays] = useState<number>(0);
   const [hasLaunched, setHasLaunched] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const secondsElementRef = useRef<HTMLDivElement>(null);
   const minutesElementRef = useRef<HTMLDivElement>(null);
   const hoursElementRef = useRef<HTMLDivElement>(null);
   const daysElementRef = useRef<HTMLDivElement>(null);
+  const hasShownConfettiRef = useRef(false);
 
   useEffect(() => {
-    const launchDate = new Date(LAUNCH_DATE); // 12 PM EST in UTC (16:00 UTC)
+    const launchDate = new Date(LAUNCH_DATE);
 
     const calculateTimeRemaining = () => {
       const currentTime = new Date();
       const difference = launchDate.getTime() - currentTime.getTime();
-      setHasLaunched(currentTime >= launchDate);
+      const hasReachedLaunch = currentTime >= launchDate;
+      setHasLaunched(hasReachedLaunch);
       return difference > 0 ? difference : 0;
     };
 
     const updateCountdown = () => {
-      setMillisecondsLeft(calculateTimeRemaining());
+      const timeLeft = calculateTimeRemaining();
+      setMillisecondsLeft(timeLeft);
+
+      if (timeLeft === 0 && !hasShownConfettiRef.current) {
+        hasShownConfettiRef.current = true;
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 10000);
+      }
     };
 
-    setMillisecondsLeft(calculateTimeRemaining());
+    updateCountdown();
 
-    const timerInterval = setInterval(() => {
-      updateCountdown();
-    }, 1000);
+    const timerInterval = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(timerInterval);
   }, []);
@@ -70,18 +80,22 @@ export default function Countdown() {
       }
     };
 
-    setTimeout(() => {
-      setCurrentSeconds(remainingSeconds);
-      setCurrentMinutes(remainingMinutes);
-      setCurrentHours(remainingHours);
-      setCurrentDays(remainingDays);
-    }, 200);
+    setCurrentSeconds(remainingSeconds);
+    setCurrentMinutes(remainingMinutes);
+    setCurrentHours(remainingHours);
+    setCurrentDays(remainingDays);
 
     triggerSwipeAnimation(secondsElementRef, currentSeconds, remainingSeconds);
     triggerSwipeAnimation(minutesElementRef, currentMinutes, remainingMinutes);
     triggerSwipeAnimation(hoursElementRef, currentHours, remainingHours);
     triggerSwipeAnimation(daysElementRef, currentDays, remainingDays);
-  }, [millisecondsLeft]);
+  }, [
+    currentDays,
+    currentHours,
+    currentMinutes,
+    currentSeconds,
+    millisecondsLeft,
+  ]);
 
   return (
     <div
@@ -89,6 +103,7 @@ export default function Countdown() {
       data-aos="fade-up"
       data-aos-delay="200"
     >
+      {showConfetti && <Confetti />}
       <div className="flex justify-center space-x-2 sm:space-x-4">
         <div className="flex flex-col items-center">
           <div
