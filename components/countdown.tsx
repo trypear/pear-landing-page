@@ -80,10 +80,12 @@ export default function Countdown() {
       }
     };
 
-    setCurrentSeconds(remainingSeconds);
-    setCurrentMinutes(remainingMinutes);
-    setCurrentHours(remainingHours);
-    setCurrentDays(remainingDays);
+    setTimeout(() => {
+      setCurrentSeconds(remainingSeconds);
+      setCurrentMinutes(remainingMinutes);
+      setCurrentHours(remainingHours);
+      setCurrentDays(remainingDays);
+    }, 200);
 
     triggerSwipeAnimation(secondsElementRef, currentSeconds, remainingSeconds);
     triggerSwipeAnimation(minutesElementRef, currentMinutes, remainingMinutes);
