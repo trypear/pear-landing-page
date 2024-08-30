@@ -5,7 +5,6 @@ import Link from "next/link";
 import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -71,22 +70,17 @@ const HeroDescription = () => (
   </div>
 );
 
-const HeroButtons = () => (
-  <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
-    <div data-aos="fade-up" data-aos-delay="400">
-      <Button asChild size="lg">
-        <Link
-          href="https://forms.gle/171UyimgQJhEJbhU7"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Join Waitlist
-          <ExternalLink size={16} className="ml-1.5" />
-        </Link>
-      </Button>
+const HeroButtons = () => {
+  return (
+    <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
+      <div data-aos="fade-up" data-aos-delay="400">
+        <Button asChild size="lg">
+          <Link href="/pricing">Download For Free</Link>
+        </Button>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Hero() {
   const { theme } = useTheme();

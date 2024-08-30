@@ -3,29 +3,14 @@ import { withAuth } from "@/utils/withAuth";
 import { NextRequest, NextResponse } from "next/server";
 
 async function downloadFile(request: NextRequest) {
-  const supabase = createClient();
   try {
     const os_type = request.nextUrl.searchParams.get("os_type");
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-
-    if (!session) {
-      return NextResponse.json(
-        { error: "Failed to get session" },
-        { status: 401 },
-      );
-    }
-    const token = session.access_token;
-
-    // Request OS appropriate download from python backend
     const res = await fetch(
       `${process.env.PEARAI_SERVER_URL}/download?os_type=${os_type}`,
       {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
         },
       },
     );
@@ -52,4 +37,4 @@ async function downloadFile(request: NextRequest) {
   }
 }
 
-export const GET = withAuth(downloadFile);
+export const GET = downloadFile;

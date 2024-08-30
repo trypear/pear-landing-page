@@ -3,19 +3,20 @@ import placeholderImage from "@/public/images/claude-3.5-sonnet.png";
 import slugify from "slugify";
 
 export const blogPosts = [
-    {
-      title: "Implementing Claude 3.5 into PearAI's Ecosystem",
-      slug: slugify("Implementing Claude 3.5 into PearAI's Ecosystem", {
-        lower: true,
-      }),
-      excerpt: "Diving into how Claude 3.5 implementation differs from other LLM's.",
-      date: "2024-08-20",
-      author: "Conor Quinlan",
-      authorAvatar: "/path/to/author-avatar.jpg",
-      image: placeholderImage as StaticImageData,
-      readingTime: "5 min",
-      tags: ["AI", "Machine Learning", "Claude 3.5", "PearAI"],
-      content: `
+  {
+    title: "Implementing Claude 3.5 into PearAI's Ecosystem",
+    slug: slugify("Implementing Claude 3.5 into PearAI's Ecosystem", {
+      lower: true,
+    }),
+    excerpt:
+      "Diving into how Claude 3.5 implementation differs from other LLM's.",
+    date: "2024-08-20",
+    author: "Conor Quinlan",
+    authorAvatar: "/path/to/author-avatar.jpg",
+    image: placeholderImage as StaticImageData,
+    readingTime: "5 min",
+    tags: ["AI", "Machine Learning", "Claude 3.5", "PearAI"],
+    content: `
       <article class="space-y-6">
         <p class="text-xl font-semibold text-gray-700 leading-relaxed">
           The integration of Claude 3.5 into PearAI's ecosystem marks a significant milestone in our journey towards more advanced and capable AI systems. This latest iteration of Claude brings unprecedented improvements in natural language understanding, multi-modal processing, and task completion.
@@ -79,18 +80,19 @@ export const blogPosts = [
         </p>
       </article>
     `,
-    },
-    {
-        title: "The Future of AI: Trends to Watch in 2025",
-        slug: slugify("The Future of AI: Trends to Watch in 2025", { lower: true }),
-        excerpt: "Exploring upcoming AI trends that will shape the tech landscape in the coming year.",
-        date: "2024-09-05",
-        author: "Emily Chen",
-        authorAvatar: "/path/to/emily-avatar.jpg",
-        image: placeholderImage as StaticImageData,
-        readingTime: "7 min",
-        tags: ["AI", "Future Tech", "Trends", "2025"],
-        content: `
+  },
+  {
+    title: "The Future of AI: Trends to Watch in 2025",
+    slug: slugify("The Future of AI: Trends to Watch in 2025", { lower: true }),
+    excerpt:
+      "Exploring upcoming AI trends that will shape the tech landscape in the coming year.",
+    date: "2024-09-05",
+    author: "Emily Chen",
+    authorAvatar: "/path/to/emily-avatar.jpg",
+    image: placeholderImage as StaticImageData,
+    readingTime: "7 min",
+    tags: ["AI", "Future Tech", "Trends", "2025"],
+    content: `
           <article class="space-y-6">
             <p class="text-xl font-semibold text-gray-700 leading-relaxed">
               As we approach 2025, the field of Artificial Intelligence continues to evolve at an unprecedented pace. In this post, we'll explore the key AI trends that are set to dominate the tech landscape in the coming year.
@@ -116,18 +118,21 @@ export const blogPosts = [
             </p>
           </article>
         `,
-      },
-      {
-        title: "Optimizing Machine Learning Models for Edge Devices",
-        slug: slugify("Optimizing Machine Learning Models for Edge Devices", { lower: true }),
-        excerpt: "Best practices for deploying efficient ML models on resource-constrained edge devices.",
-        date: "2024-09-15",
-        author: "Alex Rodriguez",
-        authorAvatar: "/path/to/alex-avatar.jpg",
-        image: placeholderImage as StaticImageData,
-        readingTime: "6 min",
-        tags: ["Machine Learning", "Edge Computing", "Optimization", "IoT"],
-        content: `
+  },
+  {
+    title: "Optimizing Machine Learning Models for Edge Devices",
+    slug: slugify("Optimizing Machine Learning Models for Edge Devices", {
+      lower: true,
+    }),
+    excerpt:
+      "Best practices for deploying efficient ML models on resource-constrained edge devices.",
+    date: "2024-09-15",
+    author: "Alex Rodriguez",
+    authorAvatar: "/path/to/alex-avatar.jpg",
+    image: placeholderImage as StaticImageData,
+    readingTime: "6 min",
+    tags: ["Machine Learning", "Edge Computing", "Optimization", "IoT"],
+    content: `
           <article class="space-y-6">
             <p class="text-xl font-semibold text-gray-700 leading-relaxed">
               As edge computing gains traction, deploying machine learning models on resource-constrained devices presents unique challenges. This post explores strategies to optimize ML models for edge deployment.
@@ -157,18 +162,23 @@ export const blogPosts = [
             </p>
           </article>
         `,
-      },
-      {
-        title: "The Role of AI in Cybersecurity: Defending Against Next-Gen Threats",
-        slug: slugify("The Role of AI in Cybersecurity: Defending Against Next-Gen Threats", { lower: true }),
-        excerpt: "Exploring how AI is revolutionizing cybersecurity defenses against sophisticated attacks.",
-        date: "2024-09-25",
-        author: "Samantha Lee",
-        authorAvatar: "/path/to/samantha-avatar.jpg",
-        image: placeholderImage as StaticImageData,
-        readingTime: "8 min",
-        tags: ["AI", "Cybersecurity", "Threat Detection", "Machine Learning"],
-        content: `
+  },
+  {
+    title:
+      "The Role of AI in Cybersecurity: Defending Against Next-Gen Threats",
+    slug: slugify(
+      "The Role of AI in Cybersecurity: Defending Against Next-Gen Threats",
+      { lower: true },
+    ),
+    excerpt:
+      "Exploring how AI is revolutionizing cybersecurity defenses against sophisticated attacks.",
+    date: "2024-09-25",
+    author: "Samantha Lee",
+    authorAvatar: "/path/to/samantha-avatar.jpg",
+    image: placeholderImage as StaticImageData,
+    readingTime: "8 min",
+    tags: ["AI", "Cybersecurity", "Threat Detection", "Machine Learning"],
+    content: `
           <article class="space-y-6">
             <p class="text-xl font-semibold text-gray-700 leading-relaxed">
               As cyber threats evolve in complexity, AI-driven security solutions are becoming essential. This post examines how AI is transforming cybersecurity practices and enabling more robust defenses.
@@ -190,18 +200,21 @@ export const blogPosts = [
             </section>
           </article>
         `,
-      },
-      {
-        title: "Explainable AI: Making Black Box Models Transparent",
-        slug: slugify("Explainable AI: Making Black Box Models Transparent", { lower: true }),
-        excerpt: "Techniques and importance of creating interpretable AI models for critical applications.",
-        date: "2024-10-05",
-        author: "Dr. Michael Wong",
-        authorAvatar: "/path/to/michael-avatar.jpg",
-        image: placeholderImage as StaticImageData,
-        readingTime: "9 min",
-        tags: ["Explainable AI", "Machine Learning", "Transparency", "Ethics"],
-        content: `
+  },
+  {
+    title: "Explainable AI: Making Black Box Models Transparent",
+    slug: slugify("Explainable AI: Making Black Box Models Transparent", {
+      lower: true,
+    }),
+    excerpt:
+      "Techniques and importance of creating interpretable AI models for critical applications.",
+    date: "2024-10-05",
+    author: "Dr. Michael Wong",
+    authorAvatar: "/path/to/michael-avatar.jpg",
+    image: placeholderImage as StaticImageData,
+    readingTime: "9 min",
+    tags: ["Explainable AI", "Machine Learning", "Transparency", "Ethics"],
+    content: `
           <article class="space-y-6">
             <p class="text-xl font-semibold text-gray-700 leading-relaxed">
               As AI systems become more complex, the need for explainable AI (XAI) grows. This post delves into the techniques and importance of creating interpretable AI models.
@@ -227,18 +240,21 @@ export const blogPosts = [
             </section>
           </article>
         `,
-      },
-      {
-        title: "Natural Language Processing Breakthroughs: Beyond GPT-3",
-        slug: slugify("Natural Language Processing Breakthroughs: Beyond GPT-3", { lower: true }),
-        excerpt: "Exploring the latest advancements in NLP that are pushing the boundaries of language understanding and generation.",
-        date: "2024-10-15",
-        author: "Olivia Martinez",
-        authorAvatar: "/path/to/olivia-avatar.jpg",
-        image: placeholderImage as StaticImageData,
-        readingTime: "7 min",
-        tags: ["NLP", "GPT", "Language Models", "AI"],
-        content: `
+  },
+  {
+    title: "Natural Language Processing Breakthroughs: Beyond GPT-3",
+    slug: slugify("Natural Language Processing Breakthroughs: Beyond GPT-3", {
+      lower: true,
+    }),
+    excerpt:
+      "Exploring the latest advancements in NLP that are pushing the boundaries of language understanding and generation.",
+    date: "2024-10-15",
+    author: "Olivia Martinez",
+    authorAvatar: "/path/to/olivia-avatar.jpg",
+    image: placeholderImage as StaticImageData,
+    readingTime: "7 min",
+    tags: ["NLP", "GPT", "Language Models", "AI"],
+    content: `
           <article class="space-y-6">
             <p class="text-xl font-semibold text-gray-700 leading-relaxed">
               Natural Language Processing (NLP) continues to evolve rapidly. This post examines the cutting-edge developments that are taking us beyond GPT-3 and reshaping how machines understand and generate human language.
@@ -260,5 +276,5 @@ export const blogPosts = [
             </section>
           </article>
         `,
-      },
-  ];
+  },
+];

@@ -39,16 +39,6 @@ const SUPPORTED_OS: SupportedOS[] = [
   { name: "Download for Windows", os: "windows" },
 ];
 
-type WaitlistEntry = {
-  id: string;
-  name: string;
-  email: string;
-  payment_intent_id: string;
-  created_at?: Date;
-  priority: boolean;
-  access_given: boolean;
-};
-
 const PricingTier: React.FC<PricingTierProps> = ({
   title,
   prevPrice,
@@ -59,18 +49,16 @@ const PricingTier: React.FC<PricingTierProps> = ({
   isFree = false,
   priceId,
   user,
-  waitlistAccess,
-  isWaitlistInfoLoading,
   index,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
-  const [isDownloading, setIsDownloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [downloadLink, setDownloadLink] = useState<string>();
   const router = useRouter();
 
   const handleDownload = async (os_type: string) => {
-    setIsDownloading(true);
+    setIsLoading(true);
     try {
       const res = await fetch(`/api/download?os_type=${os_type}`, {
         method: "GET",
@@ -92,7 +80,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
     } catch (error: any) {
       toast.error(error.message);
     } finally {
-      setIsDownloading(false);
+      setIsLoading(false);
     }
   };
 
@@ -116,14 +104,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
         <div className="relative w-[90%] md:w-[80%]">
           <Button
             key={os.os}
-            disabled={!waitlistAccess}
             onClick={() => handleDownload(os.os)}
             className="relative flex h-12 w-full items-center justify-center px-4"
             aria-label={`Download for ${os.os}`}
           >
             <div className="flex items-center justify-center">
               <span className="text-center">{os.name}</span>
-              <Download className="ml-2 h-5 w-5" aria-hidden="true" />
             </div>
           </Button>
 
@@ -182,20 +168,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
               </p>
             </div>
           )}
-          {isFree && (
-            <p className="text-sm text-gray-600">
-              <Link
-                href="https://forms.gle/171UyimgQJhEJbhU7"
-                className="text-link hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Join the waitlist
-              </Link>{" "}
-              to be notified when the app is available! If you&apos;re already
-              off the waitlist, make sure you&apos;re signed in 👀
-            </p>
-          )}
+
           <div className="mt-6">
             {isFree ? (
               downloaded ? (
@@ -212,7 +185,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
                   )}
                   .
                 </p>
-              ) : isWaitlistInfoLoading || isDownloading ? (
+              ) : isLoading ? (
                 <div className="flex justify-center">
                   <Spinner />
                 </div>
@@ -221,12 +194,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
                   {SUPPORTED_OS.map((os) => (
                     <DownloadButton os={os} key={os.os} />
                   ))}
-                  {waitlistAccess ?? (
-                    <p className="mt-2 text-xs italic text-gray-400">
-                      If you&apos;re having trouble installing, try a different
-                      browser.
-                    </p>
-                  )}
+                  <p className="mt-2 text-xs italic text-gray-400">
+                    If you&apos;re having trouble installing, try a different
+                    browser.
+                  </p>
                 </div>
               )
             ) : (
@@ -266,41 +237,6 @@ const PricingTier: React.FC<PricingTierProps> = ({
 };
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
-  const [waitlistInfo, setWaitlistInfo] = useState<WaitlistEntry>();
-  const [isWaitlistInfoLoading, setIsWaitlistInfoLoading] = useState(false);
-
-  useEffect(() => {
-    // Check if user is in waitlist
-    const getWaitlistInfo = async () => {
-      setIsWaitlistInfoLoading(true);
-      try {
-        const res = await fetch("/api/waitlist-info", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
-
-        if (!res.ok) {
-          if (res.status === 404) {
-            return;
-          }
-          throw Error(res.statusText);
-        }
-        const data = await res.json();
-        setWaitlistInfo(data);
-        return data;
-      } catch (error: any) {
-        toast.error(
-          `Cannot obtain info on whether the user is on waitlist or not: ${error.message}`,
-        );
-      } finally {
-        setIsWaitlistInfoLoading(false);
-      }
-    };
-    if (user) {
-      getWaitlistInfo();
-    }
-  }, [user]);
-
   return (
     <section
       className="relative py-8 sm:py-12 md:py-16 lg:py-24"
@@ -313,9 +249,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               id="pricing-heading"
               className="text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
             >
-              Start for free,
+              Speed up your
               <br />
-              pay after you get value
+              development today.
             </h1>
           </header>
 
@@ -349,13 +285,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           >
             {PRICING_TIERS.map((tier, index) => (
               <div key={index} role="listitem">
-                <PricingTier
-                  {...tier}
-                  user={user}
-                  waitlistAccess={!!waitlistInfo?.email}
-                  isWaitlistInfoLoading={isWaitlistInfoLoading}
-                  index={index}
-                />
+                <PricingTier {...tier} user={user} index={index} />
               </div>
             ))}
           </div>

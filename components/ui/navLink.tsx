@@ -49,7 +49,7 @@ const Navigation: React.FC = () => {
       isExternal: true,
     },
     {
-      label: "Pricing",
+      label: "Download",
       path: "/pricing",
       isExternal: false,
       mobile: false,
@@ -57,12 +57,6 @@ const Navigation: React.FC = () => {
     {
       label: "Docs",
       path: "/docs",
-      isExternal: false,
-      mobile: false,
-    },
-    {
-      label: "Priority Waitlist",
-      path: "/priority-waitlist",
       isExternal: false,
       mobile: false,
     },
