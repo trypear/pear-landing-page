@@ -16,6 +16,45 @@ type ChangelogEntry = {
 
 const updates: ChangelogEntry[] = [
   {
+    date: "30 August 2024",
+    title: "🎉 PearAI v1.0.0 - The Grand Launch",
+    version: "v1.0.0 🚀",
+    description: (
+      <>
+        <p className="mb-4 text-lg font-semibold text-primary-700">
+          Welcome to the future of AI-assisted development
+        </p>
+        <ul className="list-disc space-y-2 ps-6 text-sm">
+          <li className="font-medium text-primary-600">
+            🧠 Huge Refactor ....
+          </li>
+          <li className="font-medium text-primary-600">
+            🚀 Huge Refactor ....
+          </li>
+          <li className="font-medium text-primary-600">
+            🎨 Huge Refactor ....
+          </li>
+          <li className="font-medium text-primary-600">
+            🔗 Huge Refactor ....
+          </li>
+          <li className="font-medium text-primary-600">
+            🛠 Huge Refactor ....
+          </li>
+          <li className="font-medium text-primary-600">
+            📚 Huge Refactor ....
+          </li>
+        </ul>
+      </>
+    ),
+    screenshot: {
+      // replace with new screenshot
+      src: "/images/modelSwitch- v0.0.3.png",
+      alt: "PearAI v1.0.0 Dashboard",
+      width: 461,
+      height: 243,
+    },
+  },
+  {
     date: "19 August 2024",
     title: "🚧 Model switch feature & Bug Fixes",
     version: "v0.0.3",
@@ -45,8 +84,8 @@ const updates: ChangelogEntry[] = [
     screenshot: {
       src: "/images/modelSwitch- v0.0.3.png",
       alt: "Screenshot of performance enhancements",
-      width: 300,
-      height: 300,
+      width: 461,
+      height: 243,
     },
   },
   {
