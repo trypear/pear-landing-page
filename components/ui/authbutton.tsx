@@ -44,7 +44,7 @@ export default async function AuthButton() {
           <Link href="/dashboard">
             <Button variant="outline">Dashboard</Button>
           </Link>
-          <DropdownMenu>
+          <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
               <Avatar className="h-8 w-8 cursor-pointer">
                 <AvatarImage
