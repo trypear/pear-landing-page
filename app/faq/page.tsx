@@ -8,6 +8,7 @@ import { faqData } from "@/utils/constants";
 import Link from "next/link";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = constructMetadata({
   title: "FAQ",
@@ -18,20 +19,19 @@ export const metadata: Metadata = constructMetadata({
 const FAQ: React.FC = () => {
   return (
     <>
-      <section className="mx-auto mt-10 flex w-full flex-col items-center px-4 py-8 sm:px-8 md:px-16 lg:px-24 lg:py-20 xl:px-32">
-        <div className="mb-8 text-center">
+      <section className="mx-auto mt-10 flex w-full flex-col items-center px-4 py-20 sm:px-8 md:px-16 lg:px-24 lg:py-20 xl:px-32">
+        <div className="mb-16 text-center">
           <h2
-            className="mb-4 whitespace-pre-line text-3xl font-bold text-primary-700 lg:text-5xl"
+            className="mb-4 whitespace-pre-line text-3xl font-bold text-primary-700"
             data-aos="fade-up"
           >
             Frequently Asked Questions
           </h2>
           <p
-            className="whitespace-pre-line text-lg text-gray-600 lg:text-xl"
+            className="whitespace-pre-line text-base text-gray-600"
             data-aos="fade-up"
           >
-            Can&apos;t find the answer you&apos;re looking for? Ask us directly
-            in our{" "}
+            Can&apos;t find the answer you&apos;re looking for? Ask us on our{" "}
             <Link
               className="underline"
               rel="noopener noreferrer"
@@ -50,19 +50,19 @@ const FAQ: React.FC = () => {
         >
           {faqData.map((item, index) => (
             <AccordionItem key={index} value={String(index + 1)}>
-              <AccordionTrigger className="text-left text-xl font-semibold">
+              <AccordionTrigger className="text-left text-base font-semibold">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="whitespace-pre-line text-lg text-gray-600">
+              <AccordionContent className="whitespace-pre-line text-sm text-gray-600">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>
           ))}
           <AccordionItem value={"contribute"}>
-            <AccordionTrigger className="text-left text-xl font-semibold">
+            <AccordionTrigger className="text-left text-base font-semibold">
               How can I contribute to PearAI?
             </AccordionTrigger>
-            <AccordionContent className="text-lg text-gray-600">
+            <AccordionContent className="text-sm text-gray-600">
               See the contributor&apos;s section.{" "}
               <Link
                 rel="noopener noreferrer"
@@ -76,6 +76,7 @@ const FAQ: React.FC = () => {
           </AccordionItem>
         </Accordion>
       </section>
+      <Footer />
     </>
   );
 };

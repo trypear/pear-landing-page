@@ -19,6 +19,7 @@ import Spinner from "./ui/spinner";
 import { Badge } from "./ui/badge";
 import { AppleLogo, WindowsLogo } from "./ui/icons";
 import { LAUNCH_DATE } from "./countdown";
+import Footer from "./footer";
 
 type SupportedOS = {
   name: string;
@@ -267,13 +268,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   return (
-    <section
-      className="relative py-8 sm:py-12 md:py-16 lg:py-24"
-      aria-labelledby="pricing-heading"
-    >
-      <div className="mx-auto max-w-7xl px-8 sm:px-6 lg:px-20">
-        <div className="space-y-6 sm:space-y-8 md:space-y-6 lg:space-y-6">
-          <header className="mx-auto mt-16 max-w-4xl space-y-4 text-center sm:mt-0 sm:space-y-6">
+    <section className="relative mt-32" aria-labelledby="pricing-heading">
+      <div className="mx-auto mb-32 max-w-7xl px-16">
+        <div className="space-y-6 md:space-y-6 lg:space-y-6">
+          <header className="mx-auto max-w-4xl pb-8 text-center">
             <h1
               id="pricing-heading"
               className="text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
@@ -296,7 +294,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                 </span>
               </p>
 
-              <p className="block w-max items-center justify-end text-right md:flex">
+              <p className="block w-max items-center justify-end pl-4 text-right md:flex">
                 <strong className="text-lg text-primary-900 dark:text-gray-900">
                   20-30% off
                 </strong>
@@ -320,7 +318,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </div>
 
           <footer className="text-center">
-            <p className="text-base text-gray-400 sm:text-lg md:text-xl">
+            <p className="pt-8 text-base text-gray-400 sm:text-lg md:text-xl">
               Want to use PearAI in your business?
               <button
                 className="ml-2 font-semibold text-primary-700 transition-colors hover:text-primary-800"
@@ -336,6 +334,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </footer>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };

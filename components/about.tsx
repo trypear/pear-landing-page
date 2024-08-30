@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Tweet } from "@/components/tweet";
 import { components } from "./ui/my-tweet";
 import { Badge } from "./ui/badge";
+import Footer from "./footer";
 
 type VideoData = {
   src: string;
@@ -62,19 +63,19 @@ const AboutComponent: React.FC = () => {
         <p className="text-xs text-gray-700">Current features include</p>
 
         <div className="m-4 mt-2 flex max-w-4xl flex-wrap items-center justify-center gap-4">
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800">
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
             Codebase context: talk to your code
           </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800">
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
             Built-in PearAI chat
           </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800">
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
             Inline AI prompting and diff changes
           </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800">
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
             AI debugging, including errors shown in terminal
           </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800">
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
             And many more!
           </Badge>
         </div>
@@ -122,6 +123,7 @@ const AboutComponent: React.FC = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };

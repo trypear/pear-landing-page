@@ -12,7 +12,7 @@ export default function Footer() {
           <Link className="-ml-1 inline-block dark:invert" href="/">
             <PearDarkLogo />
           </Link>
-          <p className="mt-5 leading-[1.75] text-neutral-500 dark:text-neutral-400">
+          <p className="mt-5 text-sm leading-[1.75] text-neutral-500 dark:text-neutral-400">
             Speed up your development process by seamlessly integrating AI into
             your workflow.
           </p>
@@ -25,7 +25,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 text-neutral-500 dark:text-neutral-400">
               {links.map(({ text, href }, idx) => (
                 <li key={idx}>
-                  <Link href={href} className="hover:text-primary-600">
+                  <Link href={href} className="text-sm hover:text-primary-600">
                     {text}
                   </Link>
                 </li>
@@ -37,9 +37,12 @@ export default function Footer() {
         {/* Download Section */}
         <div>
           <h5 className="font-semibold">Download</h5>
-          <p className="mt-4 text-base text-neutral-500 dark:text-neutral-400">
+          <p className="mt-4 text-sm text-neutral-500 dark:text-neutral-400">
             Download directly from the{" "}
-            <Link href="/pricing" className="text-primary-700">
+            <Link
+              href="/pricing"
+              className="text-primary-700 underline-offset-1 hover:underline"
+            >
               pricing page
             </Link>
             .
@@ -65,7 +68,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <span>
+        <span className="text-sm">
           &copy; {new Date().getFullYear()} PearAI - All rights reserved.
         </span>
       </div>

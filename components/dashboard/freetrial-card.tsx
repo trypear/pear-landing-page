@@ -29,7 +29,7 @@ export default function FreeTrialCard({
           </CardTitle>
           <Badge
             variant="secondary"
-            className="border-primary-800 bg-primary-800/10 px-2 py-1 text-sm text-primary-800"
+            className="border-primary-800 bg-primary-800/10 px-2 py-1 text-xs text-primary-800"
           >
             Free Trial
           </Badge>
@@ -38,7 +38,7 @@ export default function FreeTrialCard({
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Requests</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm/6 text-muted-foreground">
                 <strong>
                   {usage.used_quota ?? 0} /{" "}
                   {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA}
@@ -54,7 +54,7 @@ export default function FreeTrialCard({
               className="mb-2 mt-2 h-2 w-full"
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm/6 text-muted-foreground">
               {usage.used_quota ?? 0} of{" "}
               {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA} free trial
               requests used
@@ -63,7 +63,7 @@ export default function FreeTrialCard({
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Plan</p>
-              <p className="text-muted-foreground">Free Trial</p>
+              <p className="text-sm/6 text-muted-foreground">Free Trial</p>
             </div>
           </div>
           <div className="mt-8 flex justify-between space-x-4">
@@ -80,9 +80,9 @@ export default function FreeTrialCard({
               <Link href="/pricing">Subscribe Now</Link>
             </Button>
           </div>
-          <div className="flex items-center">
+          <div className="mt-1 flex items-center">
             <Info className="inline text-muted-foreground" size={14} />
-            <p className="ml-1.5 text-xs text-muted-foreground">
+            <p className="ml-1.5 text-xs/3 text-muted-foreground">
               Make sure PearAI is{" "}
               <Button
                 variant="link"
@@ -91,7 +91,7 @@ export default function FreeTrialCard({
               >
                 <Link href="/pricing">installed.</Link>
               </Button>{" "}
-              Use this button to open the app and login directly.
+              Use this button to open app and login directly.
             </p>
           </div>
         </CardContent>

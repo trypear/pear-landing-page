@@ -46,14 +46,14 @@ export default async function AuthButton() {
           </Link>
           <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
-              <Avatar className="h-8 w-8 cursor-pointer">
+              <Avatar className="h-8 w-8 cursor-pointer border border-gray-600/50">
                 <AvatarImage
                   src={data.user.user_metadata.avatar_url}
                   alt={data.user.user_metadata.full_name || "User avatar"}
                 />
-                <AvatarFallback className="text-xs">
-                  {data.user.user_metadata.full_name?.[0] ||
-                    data.user.email?.[0] ||
+                <AvatarFallback className="text-xs font-medium">
+                  {data.user.user_metadata.full_name?.[0].toUpperCase() ||
+                    data.user.email?.[0].toUpperCase() ||
                     "U"}
                 </AvatarFallback>
               </Avatar>
