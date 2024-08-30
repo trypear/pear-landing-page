@@ -3,7 +3,8 @@
 import { useEffect, useState, useRef } from "react";
 import { useTheme } from "next-themes";
 
-export const LAUNCH_DATE = "2024-08-30T16:00:00Z"; //"2024-08-30T16:00:00Z"
+export const LAUNCH_DATE = "2024-08-30T16:00:00Z";
+const TEST_DATE = "2024-08-29T22:46:00Z"; // 6:46 PM EST on 8/29/2024
 
 export default function Countdown() {
   const { theme } = useTheme();
@@ -21,24 +22,24 @@ export default function Countdown() {
   const daysElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const launchDate = new Date(LAUNCH_DATE); // 12 PM EST in UTC (16:00 UTC)
+    const launchDate = new Date(LAUNCH_DATE);
 
     const calculateTimeRemaining = () => {
       const currentTime = new Date();
       const difference = launchDate.getTime() - currentTime.getTime();
-      setHasLaunched(currentTime >= launchDate);
+      const hasReachedLaunch = currentTime >= launchDate;
+      setHasLaunched(hasReachedLaunch);
       return difference > 0 ? difference : 0;
     };
 
     const updateCountdown = () => {
-      setMillisecondsLeft(calculateTimeRemaining());
+      const timeLeft = calculateTimeRemaining();
+      setMillisecondsLeft(timeLeft);
     };
 
-    setMillisecondsLeft(calculateTimeRemaining());
+    updateCountdown();
 
-    const timerInterval = setInterval(() => {
-      updateCountdown();
-    }, 1000);
+    const timerInterval = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(timerInterval);
   }, []);
@@ -81,7 +82,13 @@ export default function Countdown() {
     triggerSwipeAnimation(minutesElementRef, currentMinutes, remainingMinutes);
     triggerSwipeAnimation(hoursElementRef, currentHours, remainingHours);
     triggerSwipeAnimation(daysElementRef, currentDays, remainingDays);
-  }, [millisecondsLeft]);
+  }, [
+    currentDays,
+    currentHours,
+    currentMinutes,
+    currentSeconds,
+    millisecondsLeft,
+  ]);
 
   return (
     <div
