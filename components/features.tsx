@@ -16,14 +16,14 @@ export default function Features() {
       header: "Talk to your codebase directly.",
       description: (
         <>
-        Ask questions or generate code with context of your{' '}
+          Ask questions or generate code with context of your{" "}
           <b>
             <code>@codebase</code>
-          </b>{' '}
+          </b>{" "}
           for accurate results. <br />
           <br />
-          This also works with choosing specific folders, online docs, terminal content, files, and
-          more 😈.
+          This also works with choosing specific folders, online docs, terminal
+          content, files, and more 😈.
         </>
       ),
       videoSource: "/webms/talktocodebase.webm",
@@ -33,15 +33,20 @@ export default function Features() {
       header: "No more tedious changes.",
       description: (
         <>
-          PearAI can directly code in your files, and allow you to see diffs. Try{" "}
+          PearAI can directly code in your files, and allow you to see diffs.
+          Try{" "}
           <b>
             <code>CMD+I</code>
           </b>
           &nbsp;(<code>CTRL+I</code> on Windows). <br />
-          <br /> Here, we ask PearAI to help us add error handling and comments 😏.
-          <br/><br/> To see all of our features, check out our                   <Link className="text-primary-600" href="/docs/core-features">
-                    docs
-                  </Link>.
+          <br /> Here, we ask PearAI to help us add error handling and comments
+          😏.
+          <br />
+          <br /> To see all of our features, check out our{" "}
+          <Link className="text-primary-600" href="/docs/core-features">
+            docs
+          </Link>
+          .
         </>
       ),
       videoSource: "/webms/cmd+i-landingpage.webm",
