@@ -1,4 +1,5 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
+import Link from "next/link";
 
 type FeatureInfo = {
   header: string;
@@ -12,55 +13,56 @@ type SingleFeatureProps = {
 export default function Features() {
   const featureInfo = [
     {
-      header: "Talk to your codebase directly",
+      header: "Talk to your codebase directly.",
       description: (
         <>
-          To add missing context: directly reference code by including other
-          files in the chat by adding &nbsp;
+        Ask questions or generate code with context of your{' '}
           <b>
-            <code>@filename</code>
-          </b>
-          . <br />
+            <code>@codebase</code>
+          </b>{' '}
+          for accurate results. <br />
           <br />
-          This also works for folders, docs, terminal content, codebase, and
-          more 😈
+          This also works with choosing specific folders, online docs, terminal content, files, and
+          more 😈.
         </>
       ),
-      videoSource: "/webms/pearai-@file.webm",
+      videoSource: "/webms/talktocodebase.webm",
     },
 
     {
-      header: "No more tedious changes,\nor forgetting language\nsyntax",
+      header: "No more tedious changes.",
       description: (
         <>
-          Directly make changes inline by pressing{" "}
+          PearAI can directly code in your files, and allow you to see diffs. Try{" "}
           <b>
             <code>CMD+I</code>
           </b>
-          &nbsp;(<code>CTRL+I</code> on Windows), and choose what you want to
-          keep. <br />
-          <br /> Here, we ask PearAI to help us handle edge cases 😏
+          &nbsp;(<code>CTRL+I</code> on Windows). <br />
+          <br /> Here, we ask PearAI to help us add error handling and comments 😏.
+          <br/><br/> To see all of our features, check out our                   <Link className="text-primary-600" href="/docs/core-features">
+                    docs
+                  </Link>.
         </>
       ),
-      videoSource: "/webms/pearai-CMD+I.webm",
+      videoSource: "/webms/cmd+i-landingpage.webm",
     },
 
-    {
-      header: "No more tiresome\ncopy pasting.",
-      description: (
-        <>
-          Directly bring your code to the chat by selecting it and
-          pressing&nbsp;
-          <b>
-            <code>CMD+L</code>
-          </b>
-          &nbsp;(<code>CTRL+L</code> on Windows).
-          <br />
-          <br /> Prompt it right away 😎
-        </>
-      ),
-      videoSource: "/webms/pearai-CMD+L2.webm",
-    },
+    // {
+    //   header: "No more tiresome\ncopy pasting.",
+    //   description: (
+    //     <>
+    //       Directly bring your code to the chat by selecting it and
+    //       pressing&nbsp;
+    //       <b>
+    //         <code>CMD+L</code>
+    //       </b>
+    //       &nbsp;(<code>CTRL+L</code> on Windows).
+    //       <br />
+    //       <br /> Prompt it right away 😎
+    //     </>
+    //   ),
+    //   videoSource: "/webms/pearai-CMD+L2.webm",
+    // },
   ];
 
   return (
