@@ -59,35 +59,7 @@ export default function TryPear() {
             <div className="mx-auto max-w-xs items-center justify-center sm:flex sm:max-w-none sm:space-x-2.5">
               <div data-aos="fade-up" data-aos-delay="400">
                 <Button asChild size="lg" className="w-full sm:w-auto">
-                  <Link
-                    href="https://docs.google.com/presentation/d/1zR9-7DTlb2PcsnapryZw8jHSkLTs9JxeXth4nyeemAQ/edit?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Contributing 101
-                    <ExternalLink size={16} />
-                  </Link>
-                </Button>
-              </div>
-              <div
-                className="mt-2.5 sm:mt-0"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <Button
-                  asChild
-                  size="lg"
-                  variant="outline"
-                  className="w-full sm:w-auto"
-                >
-                  <Link
-                    href="https://docs.google.com/document/d/14jusGNbGRPT8X6GgEDbP1iab5q4X7_y-eFXK7Ky57IQ/edit?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    PearAI Master Doc
-                    <ExternalLink size={16} />
-                  </Link>
+                  <Link href="/docs/contributors">Contributing 101</Link>
                 </Button>
               </div>
             </div>

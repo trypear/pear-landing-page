@@ -6,8 +6,8 @@ import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
 import Countdown, { LAUNCH_DATE } from "./countdown";
-import { useEffect, useState } from "react";
-import Spinner from "./ui/spinner";
+import { useEffect, useRef, useState } from "react";
+import Confetti from "react-confetti";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -73,31 +73,11 @@ const HeroDescription = () => (
   </div>
 );
 
-const HeroButtons = () => {
-  const [isReleased, setIsReleased] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const checkReleaseStatus = () => {
-      const releaseDate = new Date(LAUNCH_DATE);
-      const now = new Date();
-      setIsReleased(now >= releaseDate);
-      setIsLoading(false);
-    };
-
-    checkReleaseStatus();
-    const timer = setInterval(checkReleaseStatus, 5000);
-
-    return () => clearInterval(timer);
-  }, []);
+const HeroButtons = ({ isReleased }: { isReleased: boolean }) => {
   return (
     <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
       <div data-aos="fade-up" data-aos-delay="400">
-        {isLoading ? (
-          <div className="flex justify-center">
-            <Spinner />
-          </div>
-        ) : isReleased ? (
+        {isReleased ? (
           <Button asChild size="lg">
             <Link href="/pricing">Download For Free</Link>
           </Button>
@@ -113,9 +93,50 @@ const HeroButtons = () => {
 
 export default function Hero() {
   const { theme } = useTheme();
+  const hasShownConfettiRef = useRef(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [recycleConfetti, setRecycleConfetti] = useState(true);
+  const [isReleased, setIsReleased] = useState(false);
+
+  useEffect(() => {
+    const checkReleaseStatus = () => {
+      const releaseDate = new Date(LAUNCH_DATE);
+      const now = new Date();
+
+      if (now >= releaseDate) {
+        setIsReleased(true);
+        if (!hasShownConfettiRef.current) {
+          hasShownConfettiRef.current = true;
+          setShowConfetti(true);
+
+          setTimeout(() => {
+            setRecycleConfetti(false);
+          }, 9000);
+
+          setTimeout(() => {
+            setShowConfetti(false);
+          }, 13000);
+        }
+      } else {
+        setIsReleased(false);
+      }
+    };
+
+    checkReleaseStatus();
+    const timer = setInterval(checkReleaseStatus, 2000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section>
+      {showConfetti && (
+        <Confetti
+          className="absolute inset-0 max-w-full"
+          numberOfPieces={300}
+          recycle={recycleConfetti}
+        />
+      )}
       <div className="relative mx-auto mt-24 max-w-6xl px-4 sm:px-6">
         <div className="relative pb-10 pt-24">
           <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
@@ -123,7 +144,7 @@ export default function Hero() {
               <HeroTitle theme={theme!} />
             </div>
             <HeroDescription />
-            <HeroButtons />
+            <HeroButtons isReleased={isReleased} />
             <Countdown />
           </div>
         </div>
