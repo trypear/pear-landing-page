@@ -115,6 +115,7 @@ export default async function Header() {
                         </ul>
                       </DropdownNavItem>
                       <NavItem href="/pricing">Pricing / Download</NavItem>
+                      <NavItem href="https://github.com/trypear/pearai-app">GitHub ⭐️</NavItem>
                     </NavigationMenuList>
                   </NavigationMenu>
                 </nav>
