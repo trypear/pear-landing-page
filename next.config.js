@@ -1,9 +1,13 @@
+const { withContentlayer } = require("next-contentlayer");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "pbs.twimg.com" },
       { protocol: "https", hostname: "abs.twimg.com" },
+      { protocol: "https", hostname: "res.cloudinary.com" }, // REMOVE THIS
+      { protocol: "https", hostname: "cdn.pixabay.com" }, // REMOVE THIS
     ],
   },
 };
@@ -21,4 +25,4 @@ const nextConfiguration = {
   },
 };
 
-module.exports = nextConfiguration;
+module.exports = withContentlayer(nextConfiguration);
