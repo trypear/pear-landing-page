@@ -30,7 +30,7 @@ const videoData: VideoData[] = [
 
 const AboutComponent: React.FC = () => {
   return (
-    <section className={"mt-32"}>
+    <section className={"mt-36"}>
       <div
         className={
           "m-4 mt-0 flex flex-col items-center text-center lg:m-0 lg:justify-center"
@@ -91,7 +91,7 @@ const AboutComponent: React.FC = () => {
         ))}
       </div>
 
-      <div className="mb-32 mt-0 flex flex-col items-center justify-center p-4">
+      <div className="mt-0 flex flex-col items-center justify-center p-4 pb-0">
         <h2 className="text-4xl font-bold">
           <span className="relative">
             <span className="relative z-10">Founders</span>

@@ -19,7 +19,7 @@ export const metadata: Metadata = constructMetadata({
 const FAQ: React.FC = () => {
   return (
     <>
-      <section className="mx-auto mt-10 flex w-full flex-col items-center px-4 py-20 sm:px-8 md:px-16 lg:px-24 lg:py-20 xl:px-32">
+      <section className="mx-auto mt-36 flex w-full flex-col items-center px-4">
         <div className="mb-16 text-center">
           <h2
             className="mb-4 whitespace-pre-line text-3xl font-bold text-primary-700"
@@ -46,11 +46,11 @@ const FAQ: React.FC = () => {
         <Accordion
           type="single"
           collapsible
-          className="w-full max-w-3xl space-y-4 px-4 sm:px-6 md:px-8 lg:px-10"
+          className="w-full max-w-3xl space-y-4 px-8"
         >
           {faqData.map((item, index) => (
             <AccordionItem key={index} value={String(index + 1)}>
-              <AccordionTrigger className="text-left text-base font-semibold">
+              <AccordionTrigger className="text-left text-base font-medium">
                 {item.question}
               </AccordionTrigger>
               <AccordionContent className="whitespace-pre-line text-sm text-gray-600">

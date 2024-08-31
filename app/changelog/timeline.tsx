@@ -60,7 +60,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
               </div>
             </div>
             {screenshot && (
-              <div className="md:ml-auto md:w-full md:max-w-xs">
+              <div className="pr-4 md:ml-auto md:w-full md:max-w-xs">
                 <Image
                   src={screenshot.src}
                   alt={screenshot.alt}

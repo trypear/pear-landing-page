@@ -18,7 +18,6 @@ import { toast } from "sonner";
 import Spinner from "./ui/spinner";
 import { Badge } from "./ui/badge";
 import { AppleLogo, WindowsLogo } from "./ui/icons";
-import { LAUNCH_DATE } from "./countdown";
 import Footer from "./footer";
 
 type SupportedOS = {
@@ -128,7 +127,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
   return (
     <Card
-      className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-600/20 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
+      className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-900/40 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
     >
       <div className="flex h-auto w-full flex-col">
         <CardHeader className="flex-grow-0 px-6 pb-6 pt-6">
@@ -222,12 +221,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
               aria-label={`Features of ${title} plan`}
             >
               {features.map((feature, index) => (
-                <li key={index} className="flex items-center text-primary-700">
+                <li key={index} className="flex items-center">
                   <Check
-                    className="mr-3 h-4 w-4 flex-shrink-0"
+                    className="mr-3 h-4 w-4 flex-shrink-0 text-primary-700"
                     aria-hidden="true"
                   />
-                  <span className="text-sm">{feature}</span>
+                  <span className="text-sm text-gray-600">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -240,10 +239,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   return (
-    <section className="relative mt-32" aria-labelledby="pricing-heading">
-      <div className="mx-auto mb-32 max-w-7xl px-16">
+    <section className="relative mt-36" aria-labelledby="pricing-heading">
+      <div className="mx-auto mb-32 max-w-7xl px-8 sm:px-20 md:px-20 lg:px-20">
         <div className="space-y-6 md:space-y-6 lg:space-y-6">
-          <header className="mx-auto max-w-4xl pb-8 text-center">
+          <header className="mx-auto max-w-4xl pb-4 text-center">
             <h1
               id="pricing-heading"
               className="text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
