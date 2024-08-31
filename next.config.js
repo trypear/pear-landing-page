@@ -6,8 +6,6 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "pbs.twimg.com" },
       { protocol: "https", hostname: "abs.twimg.com" },
-      { protocol: "https", hostname: "res.cloudinary.com" }, // REMOVE THIS
-      { protocol: "https", hostname: "cdn.pixabay.com" }, // REMOVE THIS
     ],
   },
 };

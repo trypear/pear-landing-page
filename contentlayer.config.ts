@@ -1,4 +1,3 @@
-// contentlayer.config.ts
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
 export const Post = defineDocumentType(() => ({
