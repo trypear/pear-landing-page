@@ -90,12 +90,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
         <div className="flex w-[10%] items-center justify-start md:w-[20%]">
           <div className="hidden h-10 w-10 items-center justify-center rounded-full bg-primary-1000 text-primary-700 md:flex">
             {os.os !== "windows" ? (
-              <span className="flex h-5 w-5 items-center justify-center">
-                <AppleLogo />
+              <span className="flex items-center justify-center">
+                <AppleLogo className="h-5 w-5" />
               </span>
             ) : (
-              <span className="flex h-5 w-5 items-center justify-center">
-                <WindowsLogo />
+              <span className="flex items-center justify-center">
+                <WindowsLogo className="h-5 w-5" />
               </span>
             )}
           </div>
