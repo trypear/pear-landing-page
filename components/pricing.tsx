@@ -376,7 +376,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                   >
                     Contact us
                   </button>
-                  &nbsp;if you're interested in these plans.
+                  &nbsp;if you&abpos;re interested in these plans.
                 </p>
               </footer>
             </TabsContent>
