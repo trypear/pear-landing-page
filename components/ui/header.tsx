@@ -103,9 +103,9 @@ export default async function Header() {
                           <ListItem href="/about" title="About">
                             Learn more about PearAI
                           </ListItem>
-                          <ListItem href="/docs" title="Blog">
-                            See articles by our contributors on the development
-                            of PearAI
+                          <ListItem href="/blog" title="Blog">
+                            Read insights on PearAI&apos;s development by our
+                            contributors
                           </ListItem>
                           <ListItem href="/faq" title="FAQ">
                             Frequently asked questions about PearAI
