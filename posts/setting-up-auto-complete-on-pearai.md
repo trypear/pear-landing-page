@@ -25,6 +25,6 @@ This is the guide to do that:
    }
    ```
 
-   ![Command Palette in PearAI (Cmd/Ctrl+Shift+P)](/images/posts/open-pearai-config.png)
+   ![Command Palette in PearAI (Cmd/Ctrl+Shift+P)](/images/blog/open-pearai-config.png)
 
 3. Enjoy the development speed up with autocomplete!
