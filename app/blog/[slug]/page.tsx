@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn, constructMetadata } from "@/lib/utils";
 import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
@@ -9,8 +9,15 @@ export const generateStaticParams = async () =>
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+
   if (!post) notFound();
-  return { title: post.title };
+
+  return constructMetadata({
+    title: post.title,
+    description: post.excerpt,
+    canonical: post.url,
+    ogImage: post.thumbnail,
+  });
 };
 
 const PostLayout = ({ params }: { params: { slug: string } }) => {
