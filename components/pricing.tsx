@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -8,11 +8,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { Check, Download } from "lucide-react";
 import Link from "next/link";
 import { useCheckout } from "@/hooks/useCheckout";
 import { PRICING_TIERS, CONTACT_EMAIL } from "@/utils/constants";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Spinner from "./ui/spinner";
 import { Badge } from "./ui/badge";
@@ -54,44 +55,27 @@ const PricingTier: React.FC<PricingTierProps> = ({
   const [downloaded, setDownloaded] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [downloadLink, setDownloadLink] = useState<string>();
+  const router = useRouter();
 
   const handleDownload = async (os_type: string) => {
     setIsLoading(true);
     try {
       const res = await fetch(`/api/download?os_type=${os_type}`, {
         method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
 
       if (!res.ok) {
-        const errorData = await res.json().catch(() => ({}));
-        throw new Error(errorData?.error ?? res.statusText);
+        throw Error(res.statusText);
       }
 
-      // Get the blob from the response
-      const blob = await res.blob();
-
-      // Create a temporary URL for the blob
-      const url = window.URL.createObjectURL(blob);
-
-      // Get the filename from the Content-Disposition header
-      const contentDisposition = res.headers.get("Content-Disposition");
-      const filenameMatch = contentDisposition?.match(/filename="?(.+)"?/i);
-      const filename = filenameMatch
-        ? filenameMatch[1]
-        : `PearAI-${os_type}-installer.dmg`;
-
-      // Create a temporary anchor element and trigger the download
-      // This method is used to ensure consistency across browsers
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-
-      // Clean up
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-      setDownloadLink(res.headers.get("X-Download-URL") ?? "None");
+      const download = await res.json();
+      if (download?.url) {
+        setDownloadLink(download.url);
+        router.push(download.url);
+      }
       setDownloaded(true);
     } catch (error: any) {
       toast.error(error.message);
@@ -189,23 +173,20 @@ const PricingTier: React.FC<PricingTierProps> = ({
             {isFree ? (
               downloaded ? (
                 <p className="text-sm font-medium text-gray-400 sm:text-base">
-                  Thank you for downloading PearAI! Your download is now
-                  completed.
+                  Thank you for downloading PearAI! Your download should have
+                  started! :)
                   <br />
                   <br />
-                  If there was an issue, you can click{" "}
+                  If it didn&apos;t, you can click{" "}
                   {downloadLink && (
                     <Link href={downloadLink} className="text-link">
                       here
                     </Link>
-                  )}{" "}
-                  to download again.
+                  )}
+                  .
                 </p>
               ) : isLoading ? (
-                <div className="flex flex-col items-center space-y-3">
-                  <p className="text-s mt-2 text-gray-400">
-                    Download in progress... Please hold!
-                  </p>
+                <div className="flex justify-center">
                   <Spinner />
                 </div>
               ) : (
