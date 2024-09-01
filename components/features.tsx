@@ -1,6 +1,9 @@
+"use client";
+
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import YoutubeEmbed from "./ui/YoutubeEmbed";
+import { useEffect, useState } from "react";
 
 type FeatureInfo = {
   header: string;
@@ -13,6 +16,19 @@ type SingleFeatureProps = {
 };
 
 export default function Features() {
+  const [keybind, setKeybind] = useState("");
+
+  useEffect(() => {
+    const platform = navigator.platform.toLowerCase();
+    if (platform.includes("mac")) {
+      setKeybind("CMD+I");
+    } else if (platform.includes("win")) {
+      setKeybind("CTRL+I");
+    } else {
+      setKeybind("CTRL+I");
+    }
+  }, []);
+
   const featureInfo = [
     {
       header: "Talk to your codebase directly.",
@@ -42,9 +58,9 @@ export default function Features() {
             PearAI can directly code in your files, and allow you to see diffs.
             Try{" "}
             <b>
-              <code>CMD+I</code>
+              <code>{keybind}</code>
             </b>
-            &nbsp;(<code>CTRL+I</code> on Windows).
+            .
           </p>
           <p className="pt-6">
             Here, we ask PearAI to help us add error handling and comments 😏.
