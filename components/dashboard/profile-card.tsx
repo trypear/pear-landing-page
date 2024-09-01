@@ -16,7 +16,7 @@ type ProfileCardProps = {
 
 export default function ProfileCard({ user }: ProfileCardProps) {
   return (
-    <Card className="flex h-full flex-col overflow-auto bg-gray-100/10 p-6 text-card-foreground">
+    <Card className="flex h-full flex-col overflow-auto bg-gray-100/10 text-card-foreground">
       <CardHeader className="pb-4">
         <CardTitle className="text-xl font-semibold">Profile</CardTitle>
       </CardHeader>
