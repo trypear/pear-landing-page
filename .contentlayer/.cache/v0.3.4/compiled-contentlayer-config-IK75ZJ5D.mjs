@@ -14,17 +14,17 @@ var Post = defineDocumentType(() => ({
       type: "list",
       description: "List of tags for the post",
       of: {
-        type: "string",
+        type: "string"
       },
-      required: false,
-    },
+      required: false
+    }
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
-    },
-  },
+      resolve: (post) => `/blog/${post._raw.flattenedPath}`
+    }
+  }
 }));
 var contentlayer_config_default = makeSource({
   contentDirPath: "posts",
@@ -46,11 +46,14 @@ var contentlayer_config_default = makeSource({
           },
           onVisitHighlightedWord(node) {
             node.properties.className = ["word--highlighted"];
-          },
-        },
-      ],
-    ],
-  },
+          }
+        }
+      ]
+    ]
+  }
 });
-export { Post, contentlayer_config_default as default };
+export {
+  Post,
+  contentlayer_config_default as default
+};
 //# sourceMappingURL=compiled-contentlayer-config-IK75ZJ5D.mjs.map
