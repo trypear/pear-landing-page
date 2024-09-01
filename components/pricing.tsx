@@ -91,7 +91,6 @@ const PricingTier: React.FC<PricingTierProps> = ({
       // Clean up
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
-      console.log(res.headers.get("X-Download-URL"));
       setDownloadLink(res.headers.get("X-Download-URL") ?? "None");
       setDownloaded(true);
     } catch (error: any) {
