@@ -40,6 +40,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   user,
   index,
   disabled,
+  priceUnit = "/month",
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [isDownloading, setIsDownloading] = useState(false);
@@ -90,20 +91,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           <p className="text-base font-normal text-gray-600 sm:text-base md:text-sm">
             {index === 0 && isFree && (
               <>
-                Join the&nbsp;
-                <Link
-                  href="https://forms.gle/171UyimgQJhEJbhU7"
-                  className="text-link hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  waitlist
-                </Link>
-                &nbsp;to be notified when the app is available! Already off the
-                waitlist?&nbsp;
-                <Link href="/signin" className="text-link hover:underline">
-                  Sign in.
-                </Link>
+                You can download PearAI directly, and use our free trial, or
+                your own API key 🤓
               </>
             )}
             {!isFree && description}
@@ -118,7 +107,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               >
                 ${price}
                 <small className="text-base text-gray-400 sm:text-lg">
-                  /month
+                  {priceUnit}
                 </small>
                 &nbsp;
                 <small className="text-base text-primary-700 sm:text-lg">
@@ -130,7 +119,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 aria-label={`Original price: $${prevPrice} per month`}
               >
                 <del>${prevPrice}</del>
-                <small>/month</small>
+                <small>{priceUnit}</small>
               </p>
             </div>
           ) : (
@@ -142,10 +131,10 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 Free
               </p>
               <p
-                className="text-base text-gray-400 sm:text-lg"
+                className="sm text-base text-gray-400"
                 aria-label="Tagline: Start coding"
               >
-                Start coding
+                Free requests out of the box, no credit card required.
               </p>
             </div>
           )}
@@ -358,6 +347,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                         {...tier}
                         user={user}
                         index={index}
+                        priceUnit="/month/user"
                         disabled
                       />
                     </div>
@@ -366,6 +356,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               )}
               <footer className="text-center">
                 <p className="text-base text-gray-400 sm:text-lg md:text-xl">
+                  Interested in these plans?
                   <button
                     className="ml-2 font-semibold text-primary-700 transition-colors hover:text-primary-800"
                     aria-label="Contact us for custom plans"
@@ -376,7 +367,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                   >
                     Contact us
                   </button>
-                  &nbsp;if you&abpos;re interested in these plans.
+                  !
                 </p>
               </footer>
             </TabsContent>

@@ -48,7 +48,7 @@ export const PRICING_TIERS: {
       isFree: true,
       index: 0,
       features: [
-        "Use our free trial or your own API key",
+        "Use our free trial, your own API key, or local models",
         "Community Discord server",
       ],
     },
@@ -56,7 +56,8 @@ export const PRICING_TIERS: {
       title: "Junior Engineer",
       price: "15",
       prevPrice: "18",
-      description: "Get the monthly subscription, and we'll take care of you.",
+      description:
+        "Get the monthly subscription, and we'll take care of you. 😎",
       features: [
         "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
         "Direct customer support by the founders and contributors",
@@ -71,10 +72,10 @@ export const PRICING_TIERS: {
       price: "10",
       prevPrice: "14",
       description:
-        "Pay one lump sum yearly, and you'll be treated like our VIP!",
+        "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
       features: [
         "Everything from monthly",
-        "Zero data retention from Claude",
+        "Zero data retention from Anthropic",
         "Priority for new feature requests",
       ],
       buttonText: "Get Started",
@@ -92,7 +93,7 @@ export const PRICING_TIERS: {
       features: [
         "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
         "Direct customer support by the founders and contributors",
-        "Zero data retention from Claude",
+        "Zero data retention from Anthropic",
         "Centralized Billing and Dashboard",
         "Private Discord Channel",
       ],
@@ -104,8 +105,7 @@ export const PRICING_TIERS: {
       title: "Yearly",
       price: "27",
       prevPrice: "30",
-      description:
-        "Get the best deal for your business and increase the productivity of your team",
+      description: "Pay one lump sum yearly for our highest priority tier.",
       features: ["Everything from monthly", "Priority Customer Support"],
       buttonText: "Get Started",
       priceId: STRIPE_PRICE_IDS.ANNUAL,
