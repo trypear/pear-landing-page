@@ -18,11 +18,13 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
 const NavItem = ({ href, children }: { href: string; children: ReactNode }) => (
-  <NavigationMenuItem>
-    <NavigationMenuLink className={navigationMenuTriggerStyle()} href={href}>
-      {children}
-    </NavigationMenuLink>
-  </NavigationMenuItem>
+  <NavigationMenuLink
+    asChild
+    className={navigationMenuTriggerStyle()}
+    href={href}
+  >
+    <Link href={href}>{children}</Link>
+  </NavigationMenuLink>
 );
 
 const DropdownNavItem = ({
