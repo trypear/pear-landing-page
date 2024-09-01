@@ -1,5 +1,3 @@
-import { createClient } from "@/utils/supabase/server";
-import { withAuth } from "@/utils/withAuth";
 import { NextRequest, NextResponse } from "next/server";
 
 async function downloadFile(request: NextRequest) {
@@ -9,31 +7,33 @@ async function downloadFile(request: NextRequest) {
       `${process.env.PEARAI_SERVER_URL}/download?os_type=${os_type}`,
       {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
       },
     );
 
-    const { download_link } = await res.json();
-
-    if (!res.ok || !download_link) {
-      return NextResponse.json(
-        { error: "Failed to get download file from server" },
-        { status: 500 },
-      );
+    if (!res.ok) {
+      const errorData = await res.json();
+      const errorMessage =
+        errorData.error ??
+        `Server responded with ${res.status}: ${res.statusText}`;
+      throw new Error(errorMessage);
     }
 
-    return NextResponse.json({ url: download_link });
+    // Forward the response from the Python backend
+    const blob = await res.blob();
+    return new NextResponse(blob, {
+      status: 200,
+      headers: {
+        "Content-Type":
+          res.headers.get("Content-Type") ?? "application/octet-stream",
+        "Content-Disposition":
+          res.headers.get("Content-Disposition") ??
+          `attachment; filename="PearAI-${os_type}-installer.dmg"`,
+        "X-Download-URL": res.headers.get("X-Download-URL") ?? "",
+      },
+    });
   } catch (error: any) {
-    let errMsg = "Error downloading file: ";
-    if (error instanceof Error) {
-      errMsg += `: ${error?.message}`;
-    } else if (typeof error === "string") {
-      errMsg += `: ${error}`;
-    }
-
-    return NextResponse.json({ error: errMsg }, { status: 500 });
+    console.error("Download error:", error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
