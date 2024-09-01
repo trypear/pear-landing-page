@@ -103,8 +103,9 @@ export default async function Header() {
                           <ListItem href="/about" title="About">
                             Learn more about PearAI
                           </ListItem>
-                          <ListItem href="/docs" title="Documentation">
-                            Learn how to use PearAI effectively
+                          <ListItem href="/docs" title="Blog">
+                            See articles by our contributors on the development
+                            of PearAI
                           </ListItem>
                           <ListItem href="/faq" title="FAQ">
                             Frequently asked questions about PearAI
@@ -115,6 +116,7 @@ export default async function Header() {
                         </ul>
                       </DropdownNavItem>
                       <NavItem href="/pricing">Pricing / Download</NavItem>
+                      <NavItem href="/docs">Documentation</NavItem>
                       <NavItem href="https://github.com/trypear/pearai-app">
                         GitHub ⭐️
                       </NavItem>

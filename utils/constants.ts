@@ -140,6 +140,11 @@ export const footerSections = [
         href: "/pricing",
       },
       {
+        text: "Blog",
+        href: "/blog",
+      },
+
+      {
         text: "Changelog",
         href: "/changelog",
       },
