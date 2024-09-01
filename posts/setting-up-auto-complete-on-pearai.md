@@ -18,10 +18,10 @@ This is the guide to do that:
 
    ```json
    "tabAutocompleteModel": {
-    "title": "Codestral",
-    "provider": "mistral",
-    "model": "codestral-latest",
-    "apiKey": "YOUR_API_KEY"
+      "title": "Codestral",
+      "provider": "mistral",
+      "model": "codestral-latest",
+      "apiKey": "YOUR_API_KEY"
    }
    ```
 

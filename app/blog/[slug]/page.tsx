@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
@@ -34,7 +35,13 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         </div>
       </div>
       <div
-        className="prose dark:prose-invert dark:prose-pre:bg-slate-800"
+        className={cn(
+          "prose prose-lg dark:prose-invert",
+          "prose-a:text-primary-700 hover:prose-a:text-primary-800 dark:prose-a:text-primary-600 dark:hover:prose-a:text-primary-700",
+          "prose-blockquote:not-italic",
+          "prose-th:border prose-th:border-slate-300 prose-th:bg-slate-200/70 prose-th:px-3 prose-th:py-2 prose-td:border prose-td:border-slate-300 prose-td:px-3 prose-td:py-2 dark:prose-th:border-slate-700 dark:prose-th:bg-slate-900 dark:prose-td:border-slate-700",
+          "prose-hr:border-slate-300 dark:prose-hr:border-slate-700",
+        )}
         dangerouslySetInnerHTML={{ __html: post.body.html }}
       />
     </article>
