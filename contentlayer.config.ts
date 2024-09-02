@@ -1,6 +1,7 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
+import readingTime from "reading-time";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -32,6 +33,10 @@ export const Post = defineDocumentType(() => ({
     slug: {
       type: "string",
       resolve: (post) => post._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+    readingTime: {
+      type: "string",
+      resolve: (post) => readingTime(post.body.raw).text,
     },
   },
 }));

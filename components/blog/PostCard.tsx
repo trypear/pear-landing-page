@@ -1,5 +1,6 @@
 import { Post } from "@/.contentlayer/generated";
 import { format, parseISO } from "date-fns";
+import { DotIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,12 +18,13 @@ const PostCard = (post: Post) => (
       />
     </div>
 
-    <time
-      dateTime={post.date}
-      className="block text-xs tracking-[0.01rem] text-gray-600 dark:text-gray-600"
-    >
-      {format(parseISO(post.date), "LLLL d, yyyy")}
-    </time>
+    <div className="flex items-center text-xs text-gray-600 dark:text-gray-600">
+      <time dateTime={post.date} className="block tracking-[0.01rem]">
+        {format(parseISO(post.date), "LLLL d, yyyy")}
+      </time>
+      <DotIcon className="h-5 w-5" />
+      <span>{post.readingTime}</span>
+    </div>
     <h2 className="mb-2 mt-1.5 text-xl font-semibold">{post.title}</h2>
     <p className="line-clamp-3 text-sm text-gray-700 dark:text-gray-600">
       {post.excerpt}

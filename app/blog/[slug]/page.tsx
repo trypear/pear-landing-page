@@ -4,7 +4,6 @@ import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import readingTime from "reading-time";
 
 export const generateStaticParams = async () =>
   allPosts.map((post) => ({ slug: post.slug }));
@@ -30,7 +29,6 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
   if (!post) notFound();
 
   const author = allAuthors.find(({ github }) => github === post.author);
-  const postReadingTime = readingTime(post.body.raw);
 
   return (
     <article className="mx-auto max-w-prose px-4 py-8 pt-32 sm:px-6">
@@ -59,7 +57,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
             <time dateTime={post.date} className="mb-0.5 block text-sm">
               {format(parseISO(post.date), "LLLL d, yyyy")}
             </time>
-            <span>{postReadingTime.text}</span>
+            <span>{post.readingTime}</span>
           </div>
         </div>
         <div className="relative mt-6 aspect-video w-full rounded-md bg-gray-300">
