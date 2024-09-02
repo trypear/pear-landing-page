@@ -78,7 +78,7 @@ export default function Features() {
     },
 
     {
-      header: "Common use case example",
+      header: "Common use case example.",
       description: (
         <>
           <p className="pb-6">
