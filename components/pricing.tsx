@@ -18,7 +18,7 @@ import { toast } from "sonner";
 import Spinner from "./ui/spinner";
 import { Badge } from "./ui/badge";
 import { AppleLogo, WindowsLogo } from "./ui/icons";
-import { LAUNCH_DATE } from "./countdown";
+import Footer from "./footer";
 
 type SupportedOS = {
   name: string;
@@ -54,29 +54,9 @@ const PricingTier: React.FC<PricingTierProps> = ({
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const [downloaded, setDownloaded] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [downloadLink, setDownloadLink] = useState<string>();
   const router = useRouter();
-
-  //Countdown related code
-  const [isReleased, setIsReleased] = useState(false);
-  useEffect(() => {
-    const checkReleaseStatus = () => {
-      setIsReleased(isAfterReleaseDate());
-    };
-
-    checkReleaseStatus();
-    const timer = setInterval(checkReleaseStatus, 5000);
-    setIsLoading(false);
-    return () => clearInterval(timer);
-  }, []);
-
-  const isAfterReleaseDate = (): boolean => {
-    const releaseDate = new Date(LAUNCH_DATE); // 12:00 EST is 16:00 UTC
-    const now = new Date();
-    return now >= releaseDate;
-  };
-  // End of Countdown related code
 
   const handleDownload = async (os_type: string) => {
     setIsLoading(true);
@@ -111,12 +91,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
         <div className="flex w-[10%] items-center justify-start md:w-[20%]">
           <div className="hidden h-10 w-10 items-center justify-center rounded-full bg-primary-1000 text-primary-700 md:flex">
             {os.os !== "windows" ? (
-              <span className="flex h-5 w-5 items-center justify-center">
-                <AppleLogo />
+              <span className="flex items-center justify-center">
+                <AppleLogo className="h-5 w-5" />
               </span>
             ) : (
-              <span className="flex h-5 w-5 items-center justify-center">
-                <WindowsLogo />
+              <span className="flex items-center justify-center">
+                <WindowsLogo className="h-5 w-5" />
               </span>
             )}
           </div>
@@ -128,17 +108,9 @@ const PricingTier: React.FC<PricingTierProps> = ({
             onClick={() => handleDownload(os.os)}
             className="relative flex h-12 w-full items-center justify-center px-4"
             aria-label={`Download for ${os.os}`}
-            // Disable download button if the release date has not passed
-            disabled={!isReleased}
           >
             <div className="flex items-center justify-center">
-              {/*<span className="text-center">{os.name}</span>*/}
-              <span className="text-center">
-                {isReleased ? os.name : "Available August 30, 2024"}
-              </span>
-              {isReleased && (
-                <Download className="ml-2 h-5 w-5" aria-hidden="true" />
-              )}
+              <span className="text-center">{os.name}</span>
             </div>
           </Button>
 
@@ -155,7 +127,7 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
   return (
     <Card
-      className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-600/20 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
+      className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-900/40 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
     >
       <div className="flex h-auto w-full flex-col">
         <CardHeader className="flex-grow-0 px-6 pb-6 pt-6">
@@ -249,12 +221,12 @@ const PricingTier: React.FC<PricingTierProps> = ({
               aria-label={`Features of ${title} plan`}
             >
               {features.map((feature, index) => (
-                <li key={index} className="flex items-center text-primary-700">
+                <li key={index} className="flex items-center">
                   <Check
-                    className="mr-3 h-4 w-4 flex-shrink-0"
+                    className="mr-3 h-4 w-4 flex-shrink-0 text-primary-700"
                     aria-hidden="true"
                   />
-                  <span className="text-sm">{feature}</span>
+                  <span className="text-sm text-gray-600">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -267,13 +239,10 @@ const PricingTier: React.FC<PricingTierProps> = ({
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   return (
-    <section
-      className="relative py-8 sm:py-12 md:py-16 lg:py-24"
-      aria-labelledby="pricing-heading"
-    >
-      <div className="mx-auto max-w-7xl px-8 sm:px-6 lg:px-20">
-        <div className="space-y-6 sm:space-y-8 md:space-y-6 lg:space-y-6">
-          <header className="mx-auto mt-16 max-w-4xl space-y-4 text-center sm:mt-0 sm:space-y-6">
+    <section className="relative mt-36" aria-labelledby="pricing-heading">
+      <div className="mx-auto mb-32 max-w-7xl px-8 sm:px-20 md:px-20 lg:px-20">
+        <div className="space-y-6 md:space-y-6 lg:space-y-6">
+          <header className="mx-auto max-w-4xl pb-4 text-center">
             <h1
               id="pricing-heading"
               className="text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
@@ -296,7 +265,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                 </span>
               </p>
 
-              <p className="block w-max items-center justify-end text-right md:flex">
+              <p className="block w-max items-center justify-end pl-4 text-right md:flex">
                 <strong className="text-lg text-primary-900 dark:text-gray-900">
                   20-30% off
                 </strong>
@@ -320,7 +289,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </div>
 
           <footer className="text-center">
-            <p className="text-base text-gray-400 sm:text-lg md:text-xl">
+            <p className="pt-8 text-base text-gray-400 sm:text-lg md:text-xl">
               Want to use PearAI in your business?
               <button
                 className="ml-2 font-semibold text-primary-700 transition-colors hover:text-primary-800"
@@ -336,6 +305,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </footer>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };

@@ -1,7 +1,16 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { CircleUserRound } from "lucide-react";
+import { LogIn, LogOut, SquareArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./dropdown-menu";
 
 export default async function AuthButton() {
   const supabase = createClient();
@@ -15,40 +24,57 @@ export default async function AuthButton() {
   };
 
   return (
-    <div className="hidden flex-row items-center space-x-1 md:flex">
+    <div className="flex items-center space-x-4">
       {error || !data?.user ? (
-        <div className="flex flex-row items-center space-x-1">
-          <CircleUserRound strokeWidth={1} className="h-5 w-5" />
-
-          <Link
-            className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
-            href={"/signin"}
-          >
-            Sign in
+        <>
+          <Link href="/signin">
+            <Button variant="outline" className="hidden md:inline-flex">
+              Sign in
+            </Button>
           </Link>
-          <span className="text-gray-400 opacity-50">/</span>
-          <Link
-            className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
-            href={"/signup"}
-          >
-            Sign up
+          <Link href="/signup">
+            <Button variant="outline">
+              Try PearAI
+              <SquareArrowRight className="mr-2 h-4 w-4" />
+            </Button>
           </Link>
-        </div>
+        </>
       ) : (
         <>
-          <CircleUserRound strokeWidth={1} className="h-5 w-5" />
-          <Link
-            className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
-            href={"/dashboard"}
-          >
-            Dashboard
+          <Link href="/dashboard">
+            <Button variant="outline">Dashboard</Button>
           </Link>
-          <span className="text-gray-400 opacity-50">/</span>
-          <form action={handleSignOut}>
-            <button className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800">
-              Sign out
-            </button>
-          </form>
+          <DropdownMenu modal={false}>
+            <DropdownMenuTrigger asChild>
+              <Avatar className="h-8 w-8 cursor-pointer border border-gray-600/50">
+                <AvatarImage
+                  src={data.user.user_metadata.avatar_url}
+                  alt={data.user.user_metadata.full_name || "User avatar"}
+                />
+                <AvatarFallback className="text-xs font-medium">
+                  {data.user.user_metadata.full_name?.[0].toUpperCase() ||
+                    data.user.email?.[0].toUpperCase() ||
+                    "U"}
+                </AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              className="border border-border/50 bg-background"
+              align="center"
+            >
+              <DropdownMenuItem
+                asChild
+                className="flex cursor-pointer items-center focus:bg-secondary-300/10"
+              >
+                <form action={handleSignOut}>
+                  <button className="flex w-full cursor-pointer items-center focus:bg-secondary-300/10">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Sign out</span>
+                  </button>
+                </form>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </>
       )}
     </div>
