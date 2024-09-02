@@ -1,14 +1,16 @@
 import { cn, constructMetadata } from "@/lib/utils";
-import { allPosts } from "contentlayer/generated";
+import { allAuthors, allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import readingTime from "reading-time";
 
 export const generateStaticParams = async () =>
-  allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+  allPosts.map((post) => ({ slug: post.slug }));
 
 export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) notFound();
 
@@ -20,19 +22,47 @@ export const generateMetadata = ({ params }: { params: { slug: string } }) => {
   });
 };
 
+const AVATAR_SIZE = 44;
+
 const PostLayout = ({ params }: { params: { slug: string } }) => {
-  const post = allPosts.find((post) => post._raw.flattenedPath === params.slug);
+  const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) notFound();
 
+  const author = allAuthors.find(({ github }) => github === post.author);
+  const postReadingTime = readingTime(post.body.raw);
+
   return (
     <article className="mx-auto max-w-prose px-4 py-8 pt-32 sm:px-6">
-      <div className="mb-8 text-center">
-        <time dateTime={post.date} className="text-xs text-gray-600">
-          {format(parseISO(post.date), "LLLL d, yyyy")}
-        </time>
-        <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
-        <div className="relative mt-8 aspect-video w-full rounded-md bg-gray-300">
+      <div className="mb-8">
+        <h1 className="mb-4 mt-4 text-4xl font-bold">{post.title}</h1>
+        <div className="mt-4 flex items-start justify-between text-sm">
+          {author && (
+            <Link href={`https://github.com/${author.github}`}>
+              <div className="flex items-center gap-2">
+                <Image
+                  height={AVATAR_SIZE}
+                  width={AVATAR_SIZE}
+                  src={`https://github.com/${author.github}.png?s=${AVATAR_SIZE}`}
+                  alt={author.name}
+                  className="h-11 w-11 rounded-full bg-gray-200"
+                />
+                <div>
+                  <h6 className="font-semibold">{author.name}</h6>
+                  <span className="text-gray-600">@{author.github}</span>
+                </div>
+              </div>
+            </Link>
+          )}
+
+          <div className="text-end text-gray-600">
+            <time dateTime={post.date} className="mb-0.5 block text-sm">
+              {format(parseISO(post.date), "LLLL d, yyyy")}
+            </time>
+            <span>{postReadingTime.text}</span>
+          </div>
+        </div>
+        <div className="relative mt-6 aspect-video w-full rounded-md bg-gray-300">
           <Image
             fill
             src={post.thumbnail}

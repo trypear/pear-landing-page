@@ -3,6 +3,7 @@ title: "How We Designed Our Servers at PearAI"
 date: 2024-09-01
 excerpt: I spent the last 2 months working on PearAI, an Open-Sourced AI-Powered Code Editor. It is like having an expert on your codebase right next to you. We achieve this with Retrieval Augmented Generation. This is my new startup after finishing my B.S. & M.S from Carnegie Mellon and working for 1.5 years in High Frequency Trading as a Software Engineer. This is exactly how we designed our server.
 thumbnail: "/images/og-image.png"
+author: nang-dev
 tags: ["server", "server design", "pearai server"]
 ---
 

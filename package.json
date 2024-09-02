@@ -52,6 +52,7 @@
     "react-hook-form": "^7.52.0",
     "react-hook-use-form": "^1.2.0",
     "react-tweet": "^3.2.1",
+    "reading-time": "^1.5.0",
     "shiki": "0.11.1",
     "sonner": "^1.4.41",
     "tailwind-merge": "^2.3.0",

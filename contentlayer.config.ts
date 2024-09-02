@@ -4,7 +4,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `**/*.md`,
+  filePathPattern: `posts/**/*.md`,
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
@@ -18,18 +18,43 @@ export const Post = defineDocumentType(() => ({
       },
       required: false,
     },
+    author: {
+      type: "string", // GitHub handle of the author
+      required: true,
+    },
   },
   computedFields: {
     url: {
       type: "string",
-      resolve: (post) => `/blog/${post._raw.flattenedPath}`,
+      resolve: (post) =>
+        `/blog/${post._raw.flattenedPath.split("/").slice(1).join("/")}`,
+    },
+    slug: {
+      type: "string",
+      resolve: (post) => post._raw.flattenedPath.split("/").slice(1).join("/"),
+    },
+  },
+}));
+
+export const Author = defineDocumentType(() => ({
+  name: "Author",
+  filePathPattern: `authors/**/*.md`,
+  contentType: "markdown",
+  fields: {
+    name: {
+      type: "string",
+      required: true,
+    },
+    github: {
+      type: "string",
+      required: true,
     },
   },
 }));
 
 export default makeSource({
-  contentDirPath: "posts",
-  documentTypes: [Post],
+  contentDirPath: "content",
+  documentTypes: [Post, Author],
   markdown: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
