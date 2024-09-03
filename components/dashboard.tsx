@@ -14,10 +14,8 @@ type DashboardPageProps = {
   user: User;
 };
 
-type UsageType = {
-  max_quota: number | null;
-  used_quota: number | null;
-  quota_remaining: number | null;
+export type UsageType = {
+  percent_credit_used: number | null;
 };
 
 export default function DashboardPage({
@@ -29,9 +27,7 @@ export default function DashboardPage({
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [usage, setUsage] = useState<UsageType>({
-    max_quota: null,
-    used_quota: null,
-    quota_remaining: null,
+    percent_credit_used: null,
   });
 
   useEffect(() => {

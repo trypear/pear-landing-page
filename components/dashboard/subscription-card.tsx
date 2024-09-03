@@ -24,13 +24,11 @@ import { useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
 import { Info } from "lucide-react";
+import { UsageType } from "../dashboard";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
-  usage?: {
-    max_quota: number | null;
-    used_quota: number | null;
-  };
+  usage?: UsageType;
   openAppQueryParams?: string;
   user: User;
 };
@@ -115,17 +113,19 @@ export default function SubscriptionCard({
                 <p className="font-medium">Requests</p>
                 <p className="text-sm/6 text-muted-foreground">
                   <strong>
-                    {usage.used_quota} / {usage.max_quota}
+                    {usage?.percent_credit_used
+                      ? `${usage.percent_credit_used}%`
+                      : "Cannot find remaining percentage."}
                   </strong>
                 </p>
               </div>
               <Progress
-                value={(usage.used_quota! / usage.max_quota!) * 100}
+                value={usage.percent_credit_used! / 100}
                 className="mb-2 mt-2 h-2 w-full"
                 indicatorColor="bg-primary-800 bg-opacity-75"
               />
               <p className="text-sm text-muted-foreground">
-                {usage.used_quota} of {usage.max_quota} requests used
+                {usage.percent_credit_used ?? 0}% of Pear Tokens used
               </p>
             </div>
           )}

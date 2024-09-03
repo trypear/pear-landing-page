@@ -4,12 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Info } from "lucide-react";
+import { UsageType } from "../dashboard";
 
 type FreeTrialCardProps = {
-  usage: {
-    max_quota: number | null;
-    used_quota: number | null;
-  };
+  usage: UsageType;
   openAppQueryParams: string;
 };
 
@@ -40,24 +38,19 @@ export default function FreeTrialCard({
               <p className="font-medium">Requests</p>
               <p className="text-sm/6 text-muted-foreground">
                 <strong>
-                  {usage.used_quota ?? 0} /{" "}
-                  {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA}
+                  {usage?.percent_credit_used
+                    ? `${usage.percent_credit_used}%`
+                    : "Cannot find remaining percentage."}
                 </strong>
               </p>
             </div>
             <Progress
-              value={
-                ((usage.used_quota ?? 0)! /
-                  (usage.max_quota! ?? DEFAULT_FREE_TRIAL_MAX_QUOTA)) *
-                100
-              }
+              value={usage.percent_credit_used! / 100}
               className="mb-2 mt-2 h-2 w-full"
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm/6 text-muted-foreground">
-              {usage.used_quota ?? 0} of{" "}
-              {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA} free trial
-              requests used
+              {usage.percent_credit_used ?? 0}% of free trial Pear Tokens used
             </p>
           </div>
           <div className="mb-4">
