@@ -37,7 +37,7 @@ export default function DashboardPage({
   useEffect(() => {
     const handleCallbackForApp = async () => {
       // Handle callback
-      const callback = searchParams.get("callback");
+      const callback = searchParams?.get("callback");
       if (callback) {
         const decodedCallback = decodeURIComponent(callback);
         const callbackUrl = new URL(decodedCallback);

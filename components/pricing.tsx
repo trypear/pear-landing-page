@@ -95,7 +95,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   };
   return (
     <Card
-      className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-600/20 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
+      className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-900/40 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
     >
       <div className="flex h-full w-full flex-col">
         <CardHeader className="flex-grow-0 px-6 py-6 pb-0">
@@ -169,7 +169,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     className="mr-3 h-6 w-6 flex-shrink-0 text-primary-700"
                     aria-hidden="true"
                   />
-                  <span className="text-sm">{feature}</span>
+                  <span className="text-sm text-gray-600">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -389,6 +389,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </Tabs>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };

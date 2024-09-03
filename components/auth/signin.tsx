@@ -25,7 +25,7 @@ export default function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const searchParams = useSearchParams();
-  const callbackForDesktopApp = searchParams.get("callback") ?? "";
+  const callbackForDesktopApp = searchParams?.get("callback") ?? "";
 
   const form = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),

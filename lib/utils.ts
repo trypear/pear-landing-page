@@ -26,13 +26,18 @@ export const constructMetadata = ({
 }: MetadataProps) => {
   return {
     metadataBase: new URL("https://trypear.ai/"),
-    title: title ? `${title} - pear.ai` : defaultMetadata.title,
+    title: title ? `${title} - PearAI` : defaultMetadata.title,
     description,
-    keywords: ["code editor", "ai code editor", "ai", "pearai"],
+    keywords: [
+      "code editor",
+      "ai code editor",
+      "ai",
+      "pearai",
+      "open source code editor",
+    ],
     alternates: {
       canonical,
     },
-
     authors: [
       {
         name: "Nang",

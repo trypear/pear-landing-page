@@ -205,6 +205,7 @@ module.exports = {
   plugins: [
     require("tailwindcss-animate"),
     require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
     plugin(function ({ addUtilities, theme, e }) {
       const colors = theme("colors");
       const utilities = {};
