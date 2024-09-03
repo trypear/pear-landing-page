@@ -17,6 +17,7 @@ import { PRICING_TIERS, CONTACT_EMAIL } from "@/utils/constants";
 import { toast } from "sonner";
 import { Check, ChevronDown } from "lucide-react";
 import { AppleLogo, WindowsLogo } from "./ui/icons";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -27,6 +28,15 @@ import {
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
 }
+
+const gradientStyle = {
+  backgroundImage:
+    "linear-gradient(45deg, #1a237e, #006064, #1b5e20, #006064, #b71c1c)",
+  backgroundSize: "300% 300%",
+  animation: "rainbow-animation 5s ease infinite",
+  color: "white",
+  transition: "all 0.3s ease",
+};
 
 const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   title,
@@ -50,6 +60,13 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   const [appleDownload, setAppleDownload] = useState<
     "darwin-arm64" | "intel-x64"
   >("darwin-arm64");
+
+  // used to ensure animations run after mount client-side
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleDownload = async (os_type: string) => {
     setIsDownloading(true);
@@ -159,46 +176,44 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           )}
         </CardContent>
         <CardFooter>
-          {isFree && (
+          {isFree && mounted && (
             <div className="flex">
-              <Button onClick={() => handleDownload("windows")}>
+              <Button
+                className={cn("rainbow-gradient", "font-bold", "mr-2")}
+                onClick={() => handleDownload("windows")}
+              >
                 <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
                 Windows
               </Button>
-              <div ref={appleContainer}>
-                <div className="flex flex-row">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
                   <Button
-                    className="ml-2 box-border w-[103px] justify-start rounded-r-none"
-                    onClick={() => handleDownload("")}
+                    style={gradientStyle}
+                    className="transition-opacity hover:opacity-90"
                   >
-                    <AppleLogo className="h-[18px] w-[18px] fill-white-main" />
-                    {appleDownload === "darwin-arm64" && "Silicon"}
-                    {appleDownload === "intel-x64" && "Intel"}
+                    <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
+                    MacOS
+                    <ChevronDown size="20" className="ml-2" />
                   </Button>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger className="min-h-full rounded-r-full bg-primary-900 pl-[10px] pr-[14px] transition-colors hover:bg-primary-900/80 dark:bg-primary-900 dark:hover:bg-primary-900/80">
-                      <ChevronDown size="20" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      side="bottom"
-                      className="border border-border/50 bg-background"
-                    >
-                      <DropdownMenuItem
-                        className="w-full focus:bg-secondary-300/10"
-                        onSelect={() => setAppleDownload("darwin-arm64")}
-                      >
-                        Silicon (M chip)
-                      </DropdownMenuItem>
-                      <DropdownMenuItem
-                        className="w-full focus:bg-secondary-300/10"
-                        onSelect={() => setAppleDownload("intel-x64")}
-                      >
-                        Intel
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
-              </div>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  side="bottom"
+                  className="border border-border/50 bg-background"
+                >
+                  <DropdownMenuItem
+                    className="w-full focus:bg-secondary-300/10"
+                    onSelect={() => handleDownload("darwin-arm64")}
+                  >
+                    Silicon (M chip)
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    className="w-full focus:bg-secondary-300/10"
+                    onSelect={() => handleDownload("intel-x64")}
+                  >
+                    Intel chip
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           )}
 
