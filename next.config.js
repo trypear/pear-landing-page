@@ -21,6 +21,16 @@ const nextConfiguration = {
 
     return config;
   },
+  async redirects() {
+    // remove this redirect in next pearapp release
+    return [
+      {
+        source: "/features/tab-autocomplete",
+        destination: "/docs/tab-autocomplete",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = withContentlayer(nextConfiguration);
