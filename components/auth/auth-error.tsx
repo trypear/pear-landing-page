@@ -3,7 +3,7 @@ import { useSearchParams } from "next/navigation";
 
 export default function AuthCodeErrorPage() {
   const searchParams = useSearchParams();
-  const error = searchParams.get("error") || "Unknown error occurred";
+  const error = searchParams?.get("error") || "Unknown error occurred";
 
   return (
     <div className="mx-auto max-w-md pt-44 md:pt-32">
