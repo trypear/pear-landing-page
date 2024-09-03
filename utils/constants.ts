@@ -34,46 +34,84 @@ export const STRIPE_PRICE_IDS = {
     : NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID,
 };
 
-export const PRICING_TIERS: PricingTierData[] = [
-  {
-    title: "Intern",
-    price: "0",
-    description:
-      "You can download PearAI directly, and use our free trial, or your own API key 🤓",
-    isFree: true,
-    index: 0,
-  },
-  {
-    title: "Junior Engineer",
-    price: "15",
-    prevPrice: "18",
-    description:
-      "Get the monthly subscription, and we'll take care of you... 😎",
-    features: [
-      "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
-      "Direct customer support by the founders and contributors",
-      "Private Discord channel",
-    ],
-    buttonText: "Get Started",
-    priceId: STRIPE_PRICE_IDS.MONTHLY,
-    index: 1,
-  },
-  {
-    title: "10x Engineer",
-    price: "10",
-    prevPrice: "14",
-    description:
-      "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
-    features: [
-      "Everything from monthly",
-      "Zero data retention from Claude",
-      "Priority for new feature requests",
-    ],
-    buttonText: "Get Started",
-    priceId: STRIPE_PRICE_IDS.ANNUAL,
-    index: 2,
-  },
-];
+export const PRICING_TIERS: {
+  standard: PricingTierData[];
+  enterprise: PricingTierData[];
+} = {
+  standard: [
+    {
+      title: "Intern",
+      price: "0",
+      description:
+        "You can download PearAI directly, and use our free trial, or your own API key 🤓",
+      isFree: true,
+      index: 0,
+      features: [
+        "Use our free trial, your own API key, or local models",
+        "Community Discord server",
+      ],
+    },
+    {
+      title: "Junior Engineer",
+      price: "15",
+      prevPrice: "18",
+      description:
+        "Get the monthly subscription, and we'll take care of you. 😎",
+      features: [
+        "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
+        "Direct customer support by the founders and contributors",
+        "Private Discord channel",
+      ],
+      buttonText: "Get Started",
+      priceId: STRIPE_PRICE_IDS.MONTHLY,
+      index: 1,
+    },
+    {
+      title: "10x Engineer",
+      price: "10",
+      prevPrice: "14",
+      description:
+        "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
+      features: [
+        "Everything from monthly",
+        "Zero data retention from Anthropic",
+        "Priority for new feature requests",
+      ],
+      buttonText: "Get Started",
+      priceId: STRIPE_PRICE_IDS.ANNUAL,
+      index: 2,
+    },
+  ],
+  enterprise: [
+    {
+      title: "Monthly",
+      price: "32",
+      prevPrice: "35",
+      description:
+        "Get the best deal for your business and increase the productivity of your team.",
+      features: [
+        "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
+        "Direct customer support by the founders and contributors",
+        "Zero data retention from Anthropic",
+        "Centralized Billing and Dashboard",
+        "Private Discord Channel",
+      ],
+      buttonText: "Get Started",
+      priceId: STRIPE_PRICE_IDS.MONTHLY,
+      index: 0,
+    },
+    {
+      title: "Yearly",
+      price: "27",
+      prevPrice: "30",
+      description: "Pay one lump sum yearly for our highest priority tier.",
+      features: ["Everything from monthly", "Priority Customer Support"],
+      buttonText: "Get Started",
+      priceId: STRIPE_PRICE_IDS.ANNUAL,
+      index: 1,
+    },
+  ],
+};
 
 export const footerSections = [
   {
