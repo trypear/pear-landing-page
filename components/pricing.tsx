@@ -32,6 +32,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Info } from "lucide-react";
 import Footer from "./footer";
+import Spinner from "./ui/spinner";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
@@ -211,45 +212,62 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           )}
         </CardContent>
         <CardFooter>
-          {isFree && (
-            <div className="flex">
-              <Button
-                className={cn("rainbow-gradient", "font-bold", "mr-2")}
-                onClick={() => handleDownload("windows")}
-              >
-                <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
-                Windows
-              </Button>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    style={gradientStyle}
-                    className="transition-opacity hover:opacity-90"
-                  >
-                    <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
-                    MacOS
-                    <ChevronDown size="20" className="ml-2" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  side="bottom"
-                  className="border border-border/50 bg-background"
+          {isDownloading ? (
+            <Spinner className="mb-4 ml-4 border" />
+          ) : (
+            isFree &&
+            (downloadLink !== undefined ? (
+              <p className="text-gray-400">
+                Thanks for trying out PearAI! Your download should have started,
+                if it hasn&apos;t, click{" "}
+                <a
+                  className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                  href={downloadLink}
                 >
-                  <DropdownMenuItem
-                    className="w-full focus:bg-secondary-300/10"
-                    onSelect={() => handleDownload("darwin-arm64")}
+                  here
+                </a>
+                .
+              </p>
+            ) : (
+              <div className="flex">
+                <Button
+                  className={cn("rainbow-gradient", "font-bold", "mr-2")}
+                  onClick={() => handleDownload("windows")}
+                >
+                  <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
+                  Windows
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      style={gradientStyle}
+                      className="transition-opacity hover:opacity-90"
+                    >
+                      <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
+                      MacOS
+                      <ChevronDown size="20" className="ml-2" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    side="bottom"
+                    className="border border-border/50 bg-background"
                   >
-                    Silicon (M chip)
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    className="w-full focus:bg-secondary-300/10"
-                    onSelect={() => handleDownload("intel-x64")}
-                  >
-                    Intel chip
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+                    <DropdownMenuItem
+                      className="w-full focus:bg-secondary-300/10"
+                      onSelect={() => handleDownload("darwin-arm64")}
+                    >
+                      Silicon (M chip)
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className="w-full focus:bg-secondary-300/10"
+                      onSelect={() => handleDownload("intel-x64")}
+                    >
+                      Intel chip
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            ))
           )}
 
           {!isFree && (
@@ -284,7 +302,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   return (
     <section
-      className="relative py-8 sm:py-12 md:py-16 lg:py-24"
+      className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-24"
       aria-labelledby="pricing-heading"
     >
       <div className="absolute top-0 z-[-1] mt-[-35px] h-[140px] w-full bg-primary-800/30 blur-3xl"></div>
@@ -424,6 +442,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </Tabs>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
