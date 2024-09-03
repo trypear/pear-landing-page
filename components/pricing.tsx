@@ -29,15 +29,6 @@ interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
 }
 
-const gradientStyle = {
-  backgroundImage:
-    "linear-gradient(45deg, #1a237e, #006064, #1b5e20, #006064, #b71c1c)",
-  backgroundSize: "300% 300%",
-  animation: "rainbow-animation 5s ease infinite",
-  color: "white",
-  transition: "all 0.3s ease",
-};
-
 const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   title,
   prevPrice,
@@ -67,6 +58,15 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  const gradientStyle = mounted ? {
+  backgroundImage:
+    "linear-gradient(45deg, #1a237e, #006064, #1b5e20, #006064, #b71c1c)",
+  backgroundSize: "300% 300%",
+  animation: "rainbow-animation 5s ease infinite",
+  color: "white",
+  transition: "all 0.3s ease",
+} : {}
 
   const handleDownload = async (os_type: string) => {
     setIsDownloading(true);
@@ -176,7 +176,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           )}
         </CardContent>
         <CardFooter>
-          {isFree && mounted && (
+          {isFree && (
             <div className="flex">
               <Button
                 className={cn("rainbow-gradient", "font-bold", "mr-2")}
