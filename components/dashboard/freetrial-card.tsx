@@ -58,7 +58,7 @@ export default function FreeTrialCard({
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm/6 text-muted-foreground">
-              {loading ? "-" : usage.percent_credit_used ?? 0}% of free trial
+              {loading ? "-" : (usage.percent_credit_used ?? 0)}% of free trial
               Pear Credits used
             </p>
           </div>
