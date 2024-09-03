@@ -58,7 +58,7 @@ export const PRICING_TIERS: {
       description:
         "Get the monthly subscription, and we'll take care of you. 😎",
       features: [
-        "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
+        "custom-standard",
         "Direct customer support by the founders and contributors",
         "Private Discord channel",
       ],
@@ -90,7 +90,7 @@ export const PRICING_TIERS: {
       description:
         "Get the best deal for your business and increase the productivity of your team.",
       features: [
-        "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
+        "custom-enterprise",
         "Direct customer support by the founders and contributors",
         "Zero data retention from Anthropic",
         "Centralized Billing and Dashboard",

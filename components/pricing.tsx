@@ -9,6 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
@@ -24,6 +30,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "./ui/dropdown-menu";
+import { Info } from "lucide-react";
+import Footer from "./footer";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
@@ -95,6 +103,31 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       setIsDownloading(false);
     }
   };
+
+  const featureRowDescription = (feature: string) => {
+    if (feature?.startsWith("custom-standard")) {
+      return (
+        <div className="flex items-center">
+          <span className="inline-flex items-center">
+            Monthly refill of Pear Credits for market-leading AI models
+            <PearCreditsTooltip type="standard" />
+          </span>
+        </div>
+      );
+    } else if (feature?.startsWith("custom-enterprise")) {
+      return (
+        <div className="flex items-center">
+          <span className="inline-flex items-center">
+            Monthly refill of increased Pear Credits for market-leading AI
+            models
+            <PearCreditsTooltip type="enterprise" />
+          </span>
+        </div>
+      );
+    }
+    return feature;
+  };
+
   return (
     <Card
       className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-900/40 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
@@ -171,7 +204,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     className="mr-3 h-6 w-6 flex-shrink-0 text-primary-700"
                     aria-hidden="true"
                   />
-                  <span className="text-sm text-gray-600">{feature}</span>
+                  {featureRowDescription(feature)}
                 </li>
               ))}
             </ul>
@@ -260,7 +293,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           <header className="mx-auto mt-16 max-w-4xl space-y-4 text-center sm:mt-0 sm:space-y-6">
             <h1
               id="pricing-heading"
-              className="text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
+              className="mt-8 text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
             >
               Speed up your
               <br />
@@ -394,4 +427,44 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
     </section>
   );
 };
+
 export default PricingPage;
+
+export const PearCreditsTooltip = ({ type }: { type: string }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <TooltipProvider>
+      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
+        <TooltipTrigger asChild>
+          <Info
+            className="ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={5}>
+          <p className="max-w-[250px]">
+            Current models include Claude 3.5 Sonnet and GPT4o.
+            <br /> <br />
+            Your Pear Credits usage depend on your prompt input and output
+            sizes. On average, this equates to around{" "}
+            {type === "enterprise" ? "1000" : "700"} requests.
+            <br /> <br />
+            Afraid of running out of credits? You can always contact{" "}
+            <a
+              className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigator.clipboard.writeText(CONTACT_EMAIL);
+                toast.success("Email copied to clipboard!");
+              }}
+            >
+              PearAI support
+            </a>{" "}
+            to top up and keep building!
+          </p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
