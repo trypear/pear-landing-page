@@ -50,7 +50,7 @@ export const PRICING_TIERS: PricingTierData[] = [
     description:
       "Get the monthly subscription, and we'll take care of you... 😎",
     features: [
-      "1000 chat requests per month (Claude 3.5 Sonnet + GPT4o)",
+      "Monthly PearAI Credits",
       "Direct customer support by the founders and contributors",
       "Private Discord channel",
     ],
