@@ -166,6 +166,7 @@ export default function SubscriptionCard({
               <Button variant="outline" className="text-primary-800" asChild>
                 <Link
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
+                  target="_parent"
                 >
                   Open PearAI
                 </Link>
