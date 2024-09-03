@@ -9,6 +9,7 @@ import { UsageType } from "../dashboard";
 type FreeTrialCardProps = {
   usage: UsageType;
   openAppQueryParams: string;
+  loading: boolean;
 };
 
 const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
@@ -17,6 +18,7 @@ const DEFAULT_FREE_TRIAL_MAX_QUOTA = 50; // Sync with "FREE_TRIAL_MAX_QUOTA" env
 export default function FreeTrialCard({
   usage,
   openAppQueryParams,
+  loading,
 }: FreeTrialCardProps) {
   return (
     <Card className="overflow-auto bg-gray-100/10 text-card-foreground">
@@ -38,9 +40,15 @@ export default function FreeTrialCard({
               <p className="font-medium">PearAI Credits</p>
               <p className="text-sm/6 text-muted-foreground">
                 <strong>
-                  {usage?.percent_credit_used
-                    ? `${usage.percent_credit_used}%`
-                    : "Cannot find remaining percentage of credits. Please contact PearAI support."}
+                  {loading ? (
+                    "-"
+                  ) : (
+                    <strong>
+                      {usage?.percent_credit_used != null
+                        ? `${usage.percent_credit_used}%`
+                        : "Cannot find used percentage. Please contact PearAI support."}
+                    </strong>
+                  )}
                 </strong>
               </p>
             </div>
@@ -50,7 +58,8 @@ export default function FreeTrialCard({
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm/6 text-muted-foreground">
-              {usage.percent_credit_used ?? 0}% of free trial Pear Credits used
+              {loading ? "-" : usage.percent_credit_used ?? 0}% of free trial
+              Pear Credits used
             </p>
           </div>
           <div className="mb-4">

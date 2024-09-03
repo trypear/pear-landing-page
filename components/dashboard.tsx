@@ -53,7 +53,6 @@ export default function DashboardPage({
         currentUrl.searchParams.delete("callback");
         window.history.replaceState({}, "", currentUrl.toString());
       }
-      setLoading(false);
     };
 
     const getUserRequestsUsage = async () => {
@@ -71,6 +70,8 @@ export default function DashboardPage({
         setUsage(usage);
       } catch (error) {
         toast.error(`Error fetching requests usage: ${error}`);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -97,9 +98,11 @@ export default function DashboardPage({
                 usage={usage}
                 openAppQueryParams={openAppQueryParams}
                 user={user}
+                loading={loading}
               />
             ) : (
               <FreeTrialCard
+                loading={loading}
                 usage={usage}
                 openAppQueryParams={openAppQueryParams}
               />

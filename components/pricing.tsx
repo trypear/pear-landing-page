@@ -198,7 +198,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               {features.map((feature, index) => (
                 <li
                   key={index}
-                  className="flex items-center py-2 text-gray-400"
+                  className="flex items-center py-2 text-gray-600"
                 >
                   <Check
                     className="mr-3 h-6 w-6 flex-shrink-0 text-primary-700"
