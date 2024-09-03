@@ -35,12 +35,12 @@ export default function FreeTrialCard({
         <CardContent>
           <div className="mb-4">
             <div className="flex justify-between">
-              <p className="font-medium">Requests</p>
+              <p className="font-medium">PearAI Credits</p>
               <p className="text-sm/6 text-muted-foreground">
                 <strong>
                   {usage?.percent_credit_used
                     ? `${usage.percent_credit_used}%`
-                    : "Cannot find remaining percentage."}
+                    : "Cannot find remaining percentage of credits. Please contact PearAI support."}
                 </strong>
               </p>
             </div>
@@ -50,7 +50,7 @@ export default function FreeTrialCard({
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm/6 text-muted-foreground">
-              {usage.percent_credit_used ?? 0}% of free trial Pear Tokens used
+              {usage.percent_credit_used ?? 0}% of free trial Pear Credits used
             </p>
           </div>
           <div className="mb-4">

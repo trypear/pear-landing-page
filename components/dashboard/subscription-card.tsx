@@ -125,7 +125,7 @@ export default function SubscriptionCard({
                 indicatorColor="bg-primary-800 bg-opacity-75"
               />
               <p className="text-sm text-muted-foreground">
-                {usage.percent_credit_used ?? 0}% of Pear Tokens used
+                {usage.percent_credit_used ?? 0}% of PearAI Credits used
               </p>
             </div>
           )}
