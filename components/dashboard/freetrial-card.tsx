@@ -4,13 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Info } from "lucide-react";
+import { UsageType } from "../dashboard";
 
 type FreeTrialCardProps = {
-  usage: {
-    max_quota: number | null;
-    used_quota: number | null;
-  };
+  usage: UsageType;
   openAppQueryParams: string;
+  loading: boolean;
 };
 
 const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
@@ -19,6 +18,7 @@ const DEFAULT_FREE_TRIAL_MAX_QUOTA = 50; // Sync with "FREE_TRIAL_MAX_QUOTA" env
 export default function FreeTrialCard({
   usage,
   openAppQueryParams,
+  loading,
 }: FreeTrialCardProps) {
   return (
     <Card className="overflow-auto bg-gray-100/10 text-card-foreground">
@@ -37,27 +37,29 @@ export default function FreeTrialCard({
         <CardContent>
           <div className="mb-4">
             <div className="flex justify-between">
-              <p className="font-medium">Requests</p>
+              <p className="font-medium">PearAI Credits</p>
               <p className="text-sm/6 text-muted-foreground">
                 <strong>
-                  {usage.used_quota ?? 0} /{" "}
-                  {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA}
+                  {loading ? (
+                    "-"
+                  ) : (
+                    <strong>
+                      {usage?.percent_credit_used != null
+                        ? `${usage.percent_credit_used}%`
+                        : "Cannot find used percentage. Please contact PearAI support."}
+                    </strong>
+                  )}
                 </strong>
               </p>
             </div>
             <Progress
-              value={
-                ((usage.used_quota ?? 0)! /
-                  (usage.max_quota! ?? DEFAULT_FREE_TRIAL_MAX_QUOTA)) *
-                100
-              }
+              value={usage.percent_credit_used! / 100}
               className="mb-2 mt-2 h-2 w-full"
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm/6 text-muted-foreground">
-              {usage.used_quota ?? 0} of{" "}
-              {usage.max_quota ?? DEFAULT_FREE_TRIAL_MAX_QUOTA} free trial
-              requests used
+              {loading ? "-" : (usage.percent_credit_used ?? 0)}% of free trial
+              Pear Credits used
             </p>
           </div>
           <div className="mb-4">

@@ -24,15 +24,14 @@ import { useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
 import { Info } from "lucide-react";
+import { UsageType } from "../dashboard";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
-  usage?: {
-    max_quota: number | null;
-    used_quota: number | null;
-  };
+  usage?: UsageType;
   openAppQueryParams?: string;
   user: User;
+  loading: boolean;
 };
 
 const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
@@ -42,6 +41,7 @@ export default function SubscriptionCard({
   usage,
   openAppQueryParams,
   user,
+  loading,
 }: SubscriptionCardProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { handleCancelSubscription, isCanceling, isCanceled } =
@@ -114,18 +114,26 @@ export default function SubscriptionCard({
               <div className="flex justify-between">
                 <p className="font-medium">Requests</p>
                 <p className="text-sm/6 text-muted-foreground">
-                  <strong>
-                    {usage.used_quota} / {usage.max_quota}
-                  </strong>
+                  {loading ? (
+                    "-"
+                  ) : (
+                    <strong>
+                      {usage?.percent_credit_used
+                        ? `${usage.percent_credit_used}%`
+                        : "Cannot find remaining percentage. Please contact PearAI support."}
+                    </strong>
+                  )}
                 </p>
               </div>
               <Progress
-                value={(usage.used_quota! / usage.max_quota!) * 100}
+                value={usage.percent_credit_used! / 100}
                 className="mb-2 mt-2 h-2 w-full"
                 indicatorColor="bg-primary-800 bg-opacity-75"
               />
               <p className="text-sm text-muted-foreground">
-                {usage.used_quota} of {usage.max_quota} requests used
+                {loading
+                  ? "-"
+                  : `${usage.percent_credit_used ?? 0}% of PearAI Credits used`}
               </p>
             </div>
           )}

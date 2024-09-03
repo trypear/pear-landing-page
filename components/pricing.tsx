@@ -9,6 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PricingPageProps, PricingTierProps } from "@/types/pricing";
@@ -24,6 +30,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from "./ui/dropdown-menu";
+import { Info } from "lucide-react";
+import Footer from "./footer";
+import Spinner from "./ui/spinner";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
@@ -95,6 +104,31 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       setIsDownloading(false);
     }
   };
+
+  const featureRowDescription = (feature: string) => {
+    if (feature?.startsWith("custom-standard")) {
+      return (
+        <div className="flex items-center">
+          <span className="inline-flex items-center">
+            Monthly refill of Pear Credits for market-leading AI models
+            <PearCreditsTooltip type="standard" />
+          </span>
+        </div>
+      );
+    } else if (feature?.startsWith("custom-enterprise")) {
+      return (
+        <div className="flex items-center">
+          <span className="inline-flex items-center">
+            Monthly refill of increased Pear Credits for market-leading AI
+            models
+            <PearCreditsTooltip type="enterprise" />
+          </span>
+        </div>
+      );
+    }
+    return feature;
+  };
+
   return (
     <Card
       className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-900/40 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
@@ -165,58 +199,75 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               {features.map((feature, index) => (
                 <li
                   key={index}
-                  className="flex items-center py-2 text-gray-400"
+                  className="flex items-center py-2 text-gray-600"
                 >
                   <Check
                     className="mr-3 h-6 w-6 flex-shrink-0 text-primary-700"
                     aria-hidden="true"
                   />
-                  <span className="text-sm text-gray-600">{feature}</span>
+                  {featureRowDescription(feature)}
                 </li>
               ))}
             </ul>
           )}
         </CardContent>
         <CardFooter>
-          {isFree && (
-            <div className="flex">
-              <Button
-                className={cn("rainbow-gradient", "font-bold", "mr-2")}
-                onClick={() => handleDownload("windows")}
-              >
-                <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
-                Windows
-              </Button>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    style={gradientStyle}
-                    className="transition-opacity hover:opacity-90"
-                  >
-                    <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
-                    MacOS
-                    <ChevronDown size="20" className="ml-2" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  side="bottom"
-                  className="border border-border/50 bg-background"
+          {isDownloading ? (
+            <Spinner className="mb-4 ml-4 border" />
+          ) : (
+            isFree &&
+            (downloadLink !== undefined ? (
+              <p className="text-gray-400">
+                Thanks for trying out PearAI! Your download should have started,
+                if it hasn&apos;t, click{" "}
+                <a
+                  className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                  href={downloadLink}
                 >
-                  <DropdownMenuItem
-                    className="w-full focus:bg-secondary-300/10"
-                    onSelect={() => handleDownload("darwin-arm64")}
+                  here
+                </a>
+                .
+              </p>
+            ) : (
+              <div className="flex">
+                <Button
+                  className={cn("rainbow-gradient", "font-bold", "mr-2")}
+                  onClick={() => handleDownload("windows")}
+                >
+                  <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
+                  Windows
+                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      style={gradientStyle}
+                      className="transition-opacity hover:opacity-90"
+                    >
+                      <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
+                      MacOS
+                      <ChevronDown size="20" className="ml-2" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    side="bottom"
+                    className="border border-border/50 bg-background"
                   >
-                    Silicon (M chip)
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    className="w-full focus:bg-secondary-300/10"
-                    onSelect={() => handleDownload("intel-x64")}
-                  >
-                    Intel chip
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+                    <DropdownMenuItem
+                      className="w-full focus:bg-secondary-300/10"
+                      onSelect={() => handleDownload("darwin-arm64")}
+                    >
+                      Silicon (M chip)
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                      className="w-full focus:bg-secondary-300/10"
+                      onSelect={() => handleDownload("intel-x64")}
+                    >
+                      Intel chip
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            ))
           )}
 
           {!isFree && (
@@ -251,7 +302,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
   return (
     <section
-      className="relative py-8 sm:py-12 md:py-16 lg:py-24"
+      className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-24"
       aria-labelledby="pricing-heading"
     >
       <div className="absolute top-0 z-[-1] mt-[-35px] h-[140px] w-full bg-primary-800/30 blur-3xl"></div>
@@ -260,7 +311,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           <header className="mx-auto mt-16 max-w-4xl space-y-4 text-center sm:mt-0 sm:space-y-6">
             <h1
               id="pricing-heading"
-              className="text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
+              className="mt-8 text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
             >
               Speed up your
               <br />
@@ -391,7 +442,48 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </Tabs>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
+
 export default PricingPage;
+
+export const PearCreditsTooltip = ({ type }: { type: string }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <TooltipProvider>
+      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
+        <TooltipTrigger asChild>
+          <Info
+            className="ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={5}>
+          <p className="max-w-[250px]">
+            Current models include Claude 3.5 Sonnet and GPT4o.
+            <br /> <br />
+            Your Pear Credits usage depend on your prompt input and output
+            sizes. On average, this equates to around{" "}
+            {type === "enterprise" ? "1000" : "700"} requests.
+            <br /> <br />
+            Afraid of running out of credits? You can always contact{" "}
+            <a
+              className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+              onClick={(e) => {
+                e.stopPropagation();
+                navigator.clipboard.writeText(CONTACT_EMAIL);
+                toast.success("Email copied to clipboard!");
+              }}
+            >
+              PearAI support
+            </a>{" "}
+            to top up and keep building!
+          </p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
