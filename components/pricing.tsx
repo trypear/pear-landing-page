@@ -59,14 +59,16 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     setMounted(true);
   }, []);
 
-  const gradientStyle = mounted ? {
-  backgroundImage:
-    "linear-gradient(45deg, #1a237e, #006064, #1b5e20, #006064, #b71c1c)",
-  backgroundSize: "300% 300%",
-  animation: "rainbow-animation 5s ease infinite",
-  color: "white",
-  transition: "all 0.3s ease",
-} : {}
+  const gradientStyle = mounted
+    ? {
+        backgroundImage:
+          "linear-gradient(45deg, #1a237e, #006064, #1b5e20, #006064, #b71c1c)",
+        backgroundSize: "300% 300%",
+        animation: "rainbow-animation 5s ease infinite",
+        color: "white",
+        transition: "all 0.3s ease",
+      }
+    : {};
 
   const handleDownload = async (os_type: string) => {
     setIsDownloading(true);
@@ -389,7 +391,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </Tabs>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };
