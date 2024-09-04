@@ -1,8 +1,8 @@
 import PostCard from "@/components/blog/PostCard";
 import { constructMetadata } from "@/lib/utils";
-import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import { Metadata } from "next";
+import { posts } from "@/lib/blog/postData";
 
 export const metadata: Metadata = constructMetadata({
   title: "Blog",
@@ -13,7 +13,7 @@ export const metadata: Metadata = constructMetadata({
 
 export default function Blog() {
   // Sort the array of posts by date in descending order (newest first)
-  const posts = allPosts.sort((a, b) =>
+  const sortedPosts = posts.sort((a, b) =>
     compareDesc(new Date(a.date), new Date(b.date)),
   );
 
@@ -22,7 +22,7 @@ export default function Blog() {
       <h1 className="mb-10 text-center text-4xl font-semibold">Blog</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post, idx) => (
+        {sortedPosts.map((post, idx) => (
           <PostCard key={idx} {...post} />
         ))}
       </div>

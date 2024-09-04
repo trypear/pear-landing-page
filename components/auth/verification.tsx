@@ -11,7 +11,7 @@ export default function Verification() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const searchParams = useSearchParams();
-  const email = searchParams.get("email");
+  const email = searchParams?.get("email");
 
   const handleClick = () => {
     router.push("/signin");

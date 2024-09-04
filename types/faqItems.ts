@@ -1,4 +1,4 @@
 export interface FAQItem {
   question: string;
-  answer: string;
+  answer: JSX.Element;
 }
