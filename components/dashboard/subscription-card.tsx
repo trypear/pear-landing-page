@@ -118,7 +118,7 @@ export default function SubscriptionCard({
                     "-"
                   ) : (
                     <strong>
-                      {usage?.percent_credit_used
+                      {usage?.percent_credit_used != null
                         ? `${usage.percent_credit_used}%`
                         : "Cannot find remaining percentage. Please contact PearAI support."}
                     </strong>
