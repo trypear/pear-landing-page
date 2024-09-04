@@ -126,7 +126,7 @@ export default function SubscriptionCard({
                 </p>
               </div>
               <Progress
-                value={usage.percent_credit_used! / 100}
+                value={usage.percent_credit_used}
                 className="mb-2 mt-2 h-2 w-full"
                 indicatorColor="bg-primary-800 bg-opacity-75"
               />

@@ -110,7 +110,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span className="inline-flex items-center">
-            Monthly refill of Pear Credits for market-leading AI models
+            Monthly refill of PearAI Credits for market-leading AI models
             <PearCreditsTooltip type="standard" />
           </span>
         </div>
@@ -119,7 +119,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span className="inline-flex items-center">
-            Monthly refill of increased Pear Credits for market-leading AI
+            Monthly refill of increased PearAI Credits for market-leading AI
             models
             <PearCreditsTooltip type="enterprise" />
           </span>
@@ -465,7 +465,7 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
           <p className="max-w-[250px]">
             Current models include Claude 3.5 Sonnet and GPT4o.
             <br /> <br />
-            Your Pear Credits usage depend on your prompt input and output
+            Your PearAI Credits usage depend on your prompt input and output
             sizes. On average, this equates to around{" "}
             {type === "enterprise" ? "1000" : "700"} requests.
             <br /> <br />

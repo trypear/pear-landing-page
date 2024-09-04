@@ -53,13 +53,13 @@ export default function FreeTrialCard({
               </p>
             </div>
             <Progress
-              value={usage.percent_credit_used! / 100}
+              value={usage.percent_credit_used}
               className="mb-2 mt-2 h-2 w-full"
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm/6 text-muted-foreground">
-              {loading ? "-" : (usage.percent_credit_used ?? 0)}% of free trial
-              Pear Credits used
+              {loading ? "-" : usage.percent_credit_used ?? 0}% of free trial
+              PearAI Credits used
             </p>
           </div>
           <div className="mb-4">
