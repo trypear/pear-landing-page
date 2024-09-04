@@ -59,6 +59,7 @@ export const PRICING_TIERS: {
         "Get the monthly subscription, and we'll take care of you. 😎",
       features: [
         "custom-standard",
+        "Full privacy: zero data retention policy with Anthropic",
         "Direct customer support by the founders and contributors",
         "Private Discord channel",
       ],
@@ -74,7 +75,6 @@ export const PRICING_TIERS: {
         "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
       features: [
         "Everything from monthly",
-        "Zero data retention from Anthropic",
         "Priority for new feature requests",
       ],
       buttonText: "Get Started",
@@ -91,9 +91,9 @@ export const PRICING_TIERS: {
         "Get the best deal for your business and increase the productivity of your team.",
       features: [
         "custom-enterprise",
-        "Direct customer support by the founders and contributors",
-        "Zero data retention from Anthropic",
+        "Full privacy: zero data retention policy with Anthropic",
         "Centralized Billing and Dashboard",
+        "Direct customer support by the founders and contributors",
         "Private Discord Channel",
       ],
       buttonText: "Get Started",
