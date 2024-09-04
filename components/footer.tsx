@@ -23,9 +23,13 @@ export default function Footer() {
           <div key={idx}>
             <h5 className="font-semibold">{title}</h5>
             <ul className="mt-4 space-y-2 text-neutral-500 dark:text-neutral-400">
-              {links.map(({ text, href }, idx) => (
+              {links.map(({ text, href, target = "_self" }, idx) => (
                 <li key={idx}>
-                  <Link href={href} className="text-sm hover:text-primary-600">
+                  <Link
+                    href={href}
+                    target={target}
+                    className="text-sm hover:text-primary-600"
+                  >
                     {text}
                   </Link>
                 </li>

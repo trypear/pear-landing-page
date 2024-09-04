@@ -17,11 +17,20 @@ import MobileMenu from "./mobile-menu";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
-const NavItem = ({ href, children }: { href: string; children: ReactNode }) => (
+const NavItem = ({
+  href,
+  target = "_self",
+  children,
+}: {
+  href: string;
+  target?: React.HTMLAttributeAnchorTarget;
+  children: ReactNode;
+}) => (
   <NavigationMenuLink
     asChild
     className={navigationMenuTriggerStyle()}
     href={href}
+    target={target}
   >
     <Link href={href}>{children}</Link>
   </NavigationMenuLink>
@@ -119,7 +128,10 @@ export default async function Header() {
                       </DropdownNavItem>
                       <NavItem href="/pricing">Pricing / Download</NavItem>
                       <NavItem href="/docs">Documentation</NavItem>
-                      <NavItem href="https://github.com/trypear/pearai-app">
+                      <NavItem
+                        href="https://github.com/trypear/pearai-app"
+                        target="_blank"
+                      >
                         GitHub ⭐️
                       </NavItem>
                     </NavigationMenuList>
