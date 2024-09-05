@@ -109,7 +109,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     if (feature?.startsWith("custom-standard")) {
       return (
         <div className="flex items-center">
-          <span className="inline-flex items-center">
+          <span>
             Monthly refill of PearAI Credits for market-leading AI models
             <PearCreditsTooltip type="standard" />
           </span>
@@ -118,7 +118,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     } else if (feature?.startsWith("custom-enterprise")) {
       return (
         <div className="flex items-center">
-          <span className="inline-flex items-center">
+          <span>
             Monthly refill of increased PearAI Credits for market-leading AI
             models
             <PearCreditsTooltip type="enterprise" />
@@ -457,7 +457,7 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
       <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
         <TooltipTrigger asChild>
           <Info
-            className="ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            className="mb-0.5 ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
             onClick={() => setIsOpen((prev) => !prev)}
           />
         </TooltipTrigger>
