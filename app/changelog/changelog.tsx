@@ -42,7 +42,7 @@ const updates: ChangelogEntry[] = [
             🔓 Enabled free trials
           </li>
           <li className="font-medium text-primary-600">
-            🌐 Server improvements, added prompt caching to save users money
+            🌐 Server improvements, added prompt caching
           </li>
           <li className="font-medium text-primary-600">
             🚀 Launched to public!
