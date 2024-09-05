@@ -27,7 +27,7 @@ const updates: ChangelogEntry[] = [
         <ul className="list-disc space-y-2 ps-6 text-sm">
           <li className="font-medium text-primary-600">🎓 Onboarding revamp</li>
           <li className="font-medium text-primary-600">
-            🛠 Fixed continue generator
+            🛠 Fixed "Continue generating" feature
           </li>
           <li className="font-medium text-primary-600">
             🔄 Model Choice on PearAI Server
