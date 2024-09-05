@@ -14,10 +14,8 @@ type DashboardPageProps = {
   user: User;
 };
 
-type UsageType = {
-  max_quota: number | null;
-  used_quota: number | null;
-  quota_remaining: number | null;
+export type UsageType = {
+  percent_credit_used: number | null;
 };
 
 export default function DashboardPage({
@@ -29,15 +27,13 @@ export default function DashboardPage({
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [usage, setUsage] = useState<UsageType>({
-    max_quota: null,
-    used_quota: null,
-    quota_remaining: null,
+    percent_credit_used: null,
   });
 
   useEffect(() => {
     const handleCallbackForApp = async () => {
       // Handle callback
-      const callback = searchParams.get("callback");
+      const callback = searchParams?.get("callback");
       if (callback) {
         const decodedCallback = decodeURIComponent(callback);
         const callbackUrl = new URL(decodedCallback);
@@ -57,7 +53,6 @@ export default function DashboardPage({
         currentUrl.searchParams.delete("callback");
         window.history.replaceState({}, "", currentUrl.toString());
       }
-      setLoading(false);
     };
 
     const getUserRequestsUsage = async () => {
@@ -75,6 +70,8 @@ export default function DashboardPage({
         setUsage(usage);
       } catch (error) {
         toast.error(`Error fetching requests usage: ${error}`);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -101,9 +98,11 @@ export default function DashboardPage({
                 usage={usage}
                 openAppQueryParams={openAppQueryParams}
                 user={user}
+                loading={loading}
               />
             ) : (
               <FreeTrialCard
+                loading={loading}
                 usage={usage}
                 openAppQueryParams={openAppQueryParams}
               />

@@ -1,7 +1,21 @@
 import { z } from "zod";
+import disposableEmailDomains from "@/data/disposable-email-domains.json";
+
+const isDisposableEmail = (email: string) => {
+  const emailDomain = email.split("@").pop();
+
+  if (!emailDomain) return false;
+
+  return (disposableEmailDomains as Record<string, boolean>)[emailDomain];
+};
 
 export const emailSchema = z.object({
-  email: z.string().email({ message: "Email address is invalid." }),
+  email: z
+    .string()
+    .email({ message: "Email address is invalid." })
+    .refine((email) => !isDisposableEmail(email), {
+      message: "Disposable email addresses are not allowed.",
+    }),
 });
 
 export const passwordSchema = z.object({

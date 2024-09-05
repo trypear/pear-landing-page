@@ -17,12 +17,23 @@ import MobileMenu from "./mobile-menu";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 
-const NavItem = ({ href, children }: { href: string; children: ReactNode }) => (
-  <NavigationMenuItem>
-    <NavigationMenuLink className={navigationMenuTriggerStyle()} href={href}>
-      {children}
-    </NavigationMenuLink>
-  </NavigationMenuItem>
+const NavItem = ({
+  href,
+  target = "_self",
+  children,
+}: {
+  href: string;
+  target?: React.HTMLAttributeAnchorTarget;
+  children: ReactNode;
+}) => (
+  <NavigationMenuLink
+    asChild
+    className={navigationMenuTriggerStyle()}
+    href={href}
+    target={target}
+  >
+    <Link href={href}>{children}</Link>
+  </NavigationMenuLink>
 );
 
 const DropdownNavItem = ({
@@ -103,8 +114,9 @@ export default async function Header() {
                           <ListItem href="/about" title="About">
                             Learn more about PearAI
                           </ListItem>
-                          <ListItem href="/docs" title="Documentation">
-                            Learn how to use PearAI effectively
+                          <ListItem href="/blog" title="Blog">
+                            Read insights on PearAI&apos;s development by our
+                            contributors
                           </ListItem>
                           <ListItem href="/faq" title="FAQ">
                             Frequently asked questions about PearAI
@@ -115,7 +127,11 @@ export default async function Header() {
                         </ul>
                       </DropdownNavItem>
                       <NavItem href="/pricing">Pricing / Download</NavItem>
-                      <NavItem href="https://github.com/trypear/pearai-app">
+                      <NavItem href="/docs">Documentation</NavItem>
+                      <NavItem
+                        href="https://github.com/trypear/pearai-app"
+                        target="_blank"
+                      >
                         GitHub ⭐️
                       </NavItem>
                     </NavigationMenuList>

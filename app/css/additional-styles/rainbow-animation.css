@@ -1,0 +1,30 @@
+@keyframes rainbow-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.rainbow-gradient {
+  background: linear-gradient(
+    45deg,
+    #1a237e,
+    /* Dark blue */ #006064,
+    /* Dark cyan */ #1b5e20,
+    /* Dark green */ #006064,
+    /* Dark cyan */ #b71c1c /* Dark red */
+  );
+  background-size: 300% 300%;
+  animation: rainbow-animation 5s ease infinite;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.rainbow-gradient:hover {
+  opacity: 0.8;
+}

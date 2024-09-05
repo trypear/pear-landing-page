@@ -11,6 +11,7 @@ export interface PricingTierProps {
   priceId?: string;
   user: User | null;
   index: number;
+  priceUnit?: string; // Added new field
 }
 
 export interface PricingPageProps {

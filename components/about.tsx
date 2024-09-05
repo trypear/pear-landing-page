@@ -2,6 +2,8 @@ import React from "react";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Tweet } from "@/components/tweet";
 import { components } from "./ui/my-tweet";
+import { Badge } from "./ui/badge";
+import Footer from "./footer";
 
 type VideoData = {
   src: string;
@@ -28,10 +30,10 @@ const videoData: VideoData[] = [
 
 const AboutComponent: React.FC = () => {
   return (
-    <section className={"mt-32"}>
+    <section className={"mt-36"}>
       <div
         className={
-          "m-4 flex flex-col items-center text-center lg:m-0 lg:justify-center"
+          "m-4 mt-0 flex flex-col items-center text-center lg:m-0 lg:justify-center"
         }
       >
         <h1 className="text-4xl font-bold">
@@ -58,28 +60,38 @@ const AboutComponent: React.FC = () => {
         </p>
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
-        <p className="text-xs text-gray-500">Current features include</p>
+        <p className="text-xs text-gray-700">Current features include</p>
 
         <div className="m-4 mt-2 flex max-w-4xl flex-wrap items-center justify-center gap-4">
-          <CardInfo>Codebase context: talk to your code</CardInfo>
-          <CardInfo>Built-in PearAI chat</CardInfo>
-          <CardInfo>Inline AI prompting and diff changes</CardInfo>
-          <CardInfo>AI debugging, including errors shown in terminal</CardInfo>
-          <CardInfo>And many more!</CardInfo>
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
+            Codebase context: talk to your code
+          </Badge>
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
+            Built-in PearAI chat
+          </Badge>
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
+            Inline AI prompting and diff changes
+          </Badge>
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
+            AI debugging, including errors shown in terminal
+          </Badge>
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
+            And many more!
+          </Badge>
         </div>
       </div>
 
-      <div className="m-auto flex max-w-4xl items-center justify-center px-4">
+      <div className="m-auto mb-8 flex max-w-4xl items-center justify-center px-4">
         <Tweet id="1825456010862956844" components={components} />
       </div>
 
-      <div className="m-auto mt-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
+      <div className="m-auto mb-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
         {videoData.map((video, index) => (
           <VideoCard key={index} {...video} />
         ))}
       </div>
 
-      <div className="mb-32 mt-0 flex flex-col items-center justify-center p-4 lg:mt-10 lg:p-0">
+      <div className="mt-0 flex flex-col items-center justify-center p-4 pb-0">
         <h2 className="text-4xl font-bold">
           <span className="relative">
             <span className="relative z-10">Founders</span>
@@ -99,7 +111,7 @@ const AboutComponent: React.FC = () => {
             who worked on developer tooling at companies like Meta, Coinbase,
             and high-frequency trading firms.
           </p>
-          <p className="mt-6 text-center">
+          <p className="mt-3 text-center">
             Passionate about empowering individuals, they recognize code and
             media as the most scalable tools a single person can utilize. With a
             combined following of over 500k subscribers and over 30 million
@@ -111,27 +123,13 @@ const AboutComponent: React.FC = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
 
-const CardInfo = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div
-      className="rounded-3xl bg-primary-50 px-3 py-1 text-center"
-      style={{
-        border: "1px solid rgba(20, 189, 149, 0.35)",
-        background: "rgba(20, 189, 149, 0.03)",
-        color: "#04AE8C",
-      }}
-    >
-      <p>{children}</p>
-    </div>
-  );
-};
-
 const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
-  <Card className="mb-8">
+  <Card>
     <CardContent
       className="flex flex-col-reverse p-4 sm:flex-col"
       style={{

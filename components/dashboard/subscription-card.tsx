@@ -24,15 +24,14 @@ import { useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
 import { Info } from "lucide-react";
+import { UsageType } from "../dashboard";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
-  usage?: {
-    max_quota: number | null;
-    used_quota: number | null;
-  };
+  usage?: UsageType;
   openAppQueryParams?: string;
   user: User;
+  loading: boolean;
 };
 
 const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
@@ -42,6 +41,7 @@ export default function SubscriptionCard({
   usage,
   openAppQueryParams,
   user,
+  loading,
 }: SubscriptionCardProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { handleCancelSubscription, isCanceling, isCanceled } =
@@ -66,7 +66,7 @@ export default function SubscriptionCard({
 
   if (!subscription) {
     return (
-      <Card className="flex h-full flex-col overflow-auto bg-gray-100/10 p-6 text-card-foreground">
+      <Card className="flex h-full flex-col overflow-auto bg-gray-100/10 text-card-foreground">
         <div className="grid gap-4">
           <CardHeader className="pb-4">
             <CardTitle className="text-xl font-semibold">
@@ -74,8 +74,8 @@ export default function SubscriptionCard({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex items-center justify-between">
-              <p>You are not currently subscribed.</p>
+            <div className="flex items-center justify-between text-muted-foreground">
+              <p>You are currently not subscribed.</p>
             </div>
           </CardContent>
           <CardFooter className="mt-8 pt-6">
@@ -93,7 +93,7 @@ export default function SubscriptionCard({
   }
 
   return (
-    <Card className="overflow-auto bg-gray-100/10 p-6 text-card-foreground">
+    <Card className="overflow-auto bg-gray-100/10 text-card-foreground">
       <div className="grid gap-4">
         <CardHeader className="flex-row justify-between pb-4">
           <CardTitle className="text-xl font-semibold">
@@ -102,9 +102,9 @@ export default function SubscriptionCard({
           <div className="flex">
             <Badge
               variant="secondary"
-              className="border-primary-800 bg-primary-800/10 px-2.5 py-0.5 text-primary-800"
+              className="border-primary-800 bg-primary-800/10 px-2 py-1 text-xs text-primary-800"
             >
-              Pro
+              Pro - {capitalizeInital(subscription.pricing_tier)}
             </Badge>
           </div>
         </CardHeader>
@@ -113,18 +113,27 @@ export default function SubscriptionCard({
             <div className="mb-4">
               <div className="flex justify-between">
                 <p className="font-medium">Requests</p>
-                <p className="text-muted-foreground">
-                  {usage.used_quota} / {usage.max_quota}
+                <p className="text-sm/6 text-muted-foreground">
+                  {loading ? (
+                    "-"
+                  ) : (
+                    <strong>
+                      {usage?.percent_credit_used != null
+                        ? `${usage.percent_credit_used}%`
+                        : "Cannot find remaining percentage. Please contact PearAI support."}
+                    </strong>
+                  )}
                 </p>
               </div>
               <Progress
-                value={(usage.used_quota! / usage.max_quota!) * 100}
+                value={usage.percent_credit_used}
                 className="mb-2 mt-2 h-2 w-full"
                 indicatorColor="bg-primary-800 bg-opacity-75"
               />
               <p className="text-sm text-muted-foreground">
-                You&apos;ve used {usage.used_quota} requests out of your{" "}
-                <span className="font-medium">{usage.max_quota}</span> requests.
+                {loading
+                  ? "-"
+                  : `${usage.percent_credit_used ?? 0}% of PearAI Credits used`}
               </p>
             </div>
           )}
@@ -139,7 +148,7 @@ export default function SubscriptionCard({
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Period</p>
-              <p className="text-muted-foreground">
+              <p className="text-sm/6 text-muted-foreground">
                 {new Date(
                   subscription.current_period_start * 1000,
                 ).toLocaleDateString()}{" "}
@@ -157,37 +166,24 @@ export default function SubscriptionCard({
               <Button variant="outline" className="text-primary-800" asChild>
                 <Link
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
+                  target="_parent"
                 >
                   Open PearAI
                 </Link>
               </Button>
-              <div className="mt-1 flex items-center">
-                <Info className="inline text-muted-foreground" size={14} />
-                <p className="ml-1.5 block text-xs text-muted-foreground">
-                  Make sure PearAI is{" "}
-                  <Button
-                    variant="link"
-                    asChild
-                    className="p-0 text-xs text-primary-800"
-                  >
-                    <Link href="/pricing">installed.</Link>
-                  </Button>{" "}
-                  Use this button to open the app and login directly.
-                </p>
-              </div>
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button
                   onClick={handleCancelClick}
-                  disabled={isCanceling || isCanceled}
+                  disabled={isCanceling}
                   variant="link"
                   className="px-0"
                 >
                   {isCanceling
                     ? "Canceling..."
                     : isCanceled
-                      ? "Subscription canceled"
+                      ? "Subscription canceled, reactivate?"
                       : "Cancel Subscription"}
                 </Button>
               </DialogTrigger>
@@ -219,6 +215,20 @@ export default function SubscriptionCard({
                 </DialogFooter>
               </DialogContent>
             </Dialog>
+          </div>
+          <div className="flex items-center">
+            <Info className="inline text-muted-foreground" size={14} />
+            <p className="ml-1.5 text-xs/6 text-muted-foreground">
+              Make sure PearAI is{" "}
+              <Button
+                variant="link"
+                asChild
+                className="p-0 text-xs text-primary-800"
+              >
+                <Link href="/pricing">installed.</Link>
+              </Button>{" "}
+              Use this button to open the app and login directly.
+            </p>
           </div>
         </CardContent>
       </div>

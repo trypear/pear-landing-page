@@ -169,3 +169,8 @@
   width: 100% !important;
   box-sizing: border-box;
 }
+
+/* Prose */
+.prose code:not(pre code) {
+  @apply rounded-md border border-slate-300 bg-slate-200 px-1 py-0.5 before:content-none after:content-none dark:border-slate-700 dark:bg-slate-950;
+}

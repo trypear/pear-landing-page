@@ -162,6 +162,13 @@ export default function MobileMenu({
                           Documentation
                         </MobileNavItem>
                         <MobileNavItem
+                          href="/blog"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          Blog
+                        </MobileNavItem>
+
+                        <MobileNavItem
                           href="/faq"
                           onClick={() => setIsOpen(false)}
                         >
