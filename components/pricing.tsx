@@ -31,7 +31,6 @@ import {
   DropdownMenuItem,
 } from "./ui/dropdown-menu";
 import { Info } from "lucide-react";
-import Footer from "./footer";
 import Spinner from "./ui/spinner";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
@@ -442,7 +441,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </Tabs>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };
