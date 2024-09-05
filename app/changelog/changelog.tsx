@@ -16,6 +16,48 @@ type ChangelogEntry = {
 
 const updates: ChangelogEntry[] = [
   {
+    date: "30 August 2024",
+    title: "🎉 PearAI v1.0.0 - The Cupertino v1 Launch",
+    version: "v1.0.0 🚀",
+    description: (
+      <>
+        <p className="mb-4 text-lg font-semibold text-primary-700">
+          Welcome to the future of AI-assisted development
+        </p>
+        <ul className="list-disc space-y-2 ps-6 text-sm">
+          <li className="font-medium text-primary-600">🎓 Onboarding revamp</li>
+          <li className="font-medium text-primary-600">
+            🛠 Fixed "Continue generating" feature
+          </li>
+          <li className="font-medium text-primary-600">
+            🔄 Model Choice on PearAI Server
+          </li>
+          <li className="font-medium text-primary-600">
+            ⌨️ Improved shortcuts
+          </li>
+          <li className="font-medium text-primary-600">
+            🆘 Improved help window
+          </li>
+          <li className="font-medium text-primary-600">
+            🔓 Enabled free trials
+          </li>
+          <li className="font-medium text-primary-600">
+            🌐 Server improvements, added prompt caching
+          </li>
+          <li className="font-medium text-primary-600">
+            🚀 Launched to public!
+          </li>
+        </ul>
+      </>
+    ),
+    screenshot: {
+      src: "/images/changelogs/CupertinoV1 - v1.0.0.png",
+      alt: "PearAI v1.0.0 Dashboard",
+      width: 461,
+      height: 243,
+    },
+  },
+  {
     date: "19 August 2024",
     title: "🚧 Model switch feature & Bug Fixes",
     version: "v0.0.3",
@@ -43,10 +85,10 @@ const updates: ChangelogEntry[] = [
       </ul>
     ),
     screenshot: {
-      src: "/images/modelSwitch- v0.0.3.png",
+      src: "/images/changelogs/modelSwitch- v0.0.3.png",
       alt: "Screenshot of performance enhancements",
-      width: 300,
-      height: 300,
+      width: 461,
+      height: 243,
     },
   },
   {
@@ -62,7 +104,7 @@ const updates: ChangelogEntry[] = [
       </ul>
     ),
     screenshot: {
-      src: "/images/shortcutBar- v0.0.2.png",
+      src: "/images/changelogs/shortcutBar- v0.0.2.png",
       alt: "Screenshot of Claude Sonnet Model and UI improvements",
       width: 461,
       height: 243,
@@ -80,7 +122,7 @@ const updates: ChangelogEntry[] = [
       </ul>
     ),
     screenshot: {
-      src: "/images/includeFile - v0.0.1.png",
+      src: "/images/changelogs/includeFile - v0.0.1.png",
       alt: "Screenshot of initial launch features",
       width: 461,
       height: 243,
