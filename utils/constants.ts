@@ -167,6 +167,7 @@ export const footerSections = [
       {
         text: "Discord",
         href: "https://discord.gg/7QMraJUsQt",
+        target: "_blank",
       },
     ],
   },
