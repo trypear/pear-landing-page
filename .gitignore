@@ -8,5 +8,3 @@ node_modules/
 
 # contentlayer
 .contentlayer
-
-.env
