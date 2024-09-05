@@ -117,7 +117,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       );
     } else if (feature?.startsWith("custom-enterprise")) {
       return (
-        <div className="flex items-center"> 
+        <div className="flex items-center">
           <span>
             Monthly refill of increased PearAI Credits for market-leading AI
             models
