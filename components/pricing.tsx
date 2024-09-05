@@ -457,7 +457,7 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
       <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
         <TooltipTrigger asChild>
           <Info
-            className="ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            className="mb-0.5 ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
             onClick={() => setIsOpen((prev) => !prev)}
           />
         </TooltipTrigger>
