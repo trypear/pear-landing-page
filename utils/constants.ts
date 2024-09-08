@@ -46,10 +46,7 @@ export const PRICING_TIERS: {
         "You can download PearAI directly, and use our free trial, or your own API key 🤓",
       isFree: true,
       index: 0,
-      features: [
-        "Use our free trial, your own API key, or local models",
-        "Community Discord server",
-      ],
+      features: ["free", "Community Discord server"],
     },
     {
       title: "Junior Engineer",

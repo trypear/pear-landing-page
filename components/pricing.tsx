@@ -1,7 +1,11 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  useMemo,
+} from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -111,6 +115,15 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           <span>
             Monthly refill of PearAI Credits for market-leading AI models
             <PearCreditsTooltip type="standard" />
+          </span>
+        </div>
+      );
+    } else if (feature?.startsWith("free")) {
+      return (
+        <div className="flex items-center">
+          <span>
+            Use our free trial, your own API key, or local models
+            <PearCreditsTooltip type="free" />
           </span>
         </div>
       );
@@ -450,6 +463,17 @@ export default PricingPage;
 export const PearCreditsTooltip = ({ type }: { type: string }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const pearCreditsCount = useMemo(() => {
+    return (type: string) => {
+      if (type === "free") {
+        return "50";
+      } else if (type === "enterprise") {
+        return "1000";
+      }
+      return "700";
+    };
+  }, []);
+
   return (
     <TooltipProvider>
       <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
@@ -464,21 +488,27 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
             Current models include Claude 3.5 Sonnet and GPT4o.
             <br /> <br />
             Your PearAI Credits usage depend on your prompt input and output
-            sizes. On average, this equates to around{" "}
-            {type === "enterprise" ? "1000" : "700"} requests.
-            <br /> <br />
-            Afraid of running out of credits? You can always contact{" "}
-            <a
-              className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-              onClick={(e) => {
-                e.stopPropagation();
-                navigator.clipboard.writeText(CONTACT_EMAIL);
-                toast.success("Email copied to clipboard!");
-              }}
-            >
-              PearAI support
-            </a>{" "}
-            to top up and keep building!
+            sizes. On average, this equates to around {pearCreditsCount(
+              type,
+            )}{" "}
+            requests{type === "free" && " for our current free trial"}.
+            {type !== "free" && (
+              <>
+                <br /> <br />
+                Afraid of running out of credits? You can always contact{" "}
+                <a
+                  className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigator.clipboard.writeText(CONTACT_EMAIL);
+                    toast.success("Email copied to clipboard!");
+                  }}
+                >
+                  PearAI support
+                </a>{" "}
+                to top up and keep building!
+              </>
+            )}
           </p>
         </TooltipContent>
       </Tooltip>
