@@ -7,7 +7,6 @@ import {
 import Link from "next/link";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
-import Footer from "@/components/footer";
 import { FAQItem } from "@/types/faqItems";
 
 export const metadata: Metadata = constructMetadata({
@@ -77,7 +76,6 @@ const FAQ: React.FC = () => {
           </AccordionItem>
         </Accordion>
       </section>
-      <Footer />
     </>
   );
 };

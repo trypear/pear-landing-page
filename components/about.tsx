@@ -3,7 +3,6 @@ import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Tweet } from "@/components/tweet";
 import { components } from "./ui/my-tweet";
 import { Badge } from "./ui/badge";
-import Footer from "./footer";
 
 type VideoData = {
   src: string;
@@ -123,7 +122,6 @@ const AboutComponent: React.FC = () => {
           </p>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };

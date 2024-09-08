@@ -3,7 +3,6 @@ import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { posts } from "@/lib/blog/postData";
-import Footer from "@/components/footer";
 
 export const generateStaticParams = async () =>
   posts.map((post) => ({ slug: post.url.split("/").pop() }));
@@ -76,7 +75,6 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
       </article>
-      <Footer />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
