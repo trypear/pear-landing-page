@@ -83,7 +83,7 @@ export const posts = [
             <li class="pl-2">Deployment: <span class="font-semibold">DigitalOcean</span></li>
           </ul>
   
-          <p class="text-lg mt-8">Hopefully this was helpful to someone. PearAI is open-sourced, so please help us out by starring the repo here: <a href="https://github.com/try-pear/pearai-app" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">PearAI GitHub Repo</a>, and consider contributing! If you'd like to use the app, join the wait list here <a href="https://trypear.ai/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">https://trypear.ai/</a>. We're launching next week to our first batch of users!</p>
+          <p class="text-lg mt-8">Hopefully this was helpful to someone. PearAI is open-sourced, so please help us out by starring the repo here: <a href="https://github.com/trypear/pearai-app" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">PearAI GitHub Repo</a>, and consider contributing! If you'd like to use the app, join the wait list here <a href="https://trypear.ai/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">https://trypear.ai/</a>. We're launching next week to our first batch of users!</p>
   
           <p class="text-lg mt-6">Also, feel free to check out my YouTube series on this, as I am documenting the entire startup journey with my cofounder <a href="https://youtube.com/@FryingPan" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">FryingPan</a>. <a href="https://youtube.com/nang88" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">https://youtube.com/nang88</a>. Thanks!</p>
         </div>
