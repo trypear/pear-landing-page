@@ -51,7 +51,7 @@ export default function Features() {
           </p>
           <p className="pt-6">
             To see all of our features, check out our{" "}
-            <Link className="text-primary-600" href="/docs/core-features">
+            <Link className="text-primary-600" href="/docs">
               docs
             </Link>
             .
