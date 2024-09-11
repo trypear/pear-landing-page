@@ -21,6 +21,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { useToggle } from "@/hooks/useToggle";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -84,12 +85,7 @@ export default function SignUp() {
       setErrorMessage("An unexpected error occurred. Please try again.");
     }
   };
-
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setIsPasswordVisible(!isPasswordVisible);
-  };
+  const [isPasswordVisible, togglePasswordVisibility] = useToggle(false);
 
   return (
     <section className="relative">
@@ -233,7 +229,7 @@ export default function SignUp() {
                   <Checkbox
                     className="rounded"
                     checked={isPasswordVisible}
-                    onCheckedChange={handleCheckboxChange}
+                    onCheckedChange={togglePasswordVisibility}
                   />
                   <span className="ml-2 cursor-pointer text-gray-600">
                     Show Password
