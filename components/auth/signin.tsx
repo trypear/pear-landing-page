@@ -67,6 +67,12 @@ export default function SignIn() {
     }
   };
 
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
   return (
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -157,7 +163,7 @@ export default function SignIn() {
                       <FormControl>
                         <Input
                           id="password"
-                          type="password"
+                          type={isPasswordVisible ? "text" : "password"}
                           placeholder="********"
                           {...field}
                         />
@@ -166,6 +172,17 @@ export default function SignIn() {
                     </FormItem>
                   )}
                 />
+
+                <Label className="flex items-center">
+                  <Checkbox
+                    className="rounded"
+                    checked={isPasswordVisible}
+                    onCheckedChange={handleCheckboxChange}
+                  />
+                  <span className="ml-2 cursor-pointer text-gray-600">
+                    Show Password
+                  </span>
+                </Label>
 
                 <div className="flex justify-between">
                   <Label className="flex items-center">

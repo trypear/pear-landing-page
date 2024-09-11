@@ -19,6 +19,8 @@ import {
 import { signUpSchema, SignUpFormData } from "@/utils/form-schema";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -81,6 +83,12 @@ export default function SignUp() {
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
     }
+  };
+
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+  const handleCheckboxChange = () => {
+    setIsPasswordVisible(!isPasswordVisible);
   };
 
   return (
@@ -211,7 +219,7 @@ export default function SignUp() {
                       <FormControl>
                         <Input
                           id="password"
-                          type="password"
+                          type={isPasswordVisible ? "text" : "password"}
                           placeholder="Password (at least 8 characters)"
                           {...field}
                         />
@@ -220,6 +228,17 @@ export default function SignUp() {
                     </FormItem>
                   )}
                 />
+
+                <Label className="flex items-center">
+                  <Checkbox
+                    className="rounded"
+                    checked={isPasswordVisible}
+                    onCheckedChange={handleCheckboxChange}
+                  />
+                  <span className="ml-2 cursor-pointer text-gray-600">
+                    Show Password
+                  </span>
+                </Label>
 
                 <div className="text-center text-sm text-gray-600">
                   <Link
