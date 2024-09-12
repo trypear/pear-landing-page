@@ -136,6 +136,14 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     }
     return feature;
   };
+  const [buttonWidth, setButtonWidth] = useState<number | null>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (buttonRef.current) {
+      setButtonWidth(buttonRef.current.offsetWidth);
+    }
+  }, []);
 
   return (
     <Card
@@ -261,28 +269,34 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
+                        ref={buttonRef} // Attach the ref here
                         style={gradientStyle}
-                        className="relative flex w-full items-center justify-center transition-opacity hover:opacity-90"
+                        className="relative flex w-full items-center justify-between px-4 py-2 transition-opacity hover:opacity-90"
                       >
                         <div className="flex items-center">
                           <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
                           MacOS
                         </div>
-                        <ChevronDown size="20" className="absolute right-4" />
+                        <ChevronDown size="20" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                       side="bottom"
-                      className="border border-border/50 bg-background"
+                      align="center"
+                      style={{
+                        width:
+                          buttonWidth !== null ? `${buttonWidth}px` : "auto",
+                      }}
+                      className="border border-border/50 bg-background p-1"
                     >
                       <DropdownMenuItem
-                        className="w-full focus:bg-secondary-300/10"
+                        className="w-full rounded px-2 py-1.5 text-sm focus:bg-secondary-300/10"
                         onSelect={() => handleDownload("darwin-arm64")}
                       >
                         Silicon (M chip)
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        className="w-full focus:bg-secondary-300/10"
+                        className="w-full rounded px-2 py-1.5 text-sm focus:bg-secondary-300/10"
                         onSelect={() => handleDownload("intel-x64")}
                       >
                         Intel chip

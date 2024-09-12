@@ -255,7 +255,7 @@ export const posts = [
             <ol class="list-decimal pl-6 space-y-2">
               <li>
                 Download the compressed PearAI installation file:
-                <a href="https://drive.google.com/file/d/1XNqICAkQbXd7zuKLIK2epT0_ZdrkIcWU/view?usp=drive_link" class="text-primary-500 dark:text-primary-400 underline">Download PearAI</a>
+                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-1.0.0.tar.gz" class="text-primary-500 dark:text-primary-400 underline">Download PearAI</a>
               </li>
               <li>Extract the contents by running the following command:
                 <pre class="text-base"><code class="language-bash">tar -xvf PearAI-1.0.0.tar.gz</code></pre>
