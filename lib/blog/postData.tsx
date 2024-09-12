@@ -250,15 +250,8 @@ export const posts = [
     tags: ["Guide", "PearAI", "Linux"],
     content: `
         <article class="space-y-6 text-gray-800 dark:text-gray-200">
-          <p class="text-xl font-semibold leading-relaxed">
-            If you're a Linux user, you're in luck—installing PearAI is easy and works on most Linux distributions. Whether you're a seasoned Linux pro or completely new to using the command line, don't worry! This guide will walk you through each step of the process, ensuring a smooth and straightforward installation of our powerful code editor, PearAI.
-          </p>
-
           <section>
             <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Download PearAI on Linux</h2>
-            <p class="mb-3">
-              Installing PearAI on Linux is simple. Follow these steps to download and install the code editor on most Linux distributions.
-            </p>
             <ol class="list-decimal pl-6 space-y-2">
               <li>
                 Download the compressed PearAI installation file:
@@ -280,27 +273,20 @@ export const posts = [
               </li>
 
             </ol>
-            <p class="mt-4">
-              This installation method has been tested on multiple Linux distributions, including Arch Linux, Ubuntu 24, and Fedora 40. It should work smoothly on any distro that meets these version requirements.
-            </p>
           </section>
 
           <section>
-            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Final Steps</h2>
+            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Notes</h2>
             <p class="mb-3">
-              Once the installation is complete, PearAI will be ready to use! If you have any questions or run into issues, feel free to join our community and get support through our official <a href="https://discord.gg/7QMraJUsQt" class="text-primary-500 dark:text-primary-400 underline">Discord server</a>. Our team and community members are always there to help.
+              Once the installation is complete, PearAI will be ready to use! If you have any questions or run into issues, feel free to join our community and get support through our official <a href="https://discord.gg/7QMraJUsQt" class="text-primary-500 dark:text-primary-400 underline">Discord server</a>.
             </p>
-            <p class="mb-3">
-              This was compiled using the GCC 14 library, so most distributions with this or an older version should be able to run PearAI without any issues.
+            <p class="mt-4">
+              This installation method has been tested on multiple Linux distributions, including Arch Linux, Ubuntu 24, and Fedora 40. It was compiled using GCC 14, so most distributions with this or an older version should be able to run PearAI without any issues.
             </p>
           </section>
 
-          <blockquote class="border-l-4 border-primary-500 pl-4 italic text-gray-700 dark:text-gray-300">
-            "PearAI has transformed my coding experience on Linux. The installation process is seamless, and the editor runs flawlessly!" - Anonymous Linux User
-          </blockquote>
-
           <p class="text-lg font-semibold mt-6">
-            We're thrilled to bring PearAI to the Linux community and believe it will be a game-changer for developers everywhere. As we continue to refine and enhance the platform, we welcome your feedback and look forward to evolving PearAI into the go-to tool for seamless, AI-assisted coding. Stay tuned for more exciting updates and features on the horizon!
+            We're thrilled to bring PearAI to the Linux community, stay tuned for more exciting updates and features on the horizon!
           </p>
         </article>
         `,
