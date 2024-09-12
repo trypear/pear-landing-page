@@ -21,7 +21,7 @@ import { useCheckout } from "@/hooks/useCheckout";
 import { PRICING_TIERS, CONTACT_EMAIL } from "@/utils/constants";
 import { toast } from "sonner";
 import { Check, ChevronDown } from "lucide-react";
-import { AppleLogo, WindowsLogo } from "./ui/icons";
+import { AppleLogo, WindowsLogo, LinuxLogo } from "./ui/icons";
 import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
@@ -31,6 +31,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Info } from "lucide-react";
 import Spinner from "./ui/spinner";
+import Link from "next/link";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
@@ -236,43 +237,66 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 .
               </p>
             ) : (
-              <div className="flex">
-                <Button
-                  className={cn("rainbow-gradient", "font-bold", "mr-2")}
-                  onClick={() => handleDownload("windows")}
-                >
-                  <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
-                  Windows
-                </Button>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      style={gradientStyle}
-                      className="transition-opacity hover:opacity-90"
-                    >
-                      <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
-                      MacOS
-                      <ChevronDown size="20" className="ml-2" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent
-                    side="bottom"
-                    className="border border-border/50 bg-background"
+              <div className="flex w-full flex-col items-center gap-2">
+                <div className="flex w-full max-w-md gap-2">
+                  <Button
+                    className={cn("rainbow-gradient", "font-bold", "flex-1")}
+                    onClick={() => handleDownload("windows")}
                   >
-                    <DropdownMenuItem
-                      className="w-full focus:bg-secondary-300/10"
-                      onSelect={() => handleDownload("darwin-arm64")}
+                    <WindowsLogo className="mr-2 h-[18px] w-[18px] fill-white-main" />
+                    Windows
+                  </Button>
+                  <Link
+                    href="/blog/download-pearai-on-linux"
+                    className="flex-1"
+                  >
+                    <Button
+                      className={cn("rainbow-gradient", "font-bold", "w-full")}
                     >
-                      Silicon (M chip)
-                    </DropdownMenuItem>
-                    <DropdownMenuItem
-                      className="w-full focus:bg-secondary-300/10"
-                      onSelect={() => handleDownload("intel-x64")}
+                      <LinuxLogo className="mr-2 h-[18px] w-[18px] fill-white-main" />
+                      Linux x64
+                    </Button>
+                  </Link>
+                </div>
+                <div className="flex w-full max-w-md">
+                  <DropdownMenu>
+                    <div className="flex w-full">
+                      <Button
+                        style={gradientStyle}
+                        className="flex-grow rounded-r-none transition-opacity hover:opacity-90"
+                        onClick={() => handleDownload("darwin-arm64")}
+                      >
+                        <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
+                        MacOS
+                      </Button>
+                      <DropdownMenuTrigger asChild>
+                        <Button
+                          style={gradientStyle}
+                          className="border-white/20 rounded-l-none border-l px-2 transition-opacity hover:opacity-90"
+                        >
+                          <ChevronDown size="20" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                    </div>
+                    <DropdownMenuContent
+                      side="bottom"
+                      className="border border-border/50 bg-background"
                     >
-                      Intel chip
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                      <DropdownMenuItem
+                        className="w-full focus:bg-secondary-300/10"
+                        onSelect={() => handleDownload("darwin-arm64")}
+                      >
+                        Silicon (M chip)
+                      </DropdownMenuItem>
+                      <DropdownMenuItem
+                        className="w-full focus:bg-secondary-300/10"
+                        onSelect={() => handleDownload("intel-x64")}
+                      >
+                        Intel chip
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
               </div>
             ))
           )}
