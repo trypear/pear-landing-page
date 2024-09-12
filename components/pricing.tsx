@@ -246,38 +246,31 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     <WindowsLogo className="mr-2 h-[18px] w-[18px] fill-white-main" />
                     Windows
                   </Button>
-                  <Link
-                    href="/blog/download-pearai-on-linux"
-                    className="flex-1"
+
+                  <Button
+                    className={cn("rainbow-gradient", "font-bold", "flex-1")}
+                    onClick={() =>
+                      (window.location.href = "/blog/download-pearai-on-linux")
+                    }
                   >
-                    <Button
-                      className={cn("rainbow-gradient", "font-bold", "w-full")}
-                    >
-                      <LinuxLogo className="mr-2 h-[18px] w-[18px] fill-white-main" />
-                      Linux x64
-                    </Button>
-                  </Link>
+                    <LinuxLogo className="mr-2 h-[18px] w-[18px] fill-white-main" />
+                    Linux x64
+                  </Button>
                 </div>
                 <div className="flex w-full max-w-md">
                   <DropdownMenu>
-                    <div className="flex w-full">
+                    <DropdownMenuTrigger asChild>
                       <Button
                         style={gradientStyle}
-                        className="flex-grow rounded-r-none transition-opacity hover:opacity-90"
-                        onClick={() => handleDownload("darwin-arm64")}
+                        className="relative flex w-full items-center justify-center transition-opacity hover:opacity-90"
                       >
-                        <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
-                        MacOS
+                        <div className="flex items-center">
+                          <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
+                          MacOS
+                        </div>
+                        <ChevronDown size="20" className="absolute right-4" />
                       </Button>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          style={gradientStyle}
-                          className="border-white/20 rounded-l-none border-l px-2 transition-opacity hover:opacity-90"
-                        >
-                          <ChevronDown size="20" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                    </div>
+                    </DropdownMenuTrigger>
                     <DropdownMenuContent
                       side="bottom"
                       className="border border-border/50 bg-background"

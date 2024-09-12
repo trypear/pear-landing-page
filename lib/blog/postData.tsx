@@ -273,6 +273,12 @@ export const posts = [
               <li>Run the installation script with superuser permissions:
                 <pre class="text-base"><code class="language-bash">sudo ./install-pearai.sh</code></pre>
               </li>
+              <li>
+                Add the following alias to your <code>~/.bashrc</code> or <code>~/.zshrc</code> to run PearAI from any directory:
+                <pre class="text-base"><code class="language-bash">alias pearai='PearAI'</code></pre>
+                After adding the alias, run <code>source ~/.bashrc</code> or <code>source ~/.zshrc</code> to apply the changes.
+              </li>
+
             </ol>
             <p class="mt-4">
               This installation method has been tested on multiple Linux distributions, including Arch Linux, Ubuntu 24, and Fedora 40. It should work smoothly on any distro that meets these version requirements.
