@@ -290,7 +290,7 @@ export const posts = [
           </section>
 
           <blockquote class="border-l-4 border-primary-500 pl-4 italic text-gray-700 dark:text-gray-300">
-            "PearAI has transformed my coding experience on Linux. The installation process is seamless, and the editor runs flawlessly!" - Anonymus Linux User
+            "PearAI has transformed my coding experience on Linux. The installation process is seamless, and the editor runs flawlessly!" - Anonymous Linux User
           </blockquote>
 
           <p class="text-lg font-semibold mt-6">
