@@ -244,7 +244,7 @@ export const posts = [
     excerpt:
       "An easy-to-follow guide for downloading and installing PearAI on a wide range of Linux distributions, ensuring a smooth setup for both beginners and experienced users.",
     date: "2024-09-11",
-    author: "Maximiliano Farfan",
+    author: "Maximiliano Farfán",
     readingTime: "2 min",
     thumbnail: "/images/og-image.png",
     tags: ["Guide", "PearAI", "Linux"],

@@ -251,7 +251,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     className={cn("rainbow-gradient", "font-bold", "flex-1")}
                     onClick={() => handleDownload("windows")}
                   >
-                    <WindowsLogo className="mr-2 h-[18px] w-[18px] fill-white-main" />
+                    <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
                     Windows
                   </Button>
 
@@ -261,7 +261,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                       (window.location.href = "/blog/download-pearai-on-linux")
                     }
                   >
-                    <LinuxLogo className="mr-2 h-[18px] w-[18px] fill-white-main" />
+                    <LinuxLogo className="h-[18px] w-[18px] fill-white-main" />
                     Linux x64
                   </Button>
                 </div>
@@ -269,15 +269,15 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
-                        ref={buttonRef} // Attach the ref here
+                        ref={buttonRef}
                         style={gradientStyle}
-                        className="relative flex w-full items-center justify-between px-4 py-2 transition-opacity hover:opacity-90"
+                        className="relative flex w-full items-center justify-center px-4 py-2 transition-opacity hover:opacity-90"
                       >
                         <div className="flex items-center">
                           <AppleLogo className="mr-2 h-[18px] w-[18px] fill-current" />
-                          MacOS
+                          <span>MacOS</span>
                         </div>
-                        <ChevronDown size="20" />
+                        <ChevronDown size="20" className="absolute right-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
@@ -287,16 +287,16 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                         width:
                           buttonWidth !== null ? `${buttonWidth}px` : "auto",
                       }}
-                      className="border border-border/50 bg-background p-1"
+                      className="flex flex-col items-center justify-center border border-border/50 bg-background p-1"
                     >
                       <DropdownMenuItem
-                        className="w-full rounded px-2 py-1.5 text-sm focus:bg-secondary-300/10"
+                        className="flex w-full justify-center rounded px-2 py-1.5 text-sm focus:bg-secondary-300/10"
                         onSelect={() => handleDownload("darwin-arm64")}
                       >
                         Silicon (M chip)
                       </DropdownMenuItem>
                       <DropdownMenuItem
-                        className="w-full rounded px-2 py-1.5 text-sm focus:bg-secondary-300/10"
+                        className="flex w-full justify-center rounded px-2 py-1.5 text-sm focus:bg-secondary-300/10"
                         onSelect={() => handleDownload("intel-x64")}
                       >
                         Intel chip
