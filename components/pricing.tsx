@@ -266,7 +266,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                   </Button>
                 </div>
                 <div className="flex w-full max-w-md">
-                  <DropdownMenu>
+                  <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                       <Button
                         ref={buttonRef}
