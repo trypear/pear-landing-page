@@ -83,7 +83,7 @@ export const posts = [
             <li class="pl-2">Deployment: <span class="font-semibold">DigitalOcean</span></li>
           </ul>
   
-          <p class="text-lg mt-8">Hopefully this was helpful to someone. PearAI is open-sourced, so please help us out by starring the repo here: <a href="https://github.com/try-pear/pearai-app" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">PearAI GitHub Repo</a>, and consider contributing! If you'd like to use the app, join the wait list here <a href="https://trypear.ai/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">https://trypear.ai/</a>. We're launching next week to our first batch of users!</p>
+          <p class="text-lg mt-8">Hopefully this was helpful to someone. PearAI is open-sourced, so please help us out by starring the repo here: <a href="https://github.com/trypear/pearai-app" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">PearAI GitHub Repo</a>, and consider contributing! If you'd like to use the app, join the wait list here <a href="https://trypear.ai/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">https://trypear.ai/</a>. We're launching next week to our first batch of users!</p>
   
           <p class="text-lg mt-6">Also, feel free to check out my YouTube series on this, as I am documenting the entire startup journey with my cofounder <a href="https://youtube.com/@FryingPan" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">FryingPan</a>. <a href="https://youtube.com/nang88" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">https://youtube.com/nang88</a>. Thanks!</p>
         </div>
@@ -235,6 +235,60 @@ export const posts = [
               We're excited about the possibilities that Claude 3.5 brings to PearAI and look forward to continuing our journey of making AI-assisted coding more powerful and accessible. Stay tuned for more updates and features as we push the boundaries of what's possible in AI-powered code editing!
             </p>
           </article>
+        `,
+  },
+
+  {
+    title: "Install PearAI on Linux: Simple Guide for All Distros",
+    url: "/blog/download-pearai-on-linux",
+    excerpt:
+      "An easy-to-follow guide for downloading and installing PearAI on a wide range of Linux distributions, ensuring a smooth setup for both beginners and experienced users.",
+    date: "2024-09-11",
+    author: "Maximiliano Farfán",
+    readingTime: "2 min",
+    thumbnail: "/images/og-image.png",
+    tags: ["Guide", "PearAI", "Linux"],
+    content: `
+        <article class="space-y-6 text-gray-800 dark:text-gray-200">
+          <section>
+            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Download PearAI on Linux</h2>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li>
+                Download the compressed PearAI installation file:
+                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-1.0.0.tar.gz" class="text-primary-500 dark:text-primary-400 underline">Download PearAI</a>
+              </li>
+              <li>Extract the contents by running the following command:
+                <pre class="text-base"><code class="language-bash">tar -xvf PearAI-1.0.0.tar.gz</code></pre>
+              </li>
+              <li>Navigate to the extracted folder:
+                <pre class="text-base"><code class="language-bash">cd PearAI-1.0.0/</code></pre>
+              </li>
+              <li>Run the installation script with superuser permissions:
+                <pre class="text-base"><code class="language-bash">sudo ./install-pearai.sh</code></pre>
+              </li>
+              <li>
+                Add the following alias to your <code>~/.bashrc</code> or <code>~/.zshrc</code> to run PearAI from any directory:
+                <pre class="text-base"><code class="language-bash">alias pearai='PearAI'</code></pre>
+                After adding the alias, run <code>source ~/.bashrc</code> or <code>source ~/.zshrc</code> to apply the changes.
+              </li>
+
+            </ol>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Notes</h2>
+            <p class="mb-3">
+              Once the installation is complete, PearAI will be ready to use! If you have any questions or run into issues, feel free to join our community and get support through our official <a href="https://discord.gg/7QMraJUsQt" class="text-primary-500 dark:text-primary-400 underline">Discord server</a>.
+            </p>
+            <p class="mt-4">
+              This installation method has been tested on multiple Linux distributions, including Arch Linux, Ubuntu 24, and Fedora 40. It was compiled using GCC 14, so most distributions with this or an older version should be able to run PearAI without any issues.
+            </p>
+          </section>
+
+          <p class="text-lg font-semibold mt-6">
+            We're thrilled to bring PearAI to the Linux community, stay tuned for more exciting updates and features on the horizon!
+          </p>
+        </article>
         `,
   },
 ];
