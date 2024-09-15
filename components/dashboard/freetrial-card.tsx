@@ -38,7 +38,7 @@ export default function FreeTrialCard({
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">PearAI Credits</p>
-              <p className="text-sm/6 text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 <strong>
                   {loading ? (
                     "-"
@@ -57,15 +57,20 @@ export default function FreeTrialCard({
               className="mb-2 mt-2 h-2 w-full"
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
-            <p className="text-sm/6 text-muted-foreground">
-              {loading ? "-" : usage.percent_credit_used}% of free trial PearAI
-              Credits used
-            </p>
+            <div className="flex justify-between">
+              <p className="text-sm text-muted-foreground">
+                {loading ? "-" : usage.percent_credit_used}% of free trial
+                PearAI Credits used
+              </p>
+              <p className="text-right text-sm text-muted-foreground">
+                * Credits refresh every month
+              </p>
+            </div>
           </div>
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Plan</p>
-              <p className="text-sm/6 text-muted-foreground">Free Trial</p>
+              <p className="text-sm text-muted-foreground">Free Trial</p>
             </div>
           </div>
           <div className="mt-8 flex justify-between space-x-4">
