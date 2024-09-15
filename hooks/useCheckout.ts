@@ -7,7 +7,10 @@ export const useCheckout = (user: User | null) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  const handleCheckout = async (priceId: string) => {
+  const handleCheckout = async (
+    priceId: string,
+    teamName: string | null = null,
+  ) => {
     if (!user) {
       toast.error("Please log in to subscribe to this plan.");
       router.push("/signin");
@@ -21,7 +24,7 @@ export const useCheckout = (user: User | null) => {
       const response = await fetch("/api/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId }),
+        body: JSON.stringify({ priceId, teamName }),
       });
 
       if (!response.ok) {

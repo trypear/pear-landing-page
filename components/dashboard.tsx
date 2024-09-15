@@ -91,7 +91,6 @@ export default function DashboardPage({
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
             <ProfileCard user={user} />
-            {/* Below commented out until we implement Free Trial */}
             {subscription ? (
               <SubscriptionCard
                 subscription={subscription}

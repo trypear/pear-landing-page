@@ -9,4 +9,5 @@ export interface Subscription {
   canceled_at?: string;
   created_at?: string;
   updated_at?: string;
+  team_id?: string;
 }
