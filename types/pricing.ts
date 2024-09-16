@@ -12,6 +12,7 @@ export interface PricingTierProps {
   user: User | null;
   index: number;
   priceUnit?: string; // Added new field
+  isEnterprise?: boolean; // Added new field
 }
 
 export interface PricingPageProps {

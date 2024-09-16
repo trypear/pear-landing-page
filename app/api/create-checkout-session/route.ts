@@ -10,7 +10,7 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
   const supabase = createClient();
 
   try {
-    const { priceId } = await request.json();
+    const { priceId, teamName } = await request.json();
     const {
       data: { session },
     } = await supabase.auth.getSession();
@@ -65,7 +65,7 @@ async function createCheckoutSession(request: NextRequest & { user: User }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ priceId }),
+      body: JSON.stringify({ priceId, teamName }),
     });
 
     if (!response.ok) {

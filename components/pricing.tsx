@@ -45,6 +45,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   features,
   buttonText,
   isFree = false,
+  isEnterprise = false,
   priceId,
   user,
   index,
@@ -77,6 +78,11 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
         transition: "all 0.3s ease",
       }
     : {};
+
+  const handleEnterpriseClick = (isYearly: boolean) => {
+    console.log("Create team:", { isYearly });
+    router.push(`/team/new-team?yearly=${isYearly}`);
+  };
 
   const handleDownload = async (os_type: string) => {
     setIsDownloading(true);
@@ -310,9 +316,16 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
 
           {!isFree && (
             <>
-              {disabled ? (
-                <Button className="w-full" disabled>
-                  Coming Soon
+              {isEnterprise ? (
+                <Button
+                  className="w-full"
+                  onClick={() =>
+                    handleEnterpriseClick(
+                      title.toLowerCase().includes("yearly"),
+                    )
+                  }
+                >
+                  {buttonText}
                 </Button>
               ) : (
                 <Button
@@ -454,7 +467,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                         user={user}
                         index={index}
                         priceUnit="/month/user"
-                        disabled
                       />
                     </div>
                   ))}

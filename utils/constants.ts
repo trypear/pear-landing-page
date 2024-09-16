@@ -16,11 +16,21 @@ const NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID = "price_1PZ9X608N4O93LU5yqMbGDtu";
 const NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID_TEST =
   "price_1PZUT208N4O93LU5jItKoEYu";
 const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID = "price_1PoZiZ08N4O93LU5kCrdrXvI";
+// const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST =
+//   "price_1Ppa9408N4O93LU5irNxLp5p";
 const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST =
-  "price_1Ppa9408N4O93LU5irNxLp5p";
+  "price_1PaMw2DipRqiTgC40064Io1w";
 const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID = "price_1PpZUO08N4O93LU5FYFUyh43";
+// const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST =
+//   "price_1PZUSi08N4O93LU5UVdlkfp2";
 const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST =
-  "price_1PZUSi08N4O93LU5UVdlkfp2";
+  "price_1PaMx7DipRqiTgC4vL0KbVm7";
+const NEXT_PUBLIC_STRIPE_ENTERPRISE_MONTHLY_PRICE_ID = "";
+const NEXT_PUBLIC_STRIPE_ENTERPRISE_MONTHLY_PRICE_ID_TEST =
+  "price_1PxJtDDipRqiTgC47WFM22pv";
+const NEXT_PUBLIC_STRIPE_ENTERPRISE_ANNUAL_PRICE_ID = "";
+const NEXT_PUBLIC_STRIPE_ENTERPRISE_ANNUAL_PRICE_ID_TEST =
+  "price_1PxJu0DipRqiTgC4VirNSxfJ";
 
 export const STRIPE_PRICE_IDS = {
   WAITLIST: TEST_MODE_ENABLED
@@ -32,6 +42,12 @@ export const STRIPE_PRICE_IDS = {
   ANNUAL: TEST_MODE_ENABLED
     ? NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST
     : NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID,
+  ENTERPRISE_MONTHLY: TEST_MODE_ENABLED
+    ? NEXT_PUBLIC_STRIPE_ENTERPRISE_MONTHLY_PRICE_ID_TEST
+    : NEXT_PUBLIC_STRIPE_ENTERPRISE_MONTHLY_PRICE_ID,
+  ENTERPRISE_ANNUAL: TEST_MODE_ENABLED
+    ? NEXT_PUBLIC_STRIPE_ENTERPRISE_ANNUAL_PRICE_ID_TEST
+    : NEXT_PUBLIC_STRIPE_ENTERPRISE_ANNUAL_PRICE_ID,
 };
 
 export const PRICING_TIERS: {
@@ -95,8 +111,9 @@ export const PRICING_TIERS: {
         "Private Discord Channel",
       ],
       buttonText: "Get Started",
-      priceId: STRIPE_PRICE_IDS.MONTHLY,
+      priceId: STRIPE_PRICE_IDS.ENTERPRISE_MONTHLY,
       index: 0,
+      isEnterprise: true,
     },
     {
       title: "Yearly",
@@ -105,8 +122,9 @@ export const PRICING_TIERS: {
       description: "Pay one lump sum yearly for our highest priority tier.",
       features: ["Everything from monthly", "Priority Customer Support"],
       buttonText: "Get Started",
-      priceId: STRIPE_PRICE_IDS.ANNUAL,
+      priceId: STRIPE_PRICE_IDS.ENTERPRISE_ANNUAL,
       index: 1,
+      isEnterprise: true,
     },
   ],
 };

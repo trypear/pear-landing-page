@@ -7,11 +7,14 @@ import { toast } from "sonner";
 import ProfileCard from "@/components/dashboard/profile-card";
 import SubscriptionCard from "@/components/dashboard/subscription-card";
 import FreeTrialCard from "@/components/dashboard/freetrial-card";
+import { Team } from "@/types/team";
 
 type DashboardPageProps = {
   subscription: Subscription | null;
   openAppQueryParams: string;
   user: User;
+  team: Team | null;
+  isTeamOwner: boolean;
 };
 
 export type UsageType = {
@@ -22,6 +25,8 @@ export default function DashboardPage({
   subscription,
   openAppQueryParams,
   user,
+  team,
+  isTeamOwner,
 }: DashboardPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -91,7 +96,6 @@ export default function DashboardPage({
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
             <ProfileCard user={user} />
-            {/* Below commented out until we implement Free Trial */}
             {subscription ? (
               <SubscriptionCard
                 subscription={subscription}
@@ -99,6 +103,8 @@ export default function DashboardPage({
                 openAppQueryParams={openAppQueryParams}
                 user={user}
                 loading={loading}
+                teamName={team?.name}
+                isTeamOwner={isTeamOwner}
               />
             ) : (
               <FreeTrialCard

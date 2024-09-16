@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Subscription } from "@/types/subscription";
-import { capitalizeInital } from "@/lib/utils";
+import { capitalizeInitial } from "@/lib/utils";
 import {
   Card,
   CardHeader,
@@ -23,7 +23,7 @@ import {
 import { useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
-import { Info } from "lucide-react";
+import { Info, Users } from "lucide-react";
 import { UsageType } from "../dashboard";
 
 type SubscriptionCardProps = {
@@ -32,6 +32,8 @@ type SubscriptionCardProps = {
   openAppQueryParams?: string;
   user: User;
   loading: boolean;
+  teamName?: string;
+  isTeamOwner?: boolean;
 };
 
 const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
@@ -42,6 +44,8 @@ export default function SubscriptionCard({
   openAppQueryParams,
   user,
   loading,
+  teamName,
+  isTeamOwner,
 }: SubscriptionCardProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { handleCancelSubscription, isCanceling, isCanceled } =
@@ -92,6 +96,8 @@ export default function SubscriptionCard({
     );
   }
 
+  const isEnterprise = subscription?.pricing_tier.startsWith("enterprise_");
+
   return (
     <Card className="overflow-auto bg-gray-100/10 text-card-foreground">
       <div className="grid gap-4">
@@ -104,7 +110,9 @@ export default function SubscriptionCard({
               variant="secondary"
               className="border-primary-800 bg-primary-800/10 px-2 py-1 text-xs text-primary-800"
             >
-              Pro - {capitalizeInital(subscription.pricing_tier)}
+              {isEnterprise
+                ? `Enterprise - ${subscription.pricing_tier.includes("monthly") ? "Monthly" : "Yearly"}`
+                : `Pro - ${capitalizeInitial(subscription.pricing_tier)}`}
             </Badge>
           </div>
         </CardHeader>
@@ -112,7 +120,7 @@ export default function SubscriptionCard({
           {usage && (
             <div className="mb-4">
               <div className="flex justify-between">
-                <p className="font-medium">Requests</p>
+                <p className="font-medium">PearAI Credits</p>
                 <p className="text-sm/6 text-muted-foreground">
                   {loading ? (
                     "-"
@@ -137,30 +145,42 @@ export default function SubscriptionCard({
               </p>
             </div>
           )}
-          <div className="mb-4">
-            <div className="flex justify-between">
-              <p className="font-medium">Current Plan</p>
-              <p className="text-muted-foreground">
-                {capitalizeInital(subscription.pricing_tier)}
-              </p>
+          {/* {isEnterprise && (
+            <div className="mb-4">
+              <div className="flex justify-between">
+                <p className="font-medium">Team Name</p>
+                <p className="text-muted-foreground">{teamName || "N/A"}</p>
+              </div>
             </div>
-          </div>
-          <div className="mb-4">
-            <div className="flex justify-between">
-              <p className="font-medium">Current Period</p>
-              <p className="text-sm/6 text-muted-foreground">
-                {new Date(
-                  subscription.current_period_start * 1000,
-                ).toLocaleDateString()}{" "}
-                -{" "}
-                {subscription.current_period_end
-                  ? new Date(
-                      subscription.current_period_end * 1000,
-                    ).toLocaleDateString()
-                  : "Now"}
-              </p>
-            </div>
-          </div>
+          )} */}
+          {!isEnterprise && (
+            <>
+              <div className="mb-4">
+                <div className="flex justify-between">
+                  <p className="font-medium">Current Plan</p>
+                  <p className="text-muted-foreground">
+                    {capitalizeInitial(subscription.pricing_tier)}
+                  </p>
+                </div>
+              </div>
+              <div className="mb-4">
+                <div className="flex justify-between">
+                  <p className="font-medium">Current Period</p>
+                  <p className="text-sm/6 text-muted-foreground">
+                    {new Date(
+                      subscription.current_period_start * 1000,
+                    ).toLocaleDateString()}{" "}
+                    -{" "}
+                    {subscription.current_period_end
+                      ? new Date(
+                          subscription.current_period_end * 1000,
+                        ).toLocaleDateString()
+                      : "Now"}
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
           <div className="mt-8 flex justify-between space-x-4">
             <div className="hidden sm:block">
               <Button variant="outline" className="text-primary-800" asChild>
@@ -172,49 +192,60 @@ export default function SubscriptionCard({
                 </Link>
               </Button>
             </div>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button
-                  onClick={handleCancelClick}
-                  disabled={isCanceling}
-                  variant="link"
-                  className="px-0"
-                >
-                  {isCanceling
-                    ? "Canceling..."
-                    : isCanceled
-                      ? "Subscription canceled, reactivate?"
-                      : "Cancel Subscription"}
-                </Button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Cancel Subscription</DialogTitle>
-                  <DialogDescription>
-                    Are you sure you want to cancel your subscription?
-                    You&apos;ll lose access to premium features at the end of
-                    your current billing period.
-                  </DialogDescription>
-                </DialogHeader>
-                <DialogFooter>
+            {isEnterprise && isTeamOwner && (
+              <Button variant="link" asChild className="flex items-center">
+                <Link href="/dashboard/team">
+                  Enterprise Dashboard
+                  <Users className="mr-2 h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+
+            {!isEnterprise && (
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
                   <Button
-                    variant="outline"
-                    onClick={() => setIsDialogOpen(false)}
-                    className="mt-2"
-                  >
-                    Keep Subscription
-                  </Button>
-                  <Button
-                    variant="destructive"
-                    onClick={handleConfirmCancel}
+                    onClick={handleCancelClick}
                     disabled={isCanceling}
-                    className="mt-2"
+                    variant="link"
+                    className="px-0"
                   >
-                    {isCanceling ? "Canceling..." : "Confirm Cancellation"}
+                    {isCanceling
+                      ? "Canceling..."
+                      : isCanceled
+                        ? "Subscription canceled, reactivate?"
+                        : "Cancel Subscription"}
                   </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Cancel Subscription</DialogTitle>
+                    <DialogDescription>
+                      Are you sure you want to cancel your subscription?
+                      You&apos;ll lose access to premium features at the end of
+                      your current billing period.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <DialogFooter>
+                    <Button
+                      variant="outline"
+                      onClick={() => setIsDialogOpen(false)}
+                      className="mt-2"
+                    >
+                      Keep Subscription
+                    </Button>
+                    <Button
+                      variant="destructive"
+                      onClick={handleConfirmCancel}
+                      disabled={isCanceling}
+                      className="mt-2"
+                    >
+                      {isCanceling ? "Canceling..." : "Confirm Cancellation"}
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            )}
           </div>
           <div className="flex items-center">
             <Info className="inline text-muted-foreground" size={14} />
