@@ -2,150 +2,335 @@ export const posts = [
   {
     title: "How We Designed Our Servers at PearAI",
     author: "Nathan Nang",
-    date: "2024-09-01T00:00:00.000Z",
+    date: "2024-09-1",
     excerpt:
       "I spent the last 2 months working on PearAI, an Open-Sourced AI-Powered Code Editor. It is like having an expert on your codebase right next to you. We achieve this with Retrieval Augmented Generation. This is my new startup after finishing my B.S. & M.S from Carnegie Mellon and working for 1.5 years in High Frequency Trading as a Software Engineer. This is exactly how we designed our server.",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/pearai-server-option.png",
     tags: ["server", "server design", "pearai server"],
     url: "/blog/how-we-designed-our-servers-end-to-end-for-pearai",
-    content: `
-        <div class="space-y-8 text-gray-800 dark:text-gray-200">
-          <p class="text-xl leading-relaxed font-light">I spent the last 2 months working on PearAI, an Open-Sourced AI-Powered Code Editor. It's like having an expert on your codebase right next to you. We achieve this with Retrieval Augmented Generation. This is my new startup after finishing my B.S. & M.S from Carnegie Mellon and working for 1.5 years in High Frequency Trading as a Software Engineer. Here's exactly how we designed our server.</p>
-  
-          <figure class="my-12">
-            <img src="/images/blog/pear-hanging-from-branch.png" alt="Pear hanging from branch" class="rounded-xl shadow-lg w-full">
-            <figcaption class="text-center text-sm text-gray-600 dark:text-gray-400 mt-4 italic">PearAI: An AI-Powered Code Editor</figcaption>
-          </figure>
-  
-          <p class="text-lg">We are launching our product next week, and we needed to build out our server this last month. As we're building fully in public, here's exactly how we did it. Hopefully, this helps you design a server with scalability, resilience, and security in mind.</p>
-  
-          <figure class="my-12">
-            <img src="/images/blog/pearai-server-option.png" alt="PearAI Server Options" class="rounded-xl shadow-lg w-full">
-            <figcaption class="text-center text-sm text-gray-600 dark:text-gray-400 mt-4 italic">PearAI Server Architecture Options</figcaption>
-          </figure>
-  
-          <h2 class="text-3xl font-bold mt-12 mb-6 text-primary-600 dark:text-primary-400">What's this server for?</h2>
-  
-          <p class="text-lg mb-4">PearAI offers two different services for LLM:</p>
-  
-          <ol class="list-decimal list-inside space-y-4 ml-6 text-lg">
-            <li class="pl-2"><span class="font-semibold">Use PearAI's hosted server:</span> Pay subscription for unlimited usage. Underlying LLM is abstracted for convenience and latest AI technology.</li>
-            <li class="pl-2"><span class="font-semibold">Use API key:</span> Users self-manage and pay per token to the LLM Provider. On PearAI's side, this is Open-sourced and fully transparent. Users can also use their own local LLM.</li>
-          </ol>
-  
-          <h2 class="text-3xl font-bold mt-12 mb-6 text-primary-600 dark:text-primary-400">Our Server Functionalities</h2>
-  
-          <ol class="list-decimal list-inside ml-6 text-lg grid grid-cols-2 gap-4">
-            <li class="pl-2">Authentication</li>
-            <li class="pl-2">Database</li>
-            <li class="pl-2">Proxying</li>
-            <li class="pl-2">Observability</li>
-            <li class="pl-2">Payment</li>
-            <li class="pl-2">Deployment</li>
-          </ol>
-  
-          <h2 class="text-3xl font-bold mt-12 mb-6 text-primary-600 dark:text-primary-400">0. Never Start From Scratch</h2>
-  
-          <p class="text-lg">I'm a big fan of creating my own templates and never starting from scratch again. I open-source all of these, and you can find the Flask API Template I made/used for this project here: <a href="https://github.com/nathan-149/flask-backend-api-template" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Flask Backend API Template</a></p>
-  
-          <div class="bg-yellow-100 dark:bg-yellow-900 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-200 p-6 my-8 rounded-r-lg">
-            <p class="font-bold text-lg mb-2">Edit:</p>
-            <p class="text-base">DON'T USE FLASK, USE FASTAPI FOR ASYNC CAPABILITIES</p>
-          </div>
-  
-          <h2 class="text-3xl font-bold mt-12 mb-6 text-primary-600 dark:text-primary-400">1. Authentication</h2>
-  
-          <p class="text-lg mb-6">We needed sign-up and sign-in functionality, as well as JWT tokens for each user. For this, we used Supabase, which handles authentication of users. This is how we are doing this:</p>
-  
-          <figure class="my-12">
-            <img src="/images/blog/pearai-authentication-flow.png" alt="PearAI Authentication Flow" class="rounded-xl shadow-lg w-full">
-            <figcaption class="text-center text-sm text-gray-600 dark:text-gray-400 mt-4 italic">PearAI Authentication Flow</figcaption>
-          </figure>
-  
-          <div class="bg-yellow-100 dark:bg-yellow-900 border-l-4 border-yellow-500 text-yellow-800 dark:text-yellow-200 p-6 my-8 rounded-r-lg">
-            <p class="font-bold text-lg mb-2">Edit:</p>
-            <p class="text-base">DON'T USE SUPABASE, USE AUTH0</p>
-          </div>
-  
-          <!-- Continue with the rest of the sections (2. Database, 3. Proxying, etc.) in a similar fashion -->
-  
-          <h2 class="text-3xl font-bold mt-12 mb-6 text-primary-600 dark:text-primary-400">Summary</h2>
-  
-          <p class="text-lg mb-4">In summary, this is the stack that we used and I would recommend:</p>
-  
-          <ul class="list-disc list-inside space-y-2 ml-6 text-lg bg-gray-100 dark:bg-gray-800 p-6 rounded-lg">
-            <li class="pl-2">Primary language: <span class="font-semibold">Python</span></li>
-            <li class="pl-2">API Framework: <span class="font-semibold">Flask</span></li>
-            <li class="pl-2">Authentication: <span class="font-semibold">Supabase</span></li>
-            <li class="pl-2">Payment: <span class="font-semibold">Stripe</span></li>
-            <li class="pl-2">Database: <span class="font-semibold">Redis + Supabase (pSQL)</span></li>
-            <li class="pl-2">Observability: <span class="font-semibold">OpenTelemetry + Axiom</span></li>
-            <li class="pl-2">Deployment: <span class="font-semibold">DigitalOcean</span></li>
-          </ul>
-  
-          <p class="text-lg mt-8">Hopefully this was helpful to someone. PearAI is open-sourced, so please help us out by starring the repo here: <a href="https://github.com/trypear/pearai-app" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">PearAI GitHub Repo</a>, and consider contributing! If you'd like to use the app, join the wait list here <a href="https://trypear.ai/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">https://trypear.ai/</a>. We're launching next week to our first batch of users!</p>
-  
-          <p class="text-lg mt-6">Also, feel free to check out my YouTube series on this, as I am documenting the entire startup journey with my cofounder <a href="https://youtube.com/@FryingPan" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">FryingPan</a>. <a href="https://youtube.com/nang88" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">https://youtube.com/nang88</a>. Thanks!</p>
-        </div>
-      `,
+    content: `<div
+  class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+>
+  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+    I spent the last 2 months working on PearAI, an Open-Sourced AI-Powered Code
+    Editor. It's like having an expert on your codebase right next to you. We
+    achieve this with Retrieval Augmented Generation. This is my new startup
+    after finishing my B.S. & M.S from Carnegie Mellon and working for 1.5 years
+    in High Frequency Trading as a Software Engineer. Here's exactly how we
+    designed our server.
+  </p>
+
+  <figure class="my-8 sm:my-12">
+    <img
+      src="/images/blog/pear-hanging-from-branch.png"
+      alt="Pear hanging from branch"
+      class="w-full rounded-xl shadow-lg"
+    />
+    <figcaption
+      class="mt-4 text-center text-sm italic text-gray-600 dark:text-gray-400"
+    >
+      PearAI: An AI-Powered Code Editor
+    </figcaption>
+  </figure>
+
+  <p class="text-base sm:text-lg">
+    We are launching our product next week, and we needed to build out our
+    server this last month. As we're building fully in public, here's exactly
+    how we did it. Hopefully, this helps you design a server with scalability,
+    resilience, and security in mind.
+  </p>
+
+  <figure class="my-8 sm:my-12">
+    <img
+      src="/images/blog/pearai-server-option.png"
+      alt="PearAI Server Options"
+      class="w-full rounded-xl shadow-lg"
+    />
+    <figcaption
+      class="mt-4 text-center text-sm italic text-gray-600 dark:text-gray-400"
+    >
+      PearAI Server Architecture Options
+    </figcaption>
+  </figure>
+
+  <h2
+    class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl"
+  >
+    What's this server for?
+  </h2>
+
+  <p class="mb-4 text-base sm:text-lg">
+    PearAI offers two different services for LLM:
+  </p>
+
+  <ol
+    class="ml-4 list-inside list-decimal space-y-4 text-base sm:ml-6 sm:text-lg"
+  >
+    <li class="pl-2">
+      <span class="font-semibold">Use PearAI's hosted server:</span> Pay
+      subscription for unlimited usage. Underlying LLM is abstracted for
+      convenience and latest AI technology.
+    </li>
+    <li class="pl-2">
+      <span class="font-semibold">Use API key:</span> Users self-manage and pay
+      per token to the LLM Provider. On PearAI's side, this is Open-sourced and
+      fully transparent. Users can also use their own local LLM.
+    </li>
+  </ol>
+
+  <h2
+    class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl"
+  >
+    Our Server Functionalities
+  </h2>
+
+  <ul class="ml-4 grid grid-cols-2 gap-2 text-base sm:ml-6 sm:gap-4 sm:text-lg">
+    <li class="pl-2">1. Authentication</li>
+    <li class="pl-2">2. Database</li>
+    <li class="pl-2">3. Proxying</li>
+    <li class="pl-2">4. Observability</li>
+    <li class="pl-2">5. Payment</li>
+    <li class="pl-2">6. Deployment</li>
+  </ul>
+
+  <h2
+    class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl"
+  >
+    0. Never Start From Scratch
+  </h2>
+
+  <p class="text-base sm:text-lg">
+    I'm a big fan of creating my own templates and never starting from scratch
+    again. I open-source all of these, and you can find the Flask API Template I
+    made/used for this project here:
+    <a
+      href="https://github.com/nathan-149/flask-backend-api-template"
+      class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+      >Flask Backend API Template</a
+    >
+  </p>
+
+  <div
+    class="my-6 rounded-r-lg border-l-4 border-yellow-500 bg-yellow-100 p-4 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 sm:my-8 sm:p-6"
+  >
+    <p class="mb-2 text-base font-bold sm:text-lg">Edit:</p>
+    <p class="text-sm sm:text-base">
+      DON'T USE FLASK, USE FASTAPI FOR ASYNC CAPABILITIES
+    </p>
+  </div>
+
+  <h2
+    class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl"
+  >
+    1. Authentication
+  </h2>
+
+  <p class="mb-4 text-base sm:mb-6 sm:text-lg">
+    We needed sign-up and sign-in functionality, as well as JWT tokens for each
+    user. For this, we used Supabase, which handles authentication of users.
+    This is how we are doing this:
+  </p>
+
+  <figure class="my-8 sm:my-12">
+    <img
+      src="/images/blog/pearai-authentication-flow.png"
+      alt="PearAI Authentication Flow"
+      class="w-full rounded-xl shadow-lg"
+    />
+    <figcaption
+      class="mt-4 text-center text-sm italic text-gray-600 dark:text-gray-400"
+    >
+      PearAI Authentication Flow
+    </figcaption>
+  </figure>
+
+  <div
+    class="my-6 rounded-r-lg border-l-4 border-yellow-500 bg-yellow-100 p-4 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200 sm:my-8 sm:p-6"
+  >
+    <p class="mb-2 text-base font-bold sm:text-lg">Edit:</p>
+    <p class="text-sm sm:text-base">DON'T USE SUPABASE, USE AUTH0</p>
+  </div>
+  <!-- Continue with the rest of the sections (2. Database, 3. Proxying, etc.) in a similar fashion -->
+
+  <h2
+    class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl"
+  >
+    Summary
+  </h2>
+
+  <p class="mb-4 text-base sm:text-lg">
+    In summary, this is the stack that we used and I would recommend:
+  </p>
+
+  <ul
+    class="ml-4 list-inside list-disc space-y-2 rounded-lg bg-gray-100 p-4 text-base dark:bg-gray-800 sm:ml-6 sm:p-6 sm:text-lg"
+  >
+    <li class="pl-2">
+      Primary language: <span class="font-semibold">Python</span>
+    </li>
+    <li class="pl-2">
+      API Framework: <span class="font-semibold">Flask</span>
+    </li>
+    <li class="pl-2">
+      Authentication: <span class="font-semibold">Supabase</span>
+    </li>
+    <li class="pl-2">Payment: <span class="font-semibold">Stripe</span></li>
+    <li class="pl-2">
+      Database: <span class="font-semibold">Redis + Supabase (pSQL)</span>
+    </li>
+    <li class="pl-2">
+      Observability: <span class="font-semibold">OpenTelemetry + Axiom</span>
+    </li>
+    <li class="pl-2">
+      Deployment: <span class="font-semibold">DigitalOcean</span>
+    </li>
+  </ul>
+
+  <p class="mt-6 text-base sm:mt-8 sm:text-lg">
+    Hopefully this was helpful to someone. PearAI is open-sourced, so please
+    help us out by starring the repo here:
+    <a
+      href="https://github.com/trypear/pearai-app"
+      class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+      >PearAI GitHub Repo</a
+    >, and consider contributing! If you'd like to use the app, join the wait
+    list here
+    <a
+      href="https://trypear.ai/"
+      class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+      >https://trypear.ai/</a
+    >. We're launching next week to our first batch of users!
+  </p>
+
+  <p class="mt-4 text-base sm:mt-6 sm:text-lg">
+    Also, feel free to check out my YouTube series on this, as I am documenting
+    the entire startup journey with my cofounder
+    <a
+      href="https://youtube.com/@FryingPan"
+      class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+      >FryingPan</a
+    >.
+    <a
+      href="https://youtube.com/nang88"
+      class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+      >https://youtube.com/nang88</a
+    >. Thanks!
+  </p>
+</div>
+`,
   },
   {
     title: "Setting Up Auto-Complete On PearAI",
-    date: "2024-08-31T00:00:00.000Z",
+    date: "2024-08-31",
     excerpt:
       "PearAI supports tab autocomplete, and this is how to set this up. Tab autocomplete predicts / suggests what you would type next as you're coding!",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/codestral.jpg",
     tags: ["autocomplete", "suggestions"],
     url: "/blog/setting-up-auto-complete-on-pearai",
     author: "Nathan Nang",
-    content: `
-          <div class="space-y-8 text-gray-800 dark:text-gray-200">
-            <p class="text-xl leading-relaxed font-light">PearAI supports tab autocomplete, and this is how to set this up. Tab autocomplete predicts/suggests what you would type next as you're coding!</p>
-    
-            <p class="text-lg">This is the guide to do that:</p>
-    
-            <ol class="list-decimal list-inside space-y-8 ml-6 text-lg">
-              <li class="pl-2">
-                <h3 class="inline-block text-2xl font-bold mb-4 text-primary-600 dark:text-primary-400">Setup Codestral</h3>
-                <p class="mt-2">We recommend using Codestral, the leading model for code completion (or FIM — Fill In Middle). It's also open-sourced! You'll need to obtain a Codestral API key from <a href="https://console.mistral.ai/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Mistral API</a>.</p>
-              </li>
-    
-              <li class="pl-2">
-                <h3 class="inline-block text-2xl font-bold mb-4 text-primary-600 dark:text-primary-400">Add to PearAI config.json</h3>
-                <p class="mt-2 mb-4">Fill in <code class="bg-gray-200 dark:bg-gray-700 px-2 py-1 rounded">YOUR_API_KEY</code> with your API key:</p>
-    
-                <div class="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 overflow-x-auto">
-                  <pre class="text-sm"><code class="language-json">{
+    content: `<div
+  class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+>
+  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+    PearAI supports tab autocomplete, and this is how to set this up. Tab
+    autocomplete predicts/suggests what you would type next as you're coding!
+  </p>
+
+  <p class="text-base sm:text-lg">This is the guide to do that:</p>
+
+  <ol
+    class="ml-4 list-outside list-decimal space-y-8 text-base sm:ml-6 sm:text-lg"
+  >
+    <li class="pl-2">
+      <h3
+        class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl"
+      >
+        Setup Codestral
+      </h3>
+      <p class="mt-2">
+        We recommend using Codestral, the leading model for code completion (or
+        FIM — Fill In Middle). It's also open-sourced! You'll need to obtain a
+        Codestral API key from
+        <a
+          href="https://console.mistral.ai/"
+          class="font-medium text-blue-600 hover:underline dark:text-blue-400"
+          >Mistral API</a
+        >.
+      </p>
+    </li>
+
+    <li class="pl-2">
+      <h3
+        class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl"
+      >
+        Add to PearAI config.json
+      </h3>
+      <p class="mb-4 mt-2">
+        Fill in
+        <code class="rounded bg-gray-200 px-2 py-1 dark:bg-gray-700"
+          >YOUR_API_KEY</code
+        >
+        with your API key:
+      </p>
+
+      <div class="overflow-x-auto rounded-lg bg-gray-100 p-4 dark:bg-gray-800">
+        <pre class="text-xs sm:text-sm"><code class="language-json">{
     "tabAutocompleteModel": {
-    "title": "Codestral",
-    "provider": "mistral",
-    "model": "codestral-latest",
-    "apiKey": "YOUR_API_KEY"
+      "title": "Codestral",
+      "provider": "mistral",
+      "model": "codestral-latest",
+      "apiKey": "YOUR_API_KEY"
     }
-}</code>
-                </pre>
-                </div>
-    
-                <figure class="my-8">
-                  <img src="/images/blog/open-pearai-config.png" alt="Command Palette in PearAI (Cmd/Ctrl+Shift+P)" class="rounded-xl shadow-lg w-full">
-                  <figcaption class="text-center text-sm text-gray-600 dark:text-gray-400 mt-4 italic">Command Palette in PearAI (Cmd/Ctrl+Shift+P)</figcaption>
-                </figure>
-              </li>
-    
-              <li class="pl-2">
-                <h3 class="inline-block text-2xl font-bold mb-4 text-primary-600 dark:text-primary-400">Enjoy the development speed up with autocomplete!</h3>
-                <p class="mt-2">Once you've set up the autocomplete, you'll notice a significant boost in your coding speed and efficiency. The AI-powered suggestions will help you write code faster and with fewer errors.</p>
-              </li>
-            </ol>
-    
-            <div class="bg-blue-100 dark:bg-blue-900 border-l-4 border-blue-500 text-blue-800 dark:text-blue-200 p-6 my-8 rounded-r-lg">
-              <p class="font-bold text-lg mb-2">Pro Tip:</p>
-              <p class="text-base">You can customize the autocomplete behavior in PearAI's settings. Experiment with different options to find the setup that works best for your coding style!</p>
-            </div>
-    
-            <p class="text-lg mt-8">Setting up autocomplete in PearAI is a game-changer for your development workflow. It combines the power of AI with your coding expertise, resulting in faster and more efficient coding sessions. Give it a try and experience the difference for yourself!</p>
-          </div>
-        `,
+  }</code></pre>
+      </div>
+
+      <figure class="my-6 sm:my-8">
+        <img
+          src="/images/blog/open-pearai-config.png"
+          alt="Command Palette in PearAI (Cmd/Ctrl+Shift+P)"
+          class="w-full rounded-xl shadow-lg"
+        />
+        <figcaption
+          class="mt-2 text-center text-xs italic text-gray-600 dark:text-gray-400 sm:mt-4 sm:text-sm"
+        >
+          Command Palette in PearAI (Cmd/Ctrl+Shift+P)
+        </figcaption>
+      </figure>
+    </li>
+
+    <li class="pl-2">
+      <h3
+        class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl"
+      >
+        Enjoy the development speed up with autocomplete!
+      </h3>
+      <p class="mt-2">
+        Once you've set up the autocomplete, you'll notice a significant boost
+        in your coding speed and efficiency. The AI-powered suggestions will
+        help you write code faster and with fewer errors.
+      </p>
+    </li>
+  </ol>
+
+  <div
+    class="my-6 rounded-r-lg border-l-4 border-blue-500 bg-blue-100 p-4 text-blue-800 dark:bg-blue-900 dark:text-blue-200 sm:my-8 sm:p-6"
+  >
+    <p class="mb-2 text-base font-bold sm:text-lg">Pro Tip:</p>
+    <p class="text-sm sm:text-base">
+      You can customize the autocomplete behavior in PearAI's settings.
+      Experiment with different options to find the setup that works best for
+      your coding style!
+    </p>
+  </div>
+
+  <p class="mt-6 text-base sm:mt-8 sm:text-lg">
+    Setting up autocomplete in PearAI is a game-changer for your development
+    workflow. It combines the power of AI with your coding expertise, resulting
+    in faster and more efficient coding sessions. Give it a try and experience
+    the difference for yourself!
+  </p>
+</div>
+`,
   },
   {
     title: "Enhancing PearAI with Anthropic's Claude 3.5",
@@ -155,87 +340,159 @@ export const posts = [
     date: "2024-08-20",
     author: "Conor Quinlan",
     readingTime: "3 min",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/claude.png",
     tags: ["AI", "Claude 3.5", "PearAI", "Code Editor"],
-    content: `
-          <article class="space-y-6 text-gray-800 dark:text-gray-200">
-            <p class="text-xl font-semibold leading-relaxed">
-              At PearAI, we're constantly striving to improve our open-source AI code editor. Our latest advancement involves integrating Anthropic's Claude 3.5 model to enhance code syntax and logic understanding when providing AI context to a user's codebase. This integration presented unique challenges and opportunities that we're excited to share with you.
-            </p>
-            
-            <section>
-              <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Why Claude 3.5?</h2>
-              <p class="mb-3">
-                Claude 3.5 offers significant improvements in natural language understanding and code comprehension. By leveraging this model, we aimed to:
-              </p>
-              <ul class="list-disc pl-6 space-y-2">
-                <li>Enhance the accuracy of code suggestions and completions</li>
-                <li>Improve the AI's understanding of complex code structures and logic</li>
-                <li>Provide more context-aware responses to user queries about their codebase</li>
-              </ul>
-            </section>
-    
-            <section>
-              <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">The Implementation Challenge</h2>
-              <p class="mb-3">
-                One of the main hurdles we faced was adapting our existing infrastructure to work with Claude 3.5. Unlike other LLMs we've used, such as OpenAI's models, Claude 3.5 required a different approach to prompt handling:
-              </p>
-              <ul class="list-disc pl-6 space-y-2">
-                <li>Our existing setup handled server prompts from the client-side</li>
-                <li>Claude 3.5 needed server-side prompt handling for optimal performance and security</li>
-                <li>This discrepancy required us to rethink our architecture for Anthropic integration specifically</li>
-              </ul>
-            </section>
-    
-            <section>
-              <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Our Solution</h2>
-              <p class="mb-3">
-                To address this challenge, we implemented a hybrid approach:
-              </p>
-              <ol class="list-decimal pl-6 space-y-2">
-                <li>We maintained our client-side handling for existing LLMs to ensure backwards compatibility</li>
-                <li>For Claude 3.5, we developed a new server-side handler specifically for Anthropic API calls</li>
-                <li>We created a routing mechanism to direct requests to the appropriate handler based on the selected AI model</li>
-              </ol>
-              <p class="mt-3">
-                This solution allowed us to leverage Claude 3.5's capabilities while maintaining support for our other AI models.
-              </p>
-            </section>
-    
-            <section>
-              <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Benefits of the Integration</h2>
-              <p class="mb-3">
-                The integration of Claude 3.5 has brought several improvements to PearAI:
-              </p>
-              <ul class="list-disc pl-6 space-y-2">
-                <li>More accurate and context-aware code suggestions</li>
-                <li>Improved understanding of complex codebases, leading to better responses to user queries</li>
-                <li>Enhanced ability to explain code logic and suggest optimizations</li>
-                <li>Faster processing of large codebases due to Claude 3.5's efficient architecture</li>
-              </ul>
-            </section>
-    
-            <blockquote class="border-l-4 border-primary-500 pl-4 italic text-gray-700 dark:text-gray-300">
-              "The integration of Claude 3.5 has significantly elevated PearAI's capabilities, allowing us to provide an even more powerful and intuitive coding experience for our users." - Nathan Nang, PearAI Founder
-            </blockquote>
-    
-            <section>
-              <h3 class="text-xl font-bold text-primary-600 dark:text-primary-400 mb-3">Looking Ahead</h3>
-              <p class="mb-3">
-                With Claude 3.5 successfully integrated, we're now focusing on:
-              </p>
-              <ul class="list-disc pl-6 space-y-2">
-                <li>Further optimizing the interaction between our editor and the Claude 3.5 model</li>
-                <li>Developing new features that leverage Claude 3.5's advanced language understanding</li>
-                <li>Exploring ways to combine Claude 3.5 with other AI models for even better results</li>
-              </ul>
-            </section>
-    
-            <p class="text-lg font-semibold mt-6">
-              We're excited about the possibilities that Claude 3.5 brings to PearAI and look forward to continuing our journey of making AI-assisted coding more powerful and accessible. Stay tuned for more updates and features as we push the boundaries of what's possible in AI-powered code editing!
-            </p>
-          </article>
-        `,
+    content: `<article
+  class="mx-auto max-w-4xl space-y-6 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+>
+  <p class="text-base font-semibold leading-relaxed sm:text-lg md:text-xl">
+    At PearAI, we're constantly striving to improve our open-source AI code
+    editor. Our latest advancement involves integrating Anthropic's Claude 3.5
+    model to enhance code syntax and logic understanding when providing AI
+    context to a user's codebase. This integration presented unique challenges
+    and opportunities that we're excited to share with you.
+  </p>
+
+  <section class="space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Why Claude 3.5?
+    </h2>
+    <p class="text-sm sm:text-base">
+      Claude 3.5 offers significant improvements in natural language
+      understanding and code comprehension. By leveraging this model, we aimed
+      to:
+    </p>
+    <ul class="list-disc space-y-2 pl-4 text-sm sm:pl-6 sm:text-base">
+      <li>Enhance the accuracy of code suggestions and completions</li>
+      <li>
+        Improve the AI's understanding of complex code structures and logic
+      </li>
+      <li>
+        Provide more context-aware responses to user queries about their
+        codebase
+      </li>
+    </ul>
+  </section>
+
+  <section class="space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      The Implementation Challenge
+    </h2>
+    <p class="text-sm sm:text-base">
+      One of the main hurdles we faced was adapting our existing infrastructure
+      to work with Claude 3.5. Unlike other LLMs we've used, such as OpenAI's
+      models, Claude 3.5 required a different approach to prompt handling:
+    </p>
+    <ul class="list-disc space-y-2 pl-4 text-sm sm:pl-6 sm:text-base">
+      <li>Our existing setup handled server prompts from the client-side</li>
+      <li>
+        Claude 3.5 needed server-side prompt handling for optimal performance
+        and security
+      </li>
+      <li>
+        This discrepancy required us to rethink our architecture for Anthropic
+        integration specifically
+      </li>
+    </ul>
+  </section>
+
+  <section class="space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Our Solution
+    </h2>
+    <p class="text-sm sm:text-base">
+      To address this challenge, we implemented a hybrid approach:
+    </p>
+    <ol class="list-decimal space-y-2 pl-4 text-sm sm:pl-6 sm:text-base">
+      <li>
+        We maintained our client-side handling for existing LLMs to ensure
+        backwards compatibility
+      </li>
+      <li>
+        For Claude 3.5, we developed a new server-side handler specifically for
+        Anthropic API calls
+      </li>
+      <li>
+        We created a routing mechanism to direct requests to the appropriate
+        handler based on the selected AI model
+      </li>
+    </ol>
+    <p class="mt-3 text-sm sm:text-base">
+      This solution allowed us to leverage Claude 3.5's capabilities while
+      maintaining support for our other AI models.
+    </p>
+  </section>
+
+  <section class="space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Benefits of the Integration
+    </h2>
+    <p class="text-sm sm:text-base">
+      The integration of Claude 3.5 has brought several improvements to PearAI:
+    </p>
+    <ul class="list-disc space-y-2 pl-4 text-sm sm:pl-6 sm:text-base">
+      <li>More accurate and context-aware code suggestions</li>
+      <li>
+        Improved understanding of complex codebases, leading to better responses
+        to user queries
+      </li>
+      <li>Enhanced ability to explain code logic and suggest optimizations</li>
+      <li>
+        Faster processing of large codebases due to Claude 3.5's efficient
+        architecture
+      </li>
+    </ul>
+  </section>
+
+  <blockquote
+    class="border-l-4 border-primary-500 pl-4 text-sm italic text-gray-700 dark:text-gray-300 sm:text-base"
+  >
+    "The integration of Claude 3.5 has significantly elevated PearAI's
+    capabilities, allowing us to provide an even more powerful and intuitive
+    coding experience for our users." - Nathan Nang, PearAI Founder
+  </blockquote>
+
+  <section class="space-y-4">
+    <h3
+      class="text-lg font-bold text-primary-600 dark:text-primary-400 sm:text-xl"
+    >
+      Looking Ahead
+    </h3>
+    <p class="text-sm sm:text-base">
+      With Claude 3.5 successfully integrated, we're now focusing on:
+    </p>
+    <ul class="list-disc space-y-2 pl-4 text-sm sm:pl-6 sm:text-base">
+      <li>
+        Further optimizing the interaction between our editor and the Claude 3.5
+        model
+      </li>
+      <li>
+        Developing new features that leverage Claude 3.5's advanced language
+        understanding
+      </li>
+      <li>
+        Exploring ways to combine Claude 3.5 with other AI models for even
+        better results
+      </li>
+    </ul>
+  </section>
+
+  <p class="mt-6 text-base font-semibold sm:text-lg">
+    We're excited about the possibilities that Claude 3.5 brings to PearAI and
+    look forward to continuing our journey of making AI-assisted coding more
+    powerful and accessible. Stay tuned for more updates and features as we push
+    the boundaries of what's possible in AI-powered code editing!
+  </p>
+</article>
+`,
   },
 
   {
@@ -248,48 +505,94 @@ export const posts = [
     readingTime: "2 min",
     thumbnail: "/images/blog/linux.jpg",
     tags: ["Guide", "PearAI", "Linux"],
-    content: `
-        <article class="space-y-6 text-gray-800 dark:text-gray-200">
-          <section>
-            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Download PearAI on Linux</h2>
-            <ol class="list-decimal pl-6 space-y-2">
-              <li>
-                Download the compressed PearAI installation file:
-                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-1.0.0.tar.gz" class="text-primary-500 dark:text-primary-400 underline">Download PearAI</a>
-              </li>
-              <li>Extract the contents by running the following command:
-                <pre class="text-base"><code class="language-bash">tar -xvf PearAI-1.0.0.tar.gz</code></pre>
-              </li>
-              <li>Navigate to the extracted folder:
-                <pre class="text-base"><code class="language-bash">cd PearAI-1.0.0/</code></pre>
-              </li>
-              <li>Run the installation script with superuser permissions:
-                <pre class="text-base"><code class="language-bash">sudo ./install-pearai.sh</code></pre>
-              </li>
-              <li>
-                Add the following alias to your <code>~/.bashrc</code> or <code>~/.zshrc</code> to run PearAI from any directory:
-                <pre class="text-base"><code class="language-bash">alias pearai='PearAI'</code></pre>
-                After adding the alias, run <code>source ~/.bashrc</code> or <code>source ~/.zshrc</code> to apply the changes.
-              </li>
+    content: `<article
+  class="mx-auto max-w-4xl space-y-6 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+>
+  <section class="space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Download PearAI on Linux
+    </h2>
+    <ol class="list-decimal space-y-4 pl-4 text-sm sm:pl-6 sm:text-base">
+      <li>
+        Download the compressed PearAI installation file:
+        <a
+          href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-1.0.0.tar.gz"
+          class="break-words text-primary-500 underline dark:text-primary-400"
+          >Download PearAI</a
+        >
+      </li>
+      <li>
+        Extract the contents by running the following command:
+        <pre
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
+        ><code class="language-bash">tar -xvf PearAI-1.0.0.tar.gz</code></pre>
+      </li>
+      <li>
+        Navigate to the extracted folder:
+        <pre
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
+        ><code class="language-bash">cd PearAI-1.0.0/</code></pre>
+      </li>
+      <li>
+        Run the installation script with superuser permissions:
+        <pre
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
+        ><code class="language-bash">sudo ./install-pearai.sh</code></pre>
+      </li>
+      <li>
+        Add the following alias to your
+        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700">~/.bashrc</code>
+        or
+        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700">~/.zshrc</code>
+        to run PearAI from any directory:
+        <pre
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
+        ><code class="language-bash">alias pearai='PearAI'</code></pre>
+        After adding the alias, run
+        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700"
+          >source ~/.bashrc</code
+        >
+        or
+        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700"
+          >source ~/.zshrc</code
+        >
+        to apply the changes.
+      </li>
+    </ol>
+  </section>
 
-            </ol>
-          </section>
+  <section class="mt-8 space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Notes
+    </h2>
+    <p class="text-sm sm:text-base">
+      Once the installation is complete, PearAI will be ready to use! If you
+      have any questions or run into issues, feel free to join our community and
+      get support through our official
+      <a
+        href="https://discord.gg/7QMraJUsQt"
+        class="text-primary-500 underline dark:text-primary-400"
+        >Discord server</a
+      >.
+    </p>
+    <p class="mt-4 text-sm sm:text-base">
+      This installation method has been tested on multiple Linux distributions,
+      including Arch Linux, Ubuntu 24, and Fedora 40. It was compiled using GCC
+      14, so most distributions with this or an older version should be able to
+      run PearAI without any issues.
+    </p>
+  </section>
 
-          <section>
-            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Notes</h2>
-            <p class="mb-3">
-              Once the installation is complete, PearAI will be ready to use! If you have any questions or run into issues, feel free to join our community and get support through our official <a href="https://discord.gg/7QMraJUsQt" class="text-primary-500 dark:text-primary-400 underline">Discord server</a>.
-            </p>
-            <p class="mt-4">
-              This installation method has been tested on multiple Linux distributions, including Arch Linux, Ubuntu 24, and Fedora 40. It was compiled using GCC 14, so most distributions with this or an older version should be able to run PearAI without any issues.
-            </p>
-          </section>
-
-          <p class="text-lg font-semibold mt-6">
-            We're thrilled to bring PearAI to the Linux community, stay tuned for more exciting updates and features on the horizon!
-          </p>
-        </article>
-        `,
+  <p class="mt-8 text-base font-semibold sm:text-lg">
+    We're thrilled to bring PearAI to the Linux community, stay tuned for more
+    exciting updates and features on the horizon!
+  </p>
+</article>
+`,
   },
 
   {
@@ -302,44 +605,83 @@ export const posts = [
     readingTime: "3 min",
     thumbnail: "/images/blog/o1-doc-thumbnail.webp",
     tags: ["Guide", "PearAI", "GPT", "OpenAI", "o1-mini", "o1-preview"],
-    content: `
-        <article class="space-y-6 text-gray-800 dark:text-gray-200">
-          <section>
-            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Adding GPT o1-mini and o1-preview to PearAI</h2>
-            <ol class="list-decimal pl-6 space-y-2">
-              <li>Open your <code>config.json</code> file in a PearAI through the command palette (<kbd>Ctrl/Cmd+Shift+P</kbd>).</li>
-              <li>Add the following entries to the "models" array of your config and save the file (see example picture below):
-                <pre class="text-base"><code class="language-json">
-                    {
-                      "model": "o1-mini",
-                      "title": "GPTo1 Mini (PearAI)",
-                      "provider": "pearai_server",
-                      "isDefault": true
-                    },
-                    {
-                      "model": "o1-preview",
-                      "title": "GPTo1 Preview (PearAI)",
-                      "provider": "pearai_server",
-                      "isDefault": true
-                    }
-                </code></pre>
-              </li>
-              Example
-              <img src="/images/blog/o1config-doc.png" alt="Command Palette in PearAI (Cmd/Ctrl+Shift+P)" class="rounded-xl shadow-lg w-full">
+    content: `<article
+  class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+>
+  <section class="space-y-6">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Adding GPT o1-mini and o1-preview to PearAI
+    </h2>
+    <ol class="list-decimal space-y-4 pl-4 text-sm sm:pl-6 sm:text-base">
+      <li>
+        Open your
+        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700"
+          >config.json</code
+        >
+        file in PearAI through the command palette (<kbd
+          class="rounded bg-gray-300 px-1 text-xs dark:bg-gray-600 sm:text-sm"
+          >Ctrl/Cmd+Shift+P</kbd
+        >).
+      </li>
+      <li>
+        Add the following entries to the "models" array of your config and save
+        the file (see example picture below):
+        <pre
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
+        ><code class="language-json">{
+    "model": "o1-mini",
+    "title": "GPTo1 Mini (PearAI)",
+    "provider": "pearai_server",
+    "isDefault": true
+  },
+  {
+    "model": "o1-preview",
+    "title": "GPTo1 Preview (PearAI)",
+    "provider": "pearai_server",
+    "isDefault": true
+  }</code></pre>
+      </li>
+      <li class="font-semibold">Example</li>
+    </ol>
+    <figure class="mt-4">
+      <img
+        src="/images/blog/o1config-doc.png"
+        alt="Command Palette in PearAI (Cmd/Ctrl+Shift+P)"
+        class="w-full rounded-xl shadow-lg"
+      />
+      <figcaption
+        class="mt-2 text-center text-xs text-gray-600 dark:text-gray-400 sm:text-sm"
+      >
+        Config.json example with o1 models added
+      </figcaption>
+    </figure>
+  </section>
 
-            </ol>
-          </section>
-
-          <section>
-            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Usage Considerations</h2>
-            <ul class="list-disc pl-6 space-y-2">
-              <li>Rate limits provided by OpenAI for these o1 models are currently lower compared to other options. For most tasks, it's still recommended to use Claude or GPT4o instead of o1 models due to these limitations.</li>
-              <li>When choosing between o1 models, prefer o1-mini over o1-preview. It will use fewer of your credits while providing similar performance.</li>
-              <li>Due to current rate limits, only annual subscribers of PearAI can use o1 models. We'll open it up to all subscribers soon!</li>
-            </ul>
-          </section>
-
-        </article>
-        `,
+  <section class="space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Usage Considerations
+    </h2>
+    <ul class="list-disc space-y-2 pl-4 text-sm sm:pl-6 sm:text-base">
+      <li>
+        Rate limits provided by OpenAI for these o1 models are currently lower
+        compared to other options. For most tasks, it's still recommended to use
+        Claude or GPT4o instead of o1 models due to these limitations.
+      </li>
+      <li>
+        When choosing between o1 models, prefer o1-mini over o1-preview. It will
+        use fewer of your credits while providing similar performance.
+      </li>
+      <li>
+        Due to current rate limits, only annual subscribers of PearAI can use o1
+        models. We'll open it up to all subscribers soon!
+      </li>
+    </ul>
+  </section>
+</article>
+`,
   },
 ];
