@@ -2,6 +2,7 @@ import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
+import { normalizeDate } from "@/lib/utils";
 
 interface PostCardProps {
   title: string;
@@ -10,11 +11,6 @@ interface PostCardProps {
   thumbnail: string;
   url: string;
 }
-
-const normalizeDate = (dateString: string) => {
-  const [year, month, day] = dateString.split("-");
-  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
-};
 
 const PostCard = ({ title, date, excerpt, thumbnail, url }: PostCardProps) => (
   <Card className="flex h-full flex-col overflow-hidden hover:bg-secondary-300/10">

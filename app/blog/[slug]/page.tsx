@@ -1,4 +1,4 @@
-import { cn, constructMetadata } from "@/lib/utils";
+import { cn, constructMetadata, normalizeDate } from "@/lib/utils";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -33,7 +33,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
             dateTime={post.date}
             className="text-xs text-gray-600 sm:text-sm md:text-base"
           >
-            {format(parseISO(post.date), "LLLL d, yyyy")}
+            {format(parseISO(normalizeDate(post.date)), "LLLL d, yyyy")}
           </time>
           {post.readingTime && (
             <span className="ml-2 text-xs text-gray-600 sm:text-sm md:text-base">
