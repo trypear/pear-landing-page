@@ -73,6 +73,7 @@ export const PRICING_TIERS: {
       features: [
         "Everything from monthly",
         "Priority for new feature requests",
+        "Early access to new features (e.g. o1-mini and o1-preview)",
       ],
       buttonText: "Get Started",
       priceId: STRIPE_PRICE_IDS.ANNUAL,
