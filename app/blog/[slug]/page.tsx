@@ -27,37 +27,44 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <article className="mx-auto max-w-prose px-4 py-8 pt-32 sm:px-6">
+      <article className="mx-auto max-w-2xl px-4 py-8 pt-24 sm:px-6 sm:pt-32 md:max-w-3xl lg:max-w-4xl">
         <div className="mb-8 text-center">
-          <time dateTime={post.date} className="text-xs text-gray-600">
+          <time
+            dateTime={post.date}
+            className="text-xs text-gray-600 sm:text-sm md:text-base"
+          >
             {format(parseISO(post.date), "LLLL d, yyyy")}
           </time>
           {post.readingTime && (
-            <span className="ml-2 text-xs text-gray-600">
+            <span className="ml-2 text-xs text-gray-600 sm:text-sm md:text-base">
               · {post.readingTime} read
             </span>
           )}
-          <h1 className="mt-2 text-4xl font-bold">{post.title}</h1>
+          <h1 className="mt-2 text-3xl font-bold sm:text-4xl md:text-5xl">
+            {post.title}
+          </h1>
           {post.author && (
             <div className="mt-4 flex items-center justify-center">
-              <span className="text-sm text-gray-700">By {post.author}</span>
+              <span className="text-sm text-gray-700 sm:text-base md:text-lg">
+                By {post.author}
+              </span>
             </div>
           )}
-          <div className="relative mt-8 aspect-video w-full rounded-md bg-gray-300">
+          <div className="relative mx-auto mt-8 aspect-video w-full max-w-2xl rounded-md bg-gray-300">
             <Image
               fill
               src={post.thumbnail || ""}
               alt={post.title || "Add a Title"}
-              className="h-full w-full rounded-md"
+              className="h-full w-full rounded-md object-cover"
             />
           </div>
         </div>
         {post.tags && post.tags.length > 0 && (
-          <div className="mb-6 flex flex-wrap gap-2">
+          <div className="mb-6 flex flex-wrap justify-center gap-2">
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md bg-gray-200 px-2 py-1 text-sm"
+                className="rounded-md bg-gray-200 px-2 py-1 text-xs sm:text-sm md:text-base"
               >
                 {tag}
               </span>
@@ -66,11 +73,12 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
         )}
         <div
           className={cn(
-            "prose prose-lg dark:prose-invert",
+            "prose prose-base dark:prose-invert sm:prose-lg md:prose-xl",
             "prose-a:text-primary-700 hover:prose-a:text-primary-800 dark:prose-a:text-primary-600 dark:hover:prose-a:text-primary-700",
             "prose-blockquote:not-italic",
-            "prose-th:border prose-th:border-slate-300 prose-th:bg-slate-200/70 prose-th:px-3 prose-th:py-2 prose-td:border prose-td:border-slate-300 prose-td:px-3 prose-td:py-2 dark:prose-th:border-slate-700 dark:prose-th:bg-slate-900 dark:prose-td:border-slate-700",
+            "prose-th:border prose-th:border-slate-300 prose-th:bg-slate-200/70 prose-th:px-2 prose-th:py-1 prose-td:border prose-td:border-slate-300 prose-td:px-2 prose-td:py-1 dark:prose-th:border-slate-700 dark:prose-th:bg-slate-900 dark:prose-td:border-slate-700 sm:prose-th:px-3 sm:prose-th:py-2 sm:prose-td:px-3 sm:prose-td:py-2",
             "prose-hr:border-slate-300 dark:prose-hr:border-slate-700",
+            "prose-img:rounded-md",
           )}
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
