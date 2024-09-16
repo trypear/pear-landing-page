@@ -301,7 +301,7 @@ export const posts = [
     author: "Duke Pan",
     readingTime: "3 min",
     thumbnail: "/images/blog/o1-doc-thumbnail.webp",
-    tags: ["Guide", "PearAI", "GPT", "OpenAI"],
+    tags: ["Guide", "PearAI", "GPT", "OpenAI", "o1-mini", "o1-preview"],
     content: `
         <article class="space-y-6 text-gray-800 dark:text-gray-200">
           <section>
