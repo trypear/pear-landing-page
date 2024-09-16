@@ -246,7 +246,7 @@ export const posts = [
     date: "2024-09-11",
     author: "Maximiliano Farfán",
     readingTime: "2 min",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/linux.jpg",
     tags: ["Guide", "PearAI", "Linux"],
     content: `
         <article class="space-y-6 text-gray-800 dark:text-gray-200">
@@ -288,6 +288,57 @@ export const posts = [
           <p class="text-lg font-semibold mt-6">
             We're thrilled to bring PearAI to the Linux community, stay tuned for more exciting updates and features on the horizon!
           </p>
+        </article>
+        `,
+  },
+
+  {
+    title: "How to use GPT o1-mini and o1-preview in PearAI",
+    url: "/blog/gpt-o1",
+    excerpt:
+      "Learn how to integrate and effectively use GPT o1-mini and o1-preview models in PearAI, along with important considerations for optimal usage.",
+    date: "2024-09-15",
+    author: "Duke Pan",
+    readingTime: "3 min",
+    thumbnail: "/images/blog/o1-doc-thumbnail.webp",
+    tags: ["Guide", "PearAI", "GPT", "OpenAI"],
+    content: `
+        <article class="space-y-6 text-gray-800 dark:text-gray-200">
+          <section>
+            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Adding GPT o1-mini and o1-preview to PearAI</h2>
+            <ol class="list-decimal pl-6 space-y-2">
+              <li>Open your <code>config.json</code> file in a PearAI through the command palette (<kbd>Ctrl/Cmd+Shift+P</kbd>).</li>
+              <li>Add the following entries to the "models" array of your config and save the file (see example picture below):
+                <pre class="text-base"><code class="language-json">
+                    {
+                      "model": "o1-mini",
+                      "title": "GPTo1 Mini (PearAI)",
+                      "provider": "pearai_server",
+                      "isDefault": true
+                    },
+                    {
+                      "model": "o1-preview",
+                      "title": "GPTo1 Preview (PearAI)",
+                      "provider": "pearai_server",
+                      "isDefault": true
+                    }
+                </code></pre>
+              </li>
+              Example
+              <img src="/images/blog/o1config-doc.png" alt="Command Palette in PearAI (Cmd/Ctrl+Shift+P)" class="rounded-xl shadow-lg w-full">
+
+            </ol>
+          </section>
+
+          <section>
+            <h2 class="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-4">Usage Considerations</h2>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Rate limits provided by OpenAI for these o1 models are currently lower compared to other options. For most tasks, it's still recommended to use Claude or GPT4o instead of o1 models due to these limitations.</li>
+              <li>When choosing between o1 models, prefer o1-mini over o1-preview. It will use fewer of your credits while providing similar performance.</li>
+              <li>Due to current rate limits, only annual subscribers of PearAI can use o1 models. We'll open it up to all subscribers soon!</li>
+            </ul>
+          </section>
+
         </article>
         `,
   },
