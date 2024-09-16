@@ -2,8 +2,7 @@ export interface TeamMember {
   id: string;
   name: string;
   email: string;
-  role: "Admin" | "Member";
-  status: "pending" | "accepted";
+  role: "owner" | "admin" | "member";
 }
 
 export interface Team {
@@ -11,4 +10,12 @@ export interface Team {
   name: string;
   owner_id: string;
   members: TeamMember[];
+  invites?: TeamInvite[];
+}
+
+export interface TeamInvite {
+  id: string;
+  email: string;
+  role: "admin" | "member";
+  status: "pending";
 }

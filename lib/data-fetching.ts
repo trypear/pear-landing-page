@@ -1,7 +1,7 @@
 import { Subscription } from "@/types/subscription";
 import { createClient } from "@/utils/supabase/server";
 import { User } from "@supabase/auth-js";
-import { Team, TeamMember } from "@/types/team";
+import { Team, TeamInvite, TeamMember } from "@/types/team";
 type GetUserSubscriptionResult = {
   user: User | null;
   subscription: Subscription | null;
@@ -93,29 +93,30 @@ export async function getTeamData(teamId: string): Promise<GetTeamDataResult> {
 
       if (userError) throw userError;
 
+      const lastName = userData.last_name ?? "";
+      const fullName = `${userData.first_name} ${lastName}`.trim();
+
       return {
         id: member.id,
-        name: `${userData.first_name} ${userData.last_name}`,
+        name: fullName,
         email: userData.email,
-        role: member.role,
-        status: "accepted" as const,
+        role: member.role as "owner" | "admin" | "member",
       };
     });
 
     const members = await Promise.all(memberPromises);
 
-    // Convert invites to TeamMember format
-    const pendingMembers = invitesData.map((invite) => ({
+    const invites: TeamInvite[] = invitesData.map((invite) => ({
       id: invite.id,
-      name: "", // Name not known yet
       email: invite.email,
-      role: invite.role,
-      status: "pending" as const,
+      role: invite.role as "admin" | "member",
+      status: "pending",
     }));
 
     const team: Team = {
       ...teamData,
-      members: [...members, ...pendingMembers],
+      members,
+      invites,
     };
 
     return { team, error: null };

@@ -20,9 +20,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Team, TeamMember } from "@/types/team"; // Assume these types are defined
-import { Subscription } from "@/types/subscription"; // Assume these types are defined
+import { Team, TeamMember, TeamInvite } from "@/types/team";
+import { Subscription } from "@/types/subscription";
 import { User } from "@supabase/auth-js";
+import { capitalizeInitial } from "@/lib/utils";
 
 type EnterpriseDashboardProps = {
   team: Team;
@@ -38,41 +39,47 @@ export default function EnterpriseDashboard({
   const [teamName, setTeamName] = useState(team.name);
   const [isEditingTeamName, setIsEditingTeamName] = useState(false);
   const [members, setMembers] = useState(team.members);
+  const [invites, setInvites] = useState(team.invites);
   const [newMember, setNewMember] = useState({
-    name: "",
     email: "",
-    role: "Member" as "Admin" | "Member",
+    role: "member" as "admin" | "member",
   });
   const [editingId, setEditingId] = useState<string | null>(null);
 
   const addMember = () => {
     // In a real app, this would call an API to send an invitation
     console.log("Sending invitation to:", newMember);
-    setNewMember({ name: "", email: "", role: "Member" });
+    const newInvite: TeamInvite = {
+      id: Date.now().toString(), // Temporary ID
+      ...newMember,
+      status: "pending",
+    };
+    setInvites((prevInvites) => [...(prevInvites || []), newInvite]);
+    setNewMember({ email: "", role: "member" });
   };
 
   const updateMember = (id: string) => {
     // In a real app, this would call an API to update the member
     setMembers(
       members.map((member) =>
-        member.id === id ? { ...member, ...newMember } : member,
+        member.id === id
+          ? { ...member, role: newMember.role as "owner" | "admin" | "member" }
+          : member,
       ),
     );
     setEditingId(null);
-    setNewMember({ name: "", email: "", role: "Member" });
+    setNewMember({ email: "", role: "member" });
   };
 
   const deleteMember = (id: string) => {
-    // In a real app, this would call an API to remove the member or cancel the invitation
+    // In a real app, this would call an API to remove the member
     setMembers(members.filter((member) => member.id !== id));
   };
 
-  const acceptedMembers = members.filter(
-    (member) => member.status === "accepted",
-  );
-  const pendingMembers = members.filter(
-    (member) => member.status === "pending",
-  );
+  const deleteInvite = (id: string) => {
+    // In a real app, this would call an API to cancel the invitation
+    setInvites(invites.filter((invite) => invite.id !== id));
+  };
 
   return (
     <div className="max-w-full overflow-auto p-4 pt-36 sm:p-8 sm:pt-24 md:p-16 md:pt-28 lg:px-32">
@@ -103,7 +110,12 @@ export default function EnterpriseDashboard({
               Manage your team members and their roles
             </p>
             <div className="flex items-center gap-4">
-              <Badge variant="secondary">{subscription.pricing_tier}</Badge>
+              <Badge variant="secondary">
+                Enterprise -{" "}
+                {subscription.pricing_tier.includes("monthly")
+                  ? "Monthly"
+                  : "Yearly"}
+              </Badge>
               <p className="font-semibold">
                 Next billing date:{" "}
                 {new Date(
@@ -127,37 +139,15 @@ export default function EnterpriseDashboard({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {acceptedMembers.map((member) => (
+            {members.map((member) => (
               <TableRow key={member.id}>
-                <TableCell>
-                  {editingId === member.id ? (
-                    <Input
-                      value={newMember.name}
-                      onChange={(e) =>
-                        setNewMember({ ...newMember, name: e.target.value })
-                      }
-                    />
-                  ) : (
-                    member.name
-                  )}
-                </TableCell>
-                <TableCell>
-                  {editingId === member.id ? (
-                    <Input
-                      value={newMember.email}
-                      onChange={(e) =>
-                        setNewMember({ ...newMember, email: e.target.value })
-                      }
-                    />
-                  ) : (
-                    member.email
-                  )}
-                </TableCell>
+                <TableCell>{member.name}</TableCell>
+                <TableCell>{member.email}</TableCell>
                 <TableCell>
                   {editingId === member.id ? (
                     <Select
                       value={newMember.role}
-                      onValueChange={(value: "Admin" | "Member") =>
+                      onValueChange={(value: "admin" | "member") =>
                         setNewMember({ ...newMember, role: value })
                       }
                     >
@@ -165,12 +155,12 @@ export default function EnterpriseDashboard({
                         <SelectValue placeholder="Select a role" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="Admin">Admin</SelectItem>
-                        <SelectItem value="Member">Member</SelectItem>
+                        <SelectItem value="admin">Admin</SelectItem>
+                        <SelectItem value="member">Member</SelectItem>
                       </SelectContent>
                     </Select>
                   ) : (
-                    member.role
+                    capitalizeInitial(member.role)
                   )}
                 </TableCell>
                 <TableCell>
@@ -185,7 +175,10 @@ export default function EnterpriseDashboard({
                         size="icon"
                         onClick={() => {
                           setEditingId(member.id);
-                          setNewMember(member);
+                          setNewMember({
+                            email: member.email,
+                            role: member.role,
+                          });
                         }}
                       >
                         <Pencil1Icon className="h-4 w-4" />
@@ -205,16 +198,10 @@ export default function EnterpriseDashboard({
           </TableBody>
         </Table>
       </div>
+
       <div>
         <h2 className="mb-4 text-xl font-semibold">Invite New Member</h2>
         <div className="mb-4 flex gap-4">
-          <Input
-            placeholder="Name"
-            value={newMember.name}
-            onChange={(e) =>
-              setNewMember({ ...newMember, name: e.target.value })
-            }
-          />
           <Input
             placeholder="Email"
             value={newMember.email}
@@ -224,7 +211,7 @@ export default function EnterpriseDashboard({
           />
           <Select
             value={newMember.role}
-            onValueChange={(value: "Admin" | "Member") =>
+            onValueChange={(value: "admin" | "member") =>
               setNewMember({ ...newMember, role: value })
             }
           >
@@ -232,15 +219,16 @@ export default function EnterpriseDashboard({
               <SelectValue placeholder="Select a role" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Admin">Admin</SelectItem>
-              <SelectItem value="Member">Member</SelectItem>
+              <SelectItem value="admin">Admin</SelectItem>
+              <SelectItem value="member">Member</SelectItem>
             </SelectContent>
           </Select>
           <Button onClick={addMember}>
             <PlusIcon className="mr-2 h-4 w-4" /> Invite Member
           </Button>
         </div>
-        {pendingMembers.length > 0 && (
+
+        {invites.length > 0 && (
           <div className="mt-4">
             <h3 className="mb-2 text-lg font-semibold">Pending Invitations</h3>
             <Table>
@@ -252,15 +240,15 @@ export default function EnterpriseDashboard({
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {pendingMembers.map((member) => (
-                  <TableRow key={member.id}>
-                    <TableCell>{member.email}</TableCell>
-                    <TableCell>{member.role}</TableCell>
+                {invites.map((invite) => (
+                  <TableRow key={invite.id}>
+                    <TableCell>{invite.email}</TableCell>
+                    <TableCell>{invite.role}</TableCell>
                     <TableCell>
                       <Button
                         variant="ghost"
                         size="icon"
-                        onClick={() => deleteMember(member.id)}
+                        onClick={() => deleteInvite(invite.id)}
                       >
                         <TrashIcon className="h-4 w-4" />
                       </Button>

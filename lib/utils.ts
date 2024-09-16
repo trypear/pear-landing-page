@@ -94,7 +94,7 @@ export const getURL = () => {
   return url;
 };
 
-export function capitalizeInital(input: unknown): string | undefined {
+export function capitalizeInitial(input: unknown): string | undefined {
   if (typeof input !== "string") {
     return "";
   }

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Subscription } from "@/types/subscription";
-import { capitalizeInital } from "@/lib/utils";
+import { capitalizeInitial } from "@/lib/utils";
 import {
   Card,
   CardHeader,
@@ -23,7 +23,7 @@ import {
 import { useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
-import { Info } from "lucide-react";
+import { Info, Users } from "lucide-react";
 import { UsageType } from "../dashboard";
 
 type SubscriptionCardProps = {
@@ -32,6 +32,8 @@ type SubscriptionCardProps = {
   openAppQueryParams?: string;
   user: User;
   loading: boolean;
+  teamName?: string;
+  isTeamOwner?: boolean;
 };
 
 const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
@@ -42,6 +44,8 @@ export default function SubscriptionCard({
   openAppQueryParams,
   user,
   loading,
+  teamName,
+  isTeamOwner,
 }: SubscriptionCardProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { handleCancelSubscription, isCanceling, isCanceled } =
@@ -93,7 +97,6 @@ export default function SubscriptionCard({
   }
 
   const isEnterprise = subscription?.pricing_tier.startsWith("enterprise_");
-  const teamName = "tbd";
 
   return (
     <Card className="overflow-auto bg-gray-100/10 text-card-foreground">
@@ -108,8 +111,8 @@ export default function SubscriptionCard({
               className="border-primary-800 bg-primary-800/10 px-2 py-1 text-xs text-primary-800"
             >
               {isEnterprise
-                ? `Enterprise - ${teamName}`
-                : `Pro - ${capitalizeInital(subscription.pricing_tier)}`}
+                ? `Enterprise - ${subscription.pricing_tier.includes("monthly") ? "Monthly" : "Yearly"}`
+                : `Pro - ${capitalizeInitial(subscription.pricing_tier)}`}
             </Badge>
           </div>
         </CardHeader>
@@ -117,7 +120,7 @@ export default function SubscriptionCard({
           {usage && (
             <div className="mb-4">
               <div className="flex justify-between">
-                <p className="font-medium">Requests</p>
+                <p className="font-medium">PearAI Credits</p>
                 <p className="text-sm/6 text-muted-foreground">
                   {loading ? (
                     "-"
@@ -142,13 +145,21 @@ export default function SubscriptionCard({
               </p>
             </div>
           )}
+          {/* {isEnterprise && (
+            <div className="mb-4">
+              <div className="flex justify-between">
+                <p className="font-medium">Team Name</p>
+                <p className="text-muted-foreground">{teamName || "N/A"}</p>
+              </div>
+            </div>
+          )} */}
           {!isEnterprise && (
             <>
               <div className="mb-4">
                 <div className="flex justify-between">
                   <p className="font-medium">Current Plan</p>
                   <p className="text-muted-foreground">
-                    {capitalizeInital(subscription.pricing_tier)}
+                    {capitalizeInitial(subscription.pricing_tier)}
                   </p>
                 </div>
               </div>
@@ -181,6 +192,15 @@ export default function SubscriptionCard({
                 </Link>
               </Button>
             </div>
+            {isEnterprise && isTeamOwner && (
+              <Button variant="link" asChild className="flex items-center">
+                <Link href="/dashboard/team">
+                  Enterprise Dashboard
+                  <Users className="mr-2 h-4 w-4" />
+                </Link>
+              </Button>
+            )}
+
             {!isEnterprise && (
               <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                 <DialogTrigger asChild>
