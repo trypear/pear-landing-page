@@ -24,6 +24,7 @@ import { Team, TeamMember, TeamInvite } from "@/types/team";
 import { Subscription } from "@/types/subscription";
 import { User } from "@supabase/auth-js";
 import { capitalizeInitial } from "@/lib/utils";
+import { toast } from "sonner";
 
 type EnterpriseDashboardProps = {
   team: Team;
@@ -46,18 +47,49 @@ export default function EnterpriseDashboard({
   });
   const [editingId, setEditingId] = useState<string | null>(null);
 
-  const addMember = () => {
-    // In a real app, this would call an API to send an invitation
-    console.log("Sending invitation to:", newMember);
-    const newInvite: TeamInvite = {
-      id: Date.now().toString(), // Temporary ID
-      ...newMember,
-      status: "pending",
-    };
-    setInvites((prevInvites) => [...(prevInvites || []), newInvite]);
-    setNewMember({ email: "", role: "member" });
+  const isOwner = (memberId: string) => {
+    return members.find((m) => m.id === memberId)?.role === "owner";
   };
 
+  const isCurrentUser = (memberId: string) => {
+    return memberId === user.id;
+  };
+
+  const canEditMember = (memberId: string) => {
+    return !isOwner(memberId) && !isCurrentUser(memberId);
+  };
+
+  const addMember = async () => {
+    try {
+      const response = await fetch("/api/team", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          teamId: team.id,
+          email: newMember.email,
+          role: newMember.role,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send invitation");
+      }
+
+      const newInvite: TeamInvite = {
+        id: Date.now().toString(), // Temporary ID, should be replaced with the one from the server
+        ...newMember,
+        status: "pending",
+      };
+      setInvites((prevInvites) => [...(prevInvites || []), newInvite]);
+      setNewMember({ email: "", role: "member" });
+      // Show success message to user
+      toast.success("Invitation sent successfully");
+    } catch (error) {
+      console.error("Error sending invitation:", error);
+      // Show error message to user
+      toast.error("Failed to send invitation");
+    }
+  };
   const updateMember = (id: string) => {
     // In a real app, this would call an API to update the member
     setMembers(
@@ -170,26 +202,30 @@ export default function EnterpriseDashboard({
                     </Button>
                   ) : (
                     <>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => {
-                          setEditingId(member.id);
-                          setNewMember({
-                            email: member.email,
-                            role: member.role,
-                          });
-                        }}
-                      >
-                        <Pencil1Icon className="h-4 w-4" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={() => deleteMember(member.id)}
-                      >
-                        <TrashIcon className="h-4 w-4" />
-                      </Button>
+                      {canEditMember(member.id) && (
+                        <>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => {
+                              setEditingId(member.id);
+                              setNewMember({
+                                email: member.email,
+                                role: member.role,
+                              });
+                            }}
+                          >
+                            <Pencil1Icon className="h-4 w-4" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => deleteMember(member.id)}
+                          >
+                            <TrashIcon className="h-4 w-4" />
+                          </Button>
+                        </>
+                      )}
                     </>
                   )}
                 </TableCell>
