@@ -526,36 +526,36 @@ export const posts = [
       <li>
         Extract the contents by running the following command:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
-        ><code class="language-bash">tar -xvf PearAI-1.0.0.tar.gz</code></pre>
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+        ><code>tar -xvf PearAI-1.0.0.tar.gz</code></pre>
       </li>
       <li>
         Navigate to the extracted folder:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
         ><code class="language-bash">cd PearAI-1.0.0/</code></pre>
       </li>
       <li>
         Run the installation script with superuser permissions:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
         ><code class="language-bash">sudo ./install-pearai.sh</code></pre>
       </li>
       <li>
         Add the following alias to your
-        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700">~/.bashrc</code>
+        <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200">~/.bashrc</code>
         or
-        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700">~/.zshrc</code>
+        <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200">~/.zshrc</code>
         to run PearAI from any directory:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
         ><code class="language-bash">alias pearai='PearAI'</code></pre>
         After adding the alias, run
-        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700"
+        <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
           >source ~/.bashrc</code
         >
         or
-        <code class="rounded bg-gray-200 px-1 dark:bg-gray-700"
+        <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
           >source ~/.zshrc</code
         >
         to apply the changes.
@@ -628,9 +628,9 @@ export const posts = [
       <li>
         Add the following entries to the "models" array of your config and save
         the file (see example picture below):
-        <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-800 sm:text-sm md:text-base"
-        ><code class="language-json">{
+       <pre
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+        ><code class="language-bash">{
     "model": "o1-mini",
     "title": "GPTo1 Mini (PearAI)",
     "provider": "pearai_server",
