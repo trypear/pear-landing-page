@@ -79,7 +79,7 @@ export default function FreeTrialCard({
                 </Link>
               </Button>
             </div>
-            <Button variant="link" asChild className="px-0 text-primary-800">
+            <Button variant="default" asChild>
               <Link href="/pricing">Subscribe Now</Link>
             </Button>
           </div>
