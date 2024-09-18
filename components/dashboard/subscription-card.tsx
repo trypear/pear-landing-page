@@ -140,7 +140,7 @@ export default function SubscriptionCard({
                   ) : (
                     <strong>
                       {usage?.percent_credit_used != null
-                        ? `${usage.percent_credit_used}%`
+                        ? `${Math.min(usage.percent_credit_used, 100)}%`
                         : "Cannot find remaining percentage. Please contact PearAI support."}
                     </strong>
                   )}
@@ -154,7 +154,7 @@ export default function SubscriptionCard({
               <p className="text-sm text-muted-foreground">
                 {loading
                   ? "-"
-                  : `${usage.percent_credit_used ?? 0}% of PearAI Credits used`}
+                  : `${Math.min(usage?.percent_credit_used ?? 0, 100)}% of PearAI Credits used`}
               </p>
             </div>
           )}
