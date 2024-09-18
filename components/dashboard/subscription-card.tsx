@@ -165,7 +165,7 @@ export default function SubscriptionCard({
                 <p className="text-muted-foreground">
                   {capitalizeInital(subscription.pricing_tier)}
                 </p>
-                {subscription.pricing_tier == "monthly" && (
+                {/* {subscription.pricing_tier == "monthly" && (
                   <Dialog
                     open={isUpgradeDialogOpen}
                     onOpenChange={setIsUpgradeDialogOpen}
@@ -222,7 +222,7 @@ export default function SubscriptionCard({
                       </DialogFooter>
                     </DialogContent>
                   </Dialog>
-                )}
+                )} */}
               </div>
             </div>
           </div>
