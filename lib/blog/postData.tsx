@@ -685,15 +685,23 @@ export const posts = [
 `,
   },
   {
-    "title": "New Leetcode Feature in PearAI - Supercharge Your Interview Prep With AI",
-    "url": "/blog/introducing-leetcode-feature",
-    "excerpt": "Improve your coding skills and interview readiness with PearAI's LeetCode integration. A practical tool for efficient technical interview preparation.",
-    "date": "2024-09-15",
-    "author": "PearAI Team",
-    "readingTime": "4 min",
-    "thumbnail": "/images/leetcode.png",
-    "tags": ["leetcode", "interview preparation", "coding challenges", "job hunting"],
-    "content": `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+    title:
+      "New Leetcode Feature in PearAI - Supercharge Your Interview Prep With AI",
+    url: "/blog/introducing-leetcode-feature",
+    excerpt:
+      "Improve your coding skills and interview readiness with PearAI's LeetCode integration. A practical tool for efficient technical interview preparation.",
+    date: "2024-09-15",
+    author: "PearAI Team",
+    readingTime: "4 min",
+    thumbnail: "/images/leetcode.png",
+    tags: [
+      "leetcode",
+      "interview preparation",
+      "coding challenges",
+      "job hunting",
+      "swe jobs",
+    ],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
       <section class="space-y-6">
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           A Practical Tool for Interview Readiness
@@ -761,6 +769,6 @@ export const posts = [
           Start incorporating the LeetCode Slash Command into your preparation routine, and let us know how it works for you. We're always open to feedback and suggestions for improvement.
         </p>
       </section>
-    </article>`
-  }
+    </article>`,
+  },
 ];
