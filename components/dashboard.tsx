@@ -18,7 +18,19 @@ type DashboardPageProps = {
 };
 
 export type UsageType = {
-  percent_credit_used: number | null;
+  chat_usage: {
+    max_quota: number;
+    used_quota: number;
+    quota_remaining: number;
+  };
+  autocomplete_usage: {
+    max_quota: number;
+    used_quota: number;
+    quota_remaining: number;
+  };
+  percent_credit_used: {
+    percent_credit_used: number;
+  };
 };
 
 export default function DashboardPage({
@@ -31,9 +43,7 @@ export default function DashboardPage({
   const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [usage, setUsage] = useState<UsageType>({
-    percent_credit_used: null,
-  });
+  const [usage, setUsage] = useState<UsageType | null>(null);
 
   useEffect(() => {
     const handleCallbackForApp = async () => {
@@ -71,8 +81,8 @@ export default function DashboardPage({
           toast.error("Failed to fetch requests usage.");
           return;
         }
-        const usage = await response.json();
-        setUsage(usage);
+        const usageData: UsageType = await response.json();
+        setUsage(usageData);
       } catch (error) {
         toast.error(`Error fetching requests usage: ${error}`);
       } finally {

@@ -28,7 +28,7 @@ import { UsageType } from "../dashboard";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
-  usage?: UsageType;
+  usage: UsageType | null;
   openAppQueryParams?: string;
   user: User;
   loading: boolean;
@@ -50,6 +50,11 @@ export default function SubscriptionCard({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { handleCancelSubscription, isCanceling, isCanceled } =
     useCancelSubscription(user, subscription);
+  const percentUsed = usage?.percent_credit_used.percent_credit_used ?? 0;
+  const chatUsed = usage?.chat_usage.used_quota ?? 0;
+  const chatRemaining = usage?.chat_usage.quota_remaining ?? 0;
+  const autocompleteUsed = usage?.autocomplete_usage.used_quota ?? 0;
+  const autocompleteRemaining = usage?.autocomplete_usage.quota_remaining ?? 0;
 
   const handleCancelClick = () => {
     if (isCanceled) {
@@ -126,22 +131,22 @@ export default function SubscriptionCard({
                     "-"
                   ) : (
                     <strong>
-                      {usage?.percent_credit_used != null
-                        ? `${usage.percent_credit_used}%`
+                      {usage.percent_credit_used.percent_credit_used != null
+                        ? `${usage.percent_credit_used.percent_credit_used}%`
                         : "Cannot find remaining percentage. Please contact PearAI support."}
                     </strong>
                   )}
                 </p>
               </div>
               <Progress
-                value={usage.percent_credit_used}
+                value={usage.percent_credit_used.percent_credit_used}
                 className="mb-2 mt-2 h-2 w-full"
                 indicatorColor="bg-primary-800 bg-opacity-75"
               />
               <p className="text-sm text-muted-foreground">
                 {loading
                   ? "-"
-                  : `${usage.percent_credit_used ?? 0}% of PearAI Credits used`}
+                  : `${usage.percent_credit_used.percent_credit_used ?? 0}% of PearAI Credits used`}
               </p>
             </div>
           )}

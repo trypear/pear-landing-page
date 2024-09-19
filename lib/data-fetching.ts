@@ -2,6 +2,7 @@ import { Subscription } from "@/types/subscription";
 import { createClient } from "@/utils/supabase/server";
 import { User } from "@supabase/auth-js";
 import { Team, TeamInvite, TeamMember } from "@/types/team";
+
 type GetUserSubscriptionResult = {
   user: User | null;
   subscription: Subscription | null;
@@ -29,22 +30,65 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
   const { data: sessionData } = await supabase.auth.getSession();
   const openAppQueryParams = `accessToken=${sessionData?.session?.access_token}&refreshToken=${sessionData?.session?.refresh_token}`;
 
-  // Fetch the most recent user subscription data in case there are multiple
-  const { data: subscriptionData, error } = await supabase
-    .from("subscriptions")
-    .select(
-      "subscription_id, pricing_tier, status, current_period_start, current_period_end, cancel_at_period_end, canceled_at, team_id",
-    )
+  // Check if the user is a team member
+  const { data: teamMemberData, error: teamMemberError } = await supabase
+    .from("team_members")
+    .select("team_id")
     .eq("user_id", userData.user.id)
-    .eq("status", "active")
-    .order("current_period_end", { ascending: false })
-    .limit(1)
     .single();
 
-  if (error) {
-    console.error("Error fetching subscription data:" + error);
+  if (teamMemberError && teamMemberError.code !== "PGRST116") {
+    console.error(
+      "Error checking team membership:",
+      JSON.stringify(teamMemberError, null, 2),
+    );
   }
 
+  let subscriptionData = null;
+
+  if (teamMemberData?.team_id) {
+    // User is a team member, fetch team subscription
+    const { data: teamSubscription, error: teamSubError } = await supabase
+      .from("subscriptions")
+      .select(
+        "subscription_id, pricing_tier, status, current_period_start, current_period_end, cancel_at_period_end, canceled_at, team_id",
+      )
+      .eq("team_id", teamMemberData.team_id)
+      .eq("status", "active")
+      .order("current_period_end", { ascending: false })
+      .limit(1)
+      .single();
+
+    if (teamSubError) {
+      console.error(
+        "Error fetching team subscription data:",
+        JSON.stringify(teamSubError, null, 2),
+      );
+    } else {
+      subscriptionData = teamSubscription;
+    }
+  } else {
+    // User is not a team member, check for individual subscription
+    const { data: individualSub, error: individualSubError } = await supabase
+      .from("subscriptions")
+      .select(
+        "subscription_id, pricing_tier, status, current_period_start, current_period_end, cancel_at_period_end, canceled_at, team_id",
+      )
+      .eq("user_id", userData.user.id)
+      .eq("status", "active")
+      .order("current_period_end", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    if (individualSubError) {
+      console.error(
+        "Error fetching individual subscription data:",
+        JSON.stringify(individualSubError, null, 2),
+      );
+    } else {
+      subscriptionData = individualSub;
+    }
+  }
   return {
     user: userData.user,
     subscription: subscriptionData,

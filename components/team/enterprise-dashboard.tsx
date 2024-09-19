@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -46,6 +46,7 @@ export default function EnterpriseDashboard({
     role: "member" as "admin" | "member",
   });
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [teamUsage, setTeamUsage] = useState<any>(null);
 
   const isOwner = (memberId: string) => {
     return members.find((m) => m.id === memberId)?.role === "owner";
@@ -103,16 +104,55 @@ export default function EnterpriseDashboard({
     setNewMember({ email: "", role: "member" });
   };
 
-  const deleteMember = (id: string) => {
-    // In a real app, this would call an API to remove the member
-    setMembers(members.filter((member) => member.id !== id));
+  const deleteMember = async (id: string) => {
+    try {
+      const response = await fetch("/api/team/member", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          teamId: team.id,
+          memberId: id,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete member");
+      }
+
+      setMembers(members.filter((member) => member.id !== id));
+      toast.success("Member removed successfully");
+    } catch (error) {
+      console.error("Error deleting member:", error);
+      toast.error("Failed to remove member");
+    }
   };
 
   const deleteInvite = (id: string) => {
     // In a real app, this would call an API to cancel the invitation
     setInvites(invites.filter((invite) => invite.id !== id));
   };
+  useEffect(() => {
+    const getTeamUsage = async () => {
+      try {
+        const response = await fetch("/api/get-requests-usage", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
 
+        if (!response.ok) {
+          throw new Error("Failed to fetch team usage");
+        }
+
+        const usageData = await response.json();
+        setTeamUsage(usageData);
+      } catch (error) {
+        console.error("Error fetching team usage:", error);
+        toast.error("Failed to fetch team usage");
+      }
+    };
+
+    getTeamUsage();
+  }, []);
   return (
     <div className="max-w-full overflow-auto p-4 pt-36 sm:p-8 sm:pt-24 md:p-16 md:pt-28 lg:px-32">
       <Card className="mb-8">

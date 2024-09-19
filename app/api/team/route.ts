@@ -41,3 +41,44 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+export async function DELETE(request: NextRequest) {
+  const supabase = createClient();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { teamId, memberId } = await request.json();
+
+  try {
+    const response = await fetch(
+      `${process.env.PEARAI_SERVER_URL}/team/member`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session.access_token}`,
+        },
+        body: JSON.stringify({ team_id: teamId, member_id: memberId }),
+      },
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.detail || "Failed to delete member");
+    }
+
+    const data = await response.json();
+    return NextResponse.json(data);
+  } catch (error) {
+    console.error("Error deleting member:", error);
+    return NextResponse.json(
+      { error: "Failed to delete member" },
+      { status: 500 },
+    );
+  }
+}
