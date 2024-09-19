@@ -771,4 +771,57 @@ export const posts = [
       </section>
     </article>`,
   },
+  {
+    title: "How to setup WSL in PearAI",
+    url: "/blog/wsl-setup",
+    excerpt:
+      "Easy step by step guide to setup WSL in PearAI, and get started with AI-powered coding in WSL.",
+    date: "2024-09-19",
+    author: "Himanshu",
+    readingTime: "30 seconds",
+    thumbnail: "/images/blog/wsl-blog.png",
+    tags: ["Guide", "WSL", "Linux", "Ubuntu", "Windows Subsystem for Linux"],
+    content: `<article
+  class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+>
+  <section class="space-y-6">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Step 1 - Install Microsft WSL extension 
+    </h2>
+    <figure class="mt-4">
+      <img
+        src="/images/blog/wsl-blog-extension.png" 
+        alt="Install Microsoft WSL extension form marketplace"
+        class="rounded-xl shadow-lg object-cover"
+      />
+    </figure>
+  </section>
+
+  <section class="space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Step 2 - Run 'Patch WSL' from command palette
+    </h2>
+    <figure class="mt-4">
+      <img
+        src="/images/blog/wsl-blog-patch.png" 
+        alt="Run 'Patch WSL' from command palette"
+        class="rounded-xl shadow-lg object-cover"
+      />
+    </figure>
+  </section>
+  <section class="space-y-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Step 3 - 
+    </h2>
+    <iframe src="https://giphy.com/embed/wrBURfbZmqqXu" width="480" height="317" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+  </section>
+</article>
+`,
+  },
 ];
