@@ -527,7 +527,7 @@ export const posts = [
         Extract the contents by running the following command:
         <pre
           class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
-        ><code>tar -xvf PearAI-1.0.0.tar.gz</code></pre>
+        ><code>tar -xvf PearAI.tar.gz</code></pre>
       </li>
       <li>
         Navigate to the extracted folder:
