@@ -518,7 +518,7 @@ export const posts = [
       <li>
         Download the compressed PearAI installation file:
         <a
-          href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-1.0.0.tar.gz"
+          href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI.tar.gz"
           class="break-words text-primary-500 underline dark:text-primary-400"
           >Download PearAI</a
         >
@@ -533,7 +533,7 @@ export const posts = [
         Navigate to the extracted folder:
         <pre
           class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
-        ><code class="language-bash">cd PearAI-1.0.0/</code></pre>
+        ><code class="language-bash">cd PearAI/</code></pre>
       </li>
       <li>
         Run the installation script with superuser permissions:
