@@ -539,7 +539,15 @@ export const posts = [
         Run the installation script with superuser permissions:
         <pre
           class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
-        ><code class="language-bash">sudo ./install-pearai.sh</code></pre>
+        ><code class="language-bash">sudo ./pearai_manager.sh</code></pre>
+      </li>
+      <li>
+        Select your desired option:
+        <pre
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+        ><code class="language-bash">1. Install PearAI
+2. Uninstall PearAI
+3. Exit</code></pre>
       </li>
       <li>
         Add the following alias to your
