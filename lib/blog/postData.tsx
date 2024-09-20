@@ -794,7 +794,7 @@ export const posts = [
       <img
         src="/images/blog/wsl-blog-extension.png" 
         alt="Install Microsoft WSL extension form marketplace"
-        class="rounded-xl shadow-lg object-cover"
+        class="rounded-xl shadow-lg object-cover w-full"
       />
     </figure>
   </section>
@@ -809,7 +809,7 @@ export const posts = [
       <img
         src="/images/blog/wsl-blog-patch.png" 
         alt="Run 'Patch WSL' from command palette"
-        class="rounded-xl shadow-lg object-cover"
+        class="rounded-xl shadow-lg object-cover w-full"
       />
     </figure>
   </section>
@@ -819,7 +819,7 @@ export const posts = [
     >
       Step 3 - 
     </h2>
-    <iframe src="https://giphy.com/embed/wrBURfbZmqqXu" width="480" height="317" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <iframe src="https://giphy.com/embed/wrBURfbZmqqXu" width="100%" height="auto" style="aspect-ratio: 480 / 317;" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
   </section>
 </article>
 `,
