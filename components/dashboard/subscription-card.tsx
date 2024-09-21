@@ -27,6 +27,7 @@ import { Info } from "lucide-react";
 import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
+import BuyCreditsModal from "../buy-credits-modal";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
@@ -310,6 +311,9 @@ export default function SubscriptionCard({
               </Button>{" "}
               Use this button to open the app and login directly.
             </p>
+          </div>
+          <div className="mt-4">
+            <BuyCreditsModal />
           </div>
         </CardContent>
       </div>

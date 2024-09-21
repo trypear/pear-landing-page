@@ -93,18 +93,18 @@ export default function DashboardPage({
             <ProfileCard user={user} />
             {/* Below commented out until we implement Free Trial */}
             {subscription ? (
+              <FreeTrialCard
+                loading={loading}
+                usage={usage}
+                openAppQueryParams={openAppQueryParams}
+              />
+            ) : (
               <SubscriptionCard
                 subscription={subscription}
                 usage={usage}
                 openAppQueryParams={openAppQueryParams}
                 user={user}
                 loading={loading}
-              />
-            ) : (
-              <FreeTrialCard
-                loading={loading}
-                usage={usage}
-                openAppQueryParams={openAppQueryParams}
               />
             )}
           </div>

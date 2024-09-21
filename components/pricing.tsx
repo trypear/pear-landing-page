@@ -32,6 +32,7 @@ import {
 import { Info } from "lucide-react";
 import Spinner from "./ui/spinner";
 import Link from "next/link";
+import Footer from "./footer";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
@@ -480,6 +481,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </Tabs>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
