@@ -365,13 +365,13 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
             <TabsList className="h-full rounded-full bg-gray-300/20 px-2 py-2 ring-1 ring-gray-300/60 dark:bg-gray-100/10 dark:ring-gray-100/40">
               <TabsTrigger
                 value="standard"
-                className="w-[135px] rounded-full px-4 py-2 text-white-main data-[state=active]:bg-primary-800"
+                className="w-[135px] rounded-full px-4 py-2 text-secondary-main data-[state=active]:bg-primary-800 dark:text-white-main"
               >
                 Standard
               </TabsTrigger>
               <TabsTrigger
                 value="enterprise"
-                className="ml-[6px] w-[135px] rounded-full px-4 py-2 text-white-main data-[state=active]:bg-primary-800"
+                className="ml-[6px] w-[135px] rounded-full px-4 py-2 text-secondary-main data-[state=active]:bg-primary-800 dark:text-white-main"
               >
                 Enterprise
               </TabsTrigger>

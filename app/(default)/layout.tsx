@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import PageIllustration from "@/components/page-illustration";
+import PageIllustration from "@/components/ui/page-illustration";
 import Footer from "@/components/footer";
 
 export default function DefaultLayout({
