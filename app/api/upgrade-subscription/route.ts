@@ -50,8 +50,8 @@ async function upgradeSubscription(request: NextRequest & { user: User }) {
       );
     }
 
-    const data = await response.json();
-    return NextResponse.json({ data });
+    const { checkoutUrl, sessionId } = await response.json();
+    return NextResponse.json({ checkoutUrl, sessionId });
   } catch (error) {
     let errMsg = "Error upgrading subscription: ";
     if (error instanceof Error) {

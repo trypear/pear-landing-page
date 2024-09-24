@@ -20,13 +20,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
 import { Info } from "lucide-react";
 import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
+import { useState } from "react";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
@@ -73,12 +73,27 @@ export default function SubscriptionCard({
   const handleUpgradeSubscriptionClick = async () => {
     try {
       if (subscription?.subscription_id) {
-        await handleUpgradeSubscription();
-        return;
+        const response = await fetch("/api/upgrade-subscription", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            subscriptionId: subscription.subscription_id,
+          }),
+        });
+        if (!response.ok) {
+          throw new Error("Failed to create checkout session");
+        }
+
+        const { checkoutUrl } = await response.json();
+        window.location.href = checkoutUrl;
+      } else {
+        toast.error(
+          "Failed to upgrade subscription. Subscription ID not found.",
+        );
       }
-      toast.error("Failed to upgrade subscription. Subscription ID not found.");
     } catch (error) {
-      console.error("Error upgrading subscription:", error);
       toast.error("Failed to upgrade subscription.");
     } finally {
       setIsUpgradeDialogOpen(false);
@@ -165,7 +180,7 @@ export default function SubscriptionCard({
                 <p className="text-muted-foreground">
                   {capitalizeInital(subscription.pricing_tier)}
                 </p>
-                {/* {subscription.pricing_tier == "monthly" && (
+                {subscription.pricing_tier === "monthly" && (
                   <Dialog
                     open={isUpgradeDialogOpen}
                     onOpenChange={setIsUpgradeDialogOpen}
@@ -217,12 +232,12 @@ export default function SubscriptionCard({
                             handleUpgradeSubscriptionClick();
                           }}
                         >
-                          {isUpgrading ? "Upgrading..." : "Confirm Upgrade"}
+                          {isUpgrading ? "Upgrading..." : "Go to Upgrade"}
                         </Button>
                       </DialogFooter>
                     </DialogContent>
                   </Dialog>
-                )} */}
+                )}
               </div>
             </div>
           </div>
