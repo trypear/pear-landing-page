@@ -76,7 +76,7 @@ const updates: ChangelogEntry[] = [
             slash command, it will help you learn by guiding like a interviewer
           </li>
           <li className="">Preserve extension state on import from vscode</li>
-          <li className="">PearAI Theme</li>
+          <li className="">Default PearAI Themes</li>
         </ul>
       </>
     ),
