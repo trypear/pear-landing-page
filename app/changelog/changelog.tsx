@@ -75,7 +75,7 @@ const updates: ChangelogEntry[] = [
             </span>{" "}
             slash command, it will help you learn by guiding like a interviewer
           </li>
-          <li className="">preserve extension state on import from vscode</li>
+          <li className="">Preserve extension state on import from vscode</li>
           <li className="">PearAI Theme</li>
         </ul>
       </>
