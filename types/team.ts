@@ -1,3 +1,5 @@
+import { User } from "@supabase/supabase-js";
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -18,4 +20,10 @@ export interface TeamInvite {
   email: string;
   role: "admin" | "member";
   status: "pending";
+}
+
+export interface CreateTeamFormProps {
+  user: User;
+  initialYearly: boolean;
+  handleSignOut: () => Promise<void>;
 }

@@ -56,7 +56,16 @@ export const updatePasswordSchema = z
     path: ["confirmPassword"],
   });
 
+export const createTeamSchema = z.object({
+  teamName: z
+    .string()
+    .min(3, "Team name must be at least 3 characters long")
+    .max(30, "Team name must be at most 30 characters long"),
+  isYearly: z.boolean().default(false),
+});
+
 export type SignUpFormData = z.infer<typeof signUpSchema>;
 export type SignInFormData = z.infer<typeof signInSchema>;
 export type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 export type UpdatePasswordFormData = z.infer<typeof updatePasswordSchema>;
+export type CreateTeamFormData = z.infer<typeof createTeamSchema>;

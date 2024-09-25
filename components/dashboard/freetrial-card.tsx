@@ -7,7 +7,7 @@ import { Info } from "lucide-react";
 import { UsageType } from "../dashboard";
 
 type FreeTrialCardProps = {
-  usage: UsageType;
+  usage: UsageType | null;
   openAppQueryParams: string;
   loading: boolean;
 };
@@ -40,12 +40,12 @@ export default function FreeTrialCard({
               <p className="font-medium">PearAI Credits</p>
               <p className="text-sm/6 text-muted-foreground">
                 <strong>
-                  {loading ? (
+                  {loading || !usage ? (
                     "-"
                   ) : (
                     <strong>
-                      {usage?.percent_credit_used != null
-                        ? `${usage.percent_credit_used}%`
+                      {usage.percent_credit_used?.percent_credit_used != null
+                        ? `${usage.percent_credit_used.percent_credit_used}%`
                         : "Cannot find used percentage. Please contact PearAI support."}
                     </strong>
                   )}
@@ -53,13 +53,15 @@ export default function FreeTrialCard({
               </p>
             </div>
             <Progress
-              value={usage.percent_credit_used}
+              value={usage?.percent_credit_used?.percent_credit_used ?? 0}
               className="mb-2 mt-2 h-2 w-full"
               indicatorColor="bg-primary-800 bg-opacity-75"
             />
             <p className="text-sm/6 text-muted-foreground">
-              {loading ? "-" : usage.percent_credit_used}% of free trial PearAI
-              Credits used
+              {loading || !usage
+                ? "-"
+                : `${usage.percent_credit_used?.percent_credit_used ?? 0}%`}{" "}
+              of free trial PearAI Credits used
             </p>
           </div>
           <div className="mb-4">
