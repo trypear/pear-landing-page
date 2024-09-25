@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/utils/withAuth";
 import { createClient } from "@/utils/supabase/server";
 
-const getRequestsUsage = async (request: NextRequest) => {
+const getDashboardUsage = async (request: NextRequest) => {
   const supabase = createClient();
 
   try {
@@ -49,4 +49,4 @@ const getRequestsUsage = async (request: NextRequest) => {
   }
 };
 
-export const GET = withAuth(getRequestsUsage);
+export const GET = withAuth(getDashboardUsage);
