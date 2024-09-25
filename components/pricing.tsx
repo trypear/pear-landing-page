@@ -31,7 +31,6 @@ import {
 } from "./ui/dropdown-menu";
 import { Info } from "lucide-react";
 import Spinner from "./ui/spinner";
-import Link from "next/link";
 import Footer from "./footer";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
@@ -328,10 +327,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               )}
             </>
           )}
-
-          {/* <button className="bg-primary-800 py-2 px-4 w-full rounded-full text-sm font-medium hover:bg-primary-800"> */}
-          {/* Get Started */}
-          {/* </button> */}
         </CardFooter>
       </div>
     </Card>

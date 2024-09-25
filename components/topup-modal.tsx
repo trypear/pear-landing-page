@@ -13,7 +13,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CreditCard, Zap, Check } from "lucide-react";
+import { CreditCard, Check } from "lucide-react";
+import { useTopUpCheckout } from "@/hooks/useTopUpCheckout";
+import { useUser } from "@/hooks/useUser";
 
 const REQUEST_OPTIONS = [
   { amount: 5, requests: 233, popular: false },
@@ -21,31 +23,26 @@ const REQUEST_OPTIONS = [
   { amount: 15, requests: 700, popular: false },
 ];
 
-export default function BuyRequestsModal() {
+export default function TopUpModal() {
   const [selectedAmount, setSelectedAmount] = useState(10);
   const [isOpen, setIsOpen] = useState(false);
+  const { user } = useUser();
+  const { handleTopUpCheckout, isSubmitting } = useTopUpCheckout(user);
 
-  const handleBuyRequests = () => {
-    const selectedOption = REQUEST_OPTIONS.find(
-      (option) => option.amount === selectedAmount,
-    );
-    if (selectedOption) {
-      console.log(
-        `Purchased ${selectedOption.requests} requests for $${selectedOption.amount}`,
-      );
-      setIsOpen(false);
-    }
+  const handleBuyRequests = async () => {
+    await handleTopUpCheckout(selectedAmount);
+    setIsOpen(false);
   };
 
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Buy Extra Requests</Button>
+        <Button variant="outline">Top Up Credits</Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="max-w-md select-none sm:max-w-[425px]">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-2xl font-bold text-secondary-800 dark:text-white-50">
-            Buy Extra Requests
+            Top Up Credits
           </AlertDialogTitle>
           <AlertDialogDescription className="text-base text-gray-700 dark:text-gray-600">
             Enhance your AI experience with additional requests. Choose a
@@ -113,8 +110,9 @@ export default function BuyRequestsModal() {
           <AlertDialogAction
             className="bg-secondary-600 hover:bg-secondary-600/90 sm:w-1/2"
             onClick={handleBuyRequests}
+            disabled={isSubmitting}
           >
-            Continue
+            {isSubmitting ? "Processing..." : "Continue"}
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

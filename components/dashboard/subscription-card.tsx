@@ -27,7 +27,7 @@ import { Info } from "lucide-react";
 import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
-import BuyCreditsModal from "../buy-credits-modal";
+import TopUpModal from "../topup-modal";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
@@ -313,7 +313,7 @@ export default function SubscriptionCard({
             </p>
           </div>
           <div className="mt-4">
-            <BuyCreditsModal />
+            <TopUpModal />
           </div>
         </CardContent>
       </div>
