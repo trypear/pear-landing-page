@@ -20,7 +20,7 @@ const updates: ChangelogEntry[] = [
   {
     date: "18 September 2024",
     title: "File Creation + WSL Support",
-    version: "v1.2.0",
+    version: "v1.1.0 + v1.2.0",
     description: (
       <>
         {/* <div className="relative w-20"> */}
