@@ -271,7 +271,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
             ) : (
               <div className="flex w-full flex-col items-center gap-2">
                 {versionInfo && (
-                  <div className="mr-auto text-gray-500">
+                  <div className="ml-2 mr-auto text-sm text-gray-500">
                     version {versionInfo?.version}
                     <div>
                       last release{" "}
