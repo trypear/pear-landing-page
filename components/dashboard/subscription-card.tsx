@@ -137,7 +137,7 @@ export default function SubscriptionCard({
                     : `${usage.percent_credit_used ?? 0}% of PearAI Credits used`}
                 </p>
                 <p className="text-right text-sm text-muted-foreground">
-                  Credits refresh every month
+                  Credits refill monthly
                 </p>
               </div>
             </div>
