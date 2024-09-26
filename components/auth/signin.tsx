@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { SignInFormData, signInSchema } from "@/utils/form-schema";
 import { useSearchParams } from "next/navigation";
+import { useToggle } from "@/hooks/useToggle";
 
 export default function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -66,6 +67,8 @@ export default function SignIn() {
       setErrorMessage("An unexpected error occurred. Please try again.");
     }
   };
+
+  const [isPasswordVisible, togglePasswordVisibility] = useToggle(false);
 
   return (
     <section className="relative">
@@ -157,7 +160,7 @@ export default function SignIn() {
                       <FormControl>
                         <Input
                           id="password"
-                          type="password"
+                          type={isPasswordVisible ? "text" : "password"}
                           placeholder="********"
                           {...field}
                         />
@@ -166,7 +169,16 @@ export default function SignIn() {
                     </FormItem>
                   )}
                 />
-
+                <Label className="flex items-center">
+                  <Checkbox
+                    className="rounded"
+                    checked={isPasswordVisible}
+                    onCheckedChange={togglePasswordVisibility}
+                  />
+                  <span className="ml-2 cursor-pointer text-gray-600">
+                    Show Password
+                  </span>
+                </Label>
                 <div className="flex justify-between">
                   <Label className="flex items-center">
                     <Checkbox className="rounded" />
