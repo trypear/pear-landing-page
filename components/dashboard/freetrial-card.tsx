@@ -62,9 +62,6 @@ export default function FreeTrialCard({
                 {loading ? "-" : usage.percent_credit_used}% of free trial
                 PearAI Credits used
               </p>
-              <p className="text-right text-sm text-muted-foreground">
-                Credits refresh every month
-              </p>
             </div>
           </div>
           <div className="mb-4">
