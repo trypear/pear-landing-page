@@ -45,7 +45,7 @@ export default function FreeTrialCard({
                   ) : (
                     <strong>
                       {usage?.percent_credit_used != null
-                        ? `${usage.percent_credit_used}%`
+                        ? `${Math.min(usage.percent_credit_used, 100)}%`
                         : "Cannot find used percentage. Please contact PearAI support."}
                     </strong>
                   )}
@@ -59,8 +59,8 @@ export default function FreeTrialCard({
             />
             <div className="flex justify-between">
               <p className="text-sm text-muted-foreground">
-                {loading ? "-" : usage.percent_credit_used}% of free trial
-                PearAI Credits used
+                {loading ? "-" : Math.min(usage?.percent_credit_used ?? 0, 100)}
+                % of free trial PearAI Credits used
               </p>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default function FreeTrialCard({
                 </Link>
               </Button>
             </div>
-            <Button variant="link" asChild className="px-0 text-primary-800">
+            <Button variant="default" asChild>
               <Link href="/pricing">Subscribe Now</Link>
             </Button>
           </div>

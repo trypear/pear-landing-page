@@ -27,6 +27,11 @@ const nextConfiguration = {
         destination: "/docs/tab-autocomplete",
         permanent: true,
       },
+      {
+        source: "/download",
+        destination: "/pricing",
+        permanent: true,
+      },
     ];
   },
 };

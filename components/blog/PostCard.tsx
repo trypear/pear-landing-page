@@ -1,6 +1,8 @@
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { normalizeDate } from "@/lib/utils";
 
 interface PostCardProps {
   title: string;
@@ -11,30 +13,25 @@ interface PostCardProps {
 }
 
 const PostCard = ({ title, date, excerpt, thumbnail, url }: PostCardProps) => (
-  <Link
-    href={url}
-    className="mb-8 block rounded-lg p-3 hover:bg-neutral-200 dark:hover:bg-slate-800"
-  >
-    <div className="relative mb-6 aspect-video w-full rounded-md bg-gray-300">
-      <Image
-        fill
-        src={thumbnail}
-        alt={title}
-        className="h-full w-full rounded-md"
-      />
-    </div>
-
-    <time
-      dateTime={date}
-      className="block text-xs tracking-[0.01rem] text-gray-600 dark:text-gray-600"
-    >
-      {format(parseISO(date), "LLLL d, yyyy")}
-    </time>
-    <h2 className="mb-2 mt-1.5 text-xl font-semibold">{title}</h2>
-    <p className="line-clamp-3 text-sm text-gray-700 dark:text-gray-600">
-      {excerpt}
-    </p>
-  </Link>
+  <Card className="flex h-full flex-col overflow-hidden hover:bg-secondary-300/10">
+    <Link href={url}>
+      <div className="relative aspect-video w-full">
+        <Image
+          fill
+          src={thumbnail}
+          alt={title}
+          className="h-full w-full rounded-md"
+        />
+      </div>
+      <CardContent className="flex-grow p-4">
+        <time dateTime={date} className="mb-2 block text-xs text-gray-500">
+          {format(parseISO(normalizeDate(date)), "LLLL d, yyyy")}
+        </time>
+        <h2 className="mb-2 text-xl font-semibold">{title}</h2>
+        <p className="line-clamp-3 text-sm text-gray-500">{excerpt}</p>
+      </CardContent>
+    </Link>
+  </Card>
 );
 
 export default PostCard;

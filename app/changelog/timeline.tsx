@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { getTimePassed } from "@/utils/dateUtils";
 
 type TimelineItemProps = {
   date: string;
@@ -23,41 +24,51 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
   screenshot,
 }) => {
   return (
-    <article className="mb-8">
+    <article className="mb-8 mt-28">
       <div className="flex gap-x-3">
         {/* <!-- Left Content --> */}
-        <div className="hidden w-28 flex-shrink-0 text-end md:block">
-          <span className="text-xs font-medium text-primary-800 dark:text-primary-600">
-            {version}
-          </span>
-          <time dateTime={date} className="mt-1 block text-xs">
+        <div className="hidden w-40 flex-shrink-0 text-end lg:block">
+          <time dateTime={date} className="block text-lg">
             {date}
           </time>
+          <time
+            dateTime={date}
+            className="block text-base font-semibold text-slate-500"
+          >
+            {getTimePassed(date)}
+          </time>
+          {/* <time className="block text-base font-semibold text-slate-500">
+            {new Date(date).toLocaleDateString("en-US", {
+              weekday: "long",
+            })}
+          </time> */}
         </div>
         {/* <!-- Icon --> */}
-        <div className="relative after:absolute after:bottom-0 after:start-3.5 after:top-7 after:w-px after:-translate-x-[0.5px] after:bg-gray-300 last:after:hidden dark:after:bg-neutral-700">
-          <div className="relative z-10 flex h-6 w-7 items-center justify-center">
-            <div className="h-2 w-2 rounded-full bg-gray-300 dark:bg-neutral-600"></div>
-          </div>
+        <div className="relative z-10 mt-2 hidden h-6 w-7 items-center justify-center lg:flex">
+          <div className="h-2 w-2 rounded-full bg-gray-300 dark:bg-neutral-500"></div>
         </div>
         {/* <!-- Right Content --> */}
         <div className="grow">
-          <div className="mb-2 md:hidden">
-            <span className="text-xs font-medium text-primary-800 dark:text-primary-600">
-              {version}
-            </span>
-            <time dateTime={date} className="ml-2 text-xs">
-              {date}
-            </time>
-          </div>
           <div className={cn("justify-between gap-10 md:flex")}>
             <div>
-              <h3 className="dark:text-white mb-2 flex items-baseline gap-x-1.5 text-lg font-semibold text-gray-900 md:text-xl">
-                {title}
+              <h3 className="dark:text-white flex items-baseline gap-x-1.5 text-lg font-bold text-gray-900 md:text-3xl lg:mb-5">
+                {version} &nbsp;&nbsp;{title}
               </h3>
-              <div className="mb-4 text-sm text-gray-800 dark:text-neutral-400">
-                {description}
+              <div className="my-3 flex items-center gap-x-2 lg:hidden">
+                <time
+                  dateTime={date}
+                  className="text-xs font-semibold text-gray-600"
+                >
+                  {date}
+                </time>
+                <div className="h-1 w-1 rounded-full bg-gray-300 dark:bg-neutral-500"></div>
+                <time dateTime={date} className="block text-base">
+                  <div className="text-xs font-semibold text-gray-600">
+                    {getTimePassed(date)}
+                  </div>
+                </time>
               </div>
+              <div className="mb-4 text-gray-800">{description}</div>
             </div>
             {screenshot && (
               <div className="pr-4 md:ml-auto md:w-full md:max-w-xs">

@@ -18,6 +18,11 @@ const defaultMetadata = {
     "PearAI is an Open-source AI-powered code editor with features like AI chat, inline prompts, and debugging to accelerate your coding process.",
 };
 
+export const normalizeDate = (dateString: string) => {
+  const [year, month, day] = dateString.split("-");
+  return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
+};
+
 export const constructMetadata = ({
   title,
   description = defaultMetadata.description,

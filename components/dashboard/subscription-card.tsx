@@ -25,6 +25,8 @@ import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
 import { Info } from "lucide-react";
 import { UsageType } from "../dashboard";
+import { toast } from "sonner";
+import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
@@ -44,12 +46,16 @@ export default function SubscriptionCard({
   loading,
 }: SubscriptionCardProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [isUpgradeDialogOpen, setIsUpgradeDialogOpen] = useState(false);
   const { handleCancelSubscription, isCanceling, isCanceled } =
     useCancelSubscription(user, subscription);
+  const { handleUpgradeSubscription, isUpgrading } = useUpgradeSubscription(
+    user,
+    subscription,
+  );
 
   const handleCancelClick = () => {
     if (isCanceled) {
-      // Redirect to pricing page
       window.location.href = "/pricing";
     } else {
       setIsDialogOpen(true);
@@ -61,6 +67,21 @@ export default function SubscriptionCard({
       await handleCancelSubscription(subscription!.subscription_id);
     } finally {
       setIsDialogOpen(false);
+    }
+  };
+
+  const handleUpgradeSubscriptionClick = async () => {
+    try {
+      if (subscription?.subscription_id) {
+        await handleUpgradeSubscription();
+        return;
+      }
+      toast.error("Failed to upgrade subscription. Subscription ID not found.");
+    } catch (error) {
+      console.error("Error upgrading subscription:", error);
+      toast.error("Failed to upgrade subscription.");
+    } finally {
+      setIsUpgradeDialogOpen(false);
     }
   };
 
@@ -119,7 +140,7 @@ export default function SubscriptionCard({
                   ) : (
                     <strong>
                       {usage?.percent_credit_used != null
-                        ? `${usage.percent_credit_used}%`
+                        ? `${Math.min(usage.percent_credit_used, 100)}%`
                         : "Cannot find remaining percentage. Please contact PearAI support."}
                     </strong>
                   )}
@@ -134,7 +155,7 @@ export default function SubscriptionCard({
                 <p className="text-sm text-muted-foreground">
                   {loading
                     ? "-"
-                    : `${usage.percent_credit_used ?? 0}% of PearAI Credits used`}
+                    : `${Math.min(usage?.percent_credit_used ?? 0, 100)}% of PearAI Credits used`}
                 </p>
                 <p className="text-right text-sm text-muted-foreground">
                   Credits refill monthly
@@ -145,9 +166,69 @@ export default function SubscriptionCard({
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Plan</p>
-              <p className="text-muted-foreground">
-                {capitalizeInital(subscription.pricing_tier)}
-              </p>
+              <div className="flex items-center space-x-2">
+                <p className="text-muted-foreground">
+                  {capitalizeInital(subscription.pricing_tier)}
+                </p>
+                {/* {subscription.pricing_tier == "monthly" && (
+                  <Dialog
+                    open={isUpgradeDialogOpen}
+                    onOpenChange={setIsUpgradeDialogOpen}
+                  >
+                    <DialogTrigger asChild>
+                      <Button variant="outline" size="sm">
+                        Upgrade
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Upgrade</DialogTitle>
+                        <DialogDescription>
+                          Are you sure you want to upgrade your subscription to
+                          the Yearly Tier?
+                          <br />
+                          <br />
+                          <b>
+                            This change will take effect immediately, and be
+                            charged on your current payment method. The price is
+                            reflected on the{" "}
+                            <a
+                              href="/pricing"
+                              target="_blank"
+                              className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                            >
+                              pricing page
+                            </a>
+                            .
+                          </b>
+                          <br />
+                          <br />
+                          We&apos;ll refund the remaining funds from the current
+                          monthly subscription depending on the days remaining
+                          on your cycle. You will not be able to downgrade
+                          afterwards.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <DialogFooter>
+                        <Button
+                          variant="outline"
+                          onClick={() => setIsUpgradeDialogOpen(false)}
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          disabled={isUpgrading}
+                          onClick={() => {
+                            handleUpgradeSubscriptionClick();
+                          }}
+                        >
+                          {isUpgrading ? "Upgrading..." : "Confirm Upgrade"}
+                        </Button>
+                      </DialogFooter>
+                    </DialogContent>
+                  </Dialog>
+                )} */}
+              </div>
             </div>
           </div>
           <div className="mb-4">
@@ -167,8 +248,8 @@ export default function SubscriptionCard({
             </div>
           </div>
           <div className="mt-8 flex justify-between space-x-4">
-            <div className="hidden sm:block">
-              <Button variant="outline" className="text-primary-800" asChild>
+            <div className="hidden space-x-2 sm:block">
+              <Button variant="default" asChild>
                 <Link
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
                   target="_parent"
