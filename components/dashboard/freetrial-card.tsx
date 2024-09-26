@@ -63,7 +63,7 @@ export default function FreeTrialCard({
                 PearAI Credits used
               </p>
               <p className="text-right text-sm text-muted-foreground">
-                * Credits refresh every month
+                Credits refresh every month
               </p>
             </div>
           </div>
