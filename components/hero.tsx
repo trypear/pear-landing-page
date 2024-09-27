@@ -5,6 +5,7 @@ import Link from "next/link";
 import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
 import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
+import { YCombinatorLogo } from "@/components/ui/icons";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -69,19 +70,35 @@ const HeroDescription = () => (
     </p>
   </div>
 );
-
 const HeroButtons = () => {
   return (
-    <div className="mx-auto flex max-w-sm items-center justify-center space-x-2.5 sm:max-w-none">
-      <div data-aos="fade-up" data-aos-delay="400">
+    <div className="mx-auto flex max-w-sm flex-col items-center justify-center sm:max-w-none">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="400"
+        className="flex flex-col items-center"
+      >
         <Button asChild size="lg">
           <Link href="/pricing">Download For Free</Link>
         </Button>
+        <div
+          className="mt-10 flex items-center"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
+          <span className="text-sm text-gray-500">Backed by</span>
+          <Link
+            href="https://www.ycombinator.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <YCombinatorLogo className="h-11 w-auto" />
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
-
 export default function Hero() {
   const { theme } = useTheme();
 
