@@ -86,13 +86,15 @@ const HeroButtons = () => {
           data-aos="fade-up"
           data-aos-delay="500"
         >
-          <span className="text-sm text-gray-500">Backed by</span>
+          <span className="mr-[-0.1rem] mt-[0.12rem] text-sm text-gray-500">
+            Backed by
+          </span>
           <Link
             href="https://www.ycombinator.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <YCombinatorLogo className="h-11 w-auto" />
+            <YCombinatorLogo className="h-14 w-auto" />
           </Link>
         </div>
       </div>
