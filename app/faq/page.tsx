@@ -118,7 +118,16 @@ const faqData: FAQItem[] = [
         anyone can see, review, and contribute to all of our code! This allows
         for a community-driven product, mitigates privacy concerns that other
         similar tools face, and provide a faster development cycle thanks to
-        community members who help solve issues, and build new features.
+        community members who help solve issues, and build new features. See why
+        this is a huge differentiator for PearAI compared to alternatives such
+        as Cursor on our blog post:{" "}
+        <Link
+          href="/blog/why-open-source"
+          className="text-primary-600 hover:underline"
+        >
+          Why Open Source Matters for AI Code Editors
+        </Link>
+        .
       </p>
     ),
   },
