@@ -207,6 +207,7 @@ export async function getOS(): Promise<OSType> {
     ) {
       let platform: SupportedPlatform;
       let download: DownloadAlias;
+      let architecture: "x64" | "arm";
       if (userAgent.platform !== "macOS") {
         platform = userAgent.platform;
         download = userAgent.platform.toLowerCase();
@@ -219,15 +220,20 @@ export async function getOS(): Promise<OSType> {
         }
       }
 
+      if (userAgent.architecture === "arm") {
+        architecture = "arm";
+      } else {
+        architecture = "x64";
+      }
+
       return {
         platform: platform,
-        architecture: userAgent.architecture,
+        architecture: architecture,
         download: download,
       };
     }
     return { platform: "Linux", architecture: "x64", download: "linux" };
   } catch (err) {
-    console.log(err);
     return { platform: "Linux", architecture: "x64", download: "linux" };
   }
 }
