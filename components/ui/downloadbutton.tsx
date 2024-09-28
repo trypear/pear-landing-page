@@ -13,7 +13,6 @@ export default function DownloadButton() {
         router.push("/blog/download-pearai-on-linux");
         return;
       }
-      console.log(os.download);
       const res = await fetch(`/api/download?os_type=${os.download}`, {
         method: "GET",
         headers: {
