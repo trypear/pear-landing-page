@@ -840,7 +840,7 @@ export const posts = [
     date: "2024-09-26",
     author: "Duke Pan",
     readingTime: "3 minutes",
-    thumbnail: "/images/blog/opensource.webp",
+    thumbnail: "/images/og-image.png",
     tags: ["Open Source"],
     content: `<article
     class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
