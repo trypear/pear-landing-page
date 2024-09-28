@@ -135,7 +135,7 @@ export default function SubscriptionCard({
             <div className="mb-4">
               <div className="flex justify-between">
                 <p className="font-medium">Requests</p>
-                <p className="text-sm/6 text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {loading ? (
                     "-"
                   ) : (
@@ -152,11 +152,16 @@ export default function SubscriptionCard({
                 className="mb-2 mt-2 h-2 w-full"
                 indicatorColor="bg-primary-800 bg-opacity-75"
               />
-              <p className="text-sm text-muted-foreground">
-                {loading
-                  ? "-"
-                  : `${Math.min(usage?.percent_credit_used ?? 0, 100)}% of PearAI Credits used`}
-              </p>
+              <div className="flex justify-between">
+                <p className="text-sm text-muted-foreground">
+                  {loading
+                    ? "-"
+                    : `${Math.min(usage?.percent_credit_used ?? 0, 100)}% of PearAI Credits used`}
+                </p>
+                <p className="text-right text-sm text-muted-foreground">
+                  Credits refill monthly
+                </p>
+              </div>
             </div>
           )}
           <div className="mb-4">
@@ -230,7 +235,7 @@ export default function SubscriptionCard({
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Period</p>
-              <p className="text-sm/6 text-muted-foreground">
+              <p className="text-sm text-muted-foreground">
                 {new Date(
                   subscription.current_period_start * 1000,
                 ).toLocaleDateString()}{" "}

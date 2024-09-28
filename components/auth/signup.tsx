@@ -19,6 +19,9 @@ import {
 import { signUpSchema, SignUpFormData } from "@/utils/form-schema";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToggle } from "@/hooks/useToggle";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -82,6 +85,7 @@ export default function SignUp() {
       setErrorMessage("An unexpected error occurred. Please try again.");
     }
   };
+  const [isPasswordVisible, togglePasswordVisibility] = useToggle(false);
 
   return (
     <section className="relative">
@@ -211,7 +215,7 @@ export default function SignUp() {
                       <FormControl>
                         <Input
                           id="password"
-                          type="password"
+                          type={isPasswordVisible ? "text" : "password"}
                           placeholder="Password (at least 8 characters)"
                           {...field}
                         />
@@ -220,6 +224,17 @@ export default function SignUp() {
                     </FormItem>
                   )}
                 />
+
+                <Label className="flex items-center">
+                  <Checkbox
+                    className="rounded"
+                    checked={isPasswordVisible}
+                    onCheckedChange={togglePasswordVisibility}
+                  />
+                  <span className="ml-2 cursor-pointer text-gray-600">
+                    Show Password
+                  </span>
+                </Label>
 
                 <div className="text-center text-sm text-gray-600">
                   <Link

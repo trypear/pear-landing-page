@@ -57,7 +57,7 @@ export default function DashboardPage({
 
     const getUserRequestsUsage = async () => {
       try {
-        const response = await fetch("/api/get-requests-usage", {
+        const response = await fetch("/api/dashboard-usage", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
         });

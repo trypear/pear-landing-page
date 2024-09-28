@@ -37,6 +37,11 @@ interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
 }
 
+type VersionInfo = {
+  version: string;
+  lastReleaseDate: string;
+};
+
 const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   title,
   prevPrice,
@@ -145,6 +150,25 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     }
   }, []);
 
+  const [versionInfo, setVersionInfo] = useState<VersionInfo | null>(null);
+
+  useEffect(() => {
+    const fetchVersionInfo = async () => {
+      try {
+        const response = await fetch("/api/version-info");
+        if (!response.ok) {
+          throw new Error("Failed to fetch version info");
+        }
+        const data: VersionInfo = await response.json();
+        setVersionInfo(data);
+      } catch (error: any) {
+        toast.error(error.message);
+      }
+    };
+
+    fetchVersionInfo();
+  }, []);
+
   return (
     <Card
       className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-900/40 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
@@ -246,6 +270,21 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               </p>
             ) : (
               <div className="flex w-full flex-col items-center gap-2">
+                {versionInfo && (
+                  <div className="ml-2 mr-auto text-sm text-gray-500">
+                    version {versionInfo?.version}
+                    <div>
+                      last release{" "}
+                      {new Date(
+                        versionInfo?.lastReleaseDate,
+                      ).toLocaleDateString("en-US", {
+                        day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                      })}
+                    </div>
+                  </div>
+                )}
                 <div className="flex w-full max-w-md gap-2">
                   <Button
                     className={cn("rainbow-gradient", "font-bold", "flex-1")}
