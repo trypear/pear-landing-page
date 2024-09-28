@@ -921,7 +921,8 @@ export const posts = [
   {
     title: "Open-Source Bounties at PearAI",
     url: "/blog/open-source-bounties",
-    excerpt: "PearAI introduces monetary bounties for significant open-source contributions. Solve big issues, get paid, and help build the best AI code editor in the world.",
+    excerpt:
+      "PearAI introduces monetary bounties for significant open-source contributions. Solve big issues, get paid, and help build the best AI code editor in the world.",
     date: "2024-09-28",
     author: "PearAI Team",
     readingTime: "2 min",
@@ -971,5 +972,4 @@ export const posts = [
       </section>
     </article>`,
   },
-  
 ];
