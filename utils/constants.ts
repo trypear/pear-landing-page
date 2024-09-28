@@ -25,12 +25,14 @@ const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST =
 const NEXT_PUBLIC_STRIPE_TOP_UP_5_CREDITS_ID = "price_1Q2nvy09pmf2gJFPOCmPjfmB";
 const NEXT_PUBLIC_STRIPE_TOP_UP_5_CREDITS_ID_TEST =
   "price_1Q2nvy09pmf2gJFPOCmPjfmB";
-const NEXT_PUBLIC_STRIPE_TOP_UP_10_CREDITS_ID = "price_id_for_10_credits";
+const NEXT_PUBLIC_STRIPE_TOP_UP_10_CREDITS_ID =
+  "price_1Q438e09pmf2gJFPKXLF5TC8";
 const NEXT_PUBLIC_STRIPE_TOP_UP_10_CREDITS_ID_TEST =
-  "price_id_for_10_credits_test";
-const NEXT_PUBLIC_STRIPE_TOP_UP_15_CREDITS_ID = "price_id_for_15_credits";
+  "price_1Q438e09pmf2gJFPKXLF5TC8";
+const NEXT_PUBLIC_STRIPE_TOP_UP_15_CREDITS_ID =
+  "price_1Q438v09pmf2gJFPrrzYofm3";
 const NEXT_PUBLIC_STRIPE_TOP_UP_15_CREDITS_ID_TEST =
-  "price_id_for_15_credits_test";
+  "price_1Q438v09pmf2gJFPrrzYofm3";
 
 export const STRIPE_PRICE_IDS = {
   WAITLIST: TEST_MODE_ENABLED

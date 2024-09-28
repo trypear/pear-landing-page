@@ -248,7 +248,7 @@ export default function SubscriptionCard({
               </p>
             </div>
           </div>
-          <div className="mt-8 flex justify-between space-x-4">
+          <div className="flex justify-between">
             <div className="hidden space-x-2 sm:block">
               <Button variant="default" asChild>
                 <Link
@@ -259,13 +259,16 @@ export default function SubscriptionCard({
                 </Link>
               </Button>
             </div>
+            <TopUpModal />
+          </div>
+          <div className="flex justify-between space-x-4">
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button
                   onClick={handleCancelClick}
                   disabled={isCanceling}
                   variant="link"
-                  className="px-0"
+                  className="px-0 underline underline-offset-2"
                 >
                   {isCanceling
                     ? "Canceling..."
@@ -316,9 +319,6 @@ export default function SubscriptionCard({
               </Button>{" "}
               Use this button to open the app and login directly.
             </p>
-          </div>
-          <div className="mt-4">
-            <TopUpModal />
           </div>
         </CardContent>
       </div>
