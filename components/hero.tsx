@@ -65,8 +65,8 @@ const HeroDescription = () => (
       data-aos="fade-up"
       data-aos-delay="200"
     >
-      Afraid of switching editors? No need, PearAI is a fork of VSCode so
-      you&apos;ll feel right at home 😏
+      Afraid of switching editors? No need, PearAI is a fork of VSCode and
+      Continue so you&apos;ll feel right at home 😏
     </p>
   </div>
 );
