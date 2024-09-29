@@ -2,6 +2,7 @@ node_modules/
 .next/
 .swc/
 .*.env
+.env
 .env*.local
 .DS_Store
 .vscode
