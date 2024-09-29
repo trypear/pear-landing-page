@@ -699,7 +699,7 @@ export const posts = [
     excerpt:
       "Improve your coding skills and interview readiness with PearAI's LeetCode integration. A practical tool for efficient technical interview preparation.",
     date: "2024-09-15",
-    author: "PearAI Team",
+    author: "Nang, IcePrey",
     readingTime: "4 min",
     thumbnail: "/images/leetcode.png",
     tags: [
@@ -831,5 +831,145 @@ export const posts = [
   </section>
 </article>
 `,
+  },
+  {
+    title: "Why Open Source Matters for AI Code Editors",
+    url: "/blog/why-open-source",
+    excerpt:
+      "Discover why open source is crucial for AI code editors and how PearAI leverages this approach to create a superior product with a thriving community.",
+    date: "2024-09-26",
+    author: "Duke Pan",
+    readingTime: "3 minutes",
+    thumbnail: "/images/og-image.png",
+    tags: ["Open Source"],
+    content: `<article
+    class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+  >
+    <section class="space-y-6">
+      <h2
+        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+      >
+        The True Differentiators For The Future Of AI Code Editors
+      </h2>
+      <p>
+        In the world of AI-powered code editors, the playing field for AI models is surprisingly level. Most editors simply use the best available models on the market, which are all improving everyday. This means that the real distinguishing factors lie elsewhere:
+      </p>
+      <ul class="list-disc pl-6">
+        <li>User Interface and Experience (UI/UX)
+          <p class="text-gray-600 text-base">Open source allows for community-driven UI/UX improvements; with an extremely tight user feedback loop, we know exactly what you want. Code editors are uniquely suited for open source development because the developers themselves are users of the product!</p>
+        </li>
+        <li>Trust and Transparency
+          <p class="text-gray-600 text-base">With open source, the codebase is visible to all, fostering trust through transparency and allowing for independent security audits.</p>
+        </li>
+        <li>Community Support
+          <p class="text-base text-gray-600 mt-1 mb-2">Open source projects benefit from a global community of developers, leading to faster bug fixes, feature requests, and overall product improvement. For example, during our launch, we had no Linux version, but many people who only use Linux wanted to use PearAI. Someone from our community (s/o to Max!) single-handedly developed a Linux distribution, which is now available today for everyone to use.</p>
+        </li>
+        <li>Distribution
+          <p class="text-base text-gray-600 mt-1 mb-2">Due to the underlying models being similar between products, the team with the coolest and strongest community will be the most popular (that's us 😉).</p>
+        </li>
+      </ul>
+      <p>
+        These factors align perfectly with the principles of open source software, making it an ideal approach for AI code editors.
+      </p>
+    </section>
+  
+    <section class="space-y-4">
+      <h2
+        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+      >
+        Why Us: PearAI's Thriving Open Source Community
+      </h2>
+      <p>
+        PearAI stands out with the most active open source community among AI code editors. Unlike many open source projects that rely on just one or two contributors, PearAI boasts an impressive statistic:
+      </p>
+      <figure class="mt-4">
+        <figcaption class="text-center text-sm mt-2">Over 50% of commits are made by contributors.</figcaption>
+      </figure>
+      <p>
+        This diverse contribution spans across our landing page, server, and the app itself, driving our rapid development cycle.
+      </p>
+    </section>
+  
+    <section class="space-y-4">
+      <h2
+        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+      >
+        Beyond Code: Open Source Founders
+      </h2>
+      <p>
+        At PearAI, our commitment to openness extends beyond our codebase. As founders, we embrace an "open source" approach to our journey:
+      </p>
+      <ul class="list-disc pl-6">
+        <li>We share our entire development process online</li>
+        <li>Our YouTube channel documents our progress and insights</li>
+        <li>We livestream our discussions, us coding the product, and engage with the community through Twitch livestreams</li>
+      </ul>
+      <p>
+        This transparency and engagement form the foundation of our strong community right from the start.
+      </p>
+        <p class="mt-4">
+          Follow our journey on:
+          <br />
+          YouTube: <a href="https://youtube.com/@nang88" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">@nang88</a>, <a href="https://youtube.com/@FryingPan" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">@FryingPan</a>
+          <br />
+          Twitch: <a href="https://twitch.tv/not_nang" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">not_nang</a>, <a href="https://twitch.tv/fryingpan" target="_blank" rel="noopener noreferrer" class="text-primary-600 hover:underline">fryingpan</a>
+        </p>
+    </section>
+  </article>
+  `,
+  },
+  {
+    title: "Open-Source Bounties at PearAI",
+    url: "/blog/open-source-bounties",
+    excerpt:
+      "PearAI introduces monetary bounties for significant open-source contributions. Solve big issues, get paid, and help build the best AI code editor in the world.",
+    date: "2024-09-28",
+    author: "PearAI Team",
+    readingTime: "2 min",
+    thumbnail: "/images/og-image.png",
+    tags: [
+      "open-source",
+      "bounties",
+      "contributions",
+      "community",
+      "development",
+    ],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+      <section class="space-y-6">
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          Open-Source Bounties At PearAI 🗣️
+        </h2>
+        <p class="font-bold">
+          TLDR: 🍐 Solve big issues, get PAID 💸 🍐
+        </p>
+        <p>
+          As you may know, PearAI is an Open-Source AI Code Editor and fully transparent to the public. We are driven by our open-source community that is working under the shared goal of making the best AI code editor in the world. However, sometimes we have bigger tasks that need more expertise and time from a contributor. This requires a lot of effort, so we want to provide more incentive and rewards for these contributors.
+        </p>
+      </section>
+  
+      <section class="space-y-6">
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          Introducing PearAI's Open-Source Bounties!
+        </h2>
+        <p>
+          For some larger tasks, we will add a monetary bounty, defined in the issue description. Simply put, if you complete the issue (i.e. your code gets merged), you will get money as a reward. Due to the fast pace we need for PearAI, multiple people may work on the same task at the same time independently. However, if only one gets merged, a certain other amount of worthy attempts should be compensated as well for the efforts.
+        </p>
+        <p>
+          If you have a worthy attempt (and we will be generous with this), you will be rewarded as well by the attempt bounty, which is also pre-set in the issue description.
+        </p>
+      </section>
+  
+      <section class="space-y-6">
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          How to Participate
+        </h2>
+        <p>
+          Simply look for tickets tagged with "Bounty" <a href="https://github.com/trypear/pearai-app/labels/Bounty" class="text-primary-600 hover:underline">here</a>. These larger tasks often require context for PearAI and expertise, so they will likely be application-based to start. The link to apply (takes less than a minute) will also be in the issue description.
+        </p>
+        <p>
+          We hope that this adds even more whimsy to bringing the best AI code editor into existence together.
+        </p>
+      </section>
+    </article>`,
   },
 ];
