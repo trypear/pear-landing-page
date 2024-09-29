@@ -65,7 +65,7 @@ const FAQ: React.FC = () => {
               See the contributor&apos;s section:{" "}
               <Link
                 rel="noopener noreferrer"
-                className="underline"
+                className="text-primary-600 hover:underline"
                 target="_blank"
                 href="/docs/contributors"
               >
@@ -85,40 +85,45 @@ export default FAQ;
 const faqData: FAQItem[] = [
   {
     question: "Why is it called PearAI?",
-    answer: <p>Pair programming... Pear Programming... PearAI!</p>,
-  },
-  {
-    question:
-      "What separates PearAI from Github Copilot and other competitors?",
     answer: (
       <p>
-        PearAI offers significant advantages over competitors in both AI
-        capabilities and user experience: <br />
+        The name PearAI is a playful combination of &ldquo;pair
+        programming&rdquo; and &ldquo;AI&rdquo;, reflecting our focus on
+        collaborative coding and the power of artificial intelligence.
+      </p>
+    ),
+  },
+  {
+    question: "What separates PearAI from our competitors?",
+    answer: (
+      <p>
+        PearAI provides significant advantages in both AI capabilities and
+        overall user experience:
         <br />
-        AI Model Flexibility: Unlike Copilot, which is limited to OpenAI&apos;s
-        models, PearAI leverages the most advanced AI models available,
-        currently featuring Claude Sonnet 3.5. This flexibility allows us to
-        always use the best-performing model for coding tasks. You can also use
-        your own API keys, or local models. <br />
         <br />
-        Enhanced Codebase Context: Using RAG (Retrieval Augmented Generation),
-        PearAI has knowledge of your entire codebase, making answers much more
-        relevant and useful for you. In contrast, Copilot can only include
-        limited context that you must pick out yourself. <br />
+        <b>Unmatched AI Model Flexibility:</b> PearAI leverages the most
+        advanced AI models available, currently featuring Claude Sonnet 3.5,
+        ensuring optimal performance for your coding tasks. Integrate your own
+        API keys or local models for a truly customized experience.
         <br />
-        UI/UX Focus: As a complete IDE rather than just an extension, PearAI
-        provides a more integrated and refined coding environment. This allows
-        for smoother workflows and more intuitive interactions with AI
+        <br />
+        <b>Superior Codebase Understanding:</b> Using Retrieval Augmented
+        Generation (RAG), PearAI understands your entire codebase, providing
+        highly relevant and useful assistance. This deep contextual awareness
+        significantly enhances the quality of AI-driven suggestions.
+        <br />
+        <br />
+        <b>Intuitive and Integrated Development Environment:</b> As a complete
+        IDE, PearAI offers a seamless and refined coding experience,
+        streamlining workflows and facilitating intuitive interactions with AI
         assistance.
         <br />
         <br />
-        Open-Source: PearAI is fully transparent and open-source, which means
-        anyone can see, review, and contribute to all of our code! This allows
-        for a community-driven product, mitigates privacy concerns that other
-        similar tools face, and provide a faster development cycle thanks to
-        community members who help solve issues, and build new features. See why
-        this is a huge differentiator for PearAI compared to alternatives such
-        as Cursor on our blog post:{" "}
+        <b>Transparency and Community-Driven Innovation:</b> PearAI is fully
+        open-source, promoting transparency and community involvement. This
+        fosters continuous improvement, rapid development, and addresses privacy
+        concerns often associated with proprietary alternatives. Learn more
+        about the power of open-source in our blog post:{" "}
         <Link
           href="/blog/why-open-source"
           className="text-primary-600 hover:underline"
@@ -130,18 +135,59 @@ const faqData: FAQItem[] = [
     ),
   },
   {
+    question: "How does PearAI compare to GitHub Copilot?",
+    answer: (
+      <p>
+        As a comprehensive code editor, PearAI offers a more integrated AI
+        coding experience compared to Copilot, which functions as an extension.
+        PearAI&apos;s user interface is designed specifically for seamless AI
+        interaction, and we prioritize utilizing the latest and most powerful AI
+        models available. Our advanced Retrieval Augmented Generation (RAG)
+        implementation ensures superior codebase context, resulting in more
+        accurate and relevant code suggestions than Copilot.
+      </p>
+    ),
+  },
+  {
+    question: "How does PearAI compare to Cursor?",
+    answer: (
+      <p>
+        PearAI distinguishes itself through its open-source nature, guaranteeing
+        complete transparency and data privacy. Our community-driven development
+        fosters trust and collaboration, allowing developers to actively
+        contribute to the platform&apos;s evolution. Additionally, PearAI offers
+        a more cost-effective solution compared to Cursor.
+      </p>
+    ),
+  },
+  {
+    question: "How does PearAI compare to ChatGPT?",
+    answer: (
+      <p>
+        While ChatGPT is a versatile language model, PearAI specializes in code
+        generation with its advanced AI models (e.g., Claude 3.5 Sonnet) and
+        deep understanding of your codebase through local Retrieval Augmented
+        Generation (RAG) implementation. This allows PearAI to provide superior
+        code suggestions within your coding environment, eliminating the need
+        for constant tab-switching and code-copying.
+      </p>
+    ),
+  },
+  {
     question: "Why should I switch to PearAI?",
     answer: (
       <p>
-        PearAI will speed up and improve your development. PearAI is a fork of
-        VSCode, and possess all of its functionalities, but also adds more to it
-        by integrating AI functionalities to speed up your coding workflow.
-        Current users have expressed that their coding workflow accelerated by
-        at least 3-4x.
+        PearAI significantly enhances developer productivity by building upon
+        the robust foundation of VS Code. We&apos;ve taken all the functionality
+        you love about VS Code and supercharged it with integrated AI
+        capabilities designed to streamline your workflow.
         <br />
-        <br /> By switching to PearAI, you can speed up your product
-        development, and not lack behind in terms of AI tooling compared to your
-        peers.
+        <br />
+        Our users report experiencing a 3-4x increase in development speed. This
+        translates to faster product development cycles, empowering you to stay
+        ahead of the curve and maintain a competitive edge with cutting-edge AI
+        tooling. Transitioning to PearAI ensures you&apos;re equipped with the
+        tools to innovate and deliver faster than ever before.
       </p>
     ),
   },
@@ -150,21 +196,23 @@ const faqData: FAQItem[] = [
       "Why can't I just use ChatGPT, Claude, Gemini, or another LLM chat directly instead?",
     answer: (
       <p>
-        With PearAI, you don&apos;t need copy-paste code or switch tabs anymore,
-        as AI is integreated into the code editor for a seamless experience.
-        Also, PearAI provides better responses than vanilla LLM&apos;s by having
-        context of your codebase achieved through RAG (Retrieval Augemented
-        Generation). Try it out yourself - we&apos;re sure you&apos;ll love it!
+        PearAI eliminates the need for constant copy-pasting and tab switching.
+        Our seamless AI integration directly within the code editor provides a
+        streamlined and efficient coding experience. Leveraging Retrieval
+        Augmented Generation (RAG), PearAI delivers superior responses compared
+        to standard LLMs by incorporating the context of your codebase.
+        Experience the difference – we&apos;re confident you&apos;ll be
+        impressed.
       </p>
     ),
   },
   {
-    question: "Is PearAI an extension or an app?",
+    question: "Why a dedicated code editor instead of an extension?",
     answer: (
       <p>
-        PearAI is a full-fledged app. Being an app instead of being just an
-        extension provides us the highest degree of freedom to ensure the best,
-        smoothest experience for you!
+        Developing PearAI as a standalone code editor enables us to optimize the
+        user interface and experience for seamless AI integration. This approach
+        ensures maximum productivity and efficiency for developers.
       </p>
     ),
   },
@@ -185,6 +233,23 @@ const faqData: FAQItem[] = [
         ). Our servers never store any of your code. Additionally, we maintain a
         zero-data retention policy with our LLM cloud provider, Anthropic,
         ensuring also they neither store nor train on your code.
+      </p>
+    ),
+  },
+  {
+    question: "Want to see a demo?",
+    answer: (
+      <p>
+        Checkout{" "}
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary-600 hover:underline"
+          href="https://youtu.be/v4NN_qadBS0?si=Gk6TKD-R1U_RAaln "
+        >
+          Building a new feature without having to write a single line of code
+          with PearAI
+        </Link>
       </p>
     ),
   },
