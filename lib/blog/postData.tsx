@@ -918,4 +918,58 @@ export const posts = [
   </article>
   `,
   },
+  {
+    title: "Open-Source Bounties at PearAI",
+    url: "/blog/open-source-bounties",
+    excerpt:
+      "PearAI introduces monetary bounties for significant open-source contributions. Solve big issues, get paid, and help build the best AI code editor in the world.",
+    date: "2024-09-28",
+    author: "PearAI Team",
+    readingTime: "2 min",
+    thumbnail: "/images/og-image.png",
+    tags: [
+      "open-source",
+      "bounties",
+      "contributions",
+      "community",
+      "development",
+    ],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+      <section class="space-y-6">
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          Open-Source Bounties At PearAI 🗣️
+        </h2>
+        <p class="font-bold">
+          TLDR: 🍐 Solve big issues, get PAID 💸 🍐
+        </p>
+        <p>
+          As you may know, PearAI is an Open-Source AI Code Editor and fully transparent to the public. We are driven by our open-source community that is working under the shared goal of making the best AI code editor in the world. However, sometimes we have bigger tasks that need more expertise and time from a contributor. This requires a lot of effort, so we want to provide more incentive and rewards for these contributors.
+        </p>
+      </section>
+  
+      <section class="space-y-6">
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          Introducing PearAI's Open-Source Bounties!
+        </h2>
+        <p>
+          For some larger tasks, we will add a monetary bounty, defined in the issue description. Simply put, if you complete the issue (i.e. your code gets merged), you will get money as a reward. Due to the fast pace we need for PearAI, multiple people may work on the same task at the same time independently. However, if only one gets merged, a certain other amount of worthy attempts should be compensated as well for the efforts.
+        </p>
+        <p>
+          If you have a worthy attempt (and we will be generous with this), you will be rewarded as well by the attempt bounty, which is also pre-set in the issue description.
+        </p>
+      </section>
+  
+      <section class="space-y-6">
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          How to Participate
+        </h2>
+        <p>
+          Simply look for tickets tagged with "Bounty" <a href="https://github.com/trypear/pearai-app/labels/Bounty" class="text-primary-600 hover:underline">here</a>. These larger tasks often require context for PearAI and expertise, so they will likely be application-based to start. The link to apply (takes less than a minute) will also be in the issue description.
+        </p>
+        <p>
+          We hope that this adds even more whimsy to bringing the best AI code editor into existence together.
+        </p>
+      </section>
+    </article>`,
+  },
 ];

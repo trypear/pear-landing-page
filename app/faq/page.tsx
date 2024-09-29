@@ -165,6 +165,11 @@ const faqData: FAQItem[] = [
         PearAI is a full-fledged app. Being an app instead of being just an
         extension provides us the highest degree of freedom to ensure the best,
         smoothest experience for you!
+        <br />
+        <br />
+        If you prefer to use a VSCode extension, we recommend using{" "}
+        <Link href="https://continue.dev/">Continue.dev</Link> instead. We are a
+        fork of them so the features will be very similar!
       </p>
     ),
   },
