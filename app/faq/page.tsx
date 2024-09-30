@@ -59,8 +59,8 @@ const FAQ: React.FC = () => {
             </AccordionItem>
           ))}
           <AccordionItem value={"contribute"}>
-            <AccordionTrigger className="text-left text-base font-semibold">
-              How can I contribute to PearAI?
+            <AccordionTrigger className="text-left text-base">
+              7. How can I contribute to PearAI?
             </AccordionTrigger>
             <AccordionContent className="text-sm text-gray-600">
               See the contributor&apos;s section:{" "}
@@ -85,12 +85,12 @@ export default FAQ;
 
 const faqData: FAQItem[] = [
   {
-    question: "Why is it called PearAI?",
+    question: "0. Why is it called PearAI?",
     answer: <p>Pair programming... Pear Programming... PearAI!</p>,
   },
   {
     question:
-      "What separates PearAI from Github Copilot and other competitors?",
+      "1. What separates PearAI from Github Copilot and other competitors?",
     answer: (
       <p>
         PearAI offers significant advantages over competitors in both AI
@@ -131,7 +131,7 @@ const faqData: FAQItem[] = [
     ),
   },
   {
-    question: "Why should I switch to PearAI?",
+    question: "2. Why should I switch to PearAI?",
     answer: (
       <p>
         PearAI will speed up and improve your development. PearAI is a fork of
@@ -148,7 +148,7 @@ const faqData: FAQItem[] = [
   },
   {
     question:
-      "Why can't I just use ChatGPT, Claude, Gemini, or another LLM chat directly instead?",
+      "3. Why can't I just use ChatGPT, Claude, Gemini, or another LLM chat directly instead?",
     answer: (
       <p>
         With PearAI, you don&apos;t need copy-paste code or switch tabs anymore,
@@ -160,7 +160,7 @@ const faqData: FAQItem[] = [
     ),
   },
   {
-    question: "Is PearAI an extension or an app?",
+    question: "4. Is PearAI an extension or an app?",
     answer: (
       <p>
         PearAI is a full-fledged app. Being an app instead of being just an
@@ -175,7 +175,7 @@ const faqData: FAQItem[] = [
     ),
   },
   {
-    question: "Does PearAI store my code?",
+    question: "5. Does PearAI store my code?",
     answer: (
       <p>
         No. All codebase indexing occurs and remains strictly local on your
@@ -195,7 +195,8 @@ const faqData: FAQItem[] = [
     ),
   },
   {
-    question: "What new features does PearAI offer compared to Continue.dev?",
+    question:
+      "6. What new features does PearAI offer compared to Continue.dev?",
     answer: (
       <div>
         <ul className="list-disc space-y-2 pl-5">
