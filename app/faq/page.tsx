@@ -8,6 +8,7 @@ import Link from "next/link";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
 import { FAQItem } from "@/types/faqItems";
+import React from "react";
 
 export const metadata: Metadata = constructMetadata({
   title: "FAQ",
@@ -191,6 +192,94 @@ const faqData: FAQItem[] = [
         zero-data retention policy with our LLM cloud provider, Anthropic,
         ensuring also they neither store nor train on your code.
       </p>
+    ),
+  },
+  {
+    question: "What new features does PearAI offer compared to Continue.dev?",
+    answer: (
+      <div>
+        <ul className="list-disc space-y-2 pl-5">
+          <li>
+            Automatic file creation and generation from the chat panel directly.
+            E.g. if you ask it to generate code and it’s supposed to create a
+            file too, it will allow you to do so. Neither Continue nor Cursor
+            have this feature within the chat panel.
+          </li>
+          <li>
+            <code>@Directory Structure</code> command to include context of your
+            entire codebase file tree.
+          </li>
+          <li>
+            Built-in <code>/leetcode</code> command: AI leetcode tutor for
+            interview question practice.
+          </li>
+          <li>
+            Built-in <code>/sensei</code> command: PearAI acts as an experienced
+            engineer for guided learning.
+          </li>
+          <li>
+            Built-in <code>/component</code> command: Constructs React
+            components using v0.
+          </li>
+          <li>
+            Integrated standalone application instead of an extension, enabling
+            better onboarding UX and more meaningful changes
+          </li>
+          <li>
+            Ability to switch between most recent chat and current with a
+            shortcut.
+          </li>
+          <li>Ability to dynamically resize chat panel with a shortcut.</li>
+          <li>Shortcuts bar on top of chat for easier access and better UX.</li>
+          <li>
+            Shortcut to bring terminal errors directly to chat for debugging.
+            Continue&apos;s version of this was not working.
+          </li>
+          <li>
+            Improved onboarding page with immediate access to PearAI free trial
+            (GPT4 or Claude 3.5 Sonnet).
+          </li>
+        </ul>
+        <p className="mt-2">
+          These are some of the new features we have for v1. We also had to do a
+          ton of maintenance and integration work, to make a forked extension
+          part of VSCode work smoothly, and making open source VSCode usable; it
+          doesn’t come with everything out the box (e.g. missing extensions,
+          errors with packaging for distribution and certificates, auto updates,
+          etc.).
+          <br /> <br />
+          We also had to do a ton of upfront work for peripheral stuff like
+          setting up the open source community on Github, Discord,
+          documentation, the server to enable free trials working out the box,
+          and the entire landing page that you see here.
+          <br /> <br />
+          Now that we have our foundations much more stable, we&apos;ll be
+          focusing on having more new features. Coming up next is simultaneous
+          file and code generation! This is only the beginning for PearAI, and
+          long term we hope to make the best AI code editor, and have it open
+          source for all.
+          <br /> <br />
+          You can view all of our past completed sprint boards{" "}
+          <Link
+            href="https://github.com/orgs/trypear/projects?query=is%3Aclosed"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4"
+          >
+            here
+          </Link>
+          , and you can also view most of the app commits{" "}
+          <Link
+            href="https://github.com/trypear/pearai-submodule/commits/main"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-4"
+          >
+            here
+          </Link>
+          .
+        </p>
+      </div>
     ),
   },
 ];
