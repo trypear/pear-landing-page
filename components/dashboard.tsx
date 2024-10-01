@@ -40,17 +40,25 @@ export default function DashboardPage({
 
         // Allow only same domain, localhost, pearai://, or vscode://
         const allowedProtocols = ["http:", "https:", "pearai:", "vscode:"];
-        const isAllowedProtocol = allowedProtocols.includes(callbackUrl.protocol);
+        const isAllowedProtocol = allowedProtocols.includes(
+          callbackUrl.protocol,
+        );
 
         if (isAllowedProtocol) {
           const isSameDomain = callbackUrl.origin === window.location.origin;
           const isLocalhost = callbackUrl.hostname === "localhost";
 
-          if (callbackUrl.protocol === "http:" || callbackUrl.protocol === "https:") {
-            if (!isSameDomain && !isLocalhost) {
-              console.warn("Blocked potentially unsafe callback URL:", decodedCallback);
-              return;
-            }
+          if (
+            (callbackUrl.protocol === "http:" ||
+              callbackUrl.protocol === "https:") &&
+            !isSameDomain &&
+            !isLocalhost
+          ) {
+            console.warn(
+              "Blocked potentially unsafe callback URL:",
+              decodedCallback,
+            );
+            return;
           }
 
           const newSearchParams = new URLSearchParams(callbackUrl.search);
@@ -65,17 +73,22 @@ export default function DashboardPage({
 
           // Ensure the final URL is still within the allowed protocols and domains
           const finalUrl = new URL(openAppUrl);
-          const isFinalAllowedProtocol = allowedProtocols.includes(finalUrl.protocol);
-
+          const isFinalAllowedProtocol = allowedProtocols.includes(
+            finalUrl.protocol,
+          );
           if (isFinalAllowedProtocol) {
-            if (finalUrl.protocol === "http:" || finalUrl.protocol === "https:") {
-              const isFinalSameDomain = finalUrl.origin === window.location.origin;
-              const isFinalLocalhost = finalUrl.hostname === "localhost";
+            const isFinalSameDomain =
+              finalUrl.origin === window.location.origin;
+            const isFinalLocalhost = finalUrl.hostname === "localhost";
 
-              if (!isFinalSameDomain && !isFinalLocalhost) {
-                console.warn("Blocked potentially unsafe final URL:", openAppUrl);
-                return;
-              }
+            if (
+              (finalUrl.protocol === "http:" ||
+                finalUrl.protocol === "https:") &&
+              !isFinalSameDomain &&
+              !isFinalLocalhost
+            ) {
+              console.warn("Blocked potentially unsafe final URL:", openAppUrl);
+              return;
             }
 
             router.push(openAppUrl);
@@ -87,7 +100,10 @@ export default function DashboardPage({
             console.warn("Blocked potentially unsafe final URL:", openAppUrl);
           }
         } else {
-          console.warn("Blocked potentially unsafe callback URL:", decodedCallback);
+          console.warn(
+            "Blocked potentially unsafe callback URL:",
+            decodedCallback,
+          );
         }
       }
     };
