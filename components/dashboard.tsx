@@ -37,21 +37,58 @@ export default function DashboardPage({
       if (callback) {
         const decodedCallback = decodeURIComponent(callback);
         const callbackUrl = new URL(decodedCallback);
-        const newSearchParams = new URLSearchParams(callbackUrl.search);
-        const openAppParams = new URLSearchParams(openAppQueryParams);
 
-        openAppParams.forEach((value, key) => {
-          newSearchParams.append(key, value);
-        });
+        // Allow only same domain, localhost, pearai://, or vscode://
+        const allowedProtocols = ["http:", "https:", "pearai:", "vscode:"];
+        const isAllowedProtocol = allowedProtocols.includes(callbackUrl.protocol);
 
-        callbackUrl.search = newSearchParams.toString();
-        const openAppUrl = callbackUrl.toString();
+        if (isAllowedProtocol) {
+          const isSameDomain = callbackUrl.origin === window.location.origin;
+          const isLocalhost = callbackUrl.hostname === "localhost";
 
-        router.push(openAppUrl);
+          if (callbackUrl.protocol === "http:" || callbackUrl.protocol === "https:") {
+            if (!isSameDomain && !isLocalhost) {
+              console.warn("Blocked potentially unsafe callback URL:", decodedCallback);
+              return;
+            }
+          }
 
-        const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.delete("callback");
-        window.history.replaceState({}, "", currentUrl.toString());
+          const newSearchParams = new URLSearchParams(callbackUrl.search);
+          const openAppParams = new URLSearchParams(openAppQueryParams);
+
+          openAppParams.forEach((value, key) => {
+            newSearchParams.append(key, value);
+          });
+
+          callbackUrl.search = newSearchParams.toString();
+          const openAppUrl = callbackUrl.toString();
+
+          // Ensure the final URL is still within the allowed protocols and domains
+          const finalUrl = new URL(openAppUrl);
+          const isFinalAllowedProtocol = allowedProtocols.includes(finalUrl.protocol);
+
+          if (isFinalAllowedProtocol) {
+            if (finalUrl.protocol === "http:" || finalUrl.protocol === "https:") {
+              const isFinalSameDomain = finalUrl.origin === window.location.origin;
+              const isFinalLocalhost = finalUrl.hostname === "localhost";
+
+              if (!isFinalSameDomain && !isFinalLocalhost) {
+                console.warn("Blocked potentially unsafe final URL:", openAppUrl);
+                return;
+              }
+            }
+
+            router.push(openAppUrl);
+
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.delete("callback");
+            window.history.replaceState({}, "", currentUrl.toString());
+          } else {
+            console.warn("Blocked potentially unsafe final URL:", openAppUrl);
+          }
+        } else {
+          console.warn("Blocked potentially unsafe callback URL:", decodedCallback);
+        }
       }
     };
 
