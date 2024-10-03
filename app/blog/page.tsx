@@ -3,6 +3,7 @@ import { constructMetadata } from "@/lib/utils";
 import { compareDesc } from "date-fns";
 import { Metadata } from "next";
 import { posts } from "@/lib/blog/postData";
+import Footer from "@/components/footer";
 
 export const metadata: Metadata = constructMetadata({
   title: "Blog",
@@ -25,6 +26,7 @@ export default function Blog() {
           <PostCard key={idx} {...post} />
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
