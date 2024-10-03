@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { AllowedProtocol } from "../types/url";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -22,6 +23,23 @@ export const normalizeDate = (dateString: string) => {
   const [year, month, day] = dateString.split("-");
   return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
 };
+
+const allowedProtocols: AllowedProtocol[] = [
+  "http:",
+  "https:",
+  "pearai:",
+  "vscode:",
+];
+
+export function isAllowedUrl(url: URL): boolean {
+  if (!allowedProtocols.includes(url.protocol as AllowedProtocol)) return false;
+  if (url.protocol === "http:" || url.protocol === "https:") {
+    return (
+      url.origin === window.location.origin || url.hostname === "localhost"
+    );
+  }
+  return true;
+}
 
 export const constructMetadata = ({
   title,

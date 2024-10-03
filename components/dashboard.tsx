@@ -1,16 +1,19 @@
 "use client";
+
 import { User } from "@supabase/supabase-js";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Subscription } from "@/types/subscription";
 import { toast } from "sonner";
 import ProfileCard from "@/components/dashboard/profile-card";
 import SubscriptionCard from "@/components/dashboard/subscription-card";
 import FreeTrialCard from "@/components/dashboard/freetrial-card";
+import { isAllowedUrl } from "@/lib/utils";
+import { UnsafeUrlError } from "@/types/url";
 
 type DashboardPageProps = {
   subscription: Subscription | null;
-  openAppQueryParams: string;
+  openAppQueryParams: string | URLSearchParams;
   user: User;
 };
 
@@ -30,107 +33,92 @@ export default function DashboardPage({
     percent_credit_used: null,
   });
 
-  useEffect(() => {
-    const handleCallbackForApp = async () => {
-      // Handle callback
-      const callback = searchParams?.get("callback");
-      if (callback) {
-        const decodedCallback = decodeURIComponent(callback);
-        const callbackUrl = new URL(decodedCallback);
+  const handleCallbackForApp = useCallback(async () => {
+    const callback = searchParams?.get("callback");
+    if (!callback) return;
 
-        // Allow only same domain, localhost, pearai://, or vscode://
-        const allowedProtocols = ["http:", "https:", "pearai:", "vscode:"];
-        const isAllowedProtocol = allowedProtocols.includes(
-          callbackUrl.protocol,
+    try {
+      const decodedCallback = decodeURIComponent(callback);
+      const callbackUrl = new URL(decodedCallback);
+
+      if (!isAllowedUrl(callbackUrl)) {
+        throw new UnsafeUrlError(decodedCallback);
+      }
+
+      const newSearchParams = new URLSearchParams(callbackUrl.search);
+      const openAppParams =
+        typeof openAppQueryParams === "string"
+          ? new URLSearchParams(openAppQueryParams)
+          : openAppQueryParams;
+
+      openAppParams.forEach((value, key) => {
+        newSearchParams.append(key, value);
+      });
+
+      callbackUrl.search = newSearchParams.toString();
+      const openAppUrl = callbackUrl.toString();
+
+      // Double-check the final URL
+      const finalUrl = new URL(openAppUrl);
+      if (!isAllowedUrl(finalUrl)) {
+        throw new UnsafeUrlError(openAppUrl);
+      }
+
+      router.push(openAppUrl);
+
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.delete("callback");
+      window.history.replaceState({}, "", currentUrl.toString());
+    } catch (error) {
+      if (error instanceof UnsafeUrlError) {
+        console.error(error.message);
+        toast.error(
+          "Unsafe link detected. Navigation blocked for your security.",
         );
-
-        if (isAllowedProtocol) {
-          const isSameDomain = callbackUrl.origin === window.location.origin;
-          const isLocalhost = callbackUrl.hostname === "localhost";
-
-          if (
-            (callbackUrl.protocol === "http:" ||
-              callbackUrl.protocol === "https:") &&
-            !isSameDomain &&
-            !isLocalhost
-          ) {
-            console.warn(
-              "Blocked potentially unsafe callback URL:",
-              decodedCallback,
-            );
-            return;
-          }
-
-          const newSearchParams = new URLSearchParams(callbackUrl.search);
-          const openAppParams = new URLSearchParams(openAppQueryParams);
-
-          openAppParams.forEach((value, key) => {
-            newSearchParams.append(key, value);
-          });
-
-          callbackUrl.search = newSearchParams.toString();
-          const openAppUrl = callbackUrl.toString();
-
-          // Ensure the final URL is still within the allowed protocols and domains
-          const finalUrl = new URL(openAppUrl);
-          const isFinalAllowedProtocol = allowedProtocols.includes(
-            finalUrl.protocol,
-          );
-          if (isFinalAllowedProtocol) {
-            const isFinalSameDomain =
-              finalUrl.origin === window.location.origin;
-            const isFinalLocalhost = finalUrl.hostname === "localhost";
-
-            if (
-              (finalUrl.protocol === "http:" ||
-                finalUrl.protocol === "https:") &&
-              !isFinalSameDomain &&
-              !isFinalLocalhost
-            ) {
-              console.warn("Blocked potentially unsafe final URL:", openAppUrl);
-              return;
-            }
-
-            router.push(openAppUrl);
-
-            const currentUrl = new URL(window.location.href);
-            currentUrl.searchParams.delete("callback");
-            window.history.replaceState({}, "", currentUrl.toString());
-          } else {
-            console.warn("Blocked potentially unsafe final URL:", openAppUrl);
-          }
-        } else {
-          console.warn(
-            "Blocked potentially unsafe callback URL:",
-            decodedCallback,
-          );
-        }
+      } else {
+        console.error("Error in handleCallbackForApp:", error);
+        toast.error(
+          "An error occurred while processing the link. Please try again.",
+        );
       }
-    };
-
-    const getUserRequestsUsage = async () => {
-      try {
-        const response = await fetch("/api/dashboard-usage", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
-
-        if (!response.ok) {
-          toast.error("Failed to fetch requests usage.");
-          return;
-        }
-        const usage = await response.json();
-        setUsage(usage);
-      } catch (error) {
-        toast.error(`Error fetching requests usage: ${error}`);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    handleCallbackForApp();
-    getUserRequestsUsage();
+    }
   }, [router, searchParams, openAppQueryParams]);
+
+  const getUserRequestsUsage = useCallback(async () => {
+    try {
+      const response = await fetch("/api/dashboard-usage", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch requests usage.");
+      }
+      const usageData: UsageType = await response.json();
+      setUsage(usageData);
+    } catch (error) {
+      console.error("Error fetching requests usage:", error);
+      toast.error("Failed to fetch usage data. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const runEffects = async () => {
+      try {
+        await handleCallbackForApp();
+        await getUserRequestsUsage();
+      } catch (error) {
+        console.error("Error in effect:", error);
+        toast.error(
+          "An unexpected error occurred. Please try refreshing the page.",
+        );
+      }
+    };
+
+    runEffects();
+  }, [handleCallbackForApp, getUserRequestsUsage]);
 
   return (
     <section className="relative">
@@ -144,7 +132,6 @@ export default function DashboardPage({
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
             <ProfileCard user={user} />
-            {/* Below commented out until we implement Free Trial */}
             {subscription ? (
               <SubscriptionCard
                 subscription={subscription}
