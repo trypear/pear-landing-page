@@ -35,6 +35,11 @@ export const signUpSchema = z.object({
     .max(100, { message: "Company name is too long." })
     .optional(),
   password: passwordSchema.shape.password,
+  heard_about_us: z
+    .string({
+      required_error: "Please tell us how you heard about us.",
+  })
+    .max(150, { message: "Too Long" })
 });
 
 export const signInSchema = z.object({

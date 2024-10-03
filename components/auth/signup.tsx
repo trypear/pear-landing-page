@@ -33,6 +33,7 @@ export default function SignUp() {
       email: "",
       company_name: "",
       password: "",
+      heard_about_us: "",
     },
   });
   const router = useRouter();
@@ -48,6 +49,8 @@ export default function SignUp() {
       formData.append("email", data.email);
       formData.append("company-name", data.company_name || "");
       formData.append("password", data.password);
+      formData.append("heard-about-us", data.heard_about_us || "");
+
 
       const response = await signup(formData);
       if (response?.error) {
@@ -225,6 +228,24 @@ export default function SignUp() {
                   )}
                 />
 
+                <FormField
+                  name="heard_about_us"
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel htmlFor="heard_about_us">How did you hear about us?</FormLabel>
+                      <FormControl>
+                        <Input
+                          id="heard_about_us"
+                          placeholder="e.g. Twitter, Friend, YouTube"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
                 <Label className="flex items-center">
                   <Checkbox
                     className="rounded"
@@ -265,7 +286,7 @@ export default function SignUp() {
               Already have an account?{" "}
               <Link
                 href="/signin"
-                className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
+                className="text-gray-800 underline transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign in
               </Link>
