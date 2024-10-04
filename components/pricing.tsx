@@ -252,7 +252,10 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           )}
         </CardContent>
         <CardFooter>
-          {isDownloading ? (
+          {isFree
+            ? "Downloads are temporarily disabled 😔. Please check back later. If you have concerns or questions, please contact pear@trypear.ai."
+            : ""}
+          {/* {isDownloading ? (
             <Spinner className="mb-4 ml-4 border" />
           ) : (
             isFree &&
@@ -345,8 +348,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 </div>
               </div>
             ))
-          )}
-
+          )} */}
           {!isFree && (
             <>
               {disabled ? (
@@ -366,7 +368,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               )}
             </>
           )}
-
           {/* <button className="bg-primary-800 py-2 px-4 w-full rounded-full text-sm font-medium hover:bg-primary-800"> */}
           {/* Get Started */}
           {/* </button> */}
