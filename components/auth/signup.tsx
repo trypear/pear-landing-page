@@ -51,7 +51,6 @@ export default function SignUp() {
       formData.append("password", data.password);
       formData.append("heard-about-us", data.heard_about_us || "");
 
-
       const response = await signup(formData);
       if (response?.error) {
         setErrorMessage(response.error);
@@ -159,7 +158,7 @@ export default function SignUp() {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="full_name">Full Name</FormLabel>
+                      <FormLabel htmlFor="full_name">Full Name *</FormLabel>
                       <FormControl>
                         <Input
                           id="full_name"
@@ -195,7 +194,7 @@ export default function SignUp() {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="email">Email</FormLabel>
+                      <FormLabel htmlFor="email">Email *</FormLabel>
                       <FormControl>
                         <Input
                           id="email"
@@ -214,7 +213,7 @@ export default function SignUp() {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="password">Password</FormLabel>
+                      <FormLabel htmlFor="password">Password *</FormLabel>
                       <FormControl>
                         <Input
                           id="password"
@@ -233,7 +232,9 @@ export default function SignUp() {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="heard_about_us">How did you hear about us?</FormLabel>
+                      <FormLabel htmlFor="heard_about_us">
+                        How did you hear about us?
+                      </FormLabel>
                       <FormControl>
                         <Input
                           id="heard_about_us"
