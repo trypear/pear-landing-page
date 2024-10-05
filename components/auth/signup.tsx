@@ -249,7 +249,7 @@ export default function SignUp() {
                       <FormControl>
                         <Input
                           id="heard_about_us"
-                          placeholder="e.g. YouTube, Twitter, Friend, Instagram, LinkedIn, GitHub, Other"
+                          placeholder="e.g. YouTube, Twitter, Friend, Instagram, LinkedIn, Other"
                           {...field}
                         />
                       </FormControl>
