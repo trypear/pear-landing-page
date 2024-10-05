@@ -227,6 +227,17 @@ export default function SignUp() {
                   )}
                 />
 
+                <Label className="flex items-center">
+                  <Checkbox
+                    className="rounded"
+                    checked={isPasswordVisible}
+                    onCheckedChange={togglePasswordVisibility}
+                  />
+                  <span className="ml-2 cursor-pointer text-gray-600">
+                    Show Password
+                  </span>
+                </Label>
+
                 <FormField
                   name="heard_about_us"
                   control={form.control}
@@ -238,7 +249,7 @@ export default function SignUp() {
                       <FormControl>
                         <Input
                           id="heard_about_us"
-                          placeholder="e.g. Twitter, Friend, YouTube"
+                          placeholder="e.g. YouTube, Twitter, Friend, Instagram, LinkedIn, GitHub, Other"
                           {...field}
                         />
                       </FormControl>
@@ -246,17 +257,6 @@ export default function SignUp() {
                     </FormItem>
                   )}
                 />
-
-                <Label className="flex items-center">
-                  <Checkbox
-                    className="rounded"
-                    checked={isPasswordVisible}
-                    onCheckedChange={togglePasswordVisibility}
-                  />
-                  <span className="ml-2 cursor-pointer text-gray-600">
-                    Show Password
-                  </span>
-                </Label>
 
                 <div className="text-center text-sm text-gray-600">
                   <Link
