@@ -252,9 +252,22 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           )}
         </CardContent>
         <CardFooter>
-          {isFree
-            ? "Downloads are temporarily disabled 😔. Please check back later. If you have concerns or questions, please contact pear@trypear.ai."
-            : ""}
+          {isFree ? (
+            <span>
+              Sorry but downloads are temporarily disabled for the week! Please
+              check back later. If you have concerns or questions, please
+              contact{" "}
+              <Link
+                href={`mailto:pear@trypear.ai`}
+                className="font-medium text-gray-900 underline"
+              >
+                pear@trypear.ai
+              </Link>
+              .
+            </span>
+          ) : (
+            ""
+          )}
           {/* {isDownloading ? (
             <Spinner className="mb-4 ml-4 border" />
           ) : (
