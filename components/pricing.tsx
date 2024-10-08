@@ -252,23 +252,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           )}
         </CardContent>
         <CardFooter>
-          {isFree ? (
-            <span>
-              Sorry but downloads are temporarily disabled for the week! Please
-              check back later. If you have concerns or questions, please
-              contact{" "}
-              <Link
-                href={`mailto:pear@trypear.ai`}
-                className="font-medium text-gray-900 underline"
-              >
-                pear@trypear.ai
-              </Link>
-              .
-            </span>
-          ) : (
-            ""
-          )}
-          {/* {isDownloading ? (
+          {isDownloading ? (
             <Spinner className="mb-4 ml-4 border" />
           ) : (
             isFree &&
@@ -299,12 +283,15 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                         year: "numeric",
                       })}
                     </div>
+                    * Our Windows, Linux and Mac Intel versions will be back by
+                    end of week!
                   </div>
                 )}
                 <div className="flex w-full max-w-md gap-2">
                   <Button
                     className={cn("rainbow-gradient", "font-bold", "flex-1")}
                     onClick={() => handleDownload("windows")}
+                    disabled
                   >
                     <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
                     Windows
@@ -315,6 +302,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     onClick={() =>
                       (window.location.href = "/blog/download-pearai-on-linux")
                     }
+                    disabled
                   >
                     <LinuxLogo className="h-[18px] w-[18px] fill-white-main" />
                     Linux x64
@@ -353,6 +341,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                       <DropdownMenuItem
                         className="flex w-full justify-center rounded px-2 py-1.5 text-sm focus:bg-secondary-300/10"
                         onSelect={() => handleDownload("intel-x64")}
+                        disabled
                       >
                         Intel chip
                       </DropdownMenuItem>
@@ -361,7 +350,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 </div>
               </div>
             ))
-          )} */}
+          )}
           {!isFree && (
             <>
               {disabled ? (
