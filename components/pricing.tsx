@@ -283,15 +283,14 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                         year: "numeric",
                       })}
                     </div>
-                    * Our Windows, Linux and Mac Intel versions will be back by
-                    end of week!
+                    * Our Linux and Mac Intel versions will be back by end of
+                    week!
                   </div>
                 )}
                 <div className="flex w-full max-w-md gap-2">
                   <Button
                     className={cn("rainbow-gradient", "font-bold", "flex-1")}
                     onClick={() => handleDownload("windows")}
-                    disabled
                   >
                     <WindowsLogo className="h-[18px] w-[18px] fill-white-main" />
                     Windows
