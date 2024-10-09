@@ -31,7 +31,7 @@ import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
 type SubscriptionCardProps = {
   subscription: Subscription | null;
   usage?: UsageType;
-  openAppQueryParams?: string;
+  openAppQueryParams?: string | URLSearchParams;
   user: User;
   loading: boolean;
 };
