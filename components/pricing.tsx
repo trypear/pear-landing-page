@@ -283,8 +283,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                         year: "numeric",
                       })}
                     </div>
-                    * Our Linux and Mac Intel versions will be back by end of
-                    week!
+                    * Our Mac Intel version will be back by end of week!
                   </div>
                 )}
                 <div className="flex w-full max-w-md gap-2">
@@ -301,7 +300,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     onClick={() =>
                       (window.location.href = "/blog/download-pearai-on-linux")
                     }
-                    disabled
                   >
                     <LinuxLogo className="h-[18px] w-[18px] fill-white-main" />
                     Linux x64
