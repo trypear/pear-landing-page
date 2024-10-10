@@ -34,7 +34,7 @@ export default function TryPear() {
           >
             Help the community out by giving{" "}
             <Link
-              href="https://github.com/trypear/pearai-app"
+              href="https://github.com/trypear/pearai-master"
               className="font-medium text-primary-700 hover:text-primary-800"
               target="_blank"
               rel="noopener noreferrer"
