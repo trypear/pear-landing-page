@@ -129,7 +129,7 @@ export default async function Header() {
                       <NavItem href="/pricing">Pricing / Download</NavItem>
                       <NavItem href="/docs">Documentation</NavItem>
                       <NavItem
-                        href="https://github.com/trypear/pearai-app"
+                        href="https://github.com/trypear/pearai-master"
                         target="_blank"
                       >
                         GitHub ⭐️
