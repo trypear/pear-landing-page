@@ -972,4 +972,99 @@ export const posts = [
       </section>
     </article>`,
   },
+
+  {
+    title: "PearAI Open-Source Fixes",
+    author: "PearAI Team, Jyoutir", 
+    date: "2024-10-11", 
+    excerpt:
+      "View PearAI's changes to correct past mistakes and ensure compliance with open-source standards.",
+    thumbnail: "/images/og-image.png",
+    tags: ["open-source", "Continue.dev", "spreading love", "accountability"],
+    url: "/blog/pearai-open-source-fixes",
+    content: `<article
+      class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+    >
+      <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+        We have made a mistake, and we apologize to Continue and the Open-Source community, and genuinely want to learn from our mistakes and grow.
+        To fix this, we made changes, and had them reviewed by friends in the open-source space and a law team to ensure we did everything the right way.
+        These are the changes we as PearAI made in attempts to correct our mistakes.
+      </p>
+
+      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Starting Fresh and Being True Forks 🍴
+      </h2>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/continue-forked.jpg"
+          alt="PearAI's temp-repo forked from continuedev/continue"
+          class="w-full rounded-xl shadow-lg"
+        />
+        <figcaption class="mt-4 text-center text-sm italic text-gray-600 dark:text-gray-400">
+          Note: <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">temp-repo</code> will be renamed to <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">pearai-submodule</code>.
+        </figcaption>
+      </figure>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/vscode-forked.png"
+          alt="PearAI's pearai-app forked from microsoft/vscode"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Correct Licensing 📄
+      </h2>
+
+      <p class="text-base sm:text-lg">
+        The fork of Continue is permanently licensed under Apache 2.0, and this will never change. View it here: <a href="https://github.com/trypear/temp-repo/blob/main/LICENSE" class="font-medium text-blue-600 hover:underline dark:text-blue-400">License</a>. While the VSCode fork retains its original MIT License, with details provided in the README. We've reapplied changes to ensure full compliance with the Apache 2.0 license, resolving previous code attribution issues.
+      </p>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="images/blog/apache-lisence.jpg"
+          alt="apache license plain"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+  
+      <figure class="my-8 sm:my-12">
+        <img
+          src="images/blog/mit-lisence.jpg"
+          alt="mit license"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Correct Licensing 📄
+      </h2>
+      <p class="text-base sm:text-lg">
+        We aim for complete transparency, making sure that everyone understands that our pearai-submodule repository is a fork of Continue (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>), This is an important part of our current functionality. In the future, we plan to diverge and innovate further, working towards creating the best AI-powered code editor.
+      </p>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="images/blog/continue-credit.jpg"
+          alt="continue credit"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+        <figure class="my-8 sm:my-12">
+        <img
+          src="images/blog/continue-dev.jpg"
+          alt="continue credit"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <p class="text-base sm:text-lg">
+        Once again, we apologise to Continue and the open-source community. We encourage everyone to explore the incredible work being done by the Continue team <a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>, as they are doing beautiful, amazing things. We hope to learn from our mistakes, and move forward responsibly.
+      </p>
+    </article>`,
+  },
+
 ];
