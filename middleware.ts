@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
     const supabase = createClient();
     const {
       data: { session },
-    } = await supabase.auth.getSession();
+    } = await supabase.auth.refreshSession();
 
     if (!session) {
       // redirect to login page if no session

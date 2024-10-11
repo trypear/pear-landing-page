@@ -190,7 +190,7 @@ export const posts = [
     Hopefully this was helpful to someone. PearAI is open-sourced, so please
     help us out by starring the repo here:
     <a
-      href="https://github.com/trypear/pearai-app"
+      href="https://github.com/trypear/pearai-master"
       class="font-medium text-blue-600 hover:underline dark:text-blue-400"
       >PearAI GitHub Repo</a
     >, and consider contributing! If you'd like to use the app, join the wait

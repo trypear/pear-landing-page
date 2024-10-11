@@ -33,6 +33,7 @@ export default function SignUp() {
       email: "",
       company_name: "",
       password: "",
+      heard_about_us: "",
     },
   });
   const router = useRouter();
@@ -48,6 +49,7 @@ export default function SignUp() {
       formData.append("email", data.email);
       formData.append("company-name", data.company_name || "");
       formData.append("password", data.password);
+      formData.append("heard-about-us", data.heard_about_us || "");
 
       const response = await signup(formData);
       if (response?.error) {
@@ -156,7 +158,7 @@ export default function SignUp() {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="full_name">Full Name</FormLabel>
+                      <FormLabel htmlFor="full_name">Full Name *</FormLabel>
                       <FormControl>
                         <Input
                           id="full_name"
@@ -192,7 +194,7 @@ export default function SignUp() {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="email">Email</FormLabel>
+                      <FormLabel htmlFor="email">Email *</FormLabel>
                       <FormControl>
                         <Input
                           id="email"
@@ -211,7 +213,7 @@ export default function SignUp() {
                   control={form.control}
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel htmlFor="password">Password</FormLabel>
+                      <FormLabel htmlFor="password">Password *</FormLabel>
                       <FormControl>
                         <Input
                           id="password"
@@ -235,6 +237,26 @@ export default function SignUp() {
                     Show Password
                   </span>
                 </Label>
+
+                <FormField
+                  name="heard_about_us"
+                  control={form.control}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel htmlFor="heard_about_us">
+                        How did you hear about us?
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          id="heard_about_us"
+                          placeholder="e.g. YouTube, Twitter, Friend, Instagram, LinkedIn, Other"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
                 <div className="text-center text-sm text-gray-600">
                   <Link
@@ -265,7 +287,7 @@ export default function SignUp() {
               Already have an account?{" "}
               <Link
                 href="/signin"
-                className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
+                className="text-gray-800 underline transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign in
               </Link>

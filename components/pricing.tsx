@@ -283,6 +283,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                         year: "numeric",
                       })}
                     </div>
+                    * Our Mac Intel version will be back by end of week!
                   </div>
                 )}
                 <div className="flex w-full max-w-md gap-2">
@@ -346,7 +347,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               </div>
             ))
           )}
-
           {!isFree && (
             <>
               {disabled ? (

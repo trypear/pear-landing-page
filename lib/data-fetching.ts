@@ -21,7 +21,7 @@ export async function getUserAndSubscription(): Promise<GetUserSubscriptionResul
       redirect: "/signin",
     };
   }
-  const { data: sessionData } = await supabase.auth.getSession();
+  const { data: sessionData } = await supabase.auth.refreshSession();
   const openAppQueryParams = `accessToken=${sessionData?.session?.access_token}&refreshToken=${sessionData?.session?.refresh_token}`;
 
   // Fetch the most recent user subscription data in case there are multiple

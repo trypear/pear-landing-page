@@ -13,7 +13,7 @@ async function cancelSubscription(request: NextRequest & { user: User }) {
     const { subscriptionId } = await request.json();
     const {
       data: { session },
-    } = await supabase.auth.getSession();
+    } = await supabase.auth.refreshSession();
 
     if (!session) {
       return NextResponse.json(

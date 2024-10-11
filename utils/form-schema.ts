@@ -32,9 +32,14 @@ export const signUpSchema = z.object({
   email: emailSchema.shape.email,
   company_name: z
     .string()
-    .max(100, { message: "Company name is too long." })
+    .max(30, { message: "Company name is too long." })
     .optional(),
   password: passwordSchema.shape.password,
+  heard_about_us: z
+    .string({
+      required_error: "Please tell us how you heard about us.",
+    })
+    .max(30, { message: "Message too long" }),
 });
 
 export const signInSchema = z.object({
