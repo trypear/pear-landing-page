@@ -338,7 +338,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                       <DropdownMenuItem
                         className="flex w-full justify-center rounded px-2 py-1.5 text-sm focus:bg-secondary-300/10"
                         onSelect={() => handleDownload("intel-x64")}
-                        disabled
                       >
                         Intel chip
                       </DropdownMenuItem>
