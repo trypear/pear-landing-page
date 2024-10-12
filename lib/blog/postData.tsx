@@ -976,7 +976,8 @@ export const posts = [
   {
     title: "PearAI Open-Source Fixes",
     author: "PearAI Team, Jyoutir", 
-    date: "2024-10-11", 
+    readingTime: "4 min",
+    date: "2024-10-12", 
     excerpt:
       "View PearAI's changes to correct past mistakes and ensure compliance with open-source standards.",
     thumbnail: "/images/og-image.png",
@@ -986,14 +987,18 @@ export const posts = [
       class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
     >
       <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
-        We have made a mistake, and we apologize to Continue and the Open-Source community, and genuinely want to learn from our mistakes and grow.
-        To fix this, we made changes, and had them reviewed by friends in the open-source space and a law team to ensure we did everything the right way.
-        These are the changes we as PearAI made in attempts to correct our mistakes.
+        We have made a mistake, and for this we apologize to Continue and the Open-Source community. We genuinely want to learn from our mistakes and grow.
+        To fix this, we made big changes, and we had them reviewed by friends in the open-source space, along with a law team to ensure we did everything the right way this time.
+        These are the changes PearAI made in attempts to correct our mistakes.
       </p>
-
+-ki
       <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
         Starting Fresh and Being True Forks 🍴
       </h2>
+
+      <p class="text-base sm:text-lg">
+        We've rebuilt from scratch, starting fresh with zero stars on our new repository, leaving behind our 2k+ star repo to prioritize accountability and staying true to open-source. This means our repositories accurately display true forks, marked by GitHub's built-in fork tag.
+      </p>
 
       <figure class="my-8 sm:my-12">
         <img
@@ -1039,7 +1044,7 @@ export const posts = [
       </figure>
 
       <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
-        Correct Licensing 📄
+        Complete Transparency 🔎
       </h2>
       <p class="text-base sm:text-lg">
         We aim for complete transparency, making sure that everyone understands that our pearai-submodule repository is a fork of Continue (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>), This is an important part of our current functionality. In the future, we plan to diverge and innovate further, working towards creating the best AI-powered code editor.
@@ -1062,7 +1067,7 @@ export const posts = [
       </figure>
 
       <p class="text-base sm:text-lg">
-        Once again, we apologise to Continue and the open-source community. We encourage everyone to explore the incredible work being done by the Continue team <a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>, as they are doing beautiful, amazing things. We hope to learn from our mistakes, and move forward responsibly.
+        Once again, we apologise to Continue and the open-source community. We encourage everyone to explore the incredible work being done by the Continue team (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>), as they are doing beautiful, amazing things. We hope to learn from our mistakes, and move forward responsibly.
       </p>
     </article>`,
   },
