@@ -975,9 +975,9 @@ export const posts = [
 
   {
     title: "PearAI Open-Source Fixes",
-    author: "PearAI Team, Jyoutir", 
+    author: "PearAI Team, Jyoutir",
     readingTime: "4 min",
-    date: "2024-10-12", 
+    date: "2024-10-12",
     excerpt:
       "View PearAI's changes to correct past mistakes and ensure compliance with open-source standards.",
     thumbnail: "/images/og-image.png",
@@ -991,7 +991,7 @@ export const posts = [
         To fix this, we made big changes, and we had them reviewed by friends in the open-source space, along with a law team to ensure we did everything the right way this time.
         These are the changes PearAI made in attempts to correct our mistakes.
       </p>
--ki
+
       <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
         Starting Fresh and Being True Forks 🍴
       </h2>
@@ -1067,9 +1067,8 @@ export const posts = [
       </figure>
 
       <p class="text-base sm:text-lg">
-        Once again, we apologise to Continue and the open-source community. We encourage everyone to explore the incredible work being done by the Continue team (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>), as they are doing beautiful, amazing things. We hope to learn from our mistakes, and move forward responsibly.
+        Once again, we apologize to Continue and the open-source community. We encourage everyone to explore the incredible work being done by the Continue team (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>). We hope to learn from our mistakes, and move forward responsibly.
       </p>
     </article>`,
   },
-
 ];
