@@ -29,6 +29,7 @@ const allowedProtocols: AllowedProtocol[] = [
   "https:",
   "pearai:",
   "vscode:",
+  "code-oss:",
 ];
 
 export function isAllowedUrl(url: URL): boolean {

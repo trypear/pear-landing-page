@@ -1,4 +1,9 @@
-export type AllowedProtocol = "http:" | "https:" | "pearai:" | "vscode:";
+export type AllowedProtocol =
+  | "http:"
+  | "https:"
+  | "pearai:"
+  | "vscode:"
+  | "code-oss:";
 
 export interface OpenAppParams {
   [key: string]: string;
