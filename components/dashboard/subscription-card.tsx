@@ -32,7 +32,7 @@ import TopUpModal from "../topup-modal";
 type SubscriptionCardProps = {
   subscription: Subscription | null;
   usage?: UsageType;
-  openAppQueryParams?: string;
+  openAppQueryParams?: string | URLSearchParams;
   user: User;
   loading: boolean;
 };
