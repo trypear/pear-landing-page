@@ -34,7 +34,6 @@ export default function SubmitBlog() {
   ) => {
     const { name, value } = e.target;
     setBlogData({ ...blogData, [name]: value });
-    console.log(blogData);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,17 +41,19 @@ export default function SubmitBlog() {
     setIsLoading(true);
 
     try {
-      // TODO : make an API call to submit the blog
-      // api should allow to auth user to submit a blog with all the detail and status as pending and admin can approve it one the blog is approve show it to /blog section of the website
-      const resposne = fetch("/api/submit-blog", {
+      // Make the API call to submit the blog
+      const response = await fetch("/api/submit-blog", {
         method: "POST",
         body: JSON.stringify(blogData),
         headers: {
           "Content-Type": "application/json",
         },
       });
-      console.log("response", resposne);
-      // TODO: Reset form or show success message here
+
+      const data = await response.json();
+      console.log("Response:", data);
+
+      // Reset form or show success message
     } catch (error) {
       console.error("Error submitting blog:", error);
     } finally {
@@ -153,20 +154,18 @@ export default function SubmitBlog() {
               className="min-h-[200px]"
             />
           </div>
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Submitting...
+              </>
+            ) : (
+              "Submit Blog"
+            )}
+          </Button>
         </form>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full" onClick={handleSubmit} disabled={isLoading}>
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Submitting...
-            </>
-          ) : (
-            "Submit Blog"
-          )}
-        </Button>
-      </CardFooter>
     </Card>
   );
 }
