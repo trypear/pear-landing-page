@@ -7,36 +7,25 @@ async function submitBlog(request: NextRequest & { user: User }) {
   const supabase = createClient();
 
   try {
-    const {
-      title,
-      url,
-      excerpt,
-      date,
-      author,
-      tag,
-      content,
-      readingTime,
-    } = await request.json();
+    const { title, url, excerpt, date, author, tag, content, readingTime } =
+      await request.json();
     console.log("request", request);
-    
 
-    const { data: blog, error } = await supabase
-      .from("blogs")
-      .insert([
-        {
-          title,
-          url,
-          excerpt,
-          date,
-          author,
-          readingTime,
-          tag,
-          content,
-          status:"pending",
-        },
-      ]);
-      console.log("blog", blog);
-      
+    const { data: blog, error } = await supabase.from("blogs").insert([
+      {
+        title,
+        url,
+        excerpt,
+        date,
+        author,
+        readingTime,
+        tag,
+        content,
+        status: "pending",
+      },
+    ]);
+    console.log("blog", blog);
+
     if (error) {
       console.error("error submitting blog", error);
       return NextResponse.json(
@@ -56,4 +45,3 @@ async function submitBlog(request: NextRequest & { user: User }) {
 }
 
 export const POST = withAuth(submitBlog);
-
