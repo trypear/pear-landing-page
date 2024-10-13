@@ -8,7 +8,7 @@ import { UsageType } from "../dashboard";
 
 type FreeTrialCardProps = {
   usage: UsageType;
-  openAppQueryParams: string;
+  openAppQueryParams: string | URLSearchParams;
   loading: boolean;
 };
 

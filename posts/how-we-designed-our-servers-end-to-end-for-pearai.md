@@ -85,6 +85,6 @@ In summary, this is the stack that we used and I would recommend:
 - Observability: OpenTelemetry + Axiom
 - Deployment: DigitalOcean
 
-Hopefully this was helpful to someone. PearAI is open-sourced, so please help us out by starring the repo here: [https://github.com/trypear/pearai-app](https://github.com/trypear/pearai-app), and consider contributing! If you’d like to use the app, join the wait list here [https://trypear.ai/](https://trypear.ai/). We’re launching next week to our first batch of users!
+Hopefully this was helpful to someone. PearAI is open-sourced, so please help us out by starring the repo here: [https://github.com/trypear/pearai-master](https://github.com/trypear/pearai-master), and consider contributing! If you’d like to use the app, join the wait list here [https://trypear.ai/](https://trypear.ai/). We’re launching next week to our first batch of users!
 
 Also, feel free to check out my youtube series on this, as I am documenting the entire startup journey with my cofounder [FryingPan](https://youtube.com/@FryingPan). [https://youtube.com/nang88](https://youtube.com/nang88). Thanks!
