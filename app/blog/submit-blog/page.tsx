@@ -43,7 +43,16 @@ export default function SubmitBlog() {
 
     try {
       // TODO : make an API call to submit the blog
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // api should allow to auth user to submit a blog with all the detail and status as pending and admin can approve it one the blog is approve show it to /blog section of the website 
+      const resposne = fetch("/api/submit-blog", {
+        method: "POST",
+        body: JSON.stringify(blogData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+      )
+      console.log("response", resposne)
       // TODO: Reset form or show success message here
     } catch (error) {
       console.error("Error submitting blog:", error);
