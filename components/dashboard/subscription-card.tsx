@@ -178,7 +178,10 @@ export default function SubscriptionCard({
                           <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
                         </TooltipTrigger>
                         <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
-                          <p>Topup credits do not expire.</p>
+                          <p>
+                            Top-up credit does not expire and is utilized only
+                            after the monthly quota is reached.
+                          </p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
@@ -186,7 +189,7 @@ export default function SubscriptionCard({
                   <p className="text-sm text-muted-foreground">
                     {loading
                       ? "-"
-                      : `${usage.remaining_topup_credits} remaining`}
+                      : `$${usage.remaining_topup_credits} remaining`}
                   </p>
                 </div>
               )}

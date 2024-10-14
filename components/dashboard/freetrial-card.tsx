@@ -5,6 +5,12 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { InfoIcon } from "lucide-react";
 import { UsageType } from "../dashboard";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type FreeTrialCardProps = {
   usage: UsageType;
@@ -62,6 +68,33 @@ export default function FreeTrialCard({
               </p>
             </div>
           </div>
+          {usage.remaining_topup_credits !== null && (
+            <div className="mb-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <p className="font-medium">Topup Credits</p>
+                  <TooltipProvider delayDuration={0}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
+                      </TooltipTrigger>
+                      <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
+                        <p>
+                          Top-up credit does not expire and is utilized only
+                          after the monthly quota is reached.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {loading
+                    ? "-"
+                    : `$${usage.remaining_topup_credits} remaining`}
+                </p>
+              </div>
+            </div>
+          )}
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Plan</p>
