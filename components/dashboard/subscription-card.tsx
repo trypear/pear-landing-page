@@ -167,8 +167,9 @@ export default function SubscriptionCard({
                 <p className="text-right text-sm text-muted-foreground">
                   Credits refill monthly
                 </p>
+
               </div>
-              {usage.remaining_topup_credits !== null && (
+              {usage.remaining_topup_credits && (
                 <div className="mt-4 flex justify-between">
                   <div className="flex items-center">
                     <p className="font-medium">Topup Credits</p>
