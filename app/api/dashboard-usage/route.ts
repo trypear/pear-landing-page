@@ -40,7 +40,10 @@ const getDashboardUsage = async (request: NextRequest) => {
     }
 
     const data = await res.json();
-    return NextResponse.json(data);
+    return NextResponse.json({
+      percent_credit_used: data.percent_credit_used,
+      remaining_topup_credits: data.remaining_topup_credits,
+    });
   } catch (error) {
     return NextResponse.json(
       { error: "Error getting requests usage" },

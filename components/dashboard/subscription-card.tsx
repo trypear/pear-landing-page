@@ -20,10 +20,16 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
-import { Info } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
@@ -142,7 +148,7 @@ export default function SubscriptionCard({
                     <strong>
                       {usage?.percent_credit_used != null
                         ? `${Math.min(usage.percent_credit_used, 100)}%`
-                        : "Cannot find remaining percentage. Please contact PearAI support."}
+                        : "Usage info not found. Contact PearAI support"}
                     </strong>
                   )}
                 </p>
@@ -162,13 +168,35 @@ export default function SubscriptionCard({
                   Credits refill monthly
                 </p>
               </div>
+              {usage.remaining_topup_credits !== null && (
+                <div className="mt-4 flex justify-between">
+                  <div className="flex items-center">
+                    <p className="font-medium">Topup Credits</p>
+                    <TooltipProvider delayDuration={0}>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
+                        </TooltipTrigger>
+                        <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
+                          <p>Topup credits do not expire.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {loading
+                      ? "-"
+                      : `${usage.remaining_topup_credits} remaining`}
+                  </p>
+                </div>
+              )}
             </div>
           )}
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Plan</p>
               <div className="flex items-center space-x-2">
-                <p className="text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {capitalizeInital(subscription.pricing_tier)}
                 </p>
                 {/* {subscription.pricing_tier == "monthly" && (
@@ -306,19 +334,17 @@ export default function SubscriptionCard({
               </DialogContent>
             </Dialog>
           </div>
-          <div className="flex items-center">
-            <Info className="inline text-muted-foreground" size={14} />
-            <p className="ml-1.5 text-xs/6 text-muted-foreground">
-              Make sure PearAI is{" "}
-              <Button
-                variant="link"
-                asChild
-                className="p-0 text-xs text-primary-800"
-              >
-                <Link href="/pricing">installed.</Link>
-              </Button>{" "}
-              Use this button to open the app and login directly.
-            </p>
+          <div className="mt-4 flex items-start text-xs text-muted-foreground">
+            <InfoIcon className="mr-1 mt-0.5 h-3 w-3 flex-shrink-0" />
+            <div>
+              Make sure PearAI is
+              <Link href="/pricing" className="mx-1">
+                <span className="text-primary-800 hover:underline">
+                  installed.
+                </span>
+              </Link>
+              Use this button to open app and login directly.
+            </div>
           </div>
         </CardContent>
       </div>

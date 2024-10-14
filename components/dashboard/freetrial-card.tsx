@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Info } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 import { UsageType } from "../dashboard";
 
 type FreeTrialCardProps = {
@@ -39,17 +39,15 @@ export default function FreeTrialCard({
             <div className="flex justify-between">
               <p className="font-medium">PearAI Credits</p>
               <p className="text-sm text-muted-foreground">
-                <strong>
-                  {loading ? (
-                    "-"
-                  ) : (
-                    <strong>
-                      {usage?.percent_credit_used != null
-                        ? `${Math.min(usage.percent_credit_used, 100)}%`
-                        : "Cannot find used percentage. Please contact PearAI support."}
-                    </strong>
-                  )}
-                </strong>
+                {loading ? (
+                  "-"
+                ) : (
+                  <strong>
+                    {usage?.percent_credit_used != null
+                      ? `${Math.min(usage.percent_credit_used, 100)}%`
+                      : "Usage info not found. Contact PearAI support"}
+                  </strong>
+                )}
               </p>
             </div>
             <Progress
@@ -85,19 +83,17 @@ export default function FreeTrialCard({
               <Link href="/pricing">Subscribe Now</Link>
             </Button>
           </div>
-          <div className="mt-1 flex items-center">
-            <Info className="inline text-muted-foreground" size={14} />
-            <p className="ml-1.5 text-xs/3 text-muted-foreground">
-              Make sure PearAI is{" "}
-              <Button
-                variant="link"
-                asChild
-                className="p-0 text-xs text-primary-800"
-              >
-                <Link href="/pricing">installed.</Link>
-              </Button>{" "}
+          <div className="mt-4 flex items-start text-xs text-muted-foreground">
+            <InfoIcon className="mr-1 mt-0.5 h-3 w-3 flex-shrink-0" />
+            <div>
+              Make sure PearAI is
+              <Link href="/pricing" className="mx-1">
+                <span className="text-primary-800 hover:underline">
+                  installed.
+                </span>
+              </Link>
               Use this button to open app and login directly.
-            </p>
+            </div>
           </div>
         </CardContent>
       </div>

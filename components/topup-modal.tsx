@@ -82,7 +82,7 @@ export default function TopUpModal() {
             package that suits your needs.
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <div className="grid grid-cols-2 gap-4 pt-1 sm:pb-2 md:pb-2 lg:pb-2 xl:pb-2">
+        <div className="grid grid-cols-2 gap-4 pt-1 sm:pb-4 sm:pt-3">
           {REQUEST_OPTIONS.map((option) => (
             <Card
               key={option.amount}
