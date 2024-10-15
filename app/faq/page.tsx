@@ -61,7 +61,7 @@ const FAQ: React.FC = () => {
           ))}
           <AccordionItem value={"contribute"}>
             <AccordionTrigger className="text-left text-base">
-              7. How can I contribute to PearAI?
+              8. How can I contribute to PearAI?
             </AccordionTrigger>
             <AccordionContent className="text-sm text-gray-600">
               See the contributor&apos;s section:{" "}
@@ -91,12 +91,28 @@ const faqData: FAQItem[] = [
     answer: <p>Pair programming... Pear Programming... PearAI!</p>,
   },
   {
-    question:
-      "1. What separates PearAI from Github Copilot and other competitors?",
+    question: "1. Why PearAI over competitors like Cursor?",
     answer: (
       <p>
-        PearAI offers significant advantages over competitors in both AI
-        capabilities and user experience: <br />
+        Competitors like Cursor are solving a huge problem in a
+        one-size-fits-all manner. Building for the future, PearAI has PearAI
+        Inventory, which integrates the best tools for each part of the AI tech
+        stack (chat assistant, code generation, search, collaboration,
+        personalization, etc.) into a unified, seamless user experience for
+        specifically what you are trying to make. We are extendible to
+        integration with all the latest, up-to-date tools (ie. mem0, Aider,
+        etc.), so you always know you are getting the best experience possible
+        on the market. We are also open-source and fully-transparent, so there
+        are never any privacy issues with your code or data.
+      </p>
+    ),
+  },
+  {
+    question: "2. What separates PearAI from competitors like Github Copilot?",
+    answer: (
+      <p>
+        PearAI offers significant advantages over competitors like Github
+        Copilot in both AI capabilities and user experience: <br />
         <br />
         AI Model Flexibility: Unlike Copilot, which is limited to OpenAI&apos;s
         models, PearAI leverages the most advanced AI models available,
@@ -133,7 +149,7 @@ const faqData: FAQItem[] = [
     ),
   },
   {
-    question: "2. Why should I switch to PearAI?",
+    question: "3. Why should I switch to PearAI?",
     answer: (
       <p>
         PearAI will speed up and improve your development. PearAI is a fork of
@@ -150,7 +166,7 @@ const faqData: FAQItem[] = [
   },
   {
     question:
-      "3. Why can't I just use ChatGPT, Claude, Gemini, or another LLM chat directly instead?",
+      "4. Why can't I just use ChatGPT, Claude, Gemini, or another LLM chat directly instead?",
     answer: (
       <p>
         With PearAI, you don&apos;t need copy-paste code or switch tabs anymore,
@@ -162,7 +178,7 @@ const faqData: FAQItem[] = [
     ),
   },
   {
-    question: "4. Is PearAI an extension or an app?",
+    question: "5. Is PearAI an extension or an app?",
     answer: (
       <p>
         PearAI is a full-fledged app. Being an app instead of being just an
@@ -177,7 +193,7 @@ const faqData: FAQItem[] = [
     ),
   },
   {
-    question: "5. Does PearAI store my code?",
+    question: "6. Does PearAI store my code?",
     answer: (
       <p>
         No. All codebase indexing occurs and remains strictly local on your
@@ -198,13 +214,17 @@ const faqData: FAQItem[] = [
   },
   {
     question:
-      "6. What new features does PearAI offer compared to Continue.dev?",
+      "7. What new features does PearAI offer compared to Continue.dev?",
     answer: (
       <div>
+        <p className="mb-4">
+          PearAI-submodule started out as a fork of Continue.dev. Here's what
+          we've built on top of it so far:
+        </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
             Automatic file creation and generation from the chat panel directly.
-            E.g. if you ask it to generate code and it’s supposed to create a
+            E.g. if you ask it to generate code and it's supposed to create a
             file too, it will allow you to do so. Neither Continue nor Cursor
             have this feature within the chat panel.
           </li>
@@ -247,7 +267,7 @@ const faqData: FAQItem[] = [
           These are some of the new features we have for v1. We also had to do a
           ton of maintenance and integration work, to make a forked extension
           part of VSCode work smoothly, and making open source VSCode usable; it
-          doesn’t come with everything out the box (e.g. missing extensions,
+          doesn't come with everything out the box (e.g. missing extensions,
           errors with packaging for distribution and certificates, auto updates,
           etc.).
           <br /> <br />
@@ -256,11 +276,12 @@ const faqData: FAQItem[] = [
           documentation, the server to enable free trials working out the box,
           and the entire landing page that you see here.
           <br /> <br />
-          Now that we have our foundations much more stable, we&apos;ll be
-          focusing on having more new features. Coming up next is simultaneous
-          file and code generation! This is only the beginning for PearAI, and
-          long term we hope to make the best AI code editor, and have it open
-          source for all.
+          We are currently building v2, which includes PearAI Inventory, that
+          integrates the best tools for each part of the AI tech stack (chat
+          assistant, code generation, search, collaboration, personalization,
+          etc.) into a unified, seamless user experience for specifically what
+          you are trying to make. Continue is integrated as one part of the AI
+          tech stack available on PearAI.
           <br /> <br />
           You can view all of our past completed sprint boards{" "}
           <Link
