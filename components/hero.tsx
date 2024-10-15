@@ -10,21 +10,24 @@ import { YCombinatorLogo } from "@/components/ui/icons";
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
     <div className="hidden items-start sm:inline-block">
-      {theme === "dark" ? (
-        <PearDarkHeroLogo
-          width="26"
-          alt="PearAI Logo"
-          className="mb-4 mr-2 inline-flex"
-        />
-      ) : (
-        <PearHeroLogo
-          width="26"
-          alt="PearAI Logo"
-          className="mb-4 mr-2 inline-flex"
-        />
-      )}
-      <span className="text-primary-700">PearAI: </span>
-      The Open Source AI&#8209;Powered Code Editor
+      <div className="flex justify-center">
+        {theme === "dark" ? (
+          <PearDarkHeroLogo
+            width="26"
+            alt="PearAI Logo"
+            className="mb-4 mr-2 inline-flex"
+          />
+        ) : (
+          <PearHeroLogo
+            width="35"
+            height="50"
+            alt="PearAI Logo"
+            className="-mt-[0.25rem] mb-4 mr-2 inline-flex"
+          />
+        )}
+        <p className="text-primary-700">PearAI </p>
+      </div>
+      The Open Source AI Code Editor
     </div>
 
     <div className="block items-start sm:hidden">
@@ -45,7 +48,7 @@ const HeroTitle = ({ theme }: { theme: string }) => (
         <span className="text-primary-700">PearAI </span>
       </div>
       <span className="flex flex-col text-3xl">
-        <span>The Open Source</span> <span>AI&#8209;Powered Code Editor</span>
+        <span>The Open Source</span> <span>AI Code Editor</span>
       </span>
     </div>
   </>
@@ -54,21 +57,15 @@ const HeroTitle = ({ theme }: { theme: string }) => (
 const HeroDescription = () => (
   <div className="mt-6 max-w-lg">
     <p
-      className="mb-2 text-sm text-gray-500 sm:text-lg"
+      className="mb-8 text-sm text-gray-500 sm:text-lg"
       data-aos="fade-up"
       data-aos-delay="200"
     >
-      Speed up your development with a code editor integrated with the best AI
-      tech stack, curated just for you. 🚀
-    </p>
-    <p
-      className="mb-4 text-sm text-gray-500 sm:text-lg"
-      data-aos="fade-up"
-      data-aos-delay="200"
-    >
-      Afraid of switching editors? No need, PearAI is a fork of VSCode
-      reimagined for building natively with the best-on-market AI tools, but
-      you&apos;ll still feel right at home. 🍐
+      Speed up your development by combining the familiarity of VSCode, with{" "}
+      <Link href="/faq" className="text-primary-800 hover:text-primary-800/80">
+        native integrations
+      </Link>{" "}
+      of the best AI tools curated for your productivity 🚀
     </p>
   </div>
 );
