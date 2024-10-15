@@ -18,7 +18,7 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
-    date: "6 October 2024",
+    date: "9 October 2024",
     title: "Open Source Fixes",
     version: "v1.3.0",
     description: (
