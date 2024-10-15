@@ -32,14 +32,14 @@ import { useUser } from "@/hooks/useUser";
 const REQUEST_OPTIONS = [
   {
     amount: 5,
-    requests: 233,
+    requests: 200,
     popular: false,
     icon: MessageSquare,
     feature: "Basic",
   },
   {
     amount: 10,
-    requests: 466,
+    requests: 400,
     popular: false,
     icon: Sparkles,
     feature: "Standard",
@@ -111,7 +111,7 @@ export default function TopUpModal() {
                   </p>
                   <div className="mt-1 flex items-center">
                     <p className="text-sm text-gray-700 dark:text-gray-600">
-                      {option.requests} requests
+                      ≈ {option.requests} requests
                     </p>
                     <TooltipProvider delayDuration={0}>
                       <Tooltip>
