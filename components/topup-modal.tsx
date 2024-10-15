@@ -16,7 +16,6 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
 } from "@/components/ui/tooltip";
 import {
   CheckCircle2,
@@ -24,7 +23,6 @@ import {
   Sparkles,
   Rocket,
   Crown,
-  InfoIcon,
 } from "lucide-react";
 import { useTopUpCheckout } from "@/hooks/useTopUpCheckout";
 import { useUser } from "@/hooks/useUser";
@@ -68,7 +66,8 @@ export default function TopUpModal() {
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">
+        <Button variant="outline" onClick={() => setIsOpen(false)}>
+          {" "}
           {isSubmitting ? "Processing..." : "Top Up Credits"}
         </Button>
       </AlertDialogTrigger>
@@ -78,27 +77,42 @@ export default function TopUpModal() {
             Top Up Credits
           </AlertDialogTitle>
           <AlertDialogDescription className="text-sm text-gray-700 dark:text-gray-600">
-            Enhance your AI experience with additional requests. Choose a
-            package that suits your needs.
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                Top up credits work similar to a &quot;pay-as-you-go&quot;
+                system and <b>never expire</b>, staying in your account
+                indefinitely until you use them.
+              </li>
+              <li>
+                Top up credits will only be used once you&apos;ve exhausted your
+                Monthly PearAI credits. Your remaining top up credit amount will
+                be shown on the dashboard.
+              </li>
+              <li>
+                The amount purchased is deposited to your account, and the usage
+                cost depends on the input/output sizes of your prompts, and the
+                LLM provider/model used.
+              </li>
+            </ul>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <div className="grid grid-cols-2 gap-4 pt-1 sm:pb-4 sm:pt-3">
           {REQUEST_OPTIONS.map((option) => (
             <Card
               key={option.amount}
-              className={`h-[140px] cursor-pointer transition-all ${
+              className={`h-[7rem] cursor-pointer transition-all ${
                 selectedAmount === option.amount
                   ? "bg-tertiary-100 ring-2 ring-secondary-main dark:bg-secondary-main dark:ring-white-50"
                   : "hover:bg-tertiary-100 hover:shadow-md dark:hover:bg-secondary-main"
               } ${option.popular ? "relative overflow-hidden" : ""} `}
               onClick={() => setSelectedAmount(option.amount)}
             >
-              <CardContent className="flex h-full flex-col justify-between p-4">
+              <CardContent className="flex h-4 flex-col justify-between p-4">
                 <div>
                   <div className="mb-1 flex items-center justify-between">
                     <div className="flex items-center">
                       <option.icon className="mr-2 h-4 w-4 text-secondary-main dark:text-white-50 sm:h-5 sm:w-5" />
-                      <p className="text-base font-semibold text-secondary-main dark:text-white-50 sm:text-lg">
+                      <p className="text-base font-semibold text-secondary-main dark:text-white-50 sm:text-sm">
                         {option.feature}
                       </p>
                     </div>
@@ -107,17 +121,11 @@ export default function TopUpModal() {
                     )}
                   </div>
                   <p className="text-2xl font-bold text-secondary-main dark:text-white-50">
-                    ${option.amount}
+                    ${option.amount} <span className="text-lg">top up</span>
                   </p>
                   <div className="mt-1 flex items-center">
-                    <p className="text-sm text-gray-700 dark:text-gray-600">
-                      ≈ {option.requests} requests
-                    </p>
                     <TooltipProvider delayDuration={0}>
                       <Tooltip>
-                        <TooltipTrigger asChild>
-                          <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
-                        </TooltipTrigger>
                         <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
                           <p>
                             Your PearAI Credits usage depend on your prompt
