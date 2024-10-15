@@ -70,7 +70,7 @@ export default function FreeTrialCard({
               <p className="text-sm text-muted-foreground">Free Trial</p>
             </div>
           </div>
-          <div className="mt-8 flex justify-between space-x-4">
+          <div className="mt-8 flex justify-between space-x-0 sm:space-x-4">
             <div className="hidden sm:block">
               <Button variant="outline" className="text-primary-800" asChild>
                 <Link
@@ -85,7 +85,7 @@ export default function FreeTrialCard({
               <Link href="/pricing">Subscribe Now</Link>
             </Button>
           </div>
-          <div className="mt-1 flex items-center">
+          <div className="mt-1 hidden items-center sm:flex">
             <Info className="inline text-muted-foreground" size={14} />
             <p className="ml-1.5 text-xs/3 text-muted-foreground">
               Make sure PearAI is{" "}
