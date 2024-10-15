@@ -16,6 +16,7 @@ import AuthButton from "./authbutton";
 import MobileMenu from "./mobile-menu";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
+import DownloadButton from "./downloadbutton";
 
 const NavItem = ({
   href,
@@ -126,7 +127,7 @@ export default async function Header() {
                           </ListItem>
                         </ul>
                       </DropdownNavItem>
-                      <NavItem href="/pricing">Pricing / Download</NavItem>
+                      <NavItem href="/pricing">Pricing</NavItem>
                       <NavItem href="/docs">Documentation</NavItem>
                       <NavItem
                         href="https://github.com/trypear/pearai-master"
@@ -139,6 +140,7 @@ export default async function Header() {
                 </nav>
               </div>
               <div className="hidden items-center space-x-4 md:flex">
+                <DownloadButton user={user} />
                 <AuthButton />
                 <DarkModeToggle />
               </div>
