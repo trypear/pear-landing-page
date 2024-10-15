@@ -796,11 +796,11 @@ export const posts = [
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 1 - Install Microsft WSL extension 
+      Step 1 - Install Microsft WSL extension
     </h2>
     <figure class="mt-4">
       <img
-        src="/images/blog/wsl-blog-extension.png" 
+        src="/images/blog/wsl-blog-extension.png"
         alt="Install Microsoft WSL extension form marketplace"
         class="rounded-xl shadow-lg object-cover w-full"
       />
@@ -815,7 +815,7 @@ export const posts = [
     </h2>
     <figure class="mt-4">
       <img
-        src="/images/blog/wsl-blog-patch.png" 
+        src="/images/blog/wsl-blog-patch.png"
         alt="Run 'Patch WSL' from command palette"
         class="rounded-xl shadow-lg object-cover w-full"
       />
@@ -825,7 +825,7 @@ export const posts = [
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 3 - 
+      Step 3 -
     </h2>
     <iframe src="https://giphy.com/embed/wrBURfbZmqqXu" width="100%" height="auto" style="aspect-ratio: 480 / 317;" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
   </section>
@@ -872,7 +872,7 @@ export const posts = [
         These factors align perfectly with the principles of open source software, making it an ideal approach for AI code editors.
       </p>
     </section>
-  
+
     <section class="space-y-4">
       <h2
         class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
@@ -889,7 +889,7 @@ export const posts = [
         This diverse contribution spans across our landing page, server, and the app itself, driving our rapid development cycle.
       </p>
     </section>
-  
+
     <section class="space-y-4">
       <h2
         class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
@@ -946,7 +946,7 @@ export const posts = [
           As you may know, PearAI is an Open-Source AI Code Editor and fully transparent to the public. We are driven by our open-source community that is working under the shared goal of making the best AI code editor in the world. However, sometimes we have bigger tasks that need more expertise and time from a contributor. This requires a lot of effort, so we want to provide more incentive and rewards for these contributors.
         </p>
       </section>
-  
+
       <section class="space-y-6">
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           Introducing PearAI's Open-Source Bounties!
@@ -958,7 +958,7 @@ export const posts = [
           If you have a worthy attempt (and we will be generous with this), you will be rewarded as well by the attempt bounty, which is also pre-set in the issue description.
         </p>
       </section>
-  
+
       <section class="space-y-6">
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           How to Participate
@@ -1034,7 +1034,7 @@ export const posts = [
           class="w-full rounded-xl shadow-lg"
         />
       </figure>
-  
+
       <figure class="my-8 sm:my-12">
         <img
           src="/images/blog/mit-license.jpg"
@@ -1067,7 +1067,7 @@ export const posts = [
       </figure>
 
       <p class="text-base sm:text-lg">
-        Once again, we apologize to Continue and the open-source community. We encourage everyone to explore the incredible work being done by the Continue team (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>). We hope to learn from our mistakes, and move forward responsibly.
+        Once again, we apologize to Continue and the open-source community. We encourage everyone to explore the incredible work being done by the Continue team (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>). We hope to learn from our mistakes, and move forward responsibly. We will be continuing with our original plan of differentiating from Continue and other competitors, to simply provide the best AI-powered code editor and allow users to make what they want.
       </p>
     </article>`,
   },
