@@ -15,7 +15,7 @@ export default function DarkModeToggle() {
   if (!mounted) return null;
 
   return (
-    <div className="flex h-8 w-8 items-center justify-center duration-200">
+    <div className="flex h-9 w-9 items-center justify-center duration-200">
       <label className="flex h-full w-full cursor-pointer items-center justify-center rounded-full border border-gray-600/50 duration-200 hover:bg-gray-400/20">
         <input
           className="hidden"

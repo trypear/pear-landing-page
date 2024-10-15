@@ -1,14 +1,13 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { LogIn, LogOut, SquareArrowRight } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./dropdown-menu";
 
@@ -26,19 +25,18 @@ export default async function AuthButton() {
   return (
     <div className="flex items-center space-x-4">
       {error || !data?.user ? (
-        <>
+        <div className="m-0 p-0">
           <Link href="/signin">
-            <Button variant="outline" className="hidden md:inline-flex">
+            <Button variant="outline" className="rounded-none rounded-l-full">
               Sign in
             </Button>
           </Link>
           <Link href="/signup">
-            <Button variant="outline">
-              Try PearAI
-              <SquareArrowRight className="mr-2 h-4 w-4" />
+            <Button variant="outline" className="rounded-none rounded-r-full">
+              Sign up
             </Button>
           </Link>
-        </>
+        </div>
       ) : (
         <>
           <Link href="/dashboard">

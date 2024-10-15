@@ -1,10 +1,12 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { getOS } from "@/lib/utils";
+import { User } from "@supabase/supabase-js";
+import { ArrowDownToLine } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
-export default function DownloadButton() {
+export default function DownloadButton({ user }: { user: User | null }) {
   const router = useRouter();
   const handleDownload = async () => {
     try {
@@ -34,8 +36,13 @@ export default function DownloadButton() {
   };
 
   return (
-    <Button variant="default" onClick={handleDownload}>
-      Download
+    <Button
+      variant={user ? "outline" : "default"}
+      size={`${user ? "icon" : "default"}`}
+      className={user ? "h-9 px-3" : ""}
+      onClick={handleDownload}
+    >
+      {user ? <ArrowDownToLine /> : "Download"}
     </Button>
   );
 }

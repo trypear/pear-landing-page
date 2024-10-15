@@ -140,8 +140,8 @@ export default async function Header() {
                 </nav>
               </div>
               <div className="hidden items-center space-x-4 md:flex">
+                <DownloadButton user={user} />
                 <AuthButton />
-                <DownloadButton />
                 <DarkModeToggle />
               </div>
               <div className="md:hidden">
