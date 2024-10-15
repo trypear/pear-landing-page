@@ -153,9 +153,9 @@ const faqData: FAQItem[] = [
     answer: (
       <p>
         PearAI will speed up and improve your development. PearAI is a fork of
-        VSCode, and possess all of its functionalities, but reimagined for building natively with the best-on-market AI tools.
-        Current users have expressed that their coding workflow accelerated by
-        at least 3-4x.
+        VSCode, and possess all of its functionalities, but reimagined for
+        building natively with the best-on-market AI tools. Current users have
+        expressed that their coding workflow accelerated by at least 3-4x.
         <br />
         <br /> By switching to PearAI, you can speed up your product
         development, and not lack behind in terms of AI tooling compared to your
@@ -217,14 +217,14 @@ const faqData: FAQItem[] = [
     answer: (
       <div>
         <p className="mb-4">
-          PearAI-submodule started out as a fork of Continue.dev. Here's what
-          we've built on top of it so far:
+          PearAI-submodule started out as a fork of Continue.dev. Here&apos;s
+          what we&apos;ve built on top of it so far:
         </p>
         <ul className="list-disc space-y-2 pl-5">
           <li>
             Automatic file creation and generation from the chat panel directly.
-            E.g. if you ask it to generate code and it's supposed to create a
-            file too, it will allow you to do so. Neither Continue nor Cursor
+            E.g. if you ask it to generate code and it&apos;s supposed to create
+            a file too, it will allow you to do so. Neither Continue nor Cursor
             have this feature within the chat panel.
           </li>
           <li>
@@ -266,9 +266,9 @@ const faqData: FAQItem[] = [
           These are some of the new features we have for v1. We also had to do a
           ton of maintenance and integration work, to make a forked extension
           part of VSCode work smoothly, and making open source VSCode usable; it
-          doesn't come with everything out the box (e.g. missing extensions,
-          errors with packaging for distribution and certificates, auto updates,
-          etc.).
+          doesn&apos;t come with everything out the box (e.g. missing
+          extensions, errors with packaging for distribution and certificates,
+          auto updates, etc.).
           <br /> <br />
           We also had to do a ton of upfront work for peripheral stuff like
           setting up the open source community on Github, Discord,

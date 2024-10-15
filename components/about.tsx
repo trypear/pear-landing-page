@@ -51,13 +51,13 @@ const AboutComponent: React.FC = () => {
           , PearAI is built in public
         </h1>
         <p className="mt-4 max-w-2xl text-center text-gray-500">
-          PearAI's goal is to reduce the time it takes for an individual to go
-          from idea to creation. PearAI started out as a fork of VSCode and
+          PearAI&apos;s goal is to reduce the time it takes for an individual to
+          go from idea to creation. PearAI started out as a fork of VSCode and
           Continue, and is a code editor seamlessly integrated with a curated
-          inventory of the best AI tooling on the market (ie. mem0, Aider, etc.), to
-          make it as easy for you to simply make what you want. We are fully
-          transparent, open-source, and building in public to make the best code
-          editor available to everyone.
+          inventory of the best AI tooling on the market (ie. mem0, Aider,
+          etc.), to make it as easy for you to simply make what you want. We are
+          fully transparent, open-source, and building in public to make the
+          best code editor available to everyone.
         </p>
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
