@@ -58,15 +58,17 @@ const HeroDescription = () => (
       data-aos="fade-up"
       data-aos-delay="200"
     >
-      Speed up your development by integrating AI the correct way 🚀
+      Speed up your development in a code editor integrated with the best AI
+      tech stack, curated just for you. 🚀
     </p>
     <p
       className="mb-4 text-sm text-gray-500 sm:text-lg"
       data-aos="fade-up"
       data-aos-delay="200"
     >
-      Afraid of switching editors? No need, PearAI is a fork of VSCode and
-      Continue so you&apos;ll feel right at home 😏
+      Afraid of switching editors? No need, PearAI is a fork of VSCode
+      reimagined for building with the best-on-market AI tools, but you'll still
+      feel right at home 😏
     </p>
   </div>
 );
