@@ -54,7 +54,7 @@ const AboutComponent: React.FC = () => {
           PearAI's goal is to reduce the time it takes for an individual to go
           from idea to creation. PearAI started out as a fork of VSCode and
           Continue, and is a code editor seamlessly integrated with a curated
-          list of the best AI tooling on the market (ie. mem0, Aider, etc.), to
+          inventory of the best AI tooling on the market (ie. mem0, Aider, etc.), to
           make it as easy for you to simply make what you want. We are fully
           transparent, open-source, and building in public to make the best code
           editor available to everyone.

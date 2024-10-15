@@ -153,8 +153,7 @@ const faqData: FAQItem[] = [
     answer: (
       <p>
         PearAI will speed up and improve your development. PearAI is a fork of
-        VSCode, and possess all of its functionalities, but also adds more to it
-        by integrating AI functionalities to speed up your coding workflow.
+        VSCode, and possess all of its functionalities, but reimagined for building natively with the best-on-market AI tools.
         Current users have expressed that their coding workflow accelerated by
         at least 3-4x.
         <br />
