@@ -1029,7 +1029,7 @@ export const posts = [
 
       <figure class="my-8 sm:my-12">
         <img
-          src="images/blog/apache-lisence.jpg"
+          src="/images/blog/apache-license.jpg"
           alt="apache license plain"
           class="w-full rounded-xl shadow-lg"
         />
@@ -1037,7 +1037,7 @@ export const posts = [
   
       <figure class="my-8 sm:my-12">
         <img
-          src="images/blog/mit-lisence.jpg"
+          src="/images/blog/mit-license.jpg"
           alt="mit license"
           class="w-full rounded-xl shadow-lg"
         />
@@ -1052,7 +1052,7 @@ export const posts = [
 
       <figure class="my-8 sm:my-12">
         <img
-          src="images/blog/continue-credit.jpg"
+          src="/images/blog/continue-credit.jpg"
           alt="continue credit"
           class="w-full rounded-xl shadow-lg"
         />
@@ -1060,7 +1060,7 @@ export const posts = [
 
         <figure class="my-8 sm:my-12">
         <img
-          src="images/blog/continue-dev.jpg"
+          src="/images/blog/continue-dev.jpg"
           alt="continue credit"
           class="w-full rounded-xl shadow-lg"
         />
