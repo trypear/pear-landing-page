@@ -796,11 +796,11 @@ export const posts = [
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 1 - Install Microsft WSL extension 
+      Step 1 - Install Microsft WSL extension
     </h2>
     <figure class="mt-4">
       <img
-        src="/images/blog/wsl-blog-extension.png" 
+        src="/images/blog/wsl-blog-extension.png"
         alt="Install Microsoft WSL extension form marketplace"
         class="rounded-xl shadow-lg object-cover w-full"
       />
@@ -815,7 +815,7 @@ export const posts = [
     </h2>
     <figure class="mt-4">
       <img
-        src="/images/blog/wsl-blog-patch.png" 
+        src="/images/blog/wsl-blog-patch.png"
         alt="Run 'Patch WSL' from command palette"
         class="rounded-xl shadow-lg object-cover w-full"
       />
@@ -825,7 +825,7 @@ export const posts = [
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 3 - 
+      Step 3 -
     </h2>
     <iframe src="https://giphy.com/embed/wrBURfbZmqqXu" width="100%" height="auto" style="aspect-ratio: 480 / 317;" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
   </section>
@@ -872,7 +872,7 @@ export const posts = [
         These factors align perfectly with the principles of open source software, making it an ideal approach for AI code editors.
       </p>
     </section>
-  
+
     <section class="space-y-4">
       <h2
         class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
@@ -889,7 +889,7 @@ export const posts = [
         This diverse contribution spans across our landing page, server, and the app itself, driving our rapid development cycle.
       </p>
     </section>
-  
+
     <section class="space-y-4">
       <h2
         class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
@@ -946,7 +946,7 @@ export const posts = [
           As you may know, PearAI is an Open-Source AI Code Editor and fully transparent to the public. We are driven by our open-source community that is working under the shared goal of making the best AI code editor in the world. However, sometimes we have bigger tasks that need more expertise and time from a contributor. This requires a lot of effort, so we want to provide more incentive and rewards for these contributors.
         </p>
       </section>
-  
+
       <section class="space-y-6">
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           Introducing PearAI's Open-Source Bounties!
@@ -958,7 +958,7 @@ export const posts = [
           If you have a worthy attempt (and we will be generous with this), you will be rewarded as well by the attempt bounty, which is also pre-set in the issue description.
         </p>
       </section>
-  
+
       <section class="space-y-6">
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           How to Participate
@@ -970,6 +970,105 @@ export const posts = [
           We hope that this adds even more whimsy to bringing the best AI code editor into existence together.
         </p>
       </section>
+    </article>`,
+  },
+
+  {
+    title: "PearAI Open-Source Fixes",
+    author: "PearAI Team, Jyoutir",
+    readingTime: "4 min",
+    date: "2024-10-12",
+    excerpt:
+      "View PearAI's changes to correct past mistakes and ensure compliance with open-source standards.",
+    thumbnail: "/images/og-image.png",
+    tags: ["open-source", "Continue.dev", "spreading love", "accountability"],
+    url: "/blog/pearai-open-source-fixes",
+    content: `<article
+      class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+    >
+      <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+        We have made a mistake, and for this we apologize to Continue and the Open-Source community. We genuinely want to learn from our mistakes and grow.
+        To fix this, we made big changes, and we had them reviewed by friends in the open-source space, along with a law team to ensure we did everything the right way this time.
+        These are the changes PearAI made in attempts to correct our mistakes.
+      </p>
+
+      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Starting Fresh and Being True Forks 🍴
+      </h2>
+
+      <p class="text-base sm:text-lg">
+        We've rebuilt from scratch, starting fresh with zero stars on our new repository, leaving behind our 2k+ star repo to prioritize accountability and staying true to open-source. This means our repositories accurately display true forks, marked by GitHub's built-in fork tag.
+      </p>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/continue-forked.jpg"
+          alt="PearAI's temp-repo forked from continuedev/continue"
+          class="w-full rounded-xl shadow-lg"
+        />
+        <figcaption class="mt-4 text-center text-sm italic text-gray-600 dark:text-gray-400">
+          Note: <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">temp-repo</code> will be renamed to <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">pearai-submodule</code>.
+        </figcaption>
+      </figure>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/vscode-forked.png"
+          alt="PearAI's pearai-app forked from microsoft/vscode"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Correct Licensing 📄
+      </h2>
+
+      <p class="text-base sm:text-lg">
+        The fork of Continue is permanently licensed under Apache 2.0, and this will never change. View it here: <a href="https://github.com/trypear/temp-repo/blob/main/LICENSE" class="font-medium text-blue-600 hover:underline dark:text-blue-400">License</a>. While the VSCode fork retains its original MIT License, with details provided in the README. We've reapplied changes to ensure full compliance with the Apache 2.0 license, resolving previous code attribution issues.
+      </p>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/apache-license.jpg"
+          alt="apache license plain"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/mit-license.jpg"
+          alt="mit license"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Complete Transparency 🔎
+      </h2>
+      <p class="text-base sm:text-lg">
+        We aim for complete transparency, making sure that everyone understands that our pearai-submodule repository is a fork of Continue (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>), This is an important part of our current functionality. In the future, we plan to diverge and innovate further, working towards creating the best AI-powered code editor.
+      </p>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/continue-credit.jpg"
+          alt="continue credit"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+        <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/continue-dev.jpg"
+          alt="continue credit"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <p class="text-base sm:text-lg">
+        Once again, we apologize to Continue and the open-source community. We encourage everyone to explore the incredible work being done by the Continue team (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>). We hope to learn from our mistakes, and move forward responsibly. We will be continuing with our original plan of differentiating from Continue and other competitors, to simply provide the best AI-powered code editor and allow users to make what they want.
+      </p>
     </article>`,
   },
 ];
