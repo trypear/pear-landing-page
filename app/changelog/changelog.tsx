@@ -18,6 +18,29 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
+    date: "6 October 2024",
+    title: "Open Source Fixes",
+    version: "v1.3.0",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">Fixes</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <Link
+              href="https://x.com/trypearai/status/1843336384322601366"
+              className="text-primary-600 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Added open source fixes
+            </Link>
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
     date: "18 September 2024",
     title: "File Creation + WSL Support",
     version: "v1.1.0 + v1.2.0",
