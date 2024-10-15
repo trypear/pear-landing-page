@@ -190,7 +190,7 @@ export default function SubscriptionCard({
                   <p className="text-sm text-muted-foreground">
                     {loading
                       ? "-"
-                      : `$${usage.remaining_topup_credits} remaining`}
+                      : `$${Math.floor(usage.remaining_topup_credits * 100) / 100} remaining`}
                   </p>
                 </div>
               )}
