@@ -52,12 +52,14 @@ const AboutComponent: React.FC = () => {
         </h1>
         <p className="mt-4 max-w-2xl text-center text-gray-500">
           PearAI&apos;s goal is to reduce the time it takes for an individual to
-          go from idea to creation. PearAI started out as a fork of VSCode and
-          Continue, and is a code editor seamlessly integrated with a curated
-          inventory of the best AI tooling on the market (ie. mem0, Aider,
-          etc.), to make it as easy for you to simply make what you want. We are
-          fully transparent, open-source, and building in public to make the
-          best code editor available to everyone.
+          go from idea to creation. We started out as a fork of VSCode, with
+          Continue being our first integrated AI tool.
+          <br /> <br />
+          We aim to be a curated inventory of the best AI tools on the market
+          (ie. Perplexity, aider, mem0, etc.), to make it easy for you to make
+          what you want. We are transparent, open-source, and building in
+          public, to make the best code editor available to as many people as we
+          can.
         </p>
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
@@ -77,7 +79,7 @@ const AboutComponent: React.FC = () => {
             AI debugging, including errors from terminal
           </Badge>
           <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            Inventory: Seamless integration with the best AI tools on the
+            Inventory: seamless integration with the best AI tools on the
             market.
           </Badge>
         </div>
@@ -109,19 +111,17 @@ const AboutComponent: React.FC = () => {
 
         <div className="max-w-2xl text-gray-500">
           <p className="mt-6 text-center">
-            PearAI is founded by Pan and Nang, both former software engineers
-            who worked on developer tooling at companies like Meta, Coinbase,
-            and high-frequency trading firms.
+            PearAI is founded by Pan and Nang, both software engineers who
+            worked on internal and developer tooling teams at companies like
+            Meta, Coinbase, Two Sigma, among others.
           </p>
           <p className="mt-3 text-center">
             Passionate about empowering individuals, they recognize code and
             media as the most scalable tools a single person can utilize. With a
             combined following of over 500k subscribers and over 30 million
             views, they&apos;ve decided to combine media and code, bringing the
-            developer community along for the ride. They&apos;re building the
-            next open-source AI-powered code editor, PearAI, with full
-            transparency through videos, livestreams, and direct Discord
-            calls/chats.
+            developer community along for the ride, through videos, livestreams,
+            and direct Discord calls/chats.
           </p>
         </div>
       </div>
