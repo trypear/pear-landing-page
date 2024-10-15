@@ -3,8 +3,14 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Info } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 import { UsageType } from "../dashboard";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 type FreeTrialCardProps = {
   usage: UsageType;
@@ -39,17 +45,15 @@ export default function FreeTrialCard({
             <div className="flex justify-between">
               <p className="font-medium">PearAI Credits</p>
               <p className="text-sm text-muted-foreground">
-                <strong>
-                  {loading ? (
-                    "-"
-                  ) : (
-                    <strong>
-                      {usage?.percent_credit_used != null
-                        ? `${Math.min(usage.percent_credit_used, 100)}%`
-                        : "Cannot find used percentage. Please contact PearAI support."}
-                    </strong>
-                  )}
-                </strong>
+                {loading ? (
+                  "-"
+                ) : (
+                  <strong>
+                    {usage?.percent_credit_used != null
+                      ? `${Math.min(usage.percent_credit_used, 100)}%`
+                      : "Usage info not found. Contact PearAI support"}
+                  </strong>
+                )}
               </p>
             </div>
             <Progress
@@ -64,6 +68,33 @@ export default function FreeTrialCard({
               </p>
             </div>
           </div>
+          {usage.remaining_topup_credits && (
+            <div className="mb-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <p className="font-medium">Topup Credits</p>
+                  <TooltipProvider delayDuration={0}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
+                      </TooltipTrigger>
+                      <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
+                        <p>
+                          Top-up credit does not expire and is utilized only
+                          after the monthly quota is reached.
+                        </p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {loading
+                    ? "-"
+                    : `$${Math.floor(usage.remaining_topup_credits * 100) / 100} remaining`}
+                </p>
+              </div>
+            </div>
+          )}
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Plan</p>
@@ -85,19 +116,17 @@ export default function FreeTrialCard({
               <Link href="/pricing">Subscribe Now</Link>
             </Button>
           </div>
-          <div className="mt-1 flex items-center">
-            <Info className="inline text-muted-foreground" size={14} />
-            <p className="ml-1.5 text-xs/3 text-muted-foreground">
-              Make sure PearAI is{" "}
-              <Button
-                variant="link"
-                asChild
-                className="p-0 text-xs text-primary-800"
-              >
-                <Link href="/pricing">installed.</Link>
-              </Button>{" "}
+          <div className="mt-4 flex items-start text-xs text-muted-foreground">
+            <InfoIcon className="mr-1 mt-0.5 h-3 w-3 flex-shrink-0" />
+            <div>
+              Make sure PearAI is
+              <Link href="/pricing" className="mx-1">
+                <span className="text-primary-800 hover:underline">
+                  installed.
+                </span>
+              </Link>
               Use this button to open app and login directly.
-            </p>
+            </div>
           </div>
         </CardContent>
       </div>
