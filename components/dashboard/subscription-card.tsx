@@ -167,7 +167,6 @@ export default function SubscriptionCard({
                 <p className="text-right text-sm text-muted-foreground">
                   Credits refill monthly
                 </p>
-
               </div>
               {usage.remaining_topup_credits && (
                 <div className="mt-4 flex justify-between">
@@ -293,22 +292,22 @@ export default function SubscriptionCard({
             </div>
             <TopUpModal />
           </div>
-          <div className="flex justify-between space-x-4">
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button
-                  onClick={handleCancelClick}
-                  disabled={isCanceling}
-                  variant="link"
-                  className="px-0 underline underline-offset-2"
-                >
-                  {isCanceling
-                    ? "Canceling..."
-                    : isCanceled
-                      ? "Subscription canceled, reactivate?"
-                      : "Cancel Subscription"}
-                </Button>
-              </DialogTrigger>
+          <div className="flex justify-between items-center">
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button
+                onClick={handleCancelClick}
+                disabled={isCanceling}
+                variant="link"
+                className="px-0 underline underline-offset-2 ml-auto text-muted-foreground"
+              >
+                {isCanceling
+                  ? "Canceling..."
+                  : isCanceled
+                    ? "Subscription canceled, reactivate?"
+                    : "Cancel Subscription"}
+              </Button>
+            </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle>Cancel Subscription</DialogTitle>

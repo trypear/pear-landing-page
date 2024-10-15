@@ -35,22 +35,22 @@ const REQUEST_OPTIONS = [
     requests: 200,
     popular: false,
     icon: MessageSquare,
-    feature: "Basic",
+    feature: "Juicer",
   },
   {
     amount: 10,
     requests: 400,
     popular: false,
     icon: Sparkles,
-    feature: "Standard",
+    feature: "Health Potion",
   },
-  { amount: 15, requests: 700, popular: true, icon: Rocket, feature: "Pro" },
+  { amount: 15, requests: 700, popular: true, icon: Rocket, feature: "2x EXP" },
   {
     amount: 30,
     requests: 1400,
     popular: false,
     icon: Crown,
-    feature: "Enterprise",
+    feature: "Ult",
   },
 ];
 
