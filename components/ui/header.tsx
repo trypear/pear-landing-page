@@ -104,8 +104,8 @@ export default async function Header() {
                   className="flex flex-shrink-0 items-center"
                   aria-label="PearAI Home"
                 >
-                  <PearGreenLogo />
-                  <div className="h4 ml-2">PearAI</div>
+                  <PearGreenLogo className="mb-1 h-8" />
+                  <div className="h4 ml-2 text-primary-700">PearAI</div>
                 </Link>
                 <nav className="ml-10 hidden md:block" aria-label="Main menu">
                   <NavigationMenu>

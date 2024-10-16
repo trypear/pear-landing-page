@@ -132,8 +132,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span>
-            Monthly refill of increased PearAI Credits for market-leading AI
-            models
+            Monthly refill of <span className="underline"> increased</span>{" "}
+            PearAI Credits for market-leading AI models
             <PearCreditsTooltip type="enterprise" />
           </span>
         </div>
@@ -283,7 +283,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                         year: "numeric",
                       })}
                     </div>
-                    * Our Mac Intel version will be back by end of week!
                   </div>
                 )}
                 <div className="flex w-full max-w-md gap-2">
@@ -384,7 +383,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           <header className="mx-auto mt-16 max-w-4xl space-y-4 text-center sm:mt-0 sm:space-y-6">
             <h1
               id="pricing-heading"
-              className="mt-8 text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
+              className="mt-8 text-4xl font-medium leading-tight sm:text-4xl md:text-4xl lg:text-4xl"
             >
               Speed up your
               <br />

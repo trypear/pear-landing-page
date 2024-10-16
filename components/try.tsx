@@ -15,8 +15,8 @@ export default function TryPear() {
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            Pear is built by a large community of developers. If you have
-            questions, or would like to discuss, you can join our{" "}
+            PearAI is built by a large community of developers. If you have
+            questions, or if you&apos;d like to participate, you can join our{" "}
             <Link
               href="https://discord.gg/7QMraJUsQt"
               className="font-medium text-primary-700 hover:text-primary-800"
