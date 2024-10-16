@@ -111,17 +111,20 @@ const faqData: FAQItem[] = [
     answer: <p>Pair programming... Pear Programming... PearAI!</p>,
   },
   {
-    question: "1. Is PearAI an extension or an app?",
+    question: "1. Is PearAI an extension or an app? (Native Integrations)",
     answer: (
       <p>
         PearAI is a full-fledged app. Being an app instead of being just an
         extension provides us the highest degree of freedom to ensure the best,
-        smoothest experience for you!
+        smoothest experience for you. This is what we mean by native
+        integrations, as the best AI tools we are trying to incorporate,
+        requires us to have full control of the original VSCode codebase, and
+        not just the extensions&apos; folders.
         <br />
         <br />
         If you prefer to use a VSCode extension, we recommend using{" "}
         <Link href="https://continue.dev/">Continue.dev</Link> instead. We are a
-        fork of them so the features will be very similar!
+        fork of them so a lot fo the core features will be similar (for now!).
       </p>
     ),
   },
@@ -193,7 +196,7 @@ const faqData: FAQItem[] = [
         and we will do the research on finding out who the best are, and spend
         the effort to integrate them for your workflow.
         <br /> <br />
-        We are extensible for integration with all the latest, up-to-date AI
+        We are extendable for integration with all the latest, up-to-date AI
         tools (ie. mem0, aider, etc.), so you always know you are getting the
         best experience possible on the market. We are also open source, so
         there are no privacy issues with your code or data.
