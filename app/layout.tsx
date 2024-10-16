@@ -27,9 +27,9 @@ export default function RootLayout({
         >
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
             enableSystem
             disableTransitionOnChange
+            enableColorScheme
           >
             <PostHogPageView />
             <div className="flex min-h-screen flex-col overflow-hidden">
