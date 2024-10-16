@@ -139,12 +139,12 @@ export default async function Header() {
                   </NavigationMenu>
                 </nav>
               </div>
-              <div className="hidden items-center space-x-4 md:flex">
+              <div className="hidden items-center space-x-4 lg:flex">
                 <DownloadButton user={user} />
                 <AuthButton />
                 <DarkModeToggle />
               </div>
-              <div className="md:hidden">
+              <div className="lg:hidden">
                 <MobileMenu user={user} handleSignOut={handleSignOut} />
               </div>
             </div>

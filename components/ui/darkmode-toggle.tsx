@@ -5,12 +5,19 @@ import { MoonStar, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 export default function DarkModeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, systemTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    const localTheme = localStorage.getItem("theme");
+    if (!!localTheme || !systemTheme) return;
+    setTheme(systemTheme as string);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [systemTheme]);
 
   if (!mounted) return null;
 
