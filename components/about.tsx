@@ -57,9 +57,7 @@ const AboutComponent: React.FC = () => {
           <br /> <br />
           We aim to be a curated inventory of the best AI tools on the market
           (ie. Perplexity, aider, mem0, etc.), to make it easy for you to make
-          what you want. We are transparent, open-source, and building in
-          public, to make the best code editor available to as many people as we
-          can.
+          what you want.
         </p>
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
