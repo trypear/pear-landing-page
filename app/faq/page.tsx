@@ -60,7 +60,8 @@ const FAQ: React.FC = () => {
               product Y. PearAI aims to natively integrate the best-in-market AI
               tools for each aspect of coding with AI (tooling for code
               generation, LLM, search, codebase knowledge, debugging, etc.), so
-              you don’t have to worry about anything, and can just build.
+              you don’t have to worry about anything, and can just focus on
+              building as efficiently as possible.
             </p>
           </div>
         </div>
