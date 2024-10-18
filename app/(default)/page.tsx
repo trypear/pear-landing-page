@@ -1,4 +1,5 @@
 import Features from "@/components/features";
+import HeroSection from "@/components/hero";
 import Hero from "@/components/hero";
 import Try from "@/components/try";
 import { constructMetadata } from "@/lib/utils";
@@ -11,7 +12,7 @@ export const metadata: Metadata = constructMetadata({
 export default function Home() {
   return (
     <>
-      <Hero />
+      <HeroSection />
       <Features />
       <Try />
     </>

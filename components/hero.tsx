@@ -1,121 +1,50 @@
-"use client";
-
-import { useTheme } from "next-themes";
+import Image from "next/image";
+import background from "../public/images/export1.jpg";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
-import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
-import { Button } from "@/components/ui/button";
-import { YCombinatorLogo } from "@/components/ui/icons";
 
-const HeroTitle = ({ theme }: { theme: string }) => (
-  <>
-    <div className="hidden items-start sm:inline-block">
-      <div className="flex justify-center">
-        {theme === "dark" ? (
-          <PearDarkHeroLogo
-            width="26"
-            alt="PearAI Logo"
-            className="mb-4 mr-2 inline-flex"
-          />
-        ) : (
-          <PearHeroLogo
-            width="35"
-            height="50"
-            alt="PearAI Logo"
-            className="-mt-[0.25rem] mb-4 mr-2 inline-flex"
-          />
-        )}
-        <p className="text-primary-700">PearAI </p>
-      </div>
-      The Open Source AI Code Editor
-    </div>
-
-    <div className="block items-start sm:hidden">
-      <div>
-        {theme === "dark" ? (
-          <PearDarkHeroLogo
-            width="20"
-            alt="PearAI Logo"
-            className="mb-3 mr-2 inline-flex"
-          />
-        ) : (
-          <PearHeroLogo
-            width="20"
-            alt="PearAI Logo"
-            className="mb-3 mr-2 inline-flex"
-          />
-        )}
-        <span className="text-primary-700">PearAI </span>
-      </div>
-      <span className="flex flex-col text-3xl">
-        <span>The Open Source</span> <span>AI Code Editor</span>
-      </span>
-    </div>
-  </>
-);
-
-const HeroDescription = () => (
-  <div className="mt-6 max-w-lg">
-    <p
-      className="mb-8 text-sm text-gray-500 sm:text-lg"
-      data-aos="fade-up"
-      data-aos-delay="200"
-    >
-      Speed up your development by combining the familiarity of VSCode, with{" "}
-      <Link href="/faq" className="text-primary-800 hover:text-primary-800/80">
-        native integrations
-      </Link>{" "}
-      of the best AI tools curated for your productivity 🚀
-    </p>
-  </div>
-);
-const HeroButtons = () => {
+export default function HeroSection() {
   return (
-    <div className="mx-auto flex max-w-sm flex-col items-center justify-center sm:max-w-none">
-      <div
-        data-aos="fade-up"
-        data-aos-delay="400"
-        className="flex flex-col items-center"
-      >
-        <Button asChild size="lg">
-          <Link href="/pricing">Download For Free</Link>
-        </Button>
-        <div
-          className="mt-10 flex items-center"
-          data-aos="fade-up"
-          data-aos-delay="500"
-        >
-          <span className="mr-[-0.1rem] mt-[0.12rem] text-sm text-gray-500">
-            Backed by
-          </span>
-          <Link
-            href="https://www.ycombinator.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <YCombinatorLogo className="h-14 w-auto" />
+    <div className="bg-[#EEF0F1]">
+      <div className="relative flex h-screen flex-col items-center justify-center bg-gray-100">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={background}
+            alt="Background"
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            className="opacity-90"
+          />
+        </div>
+
+        {/* Hero Section */}
+        <div className="z-10 -mt-10 mb-4 text-center">
+          <p className="mx-auto w-[200px] rounded-md bg-gray-100 text-sm text-gray-900">
+            Product Insights + Monitoring
+          </p>
+          <h1 className="text-white mt-4 text-5xl font-medium dark:text-black">
+            <span className="text-primary-700">PearAI:</span> The Open Source AI{" "}
+            <br /> Powered Code Editor
+          </h1>
+          <p className="mx-auto mt-4 text-sm text-gray-800 dark:text-black">
+            Speed up your development by integrating AI the correct way. <br />
+            Afraid of switching editors? No need, PearAI is a fork of VS Code,
+            so you’ll feel right at home.
+          </p>
+        </div>
+        <button className="z-10 flex w-40 items-center justify-center rounded-3xl border border-primary-700 p-2 text-center">
+          <Link href="/pricing" className="flex items-center gap-5">
+            <p className="text-primary-700">Launch</p>
+            <ArrowRight
+              size={24}
+              color="white"
+              className="rounded-full bg-primary-700"
+            />
           </Link>
-        </div>
+        </button>
       </div>
     </div>
-  );
-};
-export default function Hero() {
-  const { theme } = useTheme();
-
-  return (
-    <section>
-      <div className="relative mx-auto mt-24 max-w-6xl px-4 sm:px-6">
-        <div className="relative pb-10 pt-24">
-          <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
-            <div className="text-4xl font-semibold text-gray-900 sm:text-5xl">
-              <HeroTitle theme={theme!} />
-            </div>
-            <HeroDescription />
-            <HeroButtons />
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
