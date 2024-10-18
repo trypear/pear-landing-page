@@ -154,6 +154,10 @@ export const footerSections = [
         href: "/privacy",
       },
       {
+        text: "App Privacy Policy",
+        href: "/privacy-app",
+      },
+      {
         text: "Terms of Service",
         href: "/terms-of-service",
       },
