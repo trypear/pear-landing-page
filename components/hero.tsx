@@ -24,17 +24,19 @@ export default function HeroSection() {
           <p className="mx-auto w-[200px] rounded-md bg-gray-100 text-sm text-gray-900">
             Product Insights + Monitoring
           </p>
-          <h1 className="text-white mt-4 text-5xl font-medium dark:text-black">
+          <h1 className="mt-4 text-5xl font-medium tracking-tighter text-black dark:text-black">
             <span className="text-primary-700">PearAI:</span> The Open Source AI{" "}
-            <br /> Powered Code Editor
           </h1>
-          <p className="mx-auto mt-4 text-sm text-gray-800 dark:text-black">
+          <h1 className="mt-1 text-[45px] font-medium tracking-tighter text-black dark:text-black">
+            Powered Code Editor
+          </h1>
+          <p className="mx-auto mt-2 text-sm text-gray-800 dark:text-black">
             Speed up your development by integrating AI the correct way. <br />
             Afraid of switching editors? No need, PearAI is a fork of VS Code,
             so you’ll feel right at home.
           </p>
         </div>
-        <button className="z-10 flex w-40 items-center justify-center rounded-3xl border border-primary-700 p-2 text-center">
+        <button className="z-10 flex w-[140px] items-center justify-center rounded-3xl border border-primary-700 p-2 text-center">
           <Link href="/pricing" className="flex items-center gap-5">
             <p className="text-primary-700">Launch</p>
             <ArrowRight
