@@ -149,8 +149,9 @@ const faqData: FAQItem[] = [
         <br />
         <br />
         If you prefer to use a VSCode extension, we recommend using{" "}
-        <Link href="https://continue.dev/">Continue.dev</Link> instead. We are a
-        fork of them so a lot fo the core features will be similar (for now!).
+        <Link href="https://continue.dev/">Continue.dev</Link> instead. We are
+        partially a fork of them so a lot of the core features will be similar
+        (for now!).
       </p>
     ),
   },

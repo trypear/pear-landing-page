@@ -62,7 +62,10 @@ const HeroDescription = () => (
       data-aos-delay="200"
     >
       Speed up your development by combining the familiarity of VSCode, with{" "}
-      <Link href="/faq" className="text-primary-800 hover:text-primary-800/80">
+      <Link
+        href="/faq#extension"
+        className="text-primary-800 hover:text-primary-800/80"
+      >
         native integrations
       </Link>{" "}
       of the best AI tools curated for your productivity 🚀
