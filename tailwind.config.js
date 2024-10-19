@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 
 import plugin from "tailwindcss/plugin";
+import svgToDataUri from "mini-svg-data-uri";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 module.exports = {
   darkMode: ["class"],
@@ -110,7 +112,6 @@ module.exports = {
           "3/4": "75%",
           "1/1": "100%",
         },
-
         fontSize: {
           "2xs": "0.625rem",
           xs: "0.75rem",
@@ -146,14 +147,6 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        // primary: {
-        //   DEFAULT: "hsl(var(--primary))",
-        //   foreground: "hsl(var(--primary-foreground))",
-        // },
-        // secondary: {
-        //   DEFAULT: "hsl(var(--secondary))",
-        //   foreground: "hsl(var(--secondary-foreground))",
-        // },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -203,42 +196,47 @@ module.exports = {
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
-    plugin(function ({ addUtilities, theme, e }) {
-      const colors = theme("colors");
-      const utilities = {};
-
-      // List of colors and shades to generate utilities for
-      const colorList = [
-        "gray",
-        "purple",
-        "primary",
-        "secondary",
-        "tertiary",
-        "blue",
-        "beige",
-        "white",
-      ];
-      const shadeList = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
-
-      colorList.forEach((color) => {
-        shadeList.forEach((shade) => {
-          const colorValue = colors[color] && colors[color][shade];
-          if (typeof colorValue === "string") {
-            for (let i = 0; i <= 100; i += 5) {
-              utilities[`.shadow-inset-${color}-${shade}-${i}`] = {
-                boxShadow: colorValue.includes("<alpha-value>")
-                  ? `inset 0 -1.5px 0 0 ${colorValue.replace("<alpha-value>", i / 100)}`
-                  : `inset 0 -1.5px 0 0 ${colorValue}`,
-              };
-            }
-          }
-        });
-      });
-
-      addUtilities(utilities, ["responsive", "hover"]);
-    }),
+    addVariablesForColors,
+    function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          "bg-grid": (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`,
+            )}")`,
+          }),
+          "bg-grid-small": (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="8" height="8" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`,
+            )}")`,
+          }),
+          "bg-dot-light": (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25" height="25" fill="none"><circle fill="rgb(0 0 0 / 0.2)" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`,
+            )}")`,
+          }),
+          "bg-dot-dark": (value) => ({
+            backgroundImage: `url("${svgToDataUri(
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="25" height="25" fill="none"><circle fill="rgb(255 255 255 / 0.2)" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`,
+            )}")`,
+          }),
+        },
+        {
+          values: flattenColorPalette(theme("backgroundColor")),
+          type: "color",
+        },
+      );
+    },
   ],
 };
+// Function to add CSS variables for colors
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val]),
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
