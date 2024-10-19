@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { withAuth } from "@/utils/withAuth";
+// import { withAuth } from "@/utils/withAuth";
 import { createClient } from "@/utils/supabase/server";
-import { User } from "@supabase/supabase-js";
 
-async function submitBlog(request: NextRequest & { user: User }) {
+// TODO - Add withAuth middleware
+async function submitBlog(request: NextRequest) {
   const supabase = createClient();
 
   try {
@@ -11,14 +11,14 @@ async function submitBlog(request: NextRequest & { user: User }) {
       await request.json();
     console.log("request", request);
 
-    const { data: blog, error } = await supabase.from("blogs").insert([
+    const { data: blog, error } = await supabase.from("blog").insert([
       {
         title,
         url,
         excerpt,
         date,
         author,
-        readingTime,
+        readingtime: readingTime,
         tag,
         content,
         status: "pending",
@@ -44,4 +44,4 @@ async function submitBlog(request: NextRequest & { user: User }) {
   }
 }
 
-export const POST = withAuth(submitBlog);
+export const POST = submitBlog;
