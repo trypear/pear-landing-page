@@ -6,7 +6,7 @@ export const emailSchema = z.object({
     .string()
     .email({ message: "Email address is invalid." })
     .refine(async (email) => !(await isDisposableEmail(email)), {
-      message: "Disposable email addresses are not allowed.",
+      message: "Invalid email address.",
     }),
 });
 
