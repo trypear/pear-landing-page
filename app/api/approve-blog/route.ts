@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/utils/supabase/server";
-
+import { withAuth } from "@/utils/withAuth";
 // Todo only admin can approve blog
 async function updateBlogStatus(request: NextRequest) {
   const supabase = createClient();
@@ -34,4 +34,4 @@ async function updateBlogStatus(request: NextRequest) {
   }
 }
 
-export const POST = updateBlogStatus;
+export const POST = withAuth(updateBlogStatus);

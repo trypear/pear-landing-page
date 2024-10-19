@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-// import { withAuth } from "@/utils/withAuth";
+import { withAuth } from "@/utils/withAuth";
 import { createClient } from "@/utils/supabase/server";
 
-// TODO - Add withAuth middleware
+// TODO add rate limiting to this endpoint to prevent spam submissions
 async function submitBlog(request: NextRequest) {
   const supabase = createClient();
 
@@ -44,4 +44,4 @@ async function submitBlog(request: NextRequest) {
   }
 }
 
-export const POST = submitBlog;
+export const POST = withAuth(submitBlog);
