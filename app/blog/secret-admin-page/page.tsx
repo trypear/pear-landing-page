@@ -63,7 +63,7 @@ export default function BlogApproval() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id: blogId }),
+        body: JSON.stringify({ id: blogId, status: "approved" }),
       });
 
       if (!response.ok) {
@@ -76,6 +76,26 @@ export default function BlogApproval() {
     }
   };
 
+  const handleReject = async (blogId: number) => {
+    try {
+      const response = await fetch("/api/approve-blog", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: blogId, status: "rejected" }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to reject blog");
+      }
+
+      // Update the local state to reflect the change
+    } catch (err) {
+      setError("Failed to reject blog.");
+    }
+  };
+
   if (isLoading) {
     return (
       <div className="flex h-screen items-center justify-center">
@@ -85,7 +105,9 @@ export default function BlogApproval() {
   }
 
   if (error) {
-    return <div className="text-red-500">{error}</div>;
+    return (
+      <div className="flex h-screen items-center justify-center">{error}</div>
+    );
   }
 
   return (
@@ -134,6 +156,9 @@ export default function BlogApproval() {
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem onClick={() => handleApprove(blog.id)}>
                         Approve
+                      </DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => handleReject(blog.id)}>
+                        Reject
                       </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>

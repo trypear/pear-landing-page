@@ -6,11 +6,11 @@ async function updateBlogStatus(request: NextRequest) {
   const supabase = createClient();
 
   try {
-    const { id } = await request.json();
+    const { id, status } = await request.json();
 
     const { data, error } = await supabase
       .from("blog")
-      .update({ status: "approved" })
+      .update({ status: status })
       .eq("id", id);
 
     if (error) {
