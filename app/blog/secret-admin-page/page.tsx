@@ -1,89 +1,95 @@
-'use client'
+"use client";
 
-import React, { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { MoreHorizontal, Loader2 } from 'lucide-react'
+import React, { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { MoreHorizontal, Loader2 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu";
 
 interface Blog {
-  id: number
-  title: string
-  url: string
-  excerpt: string
-  date: string
-  author: string
-  tag: string | null
-  content: string
-  readingtime: number
-  status: string
+  id: number;
+  title: string;
+  url: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  tag: string | null;
+  content: string;
+  readingtime: number;
+  status: string;
 }
 
 export default function BlogApproval() {
-  const [blogs, setBlogs] = useState<Blog[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchBlogs()
-  }, [])
+    fetchBlogs();
+  }, []);
 
   const fetchBlogs = async () => {
     try {
-      const response = await fetch('/api/approve-blog')
+      const response = await fetch("/api/approve-blog");
       if (!response.ok) {
-        throw new Error('Failed to fetch blogs')
+        throw new Error("Failed to fetch blogs");
       }
-      const data = await response.json()
-      setBlogs(data)
+      const data = await response.json();
+      setBlogs(data);
     } catch (err) {
-      setError('Failed to load blogs. Please try again.')
+      setError("Failed to load blogs. Please try again.");
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleApprove = async (blogId: number) => {
     try {
-      const response = await fetch('/api/approve-blog', {
-        method: 'POST',
+      const response = await fetch("/api/approve-blog", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ id: blogId }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error('Failed to approve blog')
+        throw new Error("Failed to approve blog");
       }
 
       // Update the local state to reflect the change
-
     } catch (err) {
-      setError('Failed to approve blog.')
+      setError("Failed to approve blog.");
     }
-  }
+  };
 
   if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex h-screen items-center justify-center">
         <Loader2 className="h-8 w-8 animate-spin" />
       </div>
-    )
+    );
   }
 
   if (error) {
-    return <div className="text-red-500">{error}</div>
+    return <div className="text-red-500">{error}</div>;
   }
 
   return (
-    <Card className="w-full mt-20">
+    <Card className="mt-20 w-full">
       <CardHeader>
         <CardTitle>Approve Blogs</CardTitle>
       </CardHeader>
@@ -113,7 +119,7 @@ export default function BlogApproval() {
                 <TableCell>{blog.excerpt}</TableCell>
                 <TableCell>{blog.date}</TableCell>
                 <TableCell>{blog.author}</TableCell>
-                <TableCell>{blog.tag || 'N/A'}</TableCell>
+                <TableCell>{blog.tag || "N/A"}</TableCell>
                 <TableCell>{blog.content.substring(0, 50)}...</TableCell>
                 <TableCell>{blog.readingtime} min</TableCell>
                 <TableCell>{blog.status}</TableCell>
@@ -138,5 +144,5 @@ export default function BlogApproval() {
         </Table>
       </CardContent>
     </Card>
-  )
+  );
 }
