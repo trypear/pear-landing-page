@@ -7,6 +7,7 @@ import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
 import { Button } from "@/components/ui/button";
 import { YCombinatorLogo } from "@/components/ui/icons";
 import { motion } from "framer-motion";
+import GridIllustration from "./ui/grid-illustration";
 
 const HeroTitle = ({ theme }: { theme: string }) => (
   <>
@@ -110,12 +111,15 @@ export default function Hero() {
   return (
     <section className="relative">
       <motion.div
-        className="absolute inset-0 bg-dot-light-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-dot-dark-black"
+        className="absolute inset-0 mx-auto max-w-screen-2xl bg-dot-light-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-dot-dark-black"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2 }}
       ></motion.div>
       <div className="relative mx-auto max-w-6xl px-4 pt-24 sm:px-6">
+        <div className="absolute inset-0 h-64 w-full">
+          <GridIllustration />
+        </div>
         <div className="relative pb-10 pt-24">
           <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
             <div className="text-4xl font-semibold text-gray-900 sm:text-5xl">
@@ -124,6 +128,9 @@ export default function Hero() {
             <HeroDescription />
             <HeroButtons />
           </div>
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 -z-10 h-64 w-full scale-y-[-1] transform">
+          <GridIllustration />
         </div>
       </div>
     </section>

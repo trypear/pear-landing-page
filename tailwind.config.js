@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-import plugin from "tailwindcss/plugin";
 import svgToDataUri from "mini-svg-data-uri";
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
