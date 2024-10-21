@@ -168,7 +168,8 @@ export default function SubscriptionCard({
                   Credits refill monthly
                 </p>
               </div>
-              {usage.remaining_topup_credits && (
+              {usage.remaining_topup_credits !== undefined &&
+            usage.remaining_topup_credits! > 0 && (
                 <div className="mt-4 flex justify-between">
                   <div className="flex items-center">
                     <p className="font-medium">Topup Credits</p>
@@ -189,7 +190,7 @@ export default function SubscriptionCard({
                   <p className="text-sm text-muted-foreground">
                     {loading
                       ? "-"
-                      : `$${Math.floor(usage.remaining_topup_credits * 100) / 100} remaining`}
+                      : `$${Math.floor(usage.remaining_topup_credits! * 100) / 100} remaining`}
                   </p>
                 </div>
               )}
