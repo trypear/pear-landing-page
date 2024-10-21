@@ -68,7 +68,7 @@ export default function FreeTrialCard({
               </p>
             </div>
           </div>
-          {usage.remaining_topup_credits && (
+          {usage.remaining_topup_credits !== undefined && usage.remaining_topup_credits! > 0 && (
             <div className="mb-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
