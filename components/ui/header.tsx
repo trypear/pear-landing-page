@@ -1,6 +1,6 @@
 import { ReactNode, forwardRef, ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
-import PearGreenLogo from "./PearGreen.svg";
+import PearHeroLogo from "./PearHeroLogo.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -66,7 +66,7 @@ const ListItem = forwardRef<
         {...props}
       >
         <div className="text-sm font-medium leading-none">{title}</div>
-        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        <p className="line-clamp-2 text-sm leading-snug text-gray-600/90 dark:text-gray-500">
           {children}
         </p>
       </Link>
@@ -104,8 +104,8 @@ export default async function Header() {
                   className="flex flex-shrink-0 items-center"
                   aria-label="PearAI Home"
                 >
-                  <PearGreenLogo className="mb-1 h-8" />
-                  <div className="h4 ml-2 text-primary-700">PearAI</div>
+                  <PearHeroLogo className="mb-1 h-8" />
+                  <div className="h4 dark:text-primar-700 ml-2">PearAI</div>
                 </Link>
                 <nav className="ml-10 hidden md:block" aria-label="Main menu">
                   <NavigationMenu>
@@ -133,7 +133,7 @@ export default async function Header() {
                         href="https://github.com/trypear/pearai-master"
                         target="_blank"
                       >
-                        GitHub ⭐️
+                        GitHub
                       </NavItem>
                     </NavigationMenuList>
                   </NavigationMenu>
