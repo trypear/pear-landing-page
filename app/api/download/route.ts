@@ -6,7 +6,7 @@ import crypto from "crypto";
 //
 // At PearAI, we're committed to user privacy while striving to improve our service.
 // We collect minimal, anonymized data solely for the purpose of enhancing our product
-// and making informed marketing decisions. This includes:
+// and making informed decisions. This includes:
 //
 // 1. Anonymous User ID: A randomly generated identifier that doesn't personally identify you.
 // 2. Operating System Type: To understand which versions of our software are most needed.
