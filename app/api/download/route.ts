@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { v4 as uuidv4 } from 'uuid';
-import crypto from 'crypto';
+import { v4 as uuidv4 } from "uuid";
+import crypto from "crypto";
 
 // Privacy and Data Collection Notice
-// 
+//
 // At PearAI, we're committed to user privacy while striving to improve our service.
 // We collect minimal, anonymized data solely for the purpose of enhancing our product
 // and making informed marketing decisions. This includes:
@@ -25,24 +25,24 @@ import crypto from 'crypto';
 // to provide you with a better product experience.
 
 function encryptIpAddress(ipAddress: string): string {
-  const algorithm = 'aes-256-cbc';
+  const algorithm = "aes-256-cbc";
   const key = process.env.ENCRYPTION_KEY;
 
   if (!key) {
-    throw new Error('ENCRYPTION_KEY is not set in environment variables');
+    throw new Error("ENCRYPTION_KEY is not set in environment variables");
   }
 
   // Ensure the key is the correct length (32 bytes for AES-256)
-  const hash = crypto.createHash('sha256');
+  const hash = crypto.createHash("sha256");
   const keyBuffer = hash.update(key).digest();
 
   const iv = crypto.randomBytes(16);
 
   const cipher = crypto.createCipheriv(algorithm, keyBuffer, iv);
-  let encrypted = cipher.update(ipAddress, 'utf8', 'hex');
-  encrypted += cipher.final('hex');
+  let encrypted = cipher.update(ipAddress, "utf8", "hex");
+  encrypted += cipher.final("hex");
 
-  return iv.toString('hex') + ':' + encrypted;
+  return iv.toString("hex") + ":" + encrypted;
 }
 
 async function downloadFile(request: NextRequest) {
@@ -50,42 +50,46 @@ async function downloadFile(request: NextRequest) {
     const os_type = request.nextUrl.searchParams.get("os_type");
     if (!os_type) {
       console.error("OS type is missing from the request");
-      return NextResponse.json({ error: "OS type is required" }, { status: 400 });
+      return NextResponse.json(
+        { error: "OS type is required" },
+        { status: 400 },
+      );
     }
 
     // Generate a unique identifier for the user
-    let userId = request.cookies.get('anonymousUserId')?.value;
+    let userId = request.cookies.get("anonymousUserId")?.value;
     if (!userId) {
       userId = uuidv4();
       // Set the cookie for future requests
       const response = NextResponse.next();
-      response.cookies.set('anonymousUserId', userId as string, { 
-        httpOnly: true, 
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
-        maxAge: 60 * 60 * 24 * 365 // 1 year
+      response.cookies.set("anonymousUserId", userId as string, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 60 * 60 * 24 * 365, // 1 year
       });
     }
 
     // Get additional information about the request
-    const userAgent = request.headers.get('user-agent') || 'Unknown';
+    const userAgent = request.headers.get("user-agent") || "Unknown";
 
     // Improved IP address detection
     let ipAddress: string;
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === "development") {
       // Use a placeholder IP for development
-      ipAddress = '203.0.113.195'; // Example IP from TEST-NET-3 range
+      ipAddress = "203.0.113.195"; // Example IP from TEST-NET-3 range
     } else {
       // For production, try multiple methods to get the IP
-      ipAddress = request.headers.get('x-forwarded-for')?.split(',')[0] || 
-                   request.headers.get('x-real-ip') ||
-                   request.ip ||
-                   'Unknown';
+      ipAddress =
+        request.headers.get("x-forwarded-for")?.split(",")[0] ||
+        request.headers.get("x-real-ip") ||
+        request.ip ||
+        "Unknown";
     }
 
     // If it's still a localhost IP, use the placeholder
-    if (['::1', '127.0.0.1', '::ffff:127.0.0.1'].includes(ipAddress)) {
-      ipAddress = '203.0.113.195'; // Example IP from TEST-NET-3 range
+    if (["::1", "127.0.0.1", "::ffff:127.0.0.1"].includes(ipAddress)) {
+      ipAddress = "203.0.113.195"; // Example IP from TEST-NET-3 range
     }
 
     let encryptedIpAddress;
@@ -93,7 +97,7 @@ async function downloadFile(request: NextRequest) {
       encryptedIpAddress = encryptIpAddress(ipAddress);
     } catch (encryptError) {
       console.error("Error encrypting IP address:", encryptError);
-      encryptedIpAddress = 'encryption_failed';
+      encryptedIpAddress = "encryption_failed";
     }
 
     const serverUrl = `${process.env.PEARAI_SERVER_URL}/download?os_type=${os_type}`;
@@ -102,9 +106,9 @@ async function downloadFile(request: NextRequest) {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "X-Anonymous-User-ID": userId || '',
+        "X-Anonymous-User-ID": userId || "",
         "X-User-Agent": userAgent,
-        "X-IP-Address": encryptedIpAddress
+        "X-IP-Address": encryptedIpAddress,
       },
     });
 
@@ -114,7 +118,7 @@ async function downloadFile(request: NextRequest) {
       console.error(`Server error response: ${errorText}`);
       return NextResponse.json(
         { error: `Server responded with status: ${res.status}` },
-        { status: res.status }
+        { status: res.status },
       );
     }
 
@@ -124,7 +128,7 @@ async function downloadFile(request: NextRequest) {
       console.error("Download link is missing from the server response");
       return NextResponse.json(
         { error: "Download link is missing from the server response" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
