@@ -1074,7 +1074,8 @@ export const posts = [
   {
     title: "Introducing PearAI Creator (Beta) — Powered By aider",
     url: "/blog/introducing-pearai-creator-beta",
-    excerpt: "PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically. Learn how to use this powerful new feature powered by aider.",
+    excerpt:
+      "PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically. Learn how to use this powerful new feature powered by aider.",
     date: "2024-10-23",
     author: "PearAI Team",
     readingTime: "2 min",
@@ -1088,7 +1089,7 @@ export const posts = [
 
         <p>PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
 
-        <p><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html/" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're happy to announce it is now added to the PearAI Inventory!</p>
+        <p><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html/" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
 
         <p>When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
 
@@ -1120,6 +1121,6 @@ export const posts = [
           <p>Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>
         </div>
       </section>
-    </article>`
-  }
+    </article>`,
+  },
 ];
