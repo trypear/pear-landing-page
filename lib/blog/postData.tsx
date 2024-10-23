@@ -1071,4 +1071,55 @@ export const posts = [
       </p>
     </article>`,
   },
+  {
+    title: "Introducing PearAI Creator (Beta) — Powered By aider",
+    url: "/blog/introducing-pearai-creator-beta",
+    excerpt: "PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically. Learn how to use this powerful new feature powered by aider.",
+    date: "2024-10-23",
+    author: "PearAI Team",
+    readingTime: "2 min",
+    thumbnail: "/images/og-image.png", // Make sure this image exists
+    tags: ["PearAI Creator", "aider", "feature announcement", "beta"],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+      <section class="space-y-6">
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+          PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically.
+        </p>
+
+        <p>PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
+
+        <p><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html/" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're happy to announce it is now added to the PearAI Inventory!</p>
+
+        <p>When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
+
+        <p>Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
+        <div class="aspect-w-16 aspect-h-9">
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/OnerjUzIddY?si=H_dfqmnGIHd1eBm-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          How to Use PearAI Creator (for free!)
+        </h2>
+        <ol class="list-decimal pl-6 space-y-4">
+          <li>Download the new PearAI v1.4.0 (available now for Mac today 10/23/2024, Windows tomorrow 10/24/2024) here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline">https://trypear.ai/download</a></li>
+          <li>Open up command pallette (CMD/CTRL + Shift + P) and select "PearAI Creator"</li>
+          <li>The first time it runs, it will likely take a second to install and run Aider. Every time after, it should be instant!</li>
+          <li>Try it out! Ask for a new feature, a bug fix, or to start a new app. Please let us know your feedback!</li>
+        </ol>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          Troubleshooting
+        </h2>
+        <div class="space-y-4">
+          <p>PearAI Creator is still in beta mode, so there may be a few rough edges.</p>
+          <p>If PearAI Creator is not working at all (ie. lags with no response), it is likely due to an issue with the Aider installation.</p>
+          <p>If you are running into this, please message this in the PearAI Discord, as it will help us improve.</p>
+          <p>To fix this, you may need to manually install aider here: <a href="https://aider.chat/docs/install.html" class="text-primary-600 hover:underline">https://aider.chat/docs/install.html</a>.</p>
+          <p>Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>
+        </div>
+      </section>
+    </article>`
+  }
 ];
