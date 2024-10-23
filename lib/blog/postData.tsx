@@ -1104,7 +1104,11 @@ export const posts = [
           How to Use PearAI Creator (for free!)
         </h2>
         <ol class="list-decimal pl-6 space-y-4">
-          <li>Download the new PearAI v1.4.0 (available now for Mac today 10/23/2024, Windows tomorrow 10/24/2024) here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline">https://trypear.ai/download</a></li>
+          <li>
+            If you already have PearAI installed, simply go to "Help" at the top and search "Update". It will automatically update you to the newest version of PearAI.
+            <br/><br/>
+            Otherwise, download the new PearAI v1.4.0 (available now for Mac today 10/23/2024, Windows tomorrow 10/24/2024) here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline">https://trypear.ai/download</a>
+          </li>
           <li>Open up command pallette (CMD/CTRL + Shift + P) and select "PearAI Creator"</li>
           <li>The first time it runs, it will likely take a second to install and run Aider. Every time after, it should be instant!</li>
           <li>Try it out! Ask for a new feature, a bug fix, or to start a new app. Please let us know your feedback!</li>
