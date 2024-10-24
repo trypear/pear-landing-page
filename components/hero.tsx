@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-// import { YCombinatorLogo } from "@/components/ui/icons";
 import { motion } from "framer-motion";
 import GridIllustration from "./ui/grid-illustration";
+import { HeaderBadge } from "./ui/header-badge";
 
 export default function Hero() {
   return (
@@ -25,12 +25,17 @@ export default function Hero() {
           <GridIllustration />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
         >
           {/* Title */}
           <div className="relative mx-auto flex flex-col items-center pb-24 pt-24 text-center">
+            <HeaderBadge />
             <div className="justify-center text-4xl font-bold sm:text-6xl">
               <p className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-200 dark:to-neutral-400">
                 The Open Source AI
@@ -43,35 +48,23 @@ export default function Hero() {
             {/* Description */}
             <div className="mx-6 mt-6 max-w-xl">
               <p className="text-sm text-gray-500/90 sm:text-lg">
-                Speed up your development by combining the familiarity of
-                VSCode, with{" "}
+                Accelerate your development by blending the familiarity of VS
+                Code with{" "}
                 <Link
                   href="/faq#extension"
                   className="text-primary-700 hover:text-primary-700/80"
                 >
                   native integrations
                 </Link>{" "}
-                of the best AI tools curated for your productivity
+                of top AI tools, curated to boost your productivity.
               </p>
             </div>
 
             {/* Button */}
-            <div className="pt-10">
+            <div className="pt-8">
               <Button asChild>
                 <Link href="/pricing">Try For Free</Link>
               </Button>
-              {/* <div className="mt-10 flex items-center">
-          <span className="mr-[-0.1rem] mt-[0.24rem] text-sm tracking-[0.07em] text-orange-600/90">
-            Backed by
-          </span>
-          <Link
-            href="https://www.ycombinator.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <YCombinatorLogo className="h-14 w-auto" />
-          </Link>
-        </div> */}
             </div>
           </div>
         </motion.div>
