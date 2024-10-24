@@ -1089,7 +1089,7 @@ export const posts = [
 
         <p>PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
 
-        <p><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html/" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
+        <p><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
 
         <p>When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
 
