@@ -174,3 +174,24 @@
 .prose code:not(pre code) {
   @apply rounded-md border border-slate-300 bg-slate-200 px-1 py-0.5 before:content-none after:content-none dark:border-slate-700 dark:bg-slate-950;
 }
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

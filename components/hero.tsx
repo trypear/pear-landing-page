@@ -15,6 +15,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       ></motion.div>
+
       <div className="relative mx-auto max-w-6xl px-6 py-24">
         <motion.div
           className="absolute inset-0 h-64 w-full"
@@ -24,6 +25,7 @@ export default function Hero() {
         >
           <GridIllustration />
         </motion.div>
+
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -68,6 +70,7 @@ export default function Hero() {
             </div>
           </div>
         </motion.div>
+
         <motion.div
           className="absolute bottom-0 left-0 right-0 -z-10 h-64 w-full scale-y-[-1] transform"
           initial={{ opacity: 0 }}
