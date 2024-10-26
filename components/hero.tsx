@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import GridIllustration from "./ui/grid-illustration";
 import { HeaderBadge } from "./ui/header-badge";
@@ -51,22 +50,42 @@ export default function Hero() {
             <div className="mx-6 mt-6 max-w-xl">
               <p className="text-sm text-gray-500/90 sm:text-lg">
                 Accelerate your development by blending the familiarity of VS
-                Code with{" "}
-                <Link
-                  href="/faq#extension"
-                  className="text-primary-700 hover:text-primary-700/80"
-                >
-                  native integrations
-                </Link>{" "}
-                of top AI tools, curated to boost your productivity.
+                Code with native integrations of top AI tools, curated to boost
+                productivity.
               </p>
             </div>
 
             {/* Button */}
-            <div className="pt-8">
-              <Button asChild>
-                <Link href="/pricing">Try For Free</Link>
-              </Button>
+            <div className="pt-6 sm:pt-8">
+              <Link href="/pricing">
+                <motion.button
+                  className="button-radial-gradient relative rounded-full px-4 py-1.5 sm:px-6 sm:py-2"
+                  initial={{ "--x": "100%", scale: 1 }}
+                  animate={{ "--x": "-100%" }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    repeatDelay: 1,
+                    delay: 1,
+                    type: "spring",
+                    stiffness: 20,
+                    damping: 15,
+                    mass: 2,
+                    scale: {
+                      type: "spring",
+                      stiffness: 10,
+                      damping: 5,
+                      mass: 0.1,
+                    },
+                  }}
+                >
+                  <span className="button-linear-mask relative h-full w-full text-xs font-medium tracking-wide text-neutral-100 sm:text-base">
+                    Try For Free
+                  </span>
+                  <span className="button-linear-overlay absolute inset-0 block rounded-full p-[2px]" />
+                </motion.button>
+              </Link>
             </div>
           </div>
         </motion.div>
