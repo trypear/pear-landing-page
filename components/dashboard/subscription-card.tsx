@@ -168,31 +168,32 @@ export default function SubscriptionCard({
                   Credits refill monthly
                 </p>
               </div>
-              {usage.remaining_topup_credits && (
-                <div className="mt-4 flex justify-between">
-                  <div className="flex items-center">
-                    <p className="font-medium">Topup Credits</p>
-                    <TooltipProvider delayDuration={0}>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
-                        </TooltipTrigger>
-                        <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
-                          <p>
-                            Top-up credit does not expire and is utilized only
-                            after the monthly quota is reached.
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+              {usage.remaining_topup_credits !== undefined &&
+                usage.remaining_topup_credits! > 0 && (
+                  <div className="mt-4 flex justify-between">
+                    <div className="flex items-center">
+                      <p className="font-medium">Topup Credits</p>
+                      <TooltipProvider delayDuration={0}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
+                          </TooltipTrigger>
+                          <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
+                            <p>
+                              Top-up credit does not expire and is utilized only
+                              after the monthly quota is reached.
+                            </p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {loading
+                        ? "-"
+                        : `$${Math.floor(usage.remaining_topup_credits! * 100) / 100} remaining`}
+                    </p>
                   </div>
-                  <p className="text-sm text-muted-foreground">
-                    {loading
-                      ? "-"
-                      : `$${Math.floor(usage.remaining_topup_credits * 100) / 100} remaining`}
-                  </p>
-                </div>
-              )}
+                )}
             </div>
           )}
           <div className="mb-4">
@@ -297,14 +298,14 @@ export default function SubscriptionCard({
               <DialogTrigger asChild>
                 <Button
                   onClick={handleCancelClick}
-                  disabled={isCanceling}
+                  disabled={isCanceling || isCanceled}
                   variant="link"
-                  className="ml-auto px-0 text-muted-foreground underline underline-offset-2"
+                  className={`ml-auto px-0 text-muted-foreground ${isCanceled ? "" : "underline"} underline-offset-2`}
                 >
                   {isCanceling
                     ? "Canceling..."
                     : isCanceled
-                      ? "Subscription canceled, reactivate?"
+                      ? "Your subscription has been canceled, and will not be renewed at the end of the current period."
                       : "Cancel Subscription"}
                 </Button>
               </DialogTrigger>
