@@ -21,25 +21,25 @@ export default function AuthButton({
   return (
     <div className="flex items-center space-x-4">
       {!user ? (
-        <div className="m-0 p-0 inline-flex rounded-lg border">
-      <Link href="/signin">
-        <Button 
-          variant="ghost" 
-          className="h-8 px-3 rounded-r-none border-0"
-        >
-          Sign in
-        </Button>
-      </Link>
-      <div className="w-[1px] bg-border self-stretch" />
-      <Link href="/signup">
-        <Button 
-          variant="ghost" 
-          className="h-8 px-3 rounded-l-none border-0"
-        >
-          Sign up
-        </Button>
-      </Link>
-    </div>
+        <div className="m-0 inline-flex rounded-lg border p-0">
+          <Link href="/signin">
+            <Button
+              variant="ghost"
+              className="h-8 rounded-r-none border-0 px-3"
+            >
+              Sign in
+            </Button>
+          </Link>
+          <div className="w-[1px] self-stretch bg-border" />
+          <Link href="/signup">
+            <Button
+              variant="ghost"
+              className="h-8 rounded-l-none border-0 px-3"
+            >
+              Sign up
+            </Button>
+          </Link>
+        </div>
       ) : (
         <>
           <Link href="/dashboard">
