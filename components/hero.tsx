@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import GridIllustration from "./ui/grid-illustration";
 import IntegrationBox from "./ui/integrationBox";
 import { ChevronRight as ChevronRightIcon } from "lucide-react";
+import { Button } from "./ui/button";
 
 export default function Hero() {
   const textVariants = {
@@ -117,8 +118,8 @@ export default function Hero() {
           >
             <p className="text-sm font-medium text-black/60 dark:text-gray-500 sm:text-lg">
               Supercharge your development with an up-to-date, curated inventory
-              of the best AI tools, natively integrated for a premium experience
-              coding with AI.
+              of the best AI tools, natively integrated for effortless
+              AI-powered coding.
             </p>
           </motion.div>
 
@@ -132,35 +133,9 @@ export default function Hero() {
               delay: 0.8,
             }}
           >
-            <Link href="/pricing">
-              <motion.button
-                className="button-radial-gradient relative rounded-xl px-4 py-1.5 sm:py-2"
-                initial={{ "--x": "100%", scale: 1 }}
-                animate={{ "--x": "-100%" }}
-                whileTap={{ scale: 0.97 }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  repeatDelay: 1.5,
-                  delay: 1,
-                  type: "spring",
-                  stiffness: 20,
-                  damping: 15,
-                  mass: 2,
-                  scale: {
-                    type: "spring",
-                    stiffness: 10,
-                    damping: 5,
-                    mass: 0.1,
-                  },
-                }}
-              >
-                <span className="button-linear-mask relative h-full w-full text-sm font-medium tracking-wide text-neutral-100 sm:text-base">
-                  Try For Free
-                </span>
-                <span className="button-linear-overlay absolute inset-0 block rounded-xl p-[2px]" />
-              </motion.button>
-            </Link>
+            <Button asChild size="lg">
+              <Link href="/pricing">Download For Free</Link>
+            </Button>
           </motion.div>
         </div>
 
