@@ -25,14 +25,14 @@ export default async function AuthButton() {
   return (
     <div className="flex items-center space-x-4">
       {error || !data?.user ? (
-        <div className="m-0 p-0">
+        <div className="m-0 space-x-4 p-0">
           <Link href="/signin">
-            <Button variant="outline" className="rounded-none rounded-l-full">
+            <Button variant="outline" className="h-8 rounded-lg px-3">
               Sign in
             </Button>
           </Link>
           <Link href="/signup">
-            <Button variant="outline" className="rounded-none rounded-r-full">
+            <Button variant="outline" className="h-8 rounded-lg px-3">
               Sign up
             </Button>
           </Link>
