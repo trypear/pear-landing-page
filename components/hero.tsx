@@ -47,13 +47,20 @@ export default function Hero() {
               duration: 0.5,
             }}
           >
-            <div className="h-4 w-4 rounded-sm bg-[#f26625] text-center font-mono text-xs font-medium text-white-50 sm:h-5 sm:w-5 sm:rounded-md sm:text-sm">
-              Y
-            </div>
-            <span className="flex items-center gap-1 text-xs font-semibold text-black/50 dark:text-gray-600">
-              BACKED BY Y COMBINATOR{" "}
-              <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
-            </span>
+            <a
+              href="https://www.ycombinator.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 transition-opacity hover:opacity-80"
+            >
+              <div className="h-4 w-4 rounded-sm bg-[#f26625] text-center font-mono text-xs font-medium text-white-50 sm:h-5 sm:w-5 sm:rounded-md sm:text-sm">
+                Y
+              </div>
+              <span className="flex items-center gap-1 text-xs font-semibold text-black/50 dark:text-gray-600">
+                BACKED BY Y COMBINATOR{" "}
+                <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
+              </span>
+            </a>
           </motion.div>
 
           {/* Title */}
@@ -120,6 +127,7 @@ export default function Hero() {
 
           {/* Button */}
           <motion.div
+            className="z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
