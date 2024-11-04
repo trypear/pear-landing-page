@@ -34,11 +34,10 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <GridIllustration />
+          {/* <GridIllustration /> */}
         </motion.div>
 
-        {/* Title */}
-        <div className="relative my-24 flex max-w-2xl flex-col items-start px-6">
+        <div className="relative my-20 flex max-w-2xl flex-col items-start px-6">
           <motion.div
             className="mb-2 flex scale-95 items-center justify-center gap-2"
             initial={{ opacity: 0 }}
@@ -125,6 +124,7 @@ export default function Hero() {
 
           {/* Button */}
           <motion.div
+            className="z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -170,7 +170,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <GridIllustration />
+          {/* <GridIllustration /> */}
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
