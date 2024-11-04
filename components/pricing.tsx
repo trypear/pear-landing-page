@@ -45,19 +45,19 @@ type VersionInfo = {
 export const platformVersions: Record<string, VersionInfo> = {
   Windows: {
     version: "v1.4.3",
-    releaseDate: "Nov 4, 2024"
+    releaseDate: "Nov 4, 2024",
   },
   "Mac (M chip)": {
     version: "v1.4.3",
-    releaseDate: "Nov 4, 2024"
+    releaseDate: "Nov 4, 2024",
   },
   "Mac (Intel)": {
     version: "v1.4.3",
-    releaseDate: "Nov 4, 2024"
+    releaseDate: "Nov 4, 2024",
   },
   Linux: {
     version: "v1.3.0",
-    releaseDate: "Oct 7, 2024"
+    releaseDate: "Oct 7, 2024",
   },
 };
 
@@ -274,22 +274,27 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                   <Tooltip delayDuration={50}>
                     <TooltipTrigger asChild>
                       <div className="ml-2 mr-auto text-sm text-gray-500">
-                        <span className="underline">
-                          Version info
-                        </span>
+                        <span className="underline">Version info</span>
                       </div>
                     </TooltipTrigger>
-                    <TooltipContent side="top" className="flex flex-col space-y-2 p-3">
+                    <TooltipContent
+                      side="top"
+                      className="flex flex-col space-y-2 p-3"
+                    >
                       <div className="grid grid-cols-[auto,1fr] gap-x-3 gap-y-2 text-sm">
-                        {Object.entries(platformVersions).map(([platform, info]) => (
-                          <Fragment key={platform}>
-                            <span className="font-medium">{platform}:</span>
-                            <div className="flex gap-1 items-center">
-                              <div>{info.version}</div>
-                              <div className="text-xs text-gray-400">({info.releaseDate})</div>
-                            </div>
-                          </Fragment>
-                        ))}
+                        {Object.entries(platformVersions).map(
+                          ([platform, info]) => (
+                            <Fragment key={platform}>
+                              <span className="font-medium">{platform}:</span>
+                              <div className="flex items-center gap-1">
+                                <div>{info.version}</div>
+                                <div className="text-xs text-gray-400">
+                                  ({info.releaseDate})
+                                </div>
+                              </div>
+                            </Fragment>
+                          ),
+                        )}
                       </div>
                     </TooltipContent>
                   </Tooltip>
