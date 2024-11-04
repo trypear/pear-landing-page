@@ -73,7 +73,7 @@ export default function Hero() {
                 delay: 0.2,
               }}
             >
-              The Open Source
+              PearAI: The
             </motion.p>
             <motion.p
               className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300"
@@ -86,7 +86,7 @@ export default function Hero() {
                 delay: 0.3,
               }}
             >
-              AI-Powered
+              Open Source
             </motion.p>
             <motion.p
               className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300"
@@ -99,7 +99,7 @@ export default function Hero() {
                 delay: 0.4,
               }}
             >
-              Code Editor
+              AI Code Editor
             </motion.p>
           </div>
 
