@@ -17,8 +17,8 @@ const TroubleshootingPage: React.FC = () => {
           If you are experiencing issues, please join our Discord server for
           support.
           <br />
-          Once in the server, you can message us for assistance and we&apos;ll help
-          you immediately!
+          Once in the server, you can message us for assistance and we&apos;ll
+          help you immediately!
         </p>
         <div className="mt-8">
           <a
