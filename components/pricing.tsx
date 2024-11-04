@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import React, { useEffect, useState, useRef, useMemo, Fragment } from "react";
 import { useRouter } from "next/navigation";
 import {
   Card,
@@ -39,7 +39,26 @@ interface ExtendedPricingTierProps extends PricingTierProps {
 
 type VersionInfo = {
   version: string;
-  lastReleaseDate: string;
+  releaseDate: string;
+};
+
+export const platformVersions: Record<string, VersionInfo> = {
+  Windows: {
+    version: "v1.4.3",
+    releaseDate: "Nov 4, 2024"
+  },
+  "Mac (M chip)": {
+    version: "v1.4.3",
+    releaseDate: "Nov 4, 2024"
+  },
+  "Mac (Intel)": {
+    version: "v1.4.3",
+    releaseDate: "Nov 4, 2024"
+  },
+  Linux: {
+    version: "v1.3.0",
+    releaseDate: "Oct 7, 2024"
+  },
 };
 
 const PricingTier: React.FC<ExtendedPricingTierProps> = ({
@@ -150,25 +169,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     }
   }, []);
 
-  const [versionInfo, setVersionInfo] = useState<VersionInfo | null>(null);
-
-  useEffect(() => {
-    const fetchVersionInfo = async () => {
-      try {
-        const response = await fetch("/api/version-info");
-        if (!response.ok) {
-          throw new Error("Failed to fetch version info");
-        }
-        const data: VersionInfo = await response.json();
-        setVersionInfo(data);
-      } catch (error: any) {
-        toast.error(error.message);
-      }
-    };
-
-    fetchVersionInfo();
-  }, []);
-
   return (
     <Card
       className={`flex h-full w-full flex-col ${index === 1 && "from-primary-600/5 ring-primary-900/40 dark:from-primary-600/5 dark:ring-primary-600/20"}`}
@@ -270,21 +270,30 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               </p>
             ) : (
               <div className="flex w-full flex-col items-center gap-2">
-                {versionInfo && (
-                  <div className="ml-2 mr-auto text-sm text-gray-500">
-                    version {versionInfo?.version}
-                    <div>
-                      last release{" "}
-                      {new Date(
-                        versionInfo?.lastReleaseDate,
-                      ).toLocaleDateString("en-US", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </div>
-                  </div>
-                )}
+                <TooltipProvider>
+                  <Tooltip delayDuration={50}>
+                    <TooltipTrigger asChild>
+                      <div className="ml-2 mr-auto text-sm text-gray-500">
+                        <span className="underline">
+                          Version info
+                        </span>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent side="top" className="flex flex-col space-y-2 p-3">
+                      <div className="grid grid-cols-[auto,1fr] gap-x-3 gap-y-2 text-sm">
+                        {Object.entries(platformVersions).map(([platform, info]) => (
+                          <Fragment key={platform}>
+                            <span className="font-medium">{platform}:</span>
+                            <div className="flex gap-1 items-center">
+                              <div>{info.version}</div>
+                              <div className="text-xs text-gray-400">({info.releaseDate})</div>
+                            </div>
+                          </Fragment>
+                        ))}
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
                 <div className="flex w-full max-w-md gap-2">
                   <Button
                     className={cn("rainbow-gradient", "font-bold", "flex-1")}
