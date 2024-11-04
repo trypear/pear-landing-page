@@ -120,7 +120,6 @@ export default function Hero() {
               Supercharge your development with an up-to-date, curated inventory
               of the best AI tools, natively integrated for effortless
               AI-powered coding.
-
             </p>
           </motion.div>
 
