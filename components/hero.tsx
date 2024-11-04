@@ -117,9 +117,9 @@ export default function Hero() {
             }}
           >
             <p className="text-sm font-medium text-black/60 dark:text-gray-500 sm:text-lg">
-              Supercharge your development with an up-to-date, curated inventory of the
-              best AI tools, natively integrated for the best
-              experience coding with AI.
+              Supercharge your development with an up-to-date, curated inventory
+              of the best AI tools, natively integrated for the best experience
+              coding with AI.
             </p>
           </motion.div>
 
