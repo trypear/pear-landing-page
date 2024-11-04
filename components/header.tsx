@@ -141,7 +141,7 @@ export default async function Header() {
               </div>
               <div className="hidden items-center space-x-4 lg:flex">
                 <DownloadButton user={user} />
-                <AuthButton />
+                <AuthButton user={user} handleSignOut={handleSignOut} />
                 <DarkModeToggle />
               </div>
               <div className="lg:hidden">
