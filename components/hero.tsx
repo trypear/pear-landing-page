@@ -34,7 +34,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          {/* <GridIllustration /> */}
+          <GridIllustration />
         </motion.div>
 
         <div className="relative my-20 flex max-w-2xl flex-col items-start px-6">
@@ -170,7 +170,7 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          {/* <GridIllustration /> */}
+          <GridIllustration />
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
