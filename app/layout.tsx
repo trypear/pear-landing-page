@@ -3,7 +3,7 @@ import "./globals.css";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { PHProvider } from "./providers";
-import Header from "@/components/ui/header";
+import Header from "@/components/header";
 import { Toaster } from "@/components/ui/sonner";
 import dynamic from "next/dynamic";
 import { Analytics } from "@vercel/analytics/react";
@@ -25,7 +25,7 @@ export default function RootLayout({
       <PHProvider>
         <ReactLenis root>
           <body
-            className={`bg-background font-sans tracking-tight antialiased`}
+            className={`bg-background font-sans tracking-normal antialiased`}
           >
             <ThemeProvider
               attribute="class"

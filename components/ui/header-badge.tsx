@@ -9,7 +9,7 @@ export const HeaderBadge = () => {
       rel="noopener noreferrer"
       className="group relative mb-4 inline-block cursor-pointer rounded-full bg-white-50 text-xs font-medium leading-6 text-black no-underline shadow-xl shadow-primary-1000 dark:bg-slate-900 dark:text-white-100/80"
     >
-      <div className="relative z-10 flex items-center rounded-full bg-primary-700/10 py-0.5 pl-4 pr-2 ring-1 ring-primary-500/80 dark:bg-primary-1000 dark:ring-primary-900/90">
+      <div className="relative z-10 flex items-center rounded-full bg-primary-700/10 py-0 pl-2.5 pr-1 ring-1 ring-primary-500/80 dark:bg-primary-1000 dark:ring-primary-900/90 sm:py-0.5 sm:pl-4 sm:pr-2">
         <span>
           Backed by
           <span className="pl-2 text-[#f26625]">YCombinator</span>{" "}
@@ -33,7 +33,7 @@ export const HeaderBadge = () => {
           ></motion.path>
         </svg>
       </div>
-      <span className="absolute left-[1.125rem] z-20 h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-primary-900/10 via-primary-900 to-primary-900/10 duration-500 group-hover:opacity-40 dark:from-primary-300/10 dark:via-primary-500 dark:to-primary-300/10"></span>
+      <span className="absolute left-[1.125rem] z-10 h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-primary-900/10 via-primary-900 to-primary-900/10 duration-500 group-hover:opacity-40 dark:from-primary-300/10 dark:via-primary-500 dark:to-primary-300/10"></span>
     </a>
   );
 };
