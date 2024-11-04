@@ -54,12 +54,11 @@ export default function Hero() {
               href="https://www.ycombinator.com/companies/pearai"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-xs font-semibold text-black/50 dark:text-gray-600 hover:text-black/70 dark:hover:text-gray-500 transition-colors"
+              className="flex items-center gap-1 text-xs font-semibold text-black/50 transition-colors hover:text-black/70 dark:text-gray-600 dark:hover:text-gray-500"
             >
               BACKED BY Y COMBINATOR{" "}
               <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
             </Link>
-
           </motion.div>
 
           {/* Title */}
@@ -118,7 +117,9 @@ export default function Hero() {
             }}
           >
             <p className="text-sm font-medium text-black/60 dark:text-gray-500 sm:text-lg">
-              Supercharge your development with an up-to-date inventory of the best AI tools on the market, natively integrated for the best experience coding with AI.
+              Supercharge your development with an up-to-date, curated inventory of the
+              best AI tools, natively integrated for the best
+              experience coding with AI.
             </p>
           </motion.div>
 
