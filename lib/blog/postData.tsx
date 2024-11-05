@@ -508,55 +508,73 @@ export const posts = [
     content: `<article
   class="mx-auto max-w-4xl space-y-6 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
 >
-  <section class="space-y-4">
+      <section class="space-y-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
       Download PearAI on Linux
     </h2>
-    <ol class="list-decimal space-y-4 pl-4 text-sm sm:pl-6 sm:text-base">
-      <li>
-        Download the compressed PearAI installation file:
-        <a
-          href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI.tar.gz"
-          class="break-words text-primary-500 underline dark:text-primary-400"
-          >Download PearAI</a
-        >
-      </li>
-      <li>
-        Extract the contents by running the following command:
+        <ol class="list-decimal space-y-4 pl-4 text-sm sm:pl-6 sm:text-base">
+          <li>
+            <strong>Check your CPU compatibility</strong>:
+  
+            If you're unsure whether your CPU supports AVX or AVX2 FMA, run the following command in your terminal:
+  
+            <pre class="mt-2 mb-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"><code class="language-bash">grep -o -w 'avx\|avx2\|fma' /proc/cpuinfo | sort -u</code></pre>
+
+            If your result is:
+
+            <pre class="mt-2 mb-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"><code>avx avx2 fma</code></pre>
+            feel free to download the AVX2 version. 
+            If you only see <code>avx</code>, download the AVX version.
+          </li>
+          <li>
+            Download the appropriate PearAI installation file:
+            <ul class="list-disc pl-5">
+              <li>
+                <strong>AVX version</strong>:
+                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
+              </li>
+              <li>
+                <strong>AVX2 version</strong>:
+                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx2.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Extract the contents by running the following command:
         <pre
           class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
-        ><code>tar -xvf PearAI.tar.gz</code></pre>
-      </li>
-      <li>
-        Navigate to the extracted folder:
+        ><code>tar -xvf PearAI-{AVX_VERSION}.tar.gz</code></pre>
+          </li>
+          <li>
+            Navigate to the extracted folder:
         <pre
           class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
         ><code class="language-bash">cd PearAI/</code></pre>
-      </li>
-      <li>
-        Run the installation script with superuser permissions:
+          </li>
+          <li>
+            Run the installation script with superuser permissions:
         <pre
           class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
         ><code class="language-bash">sudo ./pearai_manager.sh</code></pre>
-      </li>
-      <li>
-        Select your desired option:
-        <pre
+          </li>
+          <li>
+            Select your desired option:
+            <pre
           class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
         ><code class="language-bash">1. Install PearAI
 2. Uninstall PearAI
 3. Exit</code></pre>
-      </li>
-      <li>
+          </li>
+          <li>
         Add the following alias to your
         <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200">~/.bashrc</code>
         or
         <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200">~/.zshrc</code>
         to run PearAI from any directory:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="mt-2 mb-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
         ><code class="language-bash">alias pearai='PearAI'</code></pre>
         After adding the alias, run
         <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -567,17 +585,17 @@ export const posts = [
           >source ~/.zshrc</code
         >
         to apply the changes.
-      </li>
-    </ol>
-  </section>
-
-  <section class="mt-8 space-y-4">
+          </li>
+        </ol>
+      </section>
+  
+      <section class="mt-8 space-y-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
       Notes
     </h2>
-    <p class="text-sm sm:text-base">
+        <p class="text-sm sm:text-base">
       Once the installation is complete, PearAI will be ready to use! If you
       have any questions or run into issues, feel free to join our community and
       get support through our official
@@ -586,19 +604,19 @@ export const posts = [
         class="text-primary-500 underline dark:text-primary-400"
         >Discord server</a
       >.
-    </p>
-    <p class="mt-4 text-sm sm:text-base">
+        </p>
+        <p class="mt-4 text-sm sm:text-base">
       This installation method has been tested on multiple Linux distributions,
-      including Arch Linux, Ubuntu 24, and Fedora 40. It was compiled using GCC
-      14, so most distributions with this or an older version should be able to
+      including Arch Linux, Ubuntu 24, Ubuntu 22, and Fedora 40. It was compiled using GCC
+      10, so most distributions with this or newer version should be able to
       run PearAI without any issues.
-    </p>
-  </section>
-
-  <p class="mt-8 text-base font-semibold sm:text-lg">
+        </p>
+      </section>
+  
+      <p class="mt-8 text-base font-semibold sm:text-lg">
     We're thrilled to bring PearAI to the Linux community, stay tuned for more
     exciting updates and features on the horizon!
-  </p>
+      </p>
 </article>
 `,
   },

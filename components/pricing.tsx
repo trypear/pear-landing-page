@@ -56,8 +56,8 @@ export const platformVersions: Record<string, VersionInfo> = {
     releaseDate: "Nov 4, 2024",
   },
   Linux: {
-    version: "v1.3.0",
-    releaseDate: "Oct 7, 2024",
+    version: "v1.4.3",
+    releaseDate: "Nov 4, 2024",
   },
 };
 
