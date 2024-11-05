@@ -93,7 +93,7 @@ export default async function Header() {
     <header className="fixed left-0 right-0 top-0 z-50 p-4 transition-all duration-300 ease-in-out">
       <div className="mx-auto max-w-6xl">
         <nav
-          className="rounded-2xl border border-black/10 bg-background transition-all duration-300 ease-in-out"
+          className="rounded-2xl border border-gray-200 bg-background transition-all duration-300 ease-in-out dark:border-gray-50"
           aria-label="Main navigation"
         >
           <div className="px-2">

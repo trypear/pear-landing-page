@@ -22,7 +22,7 @@ export default function Hero() {
   return (
     <section className="relative">
       <motion.div
-        className="absolute inset-0 mx-auto max-w-[100rem] bg-dot-light-black [mask-image:radial-gradient(ellipse_at_left,transparent_20%,black)] dark:bg-dot-dark-black"
+        className="absolute inset-0 mx-auto max-w-[100rem] bg-dot-light-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-dot-dark-black lg:[mask-image:radial-gradient(ellipse_at_left,transparent_20%,black)]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -38,7 +38,7 @@ export default function Hero() {
           <GridIllustration />
         </motion.div>
 
-        <div className="relative my-20 flex max-w-2xl flex-col items-start px-6">
+        <div className="relative my-20 flex max-w-6xl flex-col items-center px-6 lg:items-start">
           <motion.div
             className="mb-3 flex scale-95 items-center justify-center gap-2"
             initial={{ opacity: 0 }}
@@ -62,61 +62,41 @@ export default function Hero() {
           </motion.div>
 
           {/* Title */}
-          <div className="text-4xl font-bold sm:text-5xl">
-            <motion.p
-              className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300"
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{
-                duration: 0.8,
-                ease: [0.4, 0, 0.2, 1],
-                delay: 0.2,
-              }}
-            >
-              PearAI: The
-            </motion.p>
-            <motion.p
-              className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text leading-tight text-transparent dark:from-neutral-50 dark:to-neutral-300"
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{
-                duration: 0.8,
-                ease: [0.4, 0, 0.2, 1],
-                delay: 0.3,
-              }}
-            >
-              Open Source
-            </motion.p>
-            <motion.p
-              className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300"
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
-              transition={{
-                duration: 0.8,
-                ease: [0.4, 0, 0.2, 1],
-                delay: 0.4,
-              }}
-            >
-              AI Code Editor
-            </motion.p>
-          </div>
-
-          {/* Description */}
           <motion.div
-            className="my-4 max-w-sm sm:my-6 sm:max-w-md"
+            className="text-center text-5xl font-bold lg:text-left"
             variants={textVariants}
             initial="hidden"
             animate="visible"
             transition={{
               duration: 0.8,
               ease: [0.4, 0, 0.2, 1],
-              delay: 0.6,
+              delay: 0.2,
             }}
           >
-            <p className="text-sm text-black/60 dark:text-gray-500 sm:text-lg">
+            <p className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
+              PearAI: The
+            </p>
+            <p className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text leading-tight text-transparent dark:from-neutral-50 dark:to-neutral-300">
+              Open Source
+            </p>
+            <p className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
+              AI Code Editor
+            </p>
+          </motion.div>
+
+          {/* Description */}
+          <motion.div
+            className="my-4 max-w-sm text-center sm:my-6 sm:max-w-md lg:text-left"
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{
+              duration: 0.8,
+              ease: [0.4, 0, 0.2, 1],
+              delay: 0.4,
+            }}
+          >
+            <p className="text-md text-black/60 dark:text-gray-500 sm:text-lg">
               Supercharge your development with an up-to-date, curated inventory
               of the best AI tools, natively integrated for effortless
               AI-powered coding.
@@ -133,7 +113,7 @@ export default function Hero() {
             animate={{ opacity: 1 }}
             transition={{
               duration: 0.5,
-              delay: 0.8,
+              delay: 0.6,
             }}
           >
             <Button asChild>
