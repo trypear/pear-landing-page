@@ -570,18 +570,7 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
             {type !== "free" && (
               <>
                 <br /> <br />
-                Afraid of running out of credits? You can always contact{" "}
-                <a
-                  className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigator.clipboard.writeText(CONTACT_EMAIL);
-                    toast.success("Email copied to clipboard!");
-                  }}
-                >
-                  PearAI support
-                </a>{" "}
-                to top up and keep building!
+                If you happen to run out of credits, you can top up from your dashboard.
               </>
             )}
           </p>
