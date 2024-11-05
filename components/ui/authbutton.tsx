@@ -1,6 +1,4 @@
-import { createClient } from "@/utils/supabase/server";
-import { redirect } from "next/navigation";
-import Link from "next/link";
+"use client";
 import { LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -10,29 +8,34 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./dropdown-menu";
+import { AuthError, User } from "@supabase/supabase-js";
+import Link from "next/link";
 
-export default async function AuthButton() {
-  const supabase = createClient();
-  const { data, error } = await supabase.auth.getUser();
-
-  const handleSignOut = async () => {
-    "use server";
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    redirect("/");
-  };
-
+export default function AuthButton({
+  handleSignOut,
+  user,
+}: {
+  handleSignOut: () => Promise<void>;
+  user: User | null;
+}) {
   return (
     <div className="flex items-center space-x-4">
-      {error || !data?.user ? (
-        <div className="m-0 p-0">
+      {!user ? (
+        <div className="m-0 inline-flex rounded-lg border p-0">
           <Link href="/signin">
-            <Button variant="outline" className="rounded-none rounded-l-full">
+            <Button
+              variant="ghost"
+              className="h-8 rounded-r-none border-0 px-3"
+            >
               Sign in
             </Button>
           </Link>
+          <div className="w-[1px] self-stretch bg-border" />
           <Link href="/signup">
-            <Button variant="outline" className="rounded-none rounded-r-full">
+            <Button
+              variant="ghost"
+              className="h-8 rounded-l-none border-0 px-3"
+            >
               Sign up
             </Button>
           </Link>
@@ -46,12 +49,12 @@ export default async function AuthButton() {
             <DropdownMenuTrigger asChild>
               <Avatar className="h-8 w-8 cursor-pointer border border-gray-600/50">
                 <AvatarImage
-                  src={data.user.user_metadata.avatar_url}
-                  alt={data.user.user_metadata.full_name || "User avatar"}
+                  src={user?.user_metadata.avatar_url}
+                  alt={user?.user_metadata.full_name || "User avatar"}
                 />
                 <AvatarFallback className="text-xs font-medium">
-                  {data.user.user_metadata.full_name?.[0].toUpperCase() ||
-                    data.user.email?.[0].toUpperCase() ||
+                  {user?.user_metadata.full_name?.[0].toUpperCase() ||
+                    user?.email?.[0].toUpperCase() ||
                     "U"}
                 </AvatarFallback>
               </Avatar>
@@ -64,12 +67,14 @@ export default async function AuthButton() {
                 asChild
                 className="flex cursor-pointer items-center focus:bg-secondary-300/10"
               >
-                <form action={handleSignOut}>
-                  <button className="flex w-full cursor-pointer items-center focus:bg-secondary-300/10">
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Sign out</span>
-                  </button>
-                </form>
+                <Button
+                  onClick={() => handleSignOut()}
+                  variant="secondary"
+                  className="w-full"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Sign out
+                </Button>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

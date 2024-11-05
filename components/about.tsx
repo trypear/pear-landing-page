@@ -51,13 +51,14 @@ const AboutComponent: React.FC = () => {
           , PearAI is built in public
         </h1>
         <p className="mt-4 max-w-2xl text-center text-gray-500">
-          PearAI&apos;s goal is to reduce the time it takes for an individual to
-          go from idea to creation. We started out as a fork of VSCode, with
-          Continue being our first integrated AI tool.
+          PearAI&apos;s mission is to reduce the time it takes for you to go
+          from idea to creation. We started out as a fork of VSCode and
+          Continue.
           <br /> <br />
-          We aim to be a curated inventory of the best AI tools on the market
-          (ie. Perplexity, aider, mem0, etc.), to make it easy for you to make
-          what you want.
+          We are a curated inventory of the best AI tools on the market (ie.
+          Perplexity, aider, mem0, etc.), to make it easy for you to make what
+          you want. Imagine if VSCode was reimagined with AI in mind since the
+          beginning, or an extensible AI code editor with the best UX possible.
         </p>
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
@@ -65,20 +66,22 @@ const AboutComponent: React.FC = () => {
 
         <div className="m-4 mt-2 flex max-w-4xl flex-wrap items-center justify-center gap-4">
           <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            Codebase context: talk to your code
+            PearAI Inventory: Best AI tools integrated into one UX
           </Badge>
           <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            Built-in PearAI chat
+            PearAI Chat: Talk to your code
+          </Badge>
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
+            PearAI Creator: Automatic code generation
+          </Badge>
+          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
+            PearAI Search: Up-to-date AI search
           </Badge>
           <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
             Inline AI prompting and diff changes
           </Badge>
           <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
             AI debugging, including errors from terminal
-          </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            Inventory: seamless integration with the best AI tools on the
-            market.
           </Badge>
         </div>
       </div>
@@ -92,6 +95,29 @@ const AboutComponent: React.FC = () => {
           <VideoCard key={index} {...video} />
         ))}
       </div>
+
+      <div className="mt-10 flex flex-col items-center justify-center p-4 pb-0">
+        <h2 className="text-4xl font-bold">
+          <span className="relative">
+            <span className="relative z-10">Community</span>
+            <span
+              className="absolute bottom-0 left-0 w-full"
+              style={{
+                height: "1.4375rem",
+                background: "rgba(20, 189, 149, 0.20)",
+              }}
+            ></span>
+          </span>
+        </h2>
+        <div className="max-w-2xl text-gray-500">
+          <p className="mt-6 text-center">
+            PearAI is fueled by its most important thing, the community. Join
+            our Discord with +2000 developers and friends all trying to create
+            the best AI code editor in the world together.
+          </p>
+        </div>
+      </div>
+      <br />
 
       <div className="mt-0 flex flex-col items-center justify-center p-4 pb-0">
         <h2 className="text-4xl font-bold">
@@ -111,15 +137,8 @@ const AboutComponent: React.FC = () => {
           <p className="mt-6 text-center">
             PearAI is founded by Pan and Nang, both software engineers who
             worked on internal and developer tooling teams at companies like
-            Meta, Coinbase, Two Sigma, among others.
-          </p>
-          <p className="mt-3 text-center">
-            Passionate about empowering individuals, they recognize code and
-            media as the most scalable tools a single person can utilize. With a
-            combined following of over 500k subscribers and over 30 million
-            views, they&apos;ve decided to combine media and code, bringing the
-            developer community along for the ride, through videos, livestreams,
-            and direct Discord calls/chats.
+            Meta, Coinbase, Two Sigma, among others. Together, they have over
+            500k subscribers on Youtube.
           </p>
         </div>
       </div>

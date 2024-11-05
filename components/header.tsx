@@ -1,6 +1,6 @@
 import { ReactNode, forwardRef, ComponentPropsWithoutRef } from "react";
 import Link from "next/link";
-import PearGreenLogo from "./PearGreen.svg";
+import PearHeroLogo from "./ui/PearHeroLogo.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -11,12 +11,12 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import DarkModeToggle from "./darkmode-toggle";
-import AuthButton from "./authbutton";
-import MobileMenu from "./mobile-menu";
+import DarkModeToggle from "./ui/darkmode-toggle";
+import AuthButton from "./ui/authbutton";
+import MobileMenu from "./ui/mobile-menu";
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
-import DownloadButton from "./downloadbutton";
+import DownloadButton from "./ui/downloadbutton";
 
 const NavItem = ({
   href,
@@ -66,7 +66,7 @@ const ListItem = forwardRef<
         {...props}
       >
         <div className="text-sm font-medium leading-none">{title}</div>
-        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        <p className="line-clamp-2 text-sm leading-snug text-gray-600/90 dark:text-gray-500">
           {children}
         </p>
       </Link>
@@ -90,22 +90,22 @@ export default async function Header() {
   };
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 p-3 transition-all duration-300 ease-in-out">
+    <header className="fixed left-0 right-0 top-0 z-50 p-4 transition-all duration-300 ease-in-out">
       <div className="mx-auto max-w-6xl">
         <nav
-          className="rounded-full border border-border/50 bg-background shadow-md transition-all duration-300 ease-in-out"
+          className="rounded-xl border border-border/50 bg-background shadow-md transition-all duration-300 ease-in-out"
           aria-label="Main navigation"
         >
-          <div className="px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 items-center justify-between">
+          <div className="px-4">
+            <div className="flex h-12 items-center justify-between">
               <div className="flex items-center">
                 <Link
                   href="/"
                   className="flex flex-shrink-0 items-center"
                   aria-label="PearAI Home"
                 >
-                  <PearGreenLogo className="mb-1 h-8" />
-                  <div className="h4 ml-2 text-primary-700">PearAI</div>
+                  <PearHeroLogo className="mb-1 h-7" />
+                  <div className="h4 dark:text-primar-700 ml-2">PearAI</div>
                 </Link>
                 <nav className="ml-10 hidden md:block" aria-label="Main menu">
                   <NavigationMenu>
@@ -133,7 +133,7 @@ export default async function Header() {
                         href="https://github.com/trypear/pearai-master"
                         target="_blank"
                       >
-                        GitHub ⭐️
+                        GitHub
                       </NavItem>
                     </NavigationMenuList>
                   </NavigationMenu>
@@ -141,7 +141,7 @@ export default async function Header() {
               </div>
               <div className="hidden items-center space-x-4 lg:flex">
                 <DownloadButton user={user} />
-                <AuthButton />
+                <AuthButton user={user} handleSignOut={handleSignOut} />
                 <DarkModeToggle />
               </div>
               <div className="lg:hidden">
