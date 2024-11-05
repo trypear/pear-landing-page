@@ -55,10 +55,11 @@ export default function SecurityPage() {
             <section id="overview">
               <h2 className="mb-4 text-2xl font-semibold">Overview</h2>
               <p className="mb-6 leading-relaxed text-gray-600 dark:text-gray-300">
-                As an early-stage startup, we&aposre committed to building security
-                into our foundation. While we&aposre actively working towards formal
-                certifications, we maintain strong security practices and are
-                transparent about our current security posture.
+                As an early-stage startup, we&aposre committed to building
+                security into our foundation. While we&aposre actively working
+                towards formal certifications, we maintain strong security
+                practices and are transparent about our current security
+                posture.
               </p>
 
               <Alert>
@@ -149,8 +150,8 @@ export default function SecurityPage() {
               <h2 className="text-2xl font-semibold">Report a Vulnerability</h2>
               <p className="text-gray-600 dark:text-gray-300">
                 We take security seriously and value the input of security
-                researchers and our user community. If you believe you&aposve found
-                a security vulnerability, please report it to us.
+                researchers and our user community. If you believe you&aposve
+                found a security vulnerability, please report it to us.
               </p>
 
               <Card className="p-6">
