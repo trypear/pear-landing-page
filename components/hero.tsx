@@ -28,7 +28,7 @@ export default function Hero() {
         transition={{ duration: 0.5 }}
       ></motion.div>
 
-      <div className="relative mx-auto max-w-6xl px-6 py-24">
+      <div className="relative mx-auto max-w-6xl px-6 py-20">
         <motion.div
           className="absolute inset-0 w-full"
           initial={{ opacity: 0 }}
@@ -40,7 +40,7 @@ export default function Hero() {
 
         <div className="relative my-20 flex max-w-2xl flex-col items-start px-6">
           <motion.div
-            className="mb-2 flex scale-95 items-center justify-center gap-2"
+            className="mb-3 flex scale-95 items-center justify-center gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -50,7 +50,7 @@ export default function Hero() {
             <div className="h-4 w-4 rounded-sm bg-[#f26625] text-center font-mono text-xs font-medium text-white-50 sm:h-5 sm:w-5 sm:rounded-md sm:text-sm">
               Y
             </div>
-            <Link
+            <a
               href="https://www.ycombinator.com/companies/pearai"
               target="_blank"
               rel="noopener noreferrer"
@@ -58,7 +58,7 @@ export default function Hero() {
             >
               BACKED BY Y COMBINATOR{" "}
               <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
-            </Link>
+            </a>
           </motion.div>
 
           {/* Title */}
@@ -77,7 +77,7 @@ export default function Hero() {
               PearAI: The
             </motion.p>
             <motion.p
-              className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300"
+              className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text leading-tight text-transparent dark:from-neutral-50 dark:to-neutral-300"
               variants={textVariants}
               initial="hidden"
               animate="visible"
@@ -116,7 +116,7 @@ export default function Hero() {
               delay: 0.6,
             }}
           >
-            <p className="text-sm font-medium text-black/60 dark:text-gray-500 sm:text-lg">
+            <p className="text-sm text-black/60 dark:text-gray-500 sm:text-lg">
               Supercharge your development with an up-to-date, curated inventory
               of the best AI tools, natively integrated for effortless
               AI-powered coding.
@@ -125,7 +125,10 @@ export default function Hero() {
 
           {/* Button */}
           <motion.div
-            className="z-10"
+            className="z-10 rounded-xl p-[2px]"
+            style={{
+              background: `linear-gradient(to bottom right, hsla(169, 100%, 40%, 0.5), hsl(168, 95%, 35%))`,
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -133,7 +136,7 @@ export default function Hero() {
               delay: 0.8,
             }}
           >
-            <Button asChild size="lg">
+            <Button asChild>
               <Link href="/pricing">Download For Free</Link>
             </Button>
           </motion.div>

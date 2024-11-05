@@ -26,8 +26,8 @@ const IntegrationItem = ({
     <div className="flex items-center gap-2">
       <Icon className="h-6 w-6" />
       <div className="flex flex-col text-xs">
-        <span className="text-gray-500 dark:text-gray-400">{label}</span>
-        <span className="dark:text-white font-medium text-black">
+        <span className="text-gray-400 dark:text-gray-500">{label}</span>
+        <span className="dark:text-white font-medium text-black/60">
           {product}
         </span>
       </div>
@@ -49,19 +49,19 @@ const INTEGRATIONS = [
     Icon: Mem0Logo,
   },
   {
-    marginLeft: "ml-40",
+    marginLeft: "ml-48",
     label: "Predict with",
     product: "Supermaven",
     Icon: SupermavenLogo,
   },
   {
-    marginLeft: "ml-48",
+    marginLeft: "ml-60",
     label: "Ship with",
     product: "Aider",
     Icon: AiderLogo,
   },
   {
-    marginLeft: "ml-32",
+    marginLeft: "ml-48",
     label: "Chat with",
     product: "Continue",
     Icon: ContinueLogo,
@@ -72,7 +72,7 @@ export default function IntegrationBox() {
   return (
     <div className="hidden lg:block">
       {/* Background Wavy Lines */}
-      <div className="absolute right-0 top-5 overflow-hidden opacity-30">
+      <div className="absolute right-24 top-16 scale-y-105 opacity-30">
         <svg
           width="554"
           height="543"
@@ -88,24 +88,24 @@ export default function IntegrationBox() {
       </div>
 
       {/* Integration Cards */}
-      <div className="absolute right-44 top-20 flex flex-col gap-8">
+      <div className="absolute right-56 top-24 flex flex-col gap-10">
         {INTEGRATIONS.map((integration, index) => (
           <IntegrationItem key={index} {...integration} />
         ))}
 
         {/* Bottom Card */}
         <div
-          className={`-ml-20 mt-8 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
+          className={`-ml-[87px] mt-16 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
         >
           <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-primary-700 text-xs font-medium text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
+            <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-xs font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
               V2
             </div>
             <div className="flex flex-col text-xs">
               <span className="text-gray-500 dark:text-gray-400">
                 10 days until launch
               </span>
-              <span className="dark:text-white font-medium text-black">
+              <span className="dark:text-white font-medium text-black/60">
                 More coming soon
               </span>
             </div>

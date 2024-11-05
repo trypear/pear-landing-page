@@ -93,10 +93,10 @@ export default async function Header() {
     <header className="fixed left-0 right-0 top-0 z-50 p-4 transition-all duration-300 ease-in-out">
       <div className="mx-auto max-w-6xl">
         <nav
-          className="rounded-xl border border-border/50 bg-background shadow-md transition-all duration-300 ease-in-out"
+          className="rounded-2xl border border-black/10 bg-background transition-all duration-300 ease-in-out"
           aria-label="Main navigation"
         >
-          <div className="px-4">
+          <div className="px-2">
             <div className="flex h-12 items-center justify-between">
               <div className="flex items-center">
                 <Link
@@ -109,7 +109,7 @@ export default async function Header() {
                 </Link>
                 <nav className="ml-10 hidden md:block" aria-label="Main menu">
                   <NavigationMenu>
-                    <NavigationMenuList className="space-x-1">
+                    <NavigationMenuList className="space-x-1 text-black/60 dark:text-gray-500">
                       <DropdownNavItem trigger="Resources">
                         <ul className="grid w-[400px] gap-3 bg-background p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                           <ListItem href="/about" title="About">
