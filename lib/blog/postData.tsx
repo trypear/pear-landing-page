@@ -533,11 +533,11 @@ export const posts = [
             <ul class="list-disc pl-5">
               <li>
                 <strong>AVX version</strong>:
-                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
+                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
               </li>
               <li>
                 <strong>AVX2 version</strong>:
-                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
+                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx2.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
               </li>
             </ul>
           </li>
@@ -545,7 +545,7 @@ export const posts = [
             Extract the contents by running the following command:
         <pre
           class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
-        ><code>tar -xvf PearAI.tar.gz</code></pre>
+        ><code>tar -xvf PearAI-{AVX_VERSION}.tar.gz</code></pre>
           </li>
           <li>
             Navigate to the extracted folder:
