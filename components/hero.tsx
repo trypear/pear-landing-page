@@ -21,6 +21,7 @@ export default function Hero() {
 
   return (
     <section className="relative">
+      {/* Background Dots */}
       <motion.div
         className="absolute inset-0 mx-auto max-w-[100rem] bg-dot-light-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-dot-dark-black lg:[mask-image:radial-gradient(ellipse_at_left,transparent_20%,black)]"
         initial={{ opacity: 0 }}
@@ -29,6 +30,7 @@ export default function Hero() {
       ></motion.div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-20">
+        {/* Top Grid Illustration */}
         <motion.div
           className="absolute inset-0 w-full"
           initial={{ opacity: 0 }}
@@ -63,7 +65,7 @@ export default function Hero() {
 
           {/* Title */}
           <motion.div
-            className="text-center text-5xl font-bold lg:text-left"
+            className="text-center text-4xl font-bold sm:text-5xl lg:text-left"
             variants={textVariants}
             initial="hidden"
             animate="visible"
@@ -122,6 +124,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* Bottom Grid Illustration */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 w-full scale-y-[-1] transform"
           initial={{ opacity: 0 }}
@@ -130,6 +133,8 @@ export default function Hero() {
         >
           <GridIllustration />
         </motion.div>
+
+        {/* Hero Integrations */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
