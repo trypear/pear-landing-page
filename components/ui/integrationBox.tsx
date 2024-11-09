@@ -24,7 +24,7 @@ const IntegrationItem = ({
     className={`bg-white-50 dark:bg-gray-800 ${margin} w-fit rounded-lg border border-gray-200 px-3 py-2 dark:border-black/50`}
   >
     <div className="flex items-center gap-2">
-      <Icon className="h-6 w-6" />
+      <Icon className="h-8 w-8" />
       <div className="flex flex-col text-xs">
         <span className="text-gray-400 dark:text-gray-500">{label}</span>
         <span className="dark:text-white font-medium text-black/60">
@@ -186,7 +186,7 @@ export default function IntegrationBox() {
 
           {/* Bottom Card */}
           <div
-            className={`-ml-[82px] mt-16 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
+            className={`-ml-[79px] mt-16 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
           >
             <div className="flex items-center gap-2">
               <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-xs font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">

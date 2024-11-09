@@ -1,6 +1,9 @@
+"use client";
+
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import YoutubeEmbed from "./ui/YoutubeEmbed";
+import ExpandableCards from "./ui/expandable-cards";
 
 type FeatureInfo = {
   header: string;
@@ -8,6 +11,7 @@ type FeatureInfo = {
   videoSource?: string;
   embedId?: string;
 };
+
 type SingleFeatureProps = {
   info: FeatureInfo;
 };
@@ -78,6 +82,7 @@ export default function Features() {
 
   return (
     <section className="flex flex-col justify-evenly">
+      <ExpandableCards />
       {featureInfo.map((info, index) => (
         <SingleFeature key={index} info={info} />
       ))}

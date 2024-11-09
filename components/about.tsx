@@ -158,13 +158,13 @@ const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
       }}
     >
       <div
-        className="relative mt-4 sm:mb-4 sm:mt-0"
+        className="group relative mt-4 sm:mb-4 sm:mt-0"
         style={{
           paddingBottom: "16rem",
         }}
       >
         <iframe
-          className="absolute left-0 top-0 h-full w-full rounded"
+          className="pointer-events-none absolute left-0 top-0 h-full w-full rounded group-hover:pointer-events-auto"
           src={src}
           title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

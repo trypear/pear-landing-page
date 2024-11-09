@@ -654,8 +654,8 @@ export const posts = [
       <li>
         Add the following entries to the "models" array of your config and save
         the file (see example picture below):
-       <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+      <pre
+          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-900 dark:text-gray-100 sm:text-sm md:text-base"
         ><code class="language-bash">{
     "model": "o1-mini",
     "title": "GPTo1 Mini (PearAI)",
@@ -1115,7 +1115,7 @@ export const posts = [
 
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
         <div class="aspect-w-16 aspect-h-9">
-          <iframe width="800" height="450" src="https://www.youtube.com/embed/OnerjUzIddY?si=H_dfqmnGIHd1eBm-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe width="800" height="450" src="https://www.youtube.com/embed/OnerjUzIddY?si=H_dfqmnGIHd1eBm-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
 
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
