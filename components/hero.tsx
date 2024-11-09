@@ -108,9 +108,6 @@ export default function Hero() {
           {/* Button */}
           <motion.div
             className="z-10 rounded-xl p-[2px]"
-            style={{
-              background: `linear-gradient(to bottom right, hsla(169, 100%, 40%, 0.5), hsl(168, 95%, 35%))`,
-            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{

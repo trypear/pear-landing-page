@@ -31,7 +31,7 @@ const CARDS: Card[] = [
     id: 1,
     title: "Ship with\nAider",
     description:
-      "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
+      "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Creator will make and apply the changes to your files automatically.",
     icon: AiderLogo,
     bgColor: "rgba(201, 255, 226, 1)",
     darkBgColor: "rgba(181, 235, 205, 1)",
@@ -47,7 +47,7 @@ const CARDS: Card[] = [
     id: 2,
     title: "Predict with\nSupermaven",
     description:
-      "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
+      "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
     icon: SupermavenLogo,
     bgColor: "rgba(200, 230, 255, 1)",
     darkBgColor: "rgba(200, 230, 255, 1)",
@@ -63,7 +63,7 @@ const CARDS: Card[] = [
     id: 3,
     title: "Chat & edit\nwith Continue",
     description:
-      "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
+      "Continue is a leading open-source AI code assistant extension. It is integrated into PearAI Chat with improvements and a unified user experience.",
     icon: ContinueLogo,
     bgColor: "rgba(229, 225, 248, 1)",
     darkBgColor: "rgba(229, 225, 248, 1)",
@@ -79,7 +79,7 @@ const CARDS: Card[] = [
     id: 4,
     title: "Remember\nwith Mem0",
     description:
-      "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
+      "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
     icon: Mem0Logo,
     bgColor: "rgba(225, 253, 175, 1)",
     darkBgColor: "rgba(225, 253, 175, 1)",
@@ -95,7 +95,7 @@ const CARDS: Card[] = [
     id: 5,
     title: "Search with\nPerplexity",
     description:
-      "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
+      "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
     icon: PerplexityLogo,
     bgColor: "rgba(216, 250, 255, 1)",
     darkBgColor: "rgba(216, 250, 255, 1)",
@@ -121,110 +121,192 @@ export default function ExpandableCards() {
 
   const getCardWidth = (cardId: number) =>
     expandedId === null
-      ? "w-[180px]"
+      ? "w-[185px]"
       : expandedId === cardId
         ? "w-[380px]"
-        : "w-[180px]";
+        : "w-[185px]";
 
   return (
-    <div className="mt-24 flex items-center justify-center p-4">
-      <div className="rounded-xl border-2 border-gray-200 px-5 py-6 dark:border-gray-50">
-        <h1 className="mb-6 text-[27px] font-semibold leading-tight dark:text-gray-900">
-          The AI space changes fast- PearAI Inventory curates the best AI tools
-          on
-          <br />
-          the market at any given time, and integrates them into a powerful
-          editor.
-        </h1>
-        <div className="flex w-[964px] space-x-4">
-          {CARDS.map((card) => (
-            <motion.div
-              key={card.id}
-              style={
-                {
-                  "--bg-color": card.bgColor,
-                  "--dark-bg-color": card.darkBgColor,
-                } as React.CSSProperties
-              }
-              className={cn(
-                "relative h-44 cursor-pointer overflow-hidden rounded-xl bg-[var(--bg-color)] shadow-md dark:bg-[var(--dark-bg-color)]",
-                getCardWidth(card.id),
-              )}
-              layout
-              onClick={() => handleCardClick(card.id)}
-              transition={{ duration: ANIMATION_DURATION }}
-            >
-              <div className="relative flex h-full flex-col justify-between p-4">
-                <motion.div
-                  layout
-                  style={{ backgroundColor: card.titleColor }}
-                  className="absolute right-4 top-4 flex h-5 w-5 items-center justify-center rounded-full opacity-50"
-                  transition={{ duration: ANIMATION_DURATION }}
-                >
-                  <Plus
-                    style={{ color: card.bgColor }}
-                    className={cn(
-                      "h-4 w-4 stroke-[3.4] transition-transform duration-300",
-                      expandedId === card.id && "rotate-45",
-                    )}
-                  />
-                </motion.div>
+    <>
+      {/* Desktop Layout */}
+      <div className="hidden items-center justify-center p-4 lg:flex">
+        <div className="w-full max-w-[1049px] rounded-xl border-2 border-gray-200 px-5 py-5 dark:border-gray-50">
+          <h1 className="pb-5 text-[27px] font-semibold leading-tight dark:text-gray-900">
+            The AI space changes fast- PearAI Inventory curates the best AI
+            tools on the market at any given time, and integrates them into a
+            powerful editor.
+          </h1>
+          <div className="flex gap-5">
+            {CARDS.map((card) => (
+              <motion.div
+                key={card.id}
+                style={
+                  {
+                    "--bg-color": card.bgColor,
+                    "--dark-bg-color": card.darkBgColor,
+                  } as React.CSSProperties
+                }
+                className={cn(
+                  "relative h-44 cursor-pointer overflow-hidden rounded-xl bg-[var(--bg-color)] dark:bg-[var(--dark-bg-color)]",
+                  getCardWidth(card.id),
+                )}
+                layout
+                onClick={() => handleCardClick(card.id)}
+                transition={{ duration: ANIMATION_DURATION }}
+              >
+                <div className="relative flex h-full flex-col justify-between p-4">
+                  <motion.div
+                    layout
+                    style={{ backgroundColor: card.titleColor }}
+                    className="absolute right-4 top-4 flex h-5 w-5 items-center justify-center rounded-full opacity-50"
+                    transition={{ duration: ANIMATION_DURATION }}
+                  >
+                    <Plus
+                      style={{ color: card.bgColor }}
+                      className={cn(
+                        "h-4 w-4 stroke-[3.4] transition-transform duration-300",
+                        expandedId === card.id && "rotate-45",
+                      )}
+                    />
+                  </motion.div>
 
-                {expandedId !== card.id ? (
-                  <>
-                    <motion.div
-                      layout="position"
-                      className="flex h-full flex-col justify-between"
-                    >
-                      <div
-                        style={{
-                          backgroundColor: `var(--icon-bg-color, ${card.iconBgColor})`,
-                        }}
-                        className="flex h-16 w-16 items-center justify-center rounded-2xl dark:[--icon-bg-color:var(--dark-icon-bg-color)]"
+                  {expandedId !== card.id ? (
+                    <>
+                      <motion.div
+                        layout="position"
+                        className="flex h-full flex-col justify-between"
                       >
-                        <card.icon
-                          className="h-10 w-10"
-                          color={card.iconColor}
-                        />
-                      </div>
-                      <h1
+                        <div
+                          style={{
+                            backgroundColor: `var(--icon-bg-color, ${card.iconBgColor})`,
+                          }}
+                          className="flex h-16 w-16 items-center justify-center rounded-2xl dark:[--icon-bg-color:var(--dark-icon-bg-color)]"
+                        >
+                          <card.icon
+                            className="h-10 w-10"
+                            color={card.iconColor}
+                          />
+                        </div>
+                        <h1
+                          style={
+                            {
+                              "--title-color": card.titleColor,
+                              "--dark-title-color": card.darkTitleColor,
+                            } as React.CSSProperties
+                          }
+                          className="whitespace-pre-line text-xl font-[550] leading-6 text-[var(--title-color)] dark:text-[var(--dark-title-color)]"
+                        >
+                          {card.title}
+                        </h1>
+                      </motion.div>
+                    </>
+                  ) : (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: ANIMATION_DELAY }}
+                      className="flex h-full flex-col"
+                    >
+                      <h4
                         style={
                           {
                             "--title-color": card.titleColor,
                             "--dark-title-color": card.darkTitleColor,
                           } as React.CSSProperties
                         }
-                        className="whitespace-pre-line text-xl font-[550] leading-6 text-[var(--title-color)] dark:text-[var(--dark-title-color)]"
+                        className="mb-3 text-xl font-[550] leading-6 text-[var(--title-color)] dark:text-[var(--dark-title-color)]"
                       >
                         {card.title}
-                      </h1>
+                      </h4>
+                      <p
+                        style={
+                          {
+                            "--description-color": card.descriptionColor,
+                            "--dark-description-color":
+                              card.darkDescriptionColor,
+                          } as React.CSSProperties
+                        }
+                        className="whitespace-pre-line text-sm text-[var(--description-color)] dark:text-[var(--dark-description-color)]"
+                      >
+                        {card.description}
+                      </p>
                     </motion.div>
-                  </>
-                ) : (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: ANIMATION_DELAY }}
-                    className="flex h-full items-center"
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Layout */}
+      <div className="block w-full px-6 py-6 lg:hidden">
+        <div className="mx-auto w-full max-w-3xl rounded-xl border-2 border-gray-200 px-5 py-5 dark:border-gray-50">
+          <h2 className="0 mb-6 text-2xl font-bold leading-tight tracking-tighter dark:text-gray-900 md:text-3xl">
+            The AI space changes fast— PearAI Inventory curates the best AI
+            tools on the market at any given time, and integrates them into a
+            powerful editor.
+          </h2>
+          <div className="space-y-4">
+            {CARDS.map((card) => (
+              <div
+                key={card.id}
+                style={{
+                  backgroundColor: card.bgColor,
+                }}
+                className="overflow-hidden rounded-xl border border-gray-200 transition-all duration-200 dark:border-gray-700 dark:bg-opacity-90"
+                onClick={() => handleCardClick(card.id)}
+              >
+                <div className="px-4 py-4">
+                  <div className="flex w-full items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div
+                        style={{
+                          backgroundColor: card.iconBgColor,
+                        }}
+                        className="flex h-12 w-12 items-center justify-center rounded-xl"
+                      >
+                        <card.icon className="h-8 w-8" color={card.iconColor} />
+                      </div>
+                      <h3
+                        style={{ color: card.titleColor }}
+                        className="text-lg font-semibold"
+                      >
+                        {card.title.replace("\n", " ")}
+                      </h3>
+                    </div>
+                    <div
+                      style={{ backgroundColor: card.titleColor }}
+                      className="flex h-5 w-5 items-center justify-center rounded-full opacity-40"
+                    >
+                      <Plus
+                        style={{ color: card.bgColor }}
+                        className={cn(
+                          "h-4 w-4 stroke-[3.4] transition-transform duration-300",
+                          expandedId === card.id && "rotate-45",
+                        )}
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className={cn(
+                      "max-h-0 overflow-hidden whitespace-pre-line transition-all duration-300",
+                      expandedId === card.id && "max-h-[200px] pt-4",
+                    )}
                   >
                     <p
-                      style={
-                        {
-                          "--description-color": card.descriptionColor,
-                          "--dark-description-color": card.darkDescriptionColor,
-                        } as React.CSSProperties
-                      }
-                      className="text-sm text-[var(--description-color)] dark:text-[var(--dark-description-color)]"
+                      style={{ color: card.descriptionColor }}
+                      className="ml-16 text-sm"
                     >
                       {card.description}
                     </p>
-                  </motion.div>
-                )}
+                  </div>
+                </div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
