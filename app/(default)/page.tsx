@@ -16,7 +16,14 @@ export default function Home() {
       <Features />
       <Showcase />
       <p className="mt-8 text-center text-sm text-gray-500">
-        * For more information about how integrations are built into PearAI, see <Link href="/disclaimer" className="text-primary-700 underline hover:text-primary-800">here</Link>.
+        * For more information about how integrations are built into PearAI, see{" "}
+        <Link
+          href="/disclaimer"
+          className="text-primary-700 underline hover:text-primary-800"
+        >
+          here
+        </Link>
+        .
       </p>
     </>
   );

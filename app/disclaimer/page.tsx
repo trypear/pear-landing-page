@@ -28,8 +28,9 @@ export default function Disclaimer() {
               unmodified version of any integration, users should refer to the
               respective integration&apos;s website and follow their official
               documentation and instructions. PearAI has its own name for each
-              functionality (e.g. Creator, Search, etc), as we reserve the right to change or modify the underlying
-              integration being used at any time.
+              functionality (e.g. Creator, Search, etc), as we reserve the right
+              to change or modify the underlying integration being used at any
+              time.
             </p>
           </div>
           <div className="transform rounded-xl bg-secondary-300/10 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
@@ -103,7 +104,15 @@ export default function Disclaimer() {
             </p>
           </div>
           <p className="mt-8 text-center text-sm text-gray-500">
-            If you have any questions, or would like to contact us regarding how your logo or branding is used, please email us at <a href="mailto:pear@trypear.ai" className="text-primary-700 hover:text-primary-800 underline">pear@trypear.ai</a>.
+            If you have any questions, or would like to contact us regarding how
+            your logo or branding is used, please email us at{" "}
+            <a
+              href="mailto:pear@trypear.ai"
+              className="text-primary-700 underline hover:text-primary-800"
+            >
+              pear@trypear.ai
+            </a>
+            .
           </p>
         </section>
       </div>
