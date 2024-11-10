@@ -40,7 +40,7 @@ export default function Hero() {
 
         <div className="relative my-20 flex max-w-2xl flex-col items-start px-6">
           <motion.div
-            className="mb-2 flex scale-95 items-center justify-center gap-2"
+            className="group mb-2 flex scale-95 items-center justify-center gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -56,8 +56,12 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="flex items-center gap-1 text-xs font-semibold text-black/50 transition-colors hover:text-black/70 dark:text-gray-600 dark:hover:text-gray-500"
             >
-              BACKED BY Y COMBINATOR{" "}
-              <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
+              <span className="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-in-out group-hover:after:origin-bottom-left group-hover:after:scale-x-100">
+                BACKED BY Y COMBINATOR
+              </span>{" "}
+              <div className="animate-bounce-horizontal">
+                <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
+              </div>
             </Link>
           </motion.div>
 
