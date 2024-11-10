@@ -17,6 +17,21 @@ export default function Disclaimer() {
         <section className="space-y-8">
           <div className="transform rounded-xl bg-secondary-300/10 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
             <h2 className="mb-6 text-2xl font-bold tracking-tight text-card-foreground">
+              Integrations
+            </h2>
+            <p className="text-lg leading-relaxed text-muted-foreground/90">
+              PearAI incorporates various third-party integrations that may have
+              been substantially modified to facilitate native integration and
+              communication with other integrations. These modifications are
+              specific to PearAI&apos;s implementation and may differ from the
+              original integration&apos;s functionality. For the official and
+              unmodified version of any integration, users should refer to the
+              respective integration&apos;s website and follow their official
+              documentation and instructions.
+            </p>
+          </div>
+          <div className="transform rounded-xl bg-secondary-300/10 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
+            <h2 className="mb-6 text-2xl font-bold tracking-tight text-card-foreground">
               Logos and Trademarks
             </h2>
             <p className="text-lg leading-relaxed text-muted-foreground/90">
@@ -34,14 +49,20 @@ export default function Disclaimer() {
               Continue
             </h2>
             <p className="text-lg leading-relaxed text-muted-foreground/90">
-              PearAI Chat is built upon the foundation of Continue, an
-              open-source project. While we have made significant modifications
-              to the codebase, we acknowledge and respect Continue&apos;s
-              contributions. We do not claim any affiliation with or endorsement
-              by Continue or its team. We are committed to maintaining the
-              integrity of both projects and ensuring that our representation of
-              PearAI Chat does not misrepresent Continue&apos;s brand or
-              product.
+              PearAI Chat is currently built upon the foundation of{" "}
+              <a
+                href="https://www.continue.dev/"
+                className="text-primary hover:underline"
+              >
+                Continue
+              </a>
+              , an open-source project. While we have made significant
+              modifications to the codebase, we acknowledge and respect
+              Continue&apos;s contributions. We do not claim any affiliation
+              with or endorsement by Continue or its team. We are committed to
+              maintaining the integrity of both projects and ensuring that our
+              representation of PearAI Chat does not misrepresent
+              Continue&apos;s brand or product.
             </p>
           </div>
 
@@ -50,13 +71,21 @@ export default function Disclaimer() {
               aider
             </h2>
             <p className="text-lg leading-relaxed text-muted-foreground/90">
-              PearAI Creator is powered by aider, an AI pair programming tool.
-              We have integrated aider&apos;s functionality into our UI/UX with
-              permission from the aider team. We do not claim any endorsement by
-              aider or its creators. PearAI operates independently, and we are
-              committed to maintaining the integrity of both projects. We strive
-              to ensure that our implementation and representation of PearAI
-              Creator does not misrepresent aider&apos;s brand or product.
+              PearAI Creator is currently powered by aider, an AI pair
+              programming tool. We have integrated aider&apos;s functionality
+              into our UI/UX with We have integrated{" "}
+              <a
+                href="https://aider.chat/"
+                className="text-primary hover:underline"
+              >
+                aider
+              </a>
+              &apos;s functionality into our UI/UX with permission from the
+              aider team. We do not claim any endorsement by aider or its
+              creators. PearAI operates independently, and we are committed to
+              maintaining the integrity of both projects. We strive to ensure
+              that our implementation and representation of PearAI Creator does
+              not misrepresent aider&apos;s brand or product.
             </p>
           </div>
 
@@ -65,11 +94,10 @@ export default function Disclaimer() {
               Other Brands
             </h2>
             <p className="text-lg leading-relaxed text-muted-foreground/90">
-              PearAI does not claim any endorsement by its integrations. PearAI
-              operates independently, and we are committed to maintaining the
-              integrity of all integrations. We strive to ensure that our
-              implementation and representation of PearAI does not misrepresent
-              any other brand or product.
+              PearAI does not claim any endorsement by its integrations. We are
+              committed to maintaining the integrity of all integrations. We
+              strive to ensure that our implementation and representation of
+              PearAI does not misrepresent any other brand or product.
             </p>
           </div>
         </section>
