@@ -863,20 +863,22 @@ export const posts = [
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 4 -
+      Step 4 - Selecting Ubuntu (WSL) in terminal dropdown
     </h2>
-    <iframe
-      src="https://giphy.com/embed/wrBURfbZmqqXu"
-      width="100%"
-      height="auto"
-      style="aspect-ratio: 480 / 317;"
-      frameborder="0"
-      class="giphy-embed"
-      allowfullscreen
-    ></iframe>
+    <figure class="mt-4">
+      <img
+        src="/images/blog/wsl-blog-terminal.png"
+        alt="Selecting Ubuntu (WSL) in terminal dropdown"
+        class="rounded-xl shadow-lg object-cover w-full"
+      />
+    </figure>
+    <p class="mt-4">
+      In the terminal dropdown menu, select <strong>Ubuntu (WSL)</strong> to open the WSL
+      terminal. This provides a Linux-based environment within your current setup,
+      allowing you to run Linux commands and scripts.
+    </p>
   </section>
 </article>
-
 `,
   },
   {
