@@ -27,7 +27,7 @@ const CARDS: Card[] = [
     id: 1,
     title: "Ship with\nAider",
     description:
-      "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Creator will make and apply the changes to your files automatically.",
+      "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Integrated within PearAI Creator, it will make and apply the changes to your files automatically.",
     icon: AiderLogo,
     bgColor: "rgba(201, 255, 226, 1)",
     iconBgColor: "rgba(4, 40, 26, 1)",
