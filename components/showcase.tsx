@@ -6,19 +6,19 @@ import { useState } from "react";
 
 const testimonials = [
   {
-    text: "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
-    author: "Randall Thymes",
-    role: "CEO of Plummcorp",
+    text: "If you've ever copy-pasted code into ChatGPT or Claude, download PearAI right now. Just a week ago I told an engineer on the Meta DevX team to check out Pear and see how far behind Meta was. I worked in mostly Hack (PHP), Python, and Javascript at Meta. My current startup requires almost all Swift iOS. PearAI has brought me from complete noob to at least Senior Engineer productivity in Swift iOS in less than a month. Finally, because I use the various LLMs mostly for coding I've canceled my Copilot, Claude, and ChatGPT subscriptions since switching, saving $30+/month.",
+    author: "Connor Clancy",
+    role: "Founder of Ikio, prev 5 years @ Meta",
   },
   {
-    text: "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
-    author: "Randall Thymes",
-    role: "CEO of Plummcorp",
+    text: "PearAI has transformed my workflow completely - it's like having a senior developer by my side 24/7. Whether I'm implementing AWS file storage or making architectural decisions, the '@codebase' context feature ensures precise solutions. With an amazing community always there for support, I'm shipping projects faster and with better quality. Couldn't recommend it enough for developers looking to boost their productivity.",
+    author: "Ricardo Freitas",
+    role: "Computer Science Student & Freelancer",
   },
   {
-    text: "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
-    author: "Randall Thymes",
-    role: "CEO of Plummcorp",
+    text: "This tool has been indispensible to me. I'm currently using it in two class projects, one is an app that focuses on mental health with a chatbot that gives advice for social issues. The other is for a class where we are learning about the scrum process and we are building a website for event planning. I'm still learning all the features to become more efficient and develop a workflow, but over one weekend I was able to build 16 screens for the app's UI with working navigation and a few features, like a drawing canvas, and date/time pickers with no prior HTML experience before Friday.",
+    author: "Josh Koelker",
+    role: "Computer Science Masters Student",
   },
   {
     text: "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
@@ -53,7 +53,7 @@ export default function Showcase() {
     <div className="flex items-center justify-center px-6 py-4">
       <div className="max-w-3xl rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50 lg:max-w-[1049px]">
         <h1 className="mb-5 text-[28px] font-semibold dark:text-gray-900">
-          Devs love PearAI.
+          Devs love PearAI... almost as much as PearAI loves Devs!
         </h1>
 
         <div className="relative overflow-hidden pb-5">
