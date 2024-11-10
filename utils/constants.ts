@@ -161,6 +161,10 @@ export const footerSections = [
         text: "Terms of Service",
         href: "/terms-of-service",
       },
+      {
+        text: "Disclaimer",
+        href: "/disclaimer",
+      },
     ],
   },
   {

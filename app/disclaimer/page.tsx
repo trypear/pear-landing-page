@@ -12,7 +12,7 @@ export default function Disclaimer() {
     <div className="min-h-screen bg-gradient-to-b from-background to-background/80">
       <div className="container mx-auto max-w-4xl px-4 pb-16 pt-32">
         <h1 className="mb-16 text-5xl font-extrabold tracking-tight text-foreground/90">
-          Legal Disclaimers
+          Disclaimers
         </h1>
         <section className="space-y-8">
           <div className="transform rounded-xl bg-secondary-300/10 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
@@ -47,7 +47,7 @@ export default function Disclaimer() {
 
           <div className="transform rounded-xl bg-secondary-300/10 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">
             <h2 className="mb-6 text-2xl font-bold tracking-tight text-card-foreground">
-              Aider
+              aider
             </h2>
             <p className="text-lg leading-relaxed text-muted-foreground/90">
               PearAI Creator is powered by aider, an AI pair programming tool.
@@ -69,7 +69,7 @@ export default function Disclaimer() {
               operates independently, and we are committed to maintaining the
               integrity of all integrations. We strive to ensure that our
               implementation and representation of PearAI does not misrepresent
-              or negatively impact any other brand or product.
+              any other brand or product.
             </p>
           </div>
         </section>
