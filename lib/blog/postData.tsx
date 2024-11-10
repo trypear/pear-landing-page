@@ -11,7 +11,7 @@ export const posts = [
     content: `<div
   class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
 >
-  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl mb-4">
     I spent the last 2 months working on PearAI, an Open Source AI-Powered Code
     Editor. It's like having an expert on your codebase right next to you. We
     achieve this with Retrieval Augmented Generation. This is my new startup
@@ -33,7 +33,7 @@ export const posts = [
     </figcaption>
   </figure>
 
-  <p class="text-base sm:text-lg">
+  <p class="text-base sm:text-lg my-4">
     We are launching our product next week, and we needed to build out our
     server this last month. As we're building fully in public, here's exactly
     how we did it. Hopefully, this helps you design a server with scalability,
@@ -163,25 +163,25 @@ export const posts = [
   </p>
 
   <ul
-    class="ml-4 list-inside list-disc space-y-2 rounded-lg bg-gray-100 p-4 text-base dark:bg-gray-800 sm:ml-6 sm:p-6 sm:text-lg"
+    class="list-inside list-disc space-y-2 rounded-lg bg-gray-100 p-4 text-base text-foreground  sm:ml-6 sm:p-6 sm:text-lg"
   >
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       Primary language: <span class="font-semibold">Python</span>
     </li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       API Framework: <span class="font-semibold">Flask</span>
     </li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       Authentication: <span class="font-semibold">Supabase</span>
     </li>
-    <li class="pl-2">Payment: <span class="font-semibold">Stripe</span></li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">Payment: <span class="font-semibold">Stripe</span></li>
+    <li class="pl-2 ml-2">
       Database: <span class="font-semibold">Redis + Supabase (pSQL)</span>
     </li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       Observability: <span class="font-semibold">OpenTelemetry + Axiom</span>
     </li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       Deployment: <span class="font-semibold">DigitalOcean</span>
     </li>
   </ul>
@@ -236,7 +236,7 @@ export const posts = [
     autocomplete predicts/suggests what you would type next as you're coding!
   </p>
 
-  <p class="text-base sm:text-lg">This is the guide to do that:</p>
+  <p class="text-base sm:text-lg mb-4">This is the guide to do that:</p>
 
   <ol
     class="ml-4 list-outside list-decimal space-y-8 text-base sm:ml-6 sm:text-lg"
@@ -247,7 +247,7 @@ export const posts = [
       >
         Setup Codestral
       </h3>
-      <p class="mt-2">
+      <p class="mt-2 mb-4">
         We recommend using Codestral, the leading model for code completion (or
         FIM — Fill In Middle). It's also open source! You'll need to obtain a
         Codestral API key from
@@ -273,8 +273,8 @@ export const posts = [
         with your API key:
       </p>
 
-      <div class="overflow-x-auto rounded-lg bg-gray-100 p-4 dark:bg-gray-800">
-        <pre class="text-xs sm:text-sm"><code class="language-json">{
+      <div class="overflow-x-auto rounded-lg text-foreground bg-gray-100 p-4 "> 
+        <pre class="text-xs sm:text-sm "><code class="language-json">{ <
     "tabAutocompleteModel": {
       "title": "Codestral",
       "provider": "mistral",
@@ -506,7 +506,7 @@ export const posts = [
     thumbnail: "/images/blog/linux.jpg",
     tags: ["Guide", "PearAI", "Linux"],
     content: `<article
-  class="mx-auto max-w-4xl space-y-6 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+  class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
 >
       <section class="space-y-4">
     <h2
@@ -517,20 +517,20 @@ export const posts = [
         <ol class="list-decimal space-y-4 pl-4 text-sm sm:pl-6 sm:text-base">
           <li>
             <strong>Check your CPU compatibility</strong>:
-  
+            <p class="my-4">
             If you're unsure whether your CPU supports AVX or AVX2 FMA, run the following command in your terminal:
-  
-            <pre class="mt-2 mb-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"><code class="language-bash">grep -o -w 'avx\|avx2\|fma' /proc/cpuinfo | sort -u</code></pre>
-
-            If your result is:
-
-            <pre class="mt-2 mb-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"><code>avx avx2 fma</code></pre>
+            </p>
+            <pre class="my-2 overflow-auto rounded bg-gray-100 text-foreground p-2 text-xs sm:text-sm md:text-base"><code class="language-bash">lscpu | grep -o -w 'avx\\|avx2\\|fma'</code></pre> 
+            <p class="my-4"> If your result is:</p>
+            <pre class="my-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"><code>avx avx2 fma</code></pre>   
+            <p class="my-4">
             feel free to download the AVX2 version. 
             If you only see <code>avx</code>, download the AVX version.
+            </p>
           </li>
           <li>
             Download the appropriate PearAI installation file:
-            <ul class="list-disc pl-5">
+            <ul class="list-disc pl-5 my-4">
               <li>
                 <strong>AVX version</strong>:
                 <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
@@ -544,25 +544,25 @@ export const posts = [
           <li>
             Extract the contents by running the following command:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code>tar -xvf PearAI-{AVX_VERSION}.tar.gz</code></pre>
           </li>
           <li>
             Navigate to the extracted folder:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">cd PearAI/</code></pre>
           </li>
           <li>
             Run the installation script with superuser permissions:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">sudo ./pearai_manager.sh</code></pre>
           </li>
           <li>
             Select your desired option:
             <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">1. Install PearAI
 2. Uninstall PearAI
 3. Exit</code></pre>
@@ -574,7 +574,7 @@ export const posts = [
         <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200">~/.zshrc</code>
         to run PearAI from any directory:
         <pre
-          class="mt-2 mb-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">alias pearai='PearAI'</code></pre>
         After adding the alias, run
         <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -654,8 +654,8 @@ export const posts = [
       <li>
         Add the following entries to the "models" array of your config and save
         the file (see example picture below):
-      <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-900 dark:text-gray-100 sm:text-sm md:text-base"
+       <pre
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">{
     "model": "o1-mini",
     "title": "GPTo1 Mini (PearAI)",
@@ -687,7 +687,7 @@ export const posts = [
 
   <section class="space-y-4">
     <h2
-      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+      class="text-xl my-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
       Usage Considerations
     </h2>
@@ -728,7 +728,7 @@ export const posts = [
       "swe jobs",
     ],
     content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
-      <section class="space-y-6">
+      <section class="space-y-6 mb-4">
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           A Practical Tool for Interview Readiness
         </h2>
@@ -765,7 +765,7 @@ export const posts = [
       </section>
 
       <section class="space-y-6">
-        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+        <h2 class="text-xl mt-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           Features to Support Your Preparation
         </h2>
         <p>The LeetCode Slash Command includes several useful features:</p>
@@ -782,7 +782,7 @@ export const posts = [
 
 
       <section class="space-y-6">
-        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl mt-4">
           A Useful Addition to Your Prep Toolkit
         </h2>
         <p>
@@ -825,7 +825,7 @@ export const posts = [
     </figure>
   </section>
 
-  <section class="space-y-4">
+  <section class="space-y-6 mt-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
@@ -839,7 +839,7 @@ export const posts = [
       />
     </figure>
   </section>
-  <section class="space-y-4">
+  <section class="space-y-6 mt-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
@@ -874,16 +874,16 @@ export const posts = [
       </p>
       <ul class="list-disc pl-6">
         <li>User Interface and User Experience Extensibility
-          <p class="text-gray-600 text-base">Open source allows for community-driven UI/UX improvements; with an extremely tight user feedback loop, we know exactly what you want. Code editors are uniquely suited for open source development because the developers themselves are users of the product! <br/><br/> This almost means that for our PearAI Inventory, where we integrate the best AI tools on the market within PearAI, other contributors can suggest AI tools to integrate on their own.</p>
+          <p class="text-gray-600 text-base mb-4">Open source allows for community-driven UI/UX improvements; with an extremely tight user feedback loop, we know exactly what you want. Code editors are uniquely suited for open source development because the developers themselves are users of the product! <br/><br/> This almost means that for our PearAI Inventory, where we integrate the best AI tools on the market within PearAI, other contributors can suggest AI tools to integrate on their own.</p>
         </li>
         <li>Trust and Transparency
-          <p class="text-gray-600 text-base">With open source, the codebase is visible to all, fostering trust through transparency and allowing for independent security audits.</p>
+          <p class="text-gray-600 text-base mb-4">With open source, the codebase is visible to all, fostering trust through transparency and allowing for independent security audits.</p>
         </li>
         <li>Community Support
-          <p class="text-base text-gray-600 mt-1 mb-2">Open source projects benefit from a global community of developers, leading to faster bug fixes, feature requests, and overall product improvement. For example, during our launch, we had no Linux version, but many people who only use Linux wanted to use PearAI. Someone from our community (s/o to Max!) single-handedly developed a Linux distribution, which is now available today for everyone to use.</p>
+          <p class="text-base text-gray-600 mt-1 mb-4">Open source projects benefit from a global community of developers, leading to faster bug fixes, feature requests, and overall product improvement. For example, during our launch, we had no Linux version, but many people who only use Linux wanted to use PearAI. Someone from our community (s/o to Max!) single-handedly developed a Linux distribution, which is now available today for everyone to use.</p>
         </li>
         <li>Distribution
-          <p class="text-base text-gray-600 mt-1 mb-2">Due to the underlying models being similar between products, the team with the coolest and strongest community will be the most popular.</p>
+          <p class="text-base text-gray-600 mt-1 mb-4">Due to the underlying models being similar between products, the team with the coolest and strongest community will be the most popular.</p>
         </li>
       </ul>
       <p>
@@ -893,7 +893,7 @@ export const posts = [
 
     <section class="space-y-4">
       <h2
-        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+        class="text-xl mt-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
       >
         Why Us: PearAI's Thriving Open Source Community
       </h2>
@@ -910,7 +910,7 @@ export const posts = [
 
     <section class="space-y-4">
       <h2
-        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl mt-4"
       >
         Beyond Code: Open Source Founders
       </h2>
@@ -966,7 +966,7 @@ export const posts = [
       </section>
 
       <section class="space-y-6">
-        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+        <h2 class="text-xl mt-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           Introducing PearAI's Open Source Bounties!
         </h2>
         <p>
@@ -978,7 +978,7 @@ export const posts = [
       </section>
 
       <section class="space-y-6">
-        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+        <h2 class="text-xl mt-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           How to Participate
         </h2>
         <p>
@@ -1010,11 +1010,11 @@ export const posts = [
         These are the changes PearAI made in attempts to correct our mistakes.
       </p>
 
-      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+      <h2 class="my-4 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
         Starting Fresh and Being True Forks 🍴
       </h2>
 
-      <p class="text-base sm:text-lg">
+      <p class="text-base sm:text-lg mb-4">
         We've rebuilt from scratch, starting fresh with zero stars on our new repository, leaving behind our 2k+ star repo to prioritize accountability and staying true to open source. This means our repositories accurately display true forks, marked by GitHub's built-in fork tag.
       </p>
 
@@ -1024,7 +1024,7 @@ export const posts = [
           alt="PearAI's temp-repo forked from continuedev/continue"
           class="w-full rounded-xl shadow-lg"
         />
-        <figcaption class="mt-4 text-center text-sm italic text-gray-600 dark:text-gray-400">
+        <figcaption class="mt-4 text-center text-sm italic text-gray-600 mb-4">
           Note: <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">temp-repo</code> will be renamed to <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">pearai-submodule</code>.
         </figcaption>
       </figure>
@@ -1037,15 +1037,15 @@ export const posts = [
         />
       </figure>
 
-      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+      <h2 class="my-4 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
         Correct Licensing 📄
       </h2>
 
-      <p class="text-base sm:text-lg">
+      <p class="text-base sm:text-lg mb-4">
         The fork of Continue is permanently licensed under Apache 2.0, and this will never change. View it here: <a href="https://github.com/trypear/temp-repo/blob/main/LICENSE" class="font-medium text-blue-600 hover:underline dark:text-blue-400">License</a>. While the VSCode fork retains its original MIT License, with details provided in the README. We've reapplied changes to ensure full compliance with the Apache 2.0 license, resolving previous code attribution issues.
       </p>
 
-      <figure class="my-8 sm:my-12">
+      <figure class="mb-4 sm:my-12">
         <img
           src="/images/blog/apache-license.jpg"
           alt="apache license plain"
@@ -1061,10 +1061,10 @@ export const posts = [
         />
       </figure>
 
-      <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+      <h2 class="my-4 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
         Complete Transparency 🔎
       </h2>
-      <p class="text-base sm:text-lg">
+      <p class="text-base sm:text-lg mb-4">
         We aim for complete transparency, making sure that everyone understands that our pearai-submodule repository is a fork of Continue (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>), This is an important part of our current functionality. In the future, we plan to diverge and innovate further, working towards creating the best AI-powered code editor.
       </p>
 
@@ -1084,7 +1084,7 @@ export const posts = [
         />
       </figure>
 
-      <p class="text-base sm:text-lg">
+      <p class="text-base sm:text-lg my-4">
         Once again, we apologize to Continue and the open source community. We encourage everyone to explore the incredible work being done by the Continue team (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>). We hope to learn from our mistakes, and move forward responsibly. We will be continuing with our original plan of differentiating from Continue and other competitors, to simply provide the best AI-powered code editor and allow users to make what they want.
       </p>
     </article>`,
@@ -1105,42 +1105,50 @@ export const posts = [
           PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically.
         </p>
 
-        <p>PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
 
-        <p><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
 
-        <p>When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
 
-        <p>Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
 
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
-        <div class="aspect-w-16 aspect-h-9">
-          <iframe width="800" height="450" src="https://www.youtube.com/embed/OnerjUzIddY?si=H_dfqmnGIHd1eBm-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="aspect-video">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/OnerjUzIddY?si=H_dfqmnGIHd1eBm-"
+            title="PearAI Creator (Powered by Aider) Beta Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
 
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           How to Use PearAI Creator (for free!)
         </h2>
         <ol class="list-decimal pl-6 space-y-4">
-          <li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
             If you already have PearAI installed, simply go to "Help" at the top and search "Update". It will automatically update you to the newest version of PearAI.
             <br/><br/>
-            Otherwise, download the new PearAI v1.4.0 (available now for Mac today 10/23/2024, Windows tomorrow 10/24/2024) here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline">https://trypear.ai/download</a>
+            Otherwise, download the new PearAI v1.4.0 (available now for Mac today 10/23/2024, Windows tomorrow 10/24/2024) here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
           </li>
-          <li>Open up command pallette (CMD/CTRL + Shift + P) and select "PearAI Creator"</li>
-          <li>The first time it runs, it will likely take a second to install and run Aider. Every time after, it should be instant!</li>
-          <li>Try it out! Ask for a new feature, a bug fix, or to start a new app. Please let us know your feedback!</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up command pallette (CMD/CTRL + Shift + P) and select "PearAI Creator"</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The first time it runs, it will likely take a second to install and run Aider. Every time after, it should be instant!</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out! Ask for a new feature, a bug fix, or to start a new app. Please let us know your feedback!</li>
         </ol>
 
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           Troubleshooting
         </h2>
         <div class="space-y-4">
-          <p>PearAI Creator is still in beta mode, so there may be a few rough edges.</p>
-          <p>If PearAI Creator is not working at all (ie. lags with no response), it is likely due to an issue with the Aider installation.</p>
-          <p>If you are running into this, please message this in the PearAI Discord, as it will help us improve.</p>
-          <p>To fix this, you may need to manually install aider here: <a href="https://aider.chat/docs/install.html" class="text-primary-600 hover:underline">https://aider.chat/docs/install.html</a>.</p>
-          <p>Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>PearAI Creator is still in beta mode, so there may be a few rough edges.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>If PearAI Creator is not working at all (ie. lags with no response), it is likely due to an issue with the Aider installation.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>If you are running into this, please message this in the PearAI Discord, as it will help us improve.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>To fix this, you may need to manually install aider here: <a href="https://aider.chat/docs/install.html" class="text-primary-600 hover:underline">https://aider.chat/docs/install.html</a>.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>
         </div>
       </section>
     </article>`,
