@@ -61,9 +61,9 @@ const AboutComponent: React.FC = () => {
           We are a curated inventory of the best AI tools on the market (ie.
           Perplexity, aider, mem0, etc.), to make it easy for you to make what
           you want. Imagine if VSCode was reimagined with AI in mind since the
-          beginning, or an extensible AI code editor with the best UX possible. View our future plans below!
+          beginning, or an extensible AI code editor with the best UX possible.
+          View our future plans below!
         </p>
-
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
         <p className="text-xs text-gray-700">Current features include</p>
