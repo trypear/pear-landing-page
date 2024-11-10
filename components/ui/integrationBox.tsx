@@ -28,7 +28,7 @@ const IntegrationItem = ({
       <div className="flex flex-col text-xs">
         <span className="text-gray-400 dark:text-gray-500">{label}</span>
         <span className="dark:text-white font-medium text-black/60">
-          {product}
+          {product}<sup>*</sup>
         </span>
       </div>
     </div>
