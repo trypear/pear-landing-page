@@ -25,7 +25,7 @@ export default function RootLayout({
       <PHProvider>
         <ReactLenis root>
           <body
-            className={`bg-background font-sans tracking-normal antialiased`}
+            className={`bg-background font-sans tracking-tight antialiased`}
           >
             <ThemeProvider
               attribute="class"

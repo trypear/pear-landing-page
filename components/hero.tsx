@@ -65,7 +65,7 @@ export default function Hero() {
 
           {/* Title */}
           <motion.div
-            className="text-center text-4xl font-bold sm:text-5xl lg:text-left"
+            className="max-w-64 text-center text-4xl font-bold sm:max-w-[340px] sm:text-5xl lg:text-left"
             variants={textVariants}
             initial="hidden"
             animate="visible"
@@ -75,15 +75,9 @@ export default function Hero() {
               delay: 0.2,
             }}
           >
-            <p className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
-              PearAI: The
-            </p>
-            <p className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text leading-tight text-transparent dark:from-neutral-50 dark:to-neutral-300">
-              Open Source
-            </p>
-            <p className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
-              AI Code Editor
-            </p>
+            <h1 className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
+              PearAI: The Open Source AI Code Editor
+            </h1>
           </motion.div>
 
           {/* Description */}
@@ -98,7 +92,7 @@ export default function Hero() {
               delay: 0.4,
             }}
           >
-            <p className="text-md text-black/60 dark:text-gray-500 sm:text-lg">
+            <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
               Supercharge your development with an up-to-date, curated inventory
               of the best AI tools, natively integrated for effortless
               AI-powered coding.

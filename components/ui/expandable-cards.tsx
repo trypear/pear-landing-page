@@ -16,14 +16,10 @@ type Card = {
   description: string;
   icon: React.ComponentType<{ className?: string; color?: string }>;
   bgColor: string;
-  darkBgColor: string;
   iconBgColor: string;
-  darkIconBgColor: string;
   iconColor: string;
   titleColor: string;
-  darkTitleColor: string;
   descriptionColor: string;
-  darkDescriptionColor: string;
 };
 
 const CARDS: Card[] = [
@@ -34,14 +30,10 @@ const CARDS: Card[] = [
       "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Creator will make and apply the changes to your files automatically.",
     icon: AiderLogo,
     bgColor: "rgba(201, 255, 226, 1)",
-    darkBgColor: "rgba(181, 235, 205, 1)",
     iconBgColor: "rgba(4, 40, 26, 1)",
-    darkIconBgColor: "rgba(4, 40, 26, 1)",
     iconColor: "#01FFC9",
     titleColor: "#0A3F37",
-    darkTitleColor: "#0A3F37",
     descriptionColor: "#0A3F37",
-    darkDescriptionColor: "#0A3F37",
   },
   {
     id: 2,
@@ -50,14 +42,10 @@ const CARDS: Card[] = [
       "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
     icon: SupermavenLogo,
     bgColor: "rgba(200, 230, 255, 1)",
-    darkBgColor: "rgba(200, 230, 255, 1)",
     iconBgColor: "rgba(0, 85, 255, 1)",
-    darkIconBgColor: "rgba(0, 85, 255, 1)",
     iconColor: "#FFFFFF",
     titleColor: "#002957",
-    darkTitleColor: "#002957",
     descriptionColor: "#002957",
-    darkDescriptionColor: "#002957",
   },
   {
     id: 3,
@@ -66,14 +54,10 @@ const CARDS: Card[] = [
       "Continue is a leading open-source AI code assistant extension. It is integrated into PearAI Chat with improvements and a unified user experience.",
     icon: ContinueLogo,
     bgColor: "rgba(229, 225, 248, 1)",
-    darkBgColor: "rgba(229, 225, 248, 1)",
     iconBgColor: "rgba(255, 255, 255, 1)",
-    darkIconBgColor: "rgba(255, 255, 255, 1)",
     iconColor: "#000000",
     titleColor: "#110D67",
-    darkTitleColor: "#110D67",
     descriptionColor: "#110D67",
-    darkDescriptionColor: "#110D67",
   },
   {
     id: 4,
@@ -82,14 +66,10 @@ const CARDS: Card[] = [
       "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
     icon: Mem0Logo,
     bgColor: "rgba(225, 253, 175, 1)",
-    darkBgColor: "rgba(225, 253, 175, 1)",
     iconBgColor: "rgba(0, 0, 0, 1)",
-    darkIconBgColor: "rgba(0, 0, 0, 1)",
     iconColor: "#FFFFFF",
     titleColor: "#005F15",
-    darkTitleColor: "#005F15",
     descriptionColor: "#005F15",
-    darkDescriptionColor: "#005F15",
   },
   {
     id: 5,
@@ -98,14 +78,10 @@ const CARDS: Card[] = [
       "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
     icon: PerplexityLogo,
     bgColor: "rgba(216, 250, 255, 1)",
-    darkBgColor: "rgba(216, 250, 255, 1)",
     iconBgColor: "rgba(34, 128, 141, 1)",
-    darkIconBgColor: "rgba(34, 128, 141, 1)",
     iconColor: "#FFFFFF",
     titleColor: "#003F48",
-    darkTitleColor: "#003F48",
     descriptionColor: "#003F48",
-    darkDescriptionColor: "#003F48",
   },
 ];
 
@@ -129,9 +105,9 @@ export default function ExpandableCards() {
   return (
     <>
       {/* Desktop Layout */}
-      <div className="hidden items-center justify-center p-4 lg:flex">
-        <div className="w-full max-w-[1049px] rounded-xl border-2 border-gray-200 px-5 py-5 dark:border-gray-50">
-          <h1 className="pb-5 text-[27px] font-semibold leading-tight dark:text-gray-900">
+      <div className="hidden items-center justify-center px-6 py-4 lg:flex">
+        <div className="w-full max-w-[1049px] rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50">
+          <h1 className="pb-5 text-[28px] font-semibold leading-tight dark:text-gray-900">
             The AI space changes fast- PearAI Inventory curates the best AI
             tools on the market at any given time, and integrates them into a
             powerful editor.
@@ -140,14 +116,11 @@ export default function ExpandableCards() {
             {CARDS.map((card) => (
               <motion.div
                 key={card.id}
-                style={
-                  {
-                    "--bg-color": card.bgColor,
-                    "--dark-bg-color": card.darkBgColor,
-                  } as React.CSSProperties
-                }
+                style={{
+                  backgroundColor: card.bgColor,
+                }}
                 className={cn(
-                  "relative h-44 cursor-pointer overflow-hidden rounded-xl bg-[var(--bg-color)] dark:bg-[var(--dark-bg-color)]",
+                  "relative h-44 cursor-pointer overflow-hidden rounded-xl",
                   getCardWidth(card.id),
                 )}
                 layout
@@ -178,9 +151,9 @@ export default function ExpandableCards() {
                       >
                         <div
                           style={{
-                            backgroundColor: `var(--icon-bg-color, ${card.iconBgColor})`,
+                            backgroundColor: card.iconBgColor,
                           }}
-                          className="flex h-16 w-16 items-center justify-center rounded-2xl dark:[--icon-bg-color:var(--dark-icon-bg-color)]"
+                          className="flex h-16 w-16 items-center justify-center rounded-2xl"
                         >
                           <card.icon
                             className="h-10 w-10"
@@ -188,13 +161,10 @@ export default function ExpandableCards() {
                           />
                         </div>
                         <h1
-                          style={
-                            {
-                              "--title-color": card.titleColor,
-                              "--dark-title-color": card.darkTitleColor,
-                            } as React.CSSProperties
-                          }
-                          className="whitespace-pre-line text-xl font-[550] leading-6 text-[var(--title-color)] dark:text-[var(--dark-title-color)]"
+                          style={{
+                            color: card.titleColor,
+                          }}
+                          className="whitespace-pre-line text-xl font-[550] leading-6"
                         >
                           {card.title}
                         </h1>
@@ -208,25 +178,18 @@ export default function ExpandableCards() {
                       className="flex h-full flex-col"
                     >
                       <h4
-                        style={
-                          {
-                            "--title-color": card.titleColor,
-                            "--dark-title-color": card.darkTitleColor,
-                          } as React.CSSProperties
-                        }
-                        className="mb-3 text-xl font-[550] leading-6 text-[var(--title-color)] dark:text-[var(--dark-title-color)]"
+                        style={{
+                          color: card.titleColor,
+                        }}
+                        className="mb-3 text-xl font-[550] leading-6"
                       >
                         {card.title}
                       </h4>
                       <p
-                        style={
-                          {
-                            "--description-color": card.descriptionColor,
-                            "--dark-description-color":
-                              card.darkDescriptionColor,
-                          } as React.CSSProperties
-                        }
-                        className="whitespace-pre-line text-sm text-[var(--description-color)] dark:text-[var(--dark-description-color)]"
+                        style={{
+                          color: card.descriptionColor,
+                        }}
+                        className="whitespace-pre-line text-sm"
                       >
                         {card.description}
                       </p>
@@ -242,7 +205,7 @@ export default function ExpandableCards() {
       {/* Mobile Layout */}
       <div className="block w-full px-6 py-6 lg:hidden">
         <div className="mx-auto w-full max-w-3xl rounded-xl border-2 border-gray-200 px-5 py-5 dark:border-gray-50">
-          <h2 className="0 mb-6 text-2xl font-bold leading-tight tracking-tighter dark:text-gray-900 md:text-3xl">
+          <h2 className="mb-5 text-2xl font-semibold leading-tight dark:text-gray-900 md:text-[28px]">
             The AI space changes fast— PearAI Inventory curates the best AI
             tools on the market at any given time, and integrates them into a
             powerful editor.
@@ -296,7 +259,7 @@ export default function ExpandableCards() {
                   >
                     <p
                       style={{ color: card.descriptionColor }}
-                      className="ml-16 text-sm"
+                      className="ml-16 text-base"
                     >
                       {card.description}
                     </p>

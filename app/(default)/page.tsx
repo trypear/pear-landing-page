@@ -1,6 +1,6 @@
 import Features from "@/components/features";
 import Hero from "@/components/hero";
-import Try from "@/components/try";
+import Showcase from "@/components/showcase";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
 
@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <Hero />
       <Features />
-      <Try />
+      <Showcase />
     </>
   );
 }
