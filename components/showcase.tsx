@@ -8,7 +8,7 @@ const testimonials = [
   {
     text: "If you've ever copy-pasted code into ChatGPT or Claude, download PearAI right now. Just a week ago I told an engineer on the Meta DevX team to check out Pear and see how far behind Meta was. I worked in mostly Hack (PHP), Python, and Javascript at Meta. My current startup requires almost all Swift iOS. PearAI has brought me from complete noob to at least Senior Engineer productivity in Swift iOS in less than a month. Finally, because I use the various LLMs mostly for coding I've canceled my Copilot, Claude, and ChatGPT subscriptions since switching, saving $30+/month.",
     author: "Connor Clancy",
-    role: "Founder of Ikio, prev 5 years @ Meta",
+    role: "Founder of Taste, prev 5 years @ Meta",
   },
   {
     text: "PearAI has transformed my workflow completely - it's like having a senior developer by my side 24/7. Whether I'm implementing AWS file storage or making architectural decisions, the '@codebase' context feature ensures precise solutions. With an amazing community always there for support, I'm shipping projects faster and with better quality. Couldn't recommend it enough for developers looking to boost their productivity.",
@@ -18,8 +18,13 @@ const testimonials = [
   {
     text: "This tool has been indispensible to me. I'm currently using it in two class projects, one is an app that focuses on mental health with a chatbot that gives advice for social issues. The other is for a class where we are learning about the scrum process and we are building a website for event planning. I'm still learning all the features to become more efficient and develop a workflow, but over one weekend I was able to build 16 screens for the app's UI with working navigation and a few features, like a drawing canvas, and date/time pickers with no prior HTML experience before Friday.",
     author: "Josh Koelker",
-    role: "Computer Science Masters Student",
+    role: "Information Systems Masters Student",
   },
+  {
+    text: "PearAI is literally a lifesaver for my CS projects. It helps me figure stuff out when I'm stuck and makes study sessions way more productive. Instead of spending hours lost in documentation, I can actually get things done and understand what I'm learning. Definitely a must-have.",
+    author: "Pedro Vieira",
+    role: "College Computer Science Student"
+  }
 ];
 
 export default function Showcase() {
@@ -35,7 +40,7 @@ export default function Showcase() {
   };
 
   return (
-    <div className="flex items-center justify-center px-6 py-4">
+    <div className="flex items-center justify-center px-6 pt-4">
       <div className="max-w-3xl rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50 lg:max-w-[1049px]">
         <h1 className="mb-5 text-[28px] font-semibold dark:text-gray-900">
           PearAI loves Devs... almost as much as Devs love PearAI!
@@ -49,10 +54,10 @@ export default function Showcase() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="grid grid-cols-1 gap-5 lg:grid-cols-3"
+              className="grid grid-cols-1 gap-5 lg:grid-cols-2"
             >
               {testimonials
-                .slice(currentPage * 3, (currentPage + 1) * 3)
+                .slice(currentPage * 2, (currentPage + 1) * 2)
                 .map((testimonial, index) => (
                   <motion.div
                     key={index}
@@ -61,7 +66,7 @@ export default function Showcase() {
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     className="flex h-full flex-col justify-between rounded-lg border border-gray-200 p-5 transition-colors dark:border-gray-50"
                   >
-                    <p className="mb-4 text-base font-medium leading-tight text-black dark:text-gray-600">
+                    <p className="mb-4 text-base leading-tight text-foreground dark:text-gray-600">
                       {testimonial.text}
                     </p>
                     <div className="mt-auto">
@@ -78,7 +83,7 @@ export default function Showcase() {
           </AnimatePresence>
         </div>
 
-        {/* <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <ChevronRight
             className="h-4 w-4 rotate-180 cursor-pointer stroke-[2.5] text-foreground opacity-100"
             onClick={() => navigate("previous")}
@@ -101,7 +106,7 @@ export default function Showcase() {
             className="h-4 w-4 cursor-pointer stroke-[2.5] text-foreground opacity-100"
             onClick={() => navigate("next")}
           />
-        </div> */}
+        </div>
       </div>
     </div>
   );
