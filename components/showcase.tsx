@@ -20,21 +20,6 @@ const testimonials = [
     author: "Josh Koelker",
     role: "Computer Science Masters Student",
   },
-  {
-    text: "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
-    author: "Jane Doe",
-    role: "CTO of TechCorp",
-  },
-  {
-    text: "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
-    author: "John Smith",
-    role: "Lead Developer at InnoSoft",
-  },
-  {
-    text: "Look, if you had one shot or one opportunity To seize everything you ever wanted in one moment Would you capture it or just let it slip?",
-    author: "Emily Johnson",
-    role: "Product Manager at Future",
-  },
 ];
 
 export default function Showcase() {
@@ -93,7 +78,7 @@ export default function Showcase() {
           </AnimatePresence>
         </div>
 
-        <div className="flex items-center gap-2">
+        {/* <div className="flex items-center gap-2">
           <ChevronRight
             className="h-4 w-4 rotate-180 cursor-pointer stroke-[2.5] text-foreground opacity-100"
             onClick={() => navigate("previous")}
@@ -116,7 +101,7 @@ export default function Showcase() {
             className="h-4 w-4 cursor-pointer stroke-[2.5] text-foreground opacity-100"
             onClick={() => navigate("next")}
           />
-        </div>
+        </div> */}
       </div>
     </div>
   );
