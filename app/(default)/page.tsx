@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <Features />
       <Showcase />
-      <p className="mt-8 text-center text-sm text-gray-500">
+      <p className="mt-8 px-4 text-center text-sm text-gray-500">
         * For more information about how integrations are built into PearAI, see{" "}
         <Link
           href="/disclaimer"
