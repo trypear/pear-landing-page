@@ -1,4 +1,5 @@
 import React from "react";
+import IntegritionWays from "./IntegritionWays";
 import {
   AiderLogo,
   PerplexityLogo,
@@ -6,111 +7,150 @@ import {
   Mem0Logo,
   ContinueLogo,
 } from "./icons";
+import BottomCard from "./BottomCard";
 
 interface IntegrationItemProps {
-  marginLeft: string;
   label: string;
   product: string;
   Icon: React.FC<React.ComponentProps<"svg">>;
+  className?: string;
 }
 
+const MovingBorder = ({
+  BoxName,
+  className,
+}: {
+  BoxName: React.ReactNode;
+  className?: string;
+}) => {
+  return (
+    <div className={`relative top-5 flex overflow-hidden ${className}`}>
+      <div className="relative">
+        {BoxName}
+
+        <span className="absolute inset-0 overflow-hidden rounded-lg">
+          <span className="animation-delay-1s absolute left-0 top-0 h-px w-full animate-[moveRight_2s_linear_infinite] rounded-lg bg-blue-500" />
+          <span className="absolute right-0 top-0 h-full w-px animate-[moveDown_2s_linear_infinite] rounded-lg bg-blue-500 [animation-delay:1.5s]" />
+          <span className="absolute bottom-0 right-0 h-px w-full animate-[moveLeft_2s_linear_infinite] rounded-lg bg-blue-500 [animation-delay:1s]" />
+          <span className="absolute bottom-0 left-0 h-full w-px animate-[moveUp_2s_linear_infinite] rounded-lg bg-blue-500 [animation-delay:1.5s]" />
+        </span>
+      </div>
+
+      <style jsx>{`
+        @keyframes moveRight {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+        @keyframes moveDown {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(100%);
+          }
+        }
+        @keyframes moveLeft {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+        @keyframes moveUp {
+          0% {
+            transform: translateY(100%);
+          }
+          100% {
+            transform: translateY(-100%);
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 const IntegrationItem = ({
-  marginLeft,
   label,
   product,
   Icon,
+  className,
 }: IntegrationItemProps) => (
-  <div
-    className={`bg-white-50 dark:bg-gray-800 ${marginLeft} w-fit rounded-lg border border-gray-200 px-3 py-2 dark:border-black/50`}
-  >
-    <div className="flex items-center gap-2">
-      <Icon className="h-6 w-6" />
-      <div className="flex flex-col text-xs">
-        <span className="text-gray-500 dark:text-gray-400">{label}</span>
-        <span className="dark:text-white font-medium text-black">
-          {product}
-        </span>
-      </div>
-    </div>
+  <div className={`relative ${className}`}>
+    <MovingBorder
+      className={className}
+      BoxName={
+        <div
+          className={`w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
+        >
+          <div className="flex items-center gap-2">
+            <Icon className="h-6 w-6" />
+            <div className="flex flex-col text-xs">
+              <span className="text-gray-500 dark:text-gray-400">{label}</span>
+              <span className="dark:text-white font-medium text-black">
+                {product}
+              </span>
+            </div>
+          </div>
+        </div>
+      }
+    />
   </div>
 );
 
 const INTEGRATIONS = [
   {
-    marginLeft: "ml-0",
     label: "Search with",
     product: "Perplexity",
     Icon: PerplexityLogo,
+    className: "flex right-20",
   },
   {
-    marginLeft: "ml-24",
     label: "Remember with",
     product: "MemO",
     Icon: Mem0Logo,
+    className: "flex right-[45px]",
   },
   {
-    marginLeft: "ml-40",
     label: "Predict with",
     product: "Supermaven",
     Icon: SupermavenLogo,
+    className: "flex right-3",
   },
   {
-    marginLeft: "ml-48",
     label: "Ship with",
     product: "Aider",
     Icon: AiderLogo,
+    className: "flex right-2 mt-2",
   },
   {
-    marginLeft: "ml-32",
     label: "Chat with",
     product: "Continue",
     Icon: ContinueLogo,
+    className: "flex right-10",
   },
 ];
 
 export default function IntegrationBox() {
   return (
     <div className="hidden lg:block">
-      {/* Background Wavy Lines */}
-      <div className="absolute right-0 top-5 overflow-hidden opacity-30">
-        <svg
-          width="554"
-          height="543"
-          viewBox="0 0 554 543"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M39 543C39 377.918 243 364.44 243 173.01V1.50026M77 543C77 377.918 344 364.44 344 173.01V1.50026M115 543C115 377.918 450.5 364.44 450.5 173.01C450.5 -18.419 450.5 1.50026 450.5 1.50026M153 543C153 392 553 410 553 178.898V1.50026M0.5 543C0.5 377.5 140 394 140 173.01V1.5"
-            stroke="gray"
-          />
-        </svg>
-      </div>
+      <IntegritionWays />
 
-      {/* Integration Cards */}
-      <div className="absolute right-44 top-20 flex flex-col gap-8">
+      <div className="absolute right-[10%] top-[10%] flex flex-col gap-8">
         {INTEGRATIONS.map((integration, index) => (
           <IntegrationItem key={index} {...integration} />
         ))}
 
-        {/* Bottom Card */}
-        <div
-          className={`-ml-20 mt-8 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
-        >
-          <div className="flex items-center gap-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-primary-700 text-xs font-medium text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
-              V2
-            </div>
-            <div className="flex flex-col text-xs">
-              <span className="text-gray-500 dark:text-gray-400">
-                10 days until launch
-              </span>
-              <span className="dark:text-white font-medium text-black">
-                More coming soon
-              </span>
-            </div>
-          </div>
-        </div>
+        <MovingBorder
+          className="right-60 mb-4 flex"
+          BoxName={
+            <BottomCard className="relative flex h-[50px] w-[145px] content-center items-center justify-center gap-2 rounded-lg bg-white-100" />
+          }
+        />
       </div>
     </div>
   );

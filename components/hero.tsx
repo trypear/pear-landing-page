@@ -1,11 +1,11 @@
 "use client";
-
 import Link from "next/link";
 import { motion } from "framer-motion";
-import GridIllustration from "./ui/grid-illustration";
 import IntegrationBox from "./ui/integrationBox";
 import { ChevronRight as ChevronRightIcon } from "lucide-react";
 import { Button } from "./ui/button";
+import Background from "./ui/grid-illustration";
+import VerticalLine from "./ui/VerticalLine";
 
 export default function Hero() {
   const textVariants = {
@@ -26,7 +26,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-      ></motion.div>
+      />
 
       <div className="relative mx-auto max-w-6xl px-6 py-24">
         <motion.div
@@ -35,12 +35,13 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <GridIllustration />
+          <Background />
+          <VerticalLine className="relative bottom-[235px] h-[235px] w-px bg-[#00705A]" />
         </motion.div>
 
-        <div className="relative my-20 flex max-w-2xl flex-col items-start px-6">
+        <div className="relative my-20 flex max-w-2xl flex-col items-start px-4 pt-5">
           <motion.div
-            className="mb-2 flex scale-95 items-center justify-center gap-2"
+            className="mb-0 flex scale-95 items-center justify-center gap-2"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -125,7 +126,7 @@ export default function Hero() {
 
           {/* Button */}
           <motion.div
-            className="z-10"
+            className="z-10 mb-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
@@ -145,7 +146,8 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
         >
-          <GridIllustration />
+          <Background />
+          <VerticalLine className="relative bottom-[235px] h-[235px] w-px bg-[#00705A]" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
