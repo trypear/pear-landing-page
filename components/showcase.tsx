@@ -23,8 +23,8 @@ const testimonials = [
   {
     text: "PearAI is literally a lifesaver for my CS projects. It helps me figure stuff out when I'm stuck and makes study sessions way more productive. Instead of spending hours lost in documentation, I can actually get things done and understand what I'm learning. Definitely a must-have.",
     author: "Pedro Vieira",
-    role: "College Computer Science Student"
-  }
+    role: "College Computer Science Student",
+  },
 ];
 
 export default function Showcase() {
