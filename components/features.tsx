@@ -1,6 +1,9 @@
+"use client";
+
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import Link from "next/link";
 import YoutubeEmbed from "./ui/YoutubeEmbed";
+import ExpandableCards from "./ui/expandable-cards";
 
 type FeatureInfo = {
   header: string;
@@ -8,6 +11,7 @@ type FeatureInfo = {
   videoSource?: string;
   embedId?: string;
 };
+
 type SingleFeatureProps = {
   info: FeatureInfo;
 };
@@ -31,7 +35,7 @@ export default function Features() {
           </p>
         </>
       ),
-      videoSource: "/webms/talktocodebase.webm",
+      videoSource: "/mp4/pearai-chat-welcome.mp4",
     },
 
     {
@@ -62,22 +66,23 @@ export default function Features() {
     },
 
     {
-      header: "Common use case example",
+      header: "PearAI Inventory",
       description: (
         <>
           <p className="pb-6">
-            Without writing a single line of code, we were able to make a new
-            feature in an unfamiliar codebase: adding a documentation page to
-            the PearAI landing page.
+            PearAI includes a curated inventory of the best AI tools, natively
+            integrated under a unified user experience. Here, see our
+            integration with aider, a leading code generation tool.
           </p>
         </>
       ),
-      embedId: "v4NN_qadBS0",
+      videoSource: "/mp4/pearai-creator-welcome.mp4",
     },
   ];
 
   return (
     <section className="flex flex-col justify-evenly">
+      <ExpandableCards />
       {featureInfo.map((info, index) => (
         <SingleFeature key={index} info={info} />
       ))}
