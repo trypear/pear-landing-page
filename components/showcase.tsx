@@ -53,7 +53,7 @@ export default function Showcase() {
     <div className="flex items-center justify-center px-6 py-4">
       <div className="max-w-3xl rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50 lg:max-w-[1049px]">
         <h1 className="mb-5 text-[28px] font-semibold dark:text-gray-900">
-          Devs love PearAI... almost as much as PearAI loves Devs!
+          PearAI loves Devs... almost as much as Devs love PearAI!
         </h1>
 
         <div className="relative overflow-hidden pb-5">

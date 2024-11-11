@@ -51,7 +51,7 @@ const CARDS: Card[] = [
     id: 3,
     title: "Chat & edit\nwith Continue",
     description:
-      "Continue is a leading open-source AI code assistant extension. It is integrated into PearAI Chat with improvements and a unified user experience.",
+      "Continue is a leading open-source AI code assistant extension. PearAI Chat is built upon the foundation of Continue, with changes and a unified user experience. We acknowledge and respect Continue's contributions.",
     icon: ContinueLogo,
     bgColor: "rgba(229, 225, 248, 1)",
     iconBgColor: "rgba(255, 255, 255, 1)",
