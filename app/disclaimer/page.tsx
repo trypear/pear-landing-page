@@ -27,10 +27,10 @@ export default function Disclaimer() {
               original integration&apos;s functionality. For the official and
               unmodified version of any integration, users should refer to the
               respective integration&apos;s website and follow their official
-              documentation and instructions. PearAI has its own name for each
-              functionality (e.g. Creator, Search, etc), as we reserve the right
-              to change or modify the underlying integration being used at any
-              time.
+              documentation and instructions. PearAI assigns unique names to
+              each functionality (e.g. Creator, Search, etc.) to maintain
+              flexibility in updating or replacing underlying integrations as
+              needed to provide the best experience for users.
             </p>
           </div>
           <div className="transform rounded-xl bg-secondary-300/10 p-8 shadow-lg transition-all duration-300 hover:shadow-xl">

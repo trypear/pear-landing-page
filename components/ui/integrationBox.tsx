@@ -132,7 +132,7 @@ export default function IntegrationBox() {
                 </div>
                 <div className="flex flex-col text-xs">
                   <span className="text-gray-500 dark:text-gray-400">
-                    11/22 Launch
+                    11/12 Launch
                   </span>
                   <span className="dark:text-white font-medium text-black/60">
                     More coming soon
