@@ -560,7 +560,7 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
         </TooltipTrigger>
         <TooltipContent sideOffset={5}>
           <p className="max-w-[250px]">
-            Current models include Claude 3.5 Sonnet and GPT4o.
+            Current models include Claude 3.5 Sonnet, GPT4o, Gemini 1.5 Pro, and Claude 3.5 Haiku.
             <br /> <br />
             Your PearAI Credits usage depend on your prompt input and output
             sizes. On average, this equates to around {pearCreditsCount(
