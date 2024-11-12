@@ -1138,7 +1138,7 @@ export const posts = [
 
         <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
 
-        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl"><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl"><a href="https://aider.chat/" class="text-primary-600 hover:underline">aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
 
         <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
 
@@ -1149,7 +1149,7 @@ export const posts = [
           <iframe
             class="w-full h-full"
             src="https://www.youtube.com/embed/OnerjUzIddY?si=H_dfqmnGIHd1eBm-"
-            title="PearAI Creator (Powered by Aider) Beta Demo"
+            title="PearAI Creator (Powered by aider) Beta Demo"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -1167,7 +1167,7 @@ export const posts = [
             Otherwise, download the new PearAI here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
           </li>
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up command pallette (CMD/CTRL + Shift + P) and select "PearAI Creator"</li>
-          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The first time it runs, it will likely take a second to install and run Aider. Every time after, it should be instant!</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The first time it runs, it will likely take a second to install and run aider. Every time after, it should be instant!</li>
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out! Ask for a new feature, a bug fix, or to start a new app. Please let us know your feedback!</li>
         </ol>
 
@@ -1192,7 +1192,7 @@ export const posts = [
         </h2>
         <div class="space-y-4">
           <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI Creator is still in beta mode, so there may be a few rough edges.</p>
-          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">If PearAI Creator is not working at all (ie. lags with no response), it is likely due to an issue with the Aider installation.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">If PearAI Creator is not working at all (ie. lags with no response), it is likely due to an issue with the aider installation.</p>
           <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">If you are running into this, please message this in the PearAI Discord, as it will help us improve.</p>
           <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">To fix this, you may need to manually install aider here: <a href="https://aider.chat/docs/install.html" class="text-primary-600 hover:underline">https://aider.chat/docs/install.html</a>.</p>
           <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>

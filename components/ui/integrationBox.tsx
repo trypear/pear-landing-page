@@ -40,7 +40,7 @@ const INTEGRATIONS = [
   {
     margin: "lg:ml-2 mr-1",
     label: "Ship with",
-    product: "Aider",
+    product: "aider",
     Icon: AiderLogo,
   },
   {
