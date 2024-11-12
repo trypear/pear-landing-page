@@ -60,20 +60,26 @@ export default function Features() {
     let progressTimer: NodeJS.Timeout;
 
     const startTimers = () => {
+      setProgress(0);
+
       progressTimer = setInterval(() => {
         setProgress((prev) => {
           const newProgress = prev + (interval / duration) * 100;
-          return newProgress > 100 ? 100 : newProgress;
+          return Math.min(newProgress, 100);
         });
       }, interval);
 
       timer = setTimeout(() => {
-        setProgress(0);
-        setActiveCard((prev) => {
-          const nextCard = prev + 1;
-          return nextCard > videoData.length ? 1 : nextCard;
-        });
-      }, duration);
+        setProgress(100);
+
+        setTimeout(() => {
+          setProgress(0);
+          setActiveCard((prev) => {
+            const nextCard = prev + 1;
+            return nextCard > videoData.length ? 1 : nextCard;
+          });
+        }, 100);
+      }, duration - 100);
     };
 
     startTimers();
@@ -151,7 +157,7 @@ export default function Features() {
                     {activeCard === video.id && (
                       <div className="absolute inset-x-0 bottom-0 h-[4px] bg-gray-200">
                         <motion.div
-                          className="dark:bg-white h-full bg-black dark:bg-white-50"
+                          className="dark:bg-white h-full rounded-full bg-black dark:bg-white-50"
                           initial={{ width: "0%" }}
                           animate={{ width: `${progress}%` }}
                           transition={{ duration: 0.3, ease: "easeOut" }}

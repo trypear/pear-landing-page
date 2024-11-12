@@ -13,6 +13,11 @@ const testimonials = [
     role: "Founder of Taste, prev 5 years @ Meta",
   },
   {
+    text: "PearAI has been a great help with my side projects and learning new programming languages. What sets it apart from standard AI chat tools is its ability to understand my codebase and file context, making the development process more streamlined. It's a useful tool for developers who want contextual AI assistance while coding. I wish my company adopted an AI code editor like this.",
+    author: "Jackson Z",
+    role: "Big Tech Software Engineer, Prev. Tesla AI",
+  },
+  {
     text: "PearAI has transformed my workflow completely - it's like having a senior developer by my side 24/7. Whether I'm implementing AWS file storage or making architectural decisions, the '@codebase' context feature ensures precise solutions. With an amazing community always there for support, I'm shipping projects faster and with better quality. Couldn't recommend it enough for developers looking to boost their productivity.",
     author: "Ricardo Freitas",
     role: "Computer Science Student & Freelancer",
@@ -21,11 +26,6 @@ const testimonials = [
     text: "This tool has been indispensible to me. I'm currently using it in two class projects, one is an app that focuses on mental health with a chatbot that gives advice for social issues. The other is for a class where we are learning about the scrum process and we are building a website for event planning. I'm still learning all the features to become more efficient and develop a workflow, but over one weekend I was able to build 16 screens for the app's UI with working navigation and a few features, like a drawing canvas, and date/time pickers with no prior HTML experience before Friday.",
     author: "Josh Koelker",
     role: "Information Systems Masters Student",
-  },
-  {
-    text: "PearAI is literally a lifesaver for my CS projects. It helps me figure stuff out when I'm stuck and makes study sessions way more productive. Instead of spending hours lost in documentation, I can actually get things done and understand what I'm learning. Definitely a must-have.",
-    author: "Pedro Vieira",
-    role: "College Computer Science Student",
   },
 ];
 
@@ -142,7 +142,7 @@ export default function Showcase() {
             Try PearAI for free.
           </p>
           <p className="mt-4 max-w-md text-xl font-semibold text-black sm:text-3xl">
-            Our Foundation is VSCode, with all of your favourite features.
+            Built on top VSCode for a seamless transition.
           </p>
           <Button className="mt-10 bg-black px-20 py-4 text-sm hover:bg-black dark:hover:bg-black sm:text-base">
             <Link href="/pricing">Download</Link>
