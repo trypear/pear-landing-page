@@ -803,7 +803,7 @@ export const posts = [
     excerpt:
       "Easy step by step guide to setup WSL in PearAI, and get started with AI-powered coding in WSL.",
     date: "2024-09-19",
-    author: "Himanshu",
+    author: "Himanshu and LaansDole",
     readingTime: "30 seconds",
     thumbnail: "/images/blog/wsl-blog.png",
     tags: ["Guide", "WSL", "Linux", "Ubuntu", "Windows Subsystem for Linux"],
@@ -814,12 +814,12 @@ export const posts = [
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 1 - Install Microsft WSL extension
+      Step 1 - Install Microsoft WSL extension
     </h2>
     <figure class="mt-4">
       <img
         src="/images/blog/wsl-blog-extension.png"
-        alt="Install Microsoft WSL extension form marketplace"
+        alt="Install Microsoft WSL extension from marketplace"
         class="rounded-xl shadow-lg object-cover w-full"
       />
     </figure>
@@ -829,7 +829,26 @@ export const posts = [
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 2 - Run 'Patch WSL' from command palette
+      Step 2 - Change end of line sequence
+    </h2>
+    <figure class="mt-4">
+      <img
+        src="/images/blog/wsl-blog-eol-sequence.png"
+        alt="Change End of Line Sequence in PearAI"
+        class="rounded-xl shadow-lg object-cover w-full"
+      />
+    </figure>
+    <p class="mt-4">
+      In PearAI, click on the Search Bar at the top of the app and enter
+      <code>&gt;Change End of Line Sequence</code>. Choose <strong>LF</strong> to sucessfully run the next step.
+    </p>
+  </section>
+
+  <section class="space-y-6 mt-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Step 3 - Run 'Patch WSL' from command palette
     </h2>
     <figure class="mt-4">
       <img
@@ -839,13 +858,25 @@ export const posts = [
       />
     </figure>
   </section>
+
   <section class="space-y-6 mt-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 3 -
+      Step 4 - Selecting Ubuntu (WSL) in terminal dropdown
     </h2>
-    <iframe src="https://giphy.com/embed/wrBURfbZmqqXu" width="100%" height="auto" style="aspect-ratio: 480 / 317;" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <figure class="mt-4">
+      <img
+        src="/images/blog/wsl-blog-terminal.png"
+        alt="Selecting Ubuntu (WSL) in terminal dropdown"
+        class="rounded-xl shadow-lg object-cover w-full"
+      />
+    </figure>
+    <p class="mt-4">
+      In the terminal dropdown menu, select <strong>Ubuntu (WSL)</strong> to open the WSL
+      terminal. This provides a Linux-based environment within your current setup,
+      allowing you to run Linux commands and scripts.
+    </p>
   </section>
 </article>
 `,

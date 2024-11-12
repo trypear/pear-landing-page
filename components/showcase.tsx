@@ -148,7 +148,7 @@ export default function Showcase() {
             <Link href="/pricing">Download</Link>
           </Button>
           <a
-            href="https://github.com/peardotai/pearai"
+            href="https://trypear.ai/docs/contributors"
             className="mt-2 text-xs font-medium text-black underline decoration-dashed underline-offset-1 hover:decoration-black/20 dark:text-black"
           >
             Interested in contributing ?
