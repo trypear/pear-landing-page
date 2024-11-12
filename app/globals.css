@@ -170,37 +170,6 @@
   box-sizing: border-box;
 }
 
-.button-radial-gradient {
-  background: radial-gradient(
-      circle at 50% 0%,
-      rgba(250, 250, 250, 0.05) 0%,
-      transparent 60%
-    ),
-    rgba(15, 15, 15, 1);
-}
-
-.button-linear-mask {
-  mask-image: linear-gradient(
-    -75deg,
-    white calc(var(--x) + 20%),
-    transparent calc(var(--x) + 30%),
-    white calc(var(--x) + 100%)
-  );
-}
-
-.button-linear-overlay {
-  background-image: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.1) calc(var(--x) + 20%),
-    rgba(255, 255, 255, 0.5) calc(var(--x) + 25%),
-    rgba(255, 255, 255, 0.1) calc(var(--x) + 100%)
-  );
-  mask:
-    linear-gradient(black, black) content-box,
-    linear-gradient(black, black);
-  mask-composite: exclude;
-}
-
 /* Prose */
 .prose code:not(pre code) {
   @apply rounded-md border border-slate-300 bg-slate-200 px-1 py-0.5 before:content-none after:content-none dark:border-slate-700 dark:bg-slate-950;
@@ -225,4 +194,32 @@ html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+@layer utilities {
+  .showcase-gradient-light {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(250, 250, 250, 1) 0%,
+        rgba(250, 250, 250, 0) 50%
+      ),
+      radial-gradient(51% 51% at -11% 9%, #ff57dda1 1%, #ff57dd00 100%),
+      radial-gradient(51% 67% at 115% 96%, #ff57dda1 0%, #ff57dd00 100%),
+      radial-gradient(50% 66% at 50% 50%, #f2ff61a3 0%, #f2ff6100 100%),
+      radial-gradient(22% 117% at 2% 87%, #00f3ba00 20%, #00f3ba94 100%),
+      linear-gradient(0deg, #61cdffa3 0%, #61cdffa3 100%);
+  }
+
+  .dark .showcase-gradient-light {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0) 50%
+      ),
+      radial-gradient(51% 51% at -11% 9%, #ff57dda1 1%, #ff57dd00 100%),
+      radial-gradient(51% 67% at 115% 96%, #ff57dda1 0%, #ff57dd00 100%),
+      radial-gradient(50% 66% at 50% 50%, #f2ff61a3 0%, #f2ff6100 100%),
+      radial-gradient(22% 117% at 2% 87%, #00f3ba00 20%, #00f3ba94 100%),
+      linear-gradient(0deg, #61cdffa3 0%, #61cdffa3 100%);
+  }
 }

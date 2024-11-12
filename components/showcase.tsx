@@ -2,7 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const testimonials = [
   {
@@ -39,7 +41,22 @@ const testimonials = [
 
 export default function Showcase() {
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = 2;
+  const [isMobile, setIsMobile] = useState(false);
+  const [totalPages, setTotalPages] = useState(3);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      const isMobileView = window.innerWidth < 1024;
+      setIsMobile(isMobileView);
+      setTotalPages(
+        isMobileView ? testimonials.length : Math.ceil(testimonials.length / 2),
+      );
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const navigate = (direction: "next" | "previous") => {
     setCurrentPage((prevPage) =>
@@ -50,74 +67,101 @@ export default function Showcase() {
   };
 
   return (
-    <div className="flex items-center justify-center px-6 py-4">
-      <div className="max-w-3xl rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50 lg:max-w-[1049px]">
-        <h1 className="mb-5 text-[28px] font-semibold dark:text-gray-900">
-          Devs love PearAI... almost as much as PearAI loves Devs!
-        </h1>
+    <>
+      {/* Testimonials */}
+      <div className="flex items-center justify-center px-6 py-4">
+        <div className="z-10 max-w-3xl rounded-xl border-2 border-gray-200 bg-white-50 p-5 dark:border-gray-50 dark:bg-black lg:max-w-[1049px]">
+          <h1 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
+            Devs love PearAI... almost as much as PearAI loves Devs!
+          </h1>
 
-        <div className="relative overflow-hidden pb-5">
-          <AnimatePresence initial={false} mode="wait">
-            <motion.div
-              key={currentPage}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="grid grid-cols-1 gap-5 lg:grid-cols-3"
-            >
-              {testimonials
-                .slice(currentPage * 3, (currentPage + 1) * 3)
-                .map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="flex h-full flex-col justify-between rounded-lg border border-gray-200 p-5 transition-colors dark:border-gray-50"
-                  >
-                    <p className="mb-4 text-base font-medium leading-tight text-black dark:text-gray-600">
-                      {testimonial.text}
-                    </p>
-                    <div className="mt-auto">
-                      <p className="font-semibold text-foreground">
-                        {testimonial.author}
+          <div className="relative overflow-hidden pb-5">
+            <AnimatePresence initial={false} mode="wait">
+              <motion.div
+                key={currentPage}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="grid grid-cols-1 gap-5 lg:grid-cols-2"
+              >
+                {testimonials
+                  .slice(
+                    currentPage * (isMobile ? 1 : 2),
+                    (currentPage + 1) * (isMobile ? 1 : 2),
+                  )
+                  .map((testimonial, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="flex h-full flex-col justify-between rounded-lg border border-gray-200 p-5 transition-colors dark:border-gray-50"
+                    >
+                      <p className="mb-4 text-sm font-[450] text-black/60 dark:text-gray-500 sm:text-base">
+                        {testimonial.text}
                       </p>
-                      <p className="text-sm text-muted-foreground">
-                        {testimonial.role}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <ChevronRight
-            className="h-4 w-4 rotate-180 cursor-pointer stroke-[2.5] text-foreground opacity-100"
-            onClick={() => navigate("previous")}
-          />
-
-          <div className="flex gap-2">
-            {[...Array(totalPages)].map((_, i) => (
-              <div
-                key={i}
-                className={`h-2 w-2 rounded-full ${
-                  i === currentPage
-                    ? "bg-black dark:bg-gray-900"
-                    : "bg-black/30 dark:bg-gray-200"
-                }`}
-              />
-            ))}
+                      <div className="mt-auto">
+                        <p className="text-sm font-semibold sm:text-base">
+                          {testimonial.author}
+                        </p>
+                        <p className="text-xs text-gray-500 sm:text-sm">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
 
-          <ChevronRight
-            className="h-4 w-4 cursor-pointer stroke-[2.5] text-foreground opacity-100"
-            onClick={() => navigate("next")}
-          />
+          <div className="flex items-center gap-2">
+            <ChevronRight
+              className="h-4 w-4 rotate-180 cursor-pointer stroke-[2.5] text-foreground opacity-100"
+              onClick={() => navigate("previous")}
+            />
+
+            <div className="flex gap-2">
+              {[...Array(totalPages)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-2 w-2 rounded-full ${
+                    i === currentPage
+                      ? "bg-black dark:bg-gray-900"
+                      : "bg-black/30 dark:bg-gray-200"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <ChevronRight
+              className="h-4 w-4 cursor-pointer stroke-[2.5] text-foreground opacity-100"
+              onClick={() => navigate("next")}
+            />
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* CTA */}
+      <div className="showcase-gradient-light relative mx-auto flex min-h-[100vh] w-full max-w-full -translate-y-24 items-center justify-center sm:min-h-[120vh]">
+        <div className="mt-12 flex max-w-3xl flex-col items-center px-6 text-center">
+          <p className="max-w-xl text-4xl font-semibold text-black sm:text-6xl">
+            Try PearAI for free.
+          </p>
+          <p className="mt-4 max-w-md text-xl font-semibold text-black sm:text-3xl">
+            Our Foundation is VSCode, with all of your favourite features.
+          </p>
+          <Button className="mt-10 bg-black px-16 py-4 text-sm hover:bg-black sm:text-base">
+            <Link href="/pricing">Download</Link>
+          </Button>
+          <a
+            href="https://github.com/peardotai/pearai"
+            className="mt-2 text-xs font-medium text-black underline decoration-dashed underline-offset-2 hover:text-gray-900"
+          >
+            Interested in contributing?
+          </a>
+        </div>
+      </div>
+    </>
   );
 }

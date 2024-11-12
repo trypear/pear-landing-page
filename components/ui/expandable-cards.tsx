@@ -205,7 +205,7 @@ export default function ExpandableCards() {
       {/* Mobile Layout */}
       <div className="block w-full px-6 py-6 lg:hidden">
         <div className="mx-auto w-full max-w-3xl rounded-xl border-2 border-gray-200 px-5 py-5 dark:border-gray-50">
-          <h2 className="mb-5 text-2xl font-semibold leading-tight dark:text-gray-900 md:text-[28px]">
+          <h2 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
             The AI space changes fast— PearAI Inventory curates the best AI
             tools on the market at any given time, and integrates them into a
             powerful editor.
@@ -233,7 +233,7 @@ export default function ExpandableCards() {
                       </div>
                       <h3
                         style={{ color: card.titleColor }}
-                        className="text-lg font-semibold"
+                        className="text-base font-semibold sm:text-lg"
                       >
                         {card.title.replace("\n", " ")}
                       </h3>
@@ -259,7 +259,7 @@ export default function ExpandableCards() {
                   >
                     <p
                       style={{ color: card.descriptionColor }}
-                      className="ml-16 text-base"
+                      className="ml-16 text-sm sm:text-base"
                     >
                       {card.description}
                     </p>

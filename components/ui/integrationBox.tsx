@@ -72,6 +72,68 @@ const INTEGRATIONS = [
 export default function IntegrationBox() {
   return (
     <>
+      {/* Large Display */}
+      <div className="hidden lg:block">
+        {/* Background Wavy Lines */}
+        <div className="absolute right-24 top-16 scale-y-105 opacity-30">
+          <svg
+            width="554"
+            height="543"
+            viewBox="0 0 554 543"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M39 543C39 377.918 243 364.44 243 173.01V1.50026M77 543C77 377.918 344 364.44 344 173.01V1.50026M115 543C115 377.918 450.5 364.44 450.5 173.01C450.5 -18.419 450.5 1.50026 450.5 1.50026M153 543C153 392 553 410 553 178.898V1.50026M0.5 543C0.5 377.5 140 394 140 173.01V1.5"
+              stroke="url(#large_display_gradient)"
+            />
+            <defs>
+              <radialGradient
+                id="large_display_gradient"
+                cx="0"
+                cy="0"
+                r="1"
+                gradientUnits="userSpaceOnUse"
+                gradientTransform="translate(265 285.5) rotate(126.959) scale(192.1 87.2532)"
+              >
+                <stop stopColor="currentColor" stopOpacity="0.2" />
+                <stop
+                  stopColor="currentColor"
+                  offset="0.893735"
+                  stopOpacity="0.5"
+                />
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+
+        {/* Integration Cards */}
+        <div className="absolute right-56 top-24 flex flex-col gap-10">
+          {INTEGRATIONS.map((integration, index) => (
+            <IntegrationItem key={index} {...integration} />
+          ))}
+
+          {/* Bottom Card */}
+          <div
+            className={`-ml-[79px] mt-16 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
+          >
+            <div className="flex items-center gap-2">
+              <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-xs font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
+                V2
+              </div>
+              <div className="flex flex-col text-xs">
+                <span className="text-gray-500 dark:text-gray-400">
+                  10 days until launch
+                </span>
+                <span className="dark:text-white font-medium text-black/60">
+                  More coming soon
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Mobile Display */}
       <div className="block w-full lg:hidden">
         <div className="relative mx-auto max-w-sm">
@@ -138,68 +200,6 @@ export default function IntegrationBox() {
                     More coming soon
                   </span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Large Display */}
-      <div className="hidden lg:block">
-        {/* Background Wavy Lines */}
-        <div className="absolute right-24 top-16 scale-y-105 opacity-30">
-          <svg
-            width="554"
-            height="543"
-            viewBox="0 0 554 543"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M39 543C39 377.918 243 364.44 243 173.01V1.50026M77 543C77 377.918 344 364.44 344 173.01V1.50026M115 543C115 377.918 450.5 364.44 450.5 173.01C450.5 -18.419 450.5 1.50026 450.5 1.50026M153 543C153 392 553 410 553 178.898V1.50026M0.5 543C0.5 377.5 140 394 140 173.01V1.5"
-              stroke="url(#large_display_gradient)"
-            />
-            <defs>
-              <radialGradient
-                id="large_display_gradient"
-                cx="0"
-                cy="0"
-                r="1"
-                gradientUnits="userSpaceOnUse"
-                gradientTransform="translate(265 285.5) rotate(126.959) scale(192.1 87.2532)"
-              >
-                <stop stopColor="currentColor" stopOpacity="0.2" />
-                <stop
-                  stopColor="currentColor"
-                  offset="0.893735"
-                  stopOpacity="0.5"
-                />
-              </radialGradient>
-            </defs>
-          </svg>
-        </div>
-
-        {/* Integration Cards */}
-        <div className="absolute right-56 top-24 flex flex-col gap-10">
-          {INTEGRATIONS.map((integration, index) => (
-            <IntegrationItem key={index} {...integration} />
-          ))}
-
-          {/* Bottom Card */}
-          <div
-            className={`-ml-[79px] mt-16 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
-          >
-            <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-xs font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
-                V2
-              </div>
-              <div className="flex flex-col text-xs">
-                <span className="text-gray-500 dark:text-gray-400">
-                  10 days until launch
-                </span>
-                <span className="dark:text-white font-medium text-black/60">
-                  More coming soon
-                </span>
               </div>
             </div>
           </div>
