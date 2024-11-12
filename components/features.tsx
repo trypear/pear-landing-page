@@ -16,7 +16,7 @@ type SingleFeatureProps = {
   info: FeatureInfo;
 };
 
-const BUNNY_CDN_HOST = "https://pearai.b-cdn.net"
+const BUNNY_CDN_HOST = "https://pearai.b-cdn.net";
 
 export default function Features() {
   const featureInfo = [
