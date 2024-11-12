@@ -142,7 +142,7 @@ export default function Showcase() {
             Try PearAI for free.
           </p>
           <p className="mt-4 max-w-md text-xl font-semibold text-black sm:text-3xl">
-            Built on top VSCode for a seamless transition.
+            Built on top of VSCode for a seamless transition.
           </p>
           <Button className="mt-10 bg-black px-20 py-4 text-sm hover:bg-black dark:hover:bg-black sm:text-base">
             <Link href="/pricing">Download</Link>
