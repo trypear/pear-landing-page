@@ -22,7 +22,7 @@ export default function Features() {
       header: "Talk to your codebase directly.",
       description: (
         <>
-          <p className="pb-6">
+          <p className="pb-4">
             Ask questions or generate code with context of your{" "}
             <b>
               <code>@codebase</code>
@@ -50,10 +50,10 @@ export default function Features() {
             </b>
             &nbsp;(<code>CTRL+I</code> on Windows).
           </p>
-          <p className="pt-6">
+          <p className="pt-4">
             Here, we ask PearAI to help us add error handling and comments 😏.
           </p>
-          <p className="pt-6">
+          <p className="pt-4">
             To see all of our features, check out our{" "}
             <Link className="text-primary-600" href="/docs">
               docs
@@ -69,7 +69,7 @@ export default function Features() {
       header: "PearAI Inventory",
       description: (
         <>
-          <p className="pb-6">
+          <p className="pb-4">
             PearAI includes a curated inventory of the best AI tools, natively
             integrated under a unified user experience. Here, see our
             integration with aider, a leading code generation tool.
@@ -92,8 +92,8 @@ export default function Features() {
 
 function SingleFeature(props: SingleFeatureProps) {
   return (
-    <div className="m-4 flex flex-col items-center gap-6 min-[425px]:m-8 min-[425px]:items-start sm:m-12 lg:m-24 lg:max-w-full lg:flex-row lg:justify-center lg:gap-28">
-      <div className="mb-6 flex w-full flex-col text-center lg:mb-0 lg:ml-1.5 lg:w-[450px] lg:text-left">
+    <div className="m-4 my-24 flex flex-col items-center gap-6 min-[425px]:items-start lg:max-w-full lg:flex-row lg:justify-center lg:gap-16">
+      <div className="mb-6 flex w-full flex-col text-center lg:mb-0 lg:ml-1.5 lg:w-[350px] lg:text-left">
         <h4
           className="whitespace-pre-line pb-8 text-2xl font-medium text-primary-700 lg:text-4xl"
           data-aos="fade-up"
@@ -107,7 +107,7 @@ function SingleFeature(props: SingleFeatureProps) {
           {props.info.description}
         </div>
       </div>
-      <div className="w-full lg:w-[800px]">
+      <div className="w-full lg:w-[650px]">
         {props.info.videoSource ? (
           <AspectRatio ratio={3 / 2}>
             <video

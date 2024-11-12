@@ -139,6 +139,17 @@ export default function Showcase() {
           </a>
         </div>
       </div>
+
+      <p className="mt-8 px-4 text-center text-sm text-gray-500">
+        * For more information about how integrations are built into PearAI, see{" "}
+        <Link
+          href="/disclaimer"
+          className="text-primary-700 underline hover:text-primary-800"
+        >
+          here
+        </Link>
+        .
+      </p>
     </>
   );
 }
