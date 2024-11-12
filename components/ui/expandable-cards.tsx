@@ -12,7 +12,10 @@ import {
 
 type Card = {
   id: number;
-  title: string | JSX.Element;
+  title: {
+    desktop: JSX.Element;
+    mobile: JSX.Element;
+  };
   description: string | JSX.Element;
   icon: React.ComponentType<{ className?: string; color?: string }>;
   bgColor: string;
@@ -25,20 +28,35 @@ type Card = {
 const CARDS: Card[] = [
   {
     id: 1,
-    title: (
-      <>
-        Ship with
-        <br />
-        <a
-          href="https://aider.chat/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          aider
-        </a>
-      </>
-    ),
+    title: {
+      desktop: (
+        <>
+          Ship with
+          <br />
+          <a
+            href="https://aider.chat/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            aider
+          </a>
+        </>
+      ),
+      mobile: (
+        <>
+          Ship with{" "}
+          <a
+            href="https://aider.chat/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            aider
+          </a>
+        </>
+      ),
+    },
     description:
       "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Integrated within PearAI Creator, it will make and apply the changes to your files automatically.",
     icon: AiderLogo,
@@ -50,20 +68,35 @@ const CARDS: Card[] = [
   },
   {
     id: 2,
-    title: (
-      <>
-        Predict with
-        <br />
-        <a
-          href="https://supermaven.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          Supermaven
-        </a>
-      </>
-    ),
+    title: {
+      desktop: (
+        <>
+          Predict with
+          <br />
+          <a
+            href="https://supermaven.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Supermaven
+          </a>
+        </>
+      ),
+      mobile: (
+        <>
+          Predict with{" "}
+          <a
+            href="https://supermaven.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Supermaven
+          </a>
+        </>
+      ),
+    },
     description:
       "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
     icon: SupermavenLogo,
@@ -75,21 +108,36 @@ const CARDS: Card[] = [
   },
   {
     id: 3,
-    title: (
-      <>
-        Chat & edit
-        <br />
-        with{" "}
-        <a
-          href="https://www.continue.dev/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          Continue
-        </a>
-      </>
-    ),
+    title: {
+      desktop: (
+        <>
+          Chat & edit
+          <br />
+          with{" "}
+          <a
+            href="https://www.continue.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Continue
+          </a>
+        </>
+      ),
+      mobile: (
+        <>
+          Chat & edit with{" "}
+          <a
+            href="https://www.continue.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Continue
+          </a>
+        </>
+      ),
+    },
     description: (
       <>
         Continue is a leading open-source AI code assistant extension. PearAI
@@ -107,20 +155,35 @@ const CARDS: Card[] = [
   },
   {
     id: 4,
-    title: (
-      <>
-        Remember with
-        <br />
-        <a
-          href="https://mem0.ai/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          Mem0
-        </a>
-      </>
-    ),
+    title: {
+      desktop: (
+        <>
+          Remember
+          <br />
+          <a
+            href="https://mem0.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            with Mem0
+          </a>
+        </>
+      ),
+      mobile: (
+        <>
+          Remember{" "}
+          <a
+            href="https://mem0.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            with Mem0
+          </a>
+        </>
+      ),
+    },
     description:
       "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
     icon: Mem0Logo,
@@ -132,20 +195,35 @@ const CARDS: Card[] = [
   },
   {
     id: 5,
-    title: (
-      <>
-        Search with
-        <br />
-        <a
-          href="https://www.perplexity.ai/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:underline"
-        >
-          Perplexity
-        </a>
-      </>
-    ),
+    title: {
+      desktop: (
+        <>
+          Search with
+          <br />
+          <a
+            href="https://www.perplexity.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Perplexity
+          </a>
+        </>
+      ),
+      mobile: (
+        <>
+          Search with{" "}
+          <a
+            href="https://www.perplexity.ai/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            Perplexity
+          </a>
+        </>
+      ),
+    },
     description:
       "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
     icon: PerplexityLogo,
@@ -238,7 +316,7 @@ export default function ExpandableCards() {
                           }}
                           className="whitespace-pre-line text-xl font-[550] leading-6"
                         >
-                          {card.title}
+                          {card.title.desktop}
                           <span className="opacity-50">*</span>
                         </h1>
                       </motion.div>
@@ -256,7 +334,7 @@ export default function ExpandableCards() {
                         }}
                         className="mb-3 text-xl font-[550] leading-6"
                       >
-                        {card.title}
+                        {card.title.mobile}
                       </h4>
                       <p
                         style={{
@@ -308,7 +386,7 @@ export default function ExpandableCards() {
                         style={{ color: card.titleColor }}
                         className="text-base font-semibold sm:text-lg"
                       >
-                        {card.title}
+                        {card.title.mobile}
                       </div>
                     </div>
                     <div
