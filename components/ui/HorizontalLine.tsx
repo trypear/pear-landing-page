@@ -13,12 +13,12 @@ const HorizontalLine = ({ className }: any) => {
         @keyframes lineGrow {
           0% {
             transform: scaleX(0);
-            opacity: 0;
+            opacity: 0.1;
             color: #00705a;
           }
           100% {
             transform: scaleX(1);
-            opacity: 1;
+            opacity: 0.5;
             color: #00705a;
           }
         }

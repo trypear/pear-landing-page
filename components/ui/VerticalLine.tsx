@@ -4,8 +4,8 @@ const VerticalLine = ({ className }: any) => {
       <div
         className={className}
         style={{
-          boxShadow: "0 0 2px #00705a, 0 0 2px #00705a",
-          animation: "lineGrow 0.5s ease-in-out forwards",
+          boxShadow: "0 0 1px #00705a, 0 0 1px #00705a",
+          animation: "lineGrow 0.1s ease-out forwards",
           transformOrigin: "center",
         }}
       />
@@ -13,12 +13,12 @@ const VerticalLine = ({ className }: any) => {
         @keyframes lineGrow {
           0% {
             transform: scaleY(0);
-            opacity: 0.2;
+            opacity: 0.3;
             color: #00705a;
           }
           100% {
             transform: scaleY(1);
-            opacity: 0.6;
+            opacity: 0.4;
             color: #00705a;
           }
         }
