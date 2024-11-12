@@ -63,7 +63,7 @@ export default function Features() {
           </p>
         </>
       ),
-      videoSource: "/webms/cmd+i-landingpage.webm",
+      videoSource: "/mp4/pearai-cmd+i.mp4",
     },
 
     {
