@@ -54,40 +54,34 @@ export default function Features() {
 
   useEffect(() => {
     const duration = currentVideo?.duration || 5000;
-    const interval = 10;
-    let timer: NodeJS.Timeout;
-    let progressTimer: NodeJS.Timeout;
+    let startTime: number;
+    let animationFrame: number;
 
-    const startTimers = () => {
-      setProgress(0);
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const elapsedTime = currentTime - startTime;
+      const progress = Math.min((elapsedTime / duration) * 100, 100);
 
-      progressTimer = setInterval(() => {
-        setProgress((prev) => {
-          const newProgress = prev + (interval / duration) * 100;
-          return Math.min(newProgress, 100);
+      setProgress(progress);
+
+      if (progress < 100) {
+        animationFrame = requestAnimationFrame(animate);
+      } else {
+        setActiveCard((prev) => {
+          const nextCard = prev + 1;
+          return nextCard > videoData.length ? 1 : nextCard;
         });
-      }, interval);
-
-      timer = setTimeout(() => {
-        setProgress(100);
-
-        setTimeout(() => {
-          setProgress(0);
-          setActiveCard((prev) => {
-            const nextCard = prev + 1;
-            return nextCard > videoData.length ? 1 : nextCard;
-          });
-        }, 100);
-      }, duration - 100);
+      }
     };
 
-    startTimers();
+    animationFrame = requestAnimationFrame(animate);
 
     return () => {
-      clearInterval(progressTimer);
-      clearTimeout(timer);
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
     };
-  }, [activeCard]);
+  }, [activeCard, currentVideo?.duration]);
 
   return (
     <div className="mx-auto w-full max-w-[1097px] px-6 py-6">
