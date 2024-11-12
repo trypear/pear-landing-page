@@ -12,8 +12,8 @@ import {
 
 type Card = {
   id: number;
-  title: string;
-  description: string;
+  title: string | JSX.Element;
+  description: string | JSX.Element;
   icon: React.ComponentType<{ className?: string; color?: string }>;
   bgColor: string;
   iconBgColor: string;
@@ -25,7 +25,20 @@ type Card = {
 const CARDS: Card[] = [
   {
     id: 1,
-    title: "Ship with\naider",
+    title: (
+      <>
+        Ship with
+        <br />
+        <a
+          href="https://aider.chat/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          aider
+        </a>
+      </>
+    ),
     description:
       "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Integrated within PearAI Creator, it will make and apply the changes to your files automatically.",
     icon: AiderLogo,
@@ -37,7 +50,20 @@ const CARDS: Card[] = [
   },
   {
     id: 2,
-    title: "Predict with\nSupermaven",
+    title: (
+      <>
+        Predict with
+        <br />
+        <a
+          href="https://supermaven.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          Supermaven
+        </a>
+      </>
+    ),
     description:
       "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
     icon: SupermavenLogo,
@@ -49,9 +75,29 @@ const CARDS: Card[] = [
   },
   {
     id: 3,
-    title: "Chat & edit\nwith Continue",
-    description:
-      "Continue is a leading open-source AI code assistant extension. PearAI Chat is built upon the foundation of Continue, with changes and a unified user experience. We acknowledge and respect Continue's contributions.",
+    title: (
+      <>
+        Chat & edit
+        <br />
+        with{" "}
+        <a
+          href="https://www.continue.dev/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          Continue
+        </a>
+      </>
+    ),
+    description: (
+      <>
+        Continue is a leading open-source AI code assistant extension. PearAI
+        Chat is built upon the foundation of Continue, with changes and a
+        unified user experience. We acknowledge and respect Continue&apos;s
+        contributions.
+      </>
+    ),
     icon: ContinueLogo,
     bgColor: "rgba(229, 225, 248, 1)",
     iconBgColor: "rgba(255, 255, 255, 1)",
@@ -61,7 +107,20 @@ const CARDS: Card[] = [
   },
   {
     id: 4,
-    title: "Remember\nwith Mem0",
+    title: (
+      <>
+        Remember
+        <br />
+        <a
+          href="https://mem0.ai/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          Mem0
+        </a>
+      </>
+    ),
     description:
       "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
     icon: Mem0Logo,
@@ -73,7 +132,20 @@ const CARDS: Card[] = [
   },
   {
     id: 5,
-    title: "Search with\nPerplexity",
+    title: (
+      <>
+        Search with
+        <br />
+        <a
+          href="https://www.perplexity.ai/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:underline"
+        >
+          Perplexity
+        </a>
+      </>
+    ),
     description:
       "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
     icon: PerplexityLogo,
@@ -232,12 +304,12 @@ export default function ExpandableCards() {
                       >
                         <card.icon className="h-8 w-8" color={card.iconColor} />
                       </div>
-                      <h3
+                      <div
                         style={{ color: card.titleColor }}
                         className="text-base font-semibold sm:text-lg"
                       >
-                        {card.title.replace("\n", " ")}
-                      </h3>
+                        {card.title}
+                      </div>
                     </div>
                     <div
                       style={{ backgroundColor: card.titleColor }}
