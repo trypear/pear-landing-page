@@ -10,7 +10,7 @@ import {
 interface IntegrationItemProps {
   margin: string;
   label: string;
-  product: string;
+  product: string | JSX.Element;
   Icon: React.FC<React.ComponentProps<"svg">>;
 }
 
@@ -40,31 +40,76 @@ const INTEGRATIONS = [
   {
     margin: "lg:ml-2 mr-1",
     label: "Ship with",
-    product: "aider",
+    product: (
+      <a
+        href="https://aider.chat/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        aider
+      </a>
+    ),
     Icon: AiderLogo,
   },
   {
     margin: "lg:ml-24 ml-5",
     label: "Predict with",
-    product: "Supermaven",
+    product: (
+      <a
+        href="https://supermaven.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        Supermaven
+      </a>
+    ),
     Icon: SupermavenLogo,
   },
   {
     margin: "lg:ml-44",
     label: "Remember with",
-    product: "MemO",
+    product: (
+      <a
+        href="https://mem0.ai/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        MemO
+      </a>
+    ),
     Icon: Mem0Logo,
   },
   {
     margin: "lg:ml-56 -ml-4",
     label: "Search with",
-    product: "Perplexity",
+    product: (
+      <a
+        href="https://www.perplexity.ai/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        Perplexity
+      </a>
+    ),
     Icon: PerplexityLogo,
   },
   {
     margin: "lg:ml-48 -mr-5 lg:mr-0",
     label: "Chat & edit with",
-    product: "Continue",
+    product: (
+      <a
+        href="https://www.continue.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        Continue
+      </a>
+    ),
     Icon: ContinueLogo,
   },
 ];
