@@ -25,7 +25,7 @@ type Card = {
 const CARDS: Card[] = [
   {
     id: 1,
-    title: "Ship with\naider*",
+    title: "Ship with\naider",
     description:
       "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Integrated within PearAI Creator, it will make and apply the changes to your files automatically.",
     icon: AiderLogo,
@@ -37,7 +37,7 @@ const CARDS: Card[] = [
   },
   {
     id: 2,
-    title: "Predict with\nSupermaven*",
+    title: "Predict with\nSupermaven",
     description:
       "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
     icon: SupermavenLogo,
@@ -49,7 +49,7 @@ const CARDS: Card[] = [
   },
   {
     id: 3,
-    title: "Chat & edit\nwith Continue*",
+    title: "Chat & edit\nwith Continue",
     description:
       "Continue is a leading open-source AI code assistant extension. PearAI Chat is built upon the foundation of Continue, with changes and a unified user experience. We acknowledge and respect Continue's contributions.",
     icon: ContinueLogo,
@@ -61,7 +61,7 @@ const CARDS: Card[] = [
   },
   {
     id: 4,
-    title: "Remember\nwith Mem0*",
+    title: "Remember\nwith Mem0",
     description:
       "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
     icon: Mem0Logo,
@@ -73,7 +73,7 @@ const CARDS: Card[] = [
   },
   {
     id: 5,
-    title: "Search with\nPerplexity*",
+    title: "Search with\nPerplexity",
     description:
       "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
     icon: PerplexityLogo,
@@ -167,6 +167,7 @@ export default function ExpandableCards() {
                           className="whitespace-pre-line text-xl font-[550] leading-6"
                         >
                           {card.title}
+                          <span className="opacity-50">*</span>
                         </h1>
                       </motion.div>
                     </>
@@ -205,7 +206,7 @@ export default function ExpandableCards() {
       {/* Mobile Layout */}
       <div className="block w-full px-6 py-6 lg:hidden">
         <div className="mx-auto w-full max-w-3xl rounded-xl border-2 border-gray-200 px-5 py-5 dark:border-gray-50">
-          <h2 className="mb-5 text-2xl font-semibold leading-tight dark:text-gray-900 md:text-[28px]">
+          <h2 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
             The AI space changes fast— PearAI Inventory curates the best AI
             tools on the market at any given time, and integrates them into a
             powerful editor.
@@ -233,7 +234,7 @@ export default function ExpandableCards() {
                       </div>
                       <h3
                         style={{ color: card.titleColor }}
-                        className="text-lg font-semibold"
+                        className="text-base font-semibold sm:text-lg"
                       >
                         {card.title.replace("\n", " ")}
                       </h3>
@@ -259,7 +260,7 @@ export default function ExpandableCards() {
                   >
                     <p
                       style={{ color: card.descriptionColor }}
-                      className="ml-16 text-base"
+                      className="ml-16 text-sm sm:text-base"
                     >
                       {card.description}
                     </p>

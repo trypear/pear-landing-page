@@ -1,134 +1,194 @@
 "use client";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
-import Link from "next/link";
-import YoutubeEmbed from "./ui/YoutubeEmbed";
-import ExpandableCards from "./ui/expandable-cards";
+import { useState, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
+import { BUNNY_CDN_HOST } from "@/utils/constants";
+import { AnimatePresence, motion } from "framer-motion";
 
-type FeatureInfo = {
-  header: string;
-  description: React.ReactNode;
-  videoSource?: string;
-  embedId?: string;
-};
-
-type SingleFeatureProps = {
-  info: FeatureInfo;
-};
-
-const BUNNY_CDN_HOST = "https://pearai.b-cdn.net";
+const videoData = [
+  {
+    id: 1,
+    title: "Talk to your codebase directly",
+    description:
+      "Ask questions or generate code with the context of your @codebase for more accurate results.",
+    videoUrl: `${BUNNY_CDN_HOST}/pearai-chat-welcome.mp4`,
+    duration: 8500,
+  },
+  {
+    id: 2,
+    title: "No more tedious changes",
+    description:
+      "Inline code changes in your files with diffs. Here, PearAI Chat (powered by Continue*) adds print statements to help with debugging.",
+    videoUrl: `${BUNNY_CDN_HOST}/PearAI-CMD+I.mp4`,
+    duration: 12500,
+  },
+  {
+    id: 3,
+    title: "Make features, refactors, or bug fixes directly.",
+    description:
+      "PearAI Creator (powered by aider*) finds where the changes need to be made, and implements them automatically.",
+    videoUrl: `${BUNNY_CDN_HOST}/pearai-creator-welcome.mp4`,
+    duration: 10500,
+  },
+  {
+    id: 4,
+    title: "Always have up-to-date information",
+    description:
+      "PearAI Search (Powered by Perplexity*) uses web data to provide you up-to-date info, going beyond traditional AI's knowledge cutoff limitations.",
+    videoUrl: `${BUNNY_CDN_HOST}/pearai-search.mp4`,
+    duration: 6500,
+  },
+];
 
 export default function Features() {
-  const featureInfo = [
-    {
-      header: "Talk to your codebase directly.",
-      description: (
-        <>
-          <p className="pb-6">
-            Ask questions or generate code with context of your{" "}
-            <b>
-              <code>@codebase</code>
-            </b>{" "}
-            for accurate results.
-          </p>
-          <p>
-            This also works with choosing specific folders, online docs,
-            terminal content, files, and more 😈.
-          </p>
-        </>
-      ),
-      videoSource: `${BUNNY_CDN_HOST}/pearai-chat-welcome.mp4`,
-    },
-    {
-      header: "No more tedious changes.",
-      description: (
-        <>
-          <p>
-            PearAI can directly code in your files, and allow you to see diffs.
-            Try{" "}
-            <b>
-              <code>CMD+I</code>
-            </b>
-            &nbsp;(<code>CTRL+I</code> on Windows).
-          </p>
-          <p className="pt-6">
-            Here, we ask PearAI to help add print statements to help with
-            debugging 😏.
-          </p>
-          <p className="pt-6">
-            To see all of our features, check out our{" "}
-            <Link className="text-primary-600" href="/docs">
-              docs
-            </Link>
-            .
-          </p>
-        </>
-      ),
-      videoSource: `${BUNNY_CDN_HOST}/PearAI-CMD+I.mp4`,
-    },
-    {
-      header: "PearAI Inventory",
-      description: (
-        <>
-          <p className="pb-6">
-            PearAI includes a curated inventory of the best AI tools, natively
-            integrated under a unified user experience. Here, see our
-            integration with aider, a leading code generation tool.
-          </p>
-        </>
-      ),
-      videoSource: `${BUNNY_CDN_HOST}/pearai-creator-welcome.mp4`,
-    },
-  ];
+  const [activeCard, setActiveCard] = useState(1);
+  const [progress, setProgress] = useState(0);
+
+  const handleCardClick = (id: number) => {
+    if (id === activeCard) return;
+    setProgress(0);
+    setActiveCard(id);
+  };
+
+  const currentVideo = videoData.find((v) => v.id === activeCard);
+
+  useEffect(() => {
+    const duration = currentVideo?.duration || 5000;
+    const interval = 10;
+    let timer: NodeJS.Timeout;
+    let progressTimer: NodeJS.Timeout;
+
+    const startTimers = () => {
+      setProgress(0);
+
+      progressTimer = setInterval(() => {
+        setProgress((prev) => {
+          const newProgress = prev + (interval / duration) * 100;
+          return Math.min(newProgress, 100);
+        });
+      }, interval);
+
+      timer = setTimeout(() => {
+        setProgress(100);
+
+        setTimeout(() => {
+          setProgress(0);
+          setActiveCard((prev) => {
+            const nextCard = prev + 1;
+            return nextCard > videoData.length ? 1 : nextCard;
+          });
+        }, 100);
+      }, duration - 100);
+    };
+
+    startTimers();
+
+    return () => {
+      clearInterval(progressTimer);
+      clearTimeout(timer);
+    };
+  }, [activeCard]);
 
   return (
-    <section className="flex flex-col justify-evenly">
-      <ExpandableCards />
-      {featureInfo.map((info, index) => (
-        <SingleFeature key={index} info={info} />
-      ))}
-    </section>
-  );
-}
+    <div className="mx-auto w-full max-w-[1097px] px-6 py-6">
+      <div className="bg-white rounded-xl border-2 border-gray-200 p-6 dark:border-gray-50">
+        <div className="grid gap-8 md:grid-cols-[300px_1fr]">
+          <div className="space-y-4">
+            <div className="mb-6 text-2xl font-semibold">Demos</div>
+            <div className="flex flex-col gap-4">
+              {videoData.map((video) => (
+                <motion.div
+                  key={video.id}
+                  initial={false}
+                  animate={activeCard === video.id ? "expanded" : "collapsed"}
+                  className={`relative rounded-lg border border-gray-200 transition-all duration-300 ease-in-out dark:border-gray-50 ${
+                    activeCard === video.id
+                      ? "ring-2 ring-black dark:ring-white-50/70"
+                      : ""
+                  } overflow-hidden`}
+                >
+                  <div className="relative">
+                    <button
+                      onClick={() => handleCardClick(video.id)}
+                      className="w-full p-4 text-left focus:outline-none"
+                    >
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-md font-medium">{video.title}</h3>
+                        <motion.div
+                          variants={{
+                            expanded: { rotate: 180 },
+                            collapsed: { rotate: 0 },
+                          }}
+                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                          <ChevronDown className="h-4 w-4" />
+                        </motion.div>
+                      </div>
+                    </button>
 
-function SingleFeature(props: SingleFeatureProps) {
-  return (
-    <div className="m-4 flex flex-col items-center gap-6 min-[425px]:m-8 min-[425px]:items-start sm:m-12 lg:m-24 lg:max-w-full lg:flex-row lg:justify-center lg:gap-28">
-      <div className="mb-6 flex w-full flex-col text-center lg:mb-0 lg:ml-1.5 lg:w-[450px] lg:text-left">
-        <h4
-          className="whitespace-pre-line pb-8 text-2xl font-medium text-primary-700 lg:text-4xl"
-          data-aos="fade-up"
-        >
-          {props.info.header}
-        </h4>
-        <div
-          className="whitespace-pre-line text-base text-gray-600 lg:text-lg"
-          data-aos="fade-up"
-        >
-          {props.info.description}
-        </div>
-      </div>
-      <div className="w-full lg:w-[800px]">
-        {props.info.videoSource ? (
-          <AspectRatio ratio={3 / 2}>
-            <video
-              autoPlay
-              loop
-              muted
-              controls
-              playsInline
-              className="h-full w-full rounded-lg object-cover"
-              data-aos="fade-up"
-            >
-              <source src={props.info.videoSource} type="video/webm" />
-              Your browser does not support the video tag.
-            </video>
-          </AspectRatio>
-        ) : (
-          <div className="w-full">
-            <YoutubeEmbed embedId={props.info.embedId!} />
+                    <motion.div
+                      initial={false}
+                      animate={{
+                        height: activeCard === video.id ? "auto" : "0px",
+                      }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-4 pb-4">
+                        <motion.p
+                          initial={{ opacity: 0 }}
+                          animate={{
+                            opacity: activeCard === video.id ? 1 : 0,
+                          }}
+                          transition={{
+                            duration: 0.2,
+                            delay: activeCard === video.id ? 0.1 : 0,
+                          }}
+                          className="text-xs text-black/60 dark:text-gray-500"
+                        >
+                          {video.description}
+                        </motion.p>
+                      </div>
+                    </motion.div>
+                  </div>
+                  {activeCard === video.id && (
+                    <div className="absolute inset-x-0 bottom-0 h-[4px] bg-gray-200">
+                      <motion.div
+                        className="dark:bg-white h-full rounded-full bg-black dark:bg-white-50"
+                        initial={{ width: "0%" }}
+                        animate={{ width: `${progress}%` }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                      />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
-        )}
+          <div className="relative aspect-[16/12] w-full overflow-hidden rounded-lg">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentVideo?.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="h-full w-full"
+              >
+                <video
+                  className="h-full w-full object-cover"
+                  muted
+                  playsInline
+                  autoPlay
+                  controlsList="nodownload nofullscreen noremoteplayback"
+                  disablePictureInPicture
+                >
+                  <source src={currentVideo?.videoUrl} type="video/mp4" />
+                </video>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </div>
   );
