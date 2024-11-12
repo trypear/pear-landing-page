@@ -38,9 +38,12 @@ export default function Showcase() {
     const checkMobile = () => {
       const isMobileView = window.innerWidth < 1024;
       setIsMobile(isMobileView);
-      setTotalPages(
-        isMobileView ? testimonials.length : Math.ceil(testimonials.length / 2),
-      );
+      const newTotalPages = isMobileView
+        ? testimonials.length
+        : Math.ceil(testimonials.length / 2);
+      setTotalPages(newTotalPages);
+
+      setCurrentPage((prev) => Math.min(prev, newTotalPages - 1));
     };
 
     checkMobile();
@@ -133,7 +136,7 @@ export default function Showcase() {
       </div>
 
       {/* CTA */}
-      <div className="showcase-gradient-light relative mx-auto flex min-h-[100vh] w-full max-w-full -translate-y-24 items-center justify-center sm:min-h-[120vh]">
+      <div className="showcase-gradient-light relative mx-auto flex min-h-[80vh] w-full max-w-full -translate-y-24 items-center justify-center sm:min-h-[120vh]">
         <div className="mt-12 flex max-w-3xl flex-col items-center px-6 text-center">
           <p className="max-w-xl text-4xl font-semibold text-black sm:text-6xl">
             Try PearAI for free.
@@ -141,14 +144,14 @@ export default function Showcase() {
           <p className="mt-4 max-w-md text-xl font-semibold text-black sm:text-3xl">
             Our Foundation is VSCode, with all of your favourite features.
           </p>
-          <Button className="mt-10 bg-black px-16 py-4 text-sm hover:bg-black sm:text-base">
+          <Button className="mt-10 bg-black px-20 py-4 text-sm hover:bg-black dark:hover:bg-black sm:text-base">
             <Link href="/pricing">Download</Link>
           </Button>
           <a
             href="https://github.com/peardotai/pearai"
-            className="mt-2 text-xs font-medium text-black underline decoration-dashed underline-offset-2 hover:text-gray-900"
+            className="mt-2 text-xs font-medium text-black underline decoration-dashed underline-offset-1 hover:decoration-black/20 dark:text-black"
           >
-            Interested in contributing?
+            Interested in contributing ?
           </a>
         </div>
       </div>

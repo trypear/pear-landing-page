@@ -25,7 +25,7 @@ type Card = {
 const CARDS: Card[] = [
   {
     id: 1,
-    title: "Ship with\naider*",
+    title: "Ship with\naider",
     description:
       "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Integrated within PearAI Creator, it will make and apply the changes to your files automatically.",
     icon: AiderLogo,
@@ -37,7 +37,7 @@ const CARDS: Card[] = [
   },
   {
     id: 2,
-    title: "Predict with\nSupermaven*",
+    title: "Predict with\nSupermaven",
     description:
       "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
     icon: SupermavenLogo,
@@ -49,7 +49,7 @@ const CARDS: Card[] = [
   },
   {
     id: 3,
-    title: "Chat & edit\nwith Continue*",
+    title: "Chat & edit\nwith Continue",
     description:
       "Continue is a leading open-source AI code assistant extension. PearAI Chat is built upon the foundation of Continue, with changes and a unified user experience. We acknowledge and respect Continue's contributions.",
     icon: ContinueLogo,
@@ -61,7 +61,7 @@ const CARDS: Card[] = [
   },
   {
     id: 4,
-    title: "Remember\nwith Mem0*",
+    title: "Remember\nwith Mem0",
     description:
       "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
     icon: Mem0Logo,
@@ -73,7 +73,7 @@ const CARDS: Card[] = [
   },
   {
     id: 5,
-    title: "Search with\nPerplexity*",
+    title: "Search with\nPerplexity",
     description:
       "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
     icon: PerplexityLogo,
@@ -167,6 +167,7 @@ export default function ExpandableCards() {
                           className="whitespace-pre-line text-xl font-[550] leading-6"
                         >
                           {card.title}
+                          <span className="opacity-50">*</span>
                         </h1>
                       </motion.div>
                     </>

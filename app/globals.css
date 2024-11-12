@@ -214,7 +214,7 @@ html.lenis body {
     background-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 0) 50%
+        rgba(0, 0, 0, 0.1) 45%
       ),
       radial-gradient(51% 51% at -11% 9%, #ff57dda1 1%, #ff57dd00 100%),
       radial-gradient(51% 67% at 115% 96%, #ff57dda1 0%, #ff57dd00 100%),
