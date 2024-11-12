@@ -51,7 +51,8 @@ export default function Features() {
             &nbsp;(<code>CTRL+I</code> on Windows).
           </p>
           <p className="pt-6">
-            Here, we ask PearAI to help add print statements to help with debugging 😏.
+            Here, we ask PearAI to help add print statements to help with
+            debugging 😏.
           </p>
           <p className="pt-6">
             To see all of our features, check out our{" "}
