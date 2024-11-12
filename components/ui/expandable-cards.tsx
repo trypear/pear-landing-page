@@ -109,7 +109,7 @@ const CARDS: Card[] = [
     id: 4,
     title: (
       <>
-        Remember
+        Remember with
         <br />
         <a
           href="https://mem0.ai/"
