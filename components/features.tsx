@@ -16,6 +16,8 @@ type SingleFeatureProps = {
   info: FeatureInfo;
 };
 
+const BUNNY_CDN_HOST = "https://pearai.b-cdn.net"
+
 export default function Features() {
   const featureInfo = [
     {
@@ -35,9 +37,8 @@ export default function Features() {
           </p>
         </>
       ),
-      videoSource: "/mp4/pearai-chat-welcome.mp4",
+      videoSource: `${BUNNY_CDN_HOST}/pearai-chat-welcome.mp4`,
     },
-
     {
       header: "No more tedious changes.",
       description: (
@@ -63,9 +64,8 @@ export default function Features() {
           </p>
         </>
       ),
-      videoSource: "/mp4/pearai-cmd+i.mp4",
+      videoSource: `${BUNNY_CDN_HOST}/PearAI-CMD+I.mp4`,
     },
-
     {
       header: "PearAI Inventory",
       description: (
@@ -77,7 +77,7 @@ export default function Features() {
           </p>
         </>
       ),
-      videoSource: "/mp4/pearai-creator-welcome.mp4",
+      videoSource: `${BUNNY_CDN_HOST}/pearai-creator-welcome.mp4`,
     },
   ];
 
