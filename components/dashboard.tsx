@@ -67,10 +67,6 @@ export default function DashboardPage({
       }
 
       router.push(openAppUrl);
-
-      const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.delete("callback");
-      window.history.replaceState({}, "", currentUrl.toString());
     } catch (error) {
       if (error instanceof UnsafeUrlError) {
         console.error(error.message);
