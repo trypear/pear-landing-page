@@ -13,6 +13,16 @@ const testimonials = [
     role: "Founder of Taste, prev 5 years @ Meta",
   },
   {
+    text: "PearAI has transformed my workflow completely - it's like having a senior developer by my side 24/7. Whether I'm implementing AWS file storage or making architectural decisions, the '@codebase' context feature ensures precise solutions. With an amazing community always there for support, I'm shipping projects faster and with better quality. Couldn't recommend it enough for developers looking to boost their productivity.",
+    author: "Ricardo Freitas",
+    role: "Computer Science Student & Freelancer",
+  },
+  {
+    text: "This tool has been indispensible to me. I'm currently using it in two class projects, one is an app that focuses on mental health with a chatbot that gives advice for social issues. The other is for a class where we are learning about the scrum process and we are building a website for event planning. I'm still learning all the features to become more efficient and develop a workflow, but over one weekend I was able to build 16 screens for the app's UI with working navigation and a few features, like a drawing canvas, and date/time pickers with no prior HTML experience before Friday.",
+    author: "Josh Koelker",
+    role: "Information Systems Masters Student",
+  },
+  {
     text: "PearAI is literally a lifesaver for my CS projects. It helps me figure stuff out when I'm stuck and makes study sessions way more productive. Instead of spending hours lost in documentation, I can actually get things done and understand what I'm learning. Definitely a must-have.",
     author: "Pedro Vieira",
     role: "College Computer Science Student",
@@ -52,7 +62,7 @@ export default function Showcase() {
       <div className="flex items-center justify-center px-6 py-4">
         <div className="z-10 max-w-3xl rounded-xl border-2 border-gray-200 bg-white-50 p-5 dark:border-gray-50 dark:bg-black lg:max-w-[1049px]">
           <h1 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
-            PearAI loves Devs... almost as much as Devs love PearAI!
+            Devs love PearAI... almost as much as PearAI loves Devs!
           </h1>
 
           <div className="relative overflow-hidden pb-5">
@@ -63,10 +73,13 @@ export default function Showcase() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="grid grid-cols-1 gap-5 lg:grid-cols-3"
+                className="grid grid-cols-1 gap-5 lg:grid-cols-2"
               >
                 {testimonials
-                  .slice(currentPage * 3, (currentPage + 1) * 3)
+                  .slice(
+                    currentPage * (isMobile ? 1 : 2),
+                    (currentPage + 1) * (isMobile ? 1 : 2),
+                  )
                   .map((testimonial, index) => (
                     <motion.div
                       key={index}
@@ -75,14 +88,14 @@ export default function Showcase() {
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="flex h-full flex-col justify-between rounded-lg border border-gray-200 p-5 transition-colors dark:border-gray-50"
                     >
-                      <p className="mb-4 text-base font-medium leading-tight text-black dark:text-gray-600">
+                      <p className="mb-4 text-sm font-[450] text-black/60 dark:text-gray-500 sm:text-base">
                         {testimonial.text}
                       </p>
                       <div className="mt-auto">
-                        <p className="font-semibold text-foreground">
+                        <p className="text-sm font-semibold sm:text-base">
                           {testimonial.author}
                         </p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-xs text-gray-500 sm:text-sm">
                           {testimonial.role}
                         </p>
                       </div>
@@ -140,7 +153,7 @@ export default function Showcase() {
         </div>
       </div>
 
-      <p className="mt-8 px-4 text-center text-sm text-gray-500">
+      <p className="mt-10 px-4 text-center text-sm text-gray-500">
         * For more information about how integrations are built into PearAI, see{" "}
         <Link
           href="/disclaimer"

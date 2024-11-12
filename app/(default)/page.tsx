@@ -2,7 +2,6 @@ import Features from "@/components/features";
 import Hero from "@/components/hero";
 import Showcase from "@/components/showcase";
 import { constructMetadata } from "@/lib/utils";
-import Link from "next/link";
 import { Metadata } from "next/types";
 
 export const metadata: Metadata = constructMetadata({
