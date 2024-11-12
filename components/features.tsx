@@ -35,7 +35,7 @@ export default function Features() {
           </p>
         </>
       ),
-      videoSource: "/webms/talktocodebase.webm",
+      videoSource: "/mp4/pearai-chat-welcome.mp4",
     },
 
     {
@@ -66,17 +66,17 @@ export default function Features() {
     },
 
     {
-      header: "Common use case example",
+      header: "PearAI Inventory",
       description: (
         <>
           <p className="pb-6">
-            Without writing a single line of code, we were able to make a new
-            feature in an unfamiliar codebase: adding a documentation page to
-            the PearAI landing page.
+            PearAI includes a curated inventory of the best AI tools, natively
+            integrated under a unified user experience. Here, see our
+            integration with aider, a leading code generation tool.
           </p>
         </>
       ),
-      embedId: "v4NN_qadBS0",
+      videoSource: "/mp4/pearai-creator-welcome.mp4",
     },
   ];
 

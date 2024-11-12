@@ -119,11 +119,11 @@ export default function IntegrationBox() {
           >
             <div className="flex items-center gap-2">
               <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-xs font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
-                V2
+                V1
               </div>
               <div className="flex flex-col text-xs">
                 <span className="text-gray-500 dark:text-gray-400">
-                  10 days until launch
+                  11/12 Launch
                 </span>
                 <span className="dark:text-white font-medium text-black/60">
                   More coming soon
@@ -190,11 +190,11 @@ export default function IntegrationBox() {
             <div className="w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800">
               <div className="flex items-center gap-2">
                 <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-xs font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
-                  V2
+                  V1
                 </div>
                 <div className="flex flex-col text-xs">
                   <span className="text-gray-500 dark:text-gray-400">
-                    10 days until launch
+                    11/12 Launch
                   </span>
                   <span className="dark:text-white font-medium text-black/60">
                     More coming soon

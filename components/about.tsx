@@ -37,9 +37,11 @@ const AboutComponent: React.FC = () => {
         }
       >
         <h1 className="text-4xl font-bold">
-          Fully{" "}
+          PearAI is{" "}
           <span className="relative">
-            <span className="relative z-10 text-primary-700">transparent</span>
+            <span className="relative z-10 text-primary-700">
+              built in public
+            </span>
             <span
               className="absolute bottom-0 left-0 w-full"
               style={{
@@ -48,17 +50,19 @@ const AboutComponent: React.FC = () => {
               }}
             ></span>
           </span>
-          , PearAI is built in public
+          , and we&apos;re just getting started.
         </h1>
         <p className="mt-4 max-w-2xl text-center text-gray-500">
           PearAI&apos;s mission is to reduce the time it takes for you to go
-          from idea to creation. We started out as a fork of VSCode and
-          Continue.
+          from idea to creation. The first time you may have seen us, you saw
+          our MVP. Today, here’s our V1, and how we’re building for the future
+          of coding with AI.
           <br /> <br />
           We are a curated inventory of the best AI tools on the market (ie.
           Perplexity, aider, mem0, etc.), to make it easy for you to make what
           you want. Imagine if VSCode was reimagined with AI in mind since the
           beginning, or an extensible AI code editor with the best UX possible.
+          View our future plans below!
         </p>
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
@@ -142,6 +146,36 @@ const AboutComponent: React.FC = () => {
           </p>
         </div>
       </div>
+
+      <div className="mt-10 flex flex-col items-center justify-center p-4 pb-0">
+        <h2 className="text-4xl font-bold">
+          <span className="relative">
+            <span className="relative z-10">The Future</span>
+            <span
+              className="absolute bottom-0 left-0 w-full"
+              style={{
+                height: "1.4375rem",
+                background: "rgba(20, 189, 149, 0.20)",
+              }}
+            ></span>
+          </span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-center text-gray-500">
+          Currently, we have hit a checkpoint in our product, where layers of
+          the tech stack (i.e. Search, RAG, Chat, etc.) can communicate with
+          each other under a single, beautiful user experience our users love.
+          This is our V1, and we’re just getting started. Building for the
+          future, we envision PearAI as a framework for all AI tools to live and
+          integrate. Not only will the number of layers of the AI tech stack
+          grow, but the number of companies solving each layer of this AI tech
+          stack. As a result, the quality of each product for every part of
+          coding with AI will improve. The best user experience can be achieved
+          if these AI tools have a framework to communicate with each other, and
+          users have access to these AI tools in a single, unified IDE. This
+          will be PearAI.
+        </p>
+      </div>
+
       <Footer />
     </section>
   );

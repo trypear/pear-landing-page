@@ -12,7 +12,7 @@ export default function Disclaimer() {
     {
       title: "Integrations",
       content:
-        "PearAI incorporates various third-party integrations that may have been substantially modified to facilitate native integration and communication with other integrations. These modifications are specific to PearAI's implementation and may differ from the original integration's functionality. For the official and unmodified version of any integration, users should refer to the respective integration's website and follow their official documentation and instructions. PearAI has its own name for each functionality (e.g. Creator, Search, etc), as we reserve the right to change or modify the underlying integration being used at any time.",
+        "PearAI incorporates various third-party integrations that may have been substantially modified to facilitate native integration and communication with other integrations. These modifications are specific to PearAI's implementation and may differ from the original integration's functionality. For the official and unmodified version of any integration, users should refer to the respective integration's website and follow their official documentation and instructions. PearAI assigns unique names to each functionality (e.g. Creator, Search, etc.) to maintain flexibility in updating or replacing underlying integrations as needed to provide the best experience for users.",
     },
     {
       title: "Logos and Trademarks",

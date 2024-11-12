@@ -273,7 +273,7 @@ export const posts = [
         with your API key:
       </p>
 
-      <div class="overflow-x-auto rounded-lg text-foreground bg-gray-100 p-4 "> 
+      <div class="overflow-x-auto rounded-lg text-foreground bg-gray-100 p-4 ">
         <pre class="text-xs sm:text-sm "><code class="language-json">{ <
     "tabAutocompleteModel": {
       "title": "Codestral",
@@ -520,11 +520,11 @@ export const posts = [
             <p class="my-4">
             If you're unsure whether your CPU supports AVX or AVX2 FMA, run the following command in your terminal:
             </p>
-            <pre class="my-2 overflow-auto rounded bg-gray-100 text-foreground p-2 text-xs sm:text-sm md:text-base"><code class="language-bash">lscpu | grep -o -w 'avx\\|avx2\\|fma'</code></pre> 
+            <pre class="my-2 overflow-auto rounded bg-gray-100 text-foreground p-2 text-xs sm:text-sm md:text-base"><code class="language-bash">lscpu | grep -o -w 'avx\\|avx2\\|fma'</code></pre>
             <p class="my-4"> If your result is:</p>
-            <pre class="my-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"><code>avx avx2 fma</code></pre>   
+            <pre class="my-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"><code>avx avx2 fma</code></pre>
             <p class="my-4">
-            feel free to download the AVX2 version. 
+            feel free to download the AVX2 version.
             If you only see <code>avx</code>, download the AVX version.
             </p>
           </li>
@@ -588,7 +588,7 @@ export const posts = [
           </li>
         </ol>
       </section>
-  
+
       <section class="mt-8 space-y-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
@@ -612,7 +612,7 @@ export const posts = [
       run PearAI without any issues.
         </p>
       </section>
-  
+
       <p class="mt-8 text-base font-semibold sm:text-lg">
     We're thrilled to bring PearAI to the Linux community, stay tuned for more
     exciting updates and features on the horizon!
@@ -1090,7 +1090,7 @@ export const posts = [
     </article>`,
   },
   {
-    title: "Introducing PearAI Creator (Beta) — Powered By aider",
+    title: "Introducing PearAI Creator (Beta) — Powered By aider*",
     url: "/blog/introducing-pearai-creator-beta",
     excerpt:
       "PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically. Learn how to use this powerful new feature powered by aider.",
@@ -1105,13 +1105,13 @@ export const posts = [
           PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically.
         </p>
 
-        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
 
-        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl"><a href="https://aider.chat/" class="text-primary-600 hover:underline">Aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
 
-        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
 
-        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
 
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
         <div class="aspect-video">
@@ -1133,7 +1133,7 @@ export const posts = [
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
             If you already have PearAI installed, simply go to "Help" at the top and search "Update". It will automatically update you to the newest version of PearAI.
             <br/><br/>
-            Otherwise, download the new PearAI v1.4.0 (available now for Mac today 10/23/2024, Windows tomorrow 10/24/2024) here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
+            Otherwise, download the new PearAI here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
           </li>
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up command pallette (CMD/CTRL + Shift + P) and select "PearAI Creator"</li>
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The first time it runs, it will likely take a second to install and run Aider. Every time after, it should be instant!</li>
@@ -1141,16 +1141,33 @@ export const posts = [
         </ol>
 
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          [Option] Use Your Own API Key
+        </h2>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+          PearAI Creator will work out of the box using our servers, but as always, you can use your own API key from OpenAI or Anthropic . Simply add the following to the "models" section in your ~/.pearai/config.json file:
+        </p>
+        <div class="overflow-x-auto rounded-lg bg-gray-100 p-4 my-4">
+          <pre class="text-sm"><code>{
+  "model": "claude-3-5-sonnet-20240620",
+  "contextLength": 300000,
+  "title": "claude (PearAI Creator)",
+  "provider": "aider",
+  "apiKey": "{YOUR_API_KEY}"
+}</code></pre>
+        </div>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           Troubleshooting
         </h2>
         <div class="space-y-4">
-          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>PearAI Creator is still in beta mode, so there may be a few rough edges.</p>
-          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>If PearAI Creator is not working at all (ie. lags with no response), it is likely due to an issue with the Aider installation.</p>
-          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>If you are running into this, please message this in the PearAI Discord, as it will help us improve.</p>
-          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>To fix this, you may need to manually install aider here: <a href="https://aider.chat/docs/install.html" class="text-primary-600 hover:underline">https://aider.chat/docs/install.html</a>.</p>
-          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl>Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI Creator is still in beta mode, so there may be a few rough edges.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">If PearAI Creator is not working at all (ie. lags with no response), it is likely due to an issue with the Aider installation.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">If you are running into this, please message this in the PearAI Discord, as it will help us improve.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">To fix this, you may need to manually install aider here: <a href="https://aider.chat/docs/install.html" class="text-primary-600 hover:underline">https://aider.chat/docs/install.html</a>.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>
         </div>
       </section>
+      <p class="text-sm text-gray-500 italic">*View PearAI Disclaimer page <a href="/disclaimer" class="text-primary-600 hover:underline">here</a>.</p>
     </article>`,
   },
 ];

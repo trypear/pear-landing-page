@@ -287,7 +287,7 @@ export default function SubscriptionCard({
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
                   target="_parent"
                 >
-                  Open PearAI
+                  Open PearAI App
                 </Link>
               </Button>
             </div>
@@ -347,7 +347,7 @@ export default function SubscriptionCard({
                   installed.
                 </span>
               </Link>
-              Use this button to open app and login directly.
+              Use the button above to login into the app directly.
             </div>
           </div>
         </CardContent>
