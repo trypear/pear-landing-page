@@ -12,7 +12,7 @@ type IssueItemProps = {
   title: string;
   description: React.ReactNode;
   issueLink: string;
-  severity: Severity;
+  severity?: Severity;
   screenshot?: {
     src: string;
     alt: string;
@@ -30,6 +30,7 @@ export const IssueList: React.FC<IssueItemProps> = ({
   screenshot,
 }) => {
   const getSeverityIcon = () => {
+    if (!severity) return null;
     switch (severity) {
       case "low":
         return <Info className="h-6 w-6 text-blue-500" />;
@@ -45,6 +46,7 @@ export const IssueList: React.FC<IssueItemProps> = ({
   };
 
   const getSeverityLabel = () => {
+    if (!severity) return "Severity Unknown";
     switch (severity) {
       case "low":
         return "Low Severity";
@@ -67,7 +69,7 @@ export const IssueList: React.FC<IssueItemProps> = ({
           {/* Icon and Title */}
           <div className="flex items-center">
             {/* Icon */}
-            <div className="mr-3">{getSeverityIcon()}</div>
+            {severity && <div className="mr-3">{getSeverityIcon()}</div>}
             {/* Issue Title */}
             <h3 className="text-xl font-bold text-gray-900">
               <Link href={issueLink} className="hover:underline">
@@ -75,6 +77,7 @@ export const IssueList: React.FC<IssueItemProps> = ({
               </Link>
             </h3>
           </div>
+
           {/* Date */}
           <div className="mt-2 text-sm text-gray-500 sm:mt-0">
             <time dateTime={date}>{date}</time>
@@ -82,19 +85,21 @@ export const IssueList: React.FC<IssueItemProps> = ({
           </div>
         </div>
         {/* Severity Label */}
-        <div className="mt-2">
-          <span
-            className={cn(
-              "inline-block rounded-full px-3 py-1 text-sm font-semibold",
-              severity === "low" && "bg-blue-100 text-blue-800",
-              severity === "medium" && "bg-yellow-100 text-yellow-800",
-              severity === "high" && "bg-orange-100 text-orange-800",
-              severity === "critical" && "bg-red-100 text-red-800",
-            )}
-          >
-            {getSeverityLabel()}
-          </span>
-        </div>
+        {severity && (
+          <div className="mt-2">
+            <span
+              className={cn(
+                "inline-block rounded-full px-3 py-1 text-sm font-semibold",
+                severity === "low" && "bg-blue-100 text-blue-800",
+                severity === "medium" && "bg-yellow-100 text-yellow-800",
+                severity === "high" && "bg-orange-100 text-orange-800",
+                severity === "critical" && "bg-red-100 text-red-800",
+              )}
+            >
+              {getSeverityLabel()}
+            </span>
+          </div>
+        )}
         {/* Description */}
         <div className="mt-4 text-gray-700">{description}</div>
         {/* Screenshot */}

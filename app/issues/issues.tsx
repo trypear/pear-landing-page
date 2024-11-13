@@ -8,7 +8,7 @@ export type IssueEntry = {
   description: React.ReactNode;
   repositoryId: string;
   issueLink: string;
-  severity: Severity;
+  severity?: Severity;
   screenshot?: {
     src: string;
     alt: string;
@@ -29,12 +29,12 @@ const issues: IssueEntry[] = [
           <li>
             As of now, you can&apos;t use remote SSH to connect to your server.
           </li>
+          <li>PearAI plans on supporting this in the near future.</li>
         </ul>
       </>
     ),
     repositoryId: "pearai-app",
     issueLink: "https://trypear.ai/issues",
-    severity: "high",
   },
 ];
 
