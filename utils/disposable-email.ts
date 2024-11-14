@@ -14,7 +14,7 @@ const fetchDisposableDomains = async () => {
     const data = await res.text();
     const domainArray = data.trim().split("\n").filter(Boolean);
 
-    return new Set(domainArray.map(d => d.toLowerCase()));
+    return new Set(domainArray.map((d) => d.toLowerCase()));
   } catch (error) {
     console.error("Error fetching disposable domains:", error);
     return null;
@@ -37,10 +37,11 @@ export const isDisposableEmail = async (email: string) => {
   }
 
   const localDomains = new Set(
-    Object.keys(disposableEmailDomains as Record<string, boolean>)
-      .map(d => d.toLowerCase())
+    Object.keys(disposableEmailDomains as Record<string, boolean>).map((d) =>
+      d.toLowerCase(),
+    ),
   );
-  
+
   const result = localDomains.has(emailDomain);
   return result;
 };
