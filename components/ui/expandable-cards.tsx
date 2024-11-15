@@ -12,9 +12,10 @@ import {
 
 type Card = {
   id: number;
-  title: {
-    desktop: JSX.Element;
-    mobile: JSX.Element;
+  title: string;
+  company: {
+    name: string;
+    url: string;
   };
   description: string | JSX.Element;
   icon: React.ComponentType<{ className?: string; color?: string }>;
@@ -28,34 +29,10 @@ type Card = {
 const CARDS: Card[] = [
   {
     id: 1,
-    title: {
-      desktop: (
-        <>
-          Ship with
-          <br />
-          <a
-            href="https://aider.chat/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            aider
-          </a>
-        </>
-      ),
-      mobile: (
-        <>
-          Ship with{" "}
-          <a
-            href="https://aider.chat/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            aider
-          </a>
-        </>
-      ),
+    title: "Ship with",
+    company: {
+      name: "aider",
+      url: "https://aider.chat/",
     },
     description:
       "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Integrated within PearAI Creator, it will make and apply the changes to your files automatically.",
@@ -68,34 +45,10 @@ const CARDS: Card[] = [
   },
   {
     id: 2,
-    title: {
-      desktop: (
-        <>
-          Predict with
-          <br />
-          <a
-            href="https://supermaven.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Supermaven
-          </a>
-        </>
-      ),
-      mobile: (
-        <>
-          Predict with{" "}
-          <a
-            href="https://supermaven.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Supermaven
-          </a>
-        </>
-      ),
+    title: "Ship with",
+    company: {
+      name: "Supermaven",
+      url: "https://supermaven.com/",
     },
     description:
       "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
@@ -108,35 +61,10 @@ const CARDS: Card[] = [
   },
   {
     id: 3,
-    title: {
-      desktop: (
-        <>
-          Chat & edit
-          <br />
-          with{" "}
-          <a
-            href="https://www.continue.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Continue
-          </a>
-        </>
-      ),
-      mobile: (
-        <>
-          Chat & edit with{" "}
-          <a
-            href="https://www.continue.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Continue
-          </a>
-        </>
-      ),
+    title: "Chat & edit with",
+    company: {
+      name: "Continue",
+      url: "https://www.continue.dev/",
     },
     description: (
       <>
@@ -155,34 +83,10 @@ const CARDS: Card[] = [
   },
   {
     id: 4,
-    title: {
-      desktop: (
-        <>
-          Remember
-          <br />
-          <a
-            href="https://mem0.ai/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            with Mem0
-          </a>
-        </>
-      ),
-      mobile: (
-        <>
-          Remember{" "}
-          <a
-            href="https://mem0.ai/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            with Mem0
-          </a>
-        </>
-      ),
+    title: "Remember with",
+    company: {
+      name: "Mem0",
+      url: "https://mem0.ai/",
     },
     description:
       "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
@@ -195,34 +99,10 @@ const CARDS: Card[] = [
   },
   {
     id: 5,
-    title: {
-      desktop: (
-        <>
-          Search with
-          <br />
-          <a
-            href="https://www.perplexity.ai/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Perplexity
-          </a>
-        </>
-      ),
-      mobile: (
-        <>
-          Search with{" "}
-          <a
-            href="https://www.perplexity.ai/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Perplexity
-          </a>
-        </>
-      ),
+    title: "Search with",
+    company: {
+      name: "Perplexity",
+      url: "https://www.perplexity.ai/",
     },
     description:
       "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
@@ -316,7 +196,9 @@ export default function ExpandableCards() {
                           }}
                           className="whitespace-pre-line text-xl font-[550] leading-6"
                         >
-                          {card.title.desktop}
+                          {card.title}
+                          <br />
+                          <span>{card.company.name}</span>
                           <span className="opacity-50">*</span>
                         </h1>
                       </motion.div>
@@ -328,14 +210,23 @@ export default function ExpandableCards() {
                       transition={{ delay: ANIMATION_DELAY }}
                       className="flex h-full flex-col"
                     >
-                      <h4
+                      <div
                         style={{
                           color: card.titleColor,
                         }}
                         className="mb-3 text-xl font-[550] leading-6"
                       >
-                        {card.title.mobile}
-                      </h4>
+                        {card.title}{" "}
+                        <a
+                          href={card.company.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
+                          {" "}
+                          {card.company.name}
+                        </a>
+                      </div>
                       <p
                         style={{
                           color: card.descriptionColor,
@@ -386,7 +277,19 @@ export default function ExpandableCards() {
                         style={{ color: card.titleColor }}
                         className="text-base font-semibold sm:text-lg"
                       >
-                        {card.title.mobile}
+                        {card.title}{" "}
+                        {expandedId === card.id ? (
+                          <a
+                            href={card.company.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                          >
+                            {card.company.name}
+                          </a>
+                        ) : (
+                          <span>{card.company.name}</span>
+                        )}
                       </div>
                     </div>
                     <div

@@ -31,7 +31,6 @@
     "@radix-ui/react-tabs": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.0.7",
-    "@studio-freight/react-lenis": "^0.0.47",
     "@supabase/ssr": "^0.3.0",
     "@supabase/supabase-js": "^2.43.4",
     "@types/node": "^20.10.4",
