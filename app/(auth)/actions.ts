@@ -10,7 +10,7 @@ import {
   User,
   Session,
 } from "@supabase/supabase-js";
-import { UpdatePasswordFormData } from "@/utils/form-schema";
+import { signUpSchema, UpdatePasswordFormData } from "@/utils/form-schema";
 import { getURL } from "@/lib/utils";
 
 export async function signin(
@@ -48,9 +48,27 @@ export async function signin(
 //  - If sign in fails, return exists: true (toast 'account exists' on client and redirect to /signin)
 // 3. If user does not exist, sign up with email and password and redirect to /signin
 //  - If sign up fails, return error: error.message (toast error on client)
-
 export async function signup(formData: FormData) {
   const supabase = createClient();
+
+  // Convert FormData to object matching SignUpFormData type
+  const rawData = {
+    email: formData.get("email") as string,
+    password: formData.get("password") as string,
+    full_name: formData.get("full-name") as string,
+    company_name: formData.get("company-name") as string,
+    heard_about_us: formData.get("heard-about-us") as string,
+  };
+  
+  try {
+    await signUpSchema.parseAsync(rawData);
+  } catch (error) {
+    console.log(error);
+    if (error) {
+      return { error: "Invalid form data" };
+    }
+    return { error: "Invalid form data" };
+  }
 
   const data: SignUpWithPasswordCredentials = {
     email: formData.get("email") as string,
