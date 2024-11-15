@@ -161,6 +161,12 @@ export default function MobileMenu({
                         Documentation
                       </MobileNavItem>
                       <MobileNavItem
+                        href="https://github.com/trypear/pearai-master"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Github
+                      </MobileNavItem>
+                      <MobileNavItem
                         href="/blog"
                         onClick={() => setIsOpen(false)}
                       >
