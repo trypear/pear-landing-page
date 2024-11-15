@@ -21,12 +21,20 @@ import {
 import { SignInFormData, signInSchema } from "@/utils/form-schema";
 import { useSearchParams } from "next/navigation";
 import { useToggle } from "@/hooks/useToggle";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import { TURNSTILE_SITE_KEY } from "@/utils/constants";
+import { toast } from "sonner";
 
-export default function SignIn() {
+export default function SignIn({
+  turnstile,
+}: {
+  turnstile?: React.MutableRefObject<TurnstileInstance | null>;
+}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const callbackForDesktopApp = searchParams?.get("callback") ?? "";
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const form = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
@@ -46,7 +54,11 @@ export default function SignIn() {
       formData.append("email", data.email);
       formData.append("password", data.password);
 
-      const response = await signin(formData, callbackForDesktopApp);
+      const response = await signin(
+        formData,
+        callbackForDesktopApp,
+        captchaToken,
+      );
       if (response?.error) {
         setErrorMessage(response.error);
       } else {
@@ -69,6 +81,11 @@ export default function SignIn() {
   };
 
   const [isPasswordVisible, togglePasswordVisibility] = useToggle(false);
+
+  const onReset = () => {
+    turnstile?.current?.reset();
+    setCaptchaToken("");
+  };
 
   return (
     <section className="relative">
@@ -193,11 +210,26 @@ export default function SignIn() {
                     Forgot Password?
                   </Link>
                 </div>
+                <div className="flex justify-center">
+                  <Turnstile
+                    siteKey={TURNSTILE_SITE_KEY ?? ""}
+                    onSuccess={setCaptchaToken}
+                    className="mx-auto"
+                    onError={() => {
+                      toast.error("Captcha verification failed");
+                      onReset();
+                    }}
+                    onExpire={() => {
+                      toast.warning("Captcha expired, please try again");
+                      onReset();
+                    }}
+                  />
+                </div>
                 <Button
                   type="submit"
                   size="lg"
                   className="w-full rounded-md"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !captchaToken}
                   isLoading={isSubmitting}
                 >
                   {isSubmitting ? "Signing in..." : "Sign In"}
