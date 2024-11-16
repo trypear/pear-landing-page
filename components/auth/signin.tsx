@@ -24,6 +24,7 @@ import { useToggle } from "@/hooks/useToggle";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { TURNSTILE_SITE_KEY } from "@/utils/constants";
 import { toast } from "sonner";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function SignIn({
   turnstile,
@@ -175,40 +176,50 @@ export default function SignIn({
                     <FormItem>
                       <FormLabel htmlFor="password">Password</FormLabel>
                       <FormControl>
-                        <Input
-                          id="password"
-                          type={isPasswordVisible ? "text" : "password"}
-                          placeholder="********"
-                          {...field}
-                        />
+                        <div className="relative">
+                          <Input
+                            id="password"
+                            type={isPasswordVisible ? "text" : "password"}
+                            placeholder="********"
+                            className="pr-10"
+                            {...field}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => togglePasswordVisibility()}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                          >
+                            {isPasswordVisible ? (
+                              <EyeOff className="h-4 w-4" />
+                            ) : (
+                              <Eye className="h-4 w-4" />
+                            )}
+                          </button>
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Label className="flex items-center">
-                  <Checkbox
-                    className="rounded"
-                    checked={isPasswordVisible}
-                    onCheckedChange={togglePasswordVisibility}
-                  />
-                  <span className="ml-2 cursor-pointer text-gray-600">
-                    Show Password
-                  </span>
-                </Label>
-                <div className="flex justify-between">
-                  <Label className="flex items-center">
-                    <Checkbox className="rounded" />
-                    <span className="ml-2 cursor-pointer text-gray-600">
-                      Keep me signed in
-                    </span>
-                  </Label>
-                  <Link
-                    href="/reset-password"
-                    className="text-gray-600 transition duration-150 ease-in-out"
-                  >
-                    Forgot Password?
-                  </Link>
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-start">
+                    <Label className="flex items-center">
+                      <Checkbox className="rounded" />
+                      <span className="ml-2 cursor-pointer text-gray-600">
+                        Keep me signed in
+                      </span>
+                    </Label>
+                  </div>
+
+                  <div className="my-3 text-center">
+                    <Link
+                      href="/reset-password"
+                      className="text-gray-600 transition duration-150 ease-in-out"
+                    >
+                      Forgot Password?
+                    </Link>
+                  </div>
                 </div>
                 <div className="flex justify-center">
                   <Turnstile
