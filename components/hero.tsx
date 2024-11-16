@@ -24,13 +24,23 @@ export default function Hero() {
     <>
       <section className="relative">
         {/* Background Dots */}
-        <div className="absolute inset-0 mx-auto max-w-7xl bg-dot-light-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-dot-dark-black lg:[mask-image:radial-gradient(ellipse_at_left,transparent_20%,black)]"></div>
+        <motion.div
+          className="absolute inset-0 mx-auto max-w-7xl bg-dot-light-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-dot-dark-black lg:[mask-image:radial-gradient(ellipse_at_left,transparent_20%,black)]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        ></motion.div>
 
         <div className="relative mx-auto max-w-6xl px-6 py-20">
           {/* Top Grid Illustration */}
-          <div className="absolute inset-0 w-full">
+          <motion.div
+            className="absolute inset-0 w-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+          >
             <GridIllustration />
-          </div>
+          </motion.div>
 
           <div className="relative my-20 flex max-w-6xl flex-col items-center px-6 lg:items-start">
             <motion.div
@@ -62,7 +72,7 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               transition={{
-                duration: 0.4,
+                duration: 0.8,
                 ease: [0.4, 0, 0.2, 1],
                 delay: 0.2,
               }}
@@ -79,7 +89,7 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               transition={{
-                duration: 0.6,
+                duration: 0.8,
                 ease: [0.4, 0, 0.2, 1],
                 delay: 0.4,
               }}
@@ -108,15 +118,20 @@ export default function Hero() {
           </div>
 
           {/* Bottom Grid Illustration */}
-          <div className="absolute bottom-0 left-0 right-0 w-full scale-y-[-1] transform">
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 w-full scale-y-[-1] transform"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+          >
             <GridIllustration />
-          </div>
+          </motion.div>
 
           {/* Hero Integrations */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 2 }}
           >
             <IntegrationBox />
           </motion.div>
