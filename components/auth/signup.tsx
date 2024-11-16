@@ -22,18 +22,10 @@ import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToggle } from "@/hooks/useToggle";
-import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
-import { TURNSTILE_SITE_KEY } from "@/utils/constants";
-import { Eye, EyeOff } from "lucide-react";
 
-export default function SignUp({
-  turnstile,
-}: {
-  turnstile?: React.MutableRefObject<TurnstileInstance | null>;
-}) {
+export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [captchaToken, setCaptchaToken] = useState("");
   const form = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -42,7 +34,6 @@ export default function SignUp({
       company_name: "",
       password: "",
       heard_about_us: "",
-      captchaToken: "",
     },
   });
   const router = useRouter();
@@ -51,6 +42,7 @@ export default function SignUp({
     if (isSubmitting) return;
     setIsSubmitting(true);
     setErrorMessage(null);
+
     try {
       const formData = new FormData();
       formData.append("full-name", data.full_name);
@@ -59,7 +51,7 @@ export default function SignUp({
       formData.append("password", data.password);
       formData.append("heard-about-us", data.heard_about_us || "");
 
-      const response = await signup(formData, captchaToken);
+      const response = await signup(formData);
       if (response?.error) {
         setErrorMessage(response.error);
       } else if (!response?.signedIn) {
@@ -96,10 +88,7 @@ export default function SignUp({
     }
   };
   const [isPasswordVisible, togglePasswordVisibility] = useToggle(false);
-  const onReset = () => {
-    turnstile?.current?.reset();
-    setCaptchaToken("");
-  };
+
   return (
     <section className="relative">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -226,31 +215,28 @@ export default function SignUp({
                     <FormItem>
                       <FormLabel htmlFor="password">Password *</FormLabel>
                       <FormControl>
-                        <div className="relative">
-                          <Input
-                            id="password"
-                            type={isPasswordVisible ? "text" : "password"}
-                            placeholder="Password (at least 8 characters)"
-                            className="pr-10"
-                            {...field}
-                          />
-                          <button
-                            type="button"
-                            onClick={() => togglePasswordVisibility()}
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                          >
-                            {isPasswordVisible ? (
-                              <EyeOff className="h-4 w-4" />
-                            ) : (
-                              <Eye className="h-4 w-4" />
-                            )}
-                          </button>
-                        </div>
+                        <Input
+                          id="password"
+                          type={isPasswordVisible ? "text" : "password"}
+                          placeholder="Password (at least 8 characters)"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
+                <Label className="flex items-center">
+                  <Checkbox
+                    className="rounded"
+                    checked={isPasswordVisible}
+                    onCheckedChange={togglePasswordVisibility}
+                  />
+                  <span className="ml-2 cursor-pointer text-gray-600">
+                    Show Password
+                  </span>
+                </Label>
 
                 <FormField
                   name="heard_about_us"
@@ -271,21 +257,7 @@ export default function SignUp({
                     </FormItem>
                   )}
                 />
-                <div className="flex justify-center">
-                  <Turnstile
-                    siteKey={TURNSTILE_SITE_KEY ?? ""}
-                    onSuccess={setCaptchaToken}
-                    className="mx-auto"
-                    onError={() => {
-                      toast.error("Captcha verification failed");
-                      onReset();
-                    }}
-                    onExpire={() => {
-                      toast.warning("Captcha expired, please try again");
-                      onReset();
-                    }}
-                  />
-                </div>
+
                 <div className="text-center text-sm text-gray-600">
                   <Link
                     href="/privacy"
@@ -299,7 +271,7 @@ export default function SignUp({
                   type="submit"
                   size="lg"
                   className="w-full rounded-md"
-                  disabled={isSubmitting || !captchaToken}
+                  disabled={isSubmitting}
                   isLoading={isSubmitting}
                 >
                   {isSubmitting ? "Signing up..." : "Sign Up"}
