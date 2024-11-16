@@ -215,7 +215,7 @@ export default function SignIn({
                   <div className="my-3 text-center">
                     <Link
                       href="/reset-password"
-                      className="text-gray-600 transition duration-150 ease-in-out"
+                      className="text-sm text-gray-600 transition duration-150 ease-in-out"
                     >
                       Forgot Password?
                     </Link>
