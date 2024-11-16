@@ -14,7 +14,7 @@ export const videoData = [
     title: "No more tedious changes",
     description:
       "Inline code changes in your files with diffs. Here, PearAI Chat (powered by Continue*) adds print statements to help with debugging.",
-    videoUrl: `${BUNNY_CDN_HOST}/PearAI-CMD+I.mp4`,
+    videoUrl: `${BUNNY_CDN_HOST}/pearai-cmd+i.mp4`,
     duration: 12500,
   },
   {
