@@ -10,6 +10,8 @@ export const TEST_MODE_ENABLED = ["true", "True", "TRUE"].includes(
   process.env.NEXT_PUBLIC_TEST_MODE_ENABLED ?? "",
 );
 
+export const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
 export const BUNNY_CDN_HOST = "https://pearai.b-cdn.net";
 
 export const CONTACT_EMAIL = "pear@trypear.ai";

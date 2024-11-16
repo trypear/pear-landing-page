@@ -21,12 +21,21 @@ import {
 import { SignInFormData, signInSchema } from "@/utils/form-schema";
 import { useSearchParams } from "next/navigation";
 import { useToggle } from "@/hooks/useToggle";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import { TURNSTILE_SITE_KEY } from "@/utils/constants";
+import { toast } from "sonner";
+import { Eye, EyeOff } from "lucide-react";
 
-export default function SignIn() {
+export default function SignIn({
+  turnstile,
+}: {
+  turnstile?: React.MutableRefObject<TurnstileInstance | null>;
+}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const callbackForDesktopApp = searchParams?.get("callback") ?? "";
+  const [captchaToken, setCaptchaToken] = useState("");
 
   const form = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
@@ -46,7 +55,11 @@ export default function SignIn() {
       formData.append("email", data.email);
       formData.append("password", data.password);
 
-      const response = await signin(formData, callbackForDesktopApp);
+      const response = await signin(
+        formData,
+        callbackForDesktopApp,
+        captchaToken,
+      );
       if (response?.error) {
         setErrorMessage(response.error);
       } else {
@@ -69,6 +82,11 @@ export default function SignIn() {
   };
 
   const [isPasswordVisible, togglePasswordVisibility] = useToggle(false);
+
+  const onReset = () => {
+    turnstile?.current?.reset();
+    setCaptchaToken("");
+  };
 
   return (
     <section className="relative">
@@ -158,46 +176,71 @@ export default function SignIn() {
                     <FormItem>
                       <FormLabel htmlFor="password">Password</FormLabel>
                       <FormControl>
-                        <Input
-                          id="password"
-                          type={isPasswordVisible ? "text" : "password"}
-                          placeholder="********"
-                          {...field}
-                        />
+                        <div className="relative">
+                          <Input
+                            id="password"
+                            type={isPasswordVisible ? "text" : "password"}
+                            placeholder="********"
+                            className="pr-10"
+                            {...field}
+                          />
+                          <button
+                            type="button"
+                            onClick={() => togglePasswordVisibility()}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                          >
+                            {isPasswordVisible ? (
+                              <EyeOff className="h-4 w-4" />
+                            ) : (
+                              <Eye className="h-4 w-4" />
+                            )}
+                          </button>
+                        </div>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Label className="flex items-center">
-                  <Checkbox
-                    className="rounded"
-                    checked={isPasswordVisible}
-                    onCheckedChange={togglePasswordVisibility}
+
+                <div className="space-y-4">
+                  <div className="flex items-center justify-start">
+                    <Label className="flex items-center">
+                      <Checkbox className="rounded" />
+                      <span className="ml-2 cursor-pointer text-gray-600">
+                        Keep me signed in
+                      </span>
+                    </Label>
+                  </div>
+
+                  <div className="my-3 text-center">
+                    <Link
+                      href="/reset-password"
+                      className="text-sm text-gray-600 transition duration-150 ease-in-out"
+                    >
+                      Forgot Password?
+                    </Link>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <Turnstile
+                    siteKey={TURNSTILE_SITE_KEY ?? ""}
+                    onSuccess={setCaptchaToken}
+                    className="mx-auto"
+                    onError={() => {
+                      toast.error("Captcha verification failed");
+                      onReset();
+                    }}
+                    onExpire={() => {
+                      toast.warning("Captcha expired, please try again");
+                      onReset();
+                    }}
                   />
-                  <span className="ml-2 cursor-pointer text-gray-600">
-                    Show Password
-                  </span>
-                </Label>
-                <div className="flex justify-between">
-                  <Label className="flex items-center">
-                    <Checkbox className="rounded" />
-                    <span className="ml-2 cursor-pointer text-gray-600">
-                      Keep me signed in
-                    </span>
-                  </Label>
-                  <Link
-                    href="/reset-password"
-                    className="text-gray-600 transition duration-150 ease-in-out"
-                  >
-                    Forgot Password?
-                  </Link>
                 </div>
                 <Button
                   type="submit"
                   size="lg"
                   className="w-full rounded-md"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !captchaToken}
                   isLoading={isSubmitting}
                 >
                   {isSubmitting ? "Signing in..." : "Sign In"}
