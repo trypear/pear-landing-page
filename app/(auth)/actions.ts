@@ -88,6 +88,30 @@ export async function signup(formData: FormData) {
   redirect("/verification?email=" + data.email);
 }
 
+// Contact form submission
+export async function contactSubmit(formData: FormData) {
+  const supabase = createClient();
+
+  const { error } = await supabase.from("contact").insert([
+    {
+      first_name: formData.get("first-name") as string,
+      last_name: formData.get("last-name") as string,
+      email: formData.get("email") as string,
+      company_name: formData.get("company-name") as string,
+      organisation_size: formData.get("organisation-size") as string,
+      job_title: formData.get("job-title") as string,
+      phone_number: formData.get("phone-number") as string,
+      message: formData.get("message") as string,
+    },
+  ]);
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  revalidatePath("/", "layout");
+}
+
 // OAuth sign-in with Google or GitHub
 export async function signinWithOAuth(
   provider: Provider,
