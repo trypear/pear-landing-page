@@ -33,17 +33,11 @@ export const signUpSchema = z.object({
       required_error: "Please tell us how you heard about us.",
     })
     .max(30, { message: "Message too long" }),
-  captchaToken: z.string({
-    required_error: "Please complete the captcha verification.",
-  }),
 });
 
 export const signInSchema = z.object({
   email: emailSchema.shape.email,
   password: passwordSchema.shape.password,
-  captchaToken: z.string({
-    required_error: "Please complete the captcha verification.",
-  }),
 });
 
 export const resetPasswordSchema = z.object({

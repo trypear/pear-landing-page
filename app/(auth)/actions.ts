@@ -16,16 +16,12 @@ import { getURL } from "@/lib/utils";
 export async function signin(
   formData: FormData,
   callbackForDesktopApp: string,
-  captchaToken: string,
 ) {
   const supabase = createClient();
 
   const data: SignInWithPasswordCredentials = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
-    options: {
-      captchaToken: captchaToken,
-    },
   };
 
   const { data: res, error } = await supabase.auth.signInWithPassword(data);
@@ -53,14 +49,13 @@ export async function signin(
 // 3. If user does not exist, sign up with email and password and redirect to /signin
 //  - If sign up fails, return error: error.message (toast error on client)
 
-export async function signup(formData: FormData, captchaToken: string) {
+export async function signup(formData: FormData) {
   const supabase = createClient();
 
   const data: SignUpWithPasswordCredentials = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
     options: {
-      captchaToken: captchaToken,
       data: {
         full_name: formData.get("full-name") as string,
         company_name: formData.get("company-name") as string,
@@ -77,9 +72,6 @@ export async function signup(formData: FormData, captchaToken: string) {
     const signinData: SignInWithPasswordCredentials = {
       email: data.email,
       password: data.password,
-      options: {
-        captchaToken: captchaToken,
-      },
     };
     const { error } = await supabase.auth.signInWithPassword(signinData);
     if (!error) {
