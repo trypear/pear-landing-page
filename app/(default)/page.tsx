@@ -1,4 +1,4 @@
-import Features from "@/components/features";
+import Features from "@/components/features/Features";
 import Hero from "@/components/hero";
 import Showcase from "@/components/showcase";
 import { constructMetadata } from "@/lib/utils";
