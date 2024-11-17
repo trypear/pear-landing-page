@@ -10,6 +10,8 @@ import {
 } from "./dropdown-menu";
 import { AuthError, User } from "@supabase/supabase-js";
 import Link from "next/link";
+import { useSearchParams} from "next/navigation";
+
 
 export default function AuthButton({
   handleSignOut,
@@ -18,24 +20,36 @@ export default function AuthButton({
   handleSignOut: () => Promise<void>;
   user: User | null;
 }) {
+  const searchParams = useSearchParams();
+  const callback = searchParams.get('callback');
+
   return (
     <div className="flex items-center space-x-4">
       {!user ? (
         <div className="m-0 inline-flex rounded-lg border border-gray-300 p-0 dark:border-gray-100">
-          <Link href="/signin">
-            <Button variant="ghost" className="h-8 rounded-r-none px-3">
+
+          {
+           <Link href={callback?`/signin?callback=${callback}`:"/signin"}>
+            <Button 
+              variant="ghost" 
+              className="h-8 rounded-r-none px-3"
+              >
               Sign in
             </Button>
-          </Link>
+           </Link>
+          }
           <div className="w-[1px] self-stretch bg-gray-300 dark:bg-gray-100" />
-          <Link href="/signup">
+          {
+           <Link href={callback?`/signup?callback=${callback}`:'/signup'}>
             <Button
               variant="ghost"
               className="h-8 rounded-l-none border-0 px-3"
             >
               Sign up
             </Button>
-          </Link>
+           </Link>
+          }
+      
         </div>
       ) : (
         <>

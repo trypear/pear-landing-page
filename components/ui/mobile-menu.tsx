@@ -21,6 +21,7 @@ import { useTheme } from "next-themes";
 import { MoonStar, Sun } from "lucide-react";
 import { User } from "@supabase/supabase-js";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSearchParams } from "next/navigation";
 
 export default function MobileMenu({
   user,
@@ -32,6 +33,9 @@ export default function MobileMenu({
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const searchParams = useSearchParams();
+  const callbackForDesktopApp = searchParams.get('callback');
+
 
   useEffect(() => {
     setMounted(true);
@@ -119,7 +123,7 @@ export default function MobileMenu({
                   </>
                 ) : (
                   <>
-                    <Link href="/signin" onClick={() => setIsOpen(false)}>
+                    <Link href={callbackForDesktopApp?`/signin?callback=${callbackForDesktopApp}`:"/signin"} onClick={() => setIsOpen(false)}>
                       <Button
                         variant="outline"
                         className="w-full justify-start"

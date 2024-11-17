@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import SignUpComponent from "@/components/auth/signup";
 import { constructMetadata } from "@/lib/utils";
@@ -13,7 +13,7 @@ export const metadata: Metadata = constructMetadata({
 export default async function SignUp() {
   const supabase = createClient();
   const { data } = await supabase.auth.getUser();
-
+  
   if (data?.user) {
     redirect("/");
   }
