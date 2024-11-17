@@ -13,7 +13,7 @@ export const metadata: Metadata = constructMetadata({
 export default async function SignUp() {
   const supabase = createClient();
   const { data } = await supabase.auth.getUser();
-  
+
   if (data?.user) {
     redirect("/");
   }

@@ -212,7 +212,11 @@ export default function SignIn() {
             <div className="mt-6 text-center text-gray-600">
               Don&apos;t have an account?{" "}
               <Link
-                href={callbackForDesktopApp? `/signup?callback=${callbackForDesktopApp}`:"/signup"}
+                href={
+                  callbackForDesktopApp
+                    ? `/signup?callback=${callbackForDesktopApp}`
+                    : "/signup"
+                }
                 className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign up

@@ -39,7 +39,7 @@ export default function SignUp() {
   });
   const router = useRouter();
   const searchParams = useSearchParams();
-  const callbackForDesktopApp = searchParams.get('callback');
+  const callbackForDesktopApp = searchParams.get("callback");
 
   const handleSignUp = async (data: SignUpFormData) => {
     if (isSubmitting) return;
@@ -289,7 +289,11 @@ export default function SignUp() {
             <div className="mt-6 text-center text-gray-600">
               Already have an account?{" "}
               <Link
-                href={callbackForDesktopApp? `/signin?callback=${callbackForDesktopApp}`:"/signin"}
+                href={
+                  callbackForDesktopApp
+                    ? `/signin?callback=${callbackForDesktopApp}`
+                    : "/signin"
+                }
                 className="text-gray-800 underline transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign in

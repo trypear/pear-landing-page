@@ -34,8 +34,7 @@ export default function MobileMenu({
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const searchParams = useSearchParams();
-  const callbackForDesktopApp = searchParams.get('callback');
-
+  const callbackForDesktopApp = searchParams.get("callback");
 
   useEffect(() => {
     setMounted(true);
@@ -123,7 +122,14 @@ export default function MobileMenu({
                   </>
                 ) : (
                   <>
-                    <Link href={callbackForDesktopApp?`/signin?callback=${callbackForDesktopApp}`:"/signin"} onClick={() => setIsOpen(false)}>
+                    <Link
+                      href={
+                        callbackForDesktopApp
+                          ? `/signin?callback=${callbackForDesktopApp}`
+                          : "/signin"
+                      }
+                      onClick={() => setIsOpen(false)}
+                    >
                       <Button
                         variant="outline"
                         className="w-full justify-start"
