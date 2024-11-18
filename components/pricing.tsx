@@ -48,12 +48,12 @@ export const platformVersions: Record<string, VersionInfo> = {
     releaseDate: "Nov 12, 2024",
   },
   "Mac (M chip)": {
-    version: "v1.5.0",
-    releaseDate: "Nov 12, 2024",
+    version: "v1.5.1",
+    releaseDate: "Nov 17, 2024",
   },
   "Mac (Intel)": {
-    version: "v1.5.0",
-    releaseDate: "Nov 12, 2024",
+    version: "v1.5.1",
+    releaseDate: "Nov 17, 2024",
   },
   Linux: {
     version: "v1.5.0",
