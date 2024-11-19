@@ -18,10 +18,10 @@ import {
 } from "@/components/ui/form";
 import { signUpSchema, SignUpFormData } from "@/utils/form-schema";
 import { toast, Toaster } from "sonner";
-import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToggle } from "@/hooks/useToggle";
+import { useSignInUrl } from "@/hooks/useSigningUrl";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -35,7 +35,8 @@ export default function SignUp() {
       heard_about_us: "",
     },
   });
-  const router = useRouter();
+  // For handling the callback URL 
+  const [signinURL] = useSignInUrl();
 
   const handleSignUp = async (data: SignUpFormData) => {
     if (isSubmitting) return;
@@ -280,7 +281,8 @@ export default function SignUp() {
             <div className="mt-6 text-center text-gray-600">
               Already have an account?{" "}
               <Link
-                href="/signin"
+                // href={callbackForDesktopApp?`/signin?callback=${callbackForDesktopApp}`:"/signin"}
+                href={signinURL}
                 className="text-gray-800 underline transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign in
