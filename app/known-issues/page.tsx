@@ -12,7 +12,7 @@ type Repository = (typeof repositories)[number];
 export const metadata: Metadata = constructMetadata({
   title: "Issues",
   description: "This page lists all current known issues and their status.",
-  canonical: "/issues",
+  canonical: "/known-issues",
 });
 
 const CurrentKnownIssues: React.FC = () => {

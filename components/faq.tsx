@@ -222,4 +222,17 @@ const faqData: FAQItem[] = [
       </p>
     ),
   },
+  {
+    id: "known-issues",
+    question: "4. What are current known issues?!",
+    answer: (
+      <p>
+        See the known issues section:{" "}
+        <Link className="underline" target="_blank" href="/known-issues">
+          Known Issues
+        </Link>
+        .
+      </p>
+    ),
+  },
 ];
