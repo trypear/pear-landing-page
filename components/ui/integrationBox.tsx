@@ -1,4 +1,3 @@
-import React from "react";
 import {
   AiderLogo,
   PerplexityLogo,
@@ -53,7 +52,7 @@ const INTEGRATIONS = [
     Icon: AiderLogo,
   },
   {
-    margin: "lg:ml-24 ml-5",
+    margin: "lg:ml-24 ml-2",
     label: "Predict with",
     product: (
       <a
@@ -83,7 +82,7 @@ const INTEGRATIONS = [
     Icon: Mem0Logo,
   },
   {
-    margin: "lg:ml-56 -ml-4",
+    margin: "lg:ml-56 -ml-3",
     label: "Search with",
     product: (
       <a
@@ -120,7 +119,7 @@ export default function IntegrationBox() {
       {/* Large Display */}
       <div className="hidden lg:block">
         {/* Background Wavy Lines */}
-        <div className="absolute right-24 top-16 scale-y-105 opacity-30">
+        <div className="absolute right-24 top-14 scale-y-105 opacity-30">
           <svg
             width="554"
             height="543"
@@ -160,7 +159,7 @@ export default function IntegrationBox() {
 
           {/* Bottom Card */}
           <div
-            className={`-ml-[79px] mt-16 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
+            className={`-ml-[78px] mt-16 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
           >
             <div className="flex items-center gap-2">
               <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-xs font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">

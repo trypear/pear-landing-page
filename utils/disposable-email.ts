@@ -14,7 +14,7 @@ const fetchDisposableDomains = async () => {
     const data = await res.text();
     const domainArray = data.trim().split("\n").filter(Boolean);
 
-    return domainArray;
+    return new Set(domainArray.map((d) => d.toLowerCase()));
   } catch (error) {
     console.error("Error fetching disposable domains:", error);
     return null;
@@ -22,33 +22,26 @@ const fetchDisposableDomains = async () => {
 };
 
 export const isDisposableEmail = async (email: string) => {
-  const domains = await fetchDisposableDomains();
-
   // Extract domain from email
-  const emailDomain = email.split("@")[1];
+  const emailDomain = email.split("@")[1]?.toLowerCase();
 
-  if (!emailDomain) return false;
-
-  if (domains) {
-    // Create a regex pattern that matches any domain in the list
-    const domainPattern = new RegExp(
-      domains
-        .map((d) => d.replace(/\./g, "\\.").replace(/\*/g, ".*"))
-        .join("|"),
-      "i",
-    );
-    return domainPattern.test(emailDomain);
+  if (!emailDomain) {
+    return false;
   }
 
-  // Fall back to local JSON
-  const localDomains = Object.keys(
-    disposableEmailDomains as Record<string, boolean>,
+  // Try remote domains first
+  const remoteDomains = await fetchDisposableDomains();
+  if (remoteDomains) {
+    const result = remoteDomains.has(emailDomain);
+    return result;
+  }
+
+  const localDomains = new Set(
+    Object.keys(disposableEmailDomains as Record<string, boolean>).map((d) =>
+      d.toLowerCase(),
+    ),
   );
-  const localDomainPattern = new RegExp(
-    localDomains
-      .map((d) => d.replace(/\./g, "\\.").replace(/\*/g, ".*"))
-      .join("|"),
-    "i",
-  );
-  return localDomainPattern.test(emailDomain);
+
+  const result = localDomains.has(emailDomain);
+  return result;
 };

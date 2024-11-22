@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { signup, signinWithOAuth } from "@/app/(auth)/actions";
-import { Provider } from "@supabase/supabase-js";
+import { signinWithOAuth } from "@/app/(auth)/actions";
+import { AdminUserAttributes, Provider } from "@supabase/supabase-js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -17,7 +17,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { signUpSchema, SignUpFormData } from "@/utils/form-schema";
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
 import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -25,7 +25,6 @@ import { useToggle } from "@/hooks/useToggle";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const form = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -41,50 +40,47 @@ export default function SignUp() {
   const handleSignUp = async (data: SignUpFormData) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
-    setErrorMessage(null);
 
     try {
-      const formData = new FormData();
-      formData.append("full-name", data.full_name);
-      formData.append("email", data.email);
-      formData.append("company-name", data.company_name || "");
-      formData.append("password", data.password);
-      formData.append("heard-about-us", data.heard_about_us || "");
+      const formData: AdminUserAttributes = {
+        email: data.email,
+        password: data.password,
+        user_metadata: {
+          full_name: data.full_name,
+          company_name: data.company_name,
+          heard_about_us: data.heard_about_us,
+        },
+      };
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        body: JSON.stringify(formData),
+      });
 
-      const response = await signup(formData);
-      if (response?.error) {
-        setErrorMessage(response.error);
-      } else if (!response?.signedIn) {
-        if (response?.exists) {
-          toast.error("An account with this email already exists.");
-          // Redirect to sign in page
-          router.push("/signin");
-        } else {
-          toast.success(
-            "Account created successfully. Please check your email to verify your account.",
-          );
-          form.reset();
-        }
-      } else {
-        // Redirect to dashboard
-        toast.info(
-          "An account with this email already exists, signing you in...",
-        );
-        router.push("/dashboard");
+      const result = await response.json();
+      if (!response.ok) {
+        toast.error(result.error || "Failed to sign up");
+        return;
       }
+      if (result?.error) {
+        toast.error(result.error);
+        return;
+      }
+      toast.success(
+        "Account created successfully. Please check your email to verify your account.",
+      );
+      form.reset();
     } catch (error) {
-      setErrorMessage("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleOAuthSignUp = async (provider: Provider) => {
-    setErrorMessage(null);
     try {
       await signinWithOAuth(provider);
     } catch (error) {
-      setErrorMessage("An unexpected error occurred. Please try again.");
+      toast.error("An unexpected error occurred. Please try again.");
     }
   };
   const [isPasswordVisible, togglePasswordVisibility] = useToggle(false);
@@ -277,9 +273,7 @@ export default function SignUp() {
                   {isSubmitting ? "Signing up..." : "Sign Up"}
                 </Button>
 
-                {errorMessage && (
-                  <p className="text-center text-red-500">{errorMessage}</p>
-                )}
+                <Toaster richColors />
               </form>
             </Form>
 
