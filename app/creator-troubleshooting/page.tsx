@@ -5,13 +5,25 @@ export default function CreatorTroubleshooting() {
     <main className="min-h-screen">
       <div className="container mx-auto max-w-4xl px-6 pb-16 pt-32">
         <h1 className="mb-4 text-4xl font-bold">
-          PearAI Creator (Powered by <a href="https://aider.chat/2024/06/02/main-swe-bench.html" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">aider</a>*) Troubleshooting
+          PearAI Creator (Powered by{" "}
+          <a
+            href="https://aider.chat/2024/06/02/main-swe-bench.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            aider
+          </a>
+          *) Troubleshooting
         </h1>
-        
+
         <div className="mb-8 text-lg text-muted-foreground">
           <p>
-            If you&apos;re experiencing any issues with the setup or installation of PearAI Creator, you&apos;ll find solutions to common problems below. 
-            As this feature is currently in beta, we&apos;re continuously improving the experience and appreciate your patience during this period.
+            If you&apos;re experiencing any issues with the setup or
+            installation of PearAI Creator, you&apos;ll find solutions to common
+            problems below. As this feature is currently in beta, we&apos;re
+            continuously improving the experience and appreciate your patience
+            during this period.
           </p>
         </div>
 
@@ -61,8 +73,9 @@ export default function CreatorTroubleshooting() {
                 <strong>Install Homebrew (if not already installed) - </strong>{" "}
                 Run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono whitespace-nowrap overflow-x-auto block">
-                    /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+                  <span className="block overflow-x-auto whitespace-nowrap font-mono">
+                    /bin/bash -c &quot;$(curl -fsSL
+                    https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
                   </span>
                 </pre>
               </li>
