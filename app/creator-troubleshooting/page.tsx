@@ -4,9 +4,16 @@ export default function CreatorTroubleshooting() {
   return (
     <main className="min-h-screen">
       <div className="container mx-auto max-w-4xl px-6 pb-16 pt-32">
-        <h1 className="mb-16 text-4xl font-bold">
-          PearAI Creator (Powered by aider*) Troubleshooting
+        <h1 className="mb-4 text-4xl font-bold">
+          PearAI Creator (Powered by <a href="https://aider.chat/2024/06/02/main-swe-bench.html" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">aider</a>*) Troubleshooting
         </h1>
+        
+        <div className="mb-8 text-lg text-muted-foreground">
+          <p>
+            If you&apos;re experiencing any issues with the setup or installation of PearAI Creator, you&apos;ll find solutions to common problems below. 
+            As this feature is currently in beta, we&apos;re continuously improving the experience and appreciate your patience during this period.
+          </p>
+        </div>
 
         {/* Git Repository Error */}
         <div className="mb-8 rounded-xl bg-secondary-300/10 p-6">
@@ -43,8 +50,45 @@ export default function CreatorTroubleshooting() {
             steps to manually install it:
           </p>
 
-          {/* Windows Instructions */}
+          {/* MacOS Instructions */}
           <div className="rounded-xl bg-secondary-300/10 p-6">
+            <h3 className="mb-2 text-xl font-semibold">For macOS/Linux:</h3>
+            <ol className="list-inside list-decimal">
+              <li className="mb-4">
+                <strong>Open a new terminal window</strong>
+              </li>
+              <li className="mb-2">
+                <strong>Install Homebrew (if not already installed) - </strong>{" "}
+                Run:
+                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
+                  <span className="font-mono whitespace-nowrap overflow-x-auto block">
+                    /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
+                  </span>
+                </pre>
+              </li>
+              <li className="mb-2">
+                <strong>Install Python (if not already installed) - </strong>{" "}
+                Run:
+                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
+                  <span className="font-mono">brew install python@3</span>
+                </pre>
+              </li>
+              <li className="mb-2">
+                <strong>Install aider - </strong> Please run:
+                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
+                  <span className="font-mono">
+                    python -m pip install -U aider-chat
+                  </span>
+                </pre>
+              </li>
+              <li>
+                <strong>Finally, please restart PearAI</strong>
+              </li>
+            </ol>
+          </div>
+
+          {/* Windows Instructions */}
+          <div className="mt-4 rounded-xl bg-secondary-300/10 p-6">
             <h3 className="mb-2 text-xl font-semibold">For Windows:</h3>
             <ol className="list-inside list-decimal">
               <li className="mb-2">
@@ -72,44 +116,6 @@ export default function CreatorTroubleshooting() {
               </li>
             </ol>
           </div>
-
-          {/* MacOS Instructions */}
-          <div className="rounded-xl bg-secondary-300/10 p-6">
-            <h3 className="mb-2 text-xl font-semibold">For macOS/Linux:</h3>
-            <ol className="list-inside list-decimal">
-              <li className="mb-4">
-                <strong>Open a new terminal window</strong>
-              </li>
-              <li className="mb-2">
-                <strong>Install Homebrew (if not already installed) - </strong>{" "}
-                Run:
-                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="break-all font-mono">
-                    /bin/bash -c &quot;$(curl -fsSL
-                    https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;
-                  </span>
-                </pre>
-              </li>
-              <li className="mb-2">
-                <strong>Install Python (if not already installed) - </strong>{" "}
-                Run:
-                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">brew install python@3</span>
-                </pre>
-              </li>
-              <li className="mb-2">
-                <strong>Install aider - </strong> Please run:
-                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">
-                    python -m pip install -U aider-chat
-                  </span>
-                </pre>
-              </li>
-              <li>
-                <strong>Finally, please restart PearAI</strong>
-              </li>
-            </ol>
-          </div>
         </div>
 
         <div className="rounded-xl bg-secondary-300/10 p-6">
@@ -131,7 +137,7 @@ export default function CreatorTroubleshooting() {
           </p>
         </div>
 
-        <p className="mx-2 text-center text-sm text-gray-500">
+        <p className="mx-2 mt-8 text-center text-sm text-gray-500">
           *View PearAI{" "}
           <Link
             href="/disclaimer"
