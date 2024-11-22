@@ -23,11 +23,6 @@ const nextConfiguration = {
     // remove this redirect in next pearapp release
     return [
       {
-        source: "/creator-troubleshooting",
-        destination: "/blog/introducing-pearai-creator-beta",
-        permanent: true,
-      },
-      {
         source: "/features/tab-autocomplete",
         destination: "/docs/tab-autocomplete",
         permanent: true,
