@@ -229,7 +229,7 @@ const faqData: FAQItem[] = [
       <p>
         See the{" "}
         <Link className="underline" href="/known-issues">
-        known issues section
+          known issues section
         </Link>
         .
       </p>

@@ -17,11 +17,9 @@ const CurrentKnownIssues: React.FC = () => {
         Current Known Issues
       </h1>
       <main>
-        {issues.map(
-          (issue, index) => {
-            return <IssueList key={index} {...issue} />
-          },
-        )}
+        {issues.map((issue, index) => {
+          return <IssueList key={index} {...issue} />;
+        })}
       </main>
     </div>
   );

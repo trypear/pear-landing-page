@@ -23,7 +23,10 @@ const issues: IssueEntry[] = [
     title: "Remote SSH not supported",
     description: (
       <>
-        <p>Currently PearAI does not support remote SSH. We plan on supporting this in the near future.</p>
+        <p>
+          Currently PearAI does not support remote SSH. We plan on supporting
+          this in the near future.
+        </p>
       </>
     ),
     repositoryId: "pearai-app",
@@ -34,7 +37,10 @@ const issues: IssueEntry[] = [
     title: "Liveshare not supported",
     description: (
       <>
-        <p>Currently PearAI does not support Liveshare extension. We plan on supporting this in the near future.</p>
+        <p>
+          Currently PearAI does not support Liveshare extension. We plan on
+          supporting this in the near future.
+        </p>
       </>
     ),
     repositoryId: "pearai-app",

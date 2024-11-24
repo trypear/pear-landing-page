@@ -70,18 +70,16 @@ export const IssueList: React.FC<IssueItemProps> = ({
             {severity && <div className="mr-3">{getSeverityIcon()}</div>}
             {/* Issue Title */}
             <h3 className="text-xl font-bold text-gray-900">
-              <p>
-                {title}
-              </p>
+              <p>{title}</p>
             </h3>
           </div>
 
           {/* Date */}
           {date && (
-          <div className="mt-2 text-sm text-gray-500 sm:mt-0">
-            <time dateTime={date}>{date}</time>
-            <span className="ml-2">({getTimePassed(date)})</span>
-          </div>
+            <div className="mt-2 text-sm text-gray-500 sm:mt-0">
+              <time dateTime={date}>{date}</time>
+              <span className="ml-2">({getTimePassed(date)})</span>
+            </div>
           )}
         </div>
         {/* Severity Label */}
