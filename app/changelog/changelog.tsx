@@ -33,10 +33,12 @@ const updates: ChangelogEntry[] = [
         <h2 className="mt-6 text-xl font-semibold">New Features 🎉</h2>
         <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
           <li>
-            <strong>PearAI Creator:</strong> No-code feature for direct codebase modifications. Aider integration!
+            <strong>PearAI Creator:</strong> No-code feature for direct codebase
+            modifications. Aider integration!
           </li>
           <li>
-            <strong>PearAI Search:</strong> Integrated Perplexity for up-to-date AI web search
+            <strong>PearAI Search:</strong> Integrated Perplexity for up-to-date
+            AI web search
           </li>
           <li>
             <strong>PearAI Chat:</strong> multiple bug fixes
@@ -45,13 +47,19 @@ const updates: ChangelogEntry[] = [
 
         <h2 className="mt-6 text-xl font-semibold">Improvements 🚀</h2>
         <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
-          <li>Major changes to the app onboarding experience with interactive tutorials</li>
+          <li>
+            Major changes to the app onboarding experience with interactive
+            tutorials
+          </li>
           <li>New inventory settings page for integration management</li>
-          <li>Completly redesigned the landing page home page. It looks so nice now 😍</li>
+          <li>
+            Completly redesigned the landing page home page. It looks so nice
+            now 😍
+          </li>
         </ul>
-        <div className="mt-4 relative w-full aspect-video max-w-[850px]">
-          <iframe 
-            width="100%" 
+        <div className="relative mt-4 aspect-video w-full max-w-[850px]">
+          <iframe
+            width="100%"
             height="100%"
             src="https://www.youtube.com/embed/UpxhRnKj5Ck?si=U8lTia4meAKXJMet"
             title="YouTube video player"
