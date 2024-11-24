@@ -53,7 +53,7 @@ const updates: ChangelogEntry[] = [
           </li>
           <li>New inventory settings page for integration management</li>
           <li>
-            Completly redesigned the landing page home page. It looks so nice
+            Completely redesigned the landing page home page. It looks so nice
             now 😍
           </li>
         </ul>
