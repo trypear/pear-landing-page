@@ -18,6 +18,55 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
+    date: "23 November 2024",
+    title: "Major Architecture Overhaul & PearAI Inventory: Creator, Search",
+    version: "v1.5.2",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">Architecture Overhaul 🏗️</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Custom communication protocol for multi-webview support</li>
+          <li>Redesigned app with inventory (overlay) capability</li>
+          <li>Optimized file indexing</li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">New Features 🎉</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>PearAI Creator:</strong> No-code feature for direct codebase modifications. Aider integration!
+          </li>
+          <li>
+            <strong>PearAI Search:</strong> Integrated Perplexity for up-to-date AI web search
+          </li>
+          <li>
+            <strong>PearAI Chat:</strong> multiple bug fixes
+          </li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">Improvements 🚀</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Major changes to the app onboarding experience with interactive tutorials</li>
+          <li>New inventory settings page for integration management</li>
+          <li>Completly redesigned the landing page home page. It looks so nice now 😍</li>
+        </ul>
+        <div className="mt-4 relative w-full aspect-video max-w-[850px]">
+          <iframe 
+            width="100%" 
+            height="100%"
+            src="https://www.youtube.com/embed/UpxhRnKj5Ck?si=U8lTia4meAKXJMet"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="rounded-xl border-4 border-green-200 shadow-lg shadow-green-500"
+          />
+        </div>
+      </>
+    ),
+  },
+  // =================================================================
+  {
     date: "9 October 2024",
     title: "Open Source Fixes",
     version: "v1.3.0",
