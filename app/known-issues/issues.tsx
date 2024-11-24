@@ -19,22 +19,26 @@ export type IssueEntry = {
 
 const issues: IssueEntry[] = [
   {
-    date: "2024-11-10",
-    title: "Remote SSH not working",
+    date: "",
+    title: "Remote SSH not supported",
     description: (
       <>
-        <p>Currently PearAI does not support remote SSH.</p>
-        <p>Impact:</p>
-        <ul className="mt-2 list-disc space-y-2 pl-5">
-          <li>
-            As of now, you can&apos;t use remote SSH to connect to your server.
-          </li>
-          <li>PearAI plans on supporting this in the near future.</li>
-        </ul>
+        <p>Currently PearAI does not support remote SSH. We plan on supporting this in the near future.</p>
       </>
     ),
     repositoryId: "pearai-app",
-    issueLink: "https://trypear.ai/issues",
+    issueLink: "",
+  },
+  {
+    date: "",
+    title: "Liveshare not supported",
+    description: (
+      <>
+        <p>Currently PearAI does not support Liveshare extension. We plan on supporting this in the near future.</p>
+      </>
+    ),
+    repositoryId: "pearai-app",
+    issueLink: "",
   },
 ];
 

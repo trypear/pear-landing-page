@@ -1,6 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { getTimePassed } from "@/utils/dateUtils";
 import { Info, AlertCircle, AlertTriangle, XCircle } from "lucide-react";
@@ -25,7 +24,6 @@ export const IssueList: React.FC<IssueItemProps> = ({
   date,
   title,
   description,
-  issueLink,
   severity,
   screenshot,
 }) => {
@@ -72,17 +70,19 @@ export const IssueList: React.FC<IssueItemProps> = ({
             {severity && <div className="mr-3">{getSeverityIcon()}</div>}
             {/* Issue Title */}
             <h3 className="text-xl font-bold text-gray-900">
-              <Link href={issueLink} className="hover:underline">
+              <p>
                 {title}
-              </Link>
+              </p>
             </h3>
           </div>
 
           {/* Date */}
+          {date && (
           <div className="mt-2 text-sm text-gray-500 sm:mt-0">
             <time dateTime={date}>{date}</time>
             <span className="ml-2">({getTimePassed(date)})</span>
           </div>
+          )}
         </div>
         {/* Severity Label */}
         {severity && (
