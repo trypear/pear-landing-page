@@ -95,7 +95,9 @@ export default function CreatorTroubleshooting() {
               <li className="mb-2">
                 <strong>Ensure pipx is in your PATH</strong>
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">sudo pipx ensurepath --global</span>
+                  <span className="font-mono">
+                    sudo pipx ensurepath --global
+                  </span>
                 </pre>
               </li>
               <li className="mb-2">
