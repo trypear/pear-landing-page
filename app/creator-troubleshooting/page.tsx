@@ -89,9 +89,7 @@ export default function CreatorTroubleshooting() {
               <li className="mb-2">
                 <strong>Install aider - </strong> Please run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">
-                    brew install aider
-                  </span>
+                  <span className="font-mono">brew install aider</span>
                 </pre>
               </li>
               <li>
