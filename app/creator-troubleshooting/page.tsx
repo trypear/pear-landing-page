@@ -87,9 +87,21 @@ export default function CreatorTroubleshooting() {
                 </pre>
               </li>
               <li className="mb-2">
+                <strong>Install pipx (if not already installed)</strong>
+                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
+                  <span className="font-mono">brew install pipx</span>
+                </pre>
+              </li>
+              <li className="mb-2">
+                <strong>Ensure pipx is in your PATH</strong>
+                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
+                  <span className="font-mono">sudo pipx ensurepath --global</span>
+                </pre>
+              </li>
+              <li className="mb-2">
                 <strong>Install aider - </strong> Please run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">brew install aider</span>
+                  <span className="font-mono">pipx install aider-chat</span>
                 </pre>
               </li>
               <li>
@@ -114,12 +126,22 @@ export default function CreatorTroubleshooting() {
                   </span>
                 </pre>
               </li>
+              <li>
+                <strong>Install pipx (if not already installed)</strong>
+                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
+                  <span className="font-mono">python -m pip install pipx</span>
+                </pre>
+              </li>
+              <li>
+                <strong>Ensure pipx is in your PATH</strong>
+                <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
+                  <span className="font-mono">pipx ensurepath</span>
+                </pre>
+              </li>
               <li className="mb-2">
                 <strong>Install aider - </strong> Please run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">
-                    python -m pip install -U aider-chat
-                  </span>
+                  <span className="font-mono">pipx install aider-chat</span>
                 </pre>
               </li>
               <li>
