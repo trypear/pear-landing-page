@@ -90,7 +90,7 @@ export default function CreatorTroubleshooting() {
                 <strong>Install aider - </strong> Please run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
                   <span className="font-mono">
-                    python -m pip install -U aider-chat
+                    brew install aider
                   </span>
                 </pre>
               </li>
