@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import TopUpModalNonSubscriber from "./topup-nonsub";
 
 type FreeTrialCardProps = {
   usage: UsageType;
@@ -112,6 +113,9 @@ export default function FreeTrialCard({
                   Open PearAI
                 </Link>
               </Button>
+            </div>
+            <div>
+              <TopUpModalNonSubscriber />
             </div>
             <Button variant="default" asChild>
               <Link href="/pricing">Subscribe Now</Link>
