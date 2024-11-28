@@ -560,7 +560,7 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
         </TooltipTrigger>
         <TooltipContent sideOffset={5}>
           <p className="max-w-[250px]">
-          Current built-in models for this plan include
+            Current built-in models for this plan include
             <ul className="list-disc pl-4">
               <li>Claude 3.5 Sonnet (new)</li>
               <li>GPT4o</li>
