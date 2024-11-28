@@ -60,9 +60,7 @@ export function TopUpModalNonSubscriber() {
   const [dontShowAgain, setDontShowAgain] = useState(false);
 
   const handleOpenChange = (open: boolean) => {
-    setTimeout(() => {
-      setIsOpen(open);
-    }, 0);
+    setIsOpen(open);
   };
 
   const handleButtonClick = (e: React.MouseEvent) => {
