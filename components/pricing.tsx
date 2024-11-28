@@ -32,6 +32,7 @@ import {
 import { Info } from "lucide-react";
 import Spinner from "./ui/spinner";
 import Footer from "./footer";
+import Link from "next/link";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
@@ -574,7 +575,7 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
             sizes. On average, this equates to around {pearCreditsCount(
               type,
             )}{" "}
-            requests{type === "free" && " for our current free trial"}.
+            requests{type === "free" && " for our current free trial"}. For more info on usage. see <Link className="text-primary-700 hover:text-primary-800" href="/docs/models-and-usage">here</Link>.
             {type !== "free" && (
               <>
                 <br /> <br />
