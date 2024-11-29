@@ -557,7 +557,7 @@ export const posts = [
             Run the installation script with superuser permissions:
         <pre
           class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
-        ><code class="language-bash">sudo ./pearai_manager.sh</code></pre>
+        ><code class="language-bash">bash pearai_manager.sh</code></pre>
           </li>
           <li>
             Select your desired option:
@@ -607,7 +607,7 @@ export const posts = [
         </p>
         <p class="mt-4 text-sm sm:text-base">
       This installation method has been tested on multiple Linux distributions,
-      including Arch Linux, Ubuntu 24, Ubuntu 22, and Fedora 40. It was compiled using GCC
+      including Arch Linux, Ubuntu 24, Ubuntu 22, Fedora 40 and NixOS. It was compiled using GCC
       10, so most distributions with this or newer version should be able to
       run PearAI without any issues.
         </p>
