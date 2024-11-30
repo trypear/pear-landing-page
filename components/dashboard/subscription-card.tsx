@@ -215,18 +215,22 @@ export default function SubscriptionCard({
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle>Upgrade Subscription Plan To Yearly</DialogTitle>
+                        <DialogTitle>
+                          Upgrade Subscription Plan To Yearly
+                        </DialogTitle>
                         <DialogDescription>
                           <br />
-                            This will bring you to the checkout page to upgrade your plan from monthly to yearly. For the details of the yearly plan, see the{" "}
-                            <a
-                              href="/pricing"
-                              target="_blank"
-                              className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-                            >
-                              pricing page
-                            </a>
-                            .
+                          This will bring you to the checkout page to upgrade
+                          your plan from monthly to yearly. For the details of
+                          the yearly plan, see the{" "}
+                          <a
+                            href="/pricing"
+                            target="_blank"
+                            className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                          >
+                            pricing page
+                          </a>
+                          .
                           <br />
                         </DialogDescription>
                       </DialogHeader>

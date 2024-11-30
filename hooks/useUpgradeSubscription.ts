@@ -27,7 +27,7 @@ export const useUpgradeSubscription = (
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           subscriptionId: subscription?.subscription_id,
-          annualPriceId: STRIPE_PRICE_IDS.ANNUAL, 
+          annualPriceId: STRIPE_PRICE_IDS.ANNUAL,
         }),
       });
 
@@ -38,16 +38,17 @@ export const useUpgradeSubscription = (
       }
 
       const res = await response.json();
-      const url = res.data.url
+      const url = res.data.url;
       if (url) {
         window.location.href = url;
       } else {
         throw new Error("No checkout URL received");
       }
-
     } catch (error) {
       console.error("Error upgrading subscription:", error);
-      toast.error("An error occurred while processing your upgrade. Please try again.");
+      toast.error(
+        "An error occurred while processing your upgrade. Please try again.",
+      );
     } finally {
       setIsUpgrading(false);
     }

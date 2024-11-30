@@ -11,24 +11,23 @@ export const metadata: Metadata = {
 
 export default function DashboardSuccess() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background">
-      <Card className="w-full max-w-md mx-4">
+    <div className="flex min-h-screen items-center justify-center bg-background">
+      <Card className="mx-4 w-full max-w-md">
         <CardContent className="pt-6 text-center">
           <div className="mb-6">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 mb-4">
-              <Check className="w-6 h-6 text-green-600 dark:text-green-400" />
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-100 dark:bg-green-900">
+              <Check className="h-6 w-6 text-green-600 dark:text-green-400" />
             </div>
-            <h1 className="text-2xl font-bold tracking-tighter mb-2">
+            <h1 className="mb-2 text-2xl font-bold tracking-tighter">
               Subscription Upgraded
             </h1>
             <p className="text-muted-foreground">
-              Thank you! Your subscription has been successfully upgraded to annual.
+              Thank you! Your subscription has been successfully upgraded to
+              annual.
             </p>
           </div>
           <Link href="/dashboard">
-            <Button className="w-full">
-              Return to Dashboard
-            </Button>
+            <Button className="w-full">Return to Dashboard</Button>
           </Link>
         </CardContent>
       </Card>
