@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function HackathonPage() {
   return (
-    <div className="light relative flex h-screen w-screen justify-center overflow-hidden bg-gray-900">
+    <div className="light relative flex h-screen w-screen justify-center overflow-hidden bg-black pt-12">
       <img
         src="/images/pearai-hackathon-mobile.svg"
         alt="PearAI Hackathon"
