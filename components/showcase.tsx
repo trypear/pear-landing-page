@@ -149,7 +149,7 @@ export default function Showcase() {
           </Button>
           <a
             href="https://trypear.ai/docs/contributors"
-            className="mt-2 text-xs font-medium text-black underline decoration-dashed underline-offset-1 hover:decoration-black/20 dark:text-black"
+            className="mt-2 text-xs font-medium text-black underline underline-offset-4 decoration-[0.5px] hover:decoration-2 transition-all dark:text-black"
           >
             Interested in contributing ?
           </a>
