@@ -50,15 +50,15 @@ export const platformVersions: Record<string, VersionInfo> = {
   },
   "Mac (M chip)": {
     version: "v1.5.4",
-    releaseDate: "Nov 29, 2024",
+    releaseDate: "Dec 1, 2024",
   },
   "Mac (Intel)": {
-    version: "v1.5.3",
-    releaseDate: "Nov 24, 2024",
+    version: "v1.5.4",
+    releaseDate: "Dec 1, 2024",
   },
   Linux: {
-    version: "v1.5.2",
-    releaseDate: "Nov 28, 2024",
+    version: "v1.5.4",
+    releaseDate: "Dec 1, 2024",
   },
 };
 
@@ -296,6 +296,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                             </Fragment>
                           ),
                         )}
+                        <Link href="/changelog" className="text-primary-700 hover:text-primary-600 col-span-2 text-center">Changelog</Link>
                       </div>
                     </TooltipContent>
                   </Tooltip>
