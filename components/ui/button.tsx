@@ -19,6 +19,8 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         github:
           "rounded-xl bg-gray-100 hover:bg-gray-200 border-gray-300 text-white hover:border-gray-400 hover:shadow-sm",
+        white:
+          "rounded-xl bg-white-50 text-black hover:shadow-sm",
         authgroup:
           "rounded-full text-gray-600 hover:text-gray-700 bg-gray-500/10 hover:bg-gray-500/20 hover:shadow-inset-gray-400-20",
         icon: "rounded-full bg-secondary text-secondary-foreground hover:bg-secondary-300/10",
