@@ -296,7 +296,12 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                             </Fragment>
                           ),
                         )}
-                        <Link href="/changelog" className="text-primary-700 hover:text-primary-600 col-span-2 text-center">Changelog</Link>
+                        <Link
+                          href="/changelog"
+                          className="col-span-2 text-center text-primary-700 hover:text-primary-600"
+                        >
+                          Changelog
+                        </Link>
                       </div>
                     </TooltipContent>
                   </Tooltip>
