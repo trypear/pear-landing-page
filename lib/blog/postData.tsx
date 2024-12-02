@@ -1247,7 +1247,7 @@ export const posts = [
           </li>
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up Inventory Settings (CMD/CTRL + Shift + 1).</li>
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Locate the Memory card in the inventory, and flick the toggle to on.</li>
-          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">You’re all set! PearAI Memory will now automatically get to know you as you interact with PearAI Chat. Note that you can access the Memory control panel to add, edit, or delete memories (cmd/ctrl + 4).</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">You’re all set! PearAI Memory will now automatically get to know you as you interact with PearAI Chat. Note that you can access the Memory control panel to add, edit, or delete memories (CMD/CTRL + 4).</li>
         </ol>
       </section>
       &nbsp;
