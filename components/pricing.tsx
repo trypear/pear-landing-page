@@ -32,6 +32,7 @@ import {
 import { Info } from "lucide-react";
 import Spinner from "./ui/spinner";
 import Footer from "./footer";
+import Link from "next/link";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
@@ -44,20 +45,20 @@ type VersionInfo = {
 
 export const platformVersions: Record<string, VersionInfo> = {
   Windows: {
-    version: "v1.5.1",
-    releaseDate: "Nov 12, 2024",
+    version: "v1.5.3",
+    releaseDate: "Nov 24, 2024",
   },
   "Mac (M chip)": {
-    version: "v1.5.1",
-    releaseDate: "Nov 17, 2024",
+    version: "v1.5.4",
+    releaseDate: "Dec 1, 2024",
   },
   "Mac (Intel)": {
-    version: "v1.5.1",
-    releaseDate: "Nov 17, 2024",
+    version: "v1.5.4",
+    releaseDate: "Dec 1, 2024",
   },
   Linux: {
-    version: "v1.5.0",
-    releaseDate: "Nov 12, 2024",
+    version: "v1.5.4",
+    releaseDate: "Dec 1, 2024",
   },
 };
 
@@ -295,6 +296,12 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                             </Fragment>
                           ),
                         )}
+                        <Link
+                          href="/changelog"
+                          className="col-span-2 text-center text-primary-700 hover:text-primary-600"
+                        >
+                          Changelog
+                        </Link>
                       </div>
                     </TooltipContent>
                   </Tooltip>
@@ -560,14 +567,29 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
         </TooltipTrigger>
         <TooltipContent sideOffset={5}>
           <p className="max-w-[250px]">
-            Current models include Claude 3.5 Sonnet, GPT4o, Gemini 1.5 Pro, and
-            Claude 3.5 Haiku.
-            <br /> <br />
+            Current built-in models for this plan include
+            <ul className="list-disc pl-4">
+              <li>Claude 3.5 Sonnet (new)</li>
+              <li>GPT4o</li>
+              <li>GPT o1-preview</li>
+              <li>GPT o1-mini</li>
+              <li>Gemini 1.5 Pro</li>
+              <li>Claude 3.5 Haiku (unlimited)</li>
+            </ul>
+            <br />
             Your PearAI Credits usage depend on your prompt input and output
             sizes. On average, this equates to around {pearCreditsCount(
               type,
             )}{" "}
-            requests{type === "free" && " for our current free trial"}.
+            requests{type === "free" && " for our current free trial"}. For more
+            info on usage. see{" "}
+            <Link
+              className="text-primary-700 hover:text-primary-800"
+              href="/docs/models-and-usage"
+            >
+              here
+            </Link>
+            .
             {type !== "free" && (
               <>
                 <br /> <br />

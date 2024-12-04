@@ -203,7 +203,7 @@ export default function SubscriptionCard({
                 <p className="text-sm text-muted-foreground">
                   {capitalizeInital(subscription.pricing_tier)}
                 </p>
-                {/* {subscription.pricing_tier == "monthly" && (
+                {subscription.pricing_tier == "monthly" && (
                   <Dialog
                     open={isUpgradeDialogOpen}
                     onOpenChange={setIsUpgradeDialogOpen}
@@ -215,31 +215,23 @@ export default function SubscriptionCard({
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle>Upgrade</DialogTitle>
+                        <DialogTitle>
+                          Upgrade Subscription Plan To Yearly
+                        </DialogTitle>
                         <DialogDescription>
-                          Are you sure you want to upgrade your subscription to
-                          the Yearly Tier?
                           <br />
+                          This will bring you to the checkout page to upgrade
+                          your plan from monthly to yearly. For the details of
+                          the yearly plan, see the{" "}
+                          <a
+                            href="/pricing"
+                            target="_blank"
+                            className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                          >
+                            pricing page
+                          </a>
+                          .
                           <br />
-                          <b>
-                            This change will take effect immediately, and be
-                            charged on your current payment method. The price is
-                            reflected on the{" "}
-                            <a
-                              href="/pricing"
-                              target="_blank"
-                              className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-                            >
-                              pricing page
-                            </a>
-                            .
-                          </b>
-                          <br />
-                          <br />
-                          We&apos;ll refund the remaining funds from the current
-                          monthly subscription depending on the days remaining
-                          on your cycle. You will not be able to downgrade
-                          afterwards.
                         </DialogDescription>
                       </DialogHeader>
                       <DialogFooter>
@@ -255,12 +247,12 @@ export default function SubscriptionCard({
                             handleUpgradeSubscriptionClick();
                           }}
                         >
-                          {isUpgrading ? "Upgrading..." : "Confirm Upgrade"}
+                          {isUpgrading ? "Upgrading..." : "Upgrade"}
                         </Button>
                       </DialogFooter>
                     </DialogContent>
                   </Dialog>
-                )} */}
+                )}
               </div>
             </div>
           </div>

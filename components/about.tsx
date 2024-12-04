@@ -15,10 +15,10 @@ type VideoCardProps = VideoData;
 
 const videoData: VideoData[] = [
   {
-    src: "https://www.youtube.com/embed/Rzk3GmXUySs?si=2Y25oMlhbQWZpu1K",
+    src: "https://www.youtube.com/embed/qtGPQ5AKnm4?si=WZxlmB0kENB_WGiI",
     title: "Frying Pan's Latest YouTube video",
     description:
-      "Pan shows the journey after just starting to build out PearAI. The product is described and a demo is shown. You also get to see a sneak peak into the founders' week, and see the difficulties, the highs and lows we experience, all in NYC.",
+      "Demo of the new PearAI Inventory, a quick-access overlay for all AI tools. In this video, PearAI Creator and Search are shown.",
   },
   {
     src: "https://www.youtube.com/embed/hHm4mtIp6K0",
@@ -91,7 +91,7 @@ const AboutComponent: React.FC = () => {
       </div>
 
       <div className="m-auto mb-8 flex max-w-4xl items-center justify-center px-4">
-        <Tweet id="1825456010862956844" components={components} />
+        <Tweet id="1856441845880107408" components={components} />
       </div>
 
       <div className="m-auto mb-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
