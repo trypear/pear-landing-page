@@ -1,57 +1,70 @@
-// components/opensource/index.tsx
-import { BUNNY_CDN_HOST } from "@/utils/constants";
-import { Check } from "lucide-react";
-import Image from "next/image";
+"use client";
+
+import { motion } from "framer-motion";
+import { Github, ShieldCheck, Handshake, Server } from "lucide-react";
 
 export default function OpenSource() {
+  const transparencyFeatures = [
+    {
+      icon: <Github className="h-6 w-6" />,
+      title: "Public Repositories",
+      description: "See every line of our code on our public repos.",
+    },
+    {
+      icon: <ShieldCheck className="h-6 w-6" />,
+      title: "Code Privacy",
+      description: "We never store your code, ensuring complete privacy.",
+    },
+    {
+      icon: <Handshake className="h-6 w-6" />,
+      title: "Zero Data Retention",
+      description: "ZDR policy with Anthropic for enhanced security.",
+    },
+    {
+      icon: <Server className="h-6 w-6" />,
+      title: "Self-Hosting Option",
+      description: "Self-host server available for Enterprise users.",
+    },
+  ];
+
   return (
-    <div className="mx-6">
-      <section className="relative mx-auto flex max-w-3xl overflow-hidden rounded-xl border-2 border-gray-200 py-6 dark:border-gray-50 lg:max-w-[1049px]">
-        <div className="absolute inset-0">
-          <Image
-            src={`${BUNNY_CDN_HOST}/opensource-bg.png`}
-            alt="Background"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="container relative mx-auto px-4">
-          <div className="mx-auto max-w-3xl py-4 text-center">
-            <h2 className="mb-2 text-4xl font-bold text-black md:text-4xl">
-              Open source is{" "}
-              <span className="font-bold text-white-50 drop-shadow-[0_0_5px_rgba(64,203,160,255)]">
-                transparency.
-              </span>
-            </h2>
-            <div className="flex flex-col items-center space-y-2">
-              <div></div>
-              <div>
-                <div className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-5 w-5 text-green-500" />
-                  <p className="text-black">
-                    See every line on our public repos.
+    <div className="mx-auto max-w-5xl py-16">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="mt-2 rounded-2xl bg-gradient-to-br from-emerald-400 via-teal-400 to-cyan-500 p-8 md:p-12"
+      >
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-12 text-center text-3xl font-bold text-emerald-900 md:text-4xl">
+            Open source is{" "}
+            <span className="text-emrald-700 animate-pulse">transparency.</span>
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2">
+            {transparencyFeatures.map((feature, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.7 + index * 0.1 }}
+                className="flex items-start gap-4"
+              >
+                <div className="bg-white/20 rounded-full p-2 text-emerald-900">
+                  {feature.icon}
+                </div>
+                <div>
+                  <h3 className="mb-2 text-lg font-semibold text-emerald-900">
+                    {feature.title}
+                  </h3>
+                  <p className="text-md text-emerald-800">
+                    {feature.description}
                   </p>
                 </div>
-                <div className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-5 w-5 text-green-500" />
-                  <p className="text-black">We never store your code.</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-5 w-5 text-green-500" />
-                  <p className="text-black">
-                    Zero Data Retention policy with Anthropic.
-                  </p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Check className="mt-0.5 h-5 w-5 text-green-500" />
-                  <p className="text-black">Self-host server for enterprise.</p>
-                </div>
-              </div>
-              <div></div>
-            </div>
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </motion.div>
     </div>
   );
 }
