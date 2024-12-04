@@ -156,7 +156,9 @@ export default function Showcase() {
                 </TooltipTrigger>
                 <TooltipContent side="bottom" className="max-w-sm">
                   <p className="max-w-xs text-sm font-normal">
-                    PearAI is a fork of VSCode, allowing you to retain familiarity of functionalities. We provide a one-click transition to port all your VSCode settings automatically.
+                    PearAI is a fork of VSCode, allowing you to retain
+                    familiarity of functionalities. We provide a one-click
+                    transition to port all your VSCode settings automatically.
                   </p>
                 </TooltipContent>
               </Tooltip>
