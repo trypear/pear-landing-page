@@ -16,10 +16,6 @@ const TooltipTrigger = React.forwardRef<
   <TooltipPrimitive.Trigger
     ref={ref}
     {...props}
-    onClick={(e) => {
-      e.preventDefault();
-      props.onClick?.(e);
-    }}
   />
 ));
 TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName;
