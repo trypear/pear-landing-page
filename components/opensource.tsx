@@ -38,7 +38,7 @@ export default function OpenSource() {
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="mt-0.5 h-5 w-5 text-green-500" />
-                  <p className="text-black text-left">
+                  <p className="text-left text-black">
                     Zero Data Retention policy with Anthropic.
                   </p>
                 </div>
