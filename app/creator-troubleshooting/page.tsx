@@ -164,6 +164,24 @@ export default function CreatorTroubleshooting() {
           </div>
         </div>
 
+        {/* Already Installed But Not Working */}
+        <div className="mb-8 rounded-xl bg-secondary-300/10 p-6">
+          <h2 className="mb-4 text-2xl font-semibold">
+            Aider Already Installed But Not Working
+          </h2>
+          <p className="mb-4">
+            If you already have aider installed but PearAI Creator is still not working, this is likely due to aider being installed with a different package manager than pipx. Please follow these steps to fix the issue:
+          </p>
+          <ol className="list-inside list-decimal">
+            <li className="mb-4">
+              <strong>First, uninstall your existing aider installation</strong>
+            </li>
+            <li className="mb-2">
+              <strong>Then, follow the Manual Installation Instructions above</strong> for your operating system to ensure a clean installation of the correct version
+            </li>
+          </ol>
+        </div>
+
         <div className="rounded-xl bg-secondary-300/10 p-6">
           <p>
             If you followed the above instructions correctly and restarted
