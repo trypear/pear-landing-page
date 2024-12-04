@@ -80,10 +80,10 @@ export default function CreatorTroubleshooting() {
                 </pre>
               </li>
               <li className="mb-2">
-                <strong>Install Python (if not already installed) - </strong>{" "}
+                <strong>Install Python 3.9 (if not already installed) - </strong>{" "}
                 Run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">brew install python@3</span>
+                  <span className="font-mono">brew install python@3.9</span>
                 </pre>
               </li>
               <li className="mb-2">
@@ -103,7 +103,7 @@ export default function CreatorTroubleshooting() {
               <li className="mb-2">
                 <strong>Install aider - </strong> Please run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">pipx install aider-chat</span>
+                  <span className="font-mono">python3.9 -m pipx install --python python3.9 aider-chat==0.65.0</span>
                 </pre>
               </li>
               <li>
@@ -120,7 +120,7 @@ export default function CreatorTroubleshooting() {
                 <strong>Open a Command Prompt or PowerShell window</strong>
               </li>
               <li className="mb-2">
-                <strong>Install Python (if not already installed) - </strong>{" "}
+                <strong>Install Python 3.9 (if not already installed) - </strong>{" "}
                 Run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
                   <span className="font-mono">
@@ -131,7 +131,7 @@ export default function CreatorTroubleshooting() {
               <li>
                 <strong>Install pipx (if not already installed)</strong>
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">python -m pip install pipx</span>
+                  <span className="font-mono">python3.9 -m pip install --user pipx</span>
                 </pre>
               </li>
               <li>
@@ -143,7 +143,7 @@ export default function CreatorTroubleshooting() {
               <li className="mb-2">
                 <strong>Install aider - </strong> Please run:
                 <pre className="bg-secondary mt-1 rounded-lg border-2 border-solid border-input p-2">
-                  <span className="font-mono">pipx install aider-chat</span>
+                  <span className="font-mono">pipx install --python python3.9 aider-chat==0.65.0</span>
                 </pre>
               </li>
               <li>
