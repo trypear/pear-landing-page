@@ -26,7 +26,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
 import { InfoIcon } from "lucide-react";
@@ -60,6 +60,20 @@ export default function SubscriptionCard({
     user,
     subscription,
   );
+  const timeLeftUntilRefill = useMemo(() => {
+    if (!usage?.ttl || usage?.ttl < 0) return "-";
+    const seconds = usage.ttl;
+    const hours = seconds / 3600;
+    const days = hours / 24;
+  
+    if (days >= 1) {
+      return `${Math.floor(days)} days left`;
+    } else if (hours >= 1) {
+      return `${Math.floor(hours)} hours left`;
+    } else {
+      return `${Math.floor(seconds)} seconds left`;
+    }
+  }, [usage])
 
   const handleCancelClick = () => {
     if (isCanceled) {
@@ -165,7 +179,7 @@ export default function SubscriptionCard({
                     : `${Math.min(usage?.percent_credit_used ?? 0, 100)}% of PearAI Credits used`}
                 </p>
                 <p className="text-right text-sm text-muted-foreground">
-                  Credits refill monthly
+                  Credits refills monthly ({timeLeftUntilRefill})
                 </p>
               </div>
               {usage.remaining_topup_credits !== undefined &&
