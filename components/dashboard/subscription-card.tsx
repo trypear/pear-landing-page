@@ -65,7 +65,7 @@ export default function SubscriptionCard({
     const seconds = usage.ttl;
     const hours = seconds / 3600;
     const days = hours / 24;
-  
+
     if (days >= 1) {
       return `${Math.floor(days)} days left`;
     } else if (hours >= 1) {
@@ -73,7 +73,7 @@ export default function SubscriptionCard({
     } else {
       return `${Math.floor(seconds)} seconds left`;
     }
-  }, [usage])
+  }, [usage]);
 
   const handleCancelClick = () => {
     if (isCanceled) {
