@@ -1201,4 +1201,57 @@ export const posts = [
       <p class="text-sm text-gray-500 italic">*View PearAI Disclaimer page <a href="/disclaimer" class="text-primary-600 hover:underline">here</a>.</p>
     </article>`,
   },
+  {
+    title: "Introducing PearAI Memory (Beta) — Powered By Mem0*",
+    url: "/blog/introducing-pearai-memory-beta",
+    excerpt:
+      "PearAI Memory adds a memory layer to your conversation with PearAI Chat. It can intelligently remember facts about you based on your prompt and LLM response.",
+    date: "2024-12-01",
+    author: "PearAI Team",
+    readingTime: "2 min",
+    thumbnail: "/images/og-image.png", // Make sure this image exists
+    tags: ["PearAI Memory", "mem0", "feature announcement", "beta"],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+      <section class="space-y-6">
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+          PearAI Memory adds a memory layer to your conversation with PearAI Chat. It can intelligently remember facts about you based on your prompt and LLM response.
+        </p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The new Memory integration enables a more personalized and context-aware interaction, allowing PearAI to remember your coding preferences and codebase settings across sessions.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI is an open-source AI code editor. PearAI Memory is the latest integration in the suite of tools currently available on PearAI, alongside Search and Creator.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI Memory is powered by <a href="https://mem0.ai/" class="text-primary-600 hover:underline">mem0</a>, a self-improving memory layer, which adapts to and learns from your interactions with the LLM. </p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
+        <div class="aspect-video">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/kLYhV0Fu3xY"
+            title="PearAI Creator (Powered by aider) Beta Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          How to Use PearAI Memory (for free!)
+        </h2>
+        <ol class="list-decimal pl-6 space-y-4">
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+            If you already have PearAI installed, simply go to "Help" at the top and search "Update". It will automatically update you to the newest version of PearAI.
+            <br/><br/>
+            Otherwise, download the new PearAI here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
+          </li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up Inventory Settings (CMD/CTRL + Shift + 1).</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Locate the Memory card in the inventory, and flick the toggle to on.</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">You’re all set! PearAI Memory will now automatically get to know you as you interact with PearAI Chat. Note that you can access the Memory control panel to add, edit, or delete memories (CMD/CTRL + 4).</li>
+        </ol>
+      </section>
+      &nbsp;
+      <p class="text-sm text-gray-500 italic">*View PearAI Disclaimer page <a href="/disclaimer" class="text-primary-600 hover:underline">here</a>.</p>
+    </article>`,
+  },
 ];
