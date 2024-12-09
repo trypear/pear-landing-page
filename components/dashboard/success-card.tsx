@@ -8,8 +8,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { isAllowedUrl } from "@/lib/utils";
 import { toast } from "sonner";
+import { DEFAULT_OPEN_APP_CALLBACK } from "@/utils/constants";
 
-const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
+
 export const SuccessCard = ({
   openAppQueryParams,
 }: {

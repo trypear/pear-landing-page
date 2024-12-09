@@ -2,6 +2,7 @@ import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
 import { createClient } from "@/utils/supabase/server";
 import PricingSuccess from "@/components/pricing-success";
+import { getUserAndSubscription } from "@/lib/data-fetching";
 
 export const metadata: Metadata = constructMetadata({
   title: "Pricing success",
@@ -11,10 +12,10 @@ export const metadata: Metadata = constructMetadata({
 
 export default async function Pricing() {
   const supabase = createClient();
-
+  const { openAppQueryParams } = await getUserAndSubscription();
   return (
     <>
-      <PricingSuccess />
+      <PricingSuccess openAppQueryParams={openAppQueryParams} />
     </>
   );
 }

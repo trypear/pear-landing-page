@@ -34,6 +34,7 @@ import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
 import TopUpModal from "../topup-modal";
+import { DEFAULT_OPEN_APP_CALLBACK } from "@/utils/constants";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
@@ -43,7 +44,7 @@ type SubscriptionCardProps = {
   loading: boolean;
 };
 
-const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
+
 
 export default function SubscriptionCard({
   subscription,
