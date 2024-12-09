@@ -11,6 +11,7 @@ export const TEST_MODE_ENABLED = ["true", "True", "TRUE"].includes(
 );
 
 export const BUNNY_CDN_HOST = "https://pearai.b-cdn.net";
+export const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
 
 export const CONTACT_EMAIL = "pear@trypear.ai";
 

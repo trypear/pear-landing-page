@@ -11,6 +11,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { DEFAULT_OPEN_APP_CALLBACK } from "@/utils/constants";
 
 type FreeTrialCardProps = {
   usage: UsageType;
@@ -18,7 +19,7 @@ type FreeTrialCardProps = {
   loading: boolean;
 };
 
-const DEFAULT_OPEN_APP_CALLBACK = "pearai://pearai.pearai/auth";
+
 const DEFAULT_FREE_TRIAL_MAX_QUOTA = 50; // Sync with "FREE_TRIAL_MAX_QUOTA" env var from server
 
 export default function FreeTrialCard({
