@@ -21,12 +21,15 @@ import {
 import { SignInFormData, signInSchema } from "@/utils/form-schema";
 import { useSearchParams } from "next/navigation";
 import { useToggle } from "@/hooks/useToggle";
+import { useSignUpUrl } from "@/hooks/useSigningUrl";
 
 export default function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // for handling callback URL
   const searchParams = useSearchParams();
-  const callbackForDesktopApp = searchParams?.get("callback") ?? "";
+  const callbackForDesktopApp = searchParams?.get("callback") || "";
+  const [signupURL] = useSignUpUrl();
 
   const form = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
@@ -212,7 +215,7 @@ export default function SignIn() {
             <div className="mt-6 text-center text-gray-600">
               Don&apos;t have an account?{" "}
               <Link
-                href="/signup"
+                href={signupURL}
                 className="text-gray-800 transition duration-150 ease-in-out hover:text-primary-800"
               >
                 Sign up
