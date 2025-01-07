@@ -44,8 +44,7 @@ export default function Disclaimer() {
       content: (
         <>
           PearAI Creator is currently powered by aider, an AI pair programming
-          tool. We have integrated aider&apos;s functionality into our UI/UX
-          with We have integrated{" "}
+          tool. We have integrated{" "}
           <a href="https://aider.chat/" className="text-gray-700 underline">
             aider&apos;s
           </a>{" "}
