@@ -18,6 +18,91 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
+    date: "26 December 2024",
+    title: "Developer Wrapped 2024 Release",
+    version: "v1.6.1",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li className="flex items-center gap-6">
+            <Image
+              src="/images/changelogs/wrapped.svg"
+              alt="PearAI v1.0.0 Dashboard"
+              width={800}
+              height={0}
+              sizes="100vw"
+              style={{
+                width: "8%",
+                height: "auto",
+                maxWidth: "850px",
+              }}
+            />
+            <span>
+              See how many lines of code you wrote in 2024
+              <br />
+              <Link href={"https://www.developerwrapped.com"} className="underline tracking-wide">www.developerwrapped.com</Link>
+            </span>
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "13 December 2024",
+    title: "Fast Apply: Powered by Relace",
+    version: "v1.6.0",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">New Features</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>Fast Apply using relace:</strong> apply code block to your files a lot faster and more accurately.
+          </li>
+          <Image
+            src="/images/changelogs/fastapply-relace.webp"
+            alt="PearAI v1.0.0 Dashboard"
+            width={800}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full max-w-[300px] rounded-xl border-4 border-green-200 shadow-lg shadow-green-500" // Added green hue border
+            style={{
+              width: "60%",
+              height: "auto",
+              maxWidth: "850px",
+            }}
+          />
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "6 December 2024",
+    title: "Added Mem0: Memory for your AI",
+    version: "v1.5.3 - v1.5.5",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">New Features</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>PearAI Memory:</strong> Integrated Mem0 for up-to-date
+            AI web search
+          </li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">Improvements</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            Aider Fixes
+          </li>
+          <li>removed automatic inclusion of active file and directory structure</li>
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
     date: "23 November 2024",
     title: "Major Architecture Overhaul & PearAI Inventory: Creator, Search",
     version: "v1.5.2",
