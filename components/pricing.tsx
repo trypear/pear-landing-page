@@ -45,11 +45,11 @@ type VersionInfo = {
 
 export const platformVersions: Record<string, VersionInfo> = {
   Windows: {
-    version: "v1.5.5",
+    version: "v1.6.1",
     releaseDate: "Dec 5, 2024",
   },
   "Mac (M chip)": {
-    version: "v1.5.5",
+    version: "v1.6.1",
     releaseDate: "Dec 5, 2024",
   },
   "Mac (Intel)": {
