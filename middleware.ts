@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
 
   // Check if the route should be protected
   const protectedPaths = ["/api"];
-  const excludedPaths = ["/api/download", "/api/version-info"];
+  const excludedPaths = ["/api/download", "/api/signup"];
   const isProtectedRoute = protectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path),
   );

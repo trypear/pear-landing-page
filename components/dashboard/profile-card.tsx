@@ -29,7 +29,9 @@ export default function ProfileCard({ user }: ProfileCardProps) {
         </Avatar>
         <div>
           <p className="text-lg font-medium">
-            {user?.user_metadata.full_name || "User"}
+            {user?.user_metadata.full_name ??
+              user?.user_metadata?.login_name ??
+              "User"}
           </p>
           <p className="text-muted-foreground">{user?.email}</p>
         </div>

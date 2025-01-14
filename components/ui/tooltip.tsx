@@ -12,16 +12,7 @@ const Tooltip = TooltipPrimitive.Root;
 const TooltipTrigger = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
->(({ ...props }, ref) => (
-  <TooltipPrimitive.Trigger
-    ref={ref}
-    {...props}
-    onClick={(e) => {
-      e.preventDefault();
-      props.onClick?.(e);
-    }}
-  />
-));
+>(({ ...props }, ref) => <TooltipPrimitive.Trigger ref={ref} {...props} />);
 TooltipTrigger.displayName = TooltipPrimitive.Trigger.displayName;
 
 const TooltipContent = React.forwardRef<
