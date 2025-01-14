@@ -1,21 +1,26 @@
 "use client";
+
 import { User } from "@supabase/supabase-js";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Subscription } from "@/types/subscription";
 import { toast } from "sonner";
 import ProfileCard from "@/components/dashboard/profile-card";
 import SubscriptionCard from "@/components/dashboard/subscription-card";
 import FreeTrialCard from "@/components/dashboard/freetrial-card";
+import { isAllowedUrl } from "@/lib/utils";
+import { UnsafeUrlError } from "@/types/url";
 
 type DashboardPageProps = {
   subscription: Subscription | null;
-  openAppQueryParams: string;
+  openAppQueryParams: string | URLSearchParams;
   user: User;
 };
 
 export type UsageType = {
   percent_credit_used: number | null;
+  remaining_topup_credits: number | null;
+  ttl: number | null;
 };
 
 export default function DashboardPage({
@@ -28,56 +33,92 @@ export default function DashboardPage({
   const [loading, setLoading] = useState(true);
   const [usage, setUsage] = useState<UsageType>({
     percent_credit_used: null,
+    remaining_topup_credits: null,
+    ttl: -4,
   });
 
-  useEffect(() => {
-    const handleCallbackForApp = async () => {
-      // Handle callback
-      const callback = searchParams?.get("callback");
-      if (callback) {
-        const decodedCallback = decodeURIComponent(callback);
-        const callbackUrl = new URL(decodedCallback);
-        const newSearchParams = new URLSearchParams(callbackUrl.search);
-        const openAppParams = new URLSearchParams(openAppQueryParams);
+  const handleCallbackForApp = useCallback(async () => {
+    const callback = searchParams?.get("callback");
+    if (!callback) return;
 
-        openAppParams.forEach((value, key) => {
-          newSearchParams.append(key, value);
-        });
+    try {
+      const decodedCallback = decodeURIComponent(callback);
+      const callbackUrl = new URL(decodedCallback);
 
-        callbackUrl.search = newSearchParams.toString();
-        const openAppUrl = callbackUrl.toString();
-
-        router.push(openAppUrl);
-
-        const currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.delete("callback");
-        window.history.replaceState({}, "", currentUrl.toString());
+      if (!isAllowedUrl(callbackUrl)) {
+        throw new UnsafeUrlError(decodedCallback);
       }
-    };
 
-    const getUserRequestsUsage = async () => {
-      try {
-        const response = await fetch("/api/dashboard-usage", {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
+      const newSearchParams = new URLSearchParams(callbackUrl.search);
+      const openAppParams =
+        typeof openAppQueryParams === "string"
+          ? new URLSearchParams(openAppQueryParams)
+          : openAppQueryParams;
 
-        if (!response.ok) {
-          toast.error("Failed to fetch requests usage.");
-          return;
-        }
-        const usage = await response.json();
-        setUsage(usage);
-      } catch (error) {
-        toast.error(`Error fetching requests usage: ${error}`);
-      } finally {
-        setLoading(false);
+      openAppParams.forEach((value, key) => {
+        newSearchParams.append(key, value);
+      });
+
+      callbackUrl.search = newSearchParams.toString();
+      const openAppUrl = callbackUrl.toString();
+
+      // Double-check the final URL
+      const finalUrl = new URL(openAppUrl);
+      if (!isAllowedUrl(finalUrl)) {
+        throw new UnsafeUrlError(openAppUrl);
       }
-    };
 
-    handleCallbackForApp();
-    getUserRequestsUsage();
+      router.push(openAppUrl);
+    } catch (error) {
+      if (error instanceof UnsafeUrlError) {
+        console.error(error.message);
+        toast.error(
+          "Unsafe link detected. Navigation blocked for your security.",
+        );
+      } else {
+        console.error("Error in handleCallbackForApp:", error);
+        toast.error(
+          "An error occurred while processing the link. Please try again.",
+        );
+      }
+    }
   }, [router, searchParams, openAppQueryParams]);
+
+  const getUserRequestsUsage = useCallback(async () => {
+    try {
+      const response = await fetch("/api/dashboard-usage", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch requests usage.");
+      }
+      const usageData: UsageType = await response.json();
+      setUsage(usageData);
+    } catch (error) {
+      console.error("Error fetching requests usage:", error);
+      toast.error("Failed to fetch usage data. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const runEffects = async () => {
+      try {
+        await handleCallbackForApp();
+        await getUserRequestsUsage();
+      } catch (error) {
+        console.error("Error in effect:", error);
+        toast.error(
+          "An unexpected error occurred. Please try refreshing the page.",
+        );
+      }
+    };
+
+    runEffects();
+  }, [handleCallbackForApp, getUserRequestsUsage]);
 
   return (
     <section className="relative">
@@ -91,7 +132,6 @@ export default function DashboardPage({
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
             <ProfileCard user={user} />
-            {/* Below commented out until we implement Free Trial */}
             {subscription ? (
               <SubscriptionCard
                 subscription={subscription}

@@ -1,122 +1,128 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import Link from "next/link";
-import PearHeroLogo from "@/components/ui/PearHeroLogo.svg";
-import PearDarkHeroLogo from "@/components/ui/PearDarkHeroLogo.svg";
-import { Button } from "@/components/ui/button";
-import { YCombinatorLogo } from "@/components/ui/icons";
+import { motion } from "framer-motion";
+import GridIllustration from "./ui/grid-illustration";
+import IntegrationBox from "./ui/integrationBox";
+import { ChevronRight as ChevronRightIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import ExpandableCards from "./ui/expandable-cards";
 
-const HeroTitle = ({ theme }: { theme: string }) => (
-  <>
-    <div className="hidden items-start sm:inline-block">
-      {theme === "dark" ? (
-        <PearDarkHeroLogo
-          width="26"
-          alt="PearAI Logo"
-          className="mb-4 mr-2 inline-flex"
-        />
-      ) : (
-        <PearHeroLogo
-          width="26"
-          alt="PearAI Logo"
-          className="mb-4 mr-2 inline-flex"
-        />
-      )}
-      <span className="text-primary-700">PearAI: </span>
-      The Open Source AI&#8209;Powered Code Editor
-    </div>
-
-    <div className="block items-start sm:hidden">
-      <div>
-        {theme === "dark" ? (
-          <PearDarkHeroLogo
-            width="20"
-            alt="PearAI Logo"
-            className="mb-3 mr-2 inline-flex"
-          />
-        ) : (
-          <PearHeroLogo
-            width="20"
-            alt="PearAI Logo"
-            className="mb-3 mr-2 inline-flex"
-          />
-        )}
-        <span className="text-primary-700">PearAI </span>
-      </div>
-      <span className="flex flex-col text-3xl">
-        <span>The Open Source</span> <span>AI&#8209;Powered Code Editor</span>
-      </span>
-    </div>
-  </>
-);
-
-const HeroDescription = () => (
-  <div className="mt-6 max-w-lg">
-    <p
-      className="mb-2 text-sm text-gray-500 sm:text-lg"
-      data-aos="fade-up"
-      data-aos-delay="200"
-    >
-      Speed up your development by integrating AI the correct way 🚀
-    </p>
-    <p
-      className="mb-4 text-sm text-gray-500 sm:text-lg"
-      data-aos="fade-up"
-      data-aos-delay="200"
-    >
-      Afraid of switching editors? No need, PearAI is a fork of VSCode and
-      Continue so you&apos;ll feel right at home 😏
-    </p>
-  </div>
-);
-const HeroButtons = () => {
-  return (
-    <div className="mx-auto flex max-w-sm flex-col items-center justify-center sm:max-w-none">
-      <div
-        data-aos="fade-up"
-        data-aos-delay="400"
-        className="flex flex-col items-center"
-      >
-        <Button asChild size="lg">
-          <Link href="/pricing">Download For Free</Link>
-        </Button>
-        <div
-          className="mt-10 flex items-center"
-          data-aos="fade-up"
-          data-aos-delay="500"
-        >
-          <span className="mr-[-0.1rem] mt-[0.12rem] text-sm text-gray-500">
-            Backed by
-          </span>
-          <Link
-            href="https://www.ycombinator.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <YCombinatorLogo className="h-14 w-auto" />
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
 export default function Hero() {
-  const { theme } = useTheme();
+  const textVariants = {
+    hidden: {
+      opacity: 0,
+      filter: "blur(20px)",
+    },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+    },
+  };
 
   return (
-    <section>
-      <div className="relative mx-auto mt-24 max-w-6xl px-4 sm:px-6">
-        <div className="relative pb-10 pt-24">
-          <div className="mx-auto flex max-w-3xl flex-col items-center pb-12 text-center md:pb-16">
-            <div className="text-4xl font-semibold text-gray-900 sm:text-5xl">
-              <HeroTitle theme={theme!} />
-            </div>
-            <HeroDescription />
-            <HeroButtons />
+    <>
+      <section className="relative">
+        {/* Background Dots */}
+        <div className="absolute inset-0 mx-auto max-w-7xl bg-dot-light-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] dark:bg-dot-dark-black lg:[mask-image:radial-gradient(ellipse_at_left,transparent_20%,black)]"></div>
+
+        <div className="relative mx-auto max-w-6xl px-6 py-20">
+          {/* Top Grid Illustration */}
+          <div className="absolute inset-0 w-full">
+            <GridIllustration />
           </div>
+
+          <div className="relative my-20 flex max-w-6xl flex-col items-center px-6 lg:items-start">
+            <motion.div
+              className="mb-3 flex scale-95 items-center justify-center gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.5,
+              }}
+            >
+              <div className="h-4 w-4 rounded-sm bg-[#f26625] text-center font-mono text-xs font-medium text-white-50 sm:h-5 sm:w-5 sm:rounded-md sm:text-sm">
+                Y
+              </div>
+              <a
+                href="https://www.ycombinator.com/companies/pearai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-xs font-semibold text-black/50 transition-colors hover:text-black/70 dark:text-gray-600 dark:hover:text-gray-500"
+              >
+                BACKED BY Y COMBINATOR{" "}
+                <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
+              </a>
+            </motion.div>
+
+            {/* Title */}
+            <motion.div
+              className="max-w-64 text-center text-4xl font-bold sm:max-w-[340px] sm:text-5xl lg:text-left"
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{
+                duration: 0.4,
+                ease: [0.4, 0, 0.2, 1],
+                delay: 0.2,
+              }}
+            >
+              <h1 className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
+                PearAI: The Open Source AI Code Editor
+              </h1>
+            </motion.div>
+
+            {/* Description */}
+            <motion.div
+              className="my-4 max-w-sm text-center sm:my-6 sm:max-w-md lg:text-left"
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1],
+                delay: 0.4,
+              }}
+            >
+              <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
+                Supercharge your development with an up-to-date, curated
+                inventory of the best AI tools, natively integrated for
+                effortless AI-powered coding.
+              </p>
+            </motion.div>
+
+            {/* Button */}
+            <motion.div
+              className="z-10 rounded-xl p-[2px]"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.5,
+                delay: 0.6,
+              }}
+            >
+              <Button asChild>
+                <Link href="/pricing">Download For Free</Link>
+              </Button>
+            </motion.div>
+          </div>
+
+          {/* Bottom Grid Illustration */}
+          <div className="absolute bottom-0 left-0 right-0 w-full scale-y-[-1] transform">
+            <GridIllustration />
+          </div>
+
+          {/* Hero Integrations */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <IntegrationBox />
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+      <ExpandableCards />
+    </>
   );
 }

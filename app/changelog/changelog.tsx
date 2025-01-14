@@ -18,6 +18,177 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
+    date: "26 December 2024",
+    title: "Developer Wrapped 2024 Release",
+    version: "v1.6.1",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li className="flex items-center gap-6">
+            <Image
+              src="/images/changelogs/wrapped.svg"
+              alt="PearAI v1.0.0 Dashboard"
+              width={800}
+              height={0}
+              sizes="100vw"
+              style={{
+                width: "8%",
+                height: "auto",
+                maxWidth: "850px",
+              }}
+            />
+            <span>
+              See how many lines of code you wrote in 2024
+              <br />
+              <Link
+                href={"https://www.developerwrapped.com"}
+                className="tracking-wide underline"
+              >
+                www.developerwrapped.com
+              </Link>
+            </span>
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "13 December 2024",
+    title: "Fast Apply: Powered by Relace",
+    version: "v1.6.0",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">New Features</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>Fast Apply using relace:</strong> apply code block to your
+            files a lot faster and more accurately.
+          </li>
+          <Image
+            src="/images/changelogs/fastapply-relace.webp"
+            alt="PearAI v1.0.0 Dashboard"
+            width={800}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full max-w-[300px] rounded-xl border-4 border-green-200 shadow-lg shadow-green-500" // Added green hue border
+            style={{
+              width: "60%",
+              height: "auto",
+              maxWidth: "850px",
+            }}
+          />
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "6 December 2024",
+    title: "Added Mem0: Memory for your AI",
+    version: "v1.5.3 - v1.5.5",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">New Features</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>PearAI Memory:</strong>
+            Integrated Mem0 for up-to-date AI web search
+          </li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">Improvements</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Aider Fixes</li>
+          <li>
+            removed automatic inclusion of active file and directory structure
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "23 November 2024",
+    title: "Major Architecture Overhaul & PearAI Inventory: Creator, Search",
+    version: "v1.5.2",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">Architecture Overhaul 🏗️</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Custom communication protocol for multi-webview support</li>
+          <li>Redesigned app with inventory (overlay) capability</li>
+          <li>Optimized file indexing</li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">New Features 🎉</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>PearAI Creator:</strong> No-code feature for direct codebase
+            modifications. Aider integration!
+          </li>
+          <li>
+            <strong>PearAI Search:</strong> Integrated Perplexity for up-to-date
+            AI web search
+          </li>
+          <li>
+            <strong>PearAI Chat:</strong> multiple bug fixes
+          </li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">Improvements 🚀</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            Major changes to the app onboarding experience with interactive
+            tutorials
+          </li>
+          <li>New inventory settings page for integration management</li>
+          <li>
+            Completely redesigned the landing page home page. It looks so nice
+            now 😍
+          </li>
+        </ul>
+        <div className="relative mt-4 aspect-video w-full max-w-[850px]">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/UpxhRnKj5Ck?si=U8lTia4meAKXJMet"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="rounded-xl border-4 border-green-200 shadow-lg shadow-green-500"
+          />
+        </div>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "9 October 2024",
+    title: "Open Source Fixes",
+    version: "v1.3.0",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">Fixes</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <Link
+              href="https://x.com/trypearai/status/1843336384322601366"
+              className="text-primary-600 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Added open source fixes
+            </Link>
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
     date: "18 September 2024",
     title: "File Creation + WSL Support",
     version: "v1.1.0 + v1.2.0",

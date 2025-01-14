@@ -10,6 +10,8 @@ export const TEST_MODE_ENABLED = ["true", "True", "TRUE"].includes(
   process.env.NEXT_PUBLIC_TEST_MODE_ENABLED ?? "",
 );
 
+export const BUNNY_CDN_HOST = "https://pearai.b-cdn.net";
+
 export const CONTACT_EMAIL = "pear@trypear.ai";
 
 const NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID = "price_1PZ9X608N4O93LU5yqMbGDtu";
@@ -22,6 +24,22 @@ const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID = "price_1PpZUO08N4O93LU5FYFUyh43";
 const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST =
   "price_1PZUSi08N4O93LU5UVdlkfp2";
 
+const NEXT_PUBLIC_STRIPE_TOP_UP_5_CREDITS_ID = "price_1Q8xJU08N4O93LU5jvruga2e";
+const NEXT_PUBLIC_STRIPE_TOP_UP_5_CREDITS_ID_TEST =
+  "price_1Q8vto08N4O93LU5avr7qtyJ";
+const NEXT_PUBLIC_STRIPE_TOP_UP_10_CREDITS_ID =
+  "price_1Q8xKo08N4O93LU5F4dbgrgz";
+const NEXT_PUBLIC_STRIPE_TOP_UP_10_CREDITS_ID_TEST =
+  "price_1Q8vqw08N4O93LU5wHyY1Dqg";
+const NEXT_PUBLIC_STRIPE_TOP_UP_15_CREDITS_ID =
+  "price_1Q8xKo08N4O93LU5dC9MUfYU";
+const NEXT_PUBLIC_STRIPE_TOP_UP_15_CREDITS_ID_TEST =
+  "price_1Q8AcI08N4O93LU5ALafGrbP";
+const NEXT_PUBLIC_STRIPE_TOP_UP_30_CREDITS_ID =
+  "price_1Q8xKo08N4O93LU5CGjikmTp";
+const NEXT_PUBLIC_STRIPE_TOP_UP_30_CREDITS_ID_TEST =
+  "price_1Q8vu608N4O93LU5z4DWu82N";
+
 export const STRIPE_PRICE_IDS = {
   WAITLIST: TEST_MODE_ENABLED
     ? NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID_TEST
@@ -32,6 +50,20 @@ export const STRIPE_PRICE_IDS = {
   ANNUAL: TEST_MODE_ENABLED
     ? NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST
     : NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID,
+  TOP_UP_CREDITS: {
+    5: TEST_MODE_ENABLED
+      ? NEXT_PUBLIC_STRIPE_TOP_UP_5_CREDITS_ID_TEST
+      : NEXT_PUBLIC_STRIPE_TOP_UP_5_CREDITS_ID,
+    10: TEST_MODE_ENABLED
+      ? NEXT_PUBLIC_STRIPE_TOP_UP_10_CREDITS_ID_TEST
+      : NEXT_PUBLIC_STRIPE_TOP_UP_10_CREDITS_ID,
+    15: TEST_MODE_ENABLED
+      ? NEXT_PUBLIC_STRIPE_TOP_UP_15_CREDITS_ID_TEST
+      : NEXT_PUBLIC_STRIPE_TOP_UP_15_CREDITS_ID,
+    30: TEST_MODE_ENABLED
+      ? NEXT_PUBLIC_STRIPE_TOP_UP_30_CREDITS_ID_TEST
+      : NEXT_PUBLIC_STRIPE_TOP_UP_30_CREDITS_ID,
+  } as Record<number, string>,
 };
 
 export const PRICING_TIERS: {
@@ -73,7 +105,7 @@ export const PRICING_TIERS: {
       features: [
         "Everything from monthly",
         "Priority for new feature requests",
-        "Early access to new features (e.g. o1-mini and o1-preview)",
+        "Early access to new features",
       ],
       buttonText: "Get Started",
       priceId: STRIPE_PRICE_IDS.ANNUAL,
@@ -124,8 +156,16 @@ export const footerSections = [
         href: "/privacy",
       },
       {
+        text: "App Privacy Policy",
+        href: "/privacy-app",
+      },
+      {
         text: "Terms of Service",
         href: "/terms-of-service",
+      },
+      {
+        text: "Disclaimer",
+        href: "/disclaimer",
       },
     ],
   },
@@ -174,7 +214,7 @@ export const footerSections = [
 export const socialMediaLinks = [
   {
     icon: GitHubLogo,
-    link: "https://github.com/trypear/pearai-app",
+    link: "https://github.com/trypear/pearai-master",
   },
   {
     icon: DiscordLogo,

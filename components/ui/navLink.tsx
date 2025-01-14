@@ -40,7 +40,7 @@ const Navigation: React.FC = () => {
     { label: "About", path: "/about", isExternal: false },
     {
       label: "GitHub",
-      path: "https://github.com/trypear/pearai-app",
+      path: "https://github.com/trypear/pearai-master",
       isExternal: true,
     },
     {

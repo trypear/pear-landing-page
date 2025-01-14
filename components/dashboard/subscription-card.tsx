@@ -20,18 +20,25 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useState } from "react";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { useMemo, useState } from "react";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
-import { Info } from "lucide-react";
+import { InfoIcon } from "lucide-react";
 import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
+import TopUpModal from "../topup-modal";
 
 type SubscriptionCardProps = {
   subscription: Subscription | null;
   usage?: UsageType;
-  openAppQueryParams?: string;
+  openAppQueryParams?: string | URLSearchParams;
   user: User;
   loading: boolean;
 };
@@ -53,6 +60,20 @@ export default function SubscriptionCard({
     user,
     subscription,
   );
+  const timeLeftUntilRefill = useMemo(() => {
+    if (!usage?.ttl || usage?.ttl < 0) return "-";
+    const seconds = usage.ttl;
+    const hours = seconds / 3600;
+    const days = hours / 24;
+
+    if (days >= 1) {
+      return `${Math.floor(days)} days left`;
+    } else if (hours >= 1) {
+      return `${Math.floor(hours)} hours left`;
+    } else {
+      return `${Math.floor(seconds)} seconds left`;
+    }
+  }, [usage]);
 
   const handleCancelClick = () => {
     if (isCanceled) {
@@ -141,7 +162,7 @@ export default function SubscriptionCard({
                     <strong>
                       {usage?.percent_credit_used != null
                         ? `${Math.min(usage.percent_credit_used, 100)}%`
-                        : "Cannot find remaining percentage. Please contact PearAI support."}
+                        : "Usage info not found. Contact PearAI support"}
                     </strong>
                   )}
                 </p>
@@ -158,19 +179,45 @@ export default function SubscriptionCard({
                     : `${Math.min(usage?.percent_credit_used ?? 0, 100)}% of PearAI Credits used`}
                 </p>
                 <p className="text-right text-sm text-muted-foreground">
-                  Credits refill monthly
+                  Credits refills monthly ({timeLeftUntilRefill})
                 </p>
               </div>
+              {usage.remaining_topup_credits !== undefined &&
+                usage.remaining_topup_credits! > 0 && (
+                  <div className="mt-4 flex justify-between">
+                    <div className="flex items-center">
+                      <p className="font-medium">Topup Credits</p>
+                      <TooltipProvider delayDuration={0}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
+                          </TooltipTrigger>
+                          <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
+                            <p>
+                              Top-up credit does not expire and is utilized only
+                              after the monthly quota is reached.
+                            </p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {loading
+                        ? "-"
+                        : `$${Math.floor(usage.remaining_topup_credits! * 100) / 100} remaining`}
+                    </p>
+                  </div>
+                )}
             </div>
           )}
           <div className="mb-4">
             <div className="flex justify-between">
               <p className="font-medium">Current Plan</p>
               <div className="flex items-center space-x-2">
-                <p className="text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   {capitalizeInital(subscription.pricing_tier)}
                 </p>
-                {/* {subscription.pricing_tier == "monthly" && (
+                {subscription.pricing_tier == "monthly" && (
                   <Dialog
                     open={isUpgradeDialogOpen}
                     onOpenChange={setIsUpgradeDialogOpen}
@@ -182,31 +229,23 @@ export default function SubscriptionCard({
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle>Upgrade</DialogTitle>
+                        <DialogTitle>
+                          Upgrade Subscription Plan To Yearly
+                        </DialogTitle>
                         <DialogDescription>
-                          Are you sure you want to upgrade your subscription to
-                          the Yearly Tier?
                           <br />
+                          This will bring you to the checkout page to upgrade
+                          your plan from monthly to yearly. For the details of
+                          the yearly plan, see the{" "}
+                          <a
+                            href="/pricing"
+                            target="_blank"
+                            className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                          >
+                            pricing page
+                          </a>
+                          .
                           <br />
-                          <b>
-                            This change will take effect immediately, and be
-                            charged on your current payment method. The price is
-                            reflected on the{" "}
-                            <a
-                              href="/pricing"
-                              target="_blank"
-                              className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-                            >
-                              pricing page
-                            </a>
-                            .
-                          </b>
-                          <br />
-                          <br />
-                          We&apos;ll refund the remaining funds from the current
-                          monthly subscription depending on the days remaining
-                          on your cycle. You will not be able to downgrade
-                          afterwards.
                         </DialogDescription>
                       </DialogHeader>
                       <DialogFooter>
@@ -222,12 +261,12 @@ export default function SubscriptionCard({
                             handleUpgradeSubscriptionClick();
                           }}
                         >
-                          {isUpgrading ? "Upgrading..." : "Confirm Upgrade"}
+                          {isUpgrading ? "Upgrading..." : "Upgrade"}
                         </Button>
                       </DialogFooter>
                     </DialogContent>
                   </Dialog>
-                )} */}
+                )}
               </div>
             </div>
           </div>
@@ -247,29 +286,32 @@ export default function SubscriptionCard({
               </p>
             </div>
           </div>
-          <div className="mt-8 flex justify-between space-x-4">
+          <div className="flex justify-between">
             <div className="hidden space-x-2 sm:block">
               <Button variant="default" asChild>
                 <Link
                   href={DEFAULT_OPEN_APP_CALLBACK + "?" + openAppQueryParams}
                   target="_parent"
                 >
-                  Open PearAI
+                  Open PearAI App
                 </Link>
               </Button>
             </div>
+            <TopUpModal />
+          </div>
+          <div className="flex items-center justify-between">
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button
                   onClick={handleCancelClick}
-                  disabled={isCanceling}
+                  disabled={isCanceling || isCanceled}
                   variant="link"
-                  className="px-0"
+                  className={`ml-auto px-0 text-muted-foreground ${isCanceled ? "" : "underline"} underline-offset-2`}
                 >
                   {isCanceling
                     ? "Canceling..."
                     : isCanceled
-                      ? "Subscription canceled, reactivate?"
+                      ? "Your subscription has been canceled, and will not be renewed at the end of the current period."
                       : "Cancel Subscription"}
                 </Button>
               </DialogTrigger>
@@ -302,19 +344,17 @@ export default function SubscriptionCard({
               </DialogContent>
             </Dialog>
           </div>
-          <div className="flex items-center">
-            <Info className="inline text-muted-foreground" size={14} />
-            <p className="ml-1.5 text-xs/6 text-muted-foreground">
-              Make sure PearAI is{" "}
-              <Button
-                variant="link"
-                asChild
-                className="p-0 text-xs text-primary-800"
-              >
-                <Link href="/pricing">installed.</Link>
-              </Button>{" "}
-              Use this button to open the app and login directly.
-            </p>
+          <div className="mt-4 flex items-start text-xs text-muted-foreground">
+            <InfoIcon className="mr-1 mt-0.5 h-3 w-3 flex-shrink-0" />
+            <div>
+              Make sure PearAI is
+              <Link href="/pricing" className="mx-1">
+                <span className="text-primary-800 hover:underline">
+                  installed.
+                </span>
+              </Link>
+              Use the button above to login into the app directly.
+            </div>
           </div>
         </CardContent>
       </div>

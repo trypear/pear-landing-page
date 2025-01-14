@@ -4,15 +4,15 @@ export const posts = [
     author: "Nang",
     date: "2024-09-1",
     excerpt:
-      "I spent the last 2 months working on PearAI, an Open-Sourced AI-Powered Code Editor. It is like having an expert on your codebase right next to you. We achieve this with Retrieval Augmented Generation. This is my new startup after finishing my B.S. & M.S from Carnegie Mellon and working for 1.5 years in High Frequency Trading as a Software Engineer. This is exactly how we designed our server.",
+      "I spent the last 2 months working on PearAI, an Open Sourced AI-Powered Code Editor. It is like having an expert on your codebase right next to you. We achieve this with Retrieval Augmented Generation. This is my new startup after finishing my B.S. & M.S from Carnegie Mellon and working for 1.5 years in High Frequency Trading as a Software Engineer. This is exactly how we designed our server.",
     thumbnail: "/images/blog/pearai-server-option.png",
     tags: ["server", "server design", "pearai server"],
     url: "/blog/how-we-designed-our-servers-end-to-end-for-pearai",
     content: `<div
   class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
 >
-  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
-    I spent the last 2 months working on PearAI, an Open-Sourced AI-Powered Code
+  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl mb-4">
+    I spent the last 2 months working on PearAI, an Open Source AI-Powered Code
     Editor. It's like having an expert on your codebase right next to you. We
     achieve this with Retrieval Augmented Generation. This is my new startup
     after finishing my B.S. & M.S from Carnegie Mellon and working for 1.5 years
@@ -33,7 +33,7 @@ export const posts = [
     </figcaption>
   </figure>
 
-  <p class="text-base sm:text-lg">
+  <p class="text-base sm:text-lg my-4">
     We are launching our product next week, and we needed to build out our
     server this last month. As we're building fully in public, here's exactly
     how we did it. Hopefully, this helps you design a server with scalability,
@@ -73,7 +73,7 @@ export const posts = [
     </li>
     <li class="pl-2">
       <span class="font-semibold">Use API key:</span> Users self-manage and pay
-      per token to the LLM Provider. On PearAI's side, this is Open-sourced and
+      per token to the LLM Provider. On PearAI's side, this is open source and
       fully transparent. Users can also use their own local LLM.
     </li>
   </ol>
@@ -101,7 +101,7 @@ export const posts = [
 
   <p class="text-base sm:text-lg">
     I'm a big fan of creating my own templates and never starting from scratch
-    again. I open-source all of these, and you can find the Flask API Template I
+    again. I open source all of these, and you can find the Flask API Template I
     made/used for this project here:
     <a
       href="https://github.com/nathan-149/flask-backend-api-template"
@@ -163,34 +163,34 @@ export const posts = [
   </p>
 
   <ul
-    class="ml-4 list-inside list-disc space-y-2 rounded-lg bg-gray-100 p-4 text-base dark:bg-gray-800 sm:ml-6 sm:p-6 sm:text-lg"
+    class="list-inside list-disc space-y-2 rounded-lg bg-gray-100 p-4 text-base text-foreground  sm:ml-6 sm:p-6 sm:text-lg"
   >
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       Primary language: <span class="font-semibold">Python</span>
     </li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       API Framework: <span class="font-semibold">Flask</span>
     </li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       Authentication: <span class="font-semibold">Supabase</span>
     </li>
-    <li class="pl-2">Payment: <span class="font-semibold">Stripe</span></li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">Payment: <span class="font-semibold">Stripe</span></li>
+    <li class="pl-2 ml-2">
       Database: <span class="font-semibold">Redis + Supabase (pSQL)</span>
     </li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       Observability: <span class="font-semibold">OpenTelemetry + Axiom</span>
     </li>
-    <li class="pl-2">
+    <li class="pl-2 ml-2">
       Deployment: <span class="font-semibold">DigitalOcean</span>
     </li>
   </ul>
 
   <p class="mt-6 text-base sm:mt-8 sm:text-lg">
-    Hopefully this was helpful to someone. PearAI is open-sourced, so please
+    Hopefully this was helpful to someone. PearAI is open source, so please
     help us out by starring the repo here:
     <a
-      href="https://github.com/trypear/pearai-app"
+      href="https://github.com/trypear/pearai-master"
       class="font-medium text-blue-600 hover:underline dark:text-blue-400"
       >PearAI GitHub Repo</a
     >, and consider contributing! If you'd like to use the app, join the wait
@@ -236,7 +236,7 @@ export const posts = [
     autocomplete predicts/suggests what you would type next as you're coding!
   </p>
 
-  <p class="text-base sm:text-lg">This is the guide to do that:</p>
+  <p class="text-base sm:text-lg mb-4">This is the guide to do that:</p>
 
   <ol
     class="ml-4 list-outside list-decimal space-y-8 text-base sm:ml-6 sm:text-lg"
@@ -247,9 +247,9 @@ export const posts = [
       >
         Setup Codestral
       </h3>
-      <p class="mt-2">
+      <p class="mt-2 mb-4">
         We recommend using Codestral, the leading model for code completion (or
-        FIM — Fill In Middle). It's also open-sourced! You'll need to obtain a
+        FIM — Fill In Middle). It's also open source! You'll need to obtain a
         Codestral API key from
         <a
           href="https://console.mistral.ai/"
@@ -273,8 +273,8 @@ export const posts = [
         with your API key:
       </p>
 
-      <div class="overflow-x-auto rounded-lg bg-gray-100 p-4 dark:bg-gray-800">
-        <pre class="text-xs sm:text-sm"><code class="language-json">{
+      <div class="overflow-x-auto rounded-lg text-foreground bg-gray-100 p-4 ">
+        <pre class="text-xs sm:text-sm "><code class="language-json">{ <
     "tabAutocompleteModel": {
       "title": "Codestral",
       "provider": "mistral",
@@ -336,7 +336,7 @@ export const posts = [
     title: "Enhancing PearAI with Anthropic's Claude 3.5",
     url: "/blog/enhancing-pearai-with-anthropic-claude-3-5",
     excerpt:
-      "How we leveraged Claude 3.5 to improve code syntax and logic in our open-source AI code editor, and the unique challenges we faced in implementation.",
+      "How we leveraged Claude 3.5 to improve code syntax and logic in our open source AI code editor, and the unique challenges we faced in implementation.",
     date: "2024-08-20",
     author: "Conor Quinlan",
     readingTime: "3 min",
@@ -346,7 +346,7 @@ export const posts = [
   class="mx-auto max-w-4xl space-y-6 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
 >
   <p class="text-base font-semibold leading-relaxed sm:text-lg md:text-xl">
-    At PearAI, we're constantly striving to improve our open-source AI code
+    At PearAI, we're constantly striving to improve our open source AI code
     editor. Our latest advancement involves integrating Anthropic's Claude 3.5
     model to enhance code syntax and logic understanding when providing AI
     context to a user's codebase. This integration presented unique challenges
@@ -506,57 +506,75 @@ export const posts = [
     thumbnail: "/images/blog/linux.jpg",
     tags: ["Guide", "PearAI", "Linux"],
     content: `<article
-  class="mx-auto max-w-4xl space-y-6 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+  class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
 >
-  <section class="space-y-4">
+      <section class="space-y-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
       Download PearAI on Linux
     </h2>
-    <ol class="list-decimal space-y-4 pl-4 text-sm sm:pl-6 sm:text-base">
-      <li>
-        Download the compressed PearAI installation file:
-        <a
-          href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI.tar.gz"
-          class="break-words text-primary-500 underline dark:text-primary-400"
-          >Download PearAI</a
-        >
-      </li>
-      <li>
-        Extract the contents by running the following command:
+        <ol class="list-decimal space-y-4 pl-4 text-sm sm:pl-6 sm:text-base">
+          <li>
+            <strong>Check your CPU compatibility</strong>:
+            <p class="my-4">
+            If you're unsure whether your CPU supports AVX or AVX2 FMA, run the following command in your terminal:
+            </p>
+            <pre class="my-2 overflow-auto rounded bg-gray-100 text-foreground p-2 text-xs sm:text-sm md:text-base"><code class="language-bash">lscpu | grep -o -w 'avx\\|avx2\\|fma'</code></pre>
+            <p class="my-4"> If your result is:</p>
+            <pre class="my-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"><code>avx avx2 fma</code></pre>
+            <p class="my-4">
+            feel free to download the AVX2 version.
+            If you only see <code>avx</code>, download the AVX version.
+            </p>
+          </li>
+          <li>
+            Download the appropriate PearAI installation file:
+            <ul class="list-disc pl-5 my-4">
+              <li>
+                <strong>AVX version</strong>:
+                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
+              </li>
+              <li>
+                <strong>AVX2 version</strong>:
+                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx2.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Extract the contents by running the following command:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
-        ><code>tar -xvf PearAI.tar.gz</code></pre>
-      </li>
-      <li>
-        Navigate to the extracted folder:
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
+        ><code>tar -xvf PearAI-{AVX_VERSION}.tar.gz</code></pre>
+          </li>
+          <li>
+            Navigate to the extracted folder:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">cd PearAI/</code></pre>
-      </li>
-      <li>
-        Run the installation script with superuser permissions:
+          </li>
+          <li>
+            Run the installation script with superuser permissions:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
-        ><code class="language-bash">sudo ./pearai_manager.sh</code></pre>
-      </li>
-      <li>
-        Select your desired option:
-        <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
+        ><code class="language-bash">bash pearai_manager.sh</code></pre>
+          </li>
+          <li>
+            Select your desired option:
+            <pre
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">1. Install PearAI
 2. Uninstall PearAI
 3. Exit</code></pre>
-      </li>
-      <li>
+          </li>
+          <li>
         Add the following alias to your
         <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200">~/.bashrc</code>
         or
         <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200">~/.zshrc</code>
         to run PearAI from any directory:
         <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">alias pearai='PearAI'</code></pre>
         After adding the alias, run
         <code class="rounded bg-gray-200 px-1 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
@@ -567,17 +585,17 @@ export const posts = [
           >source ~/.zshrc</code
         >
         to apply the changes.
-      </li>
-    </ol>
-  </section>
+          </li>
+        </ol>
+      </section>
 
-  <section class="mt-8 space-y-4">
+      <section class="mt-8 space-y-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
       Notes
     </h2>
-    <p class="text-sm sm:text-base">
+        <p class="text-sm sm:text-base">
       Once the installation is complete, PearAI will be ready to use! If you
       have any questions or run into issues, feel free to join our community and
       get support through our official
@@ -586,19 +604,19 @@ export const posts = [
         class="text-primary-500 underline dark:text-primary-400"
         >Discord server</a
       >.
-    </p>
-    <p class="mt-4 text-sm sm:text-base">
+        </p>
+        <p class="mt-4 text-sm sm:text-base">
       This installation method has been tested on multiple Linux distributions,
-      including Arch Linux, Ubuntu 24, and Fedora 40. It was compiled using GCC
-      14, so most distributions with this or an older version should be able to
+      including Arch Linux, Ubuntu 24, Ubuntu 22, Fedora 40 and NixOS. It was compiled using GCC
+      10, so most distributions with this or newer version should be able to
       run PearAI without any issues.
-    </p>
-  </section>
+        </p>
+      </section>
 
-  <p class="mt-8 text-base font-semibold sm:text-lg">
+      <p class="mt-8 text-base font-semibold sm:text-lg">
     We're thrilled to bring PearAI to the Linux community, stay tuned for more
     exciting updates and features on the horizon!
-  </p>
+      </p>
 </article>
 `,
   },
@@ -609,7 +627,7 @@ export const posts = [
     excerpt:
       "Learn how to integrate and effectively use GPT o1-mini and o1-preview models in PearAI, along with important considerations for optimal usage.",
     date: "2024-09-15",
-    author: "Duke Pan",
+    author: "PearAI Team",
     readingTime: "3 min",
     thumbnail: "/images/blog/o1-doc-thumbnail.webp",
     tags: ["Guide", "PearAI", "GPT", "OpenAI", "o1-mini", "o1-preview"],
@@ -637,7 +655,7 @@ export const posts = [
         Add the following entries to the "models" array of your config and save
         the file (see example picture below):
        <pre
-          class="mt-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-gray-800 dark:bg-gray-800 dark:text-gray-200 sm:text-sm md:text-base"
+          class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
         ><code class="language-bash">{
     "model": "o1-mini",
     "title": "GPTo1 Mini (PearAI)",
@@ -669,7 +687,7 @@ export const posts = [
 
   <section class="space-y-4">
     <h2
-      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+      class="text-xl my-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
       Usage Considerations
     </h2>
@@ -710,7 +728,7 @@ export const posts = [
       "swe jobs",
     ],
     content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
-      <section class="space-y-6">
+      <section class="space-y-6 mb-4">
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           A Practical Tool for Interview Readiness
         </h2>
@@ -747,7 +765,7 @@ export const posts = [
       </section>
 
       <section class="space-y-6">
-        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+        <h2 class="text-xl mt-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           Features to Support Your Preparation
         </h2>
         <p>The LeetCode Slash Command includes several useful features:</p>
@@ -764,7 +782,7 @@ export const posts = [
 
 
       <section class="space-y-6">
-        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl mt-4">
           A Useful Addition to Your Prep Toolkit
         </h2>
         <p>
@@ -785,7 +803,7 @@ export const posts = [
     excerpt:
       "Easy step by step guide to setup WSL in PearAI, and get started with AI-powered coding in WSL.",
     date: "2024-09-19",
-    author: "Himanshu",
+    author: "Himanshu and LaansDole",
     readingTime: "30 seconds",
     thumbnail: "/images/blog/wsl-blog.png",
     tags: ["Guide", "WSL", "Linux", "Ubuntu", "Windows Subsystem for Linux"],
@@ -796,38 +814,69 @@ export const posts = [
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 1 - Install Microsft WSL extension 
+      Step 1 - Install Microsoft WSL extension
     </h2>
     <figure class="mt-4">
       <img
-        src="/images/blog/wsl-blog-extension.png" 
-        alt="Install Microsoft WSL extension form marketplace"
+        src="/images/blog/wsl-blog-extension.png"
+        alt="Install Microsoft WSL extension from marketplace"
         class="rounded-xl shadow-lg object-cover w-full"
       />
     </figure>
   </section>
 
-  <section class="space-y-4">
+  <section class="space-y-6 mt-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 2 - Run 'Patch WSL' from command palette
+      Step 2 - Change end of line sequence
     </h2>
     <figure class="mt-4">
       <img
-        src="/images/blog/wsl-blog-patch.png" 
+        src="/images/blog/wsl-blog-eol-sequence.png"
+        alt="Change End of Line Sequence in PearAI"
+        class="rounded-xl shadow-lg object-cover w-full"
+      />
+    </figure>
+    <p class="mt-4">
+      In PearAI, click on the Search Bar at the top of the app and enter
+      <code>&gt;Change End of Line Sequence</code>. Choose <strong>LF</strong> to sucessfully run the next step.
+    </p>
+  </section>
+
+  <section class="space-y-6 mt-4">
+    <h2
+      class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+    >
+      Step 3 - Run 'Patch WSL' from command palette
+    </h2>
+    <figure class="mt-4">
+      <img
+        src="/images/blog/wsl-blog-patch.png"
         alt="Run 'Patch WSL' from command palette"
         class="rounded-xl shadow-lg object-cover w-full"
       />
     </figure>
   </section>
-  <section class="space-y-4">
+
+  <section class="space-y-6 mt-4">
     <h2
       class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
     >
-      Step 3 - 
+      Step 4 - Selecting Ubuntu (WSL) in terminal dropdown
     </h2>
-    <iframe src="https://giphy.com/embed/wrBURfbZmqqXu" width="100%" height="auto" style="aspect-ratio: 480 / 317;" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <figure class="mt-4">
+      <img
+        src="/images/blog/wsl-blog-terminal.png"
+        alt="Selecting Ubuntu (WSL) in terminal dropdown"
+        class="rounded-xl shadow-lg object-cover w-full"
+      />
+    </figure>
+    <p class="mt-4">
+      In the terminal dropdown menu, select <strong>Ubuntu (WSL)</strong> to open the WSL
+      terminal. This provides a Linux-based environment within your current setup,
+      allowing you to run Linux commands and scripts.
+    </p>
   </section>
 </article>
 `,
@@ -838,7 +887,7 @@ export const posts = [
     excerpt:
       "Discover why open source is crucial for AI code editors and how PearAI leverages this approach to create a superior product with a thriving community.",
     date: "2024-09-26",
-    author: "Duke Pan",
+    author: "PearAI Team",
     readingTime: "3 minutes",
     thumbnail: "/images/og-image.png",
     tags: ["Open Source"],
@@ -849,50 +898,50 @@ export const posts = [
       <h2
         class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
       >
-        The True Differentiators For The Future Of AI Code Editors
+        Some Key Differentiators For The Future Of AI Code Editors
       </h2>
       <p>
         In the world of AI-powered code editors, the playing field for AI models is surprisingly level. Most editors simply use the best available models on the market, which are all improving everyday. This means that the real distinguishing factors lie elsewhere:
       </p>
       <ul class="list-disc pl-6">
-        <li>User Interface and Experience (UI/UX)
-          <p class="text-gray-600 text-base">Open source allows for community-driven UI/UX improvements; with an extremely tight user feedback loop, we know exactly what you want. Code editors are uniquely suited for open source development because the developers themselves are users of the product!</p>
+        <li>User Interface and User Experience Extensibility
+          <p class="text-gray-600 text-base mb-4">Open source allows for community-driven UI/UX improvements; with an extremely tight user feedback loop, we know exactly what you want. Code editors are uniquely suited for open source development because the developers themselves are users of the product! <br/><br/> This almost means that for our PearAI Inventory, where we integrate the best AI tools on the market within PearAI, other contributors can suggest AI tools to integrate on their own.</p>
         </li>
         <li>Trust and Transparency
-          <p class="text-gray-600 text-base">With open source, the codebase is visible to all, fostering trust through transparency and allowing for independent security audits.</p>
+          <p class="text-gray-600 text-base mb-4">With open source, the codebase is visible to all, fostering trust through transparency and allowing for independent security audits.</p>
         </li>
         <li>Community Support
-          <p class="text-base text-gray-600 mt-1 mb-2">Open source projects benefit from a global community of developers, leading to faster bug fixes, feature requests, and overall product improvement. For example, during our launch, we had no Linux version, but many people who only use Linux wanted to use PearAI. Someone from our community (s/o to Max!) single-handedly developed a Linux distribution, which is now available today for everyone to use.</p>
+          <p class="text-base text-gray-600 mt-1 mb-4">Open source projects benefit from a global community of developers, leading to faster bug fixes, feature requests, and overall product improvement. For example, during our launch, we had no Linux version, but many people who only use Linux wanted to use PearAI. Someone from our community (s/o to Max!) single-handedly developed a Linux distribution, which is now available today for everyone to use.</p>
         </li>
         <li>Distribution
-          <p class="text-base text-gray-600 mt-1 mb-2">Due to the underlying models being similar between products, the team with the coolest and strongest community will be the most popular (that's us 😉).</p>
+          <p class="text-base text-gray-600 mt-1 mb-4">Due to the underlying models being similar between products, the team with the coolest and strongest community will be the most popular.</p>
         </li>
       </ul>
       <p>
         These factors align perfectly with the principles of open source software, making it an ideal approach for AI code editors.
       </p>
     </section>
-  
+
     <section class="space-y-4">
       <h2
-        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+        class="text-xl mt-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
       >
         Why Us: PearAI's Thriving Open Source Community
       </h2>
       <p>
-        PearAI stands out with the most active open source community among AI code editors. Unlike many open source projects that rely on just one or two contributors, PearAI boasts an impressive statistic:
+        PearAI stands out with one of the most active open source community among AI code editors. Unlike many open source projects that rely on just one or two contributors, PearAI boasts an impressive statistic after only 4 month of development (as of the date of this blog):
       </p>
       <figure class="mt-4">
-        <figcaption class="text-center text-sm mt-2">Over 50% of commits are made by contributors.</figcaption>
+        <figcaption class="text-center text-sm mt-2">Around 40% of contributions of the PearAI project are made by the communtiy.</figcaption>
       </figure>
       <p>
-        This diverse contribution spans across our landing page, server, and the app itself, driving our rapid development cycle.
+        This <a href="https://github.com/trypear/pearai-master" target="_blank">diverse contribution</a> spans across our landing page, server, app, designs, and general ideation, driving our rapid development cycle (the statistic does not include contributions of the people of the underlying forks!).
       </p>
     </section>
-  
+
     <section class="space-y-4">
       <h2
-        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl"
+        class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl mt-4"
       >
         Beyond Code: Open Source Founders
       </h2>
@@ -919,16 +968,16 @@ export const posts = [
   `,
   },
   {
-    title: "Open-Source Bounties at PearAI",
+    title: "Open Source Bounties at PearAI",
     url: "/blog/open-source-bounties",
     excerpt:
-      "PearAI introduces monetary bounties for significant open-source contributions. Solve big issues, get paid, and help build the best AI code editor in the world.",
+      "PearAI introduces monetary bounties for significant open source contributions. Solve big issues, get paid, and help build the best AI code editor in the world.",
     date: "2024-09-28",
     author: "PearAI Team",
     readingTime: "2 min",
     thumbnail: "/images/og-image.png",
     tags: [
-      "open-source",
+      "open source",
       "bounties",
       "contributions",
       "community",
@@ -937,19 +986,19 @@ export const posts = [
     content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
       <section class="space-y-6">
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
-          Open-Source Bounties At PearAI 🗣️
+          Open Source Bounties At PearAI 🗣️
         </h2>
         <p class="font-bold">
           TLDR: 🍐 Solve big issues, get PAID 💸 🍐
         </p>
         <p>
-          As you may know, PearAI is an Open-Source AI Code Editor and fully transparent to the public. We are driven by our open-source community that is working under the shared goal of making the best AI code editor in the world. However, sometimes we have bigger tasks that need more expertise and time from a contributor. This requires a lot of effort, so we want to provide more incentive and rewards for these contributors.
+          As you may know, PearAI is an Open Source AI Code Editor and fully transparent to the public. We are driven by our open source community that is working under the shared goal of making the best AI code editor in the world. However, sometimes we have bigger tasks that need more expertise and time from a contributor. This requires a lot of effort, so we want to provide more incentive and rewards for these contributors.
         </p>
       </section>
-  
+
       <section class="space-y-6">
-        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
-          Introducing PearAI's Open-Source Bounties!
+        <h2 class="text-xl mt-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          Introducing PearAI's Open Source Bounties!
         </h2>
         <p>
           For some larger tasks, we will add a monetary bounty, defined in the issue description. Simply put, if you complete the issue (i.e. your code gets merged), you will get money as a reward. Due to the fast pace we need for PearAI, multiple people may work on the same task at the same time independently. However, if only one gets merged, a certain other amount of worthy attempts should be compensated as well for the efforts.
@@ -958,9 +1007,9 @@ export const posts = [
           If you have a worthy attempt (and we will be generous with this), you will be rewarded as well by the attempt bounty, which is also pre-set in the issue description.
         </p>
       </section>
-  
+
       <section class="space-y-6">
-        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+        <h2 class="text-xl mt-4 font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
           How to Participate
         </h2>
         <p>
@@ -970,6 +1019,239 @@ export const posts = [
           We hope that this adds even more whimsy to bringing the best AI code editor into existence together.
         </p>
       </section>
+    </article>`,
+  },
+
+  {
+    title: "PearAI Open Source Fixes",
+    author: "PearAI Team, Jyoutir",
+    readingTime: "4 min",
+    date: "2024-10-12",
+    excerpt:
+      "View PearAI's changes to correct past mistakes and ensure compliance with open source standards.",
+    thumbnail: "/images/og-image.png",
+    tags: ["open-source", "Continue.dev", "spreading love", "accountability"],
+    url: "/blog/pearai-open-source-fixes",
+    content: `<article
+      class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+    >
+      <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+        We have made a mistake, and for this we apologize to Continue and the Open Source community. We genuinely want to learn from our mistakes and grow.
+        To fix this, we made big changes, and we had them reviewed by friends in the open source space, along with a law team to ensure we did everything the right way this time.
+        These are the changes PearAI made in attempts to correct our mistakes.
+      </p>
+
+      <h2 class="my-4 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Starting Fresh and Being True Forks 🍴
+      </h2>
+
+      <p class="text-base sm:text-lg mb-4">
+        We've rebuilt from scratch, starting fresh with zero stars on our new repository, leaving behind our 2k+ star repo to prioritize accountability and staying true to open source. This means our repositories accurately display true forks, marked by GitHub's built-in fork tag.
+      </p>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/continue-forked.jpg"
+          alt="PearAI's temp-repo forked from continuedev/continue"
+          class="w-full rounded-xl shadow-lg"
+        />
+        <figcaption class="mt-4 text-center text-sm italic text-gray-600 mb-4">
+          Note: <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">temp-repo</code> will be renamed to <code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">pearai-submodule</code>.
+        </figcaption>
+      </figure>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/vscode-forked.png"
+          alt="PearAI's pearai-app forked from microsoft/vscode"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <h2 class="my-4 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Correct Licensing 📄
+      </h2>
+
+      <p class="text-base sm:text-lg mb-4">
+        The fork of Continue is permanently licensed under Apache 2.0, and this will never change. View it here: <a href="https://github.com/trypear/temp-repo/blob/main/LICENSE" class="font-medium text-blue-600 hover:underline dark:text-blue-400">License</a>. While the VSCode fork retains its original MIT License, with details provided in the README. We've reapplied changes to ensure full compliance with the Apache 2.0 license, resolving previous code attribution issues.
+      </p>
+
+      <figure class="mb-4 sm:my-12">
+        <img
+          src="/images/blog/apache-license.jpg"
+          alt="apache license plain"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/mit-license.jpg"
+          alt="mit license"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <h2 class="my-4 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+        Complete Transparency 🔎
+      </h2>
+      <p class="text-base sm:text-lg mb-4">
+        We aim for complete transparency, making sure that everyone understands that our pearai-submodule repository is a fork of Continue (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>), This is an important part of our current functionality. In the future, we plan to diverge and innovate further, working towards creating the best AI-powered code editor.
+      </p>
+
+      <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/continue-credit.jpg"
+          alt="continue credit"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+        <figure class="my-8 sm:my-12">
+        <img
+          src="/images/blog/continue-dev.jpg"
+          alt="continue credit"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+
+      <p class="text-base sm:text-lg my-4">
+        Once again, we apologize to Continue and the open source community. We encourage everyone to explore the incredible work being done by the Continue team (<a href="https://github.com/continuedev/continue" class="font-medium text-blue-600 hover:underline dark:text-blue-400">Continue GitHub</a>). We hope to learn from our mistakes, and move forward responsibly. We will be continuing with our original plan of differentiating from Continue and other competitors, to simply provide the best AI-powered code editor and allow users to make what they want.
+      </p>
+    </article>`,
+  },
+  {
+    title: "Introducing PearAI Creator (Beta) — Powered By aider*",
+    url: "/blog/introducing-pearai-creator-beta",
+    excerpt:
+      "PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically. Learn how to use this powerful new feature powered by aider.",
+    date: "2024-10-23",
+    author: "PearAI Team",
+    readingTime: "2 min",
+    thumbnail: "/images/og-image.png", // Make sure this image exists
+    tags: ["PearAI Creator", "aider", "feature announcement", "beta"],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+      <section class="space-y-6">
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+          PearAI Creator can build apps, fix your bugs, and implement new features for you — all automatically.
+        </p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI is an open-source AI code editor. We just introduced PearAI Inventory, which includes the best-on-market tools for every part of coding with AI.</p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl"><a href="https://aider.chat/" class="text-primary-600 hover:underline">aider</a> is one of the most powerful code generation tools right now. It scored one of the highest <a href="https://aider.chat/2024/06/02/main-swe-bench.html" class="text-primary-600 hover:underline">SWE Bench</a> benchmark. We're excited to announce it is now added to the PearAI Inventory!</p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">When you ask for a new feature, bug fix, or new app — it can do just that! It has full context of your codebase, has ability to create and edit multiple files.</p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
+        <div class="aspect-video">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/OnerjUzIddY?si=H_dfqmnGIHd1eBm-"
+            title="PearAI Creator (Powered by aider) Beta Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          How to Use PearAI Creator (for free!)
+        </h2>
+        <ol class="list-decimal pl-6 space-y-4">
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+            If you already have PearAI installed, simply go to "Help" at the top and search "Update". It will automatically update you to the newest version of PearAI.
+            <br/><br/>
+            Otherwise, download the new PearAI here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
+          </li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up command pallette (CMD/CTRL + Shift + P) and select "PearAI Creator"</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The first time it runs, it will likely take a second to install and run aider. Every time after, it should be instant!</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out! Ask for a new feature, a bug fix, or to start a new app. Please let us know your feedback!</li>
+        </ol>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          [Option] Use Your Own API Key
+        </h2>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+          PearAI Creator will work out of the box using our servers, but as always, you can use your own API key from OpenAI or Anthropic . Simply add the following to the "models" section in your ~/.pearai/config.json file:
+        </p>
+        <div class="overflow-x-auto rounded-lg bg-gray-100 p-4 my-4">
+          <pre class="text-sm"><code>{
+  "model": "claude-3-5-sonnet-20240620",
+  "contextLength": 300000,
+  "title": "claude (PearAI Creator)",
+  "provider": "aider",
+  "apiKey": "{YOUR_API_KEY}"
+}</code></pre>
+        </div>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          Troubleshooting
+        </h2>
+        <div class="space-y-4">
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI Creator is still in beta mode, so there may be a few rough edges.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">If PearAI Creator is not working at all (ie. lags with no response), it is likely due to an issue with the aider installation.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">If you are running into this, please message this in the PearAI Discord, as it will help us improve.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">To fix this, you may need to manually install aider here: <a href="https://aider.chat/docs/install.html" class="text-primary-600 hover:underline">https://aider.chat/docs/install.html</a>.</p>
+          <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>
+        </div>
+      </section>
+      <p class="text-sm text-gray-500 italic">*View PearAI Disclaimer page <a href="/disclaimer" class="text-primary-600 hover:underline">here</a>.</p>
+    </article>`,
+  },
+  {
+    title: "Introducing PearAI Memory (Beta) — Powered By Mem0*",
+    url: "/blog/introducing-pearai-memory-beta",
+    excerpt:
+      "PearAI Memory adds a memory layer to your conversation with PearAI Chat. It can intelligently remember facts about you based on your prompt and LLM response.",
+    date: "2024-12-01",
+    author: "PearAI Team",
+    readingTime: "2 min",
+    thumbnail: "/images/og-image.png", // Make sure this image exists
+    tags: ["PearAI Memory", "mem0", "feature announcement", "beta"],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+      <section class="space-y-6">
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+          PearAI Memory adds a memory layer to your conversation with PearAI Chat. It can intelligently remember facts about you based on your prompt and LLM response.
+        </p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The new Memory integration enables a more personalized and context-aware interaction, allowing PearAI to remember your coding preferences and codebase settings across sessions.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI is an open-source AI code editor. PearAI Memory is the latest integration in the suite of tools currently available on PearAI, alongside Search and Creator.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI Memory is powered by <a href="https://mem0.ai/" class="text-primary-600 hover:underline">mem0</a>, a self-improving memory layer, which adapts to and learns from your interactions with the LLM. </p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
+        <div class="aspect-video">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/kLYhV0Fu3xY"
+            title="PearAI Creator (Powered by aider) Beta Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          How to Use PearAI Memory (for free!)
+        </h2>
+        <ol class="list-decimal pl-6 space-y-4">
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+            If you already have PearAI installed, simply go to "Help" at the top and search "Update". It will automatically update you to the newest version of PearAI.
+            <br/><br/>
+            Otherwise, download the new PearAI here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
+          </li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up Inventory Settings (CMD/CTRL + Shift + 1).</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Locate the Memory card in the inventory, and flick the toggle to on.</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">You’re all set! PearAI Memory will now automatically get to know you as you interact with PearAI Chat. Note that you can access the Memory control panel to add, edit, or delete memories (CMD/CTRL + 4).</li>
+        </ol>
+      </section>
+      &nbsp;
+      <p class="text-sm text-gray-500 italic">*View PearAI Disclaimer page <a href="/disclaimer" class="text-primary-600 hover:underline">here</a>.</p>
     </article>`,
   },
 ];

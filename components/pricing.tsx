@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import React, { useEffect, useState, useRef, useMemo, Fragment } from "react";
 import { useRouter } from "next/navigation";
 import {
   Card,
@@ -31,6 +31,7 @@ import {
 } from "./ui/dropdown-menu";
 import { Info } from "lucide-react";
 import Spinner from "./ui/spinner";
+import Footer from "./footer";
 import Link from "next/link";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
@@ -39,7 +40,26 @@ interface ExtendedPricingTierProps extends PricingTierProps {
 
 type VersionInfo = {
   version: string;
-  lastReleaseDate: string;
+  releaseDate: string;
+};
+
+export const platformVersions: Record<string, VersionInfo> = {
+  Windows: {
+    version: "v1.6.1",
+    releaseDate: "Dec 26, 2024",
+  },
+  "Mac (M chip)": {
+    version: "v1.6.1",
+    releaseDate: "Dec 26, 2024",
+  },
+  "Mac (Intel)": {
+    version: "v1.5.4",
+    releaseDate: "Dec 1, 2024",
+  },
+  Linux: {
+    version: "v1.5.5",
+    releaseDate: "Dec 5, 2024",
+  },
 };
 
 const PricingTier: React.FC<ExtendedPricingTierProps> = ({
@@ -132,8 +152,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span>
-            Monthly refill of increased PearAI Credits for market-leading AI
-            models
+            Monthly refill of <span className="underline"> increased</span>{" "}
+            PearAI Credits for market-leading AI models
             <PearCreditsTooltip type="enterprise" />
           </span>
         </div>
@@ -148,25 +168,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     if (buttonRef.current) {
       setButtonWidth(buttonRef.current.offsetWidth);
     }
-  }, []);
-
-  const [versionInfo, setVersionInfo] = useState<VersionInfo | null>(null);
-
-  useEffect(() => {
-    const fetchVersionInfo = async () => {
-      try {
-        const response = await fetch("/api/version-info");
-        if (!response.ok) {
-          throw new Error("Failed to fetch version info");
-        }
-        const data: VersionInfo = await response.json();
-        setVersionInfo(data);
-      } catch (error: any) {
-        toast.error(error.message);
-      }
-    };
-
-    fetchVersionInfo();
   }, []);
 
   return (
@@ -270,21 +271,41 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               </p>
             ) : (
               <div className="flex w-full flex-col items-center gap-2">
-                {versionInfo && (
-                  <div className="ml-2 mr-auto text-sm text-gray-500">
-                    version {versionInfo?.version}
-                    <div>
-                      last release{" "}
-                      {new Date(
-                        versionInfo?.lastReleaseDate,
-                      ).toLocaleDateString("en-US", {
-                        day: "numeric",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </div>
-                  </div>
-                )}
+                <TooltipProvider>
+                  <Tooltip delayDuration={50}>
+                    <TooltipTrigger asChild>
+                      <div className="ml-2 mr-auto text-sm text-gray-500">
+                        <span className="underline">Version info</span>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="top"
+                      className="flex flex-col space-y-2 p-3"
+                    >
+                      <div className="grid grid-cols-[auto,1fr] gap-x-3 gap-y-2 text-sm">
+                        {Object.entries(platformVersions).map(
+                          ([platform, info]) => (
+                            <Fragment key={platform}>
+                              <span className="font-medium">{platform}:</span>
+                              <div className="flex items-center gap-1">
+                                <div>{info.version}</div>
+                                <div className="text-xs text-gray-400">
+                                  ({info.releaseDate})
+                                </div>
+                              </div>
+                            </Fragment>
+                          ),
+                        )}
+                        <Link
+                          href="/changelog"
+                          className="col-span-2 text-center text-primary-700 hover:text-primary-600"
+                        >
+                          Changelog
+                        </Link>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
                 <div className="flex w-full max-w-md gap-2">
                   <Button
                     className={cn("rainbow-gradient", "font-bold", "flex-1")}
@@ -346,7 +367,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               </div>
             ))
           )}
-
           {!isFree && (
             <>
               {disabled ? (
@@ -366,10 +386,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               )}
             </>
           )}
-
-          {/* <button className="bg-primary-800 py-2 px-4 w-full rounded-full text-sm font-medium hover:bg-primary-800"> */}
-          {/* Get Started */}
-          {/* </button> */}
         </CardFooter>
       </div>
     </Card>
@@ -388,7 +404,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           <header className="mx-auto mt-16 max-w-4xl space-y-4 text-center sm:mt-0 sm:space-y-6">
             <h1
               id="pricing-heading"
-              className="mt-8 text-4xl font-medium leading-tight sm:text-5xl md:text-5xl lg:text-5xl"
+              className="mt-8 text-4xl font-medium leading-tight sm:text-4xl md:text-4xl lg:text-4xl"
             >
               Speed up your
               <br />
@@ -403,13 +419,13 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
             <TabsList className="h-full rounded-full bg-gray-300/20 px-2 py-2 ring-1 ring-gray-300/60 dark:bg-gray-100/10 dark:ring-gray-100/40">
               <TabsTrigger
                 value="standard"
-                className="w-[135px] rounded-full px-4 py-2 text-white-main data-[state=active]:bg-primary-800"
+                className="w-[135px] rounded-full px-4 py-2 text-secondary-main data-[state=active]:bg-primary-800 dark:text-white-main"
               >
                 Standard
               </TabsTrigger>
               <TabsTrigger
                 value="enterprise"
-                className="ml-[6px] w-[135px] rounded-full px-4 py-2 text-white-main data-[state=active]:bg-primary-800"
+                className="ml-[6px] w-[135px] rounded-full px-4 py-2 text-secondary-main data-[state=active]:bg-primary-800 dark:text-white-main"
               >
                 Enterprise
               </TabsTrigger>
@@ -519,6 +535,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
           </Tabs>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
@@ -550,28 +567,34 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
         </TooltipTrigger>
         <TooltipContent sideOffset={5}>
           <p className="max-w-[250px]">
-            Current models include Claude 3.5 Sonnet and GPT4o.
-            <br /> <br />
+            Current built-in models for this plan include
+            <ul className="list-disc pl-4">
+              <li>Claude 3.5 Sonnet (new)</li>
+              <li>GPT4o</li>
+              <li>GPT o1-preview</li>
+              <li>GPT o1-mini</li>
+              <li>Gemini 1.5 Pro</li>
+              <li>Claude 3.5 Haiku (unlimited)</li>
+            </ul>
+            <br />
             Your PearAI Credits usage depend on your prompt input and output
             sizes. On average, this equates to around {pearCreditsCount(
               type,
             )}{" "}
-            requests{type === "free" && " for our current free trial"}.
+            requests{type === "free" && " for our current free trial"}. For more
+            info on usage. see{" "}
+            <Link
+              className="text-primary-700 hover:text-primary-800"
+              href="/docs/models-and-usage"
+            >
+              here
+            </Link>
+            .
             {type !== "free" && (
               <>
                 <br /> <br />
-                Afraid of running out of credits? You can always contact{" "}
-                <a
-                  className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    navigator.clipboard.writeText(CONTACT_EMAIL);
-                    toast.success("Email copied to clipboard!");
-                  }}
-                >
-                  PearAI support
-                </a>{" "}
-                to top up and keep building!
+                If you happen to run out of credits, you can top up from your
+                dashboard.
               </>
             )}
           </p>

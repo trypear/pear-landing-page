@@ -8,7 +8,7 @@ export async function middleware(request: NextRequest) {
 
   // Check if the route should be protected
   const protectedPaths = ["/api"];
-  const excludedPaths = ["/api/download", "/api/version-info"];
+  const excludedPaths = ["/api/download", "/api/signup"];
   const isProtectedRoute = protectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path),
   );
@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
     const supabase = createClient();
     const {
       data: { session },
-    } = await supabase.auth.getSession();
+    } = await supabase.auth.refreshSession();
 
     if (!session) {
       // redirect to login page if no session

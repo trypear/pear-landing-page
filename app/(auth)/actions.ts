@@ -6,7 +6,6 @@ import { createClient } from "@/utils/supabase/server";
 import {
   SignInWithPasswordCredentials,
   Provider,
-  SignUpWithPasswordCredentials,
   User,
   Session,
 } from "@supabase/supabase-js";
@@ -48,44 +47,6 @@ export async function signin(
 //  - If sign in fails, return exists: true (toast 'account exists' on client and redirect to /signin)
 // 3. If user does not exist, sign up with email and password and redirect to /signin
 //  - If sign up fails, return error: error.message (toast error on client)
-
-export async function signup(formData: FormData) {
-  const supabase = createClient();
-
-  const data: SignUpWithPasswordCredentials = {
-    email: formData.get("email") as string,
-    password: formData.get("password") as string,
-    options: {
-      data: {
-        full_name: formData.get("full-name") as string,
-        company_name: formData.get("company-name") as string,
-      },
-    },
-  };
-
-  const { data: authData, error } = await supabase.auth.signUp(data);
-
-  const { exists } = await checkEmailExists(authData);
-
-  if (exists) {
-    const signinData: SignInWithPasswordCredentials = {
-      email: data.email,
-      password: data.password,
-    };
-    const { error } = await supabase.auth.signInWithPassword(signinData);
-    if (!error) {
-      return { signedIn: true };
-    }
-    return { exists: true };
-  }
-
-  if (error) {
-    return { error: error.message };
-  }
-
-  revalidatePath("/", "layout");
-  redirect("/verification?email=" + data.email);
-}
 
 // OAuth sign-in with Google or GitHub
 export async function signinWithOAuth(
