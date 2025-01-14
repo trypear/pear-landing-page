@@ -102,7 +102,7 @@ export default function FreeTrialCard({
               <p className="text-sm text-muted-foreground">Free Trial</p>
             </div>
           </div>
-          <div className="mt-8 flex justify-between space-x-4">
+          <div className="mt-8 flex justify-between space-x-0 sm:space-x-4">
             <div className="hidden sm:block">
               <Button variant="outline" className="text-primary-800" asChild>
                 <Link
