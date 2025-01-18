@@ -9,12 +9,13 @@ export async function POST(request: NextRequest) {
   const supabase = createClient();
 
   try {
-    const feedback = await request.json() as DownloadFeedback;
+    const feedback = (await request.json()) as DownloadFeedback;
 
     // Get the user's IP address for analytics
-    const ip = request.headers.get("x-forwarded-for") || 
-               request.headers.get("x-real-ip") || 
-               "anonymous";
+    const ip =
+      request.headers.get("x-forwarded-for") ||
+      request.headers.get("x-real-ip") ||
+      "anonymous";
 
     // Get auth session for the API request
     const {
@@ -55,13 +56,13 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(
       { message: "Feedback submitted successfully" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Error processing feedback:", error);
     return NextResponse.json(
       { error: "Failed to process feedback" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

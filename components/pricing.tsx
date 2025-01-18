@@ -79,7 +79,14 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   priceUnit = "/month",
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
-  const { isDownloading, downloadLink, handleDownload, showFeedback, setShowFeedback, handleFeedbackSubmit } = useDownload();
+  const {
+    isDownloading,
+    downloadLink,
+    handleDownload,
+    showFeedback,
+    setShowFeedback,
+    handleFeedbackSubmit,
+  } = useDownload();
   const router = useRouter();
   const appleContainer = useRef<HTMLDivElement>(null);
   const [appleDownload, setAppleDownload] = useState<
@@ -103,7 +110,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
         transition: "all 0.3s ease",
       }
     : {};
-
 
   const featureRowDescription = (feature: string) => {
     if (feature?.startsWith("custom-standard")) {
@@ -334,8 +340,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 </div>
                 {downloadLink !== undefined && (
                   <p className="text-gray-400">
-                    Thanks for trying out PearAI! Your download should have started,
-                    if it hasn&apos;t, click{" "}
+                    Thanks for trying out PearAI! Your download should have
+                    started, if it hasn&apos;t, click{" "}
                     <a
                       className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
                       href={downloadLink}

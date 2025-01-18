@@ -47,19 +47,25 @@ export default function DownloadFeedbackForm({
         <DialogHeader>
           <DialogTitle>Tell Us About Your Next Project!</DialogTitle>
           <DialogDescription>
-            We&apos;re excited to see what you&apos;ll make with PearAI. Share your vision with us and help us improve the product. And remember to make what excites!
+            We&apos;re excited to see what you&apos;ll make with PearAI. Share
+            your vision with us and help us improve the product. And remember to
+            make what excites!
           </DialogDescription>
         </DialogHeader>
 
         <div className="grid gap-4 py-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium">What best describes your role?</label>
+            <label className="text-sm font-medium">
+              What best describes your role?
+            </label>
             <select
               value={role}
               onChange={(e) => setRole(e.target.value)}
               className="w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm"
             >
-              <option value="" disabled>Select a role...</option>
+              <option value="" disabled>
+                Select a role...
+              </option>
               {userRoles.map((r) => (
                 <option key={r} value={r}>
                   {r}
@@ -69,13 +75,17 @@ export default function DownloadFeedbackForm({
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Your experience level of coding?</label>
+            <label className="text-sm font-medium">
+              Your experience level of coding?
+            </label>
             <select
               value={experienceLevel}
               onChange={(e) => setExperienceLevel(e.target.value)}
               className="w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm"
             >
-              <option value="" disabled>Select experience level...</option>
+              <option value="" disabled>
+                Select experience level...
+              </option>
               {experienceLevels.map((level) => (
                 <option key={level} value={level}>
                   {level}
@@ -85,13 +95,17 @@ export default function DownloadFeedbackForm({
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">Primary use case for PearAI?</label>
+            <label className="text-sm font-medium">
+              Primary use case for PearAI?
+            </label>
             <select
               value={primaryUse}
               onChange={(e) => setPrimaryUse(e.target.value)}
               className="w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm"
             >
-              <option value="" disabled>Select primary use...</option>
+              <option value="" disabled>
+                Select primary use...
+              </option>
               {primaryUses.map((use) => (
                 <option key={use} value={use}>
                   {use}
@@ -101,7 +115,9 @@ export default function DownloadFeedbackForm({
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium">What are you planning to make with PearAI?</label>
+            <label className="text-sm font-medium">
+              What are you planning to make with PearAI?
+            </label>
             <textarea
               value={projectDescription}
               onChange={(e) => setProjectDescription(e.target.value)}
@@ -112,9 +128,14 @@ export default function DownloadFeedbackForm({
         </div>
 
         <DialogFooter>
-          <Button 
-            onClick={handleSubmit} 
-            disabled={!role || !experienceLevel || !primaryUse || !projectDescription.trim()}
+          <Button
+            onClick={handleSubmit}
+            disabled={
+              !role ||
+              !experienceLevel ||
+              !primaryUse ||
+              !projectDescription.trim()
+            }
           >
             Submit
           </Button>

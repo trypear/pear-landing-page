@@ -7,7 +7,12 @@ import DownloadFeedbackForm from "./download-feedback-form";
 import { useDownload } from "@/hooks/useDownload";
 
 export default function DownloadButton({ user }: { user: User | null }) {
-  const { handleDownload, showFeedback, setShowFeedback, handleFeedbackSubmit } = useDownload();
+  const {
+    handleDownload,
+    showFeedback,
+    setShowFeedback,
+    handleFeedbackSubmit,
+  } = useDownload();
 
   const handleClick = async () => {
     const os = await getOS();

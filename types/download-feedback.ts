@@ -11,14 +11,14 @@ export const userRoles = [
   "Student",
   "Researcher",
   "Product Manager",
-  "Other"
+  "Other",
 ] as const;
 
 export const experienceLevels = [
   "Beginner (Less than 1 Year)",
   "Intermediate (1-3 Years)",
   "Advanced (3-5 Years)",
-  "Expert (5+ Years)"
+  "Expert (5+ Years)",
 ] as const;
 
 export const primaryUses = [
@@ -26,5 +26,5 @@ export const primaryUses = [
   "Work/Professional",
   "Academic/Research",
   "Learning/Education",
-  "Other"
+  "Other",
 ] as const;

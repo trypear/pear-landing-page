@@ -64,6 +64,6 @@ export const useDownload = () => {
     downloadLink,
     handleDownload,
     handleFeedbackSubmit,
-    setShowFeedback
+    setShowFeedback,
   };
 };
