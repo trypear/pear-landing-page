@@ -7,6 +7,7 @@ import IntegrationBox from "./ui/integrationBox";
 import { ChevronRight as ChevronRightIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import ExpandableCards from "./ui/expandable-cards";
+import AIModelsList from "./ai-models-list";
 
 export default function Hero() {
   const textVariants = {
@@ -44,7 +45,7 @@ export default function Hero() {
               <div className="h-4 w-4 rounded-sm bg-[#f26625] text-center font-mono text-xs font-medium text-white-50 sm:h-5 sm:w-5 sm:rounded-md sm:text-sm">
                 Y
               </div>
-              <Link
+              <a
                 href="https://www.ycombinator.com/companies/pearai"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -54,7 +55,7 @@ export default function Hero() {
                   BACKED BY Y COMBINATOR
                 </span>{" "}
                 <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
-              </Link>
+              </a>
             </motion.div>
 
             {/* Title */}
@@ -70,7 +71,10 @@ export default function Hero() {
               }}
             >
               <h1 className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
-                PearAI: The Open Source AI Code Editor
+                PearAI:
+                <br />
+                The Curated <br />
+                AI Code Editor
               </h1>
             </motion.div>
 
@@ -89,7 +93,7 @@ export default function Hero() {
               <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
                 Supercharge your development with an up-to-date, curated
                 inventory of the best AI tools, natively integrated for
-                effortless AI-powered coding.
+                effortless AI-powered coding. Always open source.
               </p>
             </motion.div>
 
@@ -124,6 +128,7 @@ export default function Hero() {
           </motion.div>
         </div>
       </section>
+      <AIModelsList />
       <ExpandableCards />
     </>
   );

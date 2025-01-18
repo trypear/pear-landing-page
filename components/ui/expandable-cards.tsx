@@ -135,7 +135,7 @@ export default function ExpandableCards() {
   return (
     <>
       {/* Desktop Layout */}
-      <div className="hidden items-center justify-center px-6 py-4 lg:flex">
+      <div className="hidden items-center justify-center px-6 py-6 lg:flex">
         <div className="w-full max-w-[1049px] rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50">
           <h1 className="pb-5 text-[28px] font-semibold leading-tight dark:text-gray-900">
             The AI space changes fast- PearAI Inventory curates the best AI

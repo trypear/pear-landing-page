@@ -32,11 +32,11 @@ export const MyTweet = ({ tweet: t, components }: Props) => {
       {tweet.in_reply_to_status_id_str && <TweetInReplyTo tweet={tweet} />}
 
       <div className="flex flex-col md:flex-row">
-        <div className="mb-4 pr-4">
+        <div className="mb-4 pr-4 md:w-11/12">
           <TweetBody tweet={tweet} />
         </div>
 
-        <div className="custom-tweet-container -mt-2">
+        <div className="custom-tweet-container -mt-2 md:w-1/12">
           {tweet.mediaDetails?.length ? (
             <TweetMedia tweet={tweet} components={components} />
           ) : null}
