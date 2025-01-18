@@ -12,8 +12,10 @@ export async function POST(request: NextRequest) {
     const feedback = (await request.json()) as DownloadFeedback;
 
     // Get auth session if available
-    const { data: { session } } = await supabase.auth.refreshSession();
-    
+    const {
+      data: { session },
+    } = await supabase.auth.refreshSession();
+
     const url = `${PEARAI_SERVER_URL}/feedback/download`;
     const headers: HeadersInit = {
       "Content-Type": "application/json",
