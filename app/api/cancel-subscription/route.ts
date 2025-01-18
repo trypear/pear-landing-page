@@ -10,7 +10,7 @@ async function cancelSubscription(request: NextRequest & { user: User }) {
   const supabase = createClient();
 
   try {
-    const { subscriptionId } = await request.json();
+    const { subscriptionId, feedback } = await request.json();
     const {
       data: { session },
     } = await supabase.auth.refreshSession();
@@ -31,7 +31,13 @@ async function cancelSubscription(request: NextRequest & { user: User }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ subscriptionId }),
+      body: JSON.stringify({
+        subscriptionId,
+        feedback: {
+          reasons: feedback.reasons,
+          comment: feedback.comment,
+        },
+      }),
     });
 
     if (!response.ok) {
