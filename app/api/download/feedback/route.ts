@@ -11,48 +11,34 @@ export async function POST(request: NextRequest) {
   try {
     const feedback = (await request.json()) as DownloadFeedback;
 
-    // Get the user's IP address for analytics
-    const ip =
-      request.headers.get("x-forwarded-for") ||
-      request.headers.get("x-real-ip") ||
-      "anonymous";
+    // Get auth session if available
+    const { data: { session } } = await supabase.auth.refreshSession();
+    
+    const url = `${PEARAI_SERVER_URL}/feedback/download`;
+    const headers: HeadersInit = {
+      "Content-Type": "application/json",
+    };
 
-    // Get auth session for the API request
-    const {
-      data: { session },
-    } = await supabase.auth.refreshSession();
-
-    if (!session) {
-      return NextResponse.json(
-        { error: "Failed to get session" },
-        { status: 401 },
-      );
+    // Add authorization header only if session exists
+    if (session?.access_token) {
+      headers.Authorization = `Bearer ${session.access_token}`;
     }
-
-    const token = session.access_token;
-    const url = `${PEARAI_SERVER_URL}/analytics${TEST_MODE_ENABLED ? "/test" : ""}/download-feedback`;
 
     // Send feedback to the server
     const response = await fetch(url, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
+      headers,
       body: JSON.stringify({
         role: feedback.role,
         experience_level: feedback.experience_level,
         primary_use: feedback.primary_use,
         project_description: feedback.project_description,
-        ip_address: ip,
       }),
     });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-
-    const data = await response.json();
 
     return NextResponse.json(
       { message: "Feedback submitted successfully" },

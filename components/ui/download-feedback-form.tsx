@@ -45,7 +45,11 @@ export default function DownloadFeedbackForm({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Tell Us About Your Next Project!</DialogTitle>
+          <DialogTitle>
+            Download Started...
+            <br />
+            While You Wait, Mind Telling Us About Your Next Project?
+          </DialogTitle>
           <DialogDescription>
             We&apos;re excited to see what you&apos;ll make with PearAI. Share
             your vision with us and help us improve the product. And remember to
