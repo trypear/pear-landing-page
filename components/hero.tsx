@@ -7,6 +7,7 @@ import IntegrationBox from "./ui/integrationBox";
 import { ChevronRight as ChevronRightIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import ExpandableCards from "./ui/expandable-cards";
+import AIModelsList from "./ai-models-list";
 
 export default function Hero() {
   const textVariants = {
@@ -44,7 +45,7 @@ export default function Hero() {
               <div className="h-4 w-4 rounded-sm bg-[#f26625] text-center font-mono text-xs font-medium text-white-50 sm:h-5 sm:w-5 sm:rounded-md sm:text-sm">
                 Y
               </div>
-              <Link
+              <a
                 href="https://www.ycombinator.com/companies/pearai"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -54,7 +55,7 @@ export default function Hero() {
                   BACKED BY Y COMBINATOR
                 </span>{" "}
                 <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
-              </Link>
+              </a>
             </motion.div>
 
             {/* Title */}
@@ -124,6 +125,7 @@ export default function Hero() {
           </motion.div>
         </div>
       </section>
+      <AIModelsList />
       <ExpandableCards />
     </>
   );
