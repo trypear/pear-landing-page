@@ -41,7 +41,7 @@ export default function AIModelsList() {
               <span className="font-medium">Meta Llama 3.1 405b</span>
             </div>
 
-            <div className="flex w-[25%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">
+            <div className="flex w-[40%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">
               <span className="font-mono text-black/60 dark:text-gray-500">
                 4
               </span>
