@@ -73,8 +73,7 @@ export default function Hero() {
               <h1 className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
                 PearAI:
                 <br />
-                The Curated{" "}
-                <br />
+                The Curated <br />
                 AI Code Editor
               </h1>
             </motion.div>

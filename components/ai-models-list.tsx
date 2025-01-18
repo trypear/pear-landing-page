@@ -9,7 +9,7 @@ export default function AIModelsList() {
             </h2>
             <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
               The best frontier model for coding changes by the week, only known
-              to the most tapped-in insiders managing multiple subscriptions.
+              to the insiders managing multiple subscriptions.
               PearAI Router automatically connects you to the highest-performing
               AI models for coding, ensuring you always get the best with a
               single subscription.
