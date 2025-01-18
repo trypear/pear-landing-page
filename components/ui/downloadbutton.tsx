@@ -3,46 +3,33 @@ import { Button } from "@/components/ui/button";
 import { getOS } from "@/lib/utils";
 import { User } from "@supabase/supabase-js";
 import { ArrowDownToLine } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import DownloadFeedbackForm from "./download-feedback-form";
+import { useDownload } from "@/hooks/useDownload";
 
 export default function DownloadButton({ user }: { user: User | null }) {
-  const router = useRouter();
-  const handleDownload = async () => {
-    try {
-      const os = await getOS();
-      if (os.download === "linux") {
-        router.push("/blog/download-pearai-on-linux");
-        return;
-      }
-      const res = await fetch(`/api/download?os_type=${os.download}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  const { handleDownload, showFeedback, setShowFeedback, handleFeedbackSubmit } = useDownload();
 
-      if (!res.ok) {
-        throw Error(res.statusText);
-      }
-
-      const download = await res.json();
-      if (download?.url) {
-        router.push(download.url);
-      }
-    } catch (error: any) {
-      toast.error(error.message);
-    }
+  const handleClick = async () => {
+    const os = await getOS();
+    handleDownload(os.download);
   };
 
   return (
-    <Button
-      variant={user ? "outline" : "default"}
-      size={`${user ? "icon" : "default"}`}
-      className={user ? "h-9 px-3" : "h-8 rounded-lg px-3"}
-      onClick={handleDownload}
-    >
-      {user ? <ArrowDownToLine /> : "Download"}
-    </Button>
+    <>
+      <Button
+        variant={user ? "outline" : "default"}
+        size={`${user ? "icon" : "default"}`}
+        className={user ? "h-9 px-3" : "h-8 rounded-lg px-3"}
+        onClick={handleClick}
+      >
+        {user ? <ArrowDownToLine /> : "Download"}
+      </Button>
+
+      <DownloadFeedbackForm
+        isOpen={showFeedback}
+        onClose={() => setShowFeedback(false)}
+        onSubmit={handleFeedbackSubmit}
+      />
+    </>
   );
 }
