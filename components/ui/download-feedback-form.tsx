@@ -120,7 +120,7 @@ export default function DownloadFeedbackForm({
 
           <div className="space-y-2">
             <label className="text-sm font-medium">
-              What are you planning to make with PearAI?
+              What are you planning to make with PearAI, and why are you making it?
             </label>
             <textarea
               value={projectDescription}
