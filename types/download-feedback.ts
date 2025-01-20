@@ -11,10 +11,12 @@ export const userRoles = [
   "Student",
   "Researcher",
   "Product Manager",
+  "Non-Technical",
   "Other",
 ] as const;
 
 export const experienceLevels = [
+  "No Experience",
   "Beginner (Less than 1 Year)",
   "Intermediate (1-3 Years)",
   "Advanced (3-5 Years)",
