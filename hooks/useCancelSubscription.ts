@@ -3,6 +3,7 @@ import { User } from "@supabase/supabase-js";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { Subscription } from "@/types/subscription";
+import { CancellationFeedback } from "@/types/cancellation";
 
 export const useCancelSubscription = (
   user: User | null,
@@ -14,7 +15,10 @@ export const useCancelSubscription = (
   );
   const router = useRouter();
 
-  const handleCancelSubscription = async (subscriptionId: string) => {
+  const handleCancelSubscription = async (
+    subscriptionId: string,
+    feedback: CancellationFeedback,
+  ) => {
     if (!user) {
       toast.error("Please log in to cancel your subscription.");
       router.push("/signin");
@@ -27,7 +31,10 @@ export const useCancelSubscription = (
       const response = await fetch("/api/cancel-subscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ subscriptionId }),
+        body: JSON.stringify({
+          subscriptionId,
+          feedback,
+        }),
       });
 
       if (!response.ok) {

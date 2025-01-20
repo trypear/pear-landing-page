@@ -33,6 +33,8 @@ import { Info } from "lucide-react";
 import Spinner from "./ui/spinner";
 import Footer from "./footer";
 import Link from "next/link";
+import { useDownload } from "@/hooks/useDownload";
+import DownloadFeedbackForm from "./ui/download-feedback-form";
 
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
@@ -77,8 +79,14 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   priceUnit = "/month",
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [downloadLink, setDownloadLink] = useState<string>();
+  const {
+    isDownloading,
+    downloadLink,
+    handleDownload,
+    showFeedback,
+    setShowFeedback,
+    handleFeedbackSubmit,
+  } = useDownload();
   const router = useRouter();
   const appleContainer = useRef<HTMLDivElement>(null);
   const [appleDownload, setAppleDownload] = useState<
@@ -102,32 +110,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
         transition: "all 0.3s ease",
       }
     : {};
-
-  const handleDownload = async (os_type: string) => {
-    setIsDownloading(true);
-    try {
-      const res = await fetch(`/api/download?os_type=${os_type}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!res.ok) {
-        throw Error(res.statusText);
-      }
-
-      const download = await res.json();
-      if (download?.url) {
-        setDownloadLink(download.url);
-        router.push(download.url);
-      }
-    } catch (error: any) {
-      toast.error(error.message);
-    } finally {
-      setIsDownloading(false);
-    }
-  };
 
   const featureRowDescription = (feature: string) => {
     if (feature?.startsWith("custom-standard")) {
@@ -256,21 +238,13 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           {isDownloading ? (
             <Spinner className="mb-4 ml-4 border" />
           ) : (
-            isFree &&
-            (downloadLink !== undefined ? (
-              <p className="text-gray-400">
-                Thanks for trying out PearAI! Your download should have started,
-                if it hasn&apos;t, click{" "}
-                <a
-                  className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-                  href={downloadLink}
-                >
-                  here
-                </a>
-                .
-              </p>
-            ) : (
+            isFree && (
               <div className="flex w-full flex-col items-center gap-2">
+                <DownloadFeedbackForm
+                  isOpen={showFeedback}
+                  onClose={() => setShowFeedback(false)}
+                  onSubmit={handleFeedbackSubmit}
+                />
                 <TooltipProvider>
                   <Tooltip delayDuration={50}>
                     <TooltipTrigger asChild>
@@ -364,8 +338,21 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
+                {downloadLink !== undefined && (
+                  <p className="text-gray-400">
+                    Thanks for trying out PearAI! Your download should have
+                    started, if it hasn&apos;t, click{" "}
+                    <a
+                      className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                      href={downloadLink}
+                    >
+                      here
+                    </a>
+                    .
+                  </p>
+                )}
               </div>
-            ))
+            )
           )}
           {!isFree && (
             <>
