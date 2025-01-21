@@ -9,9 +9,9 @@ export default function AIModelsList() {
             </h2>
             <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
               The best frontier model for coding changes by the week, only known
-              to the insiders managing multiple subscriptions. PearAI Router
+              to insiders managing multiple subscriptions. PearAI Router
               automatically connects you to the highest-performing AI models for
-              coding, ensuring you always get the best with a single
+              coding. Simply select &apos;PearAI Model&apos; to get the best on market with a single
               subscription.
             </p>
           </div>
@@ -23,35 +23,35 @@ export default function AIModelsList() {
                 <span className="font-mono text-black/60 dark:text-gray-700">
                   1
                 </span>
-                <span className="font-medium">Claude 3.5 Sonnet</span>
+                <span className="font-medium">PearAI Model</span>
               </div>
             </div>
 
-            <div className="flex w-[75%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">
+            <div className="flex w-[70%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">
               <span className="font-mono text-black/60 dark:text-gray-500">
                 2
               </span>
-              <span className="font-medium">GPT-4</span>
+              <span className="font-medium">Claude 3.5 Sonnet</span>
             </div>
 
-            <div className="flex w-[50%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">
+            <div className="flex w-[65%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">
               <span className="font-mono text-black/60 dark:text-gray-500">
                 3
               </span>
-              <span className="font-medium">Meta Llama 3.1 405b</span>
+              <span className="font-medium">GPT-4o</span>
             </div>
 
-            <div className="flex w-[40%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">
+            <div className="flex w-[45%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">
               <span className="font-mono text-black/60 dark:text-gray-500">
                 4
               </span>
               <span className="whitespace-nowrap font-medium">
-                Claude 3 Opus
+                Meta Llama 3.1 405b
               </span>
             </div>
 
             <p className="text-xs text-black/40 dark:text-gray-500 sm:text-sm">
-              LLM Benchmark Scores
+              LLM Benchmark Scores*
             </p>
           </div>
         </div>
