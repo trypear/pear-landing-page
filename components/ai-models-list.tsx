@@ -11,8 +11,8 @@ export default function AIModelsList() {
               The best frontier model for coding changes by the week, only known
               to insiders managing multiple subscriptions. PearAI Router
               automatically connects you to the highest-performing AI models for
-              coding. Simply select &apos;PearAI Model&apos; to get the best on market with a single
-              subscription.
+              coding. Simply select &apos;PearAI Model&apos; to get the best on
+              market with a single subscription.
             </p>
           </div>
 
