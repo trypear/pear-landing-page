@@ -21,7 +21,8 @@ export default function Custom404() {
             Oops! Page Not Found
           </h2>
           <p className="mt-4 text-gray-600 dark:text-gray-400">
-            The page you&apos;re looking for doesn&apos;t exist or has been moved.
+            The page you&apos;re looking for doesn&apos;t exist or has been
+            moved.
           </p>
           <div className="mt-8">
             <Link href="/">
