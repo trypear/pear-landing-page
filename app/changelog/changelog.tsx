@@ -18,6 +18,66 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
+    date: "22 January 2025",
+    title: "overlay and extension UI overhaul",
+    version: "v1.7.0",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>VS Code 1.96.2: </strong>
+            PearAI updated to vscode release 1.96.2 ✨
+          </li>
+          <li>
+            <strong>Added 🐋 deepseek models</strong>
+          </li>
+          <div className="mt-10 flex gap-4">
+            <Image
+              src="/images/changelogs/deepseek support.webp"
+              alt="deepseek support"
+              width={400}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-full max-w-[400px] rounded-xl"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+            <Image
+              src="/images/changelogs/deepseekbenchmark.webp"
+              alt="deepseekbenchmark"
+              width={400}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-full max-w-[400px] rounded-xl"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </div>
+          <li>
+            <strong>Refreshed the UI for extension and overlay 💅</strong>
+          </li>
+          <Image
+            src="/images/changelogs/ui-overhaul.png"
+            alt="ui overhaul"
+            width={400}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full max-w-[400px] rounded-xl"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
     date: "26 December 2024",
     title: "Developer Wrapped 2024 Release",
     version: "v1.6.1",
@@ -27,7 +87,7 @@ const updates: ChangelogEntry[] = [
           <li className="flex items-center gap-6">
             <Image
               src="/images/changelogs/wrapped.svg"
-              alt="PearAI v1.0.0 Dashboard"
+              alt="Developer Wrapped 2024"
               width={800}
               height={0}
               sizes="100vw"
@@ -67,7 +127,7 @@ const updates: ChangelogEntry[] = [
           </li>
           <Image
             src="/images/changelogs/fastapply-relace.webp"
-            alt="PearAI v1.0.0 Dashboard"
+            alt="fastapply relace"
             width={800}
             height={0}
             sizes="100vw"
