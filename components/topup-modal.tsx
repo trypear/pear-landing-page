@@ -17,13 +17,7 @@ import {
   TooltipContent,
   TooltipProvider,
 } from "@/components/ui/tooltip";
-import {
-  CheckCircle2,
-  MessageSquare,
-  Sparkles,
-  Rocket,
-  Crown,
-} from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { useTopUpCheckout } from "@/hooks/useTopUpCheckout";
 import { useUser } from "@/hooks/useUser";
 
@@ -32,23 +26,17 @@ const REQUEST_OPTIONS = [
     amount: 5,
     requests: 200,
     popular: false,
-    icon: MessageSquare,
-    feature: "Juicer",
   },
   {
     amount: 10,
     requests: 400,
     popular: false,
-    icon: Sparkles,
-    feature: "Health Potion",
   },
-  { amount: 15, requests: 700, popular: true, icon: Rocket, feature: "2x EXP" },
+  { amount: 15, requests: 700, popular: true },
   {
     amount: 30,
     requests: 1400,
     popular: false,
-    icon: Crown,
-    feature: "Ult",
   },
 ];
 
@@ -108,21 +96,17 @@ export default function TopUpModal() {
               onClick={() => setSelectedAmount(option.amount)}
             >
               <CardContent className="flex h-4 flex-col justify-between p-4">
-                <div>
-                  <div className="mb-1 flex items-center justify-between">
-                    <div className="flex items-center">
-                      <option.icon className="mr-2 h-4 w-4 text-secondary-main dark:text-white-50 sm:h-5 sm:w-5" />
-                      <p className="text-base font-semibold text-secondary-main dark:text-white-50 sm:text-sm">
-                        {option.feature}
-                      </p>
-                    </div>
+                <div className="relative min-h-[5rem]">
+                  <div className="absolute left-0 top-0">
                     {selectedAmount === option.amount && (
                       <CheckCircle2 className="h-5 w-5 fill-gray-100/[0.15] text-secondary-main dark:fill-secondary-main dark:text-white-50" />
                     )}
                   </div>
-                  <p className="text-2xl font-bold text-secondary-main dark:text-white-50">
-                    ${option.amount} <span className="text-lg">top up</span>
-                  </p>
+                  <div className="mt-6">
+                    <p className="text-2xl font-bold text-secondary-main dark:text-white-50">
+                      ${option.amount} <span className="text-lg">credits</span>
+                    </p>
+                  </div>
                   <div className="mt-1 flex items-center">
                     <TooltipProvider delayDuration={0}>
                       <Tooltip>
