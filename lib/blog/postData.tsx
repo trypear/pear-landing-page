@@ -533,11 +533,11 @@ export const posts = [
             <ul class="list-disc pl-5 my-4">
               <li>
                 <strong>AVX version</strong>:
-                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
+                <a href="https://github.com/trypear/pearai-app/releases/latest/download/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
               </li>
               <li>
                 <strong>AVX2 version</strong>:
-                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx2.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
+                <a href="https://github.com/trypear/pearai-app/releases/latest/download/PearAI-avx2.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
               </li>
             </ul>
           </li>
