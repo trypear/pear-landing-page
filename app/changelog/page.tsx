@@ -15,7 +15,7 @@ const ChangeLog: React.FC = () => {
       <h1 className="mb-10 text-5xl font-bold text-primary-700">Change Logs</h1>
       <span className="inline-block rounded-full bg-primary-200 px-4 py-2 text-sm font-medium text-primary-900">
         Only major version updates are shown here. For most recent updates,
-        please see
+        please see{" "}
         <a
           href="https://discord.com/invite/7QMraJUsQt"
           className="text-black-100 font-bold hover:underline"
