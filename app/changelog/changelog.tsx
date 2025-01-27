@@ -18,6 +18,19 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
+    date: "27 January 2025",
+    title: "UI bug fixes",
+    version: "v1.7.1",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Fixed Add Docs not working</li>
+          <li>better UI for model selection</li>
+        </ul>
+      </>
+    ),
+  },
+  {
     date: "22 January 2025",
     title: "overlay and extension UI overhaul",
     version: "v1.7.0",
