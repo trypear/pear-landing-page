@@ -71,7 +71,7 @@ export default function DownloadFeedbackForm({
                 Select a role...
               </option>
               {userRoles.map((r) => (
-                <option key={r} value={r} className="dark: text-slate-800">
+                <option key={r} value={r} className="dark:text-slate-800">
                   {r}
                 </option>
               ))}
@@ -94,7 +94,7 @@ export default function DownloadFeedbackForm({
                 <option
                   key={level}
                   value={level}
-                  className="dark: text-slate-800"
+                  className="dark:text-slate-800"
                 >
                   {level}
                 </option>
@@ -115,7 +115,7 @@ export default function DownloadFeedbackForm({
                 Select primary use...
               </option>
               {primaryUses.map((use) => (
-                <option key={use} value={use} className="dark: text-slate-800">
+                <option key={use} value={use} className="dark:text-slate-800">
                   {use}
                 </option>
               ))}
