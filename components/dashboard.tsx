@@ -15,6 +15,7 @@ type DashboardPageProps = {
   subscription: Subscription | null;
   openAppQueryParams: string | URLSearchParams;
   user: User;
+  accessToken: string;
 };
 
 export type UsageType = {
@@ -27,6 +28,7 @@ export default function DashboardPage({
   subscription,
   openAppQueryParams,
   user,
+  accessToken,
 }: DashboardPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -131,7 +133,7 @@ export default function DashboardPage({
             </p>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
-            <ProfileCard user={user} />
+            <ProfileCard user={user} apiKey={accessToken} />
             {subscription ? (
               <SubscriptionCard
                 subscription={subscription}

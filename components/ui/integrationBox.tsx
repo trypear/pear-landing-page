@@ -167,10 +167,10 @@ export default function IntegrationBox() {
               </div>
               <div className="flex flex-col text-xs">
                 <span className="text-gray-500 dark:text-gray-400">
-                 Released Now
+                  Released Now
                 </span>
                 <span className="dark:text-white font-medium text-black/60">
-                  Start Building Today
+                  Start Building Today!
                 </span>
               </div>
             </div>
