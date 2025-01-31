@@ -41,7 +41,10 @@ export default function ProfileCard({ user, apiKey }: ProfileCardProps) {
       <CardContent className="flex flex-col space-y-4 pt-4">
         <div className="flex space-x-4">
           <Avatar className="h-16 w-16">
-            <AvatarImage src={user.user_metadata.avatar_url} alt="User Avatar" />
+            <AvatarImage
+              src={user.user_metadata.avatar_url}
+              alt="User Avatar"
+            />
             <AvatarFallback>
               {user?.user_metadata.full_name?.[0] || user?.email?.[0] || "U"}
             </AvatarFallback>
@@ -57,7 +60,9 @@ export default function ProfileCard({ user, apiKey }: ProfileCardProps) {
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="text-sm font-medium text-muted-foreground">API Key</label>
+            <label className="text-sm font-medium text-muted-foreground">
+              API Key
+            </label>
             <div className="flex space-x-2">
               <Button
                 variant="ghost"
@@ -86,8 +91,8 @@ export default function ProfileCard({ user, apiKey }: ProfileCardProps) {
             </div>
           </div>
           <div className="rounded-md border bg-muted/50 px-3 py-2">
-            <code className="text-sm break-all font-mono">
-              {showApiKey ? apiKey : '••••••••••••••••••••••'}
+            <code className="break-all font-mono text-sm">
+              {showApiKey ? apiKey : "••••••••••••••••••••••"}
             </code>
           </div>
         </div>

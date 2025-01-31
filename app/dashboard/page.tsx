@@ -23,7 +23,7 @@ export default async function Dashboard() {
   }
 
   // Extract access token from openAppQueryParams
-  const accessToken = openAppQueryParams.split('&')[0].split('=')[1];
+  const accessToken = openAppQueryParams.split("&")[0].split("=")[1];
 
   return (
     <DashboardPage
