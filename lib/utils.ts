@@ -25,7 +25,7 @@ interface OSType {
 const defaultMetadata = {
   title: "PearAI - Open Source AI Code Editor For Project Builders",
   description:
-    "PearAI is an open source AI-powered code editor with powerful features like AI chat, PearAI Coding Agent, and AI debugging to help you make what excites.",
+    "PearAI is an open source AI-powered code editor with powerful features like AI chat, PearAI Creator, and AI debugging to help you make what excites.",
 };
 
 export const normalizeDate = (dateString: string) => {
