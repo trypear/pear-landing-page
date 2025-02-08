@@ -37,8 +37,6 @@ import { InfoIcon } from "lucide-react";
 import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
-import TopUpModal from "../topup-modal";
-
 type SubscriptionCardProps = {
   subscription: Subscription | null;
   usage?: UsageType;
@@ -250,6 +248,28 @@ export default function SubscriptionCard({
                     </p>
                   </div>
                 )}
+                <div className="mt-4 flex justify-between">
+                  <div className="flex items-center">
+                    <p className="font-medium">Pay-As-You-Go Extra Credits</p>
+                    <TooltipProvider delayDuration={0}>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Link href="/pay-as-you-go">
+                            <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
+                          </Link>
+                        </TooltipTrigger>
+                        <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
+                          <p>
+                            Credits billed monthly, no premiums charged
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {loading ? "-" : "$0 used"}
+                  </p>
+                </div>
             </div>
           )}
           <div className="mb-4">
@@ -339,9 +359,6 @@ export default function SubscriptionCard({
                 </Link>
               </Button>
             </div>
-            <TopUpModal />
-          </div>
-          <div className="flex items-center justify-between">
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button
