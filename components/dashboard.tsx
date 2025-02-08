@@ -133,7 +133,7 @@ export default function DashboardPage({
             </p>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
-            <ProfileCard user={user} apiKey={accessToken} />
+            <ProfileCard user={user} />
             {subscription ? (
               <SubscriptionCard
                 subscription={subscription}
