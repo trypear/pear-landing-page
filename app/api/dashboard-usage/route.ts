@@ -43,7 +43,6 @@ const getDashboardUsage = async (request: NextRequest) => {
     return NextResponse.json({
       percent_credit_used: data.percent_credit_used,
       remaining_topup_credits: data.remaining_topup_credits,
-      pay_as_you_go_credits: data.pay_as_you_go_credits,
       ttl: data?.ttl,
     });
   } catch (error) {

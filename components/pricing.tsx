@@ -580,15 +580,8 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
             {type !== "free" && (
               <>
                 <br /> <br />
-                If you happen to run out of credits (which is unlikely), you can
-                switch to a{" "}
-                <Link
-                  href="/pay-as-you-go"
-                  className="text-primary-700 hover:text-primary-800"
-                >
-                  pay-as-you-go extra credit plan
-                </Link>
-                , or use our free model for unlimited requests.
+                If you happen to run out of credits, you can top up from your
+                dashboard.
               </>
             )}
           </p>
