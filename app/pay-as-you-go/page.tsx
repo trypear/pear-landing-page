@@ -15,7 +15,7 @@ export default function PayAsYouGoPage() {
 
           <div className="mt-8 max-w-3xl text-lg">
             <p className="mb-6">
-              Starting Feb 8th, we&apos;ve removed the quota limit and
+              Starting Feb 9th, 2025 we&apos;ve removed the quota limit and
               introduced usage-based billing.
             </p>
             <p className="mb-8">
@@ -29,6 +29,13 @@ export default function PayAsYouGoPage() {
               for no additional cost, simply select &ldquo;PearAI Model
               Mini&rdquo; as the model, and extra usage will be free. If you
               have any questions, please contact us on{" "}
+              <a
+                href="https://discord.gg/7QMraJUsQt"
+                className="text-primary-600 underline hover:text-primary-700"
+              >
+                Discord
+              </a>
+              !
             </p>
 
             <div className="mb-8">
