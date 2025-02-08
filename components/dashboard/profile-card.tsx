@@ -10,15 +10,18 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { EyeIcon, EyeOffIcon, CopyIcon, CheckIcon } from "lucide-react";
-import { toast } from "sonner";
+// API key related imports temporarily commented out
+// import { EyeIcon, EyeOffIcon, CopyIcon, CheckIcon } from "lucide-react";
+// import { toast } from "sonner";
 
 type ProfileCardProps = {
   user: User;
-  apiKey: string;
+  // apiKey: string; // temporarily commented out
 };
 
-export default function ProfileCard({ user, apiKey }: ProfileCardProps) {
+export default function ProfileCard({ user /* apiKey */ }: ProfileCardProps) {
+  // API key related state and handlers temporarily commented out
+  /*
   const [showApiKey, setShowApiKey] = useState(false);
   const [copying, setCopying] = useState(false);
 
@@ -32,6 +35,7 @@ export default function ProfileCard({ user, apiKey }: ProfileCardProps) {
       toast.error("Failed to copy API key");
     }
   };
+  */
 
   return (
     <Card className="flex h-full flex-col overflow-auto bg-gray-100/10 text-card-foreground">
@@ -58,6 +62,7 @@ export default function ProfileCard({ user, apiKey }: ProfileCardProps) {
             <p className="text-muted-foreground">{user?.email}</p>
           </div>
         </div>
+        {/* API Key display temporarily commented out
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <label className="text-sm font-medium text-muted-foreground">
@@ -96,6 +101,7 @@ export default function ProfileCard({ user, apiKey }: ProfileCardProps) {
             </code>
           </div>
         </div>
+        */}
       </CardContent>
       <CardFooter className="mt-auto pt-4">
         {user?.app_metadata.provider === "email" && (
