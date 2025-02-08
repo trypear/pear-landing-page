@@ -21,6 +21,7 @@ type DashboardPageProps = {
 export type UsageType = {
   percent_credit_used: number | null;
   remaining_topup_credits: number | null;
+  pay_as_you_go_credits: number | null;
   ttl: number | null;
 };
 
@@ -36,6 +37,7 @@ export default function DashboardPage({
   const [usage, setUsage] = useState<UsageType>({
     percent_credit_used: null,
     remaining_topup_credits: null,
+    pay_as_you_go_credits: null,
     ttl: -4,
   });
 
