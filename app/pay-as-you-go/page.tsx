@@ -24,7 +24,7 @@ export default function PayAsYouGoPage() {
               even exhaust their credits, but in the rare case you can
               pay-as-you-go to keep building without limits. Additional usage
               are based on LLM costs (at no premium) will be billed to your
-              payment method.
+              payment method. If you have top up credits, they will still be on your account and used before any pay-as-you-go extra credits. If you have any questions, please contact us on <a href="https://discord.gg/7QMraJUsQt" className="text-primary-600 underline hover:text-primary-700">Discord</a>!
             </p>
 
             <div className="mb-8">
