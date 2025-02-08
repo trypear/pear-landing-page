@@ -10,6 +10,7 @@ import {
 } from "./dropdown-menu";
 import { AuthError, User } from "@supabase/supabase-js";
 import Link from "next/link";
+import { useSignInUrl, useSignUpUrl } from "@/hooks/useSigningUrl";
 
 export default function AuthButton({
   handleSignOut,
@@ -18,17 +19,20 @@ export default function AuthButton({
   handleSignOut: () => Promise<void>;
   user: User | null;
 }) {
+  const [signinUrl] = useSignInUrl();
+  const [signupUrl] = useSignUpUrl();
+
   return (
     <div className="flex items-center space-x-4">
       {!user ? (
         <div className="m-0 inline-flex rounded-lg border border-gray-300 p-0 dark:border-gray-100">
-          <Link href="/signin">
+          <Link href={signinUrl}>
             <Button variant="ghost" className="h-8 rounded-r-none px-3">
               Sign in
             </Button>
           </Link>
           <div className="w-[1px] self-stretch bg-gray-300 dark:bg-gray-100" />
-          <Link href="/signup">
+          <Link href={signupUrl}>
             <Button
               variant="ghost"
               className="h-8 rounded-l-none border-0 px-3"
