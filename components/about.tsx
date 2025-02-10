@@ -111,8 +111,10 @@ const AboutComponent: React.FC = () => {
         <div className="max-w-2xl text-gray-500">
           <p className="mt-6 text-center">
             PearAI is fueled by its most important thing, the community. Join
-            our Discord with +2000 developers and friends all trying to create
-            the best AI code editor in the world together.
+            our <a href="https://discord.gg/7QMraJUsQt">Discord</a> with +2000
+            developers and friends all trying to create the best AI code editor
+            in the world together. Feel free to ask questions about your own
+            projects, or ask for help from the community!
           </p>
         </div>
       </div>
@@ -131,18 +133,10 @@ const AboutComponent: React.FC = () => {
           </span>
         </h2>
         <p className="mt-4 max-w-2xl text-center text-gray-500">
-          Currently, we have hit a checkpoint in our product, where layers of
-          the tech stack (i.e. Search, RAG, Chat, etc.) can communicate with
-          each other under a single, beautiful user experience our users love.
-          This is our V1, and we’re just getting started. Building for the
-          future, we envision PearAI as a framework for all AI tools to live and
-          integrate. Not only will the number of layers of the AI tech stack
-          grow, but the number of companies solving each layer of this AI tech
-          stack. As a result, the quality of each product for every part of
-          coding with AI will improve. The best user experience can be achieved
-          if these AI tools have a framework to communicate with each other, and
-          users have access to these AI tools in a single, unified IDE. This
-          will be PearAI.
+          PearAI hopes to empower everyone to build software. The world is
+          shifting from mass-market software to personalized solutions. We see a
+          future where anyone can bring their ideas to life in a world driven by
+          Personal Software, and we&apos;re just getting started!
         </p>
       </div>
 
