@@ -57,9 +57,11 @@ const AboutComponent: React.FC = () => {
           you to make what you want. Not just for prototyping, but over a long
           lifespan of added features and growth. Imagine if VSCode was
           reimagined with AI in mind, or an extensible AI code editor with the
-          best UX possible. 
+          best UX possible.
         </p>
-        <p className="mt-4 max-w-2xl text-center text-gray-500">Just remember to make what excites!</p>
+        <p className="mt-4 max-w-2xl text-center text-gray-500">
+          Just remember to make what excites!
+        </p>
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
         <p className="text-xs text-gray-700">Current features include</p>
