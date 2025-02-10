@@ -37,10 +37,10 @@ const AboutComponent: React.FC = () => {
         }
       >
         <h1 className="text-4xl font-bold">
-          PearAI is{" "}
+          PearAI is made for{" "}
           <span className="relative">
             <span className="relative z-10 text-primary-700">
-              built in public
+              your next project.
             </span>
             <span
               className="absolute bottom-0 left-0 w-full"
@@ -50,19 +50,14 @@ const AboutComponent: React.FC = () => {
               }}
             ></span>
           </span>
-          , and we&apos;re just getting started.
         </h1>
         <p className="mt-4 max-w-2xl text-center text-gray-500">
-          PearAI&apos;s mission is to reduce the time it takes for you to go
-          from idea to creation. The first time you may have seen us, you saw
-          our MVP. Today, here’s our V1, and how we’re building for the future
-          of coding with AI.
-          <br /> <br />
-          We are a curated inventory of the best AI tools on the market (ie.
-          Perplexity, aider, mem0, etc.), to make it easy for you to make what
-          you want. Imagine if VSCode was reimagined with AI in mind since the
-          beginning, or an extensible AI code editor with the best UX possible.
-          View our future plans below!
+          Any idea you have, PearAI is made to help you build it. PearAI is a
+          code editor with a suite of tools to make it as easy as possible for
+          you to make what you want. Not just for prototyping, but over a long
+          lifespan of added features and growth. Imagine if VSCode was
+          reimagined with AI in mind, or an extensible AI code editor with the
+          best UX possible. Just remember to make what excites!
         </p>
       </div>
       <div className="mt-10 flex flex-col items-center justify-center">
@@ -76,7 +71,7 @@ const AboutComponent: React.FC = () => {
             PearAI Chat: Talk to your code
           </Badge>
           <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            PearAI Creator: Automatic code generation
+            PearAI Coding Agent: Autonomous Feature Generation
           </Badge>
           <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
             PearAI Search: Up-to-date AI search
@@ -94,11 +89,11 @@ const AboutComponent: React.FC = () => {
         <Tweet id="1856441845880107408" components={components} />
       </div>
 
-      <div className="m-auto mb-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
+      {/* <div className="m-auto mb-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
         {videoData.map((video, index) => (
           <VideoCard key={index} {...video} />
         ))}
-      </div>
+      </div> */}
 
       <div className="mt-10 flex flex-col items-center justify-center p-4 pb-0">
         <h2 className="text-4xl font-bold">
@@ -118,31 +113,6 @@ const AboutComponent: React.FC = () => {
             PearAI is fueled by its most important thing, the community. Join
             our Discord with +2000 developers and friends all trying to create
             the best AI code editor in the world together.
-          </p>
-        </div>
-      </div>
-      <br />
-
-      <div className="mt-0 flex flex-col items-center justify-center p-4 pb-0">
-        <h2 className="text-4xl font-bold">
-          <span className="relative">
-            <span className="relative z-10">Founders</span>
-            <span
-              className="absolute bottom-0 left-0 w-full"
-              style={{
-                height: "1.4375rem",
-                background: "rgba(20, 189, 149, 0.20)",
-              }}
-            ></span>
-          </span>
-        </h2>
-
-        <div className="max-w-2xl text-gray-500">
-          <p className="mt-6 text-center">
-            PearAI is founded by Pan and Nang, both software engineers who
-            worked on internal and developer tooling teams at companies like
-            Meta, Coinbase, Two Sigma, among others. Together, they have over
-            500k subscribers on Youtube.
           </p>
         </div>
       </div>

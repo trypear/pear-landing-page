@@ -31,11 +31,11 @@ const CARDS: Card[] = [
     id: 1,
     title: "Ship with",
     company: {
-      name: "aider",
-      url: "https://aider.chat/",
+      name: "Roo Code / Cline",
+      url: "https://github.com/RooVetGit/Roo-Code",
     },
     description:
-      "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Integrated within PearAI Creator, it will make and apply the changes to your files automatically.",
+      "Roo Cline / Cline is the leading AI Coding Agent on the market. It has access to your development environment (with your permission) for a feedback loop to add features, fix bugs, and more.",
     icon: AiderLogo,
     bgColor: "rgba(201, 255, 226, 1)",
     iconBgColor: "rgba(4, 40, 26, 1)",
@@ -45,22 +45,6 @@ const CARDS: Card[] = [
   },
   {
     id: 2,
-    title: "Ship with",
-    company: {
-      name: "Supermaven",
-      url: "https://supermaven.com/",
-    },
-    description:
-      "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
-    icon: SupermavenLogo,
-    bgColor: "rgba(200, 230, 255, 1)",
-    iconBgColor: "rgba(0, 85, 255, 1)",
-    iconColor: "#FFFFFF",
-    titleColor: "#002957",
-    descriptionColor: "#002957",
-  },
-  {
-    id: 3,
     title: "Chat & edit with",
     company: {
       name: "Continue",
@@ -68,10 +52,9 @@ const CARDS: Card[] = [
     },
     description: (
       <>
-        Continue is a leading open-source AI code assistant extension. PearAI
+        Continue is the leading open-source AI code assistant extension. PearAI
         Chat is built upon the foundation of Continue, with changes and a
-        unified user experience. We acknowledge and respect Continue&apos;s
-        contributions.
+        unified user experience.
       </>
     ),
     icon: ContinueLogo,
@@ -81,6 +64,23 @@ const CARDS: Card[] = [
     titleColor: "#110D67",
     descriptionColor: "#110D67",
   },
+  {
+    id: 3,
+    title: "Search with",
+    company: {
+      name: "Perplexity",
+      url: "https://www.perplexity.ai/",
+    },
+    description:
+      "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
+    icon: PerplexityLogo,
+    bgColor: "rgba(216, 250, 255, 1)",
+    iconBgColor: "rgba(34, 128, 141, 1)",
+    iconColor: "#FFFFFF",
+    titleColor: "#003F48",
+    descriptionColor: "#003F48",
+  },
+
   {
     id: 4,
     title: "Remember with",
@@ -99,19 +99,19 @@ const CARDS: Card[] = [
   },
   {
     id: 5,
-    title: "Search with",
+    title: "Predict with",
     company: {
-      name: "Perplexity",
-      url: "https://www.perplexity.ai/",
+      name: "Supermaven",
+      url: "https://supermaven.com/",
     },
     description:
-      "Perplexity is the leading AI search engine. Integrated within PearAI Search, you can seamlessly add web content, like up-to-date documentation, which vanilla LLMs often lack, directly into your requests.",
-    icon: PerplexityLogo,
-    bgColor: "rgba(216, 250, 255, 1)",
-    iconBgColor: "rgba(34, 128, 141, 1)",
+      "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
+    icon: SupermavenLogo,
+    bgColor: "rgba(200, 230, 255, 1)",
+    iconBgColor: "rgba(0, 85, 255, 1)",
     iconColor: "#FFFFFF",
-    titleColor: "#003F48",
-    descriptionColor: "#003F48",
+    titleColor: "#002957",
+    descriptionColor: "#002957",
   },
 ];
 
@@ -138,9 +138,8 @@ export default function ExpandableCards() {
       <div className="hidden items-center justify-center px-6 py-6 lg:flex">
         <div className="w-full max-w-[1049px] rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50">
           <h1 className="pb-5 text-[28px] font-semibold leading-tight dark:text-gray-900">
-            The AI space changes fast- PearAI Inventory curates the best AI
-            tools on the market at any given time, and integrates them into a
-            powerful editor.
+            PearAI Inventory curates the best AI tools on the market at any
+            given time, and integrates them into a powerful editor.
           </h1>
           <div className="flex gap-5">
             {CARDS.map((card) => (

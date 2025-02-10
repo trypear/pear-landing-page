@@ -41,12 +41,12 @@ const INTEGRATIONS = [
     label: "Ship with",
     product: (
       <a
-        href="https://aider.chat/"
+        href="https://github.com/RooVetGit/Roo-Code/"
         target="_blank"
         rel="noopener noreferrer"
         className="hover:underline"
       >
-        aider
+        Roo Code / Cline
       </a>
     ),
     Icon: AiderLogo,
@@ -167,7 +167,7 @@ export default function IntegrationBox() {
               </div>
               <div className="flex flex-col text-xs">
                 <span className="text-gray-500 dark:text-gray-400">
-                  Released Now
+                  Now Released
                 </span>
                 <span className="dark:text-white font-medium text-black/60">
                   Start Building Today!

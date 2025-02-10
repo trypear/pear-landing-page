@@ -90,9 +90,7 @@ export default function SignUp() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-            <h1 className="h1">
-              Ready to speed up your development experience?
-            </h1>
+            <h1 className="h1">Ready to supercharge your development?</h1>
           </div>
 
           <div className="mx-auto max-w-sm">

@@ -13,8 +13,7 @@ export default function Footer() {
             <PearDarkLogo />
           </Link>
           <p className="mt-5 text-sm leading-[1.75] text-neutral-500 dark:text-neutral-400">
-            Speed up your development process by seamlessly integrating AI into
-            your workflow.
+            Make What Excites.
           </p>
         </div>
 
