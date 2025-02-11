@@ -89,7 +89,7 @@ const CARDS: Card[] = [
       url: "https://mem0.ai/",
     },
     description:
-      "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
+      "Mem0 is a self-improving memory layer for AI applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
     icon: Mem0Logo,
     bgColor: "rgba(225, 253, 175, 1)",
     iconBgColor: "rgba(0, 0, 0, 1)",
