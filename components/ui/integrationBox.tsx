@@ -38,7 +38,7 @@ const IntegrationItem = ({
 const INTEGRATIONS = [
   {
     margin: "lg:ml-2 mr-1",
-    label: "Ship with",
+    label: "Code with",
     product: (
       <a
         href="https://github.com/RooVetGit/Roo-Code/"

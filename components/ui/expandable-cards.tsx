@@ -29,7 +29,7 @@ type Card = {
 const CARDS: Card[] = [
   {
     id: 1,
-    title: "Ship with",
+    title: "Code with",
     company: {
       name: "Roo Code / Cline",
       url: "https://github.com/RooVetGit/Roo-Code",
