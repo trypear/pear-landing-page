@@ -11,24 +11,46 @@ export default function OpenSource() {
             <h2 className="mb-2 text-4xl font-bold text-black md:text-4xl">
               Open source is{" "}
               <>
-                <svg width="0" height="0" style={{ position: 'absolute' }}>
+                <svg width="0" height="0" style={{ position: "absolute" }}>
                   <defs>
-                    <filter id="inner-shadow" x="-50%" y="-50%" width="200%" height="200%">
+                    <filter
+                      id="inner-shadow"
+                      x="-50%"
+                      y="-50%"
+                      width="200%"
+                      height="200%"
+                    >
                       <feComponentTransfer in="SourceAlpha">
                         <feFuncA type="table" tableValues="1 0" />
                       </feComponentTransfer>
                       <feGaussianBlur stdDeviation="8" result="blur" />
                       <feOffset dx="0" dy="0" result="offsetBlur" />
-                      <feComposite operator="arithmetic" k2="-1" k3="1" in="offsetBlur" in2="SourceAlpha" result="innerShadow" />
+                      <feComposite
+                        operator="arithmetic"
+                        k2="-1"
+                        k3="1"
+                        in="offsetBlur"
+                        in2="SourceAlpha"
+                        result="innerShadow"
+                      />
                       <feFlood floodColor="white" result="floodColor" />
-                      <feComposite in="floodColor" in2="innerShadow" operator="in" result="whiteInnerShadow" />
-                      <feComposite in="whiteInnerShadow" in2="SourceGraphic" operator="over" />
+                      <feComposite
+                        in="floodColor"
+                        in2="innerShadow"
+                        operator="in"
+                        result="whiteInnerShadow"
+                      />
+                      <feComposite
+                        in="whiteInnerShadow"
+                        in2="SourceGraphic"
+                        operator="over"
+                      />
                     </filter>
                   </defs>
                 </svg>
                 <span
                   className="bg-gradient-to-r from-[#FF34A1] via-[#754AE9] to-[#00FFC3] bg-clip-text text-transparent"
-                  style={{ filter: 'url(#inner-shadow)' }}
+                  style={{ filter: "url(#inner-shadow)" }}
                 >
                   transparency.
                 </span>
