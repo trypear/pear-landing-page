@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
-  AiderLogo,
+  RooCodeLogo,
   PerplexityLogo,
   SupermavenLogo,
   Mem0Logo,
@@ -36,7 +36,7 @@ const CARDS: Card[] = [
     },
     description:
       "Roo Cline / Cline is the leading AI Coding Agent on the market. It has access to your development environment (with your permission) for a feedback loop to add features, fix bugs, and more.",
-    icon: AiderLogo,
+    icon: RooCodeLogo,
     bgColor: "rgba(201, 255, 226, 1)",
     iconBgColor: "rgba(4, 40, 26, 1)",
     iconColor: "#01FFC9",

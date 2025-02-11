@@ -1,5 +1,5 @@
 import {
-  AiderLogo,
+  RooCodeLogo,
   PerplexityLogo,
   SupermavenLogo,
   Mem0Logo,
@@ -49,7 +49,7 @@ const INTEGRATIONS = [
         Roo Code / Cline
       </a>
     ),
-    Icon: AiderLogo,
+    Icon: RooCodeLogo,
   },
   {
     margin: "lg:ml-24 ml-2",
