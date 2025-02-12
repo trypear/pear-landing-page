@@ -75,16 +75,13 @@ const FAQComponent: React.FC = () => {
               Why PearAI?
             </h3>
             <p className="mb-4 text-base leading-relaxed text-gray-600">
-              You just want to be able to make what you want, fast. PearAI gets
-              you there.
+              You just want to bring your ideas to life. PearAI gets you there.
             </p>
             <p className="text-base leading-relaxed text-gray-600">
-              The AI tooling space is moving too quickly for most to keep up
-              with. One day, product X is best for code generation; the next
-              day, it’s product Y. PearAI natively integrates the best-in-market
-              AI tools for each aspect of coding with AI (tooling for code
-              generation, LLM, search, codebase knowledge, debugging, etc.), so
-              you can just focus on making what you want.
+              PearAI natively integrates the best-in-market AI tools for each
+              aspect of coding with AI (tooling for code generation, LLM,
+              search, codebase knowledge, debugging, etc.), so you can just
+              focus on building.
             </p>
           </div>
           <div className="mb-4 mt-6 max-w-3xl text-center" data-aos="fade-up">
