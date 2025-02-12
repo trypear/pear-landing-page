@@ -1,18 +1,19 @@
 export default function AIModelsList() {
   return (
-    <div className="items-center justify-center px-6 pt-6 lg:flex">
+    <div className="items-center justify-center px-6 pb-6 lg:flex">
       <div className="mx-auto w-full max-w-3xl rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50 lg:max-w-[1049px]">
         <div className="grid items-start gap-12 lg:grid-cols-2">
           <div className="space-y-4 leading-tight">
             <h2 className="text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
-              Always Get The Best.
+              Always Get The Best, <br />
+              With A Single Subscription
             </h2>
             <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
-              The best frontier model for coding changes by the week, only known
-              to insiders managing multiple subscriptions. PearAI Router
+              The best AI model for coding changes by the week, only known to
+              insiders managing multiple subscriptions. PearAI Router
               automatically connects you to the highest-performing AI models for
-              coding. Simply select &apos;PearAI Model&apos; to get the best on
-              market with a single subscription.
+              coding across all tools. Simply select &apos;PearAI Model&apos; to
+              get the best on market with a single subscription.
             </p>
           </div>
 

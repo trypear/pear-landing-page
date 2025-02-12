@@ -6,8 +6,8 @@ export const videoData = [
     title: "Talk to your codebase directly",
     description:
       "Ask questions or generate code with the context of your @codebase for more accurate results.",
-    videoUrl: `${BUNNY_CDN_HOST}/pearai-chat-welcome.mp4`,
-    duration: 8500,
+    videoUrl: `${BUNNY_CDN_HOST}/pearai-chat-welcome-2.mp4`,
+    duration: 10000,
   },
   {
     id: 2,
@@ -22,15 +22,15 @@ export const videoData = [
     title: "Make features, refactors, or bug fixes directly.",
     description:
       "PearAI Creator (powered by aider*) finds where the changes need to be made, and implements them automatically.",
-    videoUrl: `${BUNNY_CDN_HOST}/pearai-creator-welcome.mp4`,
-    duration: 10500,
+    videoUrl: `${BUNNY_CDN_HOST}/pearai-agent-welcome-2.mp4`,
+    duration: 14000,
   },
   {
     id: 4,
     title: "Always have up-to-date information",
     description:
       "PearAI Search (Powered by Perplexity*) uses web data to provide you up-to-date info, going beyond traditional AI's knowledge cutoff limitations.",
-    videoUrl: `${BUNNY_CDN_HOST}/pearai-search.mp4`,
-    duration: 6500,
+    videoUrl: `${BUNNY_CDN_HOST}/pearai-search-welcome-1.mp4`,
+    duration: 8000,
   },
 ];
