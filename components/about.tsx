@@ -53,9 +53,9 @@ const AboutComponent: React.FC = () => {
         </h1>
         <p className="mt-4 max-w-2xl text-center text-gray-500">
           Any idea you have, PearAI is here to help you build it. PearAI is a
-          code editor with a suite of the best AI tools to make it as easy as possible for
-          you to make what you want. Not just for prototyping, but for a long
-          lifespan of added features and growth.
+          code editor with a suite of the best AI tools to make it as easy as
+          possible for you to make what you want. Not just for prototyping, but
+          for a long lifespan of added features and growth.
         </p>
         <p className="mt-4 max-w-2xl text-center text-gray-500">
           Just remember to make what excites!
