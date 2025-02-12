@@ -67,7 +67,9 @@ export default function OpenSource() {
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="mt-0.5 h-5 w-5 text-gray-300" />
-                  <p className="text-black dark:text-gray-900">We never store your code.</p>
+                  <p className="text-black dark:text-gray-900">
+                    We never store your code.
+                  </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="mt-0.5 h-5 w-5 text-gray-300" />
@@ -77,7 +79,9 @@ export default function OpenSource() {
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="mt-0.5 h-5 w-5 text-gray-300" />
-                  <p className="text-black dark:text-gray-900">Self-host server for enterprise.</p>
+                  <p className="text-black dark:text-gray-900">
+                    Self-host server for enterprise.
+                  </p>
                 </div>
               </div>
               <div></div>
