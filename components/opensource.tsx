@@ -8,7 +8,7 @@ export default function OpenSource() {
       <section className="relative mx-auto flex max-w-3xl overflow-hidden rounded-xl border-2 border-gray-200 py-6 dark:border-gray-50 lg:max-w-[1049px]">
         <div className="container relative mx-auto px-4">
           <div className="mx-auto max-w-3xl py-4 text-center">
-            <h2 className="mb-2 text-4xl font-bold text-black md:text-4xl">
+            <h2 className="mb-2 text-4xl font-bold text-black dark:text-gray-900 md:text-4xl">
               Open source is{" "}
               <>
                 <svg width="0" height="0" style={{ position: "absolute" }}>
@@ -61,23 +61,23 @@ export default function OpenSource() {
               <div>
                 <div className="flex items-start gap-2">
                   <Check className="mt-0.5 h-5 w-5 text-gray-300" />
-                  <p className="text-black">
+                  <p className="text-black dark:text-gray-900">
                     See every line on our public repos.
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="mt-0.5 h-5 w-5 text-gray-300" />
-                  <p className="text-black">We never store your code.</p>
+                  <p className="text-black dark:text-gray-900">We never store your code.</p>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="mt-0.5 h-5 w-5 text-gray-300" />
-                  <p className="text-left text-black">
+                  <p className="text-left text-black dark:text-gray-900">
                     Zero Data Retention policy with Anthropic.
                   </p>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="mt-0.5 h-5 w-5 text-gray-300" />
-                  <p className="text-black">Self-host server for enterprise.</p>
+                  <p className="text-black dark:text-gray-900">Self-host server for enterprise.</p>
                 </div>
               </div>
               <div></div>
