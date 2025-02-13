@@ -30,21 +30,21 @@ const updates: ChangelogEntry[] = [
             environment to facilitate a feedback loop, enabling it to code on
             your behalf.
           </li>
+          <li className="flex items-center gap-6">
+            <Image
+              src="/images/changelogs/pearai-cline_v1.8.png"
+              alt="PearAI Cline v1.8"
+              width={800}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-full max-w-[300px] rounded-xl border-4 border-green-200 shadow-lg shadow-green-500" // Added green hue border
+              style={{
+                width: "60%",
+                height: "auto",
+              }}
+            />
+          </li>
         </ul>
-        <li className="flex items-center gap-6">
-          <Image
-            src="/images/changelogs/pearai-cline_v1.8.png"
-            alt="PearAI Cline v1.8"
-            width={800}
-            height={0}
-            sizes="100vw"
-            className="h-auto w-full max-w-[300px] rounded-xl border-4 border-green-200 shadow-lg shadow-green-500" // Added green hue border
-            style={{
-              width: "60%",
-              height: "auto",
-            }}
-          />
-        </li>
       </>
     ),
   },
