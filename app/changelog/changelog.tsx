@@ -18,6 +18,37 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
+    date: "12 February 2025",
+    title: "Introducing Coding Agent & New Focus",
+    version: "v1.8.0",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Introducing PearAI Coding Agent, powered by Roo Code / Cline.</li>
+          <li>
+            This coding agent, with your permission, accesses your development
+            environment to facilitate a feedback loop, enabling it to code on
+            your behalf.
+          </li>
+          <li className="flex items-center gap-6">
+            <Image
+              src="/images/changelogs/pearai-cline_v1.8.png"
+              alt="PearAI Cline v1.8"
+              width={800}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-full max-w-[300px] rounded-xl border-4 border-green-200 shadow-lg shadow-green-500" // Added green hue border
+              style={{
+                width: "60%",
+                height: "auto",
+              }}
+            />
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
     date: "27 January 2025",
     title: "UI bug fixes",
     version: "v1.7.1",
