@@ -21,6 +21,7 @@ import { useTheme } from "next-themes";
 import { MoonStar, Sun } from "lucide-react";
 import { User } from "@supabase/supabase-js";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useSignInUrl, useSignUpUrl } from "@/hooks/useSigningUrl";
 
 export default function MobileMenu({
   user,
@@ -32,6 +33,9 @@ export default function MobileMenu({
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [signinUrl] = useSignInUrl();
+  const [signupUrl] = useSignUpUrl();
+
 
   useEffect(() => {
     setMounted(true);
@@ -119,7 +123,7 @@ export default function MobileMenu({
                   </>
                 ) : (
                   <>
-                    <Link href="/signin" onClick={() => setIsOpen(false)}>
+                    <Link href={signinUrl} onClick={() => setIsOpen(false)}>
                       <Button
                         variant="outline"
                         className="w-full justify-start"
@@ -128,7 +132,7 @@ export default function MobileMenu({
                         Sign in
                       </Button>
                     </Link>
-                    <Link href="/signup" onClick={() => setIsOpen(false)}>
+                    <Link href={signupUrl} onClick={() => setIsOpen(false)}>
                       <Button
                         variant="outline"
                         className="mt-4 w-full justify-start"
