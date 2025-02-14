@@ -19,7 +19,7 @@ export default function TermsOfServiceComponent() {
             <div className="space-y-4">
               <div className="mb-8 text-gray-900">
                 <p>
-                  <strong>Last updated June 9th, 2024</strong>
+                  <strong>Last updated Feb 13th, 2025</strong>
                 </p>
               </div>
 
@@ -229,52 +229,53 @@ export default function TermsOfServiceComponent() {
                         </strong>
                         . The Service may include certain subscription-based
                         plans with automatically recurring payments for periodic
-                        charges (“
+                        charges (&ldquo;
                         <strong className="text-gray-900">
                           Subscription Service
                         </strong>
-                        ”). The “
+                        &rdquo;). The &ldquo;
                         <strong className="text-gray-900">
                           Subscription Billing Date
                         </strong>
-                        ” is the date when you purchase your first subscription
-                        to the Service. The Subscription Service will begin on
-                        the Subscription Billing Date and continue for the
-                        subscription period that you select on your account
-                        (such period, the “
+                        &rdquo; is the date when you purchase your first
+                        subscription to the Service. The Subscription Service
+                        will begin on the Subscription Billing Date and continue
+                        for the subscription period that you select on your
+                        account (such period, the &ldquo;
                         <strong className="text-gray-900">
                           Initial Subscription Period
                         </strong>
-                        ”), and will automatically renew for successive periods
-                        of the same duration as the Initial Subscription Period
-                        (the Initial Subscription Period and each such renewal
-                        period, each a “
+                        &rdquo;), and will automatically renew for successive
+                        periods of the same duration as the Initial Subscription
+                        Period (the Initial Subscription Period and each such
+                        renewal period, each a &ldquo;
                         <strong className="text-gray-900">
                           Subscription Period
                         </strong>
-                        ”) unless you cancel the Subscription Service or we
-                        terminate it. If you activate a Subscription Service,
+                        &rdquo;) unless you cancel the Subscription Service or
+                        we terminate it. If you activate a Subscription Service,
                         then you authorize PearAI or its third-party payment
                         processors to periodically charge, on a going-forward
                         basis and until cancellation of the Subscription
                         Service, all accrued sums on or before the payment due
-                        date. For information on the “
+                        date. For information on the &ldquo;
                         <strong className="text-gray-900">
                           Subscription Fee
                         </strong>
-                        ”, please see our pricing page. Your account will be
-                        charged automatically on the Subscription Billing Date
-                        and thereafter on the renewal date of your Subscription
-                        Service for all applicable fees and taxes for the next
-                        Subscription Period. You must cancel your Subscription
-                        Service before it renews in order to avoid billing of
-                        the next periodic Subscription Fee to your account.
-                        PearAI or its third-party payment processor will bill
-                        the periodic Subscription Fee to the payment method
-                        associated with your account or that you otherwise
-                        provide to us. You may cancel the Subscription Service
-                        by using the cancellation functionality made available
-                        in your billing menu or by contacting us at&nbsp;
+                        &rdquo;, please see our pricing page. Your account will
+                        be charged automatically on the Subscription Billing
+                        Date and thereafter on the renewal date of your
+                        Subscription Service for all applicable fees and taxes
+                        for the next Subscription Period. You must cancel your
+                        Subscription Service before it renews in order to avoid
+                        billing of the next periodic Subscription Fee to your
+                        account. PearAI or its third-party payment processor
+                        will bill the periodic Subscription Fee to the payment
+                        method associated with your account or that you
+                        otherwise provide to us. You may cancel the Subscription
+                        Service by using the cancellation functionality made
+                        available in your billing menu or by contacting us
+                        at&nbsp;
                         <Link
                           href={`mailto:${CONTACT_EMAIL}`}
                           className="font-medium text-gray-900 underline"
@@ -283,7 +284,16 @@ export default function TermsOfServiceComponent() {
                         </Link>
                         . YOUR CANCELLATION MUST BE RECEIVED BEFORE THE RENEWAL
                         DATE IN ORDER TO AVOID CHARGE FOR THE NEXT SUBSCRIPTION
-                        PERIOD.
+                        PERIOD. By subscribing to the Service, you acknowledge
+                        and agree that if you exceed your subscription
+                        plan&apos;s allocated credits, your account will
+                        automatically transition to a pay-as-you-go model based
+                        on language model usage costs. You will be alerted of
+                        this within the app, and can view your pay-as-you-go
+                        credit used in the landing page. You expressly authorize
+                        PearAI to charge your payment method for any additional
+                        usage beyond your subscription plan&apos;s credit
+                        allocation.
                       </p>
                     </li>
 
@@ -319,21 +329,22 @@ export default function TermsOfServiceComponent() {
                       <p>
                         <strong className="text-gray-900">Customer Data</strong>
                         . Any data, text, and any other works of authorship or
-                        other works, including source code (collectively, “
+                        other works, including source code (collectively,
+                        &ldquo;
                         <strong className="text-gray-900">Customer Data</strong>
-                        ”) that you submit, upload, or otherwise post to or
-                        transmit (such actions, collectively, “Upload”) to the
-                        Service are only used to provide Suggestions to you
-                        unless you opt-in to allow PearAI to use such Customer
-                        Data to improve and enhance the Service and for other
-                        development, diagnostic and corrective purposes in
-                        connection with the Service and other PearAI offerings.
-                        Customer Data is transmitted only to generate
-                        Suggestions in real-time and are deleted once
-                        Suggestions are generated. Customer Data is not used for
-                        any other purpose, including the training of language
-                        models. Customer Data is encrypted during transit and is
-                        not stored at rest.
+                        &rdquo;) that you submit, upload, or otherwise post to
+                        or transmit (such actions, collectively,
+                        &ldquo;Upload&rdquo;) to the Service are only used to
+                        provide Suggestions to you unless you opt-in to allow
+                        PearAI to use such Customer Data to improve and enhance
+                        the Service and for other development, diagnostic and
+                        corrective purposes in connection with the Service and
+                        other PearAI offerings. Customer Data is transmitted
+                        only to generate Suggestions in real-time and are
+                        deleted once Suggestions are generated. Customer Data is
+                        not used for any other purpose, including the training
+                        of language models. Customer Data is encrypted during
+                        transit and is not stored at rest.
                       </p>
                     </li>
 
@@ -342,9 +353,9 @@ export default function TermsOfServiceComponent() {
                         <strong className="text-gray-900">Usage Data</strong>.
                         PearAI may collect, generate, and derive performance,
                         analytical, or usage data relating to your access to or
-                        use of the Service (“
+                        use of the Service (&ldquo;
                         <strong className="text-gray-900">Usage Data</strong>
-                        ”). Usage Data will not include any Customer Data.
+                        &rdquo;). Usage Data will not include any Customer Data.
                         PearAI will only use Usage Data to provide the Service
                         to you, to monitor the performance and stability of the
                         Service, and to prevent or address technical issues with
@@ -362,12 +373,12 @@ export default function TermsOfServiceComponent() {
                   . The Service may include or incorporate third-party software
                   components that are generally available free of charge under
                   licenses granting recipients broad rights to copy, modify, and
-                  distribute those components (“
+                  distribute those components (&ldquo;
                   <strong className="text-gray-900">
                     Third-Party Components
                   </strong>
-                  ”). Although the Service is provided to you subject to these
-                  Terms, nothing in these Terms prevents, restricts, or is
+                  &rdquo;). Although the Service is provided to you subject to
+                  these Terms, nothing in these Terms prevents, restricts, or is
                   intended to prevent or restrict you from obtaining Third-Party
                   Components under the applicable third-party licenses or to
                   limit your use of Third-Party Components under those
