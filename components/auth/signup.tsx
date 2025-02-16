@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { signinWithOAuth } from "@/app/(auth)/actions";
 import { AdminUserAttributes, Provider } from "@supabase/supabase-js";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,9 +22,12 @@ import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToggle } from "@/hooks/useToggle";
+import HCaptcha from '@hcaptcha/react-hcaptcha'
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captcha = useRef<HCaptcha>(null);
   const form = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -42,14 +45,20 @@ export default function SignUp() {
     setIsSubmitting(true);
 
     try {
-      const formData: AdminUserAttributes = {
-        email: data.email,
-        password: data.password,
-        user_metadata: {
-          full_name: data.full_name,
-          company_name: data.company_name,
-          heard_about_us: data.heard_about_us,
-        },
+      if (!captchaToken) {
+        toast.error("Please complete the captcha challenge");
+        return;
+      }
+
+      const formData = {
+          email: data.email,
+          password: data.password,
+          user_metadata: {
+            full_name: data.full_name,
+            company_name: data.company_name,
+            heard_about_us: data.heard_about_us,
+          },
+          captchaToken: captchaToken
       };
       const response = await fetch("/api/signup", {
         method: "POST",
@@ -73,6 +82,8 @@ export default function SignUp() {
       toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
+      captcha.current?.resetCaptcha();
+      setCaptchaToken(null);
     }
   };
 
@@ -250,6 +261,14 @@ export default function SignUp() {
                       <FormMessage />
                     </FormItem>
                   )}
+                />
+
+                <HCaptcha
+                  ref={captcha}
+                  sitekey="fa6c8c52-7694-45b0-97ec-7814072256b4"
+                  onVerify={(token) => {
+                    setCaptchaToken(token);
+                  }}
                 />
 
                 <div className="text-center text-sm text-gray-600">
