@@ -22,7 +22,7 @@ import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToggle } from "@/hooks/useToggle";
-import HCaptcha from '@hcaptcha/react-hcaptcha'
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -51,14 +51,14 @@ export default function SignUp() {
       }
 
       const formData = {
-          email: data.email,
-          password: data.password,
-          user_metadata: {
-            full_name: data.full_name,
-            company_name: data.company_name,
-            heard_about_us: data.heard_about_us,
-          },
-          captchaToken: captchaToken
+        email: data.email,
+        password: data.password,
+        user_metadata: {
+          full_name: data.full_name,
+          company_name: data.company_name,
+          heard_about_us: data.heard_about_us,
+        },
+        captchaToken: captchaToken,
       };
       const response = await fetch("/api/signup", {
         method: "POST",
