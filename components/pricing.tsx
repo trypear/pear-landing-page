@@ -55,11 +55,11 @@ export const platformVersions: Record<string, VersionInfo> = {
     releaseDate: "Feb 12, 2025",
   },
   "Mac (Intel)": {
-    version: "v1.5.4",
-    releaseDate: "Dec 1, 2024",
+    version: "v1.8.0",
+    releaseDate: "Feb 12, 2025",
   },
   Linux: {
-    version: "v1.7.0",
+    version: "v1.8.0",
     releaseDate: "Feb 12, 2025",
   },
 };
@@ -261,11 +261,18 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                           ([platform, info]) => (
                             <Fragment key={platform}>
                               <span className="font-medium">{platform}:</span>
-                              <div className="flex items-center gap-1">
-                                <div>{info.version}</div>
-                                <div className="text-xs text-gray-400">
-                                  ({info.releaseDate})
+                              <div className="flex flex-col">
+                                <div className="flex items-center gap-1">
+                                  <div>{info.version}</div>
+                                  <div className="text-xs text-gray-400">
+                                    ({info.releaseDate})
+                                  </div>
                                 </div>
+                                {platform === "Linux" && (
+                                  <div className="text-xs text-gray-400">
+                                    *Packaged and released by <br /> the open source community
+                                  </div>
+                                )}
                               </div>
                             </Fragment>
                           ),
