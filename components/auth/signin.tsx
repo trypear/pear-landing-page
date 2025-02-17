@@ -206,13 +206,15 @@ export default function SignIn() {
                   </Link>
                 </div>
 
-                <HCaptcha
-                  ref={captcha}
-                  sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
-                  onVerify={(token) => {
-                    setCaptchaToken(token);
-                  }}
-                />
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captcha}
+                    sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
+                    onVerify={(token) => {
+                      setCaptchaToken(token);
+                    }}
+                  />
+                </div>
 
                 <Button
                   type="submit"

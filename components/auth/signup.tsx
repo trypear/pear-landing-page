@@ -264,13 +264,15 @@ export default function SignUp() {
                   )}
                 />
 
-                <HCaptcha
-                  ref={captcha}
-                  sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
-                  onVerify={(token) => {
-                    setCaptchaToken(token);
-                  }}
-                />
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captcha}
+                    sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
+                    onVerify={(token) => {
+                      setCaptchaToken(token);
+                    }}
+                  />
+                </div>
 
                 <div className="text-center text-sm text-gray-600">
                   <Link
