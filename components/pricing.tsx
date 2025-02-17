@@ -270,7 +270,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                                 </div>
                                 {platform === "Linux" && (
                                   <div className="text-xs text-gray-400">
-                                    *Packaged and released by <br /> the open source community
+                                    *Packaged and released by <br /> the open
+                                    source community
                                   </div>
                                 )}
                               </div>
