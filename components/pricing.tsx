@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState, useRef, useMemo, Fragment } from "react";
-import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -35,34 +34,14 @@ import Footer from "./footer";
 import Link from "next/link";
 import { useDownload } from "@/hooks/useDownload";
 import DownloadFeedbackForm from "./ui/download-feedback-form";
-
+import { useReleases } from "@/hooks/useReleases";
+import { ReleaseInfo } from "@/types/releaseTypes";
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
+  windowsRelease: ReleaseInfo;
+  macRelease: ReleaseInfo;
+  linuxRelease: ReleaseInfo;
 }
-
-type VersionInfo = {
-  version: string;
-  releaseDate: string;
-};
-
-export const platformVersions: Record<string, VersionInfo> = {
-  Windows: {
-    version: "v1.8.0",
-    releaseDate: "Feb 12, 2025",
-  },
-  "Mac (M chip)": {
-    version: "v1.8.0",
-    releaseDate: "Feb 12, 2025",
-  },
-  "Mac (Intel)": {
-    version: "v1.5.4",
-    releaseDate: "Dec 1, 2024",
-  },
-  Linux: {
-    version: "v1.7.0",
-    releaseDate: "Feb 12, 2025",
-  },
-};
 
 const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   title,
@@ -77,6 +56,9 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   index,
   disabled,
   priceUnit = "/month",
+  windowsRelease,
+  macRelease,
+  linuxRelease,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const {
@@ -87,11 +69,16 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     setShowFeedback,
     handleFeedbackSubmit,
   } = useDownload();
-  const router = useRouter();
-  const appleContainer = useRef<HTMLDivElement>(null);
-  const [appleDownload, setAppleDownload] = useState<
-    "darwin-arm64" | "intel-x64"
-  >("darwin-arm64");
+
+  const dynamicVersions: Record<string, ReleaseInfo> = {
+    Windows: windowsRelease,
+    "Mac (M chip)": macRelease,
+    "Mac (Intel)": {
+      version: "v1.5.4",
+      releaseDate: "Dec 1, 2024",
+    },
+    Linux: linuxRelease,
+  };
 
   // used to ensure animations run after mount client-side
   const [mounted, setMounted] = useState(false);
@@ -257,18 +244,22 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                       className="flex flex-col space-y-2 p-3"
                     >
                       <div className="grid grid-cols-[auto,1fr] gap-x-3 gap-y-2 text-sm">
-                        {Object.entries(platformVersions).map(
-                          ([platform, info]) => (
-                            <Fragment key={platform}>
-                              <span className="font-medium">{platform}:</span>
-                              <div className="flex items-center gap-1">
-                                <div>{info.version}</div>
-                                <div className="text-xs text-gray-400">
-                                  ({info.releaseDate})
+                        {Object.entries(dynamicVersions).map(
+                          ([platform, info]) => {
+                            return (
+                              <Fragment key={platform}>
+                                <span className="font-medium">{platform}:</span>
+                                <div className="flex items-center gap-1">
+                                  <div>{info.version}</div>
+                                  {info.releaseDate && (
+                                    <div className="text-xs text-gray-400">
+                                      ({info.releaseDate})
+                                    </div>
+                                  )}
                                 </div>
-                              </div>
-                            </Fragment>
-                          ),
+                              </Fragment>
+                            );
+                          },
                         )}
                         <Link
                           href="/changelog"
@@ -380,6 +371,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
 };
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
+  const { releases, isLoading } = useReleases();
+
   return (
     <section
       className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-24"
@@ -444,14 +437,21 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                   </p>
                 </div>
               </div>
-              {PRICING_TIERS.standard && (
+              {!isLoading && PRICING_TIERS.standard && (
                 <div
                   className="mt-[20px] grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
                   role="list"
                 >
                   {PRICING_TIERS.standard.map((tier, index) => (
                     <div key={index} role="listitem">
-                      <PricingTier {...tier} user={user} index={index} />
+                      <PricingTier
+                        {...tier}
+                        user={user}
+                        index={index}
+                        windowsRelease={releases.windows}
+                        macRelease={releases.mac}
+                        linuxRelease={releases.linux}
+                      />
                     </div>
                   ))}
                 </div>
@@ -497,6 +497,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                         index={index}
                         priceUnit="/month/user"
                         disabled
+                        windowsRelease={releases.windows}
+                        macRelease={releases.mac}
+                        linuxRelease={releases.linux}
                       />
                     </div>
                   ))}
