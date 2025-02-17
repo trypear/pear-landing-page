@@ -40,6 +40,21 @@ export async function signin(
   redirect(`/dashboard`);
 }
 
+export async function signinAfterConfirm(email: string, password: string) {
+  const supabase = createClient();
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  });
+
+  if (error) {
+    return { error: error.message };
+  }
+
+  return data;
+}
+
 // Flow: User signs up with email and password
 // 1. Check if user exists
 // 2. If user exists, attempt to sign in with email and password

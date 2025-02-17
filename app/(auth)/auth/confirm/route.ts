@@ -2,6 +2,7 @@ import { type EmailOtpType } from "@supabase/supabase-js";
 import { type NextRequest, NextResponse } from "next/server";
 
 import { createClient } from "@/utils/supabase/server";
+import { signin } from "@/app/(auth)/actions";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -33,7 +34,16 @@ export async function GET(request: NextRequest) {
       token_hash,
     });
     if (!error) {
-      return NextResponse.redirect(redirectTo);
+      const email = searchParams.get("email");
+      const password = searchParams.get("password");
+
+      if (email && password) {
+        const signInResponse = await signin(new FormData(), "");
+
+        if (!signInResponse?.error) {
+          return NextResponse.redirect(redirectTo);
+        }
+      }
     }
   }
 
