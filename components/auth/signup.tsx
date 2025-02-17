@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState, useRef } from "react";
 import { signinWithOAuth } from "@/app/(auth)/actions";
-import { HCAPTCHA_SITE_KEY } from "@/utils/constants";
+import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
 import { AdminUserAttributes, Provider } from "@supabase/supabase-js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -266,7 +266,7 @@ export default function SignUp() {
 
                 <HCaptcha
                   ref={captcha}
-                  sitekey={HCAPTCHA_SITE_KEY}
+                  sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
                   onVerify={(token) => {
                     setCaptchaToken(token);
                   }}

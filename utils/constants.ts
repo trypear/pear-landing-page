@@ -211,7 +211,7 @@ export const footerSections = [
   },
 ];
 
-export const HCAPTCHA_SITE_KEY = "fa6c8c52-7694-45b0-97ec-7814072256b4";
+export const HCAPTCHA_SITE_KEY_PUBLIC = "fa6c8c52-7694-45b0-97ec-7814072256b4";
 
 export const socialMediaLinks = [
   {

@@ -5,7 +5,7 @@ import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { signin, signinWithOAuth } from "@/app/(auth)/actions";
-import { HCAPTCHA_SITE_KEY } from "@/utils/constants";
+import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
 import { Provider } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -208,7 +208,7 @@ export default function SignIn() {
 
                 <HCaptcha
                   ref={captcha}
-                  sitekey={HCAPTCHA_SITE_KEY}
+                  sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
                   onVerify={(token) => {
                     setCaptchaToken(token);
                   }}
