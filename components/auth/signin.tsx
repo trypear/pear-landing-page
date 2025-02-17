@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { signin, signinWithOAuth } from "@/app/(auth)/actions";
+import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
 import { Provider } from "@supabase/supabase-js";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,6 +27,8 @@ import { useToggle } from "@/hooks/useToggle";
 export default function SignIn() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState<string>();
+  const captcha = useRef<HCaptcha>(null);
   const searchParams = useSearchParams();
   const callbackForDesktopApp = searchParams?.get("callback") ?? "";
 
@@ -42,9 +46,15 @@ export default function SignIn() {
     setErrorMessage(null);
 
     try {
+      if (!captchaToken) {
+        setErrorMessage("Please complete the CAPTCHA");
+        return;
+      }
+
       const formData = new FormData();
       formData.append("email", data.email);
       formData.append("password", data.password);
+      formData.append("captchaToken", captchaToken);
 
       const response = await signin(formData, callbackForDesktopApp);
       if (response?.error) {
@@ -56,6 +66,8 @@ export default function SignIn() {
       setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
+      captcha.current?.resetCaptcha();
+      setCaptchaToken(undefined);
     }
   };
 
@@ -193,6 +205,17 @@ export default function SignIn() {
                     Forgot Password?
                   </Link>
                 </div>
+
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captcha}
+                    sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
+                    onVerify={(token) => {
+                      setCaptchaToken(token);
+                    }}
+                  />
+                </div>
+
                 <Button
                   type="submit"
                   size="lg"
