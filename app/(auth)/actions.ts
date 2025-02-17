@@ -21,6 +21,7 @@ export async function signin(
   const data: SignInWithPasswordCredentials = {
     email: formData.get("email") as string,
     password: formData.get("password") as string,
+    options: { captchaToken: formData.get("captchaToken") as string },
   };
 
   const { data: res, error } = await supabase.auth.signInWithPassword(data);
