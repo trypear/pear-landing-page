@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { signinWithOAuth } from "@/app/(auth)/actions";
+import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
 import { AdminUserAttributes, Provider } from "@supabase/supabase-js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -22,9 +23,12 @@ import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToggle } from "@/hooks/useToggle";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captcha = useRef<HCaptcha>(null);
   const form = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -42,7 +46,12 @@ export default function SignUp() {
     setIsSubmitting(true);
 
     try {
-      const formData: AdminUserAttributes = {
+      if (!captchaToken) {
+        toast.error("Please complete the captcha challenge");
+        return;
+      }
+
+      const formData = {
         email: data.email,
         password: data.password,
         user_metadata: {
@@ -50,6 +59,7 @@ export default function SignUp() {
           company_name: data.company_name,
           heard_about_us: data.heard_about_us,
         },
+        captchaToken: captchaToken,
       };
       const response = await fetch("/api/signup", {
         method: "POST",
@@ -73,6 +83,8 @@ export default function SignUp() {
       toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
+      captcha.current?.resetCaptcha();
+      setCaptchaToken(null);
     }
   };
 
@@ -251,6 +263,16 @@ export default function SignUp() {
                     </FormItem>
                   )}
                 />
+
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captcha}
+                    sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
+                    onVerify={(token) => {
+                      setCaptchaToken(token);
+                    }}
+                  />
+                </div>
 
                 <div className="text-center text-sm text-gray-600">
                   <Link
