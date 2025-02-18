@@ -73,10 +73,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   const dynamicVersions: Record<string, ReleaseInfo> = {
     Windows: windowsRelease,
     "Mac (M chip)": macRelease,
-    "Mac (Intel)": {
-      version: "v1.5.4",
-      releaseDate: "Dec 1, 2024",
-    },
+    "Mac (Intel)": macRelease,
     Linux: linuxRelease,
   };
 
@@ -249,11 +246,20 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                             return (
                               <Fragment key={platform}>
                                 <span className="font-medium">{platform}:</span>
-                                <div className="flex items-center gap-1">
-                                  <div>{info.version}</div>
-                                  {info.releaseDate && (
+                                <div className="flex flex-col gap-1">
+                                  <div className="flex items-center gap-1">
+                                    <div>{info.version}</div>
+                                    {info.releaseDate && (
+                                      <div className="text-xs text-gray-400">
+                                        ({info.releaseDate})
+                                      </div>
+                                    )}
+                                  </div>
+                                  {platform === "Linux" && (
                                     <div className="text-xs text-gray-400">
-                                      ({info.releaseDate})
+                                      *Packaged and released
+                                      <br />
+                                      by the open source community
                                     </div>
                                   )}
                                 </div>

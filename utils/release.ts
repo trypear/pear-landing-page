@@ -30,7 +30,10 @@ async function fetchRelease(
     const { tag_name, published_at } = response.data as ReleaseResponse;
 
     return {
-      version: tag_name,
+      version:
+        method === "getReleaseByTag"
+          ? tag_name.replace("-Linux", "")
+          : tag_name,
       releaseDate: new Date(published_at).toLocaleDateString("en-US", {
         year: "numeric",
         month: "short",
