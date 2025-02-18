@@ -21,7 +21,7 @@ export const videoData = [
     id: 3,
     title: "Make features, refactors, or bug fixes directly.",
     description:
-      "PearAI Creator (powered by aider*) finds where the changes need to be made, and implements them automatically.",
+      "PearAI Agent (powered by Roo Code / Cline*) can code and fix bugs for you!",
     videoUrl: `${BUNNY_CDN_HOST}/pearai-agent-welcome-2.mp4`,
     duration: 14000,
   },
