@@ -20,7 +20,7 @@ const NEXT_PUBLIC_STRIPE_WAITLIST_PRICE_ID_TEST =
 const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID = "price_1PoZiZ08N4O93LU5kCrdrXvI";
 const NEXT_PUBLIC_STRIPE_MONTHLY_PRICE_ID_TEST =
   "price_1Ppa9408N4O93LU5irNxLp5p";
-const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID = "price_1PpZUO08N4O93LU5FYFUyh43";
+const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID = "price_1Qvnlr08N4O93LU5W6LgZcge";
 const NEXT_PUBLIC_STRIPE_ANNUAL_PRICE_ID_TEST =
   "price_1PZUSi08N4O93LU5UVdlkfp2";
 
@@ -81,29 +81,30 @@ export const PRICING_TIERS: {
       features: ["free", "Community Discord server"],
     },
     {
-      title: "Junior Engineer",
+      title: "Maker",
       price: "15",
       prevPrice: "18",
       description:
         "Get the monthly subscription, and we'll take care of you. 😎",
       features: [
+        "Full access to PearAI servers",
         "custom-standard",
         "Full privacy: zero data retention policy with Anthropic",
         "Direct customer support by the founders and contributors",
-        "Private Discord channel",
+        "Pay-as-you-go for additional credits",
       ],
       buttonText: "Get Started",
       priceId: STRIPE_PRICE_IDS.MONTHLY,
       index: 1,
     },
     {
-      title: "10x Engineer",
-      price: "10",
-      prevPrice: "14",
+      title: "10x Maker",
+      price: "12",
+      prevPrice: "15",
       description:
         "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
       features: [
-        "Everything from monthly",
+        "Everything from monthly but lower price",
         "Priority for new feature requests",
         "Early access to new features",
       ],
@@ -124,7 +125,6 @@ export const PRICING_TIERS: {
         "Full privacy: zero data retention policy with Anthropic",
         "Centralized Billing and Dashboard",
         "Direct customer support by the founders and contributors",
-        "Private Discord Channel",
       ],
       buttonText: "Get Started",
       priceId: STRIPE_PRICE_IDS.MONTHLY,

@@ -116,7 +116,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span>
-            Monthly refill of PearAI Credits for market-leading AI models
+            Monthly refill of $18 credits for market-leading AI models
             <PearCreditsTooltip type="standard" />
           </span>
         </div>
@@ -137,6 +137,15 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
             Monthly refill of <span className="underline"> increased</span>{" "}
             PearAI Credits for market-leading AI models
             <PearCreditsTooltip type="enterprise" />
+          </span>
+        </div>
+      );
+    } else if (feature?.startsWith("Pay-as-you-go")) {
+      return (
+        <div className="flex items-center">
+          <span>
+            Pay-as-you-go for additional credits
+            <PayAsYouGoTooltip />
           </span>
         </div>
       );
@@ -161,8 +170,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           <CardTitle className="text-2xl leading-6 text-primary-700">
             {title}
             &nbsp;
-            {index === 1 && title === "Junior Engineer" && "(Monthly)"}
-            {index === 2 && title === "10x Engineer" && "(Yearly)"}
+            {index === 1 && title === "Maker" && "(Monthly)"}
+            {index === 2 && title === "10x Maker" && "(Yearly)"}
           </CardTitle>
           <p className="text-base font-normal text-gray-600 sm:text-base md:text-sm">
             {index === 0 && isFree && (
@@ -401,9 +410,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               id="pricing-heading"
               className="mt-8 text-4xl font-medium leading-tight sm:text-4xl md:text-4xl lg:text-4xl"
             >
-              Speed up your
+              Make your next
               <br />
-              development today.
+              project today.
             </h1>
           </header>
 
@@ -540,17 +549,6 @@ export default PricingPage;
 export const PearCreditsTooltip = ({ type }: { type: string }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const pearCreditsCount = useMemo(() => {
-    return (type: string) => {
-      if (type === "free") {
-        return "50";
-      } else if (type === "enterprise") {
-        return "1000";
-      }
-      return "700";
-    };
-  }, []);
-
   return (
     <TooltipProvider>
       <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
@@ -572,33 +570,38 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
               <li>Claude 3.5 Haiku (unlimited)</li>
             </ul>
             <br />
-            Your PearAI Credits usage depend on your prompt input and output
-            sizes. On average, this equates to around {pearCreditsCount(
-              type,
-            )}{" "}
-            requests{type === "free" && " for our current free trial"}. For more
-            info on usage. see{" "}
+            Your PearAI Credits usage depends on the price of the underlying
+            LLM, and your prompt&apos;s input and output sizes.
+          </p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
+export const PayAsYouGoTooltip = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <TooltipProvider>
+      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
+        <TooltipTrigger asChild>
+          <Info
+            className="mb-0.5 ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={5}>
+          <p className="max-w-[250px]">
+            If you happen to run out of credits (which is unlikely), you can
+            switch to a{" "}
             <Link
+              href="/pay-as-you-go"
               className="text-primary-700 hover:text-primary-800"
-              href="/docs/models-and-usage"
             >
-              here
+              pay-as-you-go extra credit plan
             </Link>
-            .
-            {type !== "free" && (
-              <>
-                <br /> <br />
-                If you happen to run out of credits (which is unlikely), you can
-                switch to a{" "}
-                <Link
-                  href="/pay-as-you-go"
-                  className="text-primary-700 hover:text-primary-800"
-                >
-                  pay-as-you-go extra credit plan
-                </Link>
-                , or use our free model for unlimited requests.
-              </>
-            )}
+            , or use PearAI Mini free model for unlimited requests.
           </p>
         </TooltipContent>
       </Tooltip>
