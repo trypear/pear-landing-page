@@ -104,7 +104,6 @@ export default function SignUp() {
           <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
             <h1 className="h1">Ready to build?</h1>
           </div>
-
           <div className="mx-auto max-w-sm">
             <form
               onSubmit={(e) => {

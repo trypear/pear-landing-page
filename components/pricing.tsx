@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState, useRef, useMemo, Fragment } from "react";
-import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -35,34 +34,14 @@ import Footer from "./footer";
 import Link from "next/link";
 import { useDownload } from "@/hooks/useDownload";
 import DownloadFeedbackForm from "./ui/download-feedback-form";
-
+import { useReleases } from "@/hooks/useReleases";
+import { ReleaseInfo } from "@/types/releaseTypes";
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
+  windowsRelease: ReleaseInfo;
+  macRelease: ReleaseInfo;
+  linuxRelease: ReleaseInfo;
 }
-
-type VersionInfo = {
-  version: string;
-  releaseDate: string;
-};
-
-export const platformVersions: Record<string, VersionInfo> = {
-  Windows: {
-    version: "v1.8.0",
-    releaseDate: "Feb 12, 2025",
-  },
-  "Mac (M chip)": {
-    version: "v1.8.0",
-    releaseDate: "Feb 12, 2025",
-  },
-  "Mac (Intel)": {
-    version: "v1.8.0",
-    releaseDate: "Feb 12, 2025",
-  },
-  Linux: {
-    version: "v1.8.0",
-    releaseDate: "Feb 12, 2025",
-  },
-};
 
 const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   title,
@@ -77,6 +56,9 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   index,
   disabled,
   priceUnit = "/month",
+  windowsRelease,
+  macRelease,
+  linuxRelease,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
   const {
@@ -87,11 +69,13 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
     setShowFeedback,
     handleFeedbackSubmit,
   } = useDownload();
-  const router = useRouter();
-  const appleContainer = useRef<HTMLDivElement>(null);
-  const [appleDownload, setAppleDownload] = useState<
-    "darwin-arm64" | "intel-x64"
-  >("darwin-arm64");
+
+  const dynamicVersions: Record<string, ReleaseInfo> = {
+    Windows: windowsRelease,
+    "Mac (M chip)": macRelease,
+    "Mac (Intel)": macRelease,
+    Linux: linuxRelease,
+  };
 
   // used to ensure animations run after mount client-side
   const [mounted, setMounted] = useState(false);
@@ -268,26 +252,31 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                       className="flex flex-col space-y-2 p-3"
                     >
                       <div className="grid grid-cols-[auto,1fr] gap-x-3 gap-y-2 text-sm">
-                        {Object.entries(platformVersions).map(
-                          ([platform, info]) => (
-                            <Fragment key={platform}>
-                              <span className="font-medium">{platform}:</span>
-                              <div className="flex flex-col">
-                                <div className="flex items-center gap-1">
-                                  <div>{info.version}</div>
-                                  <div className="text-xs text-gray-400">
-                                    ({info.releaseDate})
+                        {Object.entries(dynamicVersions).map(
+                          ([platform, info]) => {
+                            return (
+                              <Fragment key={platform}>
+                                <span className="font-medium">{platform}:</span>
+                                <div className="flex flex-col gap-1">
+                                  <div className="flex items-center gap-1">
+                                    <div>{info.version}</div>
+                                    {info.releaseDate && (
+                                      <div className="text-xs text-gray-400">
+                                        ({info.releaseDate})
+                                      </div>
+                                    )}
                                   </div>
+                                  {platform === "Linux" && (
+                                    <div className="text-xs text-gray-400">
+                                      *Packaged and released
+                                      <br />
+                                      by the open source community
+                                    </div>
+                                  )}
                                 </div>
-                                {platform === "Linux" && (
-                                  <div className="text-xs text-gray-400">
-                                    *Packaged and released by <br /> the open
-                                    source community
-                                  </div>
-                                )}
-                              </div>
-                            </Fragment>
-                          ),
+                              </Fragment>
+                            );
+                          },
                         )}
                         <Link
                           href="/changelog"
@@ -399,6 +388,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
 };
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
+  const { releases, isLoading } = useReleases();
+
   return (
     <section
       className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-24"
@@ -440,14 +431,44 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               value="standard"
               className="w-full space-y-6 sm:space-y-8 md:space-y-6 lg:space-y-6"
             >
-              {PRICING_TIERS.standard && (
+              <div className="mt-[20px] flex w-full items-center justify-center rounded-md bg-gray-300/20 bg-gradient-to-l from-primary-800/[0.15] via-gray-100/10 to-transparent to-60% px-6 py-3.5 ring-1 ring-gray-300/60 dark:bg-gray-100/10 dark:ring-gray-100/40">
+                <div className="flex w-full items-center justify-between rounded-md">
+                  <p className="block w-max items-center justify-start md:flex">
+                    <span className="text-primary-700 dark:text-primary-800">
+                      Be the early bird and get a discount
+                    </span>
+                    &nbsp;
+                    <span className="text-primary-900 dark:text-primary-700">
+                      forever
+                    </span>
+                  </p>
+
+                  <p className="block w-max items-center justify-end text-right md:flex">
+                    <strong className="text-lg text-primary-900 dark:text-gray-900">
+                      20-30% off
+                    </strong>
+                    &nbsp;
+                    <span className="font-normal text-primary-700 dark:text-primary-300">
+                      &#40;forever&#41;
+                    </span>
+                  </p>
+                </div>
+              </div>
+              {!isLoading && PRICING_TIERS.standard && (
                 <div
                   className="mt-[20px] grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
                   role="list"
                 >
                   {PRICING_TIERS.standard.map((tier, index) => (
                     <div key={index} role="listitem">
-                      <PricingTier {...tier} user={user} index={index} />
+                      <PricingTier
+                        {...tier}
+                        user={user}
+                        index={index}
+                        windowsRelease={releases.windows}
+                        macRelease={releases.mac}
+                        linuxRelease={releases.linux}
+                      />
                     </div>
                   ))}
                 </div>
@@ -493,6 +514,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                         index={index}
                         priceUnit="/month/user"
                         disabled
+                        windowsRelease={releases.windows}
+                        macRelease={releases.mac}
+                        linuxRelease={releases.linux}
                       />
                     </div>
                   ))}
