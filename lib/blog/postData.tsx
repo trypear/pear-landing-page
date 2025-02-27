@@ -889,7 +889,7 @@ export const posts = [
     date: "2024-09-26",
     author: "PearAI Team",
     readingTime: "3 minutes",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/blog-default.png",
     tags: ["Open Source"],
     content: `<article
     class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
@@ -975,7 +975,7 @@ export const posts = [
     date: "2024-09-28",
     author: "PearAI Team",
     readingTime: "2 min",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/blog-default.png",
     tags: [
       "open source",
       "bounties",
@@ -1029,7 +1029,7 @@ export const posts = [
     date: "2024-10-12",
     excerpt:
       "View PearAI's changes to correct past mistakes and ensure compliance with open source standards.",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/blog-default.png",
     tags: ["open-source", "Continue.dev", "spreading love", "accountability"],
     url: "/blog/pearai-open-source-fixes",
     content: `<article
@@ -1128,7 +1128,7 @@ export const posts = [
     date: "2024-10-23",
     author: "PearAI Team",
     readingTime: "2 min",
-    thumbnail: "/images/og-image.png", // Make sure this image exists
+    thumbnail: "/images/blog/blog-default.png",
     tags: ["PearAI Creator", "aider", "feature announcement", "beta"],
     content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
       <section class="space-y-6">
@@ -1209,7 +1209,7 @@ export const posts = [
     date: "2024-12-01",
     author: "PearAI Team",
     readingTime: "2 min",
-    thumbnail: "/images/og-image.png", // Make sure this image exists
+    thumbnail: "/images/blog/blog-default.png",
     tags: ["PearAI Memory", "mem0", "feature announcement", "beta"],
     content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
       <section class="space-y-6">
@@ -1224,7 +1224,7 @@ export const posts = [
         <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
 
         <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
-        <div class="aspect-video">
+         <div class="aspect-video">
           <iframe
             class="w-full h-full"
             src="https://www.youtube.com/embed/kLYhV0Fu3xY"
@@ -1247,7 +1247,7 @@ export const posts = [
           </li>
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up Inventory Settings (CMD/CTRL + Shift + 1).</li>
           <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Locate the Memory card in the inventory, and flick the toggle to on.</li>
-          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">You’re all set! PearAI Memory will now automatically get to know you as you interact with PearAI Chat. Note that you can access the Memory control panel to add, edit, or delete memories (CMD/CTRL + 4).</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">You're all set! PearAI Memory will now automatically get to know you as you interact with PearAI Chat. Note that you can access the Memory control panel to add, edit, or delete memories (CMD/CTRL + 4).</li>
         </ol>
       </section>
       &nbsp;
@@ -1282,7 +1282,7 @@ export const posts = [
         <div class="relative w-full" style="padding-top: 56.25%">
           <iframe
             class="absolute top-0 left-0 w-full h-full"
-            src="https://www.youtube.com/embed/kLYhV0Fu3xY"
+            src="https://www.youtube.com/embed/wcaWUeaeqiA"
             title="PearAI Coding Agent Demo"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
