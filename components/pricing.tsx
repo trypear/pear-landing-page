@@ -116,7 +116,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span>
-            Monthly refill of PearAI Credits for market-leading AI models
+            Monthly refill of $15 credits for market-leading AI models
             <PearCreditsTooltip type="standard" />
           </span>
         </div>
@@ -137,6 +137,24 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
             Monthly refill of <span className="underline"> increased</span>{" "}
             PearAI Credits for market-leading AI models
             <PearCreditsTooltip type="enterprise" />
+          </span>
+        </div>
+      );
+    } else if (feature?.startsWith("Pay-as-you-go")) {
+      return (
+        <div className="flex items-center">
+          <span>
+            Pay-as-you-go for additional credits
+            <PayAsYouGoTooltip />
+          </span>
+        </div>
+      );
+    } else if (feature?.startsWith("Full access to PearAI Router")) {
+      return (
+        <div className="flex items-center">
+          <span>
+            Full access to PearAI Router & Hosted Servers
+            <ServerAccessTooltip />
           </span>
         </div>
       );
@@ -161,8 +179,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           <CardTitle className="text-2xl leading-6 text-primary-700">
             {title}
             &nbsp;
-            {index === 1 && title === "Junior Engineer" && "(Monthly)"}
-            {index === 2 && title === "10x Engineer" && "(Yearly)"}
+            {index === 1 && title === "Maker" && "(Monthly)"}
+            {index === 2 && title === "10x Maker" && "(Yearly)"}
           </CardTitle>
           <p className="text-base font-normal text-gray-600 sm:text-base md:text-sm">
             {index === 0 && isFree && (
@@ -189,13 +207,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 <small className="text-base text-primary-700 sm:text-lg">
                   &#40;Early Bird&#41;
                 </small>
-              </p>
-              <p
-                className="text-base text-gray-400 sm:text-lg"
-                aria-label={`Original price: $${prevPrice} per month`}
-              >
-                <del>${prevPrice}</del>
-                <small>{priceUnit}</small>
               </p>
             </div>
           ) : (
@@ -401,9 +412,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               id="pricing-heading"
               className="mt-8 text-4xl font-medium leading-tight sm:text-4xl md:text-4xl lg:text-4xl"
             >
-              Speed up your
+              Make your next
               <br />
-              development today.
+              project today.
             </h1>
           </header>
 
@@ -429,29 +440,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               value="standard"
               className="w-full space-y-6 sm:space-y-8 md:space-y-6 lg:space-y-6"
             >
-              <div className="mt-[20px] flex w-full items-center justify-center rounded-md bg-gray-300/20 bg-gradient-to-l from-primary-800/[0.15] via-gray-100/10 to-transparent to-60% px-6 py-3.5 ring-1 ring-gray-300/60 dark:bg-gray-100/10 dark:ring-gray-100/40">
-                <div className="flex w-full items-center justify-between rounded-md">
-                  <p className="block w-max items-center justify-start md:flex">
-                    <span className="text-primary-700 dark:text-primary-800">
-                      Be the early bird and get a discount
-                    </span>
-                    &nbsp;
-                    <span className="text-primary-900 dark:text-primary-700">
-                      forever
-                    </span>
-                  </p>
-
-                  <p className="block w-max items-center justify-end text-right md:flex">
-                    <strong className="text-lg text-primary-900 dark:text-gray-900">
-                      20-30% off
-                    </strong>
-                    &nbsp;
-                    <span className="font-normal text-primary-700 dark:text-primary-300">
-                      &#40;forever&#41;
-                    </span>
-                  </p>
-                </div>
-              </div>
               {PRICING_TIERS.standard && (
                 <div
                   className="mt-[20px] grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
@@ -540,16 +528,40 @@ export default PricingPage;
 export const PearCreditsTooltip = ({ type }: { type: string }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const pearCreditsCount = useMemo(() => {
-    return (type: string) => {
-      if (type === "free") {
-        return "50";
-      } else if (type === "enterprise") {
-        return "1000";
-      }
-      return "700";
-    };
-  }, []);
+  return (
+    <TooltipProvider>
+      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
+        <TooltipTrigger asChild>
+          <Info
+            className="mb-0.5 ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={5}>
+          <p className="max-w-[250px]">
+            Current built-in models for this plan include (but not limited to)
+            <ul className="list-disc pl-4">
+              <li>PearAI Model</li>
+              <li>Claude 3.5 Sonnet</li>
+              <li>GPT4o</li>
+              <li>Deepseek R1</li>
+              <li>o1</li>
+              <li>o3-mini</li>
+              <li>Gemini 1.5 Pro</li>
+              <li>Claude 3.5 Haiku (unlimited)</li>
+            </ul>
+            <br />
+            Your PearAI Credits usage depends on the price of the underlying
+            LLM, and your prompt&apos;s input and output sizes.
+          </p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
+export const PayAsYouGoTooltip = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <TooltipProvider>
@@ -562,43 +574,38 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
         </TooltipTrigger>
         <TooltipContent sideOffset={5}>
           <p className="max-w-[250px]">
-            Current built-in models for this plan include
-            <ul className="list-disc pl-4">
-              <li>Claude 3.5 Sonnet (new)</li>
-              <li>GPT4o</li>
-              <li>GPT o1-preview</li>
-              <li>GPT o1-mini</li>
-              <li>Gemini 1.5 Pro</li>
-              <li>Claude 3.5 Haiku (unlimited)</li>
-            </ul>
-            <br />
-            Your PearAI Credits usage depend on your prompt input and output
-            sizes. On average, this equates to around {pearCreditsCount(
-              type,
-            )}{" "}
-            requests{type === "free" && " for our current free trial"}. For more
-            info on usage. see{" "}
+            If you happen to run out of credits (which is unlikely), you can
+            switch to a{" "}
             <Link
+              href="/pay-as-you-go"
               className="text-primary-700 hover:text-primary-800"
-              href="/docs/models-and-usage"
             >
-              here
+              pay-as-you-go extra credit plan
             </Link>
-            .
-            {type !== "free" && (
-              <>
-                <br /> <br />
-                If you happen to run out of credits (which is unlikely), you can
-                switch to a{" "}
-                <Link
-                  href="/pay-as-you-go"
-                  className="text-primary-700 hover:text-primary-800"
-                >
-                  pay-as-you-go extra credit plan
-                </Link>
-                , or use our free model for unlimited requests.
-              </>
-            )}
+            , or use PearAI Mini free model for unlimited requests.
+          </p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
+export const ServerAccessTooltip = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <TooltipProvider>
+      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
+        <TooltipTrigger asChild>
+          <Info
+            className="mb-0.5 ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={5}>
+          <p className="max-w-[250px]">
+            No need to configure and manage different API&apos;s and tools,
+            PearAI will work out of the box.
           </p>
         </TooltipContent>
       </Tooltip>
