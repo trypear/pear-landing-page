@@ -116,7 +116,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span>
-            Monthly refill of credits for market-leading AI models
+            Monthly refill of $15 credits for market-leading AI models
             <PearCreditsTooltip type="standard" />
           </span>
         </div>
@@ -207,13 +207,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 <small className="text-base text-primary-700 sm:text-lg">
                   &#40;Early Bird&#41;
                 </small>
-              </p>
-              <p
-                className="text-base text-gray-400 sm:text-lg"
-                aria-label={`Original price: $${prevPrice} per month`}
-              >
-                <del>${prevPrice}</del>
-                <small>{priceUnit}</small>
               </p>
             </div>
           ) : (
@@ -447,29 +440,6 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               value="standard"
               className="w-full space-y-6 sm:space-y-8 md:space-y-6 lg:space-y-6"
             >
-              <div className="mt-[20px] flex w-full items-center justify-center rounded-md bg-gray-300/20 bg-gradient-to-l from-primary-800/[0.15] via-gray-100/10 to-transparent to-60% px-6 py-3.5 ring-1 ring-gray-300/60 dark:bg-gray-100/10 dark:ring-gray-100/40">
-                <div className="flex w-full items-center justify-between rounded-md">
-                  <p className="block w-max items-center justify-start md:flex">
-                    <span className="text-primary-700 dark:text-primary-800">
-                      Be the early bird and get a discount
-                    </span>
-                    &nbsp;
-                    <span className="text-primary-900 dark:text-primary-700">
-                      forever
-                    </span>
-                  </p>
-
-                  <p className="block w-max items-center justify-end text-right md:flex">
-                    <strong className="text-lg text-primary-900 dark:text-gray-900">
-                      20-30% off
-                    </strong>
-                    &nbsp;
-                    <span className="font-normal text-primary-700 dark:text-primary-300">
-                      &#40;forever&#41;
-                    </span>
-                  </p>
-                </div>
-              </div>
               {PRICING_TIERS.standard && (
                 <div
                   className="mt-[20px] grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
