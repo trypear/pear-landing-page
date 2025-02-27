@@ -112,8 +112,9 @@ export default function TopUpModal() {
                       <Tooltip>
                         <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
                           <p>
-                            Your PearAI Credits usage depend on your prompt
-                            input and output sizes.
+                            Your PearAI Credits usage depends on the price of
+                            the underlying LLM, and your prompt&apos;s input and
+                            output sizes.
                           </p>
                         </TooltipContent>
                       </Tooltip>
