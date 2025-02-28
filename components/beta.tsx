@@ -36,7 +36,15 @@ const BetaPage: React.FC<{ user: any }> = ({ user }) => {
               Download PearAI Beta Version
             </h1>
             <p className="text-lg text-gray-600">
-              Try out the latest beta version of PearAI and let us know what you think in <a href="https://discord.gg/AKy5FmqCkF" className="text-blue-500 hover:text-blue-600 underline">Discord</a>!
+              Try out the latest beta version of PearAI and let us know what you
+              think in{" "}
+              <a
+                href="https://discord.gg/AKy5FmqCkF"
+                className="text-blue-500 underline hover:text-blue-600"
+              >
+                Discord
+              </a>
+              !
             </p>
           </header>
 
