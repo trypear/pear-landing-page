@@ -34,7 +34,7 @@
 
 ## About The Project
 
-This is the landing page for [PearAI:](https://trypear.ai) the Open Source AI-powered code editor. This product is managed by [Nang](https://youtube.com/nang88) and [Pan](https://youtube.com/FryingPan).
+This is the landing page for [PearAI:](https://trypear.ai) the Open Source AI-powered code editor.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -141,8 +141,6 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## Contact
 
-- Nang - [@youtube/nang88](https://youtube.com/nang88)
-- Pan - [@youtube/FryingPan](https://youtube.com/FryingPan)
 - [Discord](https://discord.com/invite/7QMraJUsQt)
 - Email - pear@trypear.ai
 
