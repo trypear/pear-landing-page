@@ -68,7 +68,7 @@ export default function Showcase() {
   return (
     <>
       {/* Testimonials */}
-      <div className="flex items-center justify-center px-6 py-4">
+      <div className="flex items-center justify-center px-6 pb-32 pt-6">
         <div className="z-10 max-w-3xl rounded-xl border-2 border-gray-200 bg-white-50 p-5 dark:border-gray-50 dark:bg-black lg:max-w-[1049px]">
           <h1 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
             Makers love PearAI... almost as much as PearAI loves Makers!

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
@@ -135,7 +137,7 @@ export default function ExpandableCards() {
   return (
     <>
       {/* Desktop Layout */}
-      <div className="hidden items-center justify-center px-6 py-6 lg:flex">
+      <div className="hidden items-center justify-center px-6 pb-6 pt-2 lg:flex">
         <div className="w-full max-w-[1049px] rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50">
           <h1 className="pb-5 text-[28px] font-semibold leading-tight dark:text-gray-900">
             PearAI Inventory natively integrates the best AI tools <br />
@@ -244,7 +246,7 @@ export default function ExpandableCards() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="block w-full px-6 py-6 lg:hidden">
+      <div className="block w-full px-6 pb-6 pt-2 lg:hidden">
         <div className="mx-auto w-full max-w-3xl rounded-xl border-2 border-gray-200 px-5 py-5 dark:border-gray-50">
           <h2 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
             The AI space changes fast— PearAI Inventory curates the best AI

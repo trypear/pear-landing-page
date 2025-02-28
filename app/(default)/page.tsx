@@ -13,8 +13,8 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <OpenSource />
       <Features />
+      <OpenSource />
       <Showcase />
     </>
   );

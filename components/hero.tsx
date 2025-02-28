@@ -8,6 +8,7 @@ import { ChevronRight as ChevronRightIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import ExpandableCards from "./ui/expandable-cards";
 import AIModelsList from "./ai-models-list";
+import OpenSource from "./opensource";
 
 export default function Hero() {
   const textVariants = {
