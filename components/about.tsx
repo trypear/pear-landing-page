@@ -106,7 +106,8 @@ const AboutComponent: React.FC = () => {
           PearAI hopes to empower everyone to build software. The world is
           shifting from mass-market software to personalized solutions. We see a
           future where anyone can bring their ideas to life in a world driven by
-          Personal Software and want to lead this movement. Try PearAI out today and see what you can make!
+          Personal Software and want to lead this movement. Try PearAI out today
+          and see what you can make!
         </p>
       </div>
 
