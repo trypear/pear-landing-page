@@ -1,32 +1,9 @@
+"use client";
+
 import React from "react";
-import { Card, CardContent, CardDescription } from "@/components/ui/card";
-import { Tweet } from "@/components/tweet";
-import { components } from "./ui/my-tweet";
 import { Badge } from "./ui/badge";
 import Footer from "./footer";
-
-type VideoData = {
-  src: string;
-  title: string;
-  description: string;
-};
-
-type VideoCardProps = VideoData;
-
-const videoData: VideoData[] = [
-  {
-    src: "https://www.youtube.com/embed/qtGPQ5AKnm4?si=WZxlmB0kENB_WGiI",
-    title: "Frying Pan's Latest YouTube video",
-    description:
-      "Demo of the new PearAI Inventory, a quick-access overlay for all AI tools. In this video, PearAI Creator and Search are shown.",
-  },
-  {
-    src: "https://www.youtube.com/embed/hHm4mtIp6K0",
-    title: "Nang's Latest YouTube video",
-    description:
-      "Nang introduces PearAI, an AI-powered code editor aimed at transforming software development. He shares his journey from a high-paying job to pursuing startups and YouTube, encouraging viewers to chase their dreams with determination.",
-  },
-];
+import Features from "./features/Features";
 
 const AboutComponent: React.FC = () => {
   return (
@@ -86,15 +63,7 @@ const AboutComponent: React.FC = () => {
         </div>
       </div>
 
-      <div className="m-auto mb-8 flex max-w-4xl items-center justify-center px-4">
-        <Tweet id="1856441845880107408" components={components} />
-      </div>
-
-      {/* <div className="m-auto mb-10 flex flex-col items-center justify-center gap-4 p-4 pt-0 lg:flex-row lg:p-0">
-        {videoData.map((video, index) => (
-          <VideoCard key={index} {...video} />
-        ))}
-      </div> */}
+      <Features />
 
       <div className="mt-10 flex flex-col items-center justify-center p-4 pb-0">
         <h2 className="text-4xl font-bold">
@@ -137,7 +106,7 @@ const AboutComponent: React.FC = () => {
           PearAI hopes to empower everyone to build software. The world is
           shifting from mass-market software to personalized solutions. We see a
           future where anyone can bring their ideas to life in a world driven by
-          Personal Software, and we&apos;re just getting started!
+          Personal Software and want to lead this movement. Try PearAI out today and see what you can make!
         </p>
       </div>
 
@@ -145,34 +114,5 @@ const AboutComponent: React.FC = () => {
     </section>
   );
 };
-
-const VideoCard: React.FC<VideoCardProps> = ({ src, title, description }) => (
-  <Card>
-    <CardContent
-      className="flex flex-col-reverse p-4 sm:flex-col"
-      style={{
-        width: "100%",
-        maxWidth: "30rem",
-        minHeight: "24rem",
-      }}
-    >
-      <div
-        className="group relative mt-4 sm:mb-4 sm:mt-0"
-        style={{
-          paddingBottom: "16rem",
-        }}
-      >
-        <iframe
-          className="pointer-events-none absolute left-0 top-0 h-full w-full rounded group-hover:pointer-events-auto"
-          src={src}
-          title={title}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-      <CardDescription className="text-gray-500">{description}</CardDescription>
-    </CardContent>
-  </Card>
-);
 
 export default AboutComponent;

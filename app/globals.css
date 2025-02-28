@@ -177,8 +177,7 @@
 
 @layer utilities {
   .showcase-gradient-light {
-    background-image:
-      linear-gradient(
+    background-image: linear-gradient(
         to bottom,
         rgba(250, 250, 250, 1) 0%,
         rgba(250, 250, 250, 0) 50%
@@ -191,8 +190,11 @@
   }
 
   .dark .showcase-gradient-light {
-    background-image:
-      linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 45%),
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.1) 45%
+      ),
       radial-gradient(51% 51% at -11% 9%, #ff57dda1 1%, #ff57dd00 100%),
       radial-gradient(51% 67% at 115% 96%, #ff57dda1 0%, #ff57dd00 100%),
       radial-gradient(50% 66% at 50% 50%, #f2ff61a3 0%, #f2ff6100 100%),
