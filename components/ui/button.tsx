@@ -23,7 +23,8 @@ const buttonVariants = cva(
         authgroup:
           "rounded-full text-gray-600 hover:text-gray-700 bg-gray-500/10 hover:bg-gray-500/20 hover:shadow-inset-gray-400-20",
         icon: "rounded-full bg-secondary text-secondary-foreground hover:bg-secondary-300/10",
-        ghost: "hover:bg-accent hover:text-accent-foreground rounded-lg",
+        ghost:
+          "hover:bg-secondary-300/10 hover:text-accent-foreground rounded-lg",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
