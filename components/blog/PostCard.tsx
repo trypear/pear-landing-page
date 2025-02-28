@@ -20,7 +20,7 @@ const PostCard = ({ title, date, excerpt, thumbnail, url }: PostCardProps) => (
           fill
           src={thumbnail}
           alt={title}
-          className="h-full w-full rounded-md"
+          className="h-full w-full rounded-md object-cover"
         />
       </div>
       <CardContent className="flex-grow p-4">
