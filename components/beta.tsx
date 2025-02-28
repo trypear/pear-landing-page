@@ -79,7 +79,7 @@ const BetaPage: React.FC<{ user: any }> = ({ user }) => {
                   Windows
                 </Button>
                 <div className="text-sm text-gray-500">
-                  version is v1.8.1-beta (February 28th, 2025)
+                  version is v1.8.2-beta (February 28th, 2025)
                 </div>
               </div>
             </div>
