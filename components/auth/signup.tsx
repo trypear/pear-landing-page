@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useState, useRef } from "react";
 import { signinWithOAuth } from "@/app/(auth)/actions";
 import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
-import { AdminUserAttributes, Provider } from "@supabase/supabase-js";
+import { Provider } from "@supabase/supabase-js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
