@@ -39,6 +39,7 @@ const allowedProtocols: AllowedProtocol[] = [
   "pearai:",
   "vscode:",
   "code-oss:",
+  "vscode-insiders:",
 ];
 
 export function isAllowedUrl(url: URL): boolean {
