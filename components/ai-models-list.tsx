@@ -32,7 +32,7 @@ export default function AIModelsList() {
               <span className="font-mono text-black/60 dark:text-gray-500">
                 2
               </span>
-              <span className="font-medium">Claude 3.5 Sonnet</span>
+              <span className="font-medium">Claude 3.7 Sonnet</span>
             </div>
 
             <div className="flex w-[65%] items-center gap-3 rounded-xl border-[1.5px] border-gray-200 bg-white-50 p-3 dark:border-gray-50 dark:bg-black">

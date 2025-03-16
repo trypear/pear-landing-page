@@ -566,6 +566,7 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
             Current built-in models for this plan include (but not limited to)
             <ul className="list-disc pl-4">
               <li>PearAI Model</li>
+              <li>Claude 3.7 Sonnet</li>
               <li>Claude 3.5 Sonnet</li>
               <li>GPT4o</li>
               <li>Deepseek R1</li>
