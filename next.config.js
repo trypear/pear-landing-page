@@ -4,6 +4,7 @@ const nextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "pbs.twimg.com" },
       { protocol: "https", hostname: "abs.twimg.com" },
+      { protocol: "https", hostname: "pearai.b-cdn.net" },
     ],
   },
 };
@@ -22,11 +23,6 @@ const nextConfiguration = {
   async redirects() {
     // remove this redirect in next pearapp release
     return [
-      {
-        source: "/creator-troubleshooting",
-        destination: "/blog/introducing-pearai-creator-beta",
-        permanent: true,
-      },
       {
         source: "/features/tab-autocomplete",
         destination: "/docs/tab-autocomplete",

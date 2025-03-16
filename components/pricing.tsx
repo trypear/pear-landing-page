@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState, useRef, useMemo, Fragment } from "react";
-import { useRouter } from "next/navigation";
 import {
   Card,
   CardContent,
@@ -32,34 +31,17 @@ import {
 import { Info } from "lucide-react";
 import Spinner from "./ui/spinner";
 import Footer from "./footer";
-
+import Link from "next/link";
+import { useDownload } from "@/hooks/useDownload";
+import DownloadFeedbackForm from "./ui/download-feedback-form";
+import { useReleases } from "@/hooks/useReleases";
+import { ReleaseInfo } from "@/types/releaseTypes";
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
+  windowsRelease: ReleaseInfo;
+  macRelease: ReleaseInfo;
+  linuxRelease: ReleaseInfo;
 }
-
-type VersionInfo = {
-  version: string;
-  releaseDate: string;
-};
-
-export const platformVersions: Record<string, VersionInfo> = {
-  Windows: {
-    version: "v1.5.1",
-    releaseDate: "Nov 12, 2024",
-  },
-  "Mac (M chip)": {
-    version: "v1.5.1",
-    releaseDate: "Nov 17, 2024",
-  },
-  "Mac (Intel)": {
-    version: "v1.5.1",
-    releaseDate: "Nov 17, 2024",
-  },
-  Linux: {
-    version: "v1.5.0",
-    releaseDate: "Nov 12, 2024",
-  },
-};
 
 const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   title,
@@ -74,15 +56,26 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
   index,
   disabled,
   priceUnit = "/month",
+  windowsRelease,
+  macRelease,
+  linuxRelease,
 }) => {
   const { handleCheckout, isSubmitting } = useCheckout(user);
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [downloadLink, setDownloadLink] = useState<string>();
-  const router = useRouter();
-  const appleContainer = useRef<HTMLDivElement>(null);
-  const [appleDownload, setAppleDownload] = useState<
-    "darwin-arm64" | "intel-x64"
-  >("darwin-arm64");
+  const {
+    isDownloading,
+    downloadLink,
+    handleDownload,
+    showFeedback,
+    setShowFeedback,
+    handleFeedbackSubmit,
+  } = useDownload();
+
+  const dynamicVersions: Record<string, ReleaseInfo> = {
+    Windows: windowsRelease,
+    "Mac (M chip)": macRelease,
+    "Mac (Intel)": macRelease,
+    Linux: linuxRelease,
+  };
 
   // used to ensure animations run after mount client-side
   const [mounted, setMounted] = useState(false);
@@ -102,38 +95,12 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       }
     : {};
 
-  const handleDownload = async (os_type: string) => {
-    setIsDownloading(true);
-    try {
-      const res = await fetch(`/api/download?os_type=${os_type}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!res.ok) {
-        throw Error(res.statusText);
-      }
-
-      const download = await res.json();
-      if (download?.url) {
-        setDownloadLink(download.url);
-        router.push(download.url);
-      }
-    } catch (error: any) {
-      toast.error(error.message);
-    } finally {
-      setIsDownloading(false);
-    }
-  };
-
   const featureRowDescription = (feature: string) => {
     if (feature?.startsWith("custom-standard")) {
       return (
         <div className="flex items-center">
           <span>
-            Monthly refill of PearAI Credits for market-leading AI models
+            Monthly refill of $15 credits for market-leading AI models
             <PearCreditsTooltip type="standard" />
           </span>
         </div>
@@ -154,6 +121,24 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
             Monthly refill of <span className="underline"> increased</span>{" "}
             PearAI Credits for market-leading AI models
             <PearCreditsTooltip type="enterprise" />
+          </span>
+        </div>
+      );
+    } else if (feature?.startsWith("Pay-as-you-go")) {
+      return (
+        <div className="flex items-center">
+          <span>
+            Pay-as-you-go for additional credits
+            <PayAsYouGoTooltip />
+          </span>
+        </div>
+      );
+    } else if (feature?.startsWith("Full access to PearAI Router")) {
+      return (
+        <div className="flex items-center">
+          <span>
+            Full access to PearAI Router & Hosted Servers
+            <ServerAccessTooltip />
           </span>
         </div>
       );
@@ -178,8 +163,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           <CardTitle className="text-2xl leading-6 text-primary-700">
             {title}
             &nbsp;
-            {index === 1 && title === "Junior Engineer" && "(Monthly)"}
-            {index === 2 && title === "10x Engineer" && "(Yearly)"}
+            {index === 1 && title === "Maker" && "(Monthly)"}
+            {index === 2 && title === "10x Maker" && "(Yearly)"}
           </CardTitle>
           <p className="text-base font-normal text-gray-600 sm:text-base md:text-sm">
             {index === 0 && isFree && (
@@ -206,13 +191,6 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                 <small className="text-base text-primary-700 sm:text-lg">
                   &#40;Early Bird&#41;
                 </small>
-              </p>
-              <p
-                className="text-base text-gray-400 sm:text-lg"
-                aria-label={`Original price: $${prevPrice} per month`}
-              >
-                <del>${prevPrice}</del>
-                <small>{priceUnit}</small>
               </p>
             </div>
           ) : (
@@ -255,21 +233,13 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
           {isDownloading ? (
             <Spinner className="mb-4 ml-4 border" />
           ) : (
-            isFree &&
-            (downloadLink !== undefined ? (
-              <p className="text-gray-400">
-                Thanks for trying out PearAI! Your download should have started,
-                if it hasn&apos;t, click{" "}
-                <a
-                  className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-                  href={downloadLink}
-                >
-                  here
-                </a>
-                .
-              </p>
-            ) : (
+            isFree && (
               <div className="flex w-full flex-col items-center gap-2">
+                <DownloadFeedbackForm
+                  isOpen={showFeedback}
+                  onClose={() => setShowFeedback(false)}
+                  onSubmit={handleFeedbackSubmit}
+                />
                 <TooltipProvider>
                   <Tooltip delayDuration={50}>
                     <TooltipTrigger asChild>
@@ -282,19 +252,38 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                       className="flex flex-col space-y-2 p-3"
                     >
                       <div className="grid grid-cols-[auto,1fr] gap-x-3 gap-y-2 text-sm">
-                        {Object.entries(platformVersions).map(
-                          ([platform, info]) => (
-                            <Fragment key={platform}>
-                              <span className="font-medium">{platform}:</span>
-                              <div className="flex items-center gap-1">
-                                <div>{info.version}</div>
-                                <div className="text-xs text-gray-400">
-                                  ({info.releaseDate})
+                        {Object.entries(dynamicVersions).map(
+                          ([platform, info]) => {
+                            return (
+                              <Fragment key={platform}>
+                                <span className="font-medium">{platform}:</span>
+                                <div className="flex flex-col gap-1">
+                                  <div className="flex items-center gap-1">
+                                    <div>{info.version}</div>
+                                    {info.releaseDate && (
+                                      <div className="text-xs text-gray-400">
+                                        ({info.releaseDate})
+                                      </div>
+                                    )}
+                                  </div>
+                                  {platform === "Linux" && (
+                                    <div className="text-xs text-gray-400">
+                                      *Packaged and released
+                                      <br />
+                                      by the open source community
+                                    </div>
+                                  )}
                                 </div>
-                              </div>
-                            </Fragment>
-                          ),
+                              </Fragment>
+                            );
+                          },
                         )}
+                        <Link
+                          href="/changelog"
+                          className="col-span-2 text-center text-primary-700 hover:text-primary-600"
+                        >
+                          Changelog
+                        </Link>
                       </div>
                     </TooltipContent>
                   </Tooltip>
@@ -357,8 +346,21 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
+                {downloadLink !== undefined && (
+                  <p className="text-gray-400">
+                    Thanks for trying out PearAI! Your download should have
+                    started, if it hasn&apos;t, click{" "}
+                    <a
+                      className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                      href={downloadLink}
+                    >
+                      here
+                    </a>
+                    .
+                  </p>
+                )}
               </div>
-            ))
+            )
           )}
           {!isFree && (
             <>
@@ -386,6 +388,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
 };
 
 const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
+  const { releases, isLoading } = useReleases();
+
   return (
     <section
       className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-24"
@@ -399,9 +403,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               id="pricing-heading"
               className="mt-8 text-4xl font-medium leading-tight sm:text-4xl md:text-4xl lg:text-4xl"
             >
-              Speed up your
+              Make your next
               <br />
-              development today.
+              project today.
             </h1>
           </header>
 
@@ -450,14 +454,21 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                   </p>
                 </div>
               </div>
-              {PRICING_TIERS.standard && (
+              {!isLoading && PRICING_TIERS.standard && (
                 <div
                   className="mt-[20px] grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
                   role="list"
                 >
                   {PRICING_TIERS.standard.map((tier, index) => (
                     <div key={index} role="listitem">
-                      <PricingTier {...tier} user={user} index={index} />
+                      <PricingTier
+                        {...tier}
+                        user={user}
+                        index={index}
+                        windowsRelease={releases.windows}
+                        macRelease={releases.mac}
+                        linuxRelease={releases.linux}
+                      />
                     </div>
                   ))}
                 </div>
@@ -503,6 +514,9 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                         index={index}
                         priceUnit="/month/user"
                         disabled
+                        windowsRelease={releases.windows}
+                        macRelease={releases.mac}
+                        linuxRelease={releases.linux}
                       />
                     </div>
                   ))}
@@ -538,16 +552,41 @@ export default PricingPage;
 export const PearCreditsTooltip = ({ type }: { type: string }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const pearCreditsCount = useMemo(() => {
-    return (type: string) => {
-      if (type === "free") {
-        return "50";
-      } else if (type === "enterprise") {
-        return "1000";
-      }
-      return "700";
-    };
-  }, []);
+  return (
+    <TooltipProvider>
+      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
+        <TooltipTrigger asChild>
+          <Info
+            className="mb-0.5 ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={5}>
+          <p className="max-w-[250px]">
+            Current built-in models for this plan include (but not limited to)
+            <ul className="list-disc pl-4">
+              <li>PearAI Model</li>
+              <li>Claude 3.7 Sonnet</li>
+              <li>Claude 3.5 Sonnet</li>
+              <li>GPT4o</li>
+              <li>Deepseek R1</li>
+              <li>o1</li>
+              <li>o3-mini</li>
+              <li>Gemini 1.5 Pro</li>
+              <li>Claude 3.5 Haiku (unlimited)</li>
+            </ul>
+            <br />
+            Your PearAI Credits usage depends on the price of the underlying
+            LLM, and your prompt&apos;s input and output sizes.
+          </p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
+export const PayAsYouGoTooltip = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
   return (
     <TooltipProvider>
@@ -560,21 +599,38 @@ export const PearCreditsTooltip = ({ type }: { type: string }) => {
         </TooltipTrigger>
         <TooltipContent sideOffset={5}>
           <p className="max-w-[250px]">
-            Current models include Claude 3.5 Sonnet, GPT4o, Gemini 1.5 Pro, and
-            Claude 3.5 Haiku.
-            <br /> <br />
-            Your PearAI Credits usage depend on your prompt input and output
-            sizes. On average, this equates to around {pearCreditsCount(
-              type,
-            )}{" "}
-            requests{type === "free" && " for our current free trial"}.
-            {type !== "free" && (
-              <>
-                <br /> <br />
-                If you happen to run out of credits, you can top up from your
-                dashboard.
-              </>
-            )}
+            If you happen to run out of credits (which is unlikely), you can
+            switch to a{" "}
+            <Link
+              href="/pay-as-you-go"
+              className="text-primary-700 hover:text-primary-800"
+            >
+              pay-as-you-go extra credit plan
+            </Link>
+            , or use PearAI Mini free model for unlimited requests.
+          </p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+};
+
+export const ServerAccessTooltip = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  return (
+    <TooltipProvider>
+      <Tooltip open={isOpen} onOpenChange={setIsOpen} delayDuration={50}>
+        <TooltipTrigger asChild>
+          <Info
+            className="mb-0.5 ml-1 inline-flex h-4 w-4 flex-shrink-0 cursor-pointer"
+            onClick={() => setIsOpen((prev) => !prev)}
+          />
+        </TooltipTrigger>
+        <TooltipContent sideOffset={5}>
+          <p className="max-w-[250px]">
+            No need to configure and manage different API&apos;s and tools,
+            PearAI will work out of the box.
           </p>
         </TooltipContent>
       </Tooltip>

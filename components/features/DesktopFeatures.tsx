@@ -121,6 +121,7 @@ export default function DesktopFeatures() {
           ))}
         </div>
       </div>
+
       <div className="relative aspect-[16/12] w-full overflow-hidden rounded-lg">
         <AnimatePresence mode="wait">
           <motion.div

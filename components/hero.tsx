@@ -7,6 +7,8 @@ import IntegrationBox from "./ui/integrationBox";
 import { ChevronRight as ChevronRightIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import ExpandableCards from "./ui/expandable-cards";
+import AIModelsList from "./ai-models-list";
+import OpenSource from "./opensource";
 
 export default function Hero() {
   const textVariants = {
@@ -34,7 +36,7 @@ export default function Hero() {
 
           <div className="relative my-20 flex max-w-6xl flex-col items-center px-6 lg:items-start">
             <motion.div
-              className="mb-3 flex scale-95 items-center justify-center gap-2"
+              className="group mb-2 flex scale-95 items-center justify-center gap-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{
@@ -50,7 +52,9 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 className="flex items-center gap-1 text-xs font-semibold text-black/50 transition-colors hover:text-black/70 dark:text-gray-600 dark:hover:text-gray-500"
               >
-                BACKED BY Y COMBINATOR{" "}
+                <span className="relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-current after:transition-transform after:duration-300 after:ease-in-out group-hover:after:origin-bottom-left group-hover:after:scale-x-100">
+                  BACKED BY Y COMBINATOR
+                </span>{" "}
                 <ChevronRightIcon className="h-3 w-3" strokeWidth={3} />
               </a>
             </motion.div>
@@ -68,7 +72,11 @@ export default function Hero() {
               }}
             >
               <h1 className="bg-gradient-to-b from-neutral-700 to-neutral-900 bg-clip-text text-transparent dark:from-neutral-50 dark:to-neutral-300">
-                PearAI: The Open Source AI Code Editor
+                PearAI: The
+                <br />
+                AI Code Editor
+                <br />
+                For Your Next Project
               </h1>
             </motion.div>
 
@@ -85,9 +93,10 @@ export default function Hero() {
               }}
             >
               <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
-                Supercharge your development with an up-to-date, curated
-                inventory of the best AI tools, natively integrated for
-                effortless AI-powered coding.
+                Bring your ideas to life with the best AI tools integrated into
+                a single code editor. Built to supercharge your project
+                development all the way from inception to running at scale.
+                Always open source.{" "}
               </p>
             </motion.div>
 
@@ -123,6 +132,7 @@ export default function Hero() {
         </div>
       </section>
       <ExpandableCards />
+      <AIModelsList />
     </>
   );
 }

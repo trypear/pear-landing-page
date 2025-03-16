@@ -18,6 +18,258 @@ type ChangelogEntry = {
 const updates: ChangelogEntry[] = [
   // =================================================================
   {
+    date: "12 February 2025",
+    title: "Introducing Coding Agent & New Focus",
+    version: "v1.8.0",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Introducing PearAI Coding Agent, powered by Roo Code / Cline.</li>
+          <li>
+            This coding agent, with your permission, accesses your development
+            environment to facilitate a feedback loop, enabling it to code on
+            your behalf.
+          </li>
+          <li className="flex items-center gap-6">
+            <Image
+              src="/images/changelogs/pearai-cline_v1.8.png"
+              alt="PearAI Cline v1.8"
+              width={800}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-full max-w-[300px] rounded-xl border-4 border-green-200 shadow-lg shadow-green-500" // Added green hue border
+              style={{
+                width: "60%",
+                height: "auto",
+              }}
+            />
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    date: "27 January 2025",
+    title: "UI bug fixes",
+    version: "v1.7.1",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Fixed Add Docs not working</li>
+          <li>better UI for model selection</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    date: "22 January 2025",
+    title: "overlay and extension UI overhaul",
+    version: "v1.7.0",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>VS Code 1.96.2: </strong>
+            PearAI updated to vscode release 1.96.2 ✨
+          </li>
+          <li>
+            <strong>Added 🐋 deepseek models</strong>
+          </li>
+          <div className="mt-10 flex gap-4">
+            <Image
+              src="/images/changelogs/deepseek support.webp"
+              alt="deepseek support"
+              width={400}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-full max-w-[400px] rounded-xl"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+            <Image
+              src="/images/changelogs/deepseekbenchmark.webp"
+              alt="deepseekbenchmark"
+              width={400}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-full max-w-[400px] rounded-xl"
+              style={{
+                width: "100%",
+                height: "auto",
+              }}
+            />
+          </div>
+          <li>
+            <strong>Refreshed the UI for extension and overlay 💅</strong>
+          </li>
+          <Image
+            src="/images/changelogs/ui-overhaul.png"
+            alt="ui overhaul"
+            width={400}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full max-w-[400px] rounded-xl"
+            style={{
+              width: "100%",
+              height: "auto",
+            }}
+          />
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "26 December 2024",
+    title: "Developer Wrapped 2024 Release",
+    version: "v1.6.1",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li className="flex items-center gap-6">
+            <Image
+              src="/images/changelogs/wrapped.svg"
+              alt="Developer Wrapped 2024"
+              width={800}
+              height={0}
+              sizes="100vw"
+              style={{
+                width: "8%",
+                height: "auto",
+                maxWidth: "850px",
+              }}
+            />
+            <span>
+              See how many lines of code you wrote in 2024
+              <br />
+              <Link
+                href={"https://www.developerwrapped.com"}
+                className="tracking-wide underline"
+              >
+                www.developerwrapped.com
+              </Link>
+            </span>
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "13 December 2024",
+    title: "Fast Apply: Powered by Relace",
+    version: "v1.6.0",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">New Features</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>Fast Apply using relace:</strong> apply code block to your
+            files a lot faster and more accurately.
+          </li>
+          <Image
+            src="/images/changelogs/fastapply-relace.webp"
+            alt="fastapply relace"
+            width={800}
+            height={0}
+            sizes="100vw"
+            className="h-auto w-full max-w-[300px] rounded-xl border-4 border-green-200 shadow-lg shadow-green-500" // Added green hue border
+            style={{
+              width: "60%",
+              height: "auto",
+              maxWidth: "850px",
+            }}
+          />
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "6 December 2024",
+    title: "Added Mem0: Memory for your AI",
+    version: "v1.5.3 - v1.5.5",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">New Features</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>PearAI Memory:</strong>
+            Integrated Mem0 for up-to-date AI web search
+          </li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">Improvements</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Aider Fixes</li>
+          <li>
+            removed automatic inclusion of active file and directory structure
+          </li>
+        </ul>
+      </>
+    ),
+  },
+  // =================================================================
+  {
+    date: "23 November 2024",
+    title: "Major Architecture Overhaul & PearAI Inventory: Creator, Search",
+    version: "v1.5.2",
+    description: (
+      <>
+        <h2 className="mt-6 text-xl font-semibold">Architecture Overhaul 🏗️</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Custom communication protocol for multi-webview support</li>
+          <li>Redesigned app with inventory (overlay) capability</li>
+          <li>Optimized file indexing</li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">New Features 🎉</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            <strong>PearAI Creator:</strong> No-code feature for direct codebase
+            modifications. Aider integration!
+          </li>
+          <li>
+            <strong>PearAI Search:</strong> Integrated Perplexity for up-to-date
+            AI web search
+          </li>
+          <li>
+            <strong>PearAI Chat:</strong> multiple bug fixes
+          </li>
+        </ul>
+
+        <h2 className="mt-6 text-xl font-semibold">Improvements 🚀</h2>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>
+            Major changes to the app onboarding experience with interactive
+            tutorials
+          </li>
+          <li>New inventory settings page for integration management</li>
+          <li>
+            Completely redesigned the landing page home page. It looks so nice
+            now 😍
+          </li>
+        </ul>
+        <div className="relative mt-4 aspect-video w-full max-w-[850px]">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/UpxhRnKj5Ck?si=U8lTia4meAKXJMet"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            className="rounded-xl border-4 border-green-200 shadow-lg shadow-green-500"
+          />
+        </div>
+      </>
+    ),
+  },
+  // =================================================================
+  {
     date: "9 October 2024",
     title: "Open Source Fixes",
     version: "v1.3.0",

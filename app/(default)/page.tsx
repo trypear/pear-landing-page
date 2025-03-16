@@ -1,5 +1,6 @@
 import Features from "@/components/features/Features";
 import Hero from "@/components/hero";
+import OpenSource from "@/components/opensource";
 import Showcase from "@/components/showcase";
 import { constructMetadata } from "@/lib/utils";
 import { Metadata } from "next/types";
@@ -13,6 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <Features />
+      <OpenSource />
       <Showcase />
     </>
   );

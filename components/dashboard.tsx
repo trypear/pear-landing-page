@@ -15,17 +15,21 @@ type DashboardPageProps = {
   subscription: Subscription | null;
   openAppQueryParams: string | URLSearchParams;
   user: User;
+  accessToken: string;
 };
 
 export type UsageType = {
   percent_credit_used: number | null;
   remaining_topup_credits: number | null;
+  pay_as_you_go_credits: number | null;
+  ttl: number | null;
 };
 
 export default function DashboardPage({
   subscription,
   openAppQueryParams,
   user,
+  accessToken,
 }: DashboardPageProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -33,6 +37,8 @@ export default function DashboardPage({
   const [usage, setUsage] = useState<UsageType>({
     percent_credit_used: null,
     remaining_topup_credits: null,
+    pay_as_you_go_credits: null,
+    ttl: -4,
   });
 
   const handleCallbackForApp = useCallback(async () => {

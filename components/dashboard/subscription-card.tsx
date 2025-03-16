@@ -26,15 +26,17 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useState } from "react";
+import { useMemo, useState, useCallback } from "react";
+import {
+  cancellationReasons,
+  CancellationFeedback,
+} from "@/types/cancellation";
 import { useCancelSubscription } from "@/hooks/useCancelSubscription";
 import { User } from "@supabase/supabase-js";
 import { InfoIcon } from "lucide-react";
 import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
-import TopUpModal from "../topup-modal";
-
 type SubscriptionCardProps = {
   subscription: Subscription | null;
   usage?: UsageType;
@@ -53,6 +55,11 @@ export default function SubscriptionCard({
   loading,
 }: SubscriptionCardProps) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [cancellationStep, setCancellationStep] = useState<
+    "initial" | "feedback" | "final"
+  >("initial");
+  const [selectedReasons, setSelectedReasons] = useState<string[]>([]);
+  const [comment, setComment] = useState("");
   const [isUpgradeDialogOpen, setIsUpgradeDialogOpen] = useState(false);
   const { handleCancelSubscription, isCanceling, isCanceled } =
     useCancelSubscription(user, subscription);
@@ -60,6 +67,20 @@ export default function SubscriptionCard({
     user,
     subscription,
   );
+  const timeLeftUntilRefill = useMemo(() => {
+    if (!usage?.ttl || usage?.ttl < 0) return "-";
+    const seconds = usage.ttl;
+    const hours = seconds / 3600;
+    const days = hours / 24;
+
+    if (days >= 1) {
+      return `${Math.floor(days)} days left`;
+    } else if (hours >= 1) {
+      return `${Math.floor(hours)} hours left`;
+    } else {
+      return `${Math.floor(seconds)} seconds left`;
+    }
+  }, [usage]);
 
   const handleCancelClick = () => {
     if (isCanceled) {
@@ -69,12 +90,45 @@ export default function SubscriptionCard({
     }
   };
 
+  const resetCancellationState = useCallback(() => {
+    setCancellationStep("initial");
+    setSelectedReasons([]);
+    setComment("");
+  }, []);
+
+  const handleDialogClose = useCallback(() => {
+    setIsDialogOpen(false);
+    resetCancellationState();
+  }, [resetCancellationState]);
+
   const handleConfirmCancel = async () => {
-    try {
-      await handleCancelSubscription(subscription!.subscription_id);
-    } finally {
-      setIsDialogOpen(false);
+    if (cancellationStep === "initial") {
+      setCancellationStep("feedback");
+      return;
     }
+
+    if (cancellationStep === "feedback") {
+      setCancellationStep("final");
+      return;
+    }
+
+    try {
+      const feedback: CancellationFeedback = {
+        reasons: selectedReasons,
+        comment,
+      };
+      await handleCancelSubscription(subscription!.subscription_id, feedback);
+    } finally {
+      handleDialogClose();
+    }
+  };
+
+  const handleReasonToggle = (reason: string) => {
+    setSelectedReasons((prev) =>
+      prev.includes(reason)
+        ? prev.filter((r) => r !== reason)
+        : [...prev, reason],
+    );
   };
 
   const handleUpgradeSubscriptionClick = async () => {
@@ -165,7 +219,7 @@ export default function SubscriptionCard({
                     : `${Math.min(usage?.percent_credit_used ?? 0, 100)}% of PearAI Credits used`}
                 </p>
                 <p className="text-right text-sm text-muted-foreground">
-                  Credits refill monthly
+                  Credits refills monthly ({timeLeftUntilRefill})
                 </p>
               </div>
               {usage.remaining_topup_credits !== undefined &&
@@ -194,6 +248,31 @@ export default function SubscriptionCard({
                     </p>
                   </div>
                 )}
+              {usage.pay_as_you_go_credits !== undefined &&
+                usage.pay_as_you_go_credits! > 0 && (
+                  <div className="mt-4 flex justify-between">
+                    <div className="flex items-center">
+                      <p className="font-medium">Pay-As-You-Go Extra Credits</p>
+                      <TooltipProvider delayDuration={0}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Link href="/pay-as-you-go">
+                              <InfoIcon className="ml-1 h-3 w-3 text-gray-700 dark:text-gray-600" />
+                            </Link>
+                          </TooltipTrigger>
+                          <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
+                            <p>Credits billed monthly</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      {loading
+                        ? "-"
+                        : `$${usage.pay_as_you_go_credits!.toFixed(2)} used`}
+                    </p>
+                  </div>
+                )}
             </div>
           )}
           <div className="mb-4">
@@ -203,7 +282,7 @@ export default function SubscriptionCard({
                 <p className="text-sm text-muted-foreground">
                   {capitalizeInital(subscription.pricing_tier)}
                 </p>
-                {/* {subscription.pricing_tier == "monthly" && (
+                {subscription.pricing_tier == "monthly" && (
                   <Dialog
                     open={isUpgradeDialogOpen}
                     onOpenChange={setIsUpgradeDialogOpen}
@@ -215,31 +294,23 @@ export default function SubscriptionCard({
                     </DialogTrigger>
                     <DialogContent>
                       <DialogHeader>
-                        <DialogTitle>Upgrade</DialogTitle>
+                        <DialogTitle>
+                          Upgrade Subscription Plan To Yearly
+                        </DialogTitle>
                         <DialogDescription>
-                          Are you sure you want to upgrade your subscription to
-                          the Yearly Tier?
                           <br />
+                          This will bring you to the checkout page to upgrade
+                          your plan from monthly to yearly. For the details of
+                          the yearly plan, see the{" "}
+                          <a
+                            href="/pricing"
+                            target="_blank"
+                            className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
+                          >
+                            pricing page
+                          </a>
+                          .
                           <br />
-                          <b>
-                            This change will take effect immediately, and be
-                            charged on your current payment method. The price is
-                            reflected on the{" "}
-                            <a
-                              href="/pricing"
-                              target="_blank"
-                              className="cursor-pointer text-primary-700 transition-colors hover:text-primary-800"
-                            >
-                              pricing page
-                            </a>
-                            .
-                          </b>
-                          <br />
-                          <br />
-                          We&apos;ll refund the remaining funds from the current
-                          monthly subscription depending on the days remaining
-                          on your cycle. You will not be able to downgrade
-                          afterwards.
                         </DialogDescription>
                       </DialogHeader>
                       <DialogFooter>
@@ -255,12 +326,12 @@ export default function SubscriptionCard({
                             handleUpgradeSubscriptionClick();
                           }}
                         >
-                          {isUpgrading ? "Upgrading..." : "Confirm Upgrade"}
+                          {isUpgrading ? "Upgrading..." : "Upgrade"}
                         </Button>
                       </DialogFooter>
                     </DialogContent>
                   </Dialog>
-                )} */}
+                )}
               </div>
             </div>
           </div>
@@ -291,9 +362,6 @@ export default function SubscriptionCard({
                 </Link>
               </Button>
             </div>
-            <TopUpModal />
-          </div>
-          <div className="flex items-center justify-between">
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button
@@ -312,16 +380,66 @@ export default function SubscriptionCard({
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle>Cancel Subscription</DialogTitle>
-                  <DialogDescription>
-                    Are you sure you want to cancel your subscription?
-                    You&apos;ll lose access to premium features at the end of
-                    your current billing period.
-                  </DialogDescription>
+                  {cancellationStep === "initial" && (
+                    <DialogDescription>
+                      Are you sure you want to cancel your subscription?
+                      You&apos;ll lose access to premium features at the end of
+                      your current billing period.
+                    </DialogDescription>
+                  )}
+                  {cancellationStep === "feedback" && (
+                    <DialogDescription>
+                      We&apos;re sorry to see you go. Please help us improve by
+                      letting us know why you&apos;re leaving:
+                      <div className="mt-4 space-y-2">
+                        {cancellationReasons.map((reason) => (
+                          <div
+                            key={reason}
+                            className="flex items-center space-x-2"
+                          >
+                            <input
+                              type="checkbox"
+                              id={reason}
+                              checked={selectedReasons.includes(reason)}
+                              onChange={() => handleReasonToggle(reason)}
+                              className="h-4 w-4 rounded border-gray-300"
+                            />
+                            <label htmlFor={reason} className="text-sm">
+                              {reason}
+                            </label>
+                          </div>
+                        ))}
+
+                        <div className="mt-4">
+                          <label
+                            htmlFor="comment"
+                            className="block text-sm font-medium"
+                          >
+                            Additional comments (optional)
+                          </label>
+                          <textarea
+                            id="comment"
+                            value={comment}
+                            onChange={(e) => setComment(e.target.value)}
+                            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm"
+                            rows={3}
+                            placeholder="Tell us more about your experience..."
+                          />
+                        </div>
+                      </div>
+                    </DialogDescription>
+                  )}
+                  {cancellationStep === "final" && (
+                    <DialogDescription>
+                      Are you absolutely sure you want to cancel your
+                      subscription? This action cannot be undone.
+                    </DialogDescription>
+                  )}
                 </DialogHeader>
                 <DialogFooter>
                   <Button
                     variant="outline"
-                    onClick={() => setIsDialogOpen(false)}
+                    onClick={handleDialogClose}
                     className="mt-2"
                   >
                     Keep Subscription
@@ -329,10 +447,20 @@ export default function SubscriptionCard({
                   <Button
                     variant="destructive"
                     onClick={handleConfirmCancel}
-                    disabled={isCanceling}
+                    disabled={
+                      isCanceling ||
+                      (cancellationStep === "feedback" &&
+                        selectedReasons.length === 0)
+                    }
                     className="mt-2"
                   >
-                    {isCanceling ? "Canceling..." : "Confirm Cancellation"}
+                    {isCanceling
+                      ? "Canceling..."
+                      : cancellationStep === "initial"
+                        ? "Continue"
+                        : cancellationStep === "feedback"
+                          ? "Next"
+                          : "Confirm Cancellation"}
                   </Button>
                 </DialogFooter>
               </DialogContent>

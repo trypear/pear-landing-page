@@ -533,11 +533,11 @@ export const posts = [
             <ul class="list-disc pl-5 my-4">
               <li>
                 <strong>AVX version</strong>:
-                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
+                <a href="https://github.com/trypear/pearai-app/releases/latest/download/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
               </li>
               <li>
                 <strong>AVX2 version</strong>:
-                <a href="https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/linux/PearAI-avx2.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
+                <a href="https://github.com/trypear/pearai-app/releases/latest/download/PearAI-avx2.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
               </li>
             </ul>
           </li>
@@ -557,7 +557,7 @@ export const posts = [
             Run the installation script with superuser permissions:
         <pre
           class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
-        ><code class="language-bash">sudo ./pearai_manager.sh</code></pre>
+        ><code class="language-bash">bash pearai_manager.sh</code></pre>
           </li>
           <li>
             Select your desired option:
@@ -607,7 +607,7 @@ export const posts = [
         </p>
         <p class="mt-4 text-sm sm:text-base">
       This installation method has been tested on multiple Linux distributions,
-      including Arch Linux, Ubuntu 24, Ubuntu 22, and Fedora 40. It was compiled using GCC
+      including Arch Linux, Ubuntu 24, Ubuntu 22, Fedora 40 and NixOS. It was compiled using GCC
       10, so most distributions with this or newer version should be able to
       run PearAI without any issues.
         </p>
@@ -717,7 +717,7 @@ export const posts = [
     excerpt:
       "Improve your coding skills and interview readiness with PearAI's LeetCode integration. A practical tool for efficient technical interview preparation.",
     date: "2024-09-15",
-    author: "Nang, IcePrey",
+    author: "Nang, Mohammed Abdelaziz",
     readingTime: "4 min",
     thumbnail: "/images/leetcode.png",
     tags: [
@@ -889,7 +889,7 @@ export const posts = [
     date: "2024-09-26",
     author: "PearAI Team",
     readingTime: "3 minutes",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/blog-default.png",
     tags: ["Open Source"],
     content: `<article
     class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
@@ -975,7 +975,7 @@ export const posts = [
     date: "2024-09-28",
     author: "PearAI Team",
     readingTime: "2 min",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/blog-default.png",
     tags: [
       "open source",
       "bounties",
@@ -1029,7 +1029,7 @@ export const posts = [
     date: "2024-10-12",
     excerpt:
       "View PearAI's changes to correct past mistakes and ensure compliance with open source standards.",
-    thumbnail: "/images/og-image.png",
+    thumbnail: "/images/blog/blog-default.png",
     tags: ["open-source", "Continue.dev", "spreading love", "accountability"],
     url: "/blog/pearai-open-source-fixes",
     content: `<article
@@ -1128,7 +1128,7 @@ export const posts = [
     date: "2024-10-23",
     author: "PearAI Team",
     readingTime: "2 min",
-    thumbnail: "/images/og-image.png", // Make sure this image exists
+    thumbnail: "/images/blog/blog-default.png",
     tags: ["PearAI Creator", "aider", "feature announcement", "beta"],
     content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
       <section class="space-y-6">
@@ -1198,6 +1198,114 @@ export const posts = [
           <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Once you can type in 'aider' or 'python -m aider' into your terminal and aider runs well, then PearAI should work on its next run! If you have further issues, please reach out on Discord.</p>
         </div>
       </section>
+      <p class="text-sm text-gray-500 italic">*View PearAI Disclaimer page <a href="/disclaimer" class="text-primary-600 hover:underline">here</a>.</p>
+    </article>`,
+  },
+  {
+    title: "Introducing PearAI Memory (Beta) — Powered By Mem0*",
+    url: "/blog/introducing-pearai-memory-beta",
+    excerpt:
+      "PearAI Memory adds a memory layer to your conversation with PearAI Chat. It can intelligently remember facts about you based on your prompt and LLM response.",
+    date: "2024-12-01",
+    author: "PearAI Team",
+    readingTime: "2 min",
+    thumbnail: "/images/blog/blog-default.png",
+    tags: ["PearAI Memory", "mem0", "feature announcement", "beta"],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+      <section class="space-y-6">
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+          PearAI Memory adds a memory layer to your conversation with PearAI Chat. It can intelligently remember facts about you based on your prompt and LLM response.
+        </p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The new Memory integration enables a more personalized and context-aware interaction, allowing PearAI to remember your coding preferences and codebase settings across sessions.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI is an open-source AI code editor. PearAI Memory is the latest integration in the suite of tools currently available on PearAI, alongside Search and Creator.</p>
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">PearAI Memory is powered by <a href="https://mem0.ai/" class="text-primary-600 hover:underline">mem0</a>, a self-improving memory layer, which adapts to and learns from your interactions with the LLM. </p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
+         <div class="aspect-video">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/kLYhV0Fu3xY"
+            title="PearAI Creator (Powered by aider) Beta Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          How to Use PearAI Memory (for free!)
+        </h2>
+        <ol class="list-decimal pl-6 space-y-4">
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+            If you already have PearAI installed, simply go to "Help" at the top and search "Update". It will automatically update you to the newest version of PearAI.
+            <br/><br/>
+            Otherwise, download the new PearAI here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
+          </li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up Inventory Settings (CMD/CTRL + Shift + 1).</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Locate the Memory card in the inventory, and flick the toggle to on.</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">You're all set! PearAI Memory will now automatically get to know you as you interact with PearAI Chat. Note that you can access the Memory control panel to add, edit, or delete memories (CMD/CTRL + 4).</li>
+        </ol>
+      </section>
+      &nbsp;
+      <p class="text-sm text-gray-500 italic">*View PearAI Disclaimer page <a href="/disclaimer" class="text-primary-600 hover:underline">here</a>.</p>
+    </article>`,
+  },
+  {
+    title: "PearAI Coding Agent — Powered By Roo Code / Cline*",
+    url: "/blog/pearai-coding-agent",
+    excerpt:
+      "PearAI Coding Agent is a new feature that allows you to write code with PearAI Chat. It can intelligently write code based on your prompt and LLM response.",
+    date: "2025-02-18",
+    author: "Mohammed Abdelaziz, Nang",
+    readingTime: "2 min",
+    thumbnail: "/images/blog/pearai_v1.8.png",
+    tags: ["Coding Agent", "Roo Code", "Cline", "feature announcement"],
+    content: `<article class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8">
+      <section class="space-y-6">
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+          We're thrilled to announce PearAI v1.8, featuring our groundbreaking PearAI Coding Agent! This new feature represents a significant leap forward in AI-assisted development, powered by Roo Code / Cline technology.
+        </p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">The PearAI Coding Agent is a powerful AI assistant that can directly interact with your development environment (with your explicit permission) to write code for you. Through an intelligent feedback loop, it understands your project context and can generate, modify, and improve code based on your requirements.</p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">After extensive conversations with our pear users, we've discovered that many of our most engaged users are developers with less than 3 years of experience, primarily focused on building personal projects and software. This insight has shaped our vision moving forward.</p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">We believe that AI will significantly lower the barriers to software development, making personal software as commonplace as personal computers. With this vision in mind, we're focusing our efforts on becoming the best AI code editor for project building, while maintaining support for all development use cases.</p>
+
+        <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Try it out for free here: <a href="https://trypear.ai" class="text-primary-600 hover:underline">https://trypear.ai</a></p>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">Quick Demo</h2>
+        <div class="relative w-full" style="padding-top: 56.25%">
+          <iframe
+            class="absolute top-0 left-0 w-full h-full"
+            src="https://www.youtube.com/embed/wcaWUeaeqiA"
+            title="PearAI Coding Agent Demo"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <h2 class="text-xl font-bold text-primary-600 dark:text-primary-400 sm:text-2xl">
+          How to Get Started with PearAI v1.8
+        </h2>
+        <ol class="list-decimal pl-6 space-y-4">
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">
+            If you already have PearAI installed, simply go to "Help" at the top and search "Update". It will automatically update you to v1.8.
+            <br/><br/>
+            New users can download PearAI here: <a href="https://trypear.ai/download" class="text-primary-600 hover:underline break-all">https://trypear.ai/download</a>
+          </li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Open up Inventory Settings (CMD/CTRL + Shift + 1).</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">Find the Coding Agent card in the inventory and enable it.</li>
+          <li class="text-base font-light leading-relaxed sm:text-lg md:text-xl">You're ready to go! Start by describing what you want to build, and watch as PearAI Coding Agent brings your ideas to life.</li>
+        </ol>
+      </section>
+      &nbsp;
       <p class="text-sm text-gray-500 italic">*View PearAI Disclaimer page <a href="/disclaimer" class="text-primary-600 hover:underline">here</a>.</p>
     </article>`,
   },

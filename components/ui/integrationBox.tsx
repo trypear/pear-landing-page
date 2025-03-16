@@ -1,5 +1,5 @@
 import {
-  AiderLogo,
+  RooCodeLogo,
   PerplexityLogo,
   SupermavenLogo,
   Mem0Logo,
@@ -38,18 +38,18 @@ const IntegrationItem = ({
 const INTEGRATIONS = [
   {
     margin: "lg:ml-2 mr-1",
-    label: "Ship with",
+    label: "Code with",
     product: (
       <a
-        href="https://aider.chat/"
+        href="https://github.com/RooVetGit/Roo-Code/"
         target="_blank"
         rel="noopener noreferrer"
         className="hover:underline"
       >
-        aider
+        Roo Code / Cline
       </a>
     ),
-    Icon: AiderLogo,
+    Icon: RooCodeLogo,
   },
   {
     margin: "lg:ml-24 ml-2",
@@ -162,15 +162,15 @@ export default function IntegrationBox() {
             className={`-ml-[78px] mt-16 w-fit rounded-lg border border-gray-200 bg-white-50 px-3 py-2 dark:border-black/50 dark:bg-gray-800`}
           >
             <div className="flex items-center gap-2">
-              <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-xs font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
-                V1
+              <div className="flex h-7 w-7 items-center justify-center rounded-sm bg-primary-700 text-[10px] font-bold text-white-50 shadow-[0_0_12px_1px] shadow-primary-700/50">
+                V1.8
               </div>
               <div className="flex flex-col text-xs">
                 <span className="text-gray-500 dark:text-gray-400">
-                  11/12 Launch
+                  Now With Coding Agents
                 </span>
                 <span className="dark:text-white font-medium text-black/60">
-                  More coming soon
+                  Start Building Today!
                 </span>
               </div>
             </div>
@@ -238,10 +238,10 @@ export default function IntegrationBox() {
                 </div>
                 <div className="flex flex-col text-xs">
                   <span className="text-gray-500 dark:text-gray-400">
-                    11/12 Launch
+                    Out Now!
                   </span>
                   <span className="dark:text-white font-medium text-black/60">
-                    More coming soon
+                    Start Building Today
                   </span>
                 </div>
               </div>

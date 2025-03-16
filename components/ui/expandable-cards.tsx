@@ -1,9 +1,11 @@
+"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
-  AiderLogo,
+  RooCodeLogo,
   PerplexityLogo,
   SupermavenLogo,
   Mem0Logo,
@@ -29,14 +31,14 @@ type Card = {
 const CARDS: Card[] = [
   {
     id: 1,
-    title: "Ship with",
+    title: "Code with",
     company: {
-      name: "aider",
-      url: "https://aider.chat/",
+      name: "Roo Code / Cline",
+      url: "https://github.com/RooVetGit/Roo-Code",
     },
     description:
-      "Aider is a popular CLI tool that generates code for you. Ask for a new feature, a refactor, or to fix a bug. Integrated within PearAI Creator, it will make and apply the changes to your files automatically.",
-    icon: AiderLogo,
+      "Roo Cline / Cline is the leading AI Coding Agent on the market. It has access to your development environment (with your permission) for a feedback loop to add features, fix bugs, and more.",
+    icon: RooCodeLogo,
     bgColor: "rgba(201, 255, 226, 1)",
     iconBgColor: "rgba(4, 40, 26, 1)",
     iconColor: "#01FFC9",
@@ -45,22 +47,6 @@ const CARDS: Card[] = [
   },
   {
     id: 2,
-    title: "Ship with",
-    company: {
-      name: "Supermaven",
-      url: "https://supermaven.com/",
-    },
-    description:
-      "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
-    icon: SupermavenLogo,
-    bgColor: "rgba(200, 230, 255, 1)",
-    iconBgColor: "rgba(0, 85, 255, 1)",
-    iconColor: "#FFFFFF",
-    titleColor: "#002957",
-    descriptionColor: "#002957",
-  },
-  {
-    id: 3,
     title: "Chat & edit with",
     company: {
       name: "Continue",
@@ -68,10 +54,9 @@ const CARDS: Card[] = [
     },
     description: (
       <>
-        Continue is a leading open-source AI code assistant extension. PearAI
+        Continue is the leading open-source AI code assistant extension. PearAI
         Chat is built upon the foundation of Continue, with changes and a
-        unified user experience. We acknowledge and respect Continue&apos;s
-        contributions.
+        unified user experience.
       </>
     ),
     icon: ContinueLogo,
@@ -82,23 +67,7 @@ const CARDS: Card[] = [
     descriptionColor: "#110D67",
   },
   {
-    id: 4,
-    title: "Remember with",
-    company: {
-      name: "Mem0",
-      url: "https://mem0.ai/",
-    },
-    description:
-      "Mem0 is a self-improving memory layer for LLM applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
-    icon: Mem0Logo,
-    bgColor: "rgba(225, 253, 175, 1)",
-    iconBgColor: "rgba(0, 0, 0, 1)",
-    iconColor: "#FFFFFF",
-    titleColor: "#005F15",
-    descriptionColor: "#005F15",
-  },
-  {
-    id: 5,
+    id: 3,
     title: "Search with",
     company: {
       name: "Perplexity",
@@ -112,6 +81,39 @@ const CARDS: Card[] = [
     iconColor: "#FFFFFF",
     titleColor: "#003F48",
     descriptionColor: "#003F48",
+  },
+
+  {
+    id: 4,
+    title: "Remember with",
+    company: {
+      name: "Mem0",
+      url: "https://mem0.ai/",
+    },
+    description:
+      "Mem0 is a self-improving memory layer for AI applications. It is integrated into PearAI to make coding with AI an enhanced, personalized experience.",
+    icon: Mem0Logo,
+    bgColor: "rgba(225, 253, 175, 1)",
+    iconBgColor: "rgba(0, 0, 0, 1)",
+    iconColor: "#FFFFFF",
+    titleColor: "#005F15",
+    descriptionColor: "#005F15",
+  },
+  {
+    id: 5,
+    title: "Predict with",
+    company: {
+      name: "Supermaven",
+      url: "https://supermaven.com/",
+    },
+    description:
+      "Supermaven is currently the fastest code autocomplete tool available. Supermaven comes independently pre-packaged and recommended within PearAI.",
+    icon: SupermavenLogo,
+    bgColor: "rgba(200, 230, 255, 1)",
+    iconBgColor: "rgba(0, 85, 255, 1)",
+    iconColor: "#FFFFFF",
+    titleColor: "#002957",
+    descriptionColor: "#002957",
   },
 ];
 
@@ -135,12 +137,11 @@ export default function ExpandableCards() {
   return (
     <>
       {/* Desktop Layout */}
-      <div className="hidden items-center justify-center px-6 py-4 lg:flex">
+      <div className="hidden items-center justify-center px-6 pb-6 pt-2 lg:flex">
         <div className="w-full max-w-[1049px] rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50">
           <h1 className="pb-5 text-[28px] font-semibold leading-tight dark:text-gray-900">
-            The AI space changes fast- PearAI Inventory curates the best AI
-            tools on the market at any given time, and integrates them into a
-            powerful editor.
+            PearAI Inventory natively integrates the best AI tools <br />
+            into a single, powerful editor.
           </h1>
           <div className="flex gap-5">
             {CARDS.map((card) => (
@@ -245,12 +246,11 @@ export default function ExpandableCards() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="block w-full px-6 py-6 lg:hidden">
+      <div className="block w-full px-6 pb-6 pt-2 lg:hidden">
         <div className="mx-auto w-full max-w-3xl rounded-xl border-2 border-gray-200 px-5 py-5 dark:border-gray-50">
           <h2 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
             The AI space changes fast— PearAI Inventory curates the best AI
-            tools on the market at any given time, and integrates them into a
-            powerful editor.
+            tools on the market, and integrates them into a powerful editor.
           </h2>
           <div className="space-y-4">
             {CARDS.map((card) => (

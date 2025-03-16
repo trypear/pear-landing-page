@@ -5,6 +5,12 @@ import { ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 const testimonials = [
   {
@@ -62,10 +68,10 @@ export default function Showcase() {
   return (
     <>
       {/* Testimonials */}
-      <div className="flex items-center justify-center px-6 py-4">
+      <div className="flex items-center justify-center px-6 pb-32 pt-6">
         <div className="z-10 max-w-3xl rounded-xl border-2 border-gray-200 bg-white-50 p-5 dark:border-gray-50 dark:bg-black lg:max-w-[1049px]">
           <h1 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
-            Devs love PearAI... almost as much as PearAI loves Devs!
+            Makers love PearAI... almost as much as PearAI loves Makers!
           </h1>
 
           <div className="relative overflow-hidden pb-5">
@@ -142,7 +148,22 @@ export default function Showcase() {
             Try PearAI for free.
           </p>
           <p className="mt-4 max-w-md text-xl font-semibold text-black sm:text-3xl">
-            Built on top of VSCode for a seamless transition.
+            Built on top of{" "}
+            <TooltipProvider>
+              <Tooltip delayDuration={50}>
+                <TooltipTrigger className="underline decoration-dotted">
+                  VSCode
+                </TooltipTrigger>
+                <TooltipContent side="bottom" className="max-w-sm">
+                  <p className="max-w-xs text-sm font-normal">
+                    PearAI is a fork of VSCode, allowing you to retain
+                    familiarity of functionalities. We provide a one-click
+                    transition to port all your VSCode settings automatically.
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>{" "}
+            for a seamless transition.
           </p>
           <Button className="mt-10 bg-black px-20 py-4 text-sm hover:bg-black dark:hover:bg-black sm:text-base">
             <Link href="/pricing">Download</Link>

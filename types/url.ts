@@ -3,7 +3,8 @@ export type AllowedProtocol =
   | "https:"
   | "pearai:"
   | "vscode:"
-  | "code-oss:";
+  | "code-oss:"
+  | "vscode-insiders:";
 
 export interface OpenAppParams {
   [key: string]: string;

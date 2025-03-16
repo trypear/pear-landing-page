@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { signinWithOAuth } from "@/app/(auth)/actions";
+import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
 import { AdminUserAttributes, Provider } from "@supabase/supabase-js";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -22,9 +23,12 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToggle } from "@/hooks/useToggle";
 import { useSignInUrl } from "@/hooks/useSigningUrl";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captcha = useRef<HCaptcha>(null);
   const form = useForm<SignUpFormData>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -43,7 +47,12 @@ export default function SignUp() {
     setIsSubmitting(true);
 
     try {
-      const formData: AdminUserAttributes = {
+      if (!captchaToken) {
+        toast.error("Please complete the captcha challenge");
+        return;
+      }
+
+      const formData = {
         email: data.email,
         password: data.password,
         user_metadata: {
@@ -51,6 +60,7 @@ export default function SignUp() {
           company_name: data.company_name,
           heard_about_us: data.heard_about_us,
         },
+        captchaToken: captchaToken,
       };
       const response = await fetch("/api/signup", {
         method: "POST",
@@ -74,6 +84,8 @@ export default function SignUp() {
       toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
+      captcha.current?.resetCaptcha();
+      setCaptchaToken(null);
     }
   };
 
@@ -91,11 +103,8 @@ export default function SignUp() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="pb-12 pt-32 md:pb-20 md:pt-40">
           <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-            <h1 className="h1">
-              Ready to speed up your development experience?
-            </h1>
+            <h1 className="h1">Ready to build?</h1>
           </div>
-
           <div className="mx-auto max-w-sm">
             <form
               onSubmit={(e) => {
@@ -167,25 +176,6 @@ export default function SignUp() {
                     </FormItem>
                   )}
                 />
-
-                <FormField
-                  name="company_name"
-                  control={form.control}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel htmlFor="company_name">Company Name</FormLabel>
-                      <FormControl>
-                        <Input
-                          id="company_name"
-                          placeholder="Your company or app name"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
                 <FormField
                   name="email"
                   control={form.control}
@@ -254,6 +244,16 @@ export default function SignUp() {
                     </FormItem>
                   )}
                 />
+
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captcha}
+                    sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
+                    onVerify={(token) => {
+                      setCaptchaToken(token);
+                    }}
+                  />
+                </div>
 
                 <div className="text-center text-sm text-gray-600">
                   <Link

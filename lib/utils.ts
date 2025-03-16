@@ -23,9 +23,9 @@ interface OSType {
 }
 
 const defaultMetadata = {
-  title: "PearAI - Open Source AI Code Editor for Fast Development",
+  title: "PearAI - The AI Code Editor For Your Next Project",
   description:
-    "PearAI is an Open-source AI-powered code editor with features like AI chat, inline prompts, and debugging to accelerate your coding process.",
+    "PearAI is an open source AI code editor with powerful features like AI chat, PearAI Creator, and AI debugging to help you make what excites.",
 };
 
 export const normalizeDate = (dateString: string) => {
@@ -39,6 +39,7 @@ const allowedProtocols: AllowedProtocol[] = [
   "pearai:",
   "vscode:",
   "code-oss:",
+  "vscode-insiders:",
 ];
 
 export function isAllowedUrl(url: URL): boolean {
