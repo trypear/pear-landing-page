@@ -459,18 +459,20 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
                   className="mt-[20px] grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2"
                   role="list"
                 >
-                  {PRICING_TIERS.standard.filter(tier => tier.index !== 2).map((tier, index) => (
-                    <div key={index} role="listitem">
-                      <PricingTier
-                        {...tier}
-                        user={user}
-                        index={index}
-                        windowsRelease={releases.windows}
-                        macRelease={releases.mac}
-                        linuxRelease={releases.linux}
-                      />
-                    </div>
-                  ))}
+                  {PRICING_TIERS.standard
+                    .filter((tier) => tier.index !== 2)
+                    .map((tier, index) => (
+                      <div key={index} role="listitem">
+                        <PricingTier
+                          {...tier}
+                          user={user}
+                          index={index}
+                          windowsRelease={releases.windows}
+                          macRelease={releases.mac}
+                          linuxRelease={releases.linux}
+                        />
+                      </div>
+                    ))}
                 </div>
               )}
             </TabsContent>
