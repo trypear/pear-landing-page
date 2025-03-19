@@ -456,10 +456,10 @@ const PricingPage: React.FC<PricingPageProps> = ({ user }) => {
               </div>
               {!isLoading && PRICING_TIERS.standard && (
                 <div
-                  className="mt-[20px] grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3"
+                  className="mt-[20px] grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2"
                   role="list"
                 >
-                  {PRICING_TIERS.standard.map((tier, index) => (
+                  {PRICING_TIERS.standard.filter(tier => tier.index !== 2).map((tier, index) => (
                     <div key={index} role="listitem">
                       <PricingTier
                         {...tier}
