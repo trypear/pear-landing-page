@@ -124,6 +124,9 @@ export default async function Header() {
                         <ListItem href="/changelog" title="Changelog">
                           See what&apos;s new in PearAI
                         </ListItem>
+                        <ListItem href="/beta" title="Beta">
+                          Download the latest beta version
+                        </ListItem>
                       </ul>
                     </DropdownNavItem>
                     <NavItem href="/pricing">Pricing</NavItem>
