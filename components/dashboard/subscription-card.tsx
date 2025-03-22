@@ -219,8 +219,7 @@ export default function SubscriptionCard({
                     : `${Math.min(usage?.percent_credit_used ?? 0, 100)}% of PearAI Credits used`}
                 </p>
                 <p className="text-right text-sm text-muted-foreground">
-                  Credits refills monthly, or when billing thresholds are hit
-                  ($20) ({timeLeftUntilRefill})
+                  Credits refills monthly ({timeLeftUntilRefill})
                 </p>
               </div>
               {usage.remaining_topup_credits !== undefined &&
@@ -262,7 +261,7 @@ export default function SubscriptionCard({
                             </Link>
                           </TooltipTrigger>
                           <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
-                            <p>Credits billed monthly</p>
+                            <p>Credits billed monthly, or when billing thresholds are hit ($15)</p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
