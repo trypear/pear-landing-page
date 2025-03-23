@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -39,7 +39,20 @@ export default function SignIn() {
       password: "",
     },
   });
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const emailParam = params.get("email");
+    if (emailParam) {
+      form.setValue("email", emailParam);
+    }
 
+    if (!emailParam) {
+      const storedEmail = localStorage.getItem("verificationEmail");
+      if (storedEmail) {
+        form.setValue("email", storedEmail);
+      }
+    }
+  }, [form]);
   const handleSignIn = async (data: SignInFormData) => {
     if (isSubmitting) return;
     setIsSubmitting(true);
