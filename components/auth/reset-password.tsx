@@ -1,9 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { resetPassword } from "@/app/(auth)/actions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
 import {
@@ -23,6 +25,8 @@ export default function ResetPassword() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string>("");
+  const [captchaToken, setCaptchaToken] = useState<string>();
+  const captcha = useRef<HCaptcha>(null);
   const form = useForm<ResetPasswordFormData>({
     resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
@@ -31,7 +35,15 @@ export default function ResetPassword() {
   });
 
   const handleResetPassword = async (data: ResetPasswordFormData) => {
-    if (isSubmitting) return;
+    if (isSubmitting) {
+      console.log("Already submitting, returning");
+      return;
+    }
+
+    if (!captchaToken) {
+      setErrorMessage("Please complete the CAPTCHA");
+      return;
+    }
     setIsSubmitting(true);
     setErrorMessage(null);
     setSuccessMessage("");
@@ -39,7 +51,7 @@ export default function ResetPassword() {
     try {
       const formData = new FormData();
       formData.append("email", data.email);
-
+      formData.append("captchaToken", captchaToken);
       const response = await resetPassword(formData);
       if (response?.error) {
         setErrorMessage(response.error);
@@ -53,8 +65,9 @@ export default function ResetPassword() {
       setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
       setIsSubmitting(false);
+      captcha.current?.resetCaptcha();
+      setCaptchaToken(undefined);
     }
-    setIsSubmitting(false);
   };
 
   return (
@@ -94,6 +107,16 @@ export default function ResetPassword() {
                     </FormItem>
                   )}
                 />
+
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captcha}
+                    sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
+                    onVerify={(token) => {
+                      setCaptchaToken(token);
+                    }}
+                  />
+                </div>
 
                 <Button
                   type="submit"
