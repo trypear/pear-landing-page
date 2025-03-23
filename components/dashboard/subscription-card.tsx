@@ -261,7 +261,10 @@ export default function SubscriptionCard({
                             </Link>
                           </TooltipTrigger>
                           <TooltipContent className="-ml-9 max-w-[200px] border-gray-300 bg-white-50 text-center text-xs text-gray-700 dark:border-gray-200 dark:bg-secondary-main dark:text-gray-800">
-                            <p>Credits billed monthly, or when billing thresholds are hit ($15)</p>
+                            <p>
+                              Credits billed monthly, or when billing thresholds
+                              are hit ($15)
+                            </p>
                           </TooltipContent>
                         </Tooltip>
                       </TooltipProvider>
