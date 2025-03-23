@@ -56,10 +56,10 @@ export default function ResetPassword() {
       if (response?.error) {
         setErrorMessage(response.error);
       } else if (response?.success) {
-        const message = "Password reset instructions have been sent to your email.";
+        const message =
+          "Password reset instructions have been sent to your email.";
         setSuccessMessage(message);
         form.reset();
-
       }
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
@@ -106,8 +106,8 @@ export default function ResetPassword() {
                   href="/"
                   className="text-gray-700 transition duration-150 ease-in-out hover:text-primary-800"
                   onClick={() => {
-                    if (typeof window !== 'undefined') {
-                      localStorage.removeItem('resetPasswordSuccess');
+                    if (typeof window !== "undefined") {
+                      localStorage.removeItem("resetPasswordSuccess");
                     }
                   }}
                 >
