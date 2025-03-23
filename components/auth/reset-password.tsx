@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { resetPassword } from "@/app/(auth)/actions";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -8,6 +8,7 @@ import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
 import { Button } from "@/components/ui/button";
 import { Input } from "../ui/input";
+import { useSearchParams } from "next/navigation";
 import {
   Form,
   FormField,
@@ -22,11 +23,18 @@ import {
 } from "@/utils/form-schema";
 
 export default function ResetPassword() {
+  const searchParams = useSearchParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string>("");
   const [captchaToken, setCaptchaToken] = useState<string>();
   const captcha = useRef<HCaptcha>(null);
+
+  useEffect(() => {
+    if (searchParams.get('success') === 'true') {
+      setSuccessMessage("Password reset instructions have been sent to your email.");
+    }
+  }, [searchParams]);
   const form = useForm<ResetPasswordFormData>({
     resolver: zodResolver(resetPasswordSchema),
     defaultValues: {
@@ -46,7 +54,6 @@ export default function ResetPassword() {
     }
     setIsSubmitting(true);
     setErrorMessage(null);
-    setSuccessMessage("");
 
     try {
       const formData = new FormData();
@@ -55,12 +62,8 @@ export default function ResetPassword() {
       const response = await resetPassword(formData);
       if (response?.error) {
         setErrorMessage(response.error);
-      } else if (response?.success) {
-        const message =
-          "Password reset instructions have been sent to your email.";
-        setSuccessMessage(message);
-        form.reset();
       }
+      // No need to handle success case as it will redirect
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
