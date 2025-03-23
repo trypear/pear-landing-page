@@ -55,11 +55,11 @@ export default function ResetPassword() {
       const response = await resetPassword(formData);
       if (response?.error) {
         setErrorMessage(response.error);
-      } else {
-        setSuccessMessage(
-          "Password reset instructions have been sent to your email.",
-        );
+      } else if (response?.success) {
+        const message = "Password reset instructions have been sent to your email.";
+        setSuccessMessage(message);
         form.reset();
+
       }
     } catch (error) {
       setErrorMessage("An unexpected error occurred. Please try again.");
@@ -82,69 +82,100 @@ export default function ResetPassword() {
             </p>
           </div>
 
-          {/* Form */}
+          {/* Success View or Form */}
           <div className="mx-auto max-w-sm">
-            <Form {...form}>
-              <form
-                onSubmit={form.handleSubmit(handleResetPassword)}
-                className="space-y-4"
-              >
-                <FormField
-                  name="email"
-                  control={form.control}
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel htmlFor="email">Email</FormLabel>
-                      <FormControl>
-                        <Input
-                          id="email"
-                          type="email"
-                          placeholder="you@yourcompany.com"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-
-                <div className="flex justify-center">
-                  <HCaptcha
-                    ref={captcha}
-                    sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
-                    onVerify={(token) => {
-                      setCaptchaToken(token);
-                    }}
-                  />
+            {successMessage.length > 0 ? (
+              <div className="text-center">
+                <div className="mb-6">
+                  <svg
+                    className="mx-auto h-12 w-12 text-green-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
                 </div>
-
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full rounded-md"
-                  isLoading={isSubmitting}
-                  disabled={isSubmitting}
+                <p className="mb-6 text-lg text-green-500">{successMessage}</p>
+                <Link
+                  href="/"
+                  className="text-gray-700 transition duration-150 ease-in-out hover:text-primary-800"
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      localStorage.removeItem('resetPasswordSuccess');
+                    }
+                  }}
                 >
-                  {isSubmitting ? "Resetting..." : "Reset Password"}
-                </Button>
+                  Return to Home
+                </Link>
+              </div>
+            ) : (
+              <>
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(handleResetPassword)}
+                    className="space-y-4"
+                  >
+                    <FormField
+                      name="email"
+                      control={form.control}
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel htmlFor="email">Email</FormLabel>
+                          <FormControl>
+                            <Input
+                              id="email"
+                              type="email"
+                              placeholder="you@yourcompany.com"
+                              {...field}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
 
-                {errorMessage && (
-                  <p className="text-center text-red-500">{errorMessage}</p>
-                )}
-                {successMessage !== "" && (
-                  <p className="text-center text-green-500">{successMessage}</p>
-                )}
-              </form>
-            </Form>
+                    <div className="flex justify-center">
+                      <HCaptcha
+                        ref={captcha}
+                        sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
+                        onVerify={(token) => {
+                          setCaptchaToken(token);
+                        }}
+                      />
+                    </div>
 
-            <div className="mt-6 text-center text-gray-400">
-              <Link
-                href="/"
-                className="text-gray-700 transition duration-150 ease-in-out hover:text-primary-800"
-              >
-                Cancel
-              </Link>
-            </div>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full rounded-md"
+                      isLoading={isSubmitting}
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Resetting..." : "Reset Password"}
+                    </Button>
+
+                    {errorMessage && (
+                      <p className="text-center text-red-500">{errorMessage}</p>
+                    )}
+                  </form>
+                </Form>
+
+                <div className="mt-6 text-center text-gray-400">
+                  <Link
+                    href="/"
+                    className="text-gray-700 transition duration-150 ease-in-out hover:text-primary-800"
+                  >
+                    Cancel
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -94,7 +94,7 @@ export async function resetPassword(formData: FormData) {
     return { error: error.message };
   }
 
-  revalidatePath("/", "layout");
+  return { success: true };
 }
 
 export async function checkEmailExists(data: {
