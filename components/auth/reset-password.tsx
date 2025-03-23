@@ -31,8 +31,10 @@ export default function ResetPassword() {
   const captcha = useRef<HCaptcha>(null);
 
   useEffect(() => {
-    if (searchParams.get('success') === 'true') {
-      setSuccessMessage("Password reset instructions have been sent to your email.");
+    if (searchParams.get("success") === "true") {
+      setSuccessMessage(
+        "Password reset instructions have been sent to your email.",
+      );
     }
   }, [searchParams]);
   const form = useForm<ResetPasswordFormData>({
