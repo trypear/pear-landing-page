@@ -13,31 +13,45 @@ const ToolsComponent: React.FC = () => {
           </li>
           <li>
             <h2 className="text-xl font-semibold">PearAI Agent</h2>
-            <span className="ml-2 text-sm text-gray-500">(Powered by Roo Code)</span>
+            <span className="ml-2 text-sm text-gray-500">
+              (Powered by Roo Code)
+            </span>
           </li>
           <li>
             <h2 className="text-xl font-semibold">PearAI Chat</h2>
-            <span className="ml-2 text-sm text-gray-500">(Powered by Continue)</span>
+            <span className="ml-2 text-sm text-gray-500">
+              (Powered by Continue)
+            </span>
           </li>
           <li>
             <h2 className="text-xl font-semibold">PearAI Design</h2>
-            <span className="ml-2 text-sm text-gray-500">(Powered by Figma)</span>
+            <span className="ml-2 text-sm text-gray-500">
+              (Powered by Figma)
+            </span>
           </li>
           <li>
             <h2 className="text-xl font-semibold">PearAI Login</h2>
-            <span className="ml-2 text-sm text-gray-500">(Powered by Supabase)</span>
+            <span className="ml-2 text-sm text-gray-500">
+              (Powered by Supabase)
+            </span>
           </li>
           <li>
             <h2 className="text-xl font-semibold">PearAI Database</h2>
-            <span className="ml-2 text-sm text-gray-500">(Powered by Supabase)</span>
+            <span className="ml-2 text-sm text-gray-500">
+              (Powered by Supabase)
+            </span>
           </li>
           <li>
             <h2 className="text-xl font-semibold">PearAI Launch</h2>
-            <span className="ml-2 text-sm text-gray-500">(Powered by Netlify)</span>
+            <span className="ml-2 text-sm text-gray-500">
+              (Powered by Netlify)
+            </span>
           </li>
           <li>
             <h2 className="text-xl font-semibold">PearAI Search</h2>
-            <span className="ml-2 text-sm text-gray-500">(Powered by Perplexity)</span>
+            <span className="ml-2 text-sm text-gray-500">
+              (Powered by Perplexity)
+            </span>
           </li>
           <li>
             <h2 className="text-xl font-semibold">PearAI Memory</h2>
