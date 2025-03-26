@@ -33,11 +33,11 @@ const CARDS: Card[] = [
     id: 1,
     title: "Code with",
     company: {
-      name: "Roo Code / Cline",
+      name: "PearAI Agent",
       url: "https://github.com/RooVetGit/Roo-Code",
     },
     description:
-      "Roo Cline / Cline is the leading AI Coding Agent on the market. It has access to your development environment (with your permission) for a feedback loop to add features, fix bugs, and more.",
+      "PearAI (Powered by Roo Cline / Cline) has access to your development environment (with your permission) for a feedback loop to add features, fix bugs, and more.",
     icon: RooCodeLogo,
     bgColor: "rgba(201, 255, 226, 1)",
     iconBgColor: "rgba(4, 40, 26, 1)",
@@ -140,9 +140,12 @@ export default function ExpandableCards() {
       <div className="hidden items-center justify-center px-6 pb-6 pt-2 lg:flex">
         <div className="w-full max-w-[1049px] rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50">
           <h1 className="pb-5 text-[28px] font-semibold leading-tight dark:text-gray-900">
-            PearAI Inventory natively integrates the best AI tools <br />
-            into a single, powerful editor.
+            You Can Build Software.
           </h1>
+          <p className="text-base text-black/60 dark:text-gray-500 sm:text-lg">
+            PearAI natively integrates the best AI tools for you to make your
+            idea - no matter your technical skill level or language.
+          </p>
           <div className="flex gap-5">
             {CARDS.map((card) => (
               <motion.div
