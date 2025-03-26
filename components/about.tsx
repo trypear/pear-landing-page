@@ -80,7 +80,7 @@ const AboutComponent: React.FC = () => {
         </h2>
         <div className="max-w-2xl text-gray-500">
           <p className="mt-6 text-center">
-            PearAI is open source and fueled by its community. Join our{" "}
+            PearAI is <a href="https://github.com/trypear/pearai-master">open source</a> and backed by a wonderful community. Join our{" "}
             <a href="https://discord.gg/7QMraJUsQt">Discord</a> with +2000
             developers and friends all trying to create the best AI code editor
             in the world together. Feel free to ask questions about your own
