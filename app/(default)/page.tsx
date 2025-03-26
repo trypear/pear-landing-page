@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <Features />
-      <OpenSource />
+      {/* <OpenSource /> */}
       <Showcase />
     </>
   );
