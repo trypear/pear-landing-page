@@ -145,10 +145,12 @@ export default function Showcase() {
       <div className="showcase-gradient-light relative mx-auto flex min-h-[80vh] w-full max-w-full -translate-y-24 items-center justify-center sm:min-h-[120vh]">
         <div className="mt-12 flex max-w-3xl flex-col items-center px-6 text-center">
           <p className="max-w-xl text-4xl font-semibold text-black sm:text-6xl">
-            Try PearAI for free.
+            Make Your Next Project Today.
           </p>
+
           <p className="mt-4 max-w-md text-xl font-semibold text-black sm:text-3xl">
-            Built on top of{" "}
+            Try PearAI for free.
+            {/* Built on top of{" "}
             <TooltipProvider>
               <Tooltip delayDuration={50}>
                 <TooltipTrigger className="underline decoration-dotted">
@@ -163,7 +165,7 @@ export default function Showcase() {
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>{" "}
-            for a seamless transition.
+            for a seamless transition. */}
           </p>
           <Button className="mt-10 bg-black px-20 py-4 text-sm hover:bg-black dark:hover:bg-black sm:text-base">
             <Link href="/pricing">Download</Link>
