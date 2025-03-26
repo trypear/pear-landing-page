@@ -63,20 +63,28 @@ export default function PrivacyPolicyComponent() {
           <div className="mx-auto max-w-3xl text-lg">
             <h2 className="mb-4 text-2xl font-bold text-gray-900">Your Code</h2>
             <p className="mb-6 leading-relaxed text-gray-600">
-              Your codebase is not directly stored by PearAI. As a technical necessity of our prompt logging system, any content within your prompts - including any incidental code snippets - is captured as part of the prompt text. This logging is solely used for debugging and improving the user experience.
+              Your codebase is not directly stored by PearAI. As a technical
+              necessity of our prompt logging system, any content within your
+              prompts - including any incidental code snippets - is captured as
+              part of the prompt text. This logging is solely used for debugging
+              and improving the user experience.
             </p>
             <p className="mb-6 leading-relaxed text-gray-600">
-              For model interactions, we have a zero-data retention policy for Anthropic models and zero-data retention
-              policies are currently pending for other models.
+              For model interactions, we have a zero-data retention policy for
+              Anthropic models and zero-data retention policies are currently
+              pending for other models.
             </p>
             <p className="mb-6 leading-relaxed text-gray-600">
               All indexing for your codebase (for PearAI to have codebase
-              knowledge) happens locally on your machine, ensuring your complete codebase remains private and secure on your system.
+              knowledge) happens locally on your machine, ensuring your complete
+              codebase remains private and secure on your system.
             </p>
           </div>
 
           <div className="mx-auto max-w-3xl text-lg">
-            <h2 className="mb-4 text-2xl font-bold text-gray-900">Anonymous Logging</h2>
+            <h2 className="mb-4 text-2xl font-bold text-gray-900">
+              Anonymous Logging
+            </h2>
             <p className="mb-6 leading-relaxed text-gray-600">
               When using PearAI, we collect anonymous usage information to help
               us improve the product. All data collected by PearAI is anonymized
@@ -102,7 +110,12 @@ export default function PrivacyPolicyComponent() {
               <li>System information: name of your operating system</li>
             </ul>
             <p className="mb-6 leading-relaxed text-gray-600">
-              For quality assurance and product improvement, we persist logs of user prompts. While we do not explicitly store code, any code snippets included within your prompts will be logged as part of the prompt text. These logs are solely used to help us understand how users interact with the app, identify potential issues, and improve the overall user experience.
+              For quality assurance and product improvement, we persist logs of
+              user prompts. While we do not explicitly store code, any code
+              snippets included within your prompts will be logged as part of
+              the prompt text. These logs are solely used to help us understand
+              how users interact with the app, identify potential issues, and
+              improve the overall user experience.
             </p>
             <p className="mb-6 leading-relaxed text-gray-600">
               We do not track your actual request contents to LLM when you use
@@ -129,7 +142,12 @@ export default function PrivacyPolicyComponent() {
               Server-side Logging
             </h2>
             <p className="mb-6 leading-relaxed text-gray-600">
-              For quality assurance and product improvement, we persist logs of user prompts. While we do not explicitly store code, any code snippets included within your prompts will be logged as part of the prompt text. These logs help us understand how users interact with the app, identify potential issues, and improve the overall user experience.
+              For quality assurance and product improvement, we persist logs of
+              user prompts. While we do not explicitly store code, any code
+              snippets included within your prompts will be logged as part of
+              the prompt text. These logs help us understand how users interact
+              with the app, identify potential issues, and improve the overall
+              user experience.
             </p>
           </div>
 
