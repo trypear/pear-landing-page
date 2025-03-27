@@ -29,17 +29,18 @@ export default function FreeTrialCard({
   return (
     <Card className="overflow-auto bg-gray-100/10 text-card-foreground">
       <div className="grid gap-4">
-        <CardHeader className="flex-row justify-between pb-4">
-          <CardTitle className="text-xl font-semibold">
+        <CardHeader className="flex flex-col items-start justify-between gap-3 pb-4 sm:flex-row sm:items-center sm:gap-4">
+          <CardTitle className="text-lg font-semibold sm:text-xl">
             Subscription & Usage
           </CardTitle>
           <Badge
             variant="secondary"
-            className="border-primary-800 bg-primary-800/10 px-2 py-1 text-xs text-primary-800"
+            className="whitespace-nowrap border-primary-800 bg-primary-800/10 px-2 py-1 text-xs text-primary-800 sm:text-sm"
           >
             Free Trial
           </Badge>
         </CardHeader>
+
         <CardContent>
           <div className="mb-4">
             <div className="flex justify-between">
