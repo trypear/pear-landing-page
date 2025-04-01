@@ -609,7 +609,6 @@ export const PayAsYouGoTooltip = () => {
             >
               pay-as-you-go extra credit plan
             </Link>
-            , or use PearAI Mini free model for unlimited requests.
           </p>
         </TooltipContent>
       </Tooltip>
