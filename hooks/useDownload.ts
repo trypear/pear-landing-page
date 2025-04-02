@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { DownloadFeedback } from "@/types/download-feedback";
+import { getDownloadUrl } from "@/utils/constants";
 
 export const useDownload = () => {
   const router = useRouter();
@@ -12,27 +13,18 @@ export const useDownload = () => {
   const handleDownload = async (os_type: string) => {
     setIsDownloading(true);
     try {
-      const res = await fetch(`/api/download?os_type=${os_type}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!res.ok) {
-        throw Error(res.statusText);
+      const url = getDownloadUrl(os_type as any);
+      if (!url) {
+        throw new Error("Unsupported operating system");
       }
 
-      const download = await res.json();
-      if (download?.url) {
-        setDownloadLink(download.url);
-        // Show feedback form before redirecting
-        setShowFeedback(true);
-        // Small delay to ensure the form is shown
-        setTimeout(() => {
-          router.push(download.url);
-        }, 100);
-      }
+      setDownloadLink(url);
+      // Show feedback form before redirecting
+      setShowFeedback(true);
+      // Small delay to ensure the form is shown
+      setTimeout(() => {
+        router.push(url);
+      }, 100);
     } catch (error: any) {
       toast.error(error.message);
     } finally {
