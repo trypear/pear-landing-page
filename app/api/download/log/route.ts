@@ -16,7 +16,7 @@ export async function GET(request: Request) {
         headers: {
           "Content-Type": "application/json",
         },
-      }
+      },
     );
 
     if (!res.ok) {
@@ -28,7 +28,7 @@ export async function GET(request: Request) {
     console.error("Error logging download:", error);
     return NextResponse.json(
       { error: "Failed to log download" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
