@@ -27,6 +27,17 @@ export const useDownload = () => {
         os_type,
         download_url: url,
       });
+
+      const res = await fetch(`/api/download/log?os_type=${os_type}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!res.ok) {
+        console.error("Failed to log download");
+      }
       // Show feedback form before redirecting
       setShowFeedback(true);
       // Small delay to ensure the form is shown
