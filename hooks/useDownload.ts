@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { usePostHog } from "posthog-js/react";
 import { DownloadFeedback } from "@/types/download-feedback";
 import { getDownloadUrl } from "@/utils/constants";
 
 export const useDownload = () => {
   const router = useRouter();
+  const posthog = usePostHog();
   const [isDownloading, setIsDownloading] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [downloadLink, setDownloadLink] = useState<string>();
@@ -19,6 +21,12 @@ export const useDownload = () => {
       }
 
       setDownloadLink(url);
+
+      // Capture download event
+      posthog?.capture("app_download", {
+        os_type,
+        download_url: url,
+      });
       // Show feedback form before redirecting
       setShowFeedback(true);
       // Small delay to ensure the form is shown
