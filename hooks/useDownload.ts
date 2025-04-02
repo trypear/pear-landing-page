@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { usePostHog } from "posthog-js/react";
 import { DownloadFeedback } from "@/types/download-feedback";
+import { getDownloadUrl } from "@/utils/constants";
 
 export const useDownload = () => {
   const router = useRouter();
+  const posthog = usePostHog();
   const [isDownloading, setIsDownloading] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [downloadLink, setDownloadLink] = useState<string>();
@@ -12,7 +15,20 @@ export const useDownload = () => {
   const handleDownload = async (os_type: string) => {
     setIsDownloading(true);
     try {
-      const res = await fetch(`/api/download?os_type=${os_type}`, {
+      const url = getDownloadUrl(os_type as any);
+      if (!url) {
+        throw new Error("Unsupported operating system");
+      }
+
+      setDownloadLink(url);
+
+      // Capture download event
+      posthog?.capture("app_download", {
+        os_type,
+        download_url: url,
+      });
+
+      const res = await fetch(`/api/download/log?os_type=${os_type}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -20,19 +36,14 @@ export const useDownload = () => {
       });
 
       if (!res.ok) {
-        throw Error(res.statusText);
+        console.error("Failed to log download");
       }
-
-      const download = await res.json();
-      if (download?.url) {
-        setDownloadLink(download.url);
-        // Show feedback form before redirecting
-        setShowFeedback(true);
-        // Small delay to ensure the form is shown
-        setTimeout(() => {
-          router.push(download.url);
-        }, 100);
-      }
+      // Show feedback form before redirecting
+      setShowFeedback(true);
+      // Small delay to ensure the form is shown
+      setTimeout(() => {
+        router.push(url);
+      }, 100);
     } catch (error: any) {
       toast.error(error.message);
     } finally {
