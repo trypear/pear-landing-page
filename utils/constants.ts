@@ -13,9 +13,12 @@ export const TEST_MODE_ENABLED = ["true", "True", "TRUE"].includes(
 export const BUNNY_CDN_HOST = "https://pearai.b-cdn.net";
 
 export const DOWNLOAD_URLS = {
-  "darwin-arm64": "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/darwin-arm64/PearAI-Installer.dmg", // MacOS Apple Silicon
-  "darwin": "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/darwin-x64/PearAI-Installer.dmg", // MacOS Intel
-  "intel-x64": "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/darwin-x64/PearAI-Installer.dmg", // MacOS Intel
+  "darwin-arm64":
+    "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/darwin-arm64/PearAI-Installer.dmg", // MacOS Apple Silicon
+  "darwin":
+    "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/darwin-x64/PearAI-Installer.dmg", // MacOS Intel
+  "intel-x64":
+    "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/darwin-x64/PearAI-Installer.dmg", // MacOS Intel
   "x64": "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/darwin-x64/PearAI-Installer.dmg", // MacOS Intel
   "win32-x64": "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/windows-x64/PearAISetup.exe", // Windows
   "win32-x64-user": "https://pearai-app.nyc3.digitaloceanspaces.com/PearAI-latest/windows-x64/PearAISetup.exe", // Windows
