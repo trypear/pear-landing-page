@@ -111,9 +111,6 @@ export default async function Header() {
                   <NavigationMenuList className="text-black/60 dark:text-gray-500">
                     <DropdownNavItem trigger="Resources">
                       <ul className="grid w-[400px] gap-3 bg-background p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-                        <ListItem href="/about" title="About">
-                          Learn more about PearAI
-                        </ListItem>
                         <ListItem href="/blog" title="Blog">
                           Read insights on PearAI&apos;s development by our
                           contributors
@@ -127,16 +124,20 @@ export default async function Header() {
                         <ListItem href="/beta" title="Beta">
                           Download the latest beta version
                         </ListItem>
+                        <ListItem href="/docs" title="Documentation">
+                          Learn how to use PearAI effectively
+                        </ListItem>
+                        <ListItem
+                          href="https://github.com/trypear/pearai-master"
+                          title="GitHub"
+                        >
+                          Explore our open source code
+                        </ListItem>
                       </ul>
                     </DropdownNavItem>
+                    <NavItem href="/about">About</NavItem>
+                    <NavItem href="/tools">Tools</NavItem>
                     <NavItem href="/pricing">Pricing</NavItem>
-                    <NavItem href="/docs">Documentation</NavItem>
-                    <NavItem
-                      href="https://github.com/trypear/pearai-master"
-                      target="_blank"
-                    >
-                      GitHub
-                    </NavItem>
                   </NavigationMenuList>
                 </NavigationMenu>
               </nav>
