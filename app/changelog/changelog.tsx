@@ -16,6 +16,22 @@ type ChangelogEntry = {
 };
 
 const updates: ChangelogEntry[] = [
+  {
+    // =================================================================
+    date: "03 April 2025",
+    title: "Updated RooCode to v3.10.2",
+    version: "v1.8.6",
+    description: (
+      <>
+        <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
+          <li>Settings Page</li>
+          <li>Roo Code 3.10.2</li>
+          <li>New Pear Themes</li>
+          <li>Fixed various minor bugs</li>
+        </ul>
+      </>
+    ),
+  },
   // =================================================================
   {
     date: "12 February 2025",
