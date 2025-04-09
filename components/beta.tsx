@@ -63,7 +63,7 @@ const BetaPage: React.FC<{ user: any }> = ({ user }) => {
                   MacOS M Chip
                 </Button>
                 <div className="text-sm text-gray-500">
-                  version is v1.8.6-beta (April 2nd, 2025)
+                  version is v1.8.7-beta (April 2nd, 2025)
                 </div>
               </div>
 
