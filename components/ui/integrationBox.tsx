@@ -38,7 +38,7 @@ const IntegrationItem = ({
 const INTEGRATIONS = [
   {
     margin: "lg:ml-2 mr-1",
-    label: "Code with",
+    label: "Create with",
     product: (
       <a
         href="https://github.com/RooVetGit/Roo-Code/"
@@ -46,14 +46,14 @@ const INTEGRATIONS = [
         rel="noopener noreferrer"
         className="hover:underline"
       >
-        Roo Code / Cline
+        PearAI Creator
       </a>
     ),
     Icon: RooCodeLogo,
   },
   {
     margin: "lg:ml-24 ml-2",
-    label: "Predict with",
+    label: "Code with",
     product: (
       <a
         href="https://supermaven.com/"
@@ -61,14 +61,14 @@ const INTEGRATIONS = [
         rel="noopener noreferrer"
         className="hover:underline"
       >
-        Supermaven
+        PearAI Agent
       </a>
     ),
     Icon: SupermavenLogo,
   },
   {
     margin: "lg:ml-44",
-    label: "Remember with",
+    label: "Store with",
     product: (
       <a
         href="https://mem0.ai/"
@@ -76,14 +76,14 @@ const INTEGRATIONS = [
         rel="noopener noreferrer"
         className="hover:underline"
       >
-        MemO
+        PearAI Database
       </a>
     ),
     Icon: Mem0Logo,
   },
   {
     margin: "lg:ml-56 -ml-3",
-    label: "Search with",
+    label: "Authenticate with",
     product: (
       <a
         href="https://www.perplexity.ai/"
@@ -91,14 +91,14 @@ const INTEGRATIONS = [
         rel="noopener noreferrer"
         className="hover:underline"
       >
-        Perplexity
+        PearAI Login
       </a>
     ),
     Icon: PerplexityLogo,
   },
   {
     margin: "lg:ml-48 -mr-5 lg:mr-0",
-    label: "Chat & edit with",
+    label: "Ship with",
     product: (
       <a
         href="https://www.continue.dev/"
@@ -106,7 +106,7 @@ const INTEGRATIONS = [
         rel="noopener noreferrer"
         className="hover:underline"
       >
-        Continue
+        PearAI Deploy
       </a>
     ),
     Icon: ContinueLogo,
