@@ -26,10 +26,8 @@ export default function Features() {
 
   return (
     <div className="mx-6">
-      <div className="mx-auto w-full max-w-3xl py-6 lg:max-w-[1049px]">
-        <div className="bg-white rounded-xl border-2 border-gray-200 p-5 dark:border-gray-50">
-          {isMobile ? <MobileFeatures /> : <DesktopFeatures />}
-        </div>
+      <div className="mx-auto w-full max-w-3xl lg:max-w-[1049px]">
+        {isMobile ? <MobileFeatures /> : <DesktopFeatures />}
       </div>
     </div>
   );

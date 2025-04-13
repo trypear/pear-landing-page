@@ -2,12 +2,11 @@ import { videoData } from "./data";
 
 export default function MobileFeatures() {
   return (
-    <div className="space-y-5">
-      <div className="mb-6 text-2xl font-semibold">Demos</div>
+    <div className="space-y-8">
       {videoData.map((video) => (
         <div
           key={video.id}
-          className="space-y-4 rounded-lg border border-gray-200 p-4 dark:border-gray-50"
+          className="space-y-4 rounded-xl border-2 border-gray-200 p-6 shadow-sm dark:border-gray-50"
         >
           <h3 className="text-lg font-medium">{video.title}</h3>
           <p className="text-sm text-black/60 dark:text-gray-500">
