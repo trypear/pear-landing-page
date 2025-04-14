@@ -1,6 +1,6 @@
 import { videoData } from "./data";
 
-export default function MobileFeatures() {
+export default function MobileVideoSection() {
   return (
     <div className="space-y-8">
       {videoData.map((video) => (

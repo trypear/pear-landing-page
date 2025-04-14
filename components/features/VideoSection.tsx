@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
-const MobileFeatures = dynamic(() => import("./MobileFeatures"), {
+const MobileVideoSection = dynamic(() => import("./MobileVideoSection"), {
   ssr: false,
 });
-const DesktopFeatures = dynamic(() => import("./DesktopFeatures"), {
+const DesktopVideoSection = dynamic(() => import("./DesktopVideoSection"), {
   ssr: false,
 });
 
-export default function Features() {
+export default function VideoSection() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -25,9 +25,9 @@ export default function Features() {
   }, []);
 
   return (
-    <div className="mx-6">
+    <div className="mx-6 mb-14">
       <div className="mx-auto w-full max-w-3xl lg:max-w-[1049px]">
-        {isMobile ? <MobileFeatures /> : <DesktopFeatures />}
+        {isMobile ? <MobileVideoSection /> : <DesktopVideoSection />}
       </div>
     </div>
   );

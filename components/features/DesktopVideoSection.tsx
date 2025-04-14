@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { videoData } from "./data";
 
-export default function DesktopFeatures() {
+export default function DesktopVideoSection() {
   const [activeCard, setActiveCard] = useState(1);
   const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);

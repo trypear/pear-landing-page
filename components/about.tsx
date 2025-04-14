@@ -3,7 +3,6 @@
 import React from "react";
 import { Badge } from "./ui/badge";
 import Footer from "./footer";
-import Features from "./features/Features";
 
 const AboutComponent: React.FC = () => {
   return (
@@ -62,8 +61,6 @@ const AboutComponent: React.FC = () => {
           </Badge>
         </div>
       </div>
-
-      <Features />
 
       <div className="mt-10 flex flex-col items-center justify-center p-4 pb-0">
         <h2 className="text-4xl font-bold">
