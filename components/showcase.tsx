@@ -93,7 +93,7 @@ export default function Showcase() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="flex h-full flex-col justify-between rounded-xl bg-[#F9F9F9] p-7 transition-colors"
+                      className="flex h-full flex-col justify-between rounded-xl bg-[#F4F4F4] p-7 transition-colors"
                     >
                       <p className="mb-4 text-sm text-[#666666] dark:text-gray-500 sm:text-base">
                         {testimonial.text}

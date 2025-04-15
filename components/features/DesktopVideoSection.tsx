@@ -56,9 +56,9 @@ export default function DesktopVideoSection() {
         {videoData.map((video) => (
           <div
             key={video.id}
-            className={`relative flex flex-1 flex-col rounded-xl border-2 ${
+            className={`relative flex flex-1 flex-col rounded-xl border-[2.3px] ${
               activeCard === video.id
-                ? "border-[#666666] bg-[#F4F4F4]"
+                ? "border-[#666666] bg-[#F1F1F1]"
                 : "border-[#e6e6e6]"
             }`}
           >
@@ -75,7 +75,7 @@ export default function DesktopVideoSection() {
                 </div>
                 <div className="mt-auto pt-4">
                   <div
-                    className={`h-[4px] rounded-full ${activeCard === video.id ? "bg-[#cccccc]" : "bg-transparent"}`}
+                    className={`h-[4px] rounded-full ${activeCard === video.id ? "bg-[#c1c1c1]" : "bg-transparent"}`}
                   >
                     {activeCard === video.id && (
                       <motion.div

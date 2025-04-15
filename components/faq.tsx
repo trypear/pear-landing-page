@@ -81,7 +81,7 @@ const FAQComponent: React.FC = () => {
           <Accordion
             type="single"
             collapsible
-            className="w-full rounded-xl border-[1.5px] border-[#e6e6e6] bg-[#F6F6F6]"
+            className="w-full rounded-xl border-[1.5px] border-[#e6e6e6] bg-[#F4F4F4]"
             value={openItem}
             onValueChange={setOpenItem}
           >

@@ -9,7 +9,7 @@ export default function Features() {
         </span>
       </div>
       <div className="items-center justify-center px-6 pb-14 lg:flex-col">
-        <div className="mx-auto w-full max-w-3xl rounded-xl bg-[#F9F9F9] p-7 lg:max-w-[1049px]">
+        <div className="mx-auto w-full max-w-3xl rounded-xl bg-[#F4F4F4] p-7 lg:max-w-[1049px]">
           <div className="grid items-start lg:grid-cols-2">
             <div className="space-y-2">
               <span className="text-2xl font-medium leading-tight">
@@ -33,14 +33,14 @@ export default function Features() {
                 </span>
               </div>
 
-              <div className="flex w-[75%] items-center gap-2 rounded-xl bg-[#f2f2f2] px-4 py-5">
+              <div className="flex w-[75%] items-center gap-2 rounded-xl bg-[#e6e6e6] px-4 py-5">
                 <span className="font-medium">GPT-4o</span>
                 <span className="font-mono font-medium text-[#666666]">
                   80.53
                 </span>
               </div>
 
-              <div className="flex w-[41%] items-center gap-2 rounded-xl bg-[#f2f2f2] px-4 py-5">
+              <div className="flex w-[41%] items-center gap-2 rounded-xl bg-[#e6e6e6] px-4 py-5">
                 <span className="text-nowrap font-medium">
                   Meta Llama 3.1 405b
                 </span>
@@ -49,7 +49,7 @@ export default function Features() {
                 </span>
               </div>
 
-              <div className="flex w-[23%] items-center gap-2 rounded-xl bg-[#f2f2f2] px-4 py-5">
+              <div className="flex w-[23%] items-center gap-2 rounded-xl bg-[#e6e6e6] px-4 py-5">
                 <span className="whitespace-nowrap font-medium">
                   Claude 3 Opus
                 </span>
@@ -63,7 +63,7 @@ export default function Features() {
 
         {/* //Section 1 */}
         <div className="mx-auto mt-5 grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
-          <div className="mx-auto w-full rounded-xl bg-[#F9F9F9] p-7 pb-0">
+          <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
@@ -89,7 +89,7 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="mx-auto w-full rounded-xl bg-[#F9F9F9] p-7 pb-0">
+          <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
@@ -118,7 +118,7 @@ export default function Features() {
 
         {/* //Section 2 */}
         <div className="mx-auto mt-5 grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
-          <div className="mx-auto w-full rounded-xl bg-[#F9F9F9] p-7 pb-0">
+          <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
@@ -144,7 +144,7 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="mx-auto w-full rounded-xl bg-[#F9F9F9] p-7 pb-0">
+          <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
