@@ -101,8 +101,8 @@ export default async function Header() {
             className="flex flex-shrink-0 items-center"
             aria-label="PearAI Home"
           >
-            <PearDark className="h-7" />
-            <div className="ml-1 text-xl font-semibold">PearAI</div>
+            <PearDark />
+            <div className="ml-1 mt-[2px] text-xl font-semibold">PearAI</div>
           </Link>
           <nav className="ml-4 hidden md:block" aria-label="Main menu">
             <NavigationMenu>

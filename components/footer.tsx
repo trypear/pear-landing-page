@@ -5,23 +5,23 @@ import { Button } from "./ui/button";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#1F1F1F] px-4 py-[60px] sm:px-6">
+    <footer className="w-full bg-[#1F1F1F] px-6 py-[60px]">
       <div className="mx-auto max-w-3xl lg:max-w-[1049px]">
-        <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-3 sm:gap-6 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-5 gap-y-9 sm:grid-cols-5 sm:gap-6">
           {/* Logo and tagline */}
           <div className="col-span-full xl:col-span-2">
             <Link className="inline-block dark:invert" href="/">
               <PearWhiteLogo />
             </Link>
             <p className="mb-2 text-[#808080]">Make What Excites.</p>
-            <p className="mb-2 text-[#808080]">
+            <p className="mb-4 text-[#808080] sm:mb-2">
               * For more information about how integrations are built into
               PearAI, see{" "}
-              <span className="text-white-50 underline hover:text-white-50/80">
+              <span className="cursor-pointer text-white-50 underline hover:text-white-50/80">
                 here.
               </span>
             </p>
-            <Button className="bg-white-50 px-6 py-3 text-sm font-semibold text-black sm:text-base">
+            <Button className="hover: bg-white-50 px-6 py-3 text-sm font-semibold text-black hover:bg-white-50/80 sm:text-base">
               <Link href="/pricing">Download</Link>
             </Button>
           </div>
@@ -36,7 +36,7 @@ export default function Footer() {
                     <Link
                       href={href}
                       target={target}
-                      className="hover:text-primary-600"
+                      className="hover:text-white-50/80"
                     >
                       {text}
                     </Link>
@@ -51,7 +51,7 @@ export default function Footer() {
 
         <div className="flex flex-col items-center justify-between text-neutral-500 sm:flex-row-reverse">
           {/* Social media links */}
-          <div className="-mr-1 flex items-center">
+          <div className="-mr-[3px] flex items-center">
             {socialMediaLinks.map(({ icon: Icon, link }) => (
               <Button
                 key={link}
@@ -60,7 +60,7 @@ export default function Footer() {
                 className="-mr-2 rounded-full hover:bg-transparent"
               >
                 <Link href={link} target="_blank" rel="noopener noreferrer">
-                  <Icon className="h-5 w-5 text-[#808080]" />
+                  <Icon className="h-5 w-5 text-[#808080] hover:text-white-50/80" />
                 </Link>
               </Button>
             ))}

@@ -21,7 +21,7 @@ export default function AuthButton({
   return (
     <div className="flex items-center space-x-4">
       {!user ? (
-        <div className="m-0 inline-flex rounded-xl border border-[#e6e6e6] p-0 dark:border-gray-100">
+        <div className="m-0 inline-flex rounded-xl border border-[#e6e6e6] p-0">
           <Link href="/signin">
             <Button
               variant="ghost"
@@ -30,7 +30,7 @@ export default function AuthButton({
               Sign in
             </Button>
           </Link>
-          <div className="w-[1px] self-stretch bg-[#e6e6e6] dark:bg-gray-100" />
+          <div className="w-[1px] self-stretch bg-[#e6e6e6]" />
           <Link href="/signup">
             <Button
               variant="ghost"
