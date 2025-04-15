@@ -81,16 +81,21 @@ const FAQComponent: React.FC = () => {
           <Accordion
             type="single"
             collapsible
-            className="w-full space-y-4"
+            className="w-full rounded-xl border-[1.5px] border-[#e6e6e6] bg-[#F6F6F6]"
             value={openItem}
             onValueChange={setOpenItem}
           >
-            {faqData.map((item) => (
-              <AccordionItem key={item.id} value={item.id} id={item.id}>
-                <AccordionTrigger className="text-left text-base font-medium hover:no-underline">
+            {faqData.map((item, index) => (
+              <AccordionItem
+                key={item.id}
+                value={item.id}
+                id={item.id}
+                className={`border-b-[#e6e6e6] p-7 ${index === faqData.length - 1 ? "border-none" : "border-b-[1.5px]"}`}
+              >
+                <AccordionTrigger className="p-0 text-left text-2xl font-medium hover:no-underline">
                   {item.question}
                 </AccordionTrigger>
-                <AccordionContent className="whitespace-pre-line text-sm text-gray-600">
+                <AccordionContent className="whitespace-pre-line p-0 pt-3 text-xl text-[#666666]">
                   {item.answer}
                 </AccordionContent>
               </AccordionItem>

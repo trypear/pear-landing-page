@@ -21,7 +21,7 @@ export default function Footer() {
                 here.
               </span>
             </p>
-            <Button className="hover: bg-white-50 px-6 py-3 text-sm font-semibold text-black hover:bg-white-50/80 sm:text-base">
+            <Button className="bg-white-50 px-6 py-3 text-sm font-semibold text-black hover:bg-white-50/80 sm:text-base">
               <Link href="/pricing">Download</Link>
             </Button>
           </div>
