@@ -8,7 +8,7 @@ export default function Features() {
           PearAI Makes You An Expert
         </span>
       </div>
-      <div className="items-center justify-center px-6 lg:flex-col">
+      <div className="items-center justify-center px-6 pb-14 lg:flex-col">
         <div className="mx-auto w-full max-w-3xl rounded-xl bg-[#F9F9F9] p-7 lg:max-w-[1049px]">
           <div className="grid items-start lg:grid-cols-2">
             <div className="space-y-2">
@@ -64,7 +64,7 @@ export default function Features() {
         {/* //Section 1 */}
         <div className="mx-auto mt-5 grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
           <div className="mx-auto w-full rounded-xl bg-[#F9F9F9] p-7 pb-0">
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
                   <span className="text-2xl font-medium">PearAI Creator</span>
@@ -90,7 +90,7 @@ export default function Features() {
           </div>
 
           <div className="mx-auto w-full rounded-xl bg-[#F9F9F9] p-7 pb-0">
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
                   <span className="text-2xl font-medium">PearAI Agent</span>
@@ -119,7 +119,7 @@ export default function Features() {
         {/* //Section 2 */}
         <div className="mx-auto mt-5 grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
           <div className="mx-auto w-full rounded-xl bg-[#F9F9F9] p-7 pb-0">
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
                   <span className="text-2xl font-medium">PearAI Login</span>
@@ -145,7 +145,7 @@ export default function Features() {
           </div>
 
           <div className="mx-auto w-full rounded-xl bg-[#F9F9F9] p-7 pb-0">
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
                   <span className="text-2xl font-medium">PearAI Launch</span>
