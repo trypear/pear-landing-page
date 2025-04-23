@@ -32,20 +32,31 @@ export default function Hero() {
             Made for makers of any technical level.
           </motion.p>
         </div>
-        <div className="mb-4 w-full overflow-hidden">
+        <div className="mb-4 w-[140%] overflow-hidden">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="w-full"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, x: ["-50%", "0%"] }}
+            transition={{
+              opacity: { duration: 0.6, delay: 0.4 },
+              x: { duration: 50, repeat: Infinity, ease: "linear" },
+            }}
+            className="flex w-[200%]"
           >
             <Image
-              src="/images/HeroImage.svg"
+              src="/images/HeroImageLarge.svg"
               alt="PearAI Hero"
               width={1920}
               height={1080}
               priority
-              className="h-auto w-full"
+              className="h-auto w-1/2"
+            />
+            <Image
+              src="/images/HeroImageLarge.svg"
+              alt="PearAI Hero"
+              width={1920}
+              height={1080}
+              priority
+              className="h-auto w-1/2"
             />
           </motion.div>
         </div>
