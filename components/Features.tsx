@@ -3,13 +3,18 @@ import Image from "next/image";
 export default function Features() {
   return (
     <>
-      <div className="flex items-center justify-center pb-8">
-        <span className="text-[44px] font-semibold">
+      <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
+
+      <div className="flex items-center justify-center lg:pb-8">
+        <span className="max-w-md text-center text-4xl font-medium lg:max-w-2xl lg:text-[44px] lg:font-semibold">
           PearAI Makes You An Expert
         </span>
       </div>
-      <div className="items-center justify-center px-6 pb-14 lg:flex-col">
-        <div className="mx-auto w-full max-w-3xl rounded-xl bg-[#F4F4F4] p-7 lg:max-w-[1049px]">
+
+      <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
+
+      <div className="items-center justify-center lg:flex-col lg:px-6 lg:pb-14">
+        <div className="mx-auto w-full max-w-3xl rounded-xl px-3 lg:max-w-[1049px] lg:bg-[#F4F4F4] lg:p-7">
           <div className="grid items-start lg:grid-cols-2">
             <div className="space-y-2">
               <span className="text-2xl font-medium leading-tight">
@@ -25,7 +30,7 @@ export default function Features() {
               </p>
             </div>
 
-            <div className="space-y-3 pl-10">
+            <div className="space-y-3 pt-7 lg:pl-10">
               <div className="flex items-center gap-2 rounded-xl border-2 border-[#A1DB4B] bg-[#B3F353] px-4 py-5 opacity-80">
                 <span className="font-medium">PearAI Model</span>
                 <span className="font-mono font-medium text-[#666666]">
@@ -61,9 +66,11 @@ export default function Features() {
           </div>
         </div>
 
+        <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
+
         {/* //Section 1 */}
-        <div className="mx-auto mt-5 grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
-          <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+        <div className="mx-auto grid w-full lg:mt-5 lg:max-w-[1049px] lg:grid-cols-2 lg:gap-5">
+          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7">
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
@@ -89,7 +96,9 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+          <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
+
+          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7">
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
@@ -116,9 +125,11 @@ export default function Features() {
           </div>
         </div>
 
+        <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
+
         {/* //Section 2 */}
-        <div className="mx-auto mt-5 grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
-          <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+        <div className="mx-auto grid w-full lg:mt-5 lg:max-w-[1049px] lg:grid-cols-2 lg:gap-5">
+          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7">
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
@@ -144,7 +155,9 @@ export default function Features() {
             </div>
           </div>
 
-          <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+          <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
+
+          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7">
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-2">
                 <div className="flex items-end justify-between">
@@ -171,6 +184,8 @@ export default function Features() {
           </div>
         </div>
       </div>
+
+      <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
     </>
   );
 }

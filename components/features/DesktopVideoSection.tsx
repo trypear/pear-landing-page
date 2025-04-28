@@ -46,7 +46,7 @@ export default function DesktopVideoSection() {
   }, [activeCard, currentVideo?.duration]);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="mx-auto flex max-w-3xl flex-col items-center px-6 lg:max-w-[1097px]">
       <div className="pb-10 text-center">
         <span className="text-[44px] font-semibold">
           You Can Just Build Software

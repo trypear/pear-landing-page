@@ -63,16 +63,16 @@ export default function Showcase() {
       {/* Testimonials */}
       <div className="flex items-center justify-center px-6 pb-14">
         <div className="z-10 max-w-3xl lg:max-w-[1049px]">
-          <div className="flex flex-col items-center justify-center gap-4 pb-8">
-            <span className="text-2xl font-semibold md:text-[44px]">
+          <div className="flex flex-col items-center justify-center gap-4 pb-5 lg:pb-8">
+            <span className="text-4xl font-semibold lg:text-[44px]">
               Makers Love PearAI.
             </span>
-            <span className="text-xl text-[#666666]">
+            <span className="hidden text-xl text-[#666666] lg:block">
               PearAI is made for makers of any technical level!
             </span>
           </div>
 
-          <div className="relative overflow-hidden pb-4">
+          <div className="relative overflow-hidden pb-5 lg:pb-4">
             <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={currentPage}
@@ -93,16 +93,16 @@ export default function Showcase() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="flex h-full flex-col justify-between rounded-xl bg-[#F4F4F4] p-7 transition-colors"
+                      className="flex h-full flex-col justify-between rounded-xl bg-[#F4F4F4] p-4 transition-colors lg:p-7"
                     >
-                      <p className="mb-4 text-sm text-[#666666] dark:text-gray-500 sm:text-base">
+                      <p className="mb-2 text-base text-[#666666] lg:mb-4">
                         {testimonial.text}
                       </p>
                       <div className="mt-auto">
-                        <p className="text-sm font-semibold sm:text-base">
+                        <p className="text-base font-semibold">
                           {testimonial.author}
                         </p>
-                        <p className="text-sm text-[#666666] sm:text-base">
+                        <p className="text-base text-[#666666]">
                           {testimonial.role}
                         </p>
                       </div>

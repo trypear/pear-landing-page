@@ -15,7 +15,7 @@ export default function VideoSection() {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 1049);
+      setIsMobile(window.innerWidth < 1024);
     };
 
     checkIsMobile();
@@ -25,8 +25,8 @@ export default function VideoSection() {
   }, []);
 
   return (
-    <div className="mx-6 mb-14">
-      <div className="mx-auto w-full max-w-3xl lg:max-w-[1049px]">
+    <div className="lg:mb-14">
+      <div className="mx-auto w-full">
         {isMobile ? <MobileVideoSection /> : <DesktopVideoSection />}
       </div>
     </div>
