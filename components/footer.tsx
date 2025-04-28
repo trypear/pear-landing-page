@@ -49,7 +49,7 @@ export default function Footer() {
 
         <div className="my-10 border-b border-[#2B2B2B]" />
 
-        <div className="flex flex-col items-center justify-between text-neutral-500 sm:flex-row-reverse">
+        <div className="flex flex-row-reverse items-center justify-between text-neutral-500">
           {/* Social media links */}
           <div className="-mr-[3px] flex items-center">
             {socialMediaLinks.map(({ icon: Icon, link }) => (

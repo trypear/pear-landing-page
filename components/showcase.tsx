@@ -61,7 +61,7 @@ export default function Showcase() {
   return (
     <>
       {/* Testimonials */}
-      <div className="flex items-center justify-center px-6 pb-14">
+      <div className="flex items-center justify-center px-3 pb-[30px] lg:px-6 lg:pb-14">
         <div className="z-10 max-w-3xl lg:max-w-[1049px]">
           <div className="flex flex-col items-center justify-center gap-4 pb-5 lg:pb-8">
             <span className="text-4xl font-semibold lg:text-[44px]">

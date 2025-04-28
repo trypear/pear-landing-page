@@ -7,7 +7,7 @@ import { ChevronRight } from "lucide-react";
 export default function Hero() {
   return (
     <>
-      <section className="relative mx-auto mb-0 mt-28 flex min-h-screen w-full flex-col items-center bg-red-500 text-center lg:mb-14">
+      <section className="relative mx-auto mb-0 mt-28 flex min-h-screen w-full flex-col items-center text-center lg:mb-14">
         <div className="mb-10 max-w-[1070px] px-3">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
