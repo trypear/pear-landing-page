@@ -54,7 +54,7 @@ export default function TopUpPage() {
               questions - we&apos;re here to help!
             </p>
           </header>
-          <div className="mt-8 w-full max-w-3xl grid-cols-2 gap-6">
+          <div className="mt-8 w-full max-w-3xl space-y-3">
             {REQUEST_OPTIONS.map((option) => (
               <Card
                 key={option.amount}
