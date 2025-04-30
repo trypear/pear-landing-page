@@ -70,13 +70,15 @@ export function BetaTesterSignupForm() {
 
     try {
       // Insert application via Supabase (like subscriber feedback)
-      const { error: dbError } = await supabase.from("beta_tester_applications").insert({
-        name: values.name,
-        email: values.email,
-        discord: values.discord,
-        os: values.os,
-        experience: values.experience,
-      });
+      const { error: dbError } = await supabase
+        .from("beta_tester_applications")
+        .insert({
+          name: values.name,
+          email: values.email,
+          discord: values.discord,
+          os: values.os,
+          experience: values.experience,
+        });
       if (dbError) {
         setStatus("error");
         setError("Failed to submit form. Please try again.");
