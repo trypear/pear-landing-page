@@ -39,8 +39,8 @@ export default function TopUpPage() {
               Top Up Credits
             </h1>
             <p className="mx-auto max-w-xl text-sm text-gray-700 dark:text-gray-600">
-              &quot;Pay-as-you-go&quot; system for additonal credits is
-              temporarily paused. For additonal credits, please top up credits.
+              &quot;Pay-as-you-go&quot; system for additional credits is
+              temporarily paused. For additional credits, please top up credits.
               These credits <b>never expire</b>, staying in your account
               indefinitely until you use them. They are only used once
               you&apos;ve exhausted your Monthly PearAI credits. Your remaining
