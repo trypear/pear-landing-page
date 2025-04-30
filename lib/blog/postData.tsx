@@ -524,20 +524,15 @@ export const posts = [
             <p class="my-4"> If your result is:</p>
             <pre class="my-2 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"><code>avx avx2 fma</code></pre>
             <p class="my-4">
-            feel free to download the AVX2 version.
-            If you only see <code>avx</code>, download the AVX version.
+            or just <code>avx</code>, your CPU should be compatible with the PearAI app.
             </p>
           </li>
           <li>
-            Download the appropriate PearAI installation file:
+            Download the PearAI installation file:
             <ul class="list-disc pl-5 my-4">
               <li>
-                <strong>AVX version</strong>:
-                <a href="https://github.com/trypear/pearai-app/releases/latest/download/PearAI-avx.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
-              </li>
-              <li>
-                <strong>AVX2 version</strong>:
-                <a href="https://github.com/trypear/pearai-app/releases/latest/download/PearAI-avx2.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX2)</a>
+                <strong>PearAI Linux Version (AVX/AVX2)</strong>:
+                <a href="https://github.com/trypear/pearai-app/releases/latest/download/PearAI-linux.tar.gz" class="break-words text-primary-500 underline dark:text-primary-400">Download PearAI (AVX)</a>
               </li>
             </ul>
           </li>
@@ -545,7 +540,7 @@ export const posts = [
             Extract the contents by running the following command:
         <pre
           class="my-4 overflow-x-auto rounded bg-gray-100 p-2 text-xs text-foreground sm:text-sm md:text-base"
-        ><code>tar -xvf PearAI-{AVX_VERSION}.tar.gz</code></pre>
+        ><code>tar -xvf PearAI-linux.tar.gz</code></pre>
           </li>
           <li>
             Navigate to the extracted folder:
@@ -610,6 +605,9 @@ export const posts = [
       including Arch Linux, Ubuntu 24, Ubuntu 22, Fedora 40 and NixOS. It was compiled using GCC
       10, so most distributions with this or newer version should be able to
       run PearAI without any issues.
+        </p>
+                <p class="mt-4 text-sm sm:text-base">
+     Note that PearAI Linux is packaged and distributed by the open source community. Please report any issues to the <a href="https://github.com/trypear/pearai-app/issues" class="text-primary-500 underline dark:text-primary-400">GitHub repository</a>.
         </p>
       </section>
 
