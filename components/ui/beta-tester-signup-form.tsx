@@ -69,8 +69,8 @@ export function BetaTesterSignupForm() {
     setError(null);
 
     try {
-      // Change 'beta_testers' if your supabase table uses a different name.
-      const { error: dbError } = await supabase.from("beta_testers").insert({
+      // Insert application via Supabase (like subscriber feedback)
+      const { error: dbError } = await supabase.from("beta_tester_applications").insert({
         name: values.name,
         email: values.email,
         discord: values.discord,
