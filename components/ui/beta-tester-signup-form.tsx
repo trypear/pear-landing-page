@@ -145,10 +145,25 @@ export function BetaTesterSignupForm() {
             name="discord"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Discord</FormLabel>
+                <FormLabel>
+                  Discord{" "}
+                  <span className="text-xs text-gray-400">
+                    (make sure you&apos;re in the{" "}
+                    <a
+                      href="https://discord.gg/7QMraJUsQt"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary-700 underline hover:text-primary-800"
+                    >
+                      PearAI server
+                    </a>
+                    )
+                  </span>
+                </FormLabel>
+
                 <FormControl>
                   <Input
-                    placeholder="e.g. pearuser#1234"
+                    placeholder="e.g. PearAI#1234"
                     disabled={status === "submitting"}
                     {...field}
                   />
