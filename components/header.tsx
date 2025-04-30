@@ -131,7 +131,8 @@ export default async function Header() {
                           href="/programs/beta-tester"
                           title="Beta Tester Program"
                         >
-                          Join PearAI Beta Tester Program for free PearAI subscription and more!
+                          Join PearAI Beta Tester Program for free PearAI
+                          subscription and more!
                         </ListItem>
                         <ListItem
                           href="/programs/oss-contributor-benefit"

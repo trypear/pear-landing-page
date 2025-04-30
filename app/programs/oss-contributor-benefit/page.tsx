@@ -49,8 +49,8 @@ export default function OssContributorBenefitPage() {
                 Solving needed tickets listed in our Sprint board{" "}
                 <a
                   className="text-primary-700 underline"
-                  href="#"
-                  target="https://github.com/orgs/trypear/projects"
+                  href="https://github.com/orgs/trypear/projects"
+                  target="_blank"
                   rel="noopener"
                 >
                   here
@@ -80,8 +80,8 @@ export default function OssContributorBenefitPage() {
                 listed bounty amount. View bounty-based tickets{" "}
                 <a
                   className="text-primary-700 underline"
-                  href="#"
-                  target="https://github.com/orgs/trypear/projects/14"
+                  href="https://github.com/orgs/trypear/projects/14"
+                  target="_blank" // Opens the link in a new browser tab
                   rel="noopener"
                 >
                   here
@@ -121,8 +121,8 @@ export default function OssContributorBenefitPage() {
               Visit our GitHub repository{" "}
               <a
                 className="text-primary-700 underline"
-                href="#"
-                target="https://github.com/trypear/pearai-master"
+                href="https://github.com/trypear/pearai-master"
+                target="_blank"
                 rel="noopener"
               >
                 here
