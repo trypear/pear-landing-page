@@ -37,6 +37,7 @@ import { InfoIcon } from "lucide-react";
 import { UsageType } from "../dashboard";
 import { toast } from "sonner";
 import { useUpgradeSubscription } from "@/hooks/useUpgradeSubscription";
+import TopUpModal from "../topup-modal";
 type SubscriptionCardProps = {
   subscription: Subscription | null;
   usage?: UsageType;
@@ -366,6 +367,7 @@ export default function SubscriptionCard({
                   Open PearAI App
                 </Link>
               </Button>
+              <TopUpModal />
             </div>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
