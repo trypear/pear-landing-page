@@ -28,7 +28,7 @@ async function createTopUpSession(request: NextRequest & { user: User }) {
     }
 
     const token = session.access_token;
-    const url = `${PEARAI_SERVER_URL}/payment${TEST_MODE_ENABLED ? "/test" : ""}/create-topup-session`;
+    const url = `${PEARAI_SERVER_URL}/payment/create-topup-session`;
 
     const response = await fetch(url, {
       method: "POST",
