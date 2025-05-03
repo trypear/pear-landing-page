@@ -7,7 +7,7 @@ export const useTopUpCheckout = (user: User | null) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
-  const handleTopUpCheckout = async (amount: number) => {
+  const handleTopUpCheckout = async (amount: number | "custom") => {
     if (!user) {
       toast.error("Please log in to top up credits.");
       router.push("/signin");
