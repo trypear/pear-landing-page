@@ -124,6 +124,19 @@ export default async function Header() {
                     <ListItem href="/beta" title="Beta">
                       Download the latest beta version
                     </ListItem>
+                    <ListItem
+                      href="/programs/beta-tester"
+                      title="Beta Tester Program"
+                    >
+                      Join PearAI Beta Tester Program for free PearAI
+                      subscription and more!
+                    </ListItem>
+                    <ListItem
+                      href="/programs/oss-contributor-benefit"
+                      title="OSS Contributor Program"
+                    >
+                      Contribute to PearAI and get rewards!
+                    </ListItem>
                   </ul>
                 </DropdownNavItem>
                 <NavItem href="/pricing">Pricing</NavItem>

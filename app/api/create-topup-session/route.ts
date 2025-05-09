@@ -12,7 +12,15 @@ async function createTopUpSession(request: NextRequest & { user: User }) {
 
   try {
     const { amount } = await request.json();
-    const priceId = STRIPE_PRICE_IDS.TOP_UP_CREDITS[amount];
+    let priceId;
+
+    // Handle custom amount case
+    if (amount === "custom") {
+      priceId = STRIPE_PRICE_IDS.TOP_UP_CREDITS.CUSTOM;
+    } else {
+      priceId = STRIPE_PRICE_IDS.TOP_UP_CREDITS[amount];
+    }
+
     if (!priceId) {
       return NextResponse.json({ error: "Invalid amount" }, { status: 400 });
     }
@@ -28,7 +36,7 @@ async function createTopUpSession(request: NextRequest & { user: User }) {
     }
 
     const token = session.access_token;
-    const url = `${PEARAI_SERVER_URL}/payment${TEST_MODE_ENABLED ? "/test" : ""}/create-topup-session`;
+    const url = `${PEARAI_SERVER_URL}/payment/create-topup-session`;
 
     const response = await fetch(url, {
       method: "POST",
