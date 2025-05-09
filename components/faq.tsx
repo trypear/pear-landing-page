@@ -122,12 +122,12 @@ export default FAQComponent;
 const faqData: FAQItem[] = [
   {
     id: "name",
-    question: "0. Why is it called PearAI?!",
+    question: "0. Why is it called PearAI?",
     answer: <p>Pair programming... Pear Programming... PearAI! 🍐💡</p>,
   },
   {
     id: "competitors",
-    question: "1. Why PearAI over competitors?!",
+    question: "1. Why PearAI over competitors?",
     answer: (
       <div>
         <p>Over using vanilla LLM’s:</p>
@@ -188,7 +188,7 @@ const faqData: FAQItem[] = [
   },
   {
     id: "privacy",
-    question: "2. Does PearAI store my code?!",
+    question: "2. Does PearAI store my code?",
     answer: (
       <p>
         No. All codebase indexing occurs and remains strictly local on your
@@ -208,12 +208,25 @@ const faqData: FAQItem[] = [
   },
   {
     id: "contribute",
-    question: "3. How can I contribute to PearAI?!",
+    question: "3. How can I contribute to PearAI?",
     answer: (
       <p>
         See the contributor&apos;s section:{" "}
         <Link className="underline" target="_blank" href="/docs/contributors">
           Contributing 101
+        </Link>
+        .
+      </p>
+    ),
+  },
+  {
+    id: "known-issues",
+    question: "4. What are current known issues?",
+    answer: (
+      <p>
+        See the{" "}
+        <Link className="underline" href="/known-issues">
+          known issues section
         </Link>
         .
       </p>
