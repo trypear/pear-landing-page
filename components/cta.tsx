@@ -11,7 +11,7 @@ export default function CTA() {
           Make Your Next Project Today.
         </p>
 
-        <p className="mt-1 text-2xl font-medium text-[#666666] lg:mt-4 lg:text-[32px] lg:font-semibold">
+        <p className="mt-1 text-2xl font-medium text-black/50 lg:mt-4 lg:text-[32px] lg:font-semibold">
           Try PearAI for free.
         </p>
 
@@ -22,7 +22,7 @@ export default function CTA() {
 
           <a
             href="https://trypear.ai/docs/contributors"
-            className="mt-1 text-black underline underline-offset-1 hover:decoration-black/20"
+            className="mt-1 text-black underline decoration-black/50 underline-offset-1 hover:decoration-black/20"
           >
             Interested in contributing?
           </a>

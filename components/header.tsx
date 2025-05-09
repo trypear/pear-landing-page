@@ -11,7 +11,6 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import DarkModeToggle from "./ui/darkmode-toggle";
 import AuthButton from "./ui/authbutton";
 import MobileMenu from "./ui/mobile-menu";
 import { redirect } from "next/navigation";
@@ -90,7 +89,7 @@ export default async function Header() {
   };
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#e6e6e6] bg-background p-2 transition-all duration-300 ease-in-out">
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[#e6e6e6] bg-background bg-white-50 p-2 transition-all duration-300 ease-in-out">
       <nav
         className="mx-auto flex max-w-[1070px] items-center justify-between px-2 transition-all duration-300 ease-in-out dark:border-gray-50"
         aria-label="Main navigation"
@@ -142,7 +141,6 @@ export default async function Header() {
         <div className="hidden items-center space-x-2 lg:flex">
           <AuthButton user={user} handleSignOut={handleSignOut} />
           <DownloadButton user={user} />
-          {/* <DarkModeToggle /> */}
         </div>
         <div className="lg:hidden">
           <MobileMenu user={user} handleSignOut={handleSignOut} />

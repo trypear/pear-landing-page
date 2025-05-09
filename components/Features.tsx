@@ -30,7 +30,7 @@ export default function Features() {
               </p>
             </div>
 
-            <div className="space-y-3 pt-7 lg:pl-10">
+            <div className="space-y-3 pt-7 lg:pl-10 lg:pt-0">
               <div className="flex items-center gap-2 rounded-xl border-2 border-[#A1DB4B] bg-[#B3F353] px-4 py-5 opacity-80">
                 <span className="font-medium">PearAI Model</span>
                 <span className="font-mono font-medium text-[#666666]">
@@ -70,12 +70,12 @@ export default function Features() {
 
         {/* //Section 1 */}
         <div className="mx-auto grid w-full lg:mt-5 lg:max-w-[1049px] lg:grid-cols-2 lg:gap-5">
-          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7">
+          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:px-0 lg:pt-7">
             <div className="flex h-full flex-col justify-between">
-              <div className="space-y-2">
-                <div className="flex items-end justify-between">
+              <div className="space-y-1 lg:space-y-2 lg:px-7">
+                <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">PearAI Creator</span>
-                  <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                  <span className="mb-1 text-[#b3b3b3]">
                     Powered by Roo Code / Cline*
                   </span>
                 </div>
@@ -84,26 +84,27 @@ export default function Features() {
                   adheres to the latest technologies and best practices.
                 </p>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="relative flex items-center justify-center">
                 <Image
                   src="/images/PearAICreatorVector.svg"
                   alt="PearAI Creator"
-                  className="h-auto w-full"
+                  className="h-full w-full"
                   width={240}
                   height={240}
                 />
+                <div className="absolute bottom-0 left-0 right-0 z-50 block h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:hidden"></div>
               </div>
             </div>
           </div>
 
           <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
 
-          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7">
+          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7 lg:pb-0">
             <div className="flex h-full flex-col justify-between">
-              <div className="space-y-2">
-                <div className="flex items-end justify-between">
+              <div className="space-y-1 lg:space-y-2">
+                <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">PearAI Agent</span>
-                  <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                  <span className="mb-1 text-[#b3b3b3]">
                     Powered by Roo Code / Cline*
                   </span>
                 </div>
@@ -116,7 +117,7 @@ export default function Features() {
                 <Image
                   src="/images/PearAIAgentVector.svg"
                   alt="PearAI Agent"
-                  className="h-auto w-full"
+                  className="h-auto w-full lg:pb-7"
                   width={240}
                   height={240}
                 />
@@ -129,12 +130,12 @@ export default function Features() {
 
         {/* //Section 2 */}
         <div className="mx-auto grid w-full lg:mt-5 lg:max-w-[1049px] lg:grid-cols-2 lg:gap-5">
-          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7">
+          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7 lg:pb-0">
             <div className="flex h-full flex-col justify-between">
-              <div className="space-y-2">
-                <div className="flex items-end justify-between">
+              <div className="space-y-1 lg:space-y-2">
+                <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">PearAI Login</span>
-                  <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                  <span className="mb-1 text-[#b3b3b3]">
                     Powered by Supabase*
                   </span>
                 </div>
@@ -143,26 +144,27 @@ export default function Features() {
                   you with this with best practices and the latest tools.
                 </p>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="relative flex-col items-center justify-center">
                 <Image
                   src="/images/PearAILoginVector.svg"
                   alt="PearAI Creator"
-                  className="h-auto w-full"
+                  className="h-auto w-full lg:pb-7"
                   width={240}
                   height={240}
                 />
+                <div className="absolute bottom-0 left-0 right-0 z-50 h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:from-[#F4F4F4]"></div>
               </div>
             </div>
           </div>
 
           <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
 
-          <div className="mx-auto w-full max-w-3xl rounded-xl px-3 pb-0 lg:bg-[#F4F4F4] lg:p-7">
+          <div className="mx-auto w-full max-w-3xl rounded-xl pb-0 lg:bg-[#F4F4F4] lg:p-7 lg:pb-0">
             <div className="flex h-full flex-col justify-between">
-              <div className="space-y-2">
-                <div className="flex items-end justify-between">
+              <div className="space-y-0 px-3 lg:space-y-2 lg:px-0">
+                <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">PearAI Launch</span>
-                  <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                  <span className="mb-1 text-[#b3b3b3]">
                     Powered by Netlify*
                   </span>
                 </div>
@@ -171,7 +173,7 @@ export default function Features() {
                   view and use them.
                 </p>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="relative flex items-center justify-center">
                 <Image
                   src="/images/PearAILaunchVector.svg"
                   alt="PearAI Agent"
@@ -179,6 +181,7 @@ export default function Features() {
                   width={240}
                   height={240}
                 />
+                <div className="absolute bottom-0 left-0 right-0 z-50 block h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:hidden"></div>
               </div>
             </div>
           </div>

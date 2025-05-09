@@ -32,6 +32,8 @@ export default function Showcase() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [totalPages, setTotalPages] = useState(3);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -72,7 +74,19 @@ export default function Showcase() {
             </span>
           </div>
 
-          <div className="relative overflow-hidden pb-5 lg:pb-4">
+          <div
+            className="relative overflow-hidden pb-5 lg:pb-4"
+            onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientX)}
+            onTouchMove={(e) => setTouchEnd(e.targetTouches[0].clientX)}
+            onTouchEnd={() => {
+              if (touchStart - touchEnd > 50) {
+                navigate("next");
+              }
+              if (touchEnd - touchStart > 50) {
+                navigate("previous");
+              }
+            }}
+          >
             <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={currentPage}
@@ -93,7 +107,7 @@ export default function Showcase() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="flex h-full flex-col justify-between rounded-xl bg-[#F4F4F4] p-4 transition-colors lg:p-7"
+                      className="flex h-[400px] flex-col justify-between rounded-xl p-4 transition-colors lg:h-full lg:bg-[#F4F4F4] lg:p-7"
                     >
                       <p className="mb-2 text-base text-[#666666] lg:mb-4">
                         {testimonial.text}

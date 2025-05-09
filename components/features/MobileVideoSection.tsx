@@ -59,16 +59,18 @@ export default function MobileVideoSection() {
 
         {videoData.map((video, index) => (
           <div key={video.id}>
-            <div className="mx-auto max-w-3xl space-y-2 px-6 lg:max-w-[1049px] lg:p-6">
-              <h3 className="text-2xl font-medium">{video.title}</h3>
-              <p className="text-[#666666]">{video.description}</p>
-              <div className="h-[4px] rounded-full bg-[#c1c1c1]">
-                <motion.div
-                  className="dark:bg-white h-full rounded-full bg-black"
-                  initial={{ width: "0%" }}
-                  animate={{ width: `${progressMap[video.id] || 0}%` }}
-                  transition={{ duration: 0.3, ease: "easeOut" }}
-                />
+            <div className="mx-auto max-w-3xl px-6 lg:max-w-[1049px] lg:p-6">
+              <div className="pb-5">
+                <h3 className="pb-2 text-2xl font-medium">{video.title}</h3>
+                <p className="pb-4 text-[#666666]">{video.description}</p>
+                <div className="h-[4px] rounded-full bg-[#c1c1c1]">
+                  <motion.div
+                    className="dark:bg-white h-full rounded-full bg-black"
+                    initial={{ width: "0%" }}
+                    animate={{ width: `${progressMap[video.id] || 0}%` }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  />
+                </div>
               </div>
               <div className="relative aspect-[16/12] w-full overflow-hidden rounded-lg">
                 <motion.div
