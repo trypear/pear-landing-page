@@ -52,7 +52,7 @@ export default function MobileVideoSection() {
     <>
       <div className="space-y-8">
         <span className="mx-auto flex max-w-md px-6 text-center text-4xl font-medium">
-          You Can Just Build Software
+          You Can Build Software
         </span>
 
         <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>

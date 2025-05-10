@@ -136,7 +136,7 @@ export default function Features() {
                 <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">PearAI Login</span>
                   <span className="mb-1 text-[#b3b3b3]">
-                    Powered by Supabase*
+                    Powered by PearAI*
                   </span>
                 </div>
                 <p className="text-base text-[#666666]">
