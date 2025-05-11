@@ -189,7 +189,7 @@ const AboutComponent: React.FC = () => {
                         </span>
                       </div>
                       <p className="text-base text-[#666666]">
-                        Launches your web projects onto the internet so you can
+                        Launches your web projects onto to internet so you can
                         share with everyone.
                       </p>
                     </div>
