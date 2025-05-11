@@ -1,5 +1,224 @@
 export const posts = [
   {
+    title: "Introducing PearAI Creator (Beta)!",
+    author: "PearAI Team",
+    date: "2025-05-10",
+    excerpt:
+      "Turn your ideas into reality with PearAI V2! Create production-ready web applications with expert templates and best practices. From idea to deployment, PearAI Creator handles it all.",
+    thumbnail: "/images/blog/pearai_v1.8.png",
+    tags: ["creator", "beta", "launch", "webapp"],
+    url: "/blog/introducing-pearai-creator",
+    content: `<div
+  class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+>
+  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl mb-4">
+    You can now turn your ideas into creation within PearAI V2! PearAI focuses on starting you out the right way, with templates made with strong foundations and best practices.
+  </p>
+
+  <p class="text-base sm:text-lg mb-4">
+    We're starting with webapps, and here's how it works!
+  </p>
+
+  <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+    How PearAI Creator Works
+  </h2>
+
+  <ol class="ml-4 list-decimal space-y-8 text-base sm:ml-6 sm:text-lg">
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Share Your Vision
+      </h3>
+      <p class="mt-2 mb-4">
+        Type in your idea that you want to build. This can be anything, such as:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>An admin dashboard for your busy life</li>
+        <li>A new business idea you have</li>
+        <li>A fun game for you and your friends!</li>
+      </ul>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Start with Expert Templates
+      </h3>
+      <p class="mt-2 mb-4">
+        First, PearAI Creator will use PearAI Templates to start you off. Most other 0 to 1 tools merely make frontend toys, but PearAI starts you off with templates that experts use for production level apps! PearAI ensures that your projects are built to grow and scale.
+      </p>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Create a Beautiful Frontend
+      </h3>
+      <p class="mt-2 mb-4">
+        PearAI Creator will design and implement a beautiful, responsive frontend for your application, following modern design principles and best practices.
+      </p>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Implement Backend Functionality
+      </h3>
+      <p class="mt-2 mb-4">
+        After this, PearAI Creator will complete the backend functionality of your app. This uses:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>PearAI Database for data storage</li>
+        <li>PearAI Authentication for user management</li>
+        <li>Production-ready security practices</li>
+      </ul>
+      <p class="mt-4 text-sm italic">
+        Note: As these features are still in beta, you may need to set up some configuration. Check out our
+        <a href="/blog/how-to-setup-pearai-database" class="text-blue-600 hover:underline dark:text-blue-400">
+          database setup guide
+        </a>
+        for more details.
+      </p>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Connect Frontend and Backend
+      </h3>
+      <p class="mt-2 mb-4">
+        PearAI Creator seamlessly integrates your frontend and backend, ensuring smooth data flow and optimal performance.
+      </p>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Deploy Your App
+      </h3>
+      <p class="mt-2 mb-4">
+        Finally, PearAI Creator uses PearAI Deploy, powered by Netlify, to launch your app so you can share it with anyone!
+      </p>
+    </li>
+  </ol>
+
+  <h2 class="mb-4 mt-8 text-2xl font-bold text-primary-600 dark:text-primary-400 sm:mb-6 sm:mt-12 sm:text-3xl">
+    Try it Today!
+  </h2>
+
+  <p class="text-base sm:text-lg mb-6">
+    PearAI Creator is now available in beta. Experience the future of web development where your ideas transform into production-ready applications with just a few clicks.
+  </p>
+
+  <div class="my-6 rounded-r-lg border-l-4 border-blue-500 bg-blue-100 p-4 text-blue-800 dark:bg-blue-900 dark:text-blue-200 sm:my-8 sm:p-6">
+    <p class="mb-2 text-base font-bold sm:text-lg">Beta Note:</p>
+    <p class="text-sm sm:text-base">
+      As PearAI Creator is in beta, we're continuously improving and adding new features. Your feedback helps us make it even better!
+    </p>
+  </div>
+</div>`,
+  },
+  {
+    title: "How To Setup PearAI Database (Beta)",
+    author: "PearAI Team",
+    date: "2025-05-10",
+    excerpt:
+      "A step-by-step guide to setting up your database for PearAI projects using Neon, a popular database provider.",
+    thumbnail: "/images/blog/pearai_v1.8.png",
+    tags: ["database", "setup", "neon", "beta"],
+    url: "/blog/how-to-setup-pearai-database",
+    content: `<div
+  class="mx-auto max-w-4xl space-y-8 px-4 py-8 text-gray-800 dark:text-gray-200 sm:px-6 lg:px-8"
+>
+  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl mb-4">
+    Welcome! You are likely using PearAI Creator to make a project, and are connecting the backend. To store data, all you need is to add your database URL and PearAI Database will take care of the rest! Currently, the process is a bit manual due to the nature of the Beta - we are working on making this process more seamless in the near future.
+  </p>
+
+  <p class="text-base sm:text-lg mb-4">
+    PearAI recommends you use Neon for this, so here's how to get your database URL:
+  </p>
+
+  <ol class="ml-4 list-decimal space-y-8 text-base sm:ml-6 sm:text-lg">
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Create a Neon Account
+      </h3>
+      <p class="mt-2 mb-4">
+        Create an account with Neon, a popular database provider by visiting
+        <a href="https://console.neon.tech" class="font-medium text-blue-600 hover:underline dark:text-blue-400">
+          https://console.neon.tech
+        </a>.
+      </p>
+      <figure class="my-6 sm:my-8">
+        <img
+          src="/images/blog/neon-signup.png"
+          alt="Create Neon Account"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Create a New Project
+      </h3>
+      <p class="mt-2 mb-4">
+        Create a new project using the free tier option.
+      </p>
+      <figure class="my-6 sm:my-8">
+        <img
+          src="/images/blog/neon-create-project.png"
+          alt="Create New Project"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Get Your Connection String
+      </h3>
+      <p class="mt-2 mb-4">
+        Click "Connect" to view your database connection details and copy the connection string provided by Neon.
+      </p>
+      <figure class="my-6 sm:my-8">
+        <img
+          src="/images/blog/neon-connect.png"
+          alt="Copy Connection String"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        Configure Your Project
+      </h3>
+      <p class="mt-2 mb-4">
+        Paste the connection string as the "DATABASE_URL" variable in your .env file. If you don't have an .env file yet, create one and copy the contents of .env.example into it. Make sure to save the file.
+      </p>
+      <figure class="my-6 sm:my-8">
+        <img
+          src="/images/blog/pearai-env-config.png"
+          alt="Configure ENV File"
+          class="w-full rounded-xl shadow-lg"
+        />
+      </figure>
+    </li>
+
+    <li class="pl-2">
+      <h3 class="mb-2 text-xl font-bold text-primary-600 dark:text-primary-400 sm:mb-4 sm:text-2xl">
+        All Done!
+      </h3>
+      <p class="mt-2 mb-4">
+        PearAI Creator will now use this database for your project!
+      </p>
+    </li>
+  </ol>
+
+  <div class="my-6 rounded-r-lg border-l-4 border-blue-500 bg-blue-100 p-4 text-blue-800 dark:bg-blue-900 dark:text-blue-200 sm:my-8 sm:p-6">
+    <p class="mb-2 text-base font-bold sm:text-lg">Note:</p>
+    <p class="text-sm sm:text-base">
+      You may need to reset this database or create new ones if you intend to make new projects.
+    </p>
+  </div>
+</div>`,
+  },
+  {
     title: "How We Designed Our Servers at PearAI",
     author: "Nang",
     date: "2024-09-1",
