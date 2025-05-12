@@ -15,6 +15,11 @@ export const posts = [
     You can now turn your ideas into creation within PearAI V2! PearAI focuses on starting you out the right way, with templates made with strong foundations and best practices.
   </p>
 
+  <p class="text-base font-light leading-relaxed sm:text-lg md:text-xl mb-4">
+      This is currently available in Beta, which you can download at <a href="https://trypear.ai/beta">https://trypear.ai/beta</a>
+  </p>
+
+
   <p class="text-base sm:text-lg mb-4">
     We're starting with webapps, and here's how it works!
   </p>
