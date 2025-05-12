@@ -12,6 +12,47 @@ import Footer from "@/components/footer";
 import { useEffect, useState } from "react";
 import CTA from "./cta";
 
+const faqData: FAQItem[] = [
+  {
+    id: "name",
+    question: "Why is it called PearAI?!",
+    answer: <p>Pair programming... Pear Programming... PearAI! 🍐💡</p>,
+  },
+  {
+    id: "privacy",
+    question: "Does PearAI store my code?!",
+    answer: (
+      <p>
+        No. All codebase indexing occurs and remains strictly local on your
+        machine (
+        <Link
+          target="_blank"
+          className="underline underline-offset-4"
+          href="https://github.com/trypear/pearai-submodule/tree/main/core/indexing"
+        >
+          source
+        </Link>
+        ). Our servers never store any of your code. Additionally, we maintain a
+        zero-data retention policy with our primary LLM cloud provider,
+        Anthropic, ensuring they also neither store nor train on your code.
+      </p>
+    ),
+  },
+  {
+    id: "contribute",
+    question: "How can I contribute to PearAI?!",
+    answer: (
+      <p>
+        See the contributor&apos;s section:{" "}
+        <Link className="underline" target="_blank" href="/docs/contributors">
+          Contributing 101
+        </Link>
+        .
+      </p>
+    ),
+  },
+];
+
 const FAQComponent: React.FC = () => {
   const [openItem, setOpenItem] = useState<string | undefined>(undefined);
 
@@ -110,44 +151,3 @@ const FAQComponent: React.FC = () => {
 };
 
 export default FAQComponent;
-
-const faqData: FAQItem[] = [
-  {
-    id: "name",
-    question: "Why is it called PearAI?!",
-    answer: <p>Pair programming... Pear Programming... PearAI! 🍐💡</p>,
-  },
-  {
-    id: "privacy",
-    question: "Does PearAI store my code?!",
-    answer: (
-      <p>
-        No. All codebase indexing occurs and remains strictly local on your
-        machine (
-        <Link
-          target="_blank"
-          className="underline underline-offset-4"
-          href="https://github.com/trypear/pearai-submodule/tree/main/core/indexing"
-        >
-          source
-        </Link>
-        ). Our servers never store any of your code. Additionally, we maintain a
-        zero-data retention policy with our primary LLM cloud provider,
-        Anthropic, ensuring they also neither store nor train on your code.
-      </p>
-    ),
-  },
-  {
-    id: "contribute",
-    question: "How can I contribute to PearAI?!",
-    answer: (
-      <p>
-        See the contributor&apos;s section:{" "}
-        <Link className="underline" target="_blank" href="/docs/contributors">
-          Contributing 101
-        </Link>
-        .
-      </p>
-    ),
-  },
-];
