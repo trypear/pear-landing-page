@@ -156,7 +156,7 @@ const AboutComponent: React.FC = () => {
                           PearAI Login
                         </span>
                         <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
-                          Powered by Supabase
+                          Powered by PearAI
                         </span>
                       </div>
                       <p className="text-base text-[#666666]">
@@ -189,8 +189,8 @@ const AboutComponent: React.FC = () => {
                         </span>
                       </div>
                       <p className="text-base text-[#666666]">
-                        Launches your web projects onto the internet so anyone
-                        can view and use them.
+                        Launches your web projects onto to internet so you can
+                        share with everyone.
                       </p>
                     </div>
                     <div className="flex items-center justify-center">

@@ -34,7 +34,7 @@ export default function Features() {
               <div className="flex items-center gap-2 rounded-xl border-2 border-[#A1DB4B] bg-[#B3F353] px-4 py-5 opacity-80">
                 <span className="font-medium">PearAI Model</span>
                 <span className="font-mono font-medium text-[#666666]">
-                  82.10
+                  94.10
                 </span>
               </div>
 
@@ -135,9 +135,7 @@ export default function Features() {
               <div className="space-y-1 lg:space-y-2">
                 <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">PearAI Login</span>
-                  <span className="mb-1 text-[#b3b3b3]">
-                    Powered by Supabase*
-                  </span>
+                  <span className="mb-1 text-[#b3b3b3]">Powered by PearAI</span>
                 </div>
                 <p className="text-base text-[#666666]">
                   Almost all projects require users to login. Let PearAI help
@@ -169,8 +167,8 @@ export default function Features() {
                   </span>
                 </div>
                 <p className="text-base text-[#666666]">
-                  Launches your web projects onto the internet so anyone can
-                  view and use them.
+                  Launches your web projects to the internet so you can share
+                  them with everyone.
                 </p>
               </div>
               <div className="relative flex items-center justify-center">

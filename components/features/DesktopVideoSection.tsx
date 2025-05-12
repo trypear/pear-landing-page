@@ -49,7 +49,7 @@ export default function DesktopVideoSection() {
     <div className="mx-auto flex max-w-3xl flex-col items-center px-6 lg:max-w-[1097px]">
       <div className="pb-10 text-center">
         <span className="text-[44px] font-semibold">
-          You Can Just Build Software
+          You Can Build Software
         </span>
       </div>
       <div className="flex flex-row items-stretch gap-5">

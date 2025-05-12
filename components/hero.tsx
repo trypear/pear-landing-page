@@ -23,15 +23,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mx-auto max-w-4xl text-base font-normal text-[#666666] md:flex md:flex-col md:text-xl"
           >
-            <span>
-              Bring your ideas to life with the best AI code editor, made
-              specifically for projects.{" "}
-            </span>
-            <span>
-              Built to supercharge your project development all the way from
-              inception to running at scale.{" "}
-            </span>
-            <span>Made for makers of any technical level.</span>
+            <span>Bring your ideas to life with the best AI code editor. </span>
           </motion.p>
         </div>
 
