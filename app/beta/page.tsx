@@ -16,7 +16,7 @@ export default async function Beta() {
   } = await supabase.auth.getUser();
   return (
     <>
-      <BetaPage user={user} />
+      <BetaPage />
     </>
   );
 }
