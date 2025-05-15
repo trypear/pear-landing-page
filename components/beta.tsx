@@ -40,7 +40,7 @@ const FAQComponent: React.FC = () => {
                 MacOS (Silicon)
               </Button>
               <div className="text-sm text-[#666666]">
-                v1.8.7-beta (April 9th, 2025)
+                v2.0.0-beta (May 14th, 2025)
               </div>
             </div>
 
@@ -55,7 +55,7 @@ const FAQComponent: React.FC = () => {
                 Windows
               </Button>
               <div className="text-sm text-[#666666]">
-                v1.8.7-beta (April 9th, 2025)
+                v2.0.0-beta (May 14th, 2025)
               </div>
             </div>
           </div>
