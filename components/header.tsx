@@ -124,6 +124,16 @@ export default async function Header() {
                     <ListItem href="/beta" title="Beta">
                       Download the latest beta version
                     </ListItem>
+                  </ul>
+                </DropdownNavItem>
+                <DropdownNavItem trigger="Programs">
+                  <ul className="grid w-[400px] gap-3 bg-background p-4 md:w-[500px] md:grid-cols-2">
+                    <ListItem
+                      href="/programs/oss-contributor-benefit"
+                      title="OSS Contributor Program"
+                    >
+                      Contribute to PearAI and get rewards!
+                    </ListItem>
                     <ListItem
                       href="/programs/beta-tester"
                       title="Beta Tester Program"
@@ -131,16 +141,9 @@ export default async function Header() {
                       Join PearAI Beta Tester Program for free PearAI
                       subscription and more!
                     </ListItem>
-                    <ListItem
-                      href="/programs/oss-contributor-benefit"
-                      title="OSS Contributor Program"
-                    >
-                      Contribute to PearAI and get rewards!
-                    </ListItem>
                   </ul>
                 </DropdownNavItem>
                 <NavItem href="/pricing">Pricing</NavItem>
-                <NavItem href="/docs">Documentation</NavItem>
                 <NavItem
                   href="https://github.com/trypear/pearai-master"
                   target="_blank"
