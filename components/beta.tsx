@@ -4,8 +4,13 @@ import Link from "next/link";
 import Footer from "@/components/footer";
 import CTA from "./cta";
 import { Button } from "./ui/button";
+import { User } from "@supabase/supabase-js";
 
-const FAQComponent: React.FC = () => {
+interface BetaProps {
+  user: User | null;
+}
+
+const Beta: React.FC<BetaProps> = ({ user }) => {
   return (
     <>
       <div className="w-full px-6">
@@ -67,4 +72,4 @@ const FAQComponent: React.FC = () => {
   );
 };
 
-export default FAQComponent;
+export default Beta;

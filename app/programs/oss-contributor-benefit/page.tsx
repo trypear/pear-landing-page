@@ -133,7 +133,7 @@ const faqData: FAQItem[] = [
   },
 ];
 
-const FAQComponent: React.FC = () => {
+const OSSContribution: React.FC = () => {
   const [openItem, setOpenItem] = useState<string | undefined>(undefined);
 
   useEffect(() => {
@@ -222,4 +222,4 @@ const FAQComponent: React.FC = () => {
   );
 };
 
-export default FAQComponent;
+export default OSSContribution;
