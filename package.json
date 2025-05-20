@@ -13,7 +13,6 @@
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^1.11.2",
     "@headlessui/react": "^1.7.17",
-    "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^3.6.0",
     "@octokit/rest": "^21.1.1",
     "@radix-ui/react-accordion": "^1.2.0",

@@ -126,7 +126,8 @@ export const PRICING_TIERS: {
     {
       title: "Intern",
       price: "0",
-      description: "Download with a free trail",
+      description:
+        "You can download PearAI directly, and use our free trial, or your own API key 🤓",
       isFree: true,
       index: 0,
       features: ["free", "Community Discord server"],
@@ -148,21 +149,48 @@ export const PRICING_TIERS: {
       priceId: STRIPE_PRICE_IDS.MONTHLY,
       index: 1,
     },
+    {
+      title: "10x Maker",
+      price: "12",
+      prevPrice: "15",
+      description:
+        "Pay one lump sum yearly, and you'll be treated like our VIP! 🤩",
+      features: [
+        "Everything from monthly but lower price",
+        "Priority for new feature requests",
+        "Early access to new features",
+      ],
+      buttonText: "Get Started",
+      priceId: STRIPE_PRICE_IDS.ANNUAL,
+      index: 2,
+    },
   ],
   enterprise: [
     {
-      title: "Enterprise",
+      title: "Monthly",
       price: "32",
       prevPrice: "35",
-      description: "Purchase bulk at a discount",
+      description:
+        "Get the best deal for your business and increase the productivity of your team.",
       features: [
         "custom-enterprise",
         "Full privacy: zero data retention policy with Anthropic",
         "Centralized Billing and Dashboard",
         "Direct customer support by the founders and contributors",
       ],
-      buttonText: "Contact us",
+      buttonText: "Get Started",
+      priceId: STRIPE_PRICE_IDS.MONTHLY,
       index: 0,
+    },
+    {
+      title: "Yearly",
+      price: "27",
+      prevPrice: "30",
+      description: "Pay one lump sum yearly for our highest priority tier.",
+      features: ["Everything from monthly", "Priority Customer Support"],
+      buttonText: "Get Started",
+      priceId: STRIPE_PRICE_IDS.ANNUAL,
+      index: 1,
     },
   ],
 };
