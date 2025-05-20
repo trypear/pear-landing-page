@@ -74,7 +74,10 @@ export default function Features() {
             <div className="flex h-full flex-col justify-between">
               <div className="space-y-1 lg:space-y-2 lg:px-7">
                 <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
-                  <span className="text-2xl font-medium">PearAI Creator</span>
+                  <span className="text-2xl font-medium">
+                    PearAI Creator <br />{" "}
+                    <span className="text-lg font-normal">(Coming Soon)</span>
+                  </span>
                   <span className="mb-1 text-[#b3b3b3]">
                     Powered by Roo Code / Cline*
                   </span>

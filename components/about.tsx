@@ -28,7 +28,7 @@ const AboutComponent: React.FC = () => {
 
           <div className="flex flex-col gap-10">
             <span className="text-[44px] font-semibold text-black">
-              Current features
+              Features - stay tuned for PearAI V2!
             </span>
 
             <div className="items-center justify-center lg:flex-col">
@@ -40,6 +40,8 @@ const AboutComponent: React.FC = () => {
                       <div className="flex items-end justify-between">
                         <span className="text-2xl font-medium">
                           PearAI Creator
+                          <br />
+                          (Coming Soon)
                         </span>
                         <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
                           Powered by Roo Code / Cline
@@ -154,6 +156,8 @@ const AboutComponent: React.FC = () => {
                       <div className="flex items-end justify-between">
                         <span className="text-2xl font-medium">
                           PearAI Login
+                          <br />
+                          (Coming Soon)
                         </span>
                         <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
                           Powered by PearAI
@@ -181,8 +185,10 @@ const AboutComponent: React.FC = () => {
                   <div className="flex h-full flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-end justify-between">
-                        <span className="text-2xl font-medium">
+                       <span className="text-2xl font-medium">
                           PearAI Launch
+                          <br />
+                          (Coming Soon)
                         </span>
                         <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
                           Powered by Netlify
