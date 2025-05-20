@@ -77,11 +77,16 @@ export default function Features() {
                   <span className="text-2xl font-medium">
                     PearAI Creator <br />{" "}
                   </span>
+                  <span className="flex text-base font-normal lg:hidden">
+                    (Coming Soon)
+                  </span>
                   <span className="mb-1 text-[#b3b3b3]">
                     Powered by Roo Code / Cline*
                   </span>
                 </div>
-                <span className="text-base font-normal">(Coming Soon)</span>
+                <span className="hidden text-base font-normal lg:flex">
+                  (Coming Soon)
+                </span>
                 <p className="text-base text-[#666666]">
                   Create new projects from scratch! PearAI ensures your project
                   adheres to the latest technologies and best practices.
@@ -138,9 +143,14 @@ export default function Features() {
               <div className="space-y-1 lg:space-y-2">
                 <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">PearAI Login</span>
+                  <span className="flex text-base font-normal lg:hidden">
+                    (Coming Soon)
+                  </span>
                   <span className="mb-1 text-[#b3b3b3]">Powered by PearAI</span>
                 </div>
-                <span className="text-base font-normal">(Coming Soon)</span>
+                <span className="hidden text-base font-normal lg:flex">
+                  (Coming Soon)
+                </span>
                 <p className="text-base text-[#666666]">
                   Almost all projects require users to login. Let PearAI help
                   you with this with best practices and the latest tools.
@@ -166,11 +176,16 @@ export default function Features() {
               <div className="space-y-0 px-3 lg:space-y-2 lg:px-0">
                 <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">PearAI Launch</span>
+                  <span className="flex text-base font-normal lg:hidden">
+                    (Coming Soon)
+                  </span>
                   <span className="mb-1 text-[#b3b3b3]">
                     Powered by Netlify*
                   </span>
                 </div>
-                <span className="text-base font-normal">(Coming Soon)</span>
+                <span className="hidden text-base font-normal lg:flex">
+                  (Coming Soon)
+                </span>
                 <p className="text-base text-[#666666]">
                   Launches your web projects to the internet so you can share
                   them with everyone.
