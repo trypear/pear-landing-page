@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Features() {
   return (
-    <>
+    <div className="bg-white-50 lg:bg-[#FBFBFB]">
       <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
 
       <div className="flex items-center justify-center lg:pb-8">
@@ -13,7 +13,7 @@ export default function Features() {
 
       <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
 
-      <div className="items-center justify-center lg:flex-col lg:px-6 lg:pb-14">
+      <div className="items-center justify-center lg:flex-col lg:bg-[#FBFBFB] lg:px-6 lg:pb-14">
         <div className="mx-auto w-full max-w-3xl rounded-xl px-3 lg:max-w-[1049px] lg:bg-[#F4F4F4] lg:p-7">
           <div className="grid items-start lg:grid-cols-2">
             <div className="space-y-2">
@@ -95,7 +95,7 @@ export default function Features() {
                   width={240}
                   height={240}
                 />
-                <div className="absolute bottom-0 left-0 right-0 z-50 block h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:hidden"></div>
+                <div className="absolute bottom-0 left-0 right-0 z-20 block h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:hidden"></div>
               </div>
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function Features() {
                   width={240}
                   height={240}
                 />
-                <div className="absolute bottom-0 left-0 right-0 z-50 h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:from-[#F4F4F4]"></div>
+                <div className="absolute bottom-0 left-0 right-0 z-20 h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:from-[#F4F4F4]"></div>
               </div>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function Features() {
                   width={240}
                   height={240}
                 />
-                <div className="absolute bottom-0 left-0 right-0 z-50 block h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:hidden"></div>
+                <div className="absolute bottom-0 left-0 right-0 z-20 block h-28 bg-gradient-to-t from-[#FFFFFF] to-transparent lg:hidden"></div>
               </div>
             </div>
           </div>
@@ -190,6 +190,6 @@ export default function Features() {
       </div>
 
       <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>
-    </>
+    </div>
   );
 }
