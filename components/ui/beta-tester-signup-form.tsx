@@ -93,13 +93,13 @@ export function BetaTesterSignupForm() {
   }
 
   return (
-    <div className="my-4 w-full">
+    <div className="my-4">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="bg-white space-y-6 rounded-xl border border-gray-200 p-6 shadow"
         >
-          <div className="mb-2 text-center text-2xl font-semibold text-black">
+          <div className="mb-2 text-center text-lg font-semibold text-primary-700">
             Apply to become a Beta Tester
           </div>
           <FormField

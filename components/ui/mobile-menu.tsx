@@ -155,6 +155,12 @@ export default function MobileMenu({
                         About
                       </MobileNavItem>
                       <MobileNavItem
+                        href="/docs"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Documentation
+                      </MobileNavItem>
+                      <MobileNavItem
                         href="https://github.com/trypear/pearai-master"
                         onClick={() => setIsOpen(false)}
                       >
@@ -166,6 +172,7 @@ export default function MobileMenu({
                       >
                         Blog
                       </MobileNavItem>
+
                       <MobileNavItem
                         href="/faq"
                         onClick={() => setIsOpen(false)}
@@ -177,25 +184,6 @@ export default function MobileMenu({
                         onClick={() => setIsOpen(false)}
                       >
                         Changelog
-                      </MobileNavItem>
-                    </ul>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="programs">
-                  <AccordionTrigger>Programs</AccordionTrigger>
-                  <AccordionContent>
-                    <ul className="ml-4 space-y-1">
-                      <MobileNavItem
-                        href="/programs/oss-contributor-benefit"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        OSS Contributor Program
-                      </MobileNavItem>
-                      <MobileNavItem
-                        href="/programs/beta-tester"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Beta Tester Program
                       </MobileNavItem>
                     </ul>
                   </AccordionContent>

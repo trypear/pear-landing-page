@@ -1,5 +1,4 @@
-import Features from "@/components/Features";
-import VideoSection from "@/components/features/VideoSection";
+import Features from "@/components/features/Features";
 import Hero from "@/components/hero";
 import OpenSource from "@/components/opensource";
 import Showcase from "@/components/showcase";
@@ -14,7 +13,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <VideoSection />
       <Features />
       {/* <OpenSource /> */}
       <Showcase />

@@ -22,14 +22,12 @@ export default function DownloadButton({ user }: { user: User | null }) {
   return (
     <>
       <Button
-        className={
-          user
-            ? "h-9 rounded-xl bg-black px-4 text-base font-normal hover:bg-black/80"
-            : "h-9 rounded-xl bg-black px-4 text-base font-normal hover:bg-black/80"
-        }
+        variant={user ? "outline" : "default"}
+        size={`${user ? "icon" : "default"}`}
+        className={user ? "h-9 px-3" : "h-8 rounded-lg px-3"}
         onClick={handleClick}
       >
-        {user ? <ArrowDownToLine /> : "Download for free"}
+        {user ? <ArrowDownToLine /> : "Download"}
       </Button>
 
       <DownloadFeedbackForm
