@@ -207,7 +207,7 @@ export default function MobileMenu({
             </ul>
           </nav>
         </div>
-        <div className="width-full space-y-4 pb-6">
+        {/* <div className="width-full space-y-4 pb-6">
           <div className="width-full">
             {mounted ? (
               <Button
@@ -229,7 +229,7 @@ export default function MobileMenu({
               </Button>
             ) : null}
           </div>
-        </div>
+        </div> */}
       </SheetContent>
     </Sheet>
   );
