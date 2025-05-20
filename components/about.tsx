@@ -1,120 +1,227 @@
 "use client";
 
 import React from "react";
-import { Badge } from "./ui/badge";
 import Footer from "./footer";
-import Features from "./features/Features";
+import CTA from "./cta";
+import Image from "next/image";
 
 const AboutComponent: React.FC = () => {
   return (
-    <section className={"mt-36"}>
-      <div
-        className={
-          "m-4 mt-0 flex flex-col items-center text-center lg:m-0 lg:justify-center"
-        }
-      >
-        <h1 className="text-4xl font-bold">
-          PearAI is made for{" "}
-          <span className="relative">
-            <span className="relative z-10 text-primary-700">
-              your next project.
+    <>
+      <div className="w-full px-6">
+        <section className="mx-auto mb-[68px] mt-[122px] flex max-w-[1049px] flex-col gap-[68px]">
+          <div className="flex flex-col gap-5">
+            <div className="font-mono text-sm text-black">
+              PEARAI IS MADE FOR YOUR NEXT PROJECT.
+            </div>
+            <h2 className="text-[44px] font-semibold text-black">About Us</h2>
+            <p className="text-xl text-[#666666]">
+              Any idea you have, PearAI is here to help you build it. PearAI is
+              an AI code editor with a suite of the best AI tools to allow you
+              to make what you want. Not just for prototyping, but for a long
+              lifespan of added features and growth.
+            </p>
+            <span className="text-xl text-[#666666]">
+              Just remember to make what excites!
             </span>
-            <span
-              className="absolute bottom-0 left-0 w-full"
-              style={{
-                height: "1.4375rem",
-                background: "rgba(20, 189, 149, 0.20)",
-              }}
-            ></span>
-          </span>
-        </h1>
-        <p className="mt-4 max-w-2xl text-center text-gray-500">
-          Any idea you have, PearAI is here to help you build it. PearAI is a
-          code editor with a suite of the best AI tools to make it as easy as
-          possible for you to make what you want. Not just for prototyping, but
-          for a long lifespan of added features and growth.
-        </p>
-        <p className="mt-4 max-w-2xl text-center text-gray-500">
-          Just remember to make what excites!
-        </p>
+          </div>
+
+          <div className="flex flex-col gap-10">
+            <span className="text-[44px] font-semibold text-black">
+              Features - stay tuned for PearAI V2!
+            </span>
+
+            <div className="items-center justify-center lg:flex-col">
+              {/* //Section 1 */}
+              <div className="mx-auto grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
+                <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+                  <div className="flex h-full flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-end justify-between">
+                        <span className="text-2xl font-medium">
+                          PearAI Creator
+                          <br />
+                          (Coming Soon)
+                        </span>
+                        <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                          Powered by Roo Code / Cline
+                        </span>
+                      </div>
+                      <p className="text-base text-[#666666]">
+                        Create new projects from scratch! PearAI ensures your
+                        project adheres to the latest technologies and best
+                        practices.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Image
+                        src="/images/PearAICreatorVector.svg"
+                        alt="PearAI Creator"
+                        className="h-auto w-full"
+                        width={240}
+                        height={240}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+                  <div className="flex h-full flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-end justify-between">
+                        <span className="text-2xl font-medium">
+                          PearAI Agent
+                        </span>
+                        <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                          Powered by Roo Code / Cline
+                        </span>
+                      </div>
+                      <p className="text-base text-[#666666]">
+                        Coding agent that can automatically code features and
+                        fix bugs for you.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Image
+                        src="/images/PearAIAgentVector.svg"
+                        alt="PearAI Agent"
+                        className="h-auto w-full"
+                        width={240}
+                        height={240}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* //Section 2 */}
+              <div className="mx-auto mt-5 grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
+                <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+                  <div className="flex h-full flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-end justify-between">
+                        <span className="text-2xl font-medium">
+                          PearAI Router
+                        </span>
+                      </div>
+                      <p className="text-base text-[#666666]">
+                        Automatically use the best AI on the market.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Image
+                        src="/images/PearAIRouterVector.svg"
+                        alt="PearAI Creator"
+                        className="h-auto w-full"
+                        width={240}
+                        height={240}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+                  <div className="flex h-full flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-end justify-between">
+                        <span className="text-2xl font-medium">
+                          PearAI Chat
+                        </span>
+                        <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                          Powered by Continue
+                        </span>
+                      </div>
+                      <p className="text-base text-[#666666]">
+                        Make edits in your codebase.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Image
+                        src="/images/PearAIChatVector.svg"
+                        alt="PearAI Agent"
+                        className="h-auto w-full"
+                        width={240}
+                        height={240}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* //Section 3 */}
+              <div className="mx-auto mt-5 grid w-full max-w-3xl gap-5 lg:max-w-[1049px] lg:grid-cols-2">
+                <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+                  <div className="flex h-full flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-end justify-between">
+                        <span className="text-2xl font-medium">
+                          PearAI Login
+                          <br />
+                          (Coming Soon)
+                        </span>
+                        <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                          Powered by PearAI
+                        </span>
+                      </div>
+                      <p className="text-base text-[#666666]">
+                        Almost all projects require users to login. Let PearAI
+                        help you with this with best practices and the latest
+                        tools.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Image
+                        src="/images/PearAILoginVector.svg"
+                        alt="PearAI Creator"
+                        className="h-auto w-full"
+                        width={240}
+                        height={240}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mx-auto w-full rounded-xl bg-[#F4F4F4] p-7 pb-0">
+                  <div className="flex h-full flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-end justify-between">
+                        <span className="text-2xl font-medium">
+                          PearAI Launch
+                          <br />
+                          (Coming Soon)
+                        </span>
+                        <span className="mb-1 text-sm font-normal text-[#b3b3b3]">
+                          Powered by Netlify
+                        </span>
+                      </div>
+                      <p className="text-base text-[#666666]">
+                        Launches your web projects onto to internet so you can
+                        share with everyone.
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <Image
+                        src="/images/PearAILaunchVector.svg"
+                        alt="PearAI Agent"
+                        className="h-auto w-full"
+                        width={240}
+                        height={240}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 flex justify-center text-2xl font-medium text-[#666666]">
+                ...and many more!
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-      <div className="mt-10 flex flex-col items-center justify-center">
-        <p className="text-xs text-gray-700">Current features include</p>
-
-        <div className="m-4 mt-2 flex max-w-4xl flex-wrap items-center justify-center gap-4">
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            PearAI Inventory: Best AI tools integrated into one UX
-          </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            PearAI Chat: Talk to your code
-          </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            PearAI Coding Agent: Autonomous Feature Generation
-          </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            PearAI Search: Up-to-date AI search
-          </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            Inline AI prompting and diff changes
-          </Badge>
-          <Badge className="border-primary-900/30 bg-primary-300/10 font-medium text-primary-800 dark:text-primary-700">
-            AI debugging, including errors from terminal
-          </Badge>
-        </div>
-      </div>
-
-      <Features />
-
-      <div className="mt-10 flex flex-col items-center justify-center p-4 pb-0">
-        <h2 className="text-4xl font-bold">
-          <span className="relative">
-            <span className="relative z-10">Community</span>
-            <span
-              className="absolute bottom-0 left-0 w-full"
-              style={{
-                height: "1.4375rem",
-                background: "rgba(20, 189, 149, 0.20)",
-              }}
-            ></span>
-          </span>
-        </h2>
-        <div className="max-w-2xl text-gray-500">
-          <p className="mt-6 text-center">
-            PearAI is{" "}
-            <a href="https://github.com/trypear/pearai-master">open source</a>{" "}
-            and backed by a wonderful community. Join our{" "}
-            <a href="https://discord.gg/7QMraJUsQt">Discord</a> with +2000
-            developers and friends all trying to create the best AI code editor
-            in the world together. Feel free to ask questions about your own
-            projects, or ask for help from the community!
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-10 flex flex-col items-center justify-center p-4 pb-0">
-        <h2 className="text-4xl font-bold">
-          <span className="relative">
-            <span className="relative z-10">The Future</span>
-            <span
-              className="absolute bottom-0 left-0 w-full"
-              style={{
-                height: "1.4375rem",
-                background: "rgba(20, 189, 149, 0.20)",
-              }}
-            ></span>
-          </span>
-        </h2>
-        <p className="mt-4 max-w-2xl text-center text-gray-500">
-          PearAI hopes to empower everyone to build software. The world is
-          shifting from mass-market software to personalized solutions. We see a
-          future where anyone can bring their ideas to life in a world driven by
-          Personal Software and want to lead this movement. Try PearAI out today
-          and see what you can make!
-        </p>
-      </div>
-
+      <CTA />
       <Footer />
-    </section>
+    </>
   );
 };
 

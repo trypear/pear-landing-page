@@ -3,14 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Button } from "./ui/button";
-import Link from "next/link";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
+import CTA from "./cta";
 
 const testimonials = [
   {
@@ -39,6 +32,8 @@ export default function Showcase() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [totalPages, setTotalPages] = useState(3);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -68,13 +63,30 @@ export default function Showcase() {
   return (
     <>
       {/* Testimonials */}
-      <div className="flex items-center justify-center px-6 pb-32 pt-6">
-        <div className="z-10 max-w-3xl rounded-xl border-2 border-gray-200 bg-white-50 p-5 dark:border-gray-50 dark:bg-black lg:max-w-[1049px]">
-          <h1 className="mb-5 text-2xl font-semibold dark:text-gray-900 md:text-[28px]">
-            Makers love PearAI... almost as much as PearAI loves Makers!
-          </h1>
+      <div className="flex items-center justify-center px-3 pb-[30px] lg:px-6 lg:pb-14">
+        <div className="z-10 max-w-3xl lg:max-w-[1049px]">
+          <div className="flex flex-col items-center justify-center gap-4 pb-5 lg:pb-8">
+            <span className="text-4xl font-semibold lg:text-[44px]">
+              Makers Love PearAI.
+            </span>
+            <span className="hidden text-xl text-[#666666] lg:block">
+              PearAI is made for makers of any technical level!
+            </span>
+          </div>
 
-          <div className="relative overflow-hidden pb-5">
+          <div
+            className="relative overflow-hidden pb-5 lg:pb-4"
+            onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientX)}
+            onTouchMove={(e) => setTouchEnd(e.targetTouches[0].clientX)}
+            onTouchEnd={() => {
+              if (touchStart - touchEnd > 50) {
+                navigate("next");
+              }
+              if (touchEnd - touchStart > 50) {
+                navigate("previous");
+              }
+            }}
+          >
             <AnimatePresence initial={false} mode="wait">
               <motion.div
                 key={currentPage}
@@ -95,16 +107,16 @@ export default function Showcase() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
-                      className="flex h-full flex-col justify-between rounded-lg border border-gray-200 p-5 transition-colors dark:border-gray-50"
+                      className="flex h-[400px] flex-col justify-between rounded-xl p-4 transition-colors lg:h-full lg:bg-[#F4F4F4] lg:p-7"
                     >
-                      <p className="mb-4 text-sm font-[450] text-black/60 dark:text-gray-500 sm:text-base">
+                      <p className="mb-2 text-base text-[#666666] lg:mb-4">
                         {testimonial.text}
                       </p>
                       <div className="mt-auto">
-                        <p className="text-sm font-semibold sm:text-base">
+                        <p className="text-base font-semibold">
                           {testimonial.author}
                         </p>
-                        <p className="text-xs text-gray-500 sm:text-sm">
+                        <p className="text-base text-[#666666]">
                           {testimonial.role}
                         </p>
                       </div>
@@ -114,9 +126,9 @@ export default function Showcase() {
             </AnimatePresence>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center gap-2">
             <ChevronRight
-              className="h-4 w-4 rotate-180 cursor-pointer stroke-[2.5] text-foreground opacity-100"
+              className="h-4 w-4 rotate-180 cursor-pointer stroke-[2.5] text-[#808080]"
               onClick={() => navigate("previous")}
             />
 
@@ -125,70 +137,21 @@ export default function Showcase() {
                 <div
                   key={i}
                   className={`h-2 w-2 rounded-full ${
-                    i === currentPage
-                      ? "bg-black dark:bg-gray-900"
-                      : "bg-black/30 dark:bg-gray-200"
+                    i === currentPage ? "bg-[#808080]" : "bg-[#e6e6e6]"
                   }`}
                 />
               ))}
             </div>
 
             <ChevronRight
-              className="h-4 w-4 cursor-pointer stroke-[2.5] text-foreground opacity-100"
+              className="h-4 w-4 cursor-pointer stroke-[2.5] text-[#808080]"
               onClick={() => navigate("next")}
             />
           </div>
         </div>
       </div>
 
-      {/* CTA */}
-      <div className="showcase-gradient-light relative mx-auto flex min-h-[80vh] w-full max-w-full -translate-y-24 items-center justify-center sm:min-h-[120vh]">
-        <div className="mt-12 flex max-w-3xl flex-col items-center px-6 text-center">
-          <p className="max-w-xl text-4xl font-semibold text-black sm:text-6xl">
-            Make Your Next Project Today.
-          </p>
-
-          <p className="mt-4 max-w-md text-xl font-semibold text-black sm:text-3xl">
-            Try PearAI for free.
-            {/* Built on top of{" "}
-            <TooltipProvider>
-              <Tooltip delayDuration={50}>
-                <TooltipTrigger className="underline decoration-dotted">
-                  VSCode
-                </TooltipTrigger>
-                <TooltipContent side="bottom" className="max-w-sm">
-                  <p className="max-w-xs text-sm font-normal">
-                    PearAI is a fork of VSCode, allowing you to retain
-                    familiarity of functionalities. We provide a one-click
-                    transition to port all your VSCode settings automatically.
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>{" "}
-            for a seamless transition. */}
-          </p>
-          <Button className="mt-10 bg-black px-20 py-4 text-sm hover:bg-black dark:hover:bg-black sm:text-base">
-            <Link href="/pricing">Download</Link>
-          </Button>
-          <a
-            href="https://trypear.ai/docs/contributors"
-            className="mt-2 text-xs font-medium text-black underline decoration-dashed underline-offset-1 hover:decoration-black/20 dark:text-black"
-          >
-            Interested in contributing ?
-          </a>
-        </div>
-      </div>
-
-      <p className="mt-10 px-4 text-center text-sm text-gray-500">
-        * For more information about how integrations are built into PearAI, see{" "}
-        <Link
-          href="/disclaimer"
-          className="text-primary-700 underline hover:text-primary-800"
-        >
-          here
-        </Link>
-        .
-      </p>
+      <CTA />
     </>
   );
 }
