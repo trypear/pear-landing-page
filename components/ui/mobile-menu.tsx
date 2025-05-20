@@ -155,12 +155,6 @@ export default function MobileMenu({
                         About
                       </MobileNavItem>
                       <MobileNavItem
-                        href="/docs"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Documentation
-                      </MobileNavItem>
-                      <MobileNavItem
                         href="https://github.com/trypear/pearai-master"
                         onClick={() => setIsOpen(false)}
                       >
@@ -172,7 +166,6 @@ export default function MobileMenu({
                       >
                         Blog
                       </MobileNavItem>
-
                       <MobileNavItem
                         href="/faq"
                         onClick={() => setIsOpen(false)}
@@ -188,6 +181,25 @@ export default function MobileMenu({
                     </ul>
                   </AccordionContent>
                 </AccordionItem>
+                <AccordionItem value="programs">
+                  <AccordionTrigger>Programs</AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="ml-4 space-y-1">
+                      <MobileNavItem
+                        href="/programs/oss-contributor-benefit"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        OSS Contributor Program
+                      </MobileNavItem>
+                      <MobileNavItem
+                        href="/programs/beta-tester"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Beta Tester Program
+                      </MobileNavItem>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
               </Accordion>
               <MobileNavItem href="/pricing" onClick={() => setIsOpen(false)}>
                 Pricing
@@ -195,7 +207,7 @@ export default function MobileMenu({
             </ul>
           </nav>
         </div>
-        <div className="width-full space-y-4 pb-6">
+        {/* <div className="width-full space-y-4 pb-6">
           <div className="width-full">
             {mounted ? (
               <Button
@@ -217,7 +229,7 @@ export default function MobileMenu({
               </Button>
             ) : null}
           </div>
-        </div>
+        </div> */}
       </SheetContent>
     </Sheet>
   );
