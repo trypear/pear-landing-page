@@ -185,7 +185,7 @@ const AboutComponent: React.FC = () => {
                   <div className="flex h-full flex-col justify-between">
                     <div className="space-y-2">
                       <div className="flex items-end justify-between">
-                       <span className="text-2xl font-medium">
+                        <span className="text-2xl font-medium">
                           PearAI Launch
                           <br />
                           (Coming Soon)
