@@ -76,12 +76,12 @@ export default function Features() {
                 <div className="flex flex-col justify-between gap-1 lg:flex-row lg:items-end lg:gap-0">
                   <span className="text-2xl font-medium">
                     PearAI Creator <br />{" "}
-                    <span className="text-lg font-normal">(Coming Soon)</span>
                   </span>
                   <span className="mb-1 text-[#b3b3b3]">
                     Powered by Roo Code / Cline*
                   </span>
                 </div>
+                <span className="text-base font-normal">(Coming Soon)</span>
                 <p className="text-base text-[#666666]">
                   Create new projects from scratch! PearAI ensures your project
                   adheres to the latest technologies and best practices.
@@ -140,6 +140,7 @@ export default function Features() {
                   <span className="text-2xl font-medium">PearAI Login</span>
                   <span className="mb-1 text-[#b3b3b3]">Powered by PearAI</span>
                 </div>
+                <span className="text-base font-normal">(Coming Soon)</span>
                 <p className="text-base text-[#666666]">
                   Almost all projects require users to login. Let PearAI help
                   you with this with best practices and the latest tools.
@@ -169,6 +170,7 @@ export default function Features() {
                     Powered by Netlify*
                   </span>
                 </div>
+                <span className="text-base font-normal">(Coming Soon)</span>
                 <p className="text-base text-[#666666]">
                   Launches your web projects to the internet so you can share
                   them with everyone.

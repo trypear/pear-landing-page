@@ -3,8 +3,15 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
+import { useEffect } from "react";
+import { useTheme } from "next-themes";
 
 export default function Hero() {
+  const { theme, setTheme } = useTheme();
+  useEffect(() => {
+    setTheme("light");
+  }, [setTheme]);
+
   return (
     <>
       <section className="relative mx-auto mb-0 mt-28 flex w-full flex-col items-center text-center lg:mb-14">
