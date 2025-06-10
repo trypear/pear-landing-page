@@ -24,6 +24,8 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToggle } from "@/hooks/useToggle";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { PasswordStrength } from "@/components/ui/password-strength";
+import { FormSkeleton } from "@/components/ui/form-skeleton";
 
 export default function SignUp() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,6 +42,7 @@ export default function SignUp() {
     },
   });
   const router = useRouter();
+  const [isValidating, setIsValidating] = useState(false);
 
   const handleSignUp = async (data: SignUpFormData) => {
     if (isSubmitting) return;
@@ -96,6 +99,32 @@ export default function SignUp() {
     }
   };
   const [isPasswordVisible, togglePasswordVisibility] = useToggle(false);
+
+  const validateField = async (field: keyof SignUpFormData) => {
+    setIsValidating(true);
+    try {
+      await form.trigger(field);
+    } finally {
+      setIsValidating(false);
+    }
+  };
+
+  if (isSubmitting) {
+    return (
+      <section className="relative">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="pb-12 pt-32 md:pb-20 md:pt-40">
+            <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+              <h1 className="h1">Creating your account...</h1>
+            </div>
+            <div className="mx-auto max-w-sm">
+              <FormSkeleton fieldCount={5} />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="relative">
@@ -169,6 +198,7 @@ export default function SignUp() {
                           id="full_name"
                           placeholder="First and last name"
                           {...field}
+                          onBlur={() => validateField("full_name")}
                         />
                       </FormControl>
                       <FormMessage />
@@ -187,6 +217,7 @@ export default function SignUp() {
                           type="email"
                           placeholder="helloworld@email.com"
                           {...field}
+                          onBlur={() => validateField("email")}
                         />
                       </FormControl>
                       <FormMessage />
@@ -206,8 +237,10 @@ export default function SignUp() {
                           type={isPasswordVisible ? "text" : "password"}
                           placeholder="Password (at least 8 characters)"
                           {...field}
+                          onBlur={() => validateField("password")}
                         />
                       </FormControl>
+                      <PasswordStrength password={field.value} className="mt-2" />
                       <FormMessage />
                     </FormItem>
                   )}
