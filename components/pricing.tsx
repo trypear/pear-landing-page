@@ -87,7 +87,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span>
-            Monthly refill of $15 credits for market-leading AI models
+            Pay-as-you-go credits for market-leading AI models
             <PearCreditsTooltip type="standard" />
           </span>
         </div>
@@ -105,8 +105,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
       return (
         <div className="flex items-center">
           <span>
-            Monthly refill of <span className="underline"> increased</span>{" "}
-            PearAI Credits for market-leading AI models
+            Bulk PearAI Credits for market-leading AI models at a discount
             <PearCreditsTooltip type="enterprise" />
           </span>
         </div>
@@ -128,13 +127,15 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
             <div className="flex flex-col items-start justify-center space-y-2">
               <p
                 className="text-2xl font-medium text-[#666666]"
-                aria-label={`Price: $${price} per month`}
+                aria-label={`Price: ${price}`}
               >
                 {title === "Enterprise"
                   ? "Purchase bulk at a discount"
+                  : title === "Maker"
+                  ? "Pay-as-you-go"
                   : `$${price}`}
                 <small className="text-2xl font-medium text-[#666666]">
-                  {title === "Enterprise" ? "" : `${priceUnit}`}
+                  {title === "Enterprise" || title === "Maker" ? "" : `${priceUnit}`}
                 </small>
                 {(title === "Enterprise" || "Maker") && (
                   <small className="ml-1 inline-flex -translate-y-1 items-center rounded-lg bg-[#B3F353] px-2 py-1 text-xs font-medium text-[#16760C] opacity-80">
@@ -144,7 +145,7 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
               </p>
 
               <p className="text-[#666666]">
-                {title === "Intern" || title === "Maker" ? description : ""}
+                {title === "Maker" ? "No subscriptions needed, only pay for what you use." : title === "Intern" ? description : ""}
               </p>
             </div>
           ) : (

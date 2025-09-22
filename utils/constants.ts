@@ -133,10 +133,10 @@ export const PRICING_TIERS: {
     },
     {
       title: "Maker",
-      price: "15",
-      prevPrice: "18",
+      price: "Pay-as-you-go credits",
+      prevPrice: "",
       description:
-        "Get the monthly subscription, and we'll take care of you. 😎",
+        "No subscriptions needed, only pay for what you use.",
       features: [
         "Full access to PearAI Router & Hosted Servers",
         "custom-standard",
