@@ -121,8 +121,10 @@ export async function updateUser(formData: UpdatePasswordFormData) {
   redirect("/dashboard");
 }
 
-// resend confirmation email
-export async function resendConfirmationEmail(email: string) {
+export async function resendConfirmationEmail(
+  email: string,
+  captchaToken: string,
+) {
   const supabase = createClient();
 
   const { error } = await supabase.auth.resend({
@@ -130,6 +132,7 @@ export async function resendConfirmationEmail(email: string) {
     email: email,
     options: {
       emailRedirectTo: `${getURL()}/dashboard`,
+      captchaToken: captchaToken,
     },
   });
 

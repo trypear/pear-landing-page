@@ -1,89 +1,162 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+import React, { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 import { resendConfirmationEmail } from "@/app/(auth)/actions";
-import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
-import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { HCAPTCHA_SITE_KEY_PUBLIC } from "@/utils/constants";
 
-export default function Verification() {
-  const router = useRouter();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const searchParams = useSearchParams();
-  const email = searchParams?.get("email");
+export default function VerificationComponent() {
+  const [email, setEmail] = useState<string>("");
+  const [isResending, setIsResending] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const captcha = useRef<HCaptcha>(null);
 
-  const handleClick = () => {
-    router.push("/signin");
-  };
+  const [cooldownActive, setCooldownActive] = useState(false);
+  const [cooldownTime, setCooldownTime] = useState(0);
+  const COOLDOWN_DURATION = 60; // 60 sec
 
-  const handleResendEmail = async () => {
-    if (isSubmitting) return;
-    setIsSubmitting(true);
-    const response = await resendConfirmationEmail(email as string);
-    if (response?.error) {
-      toast.error(response.error);
-    } else {
-      toast.success("Email sent successfully");
+  useEffect(() => {
+    const storedEmail = localStorage.getItem("verificationEmail");
+    if (storedEmail) {
+      setEmail(storedEmail);
     }
-    setIsSubmitting(false);
+
+    const savedCooldownEnd = localStorage.getItem("resendCooldownEnd");
+    if (savedCooldownEnd) {
+      const cooldownEndTime = parseInt(savedCooldownEnd, 10);
+      const currentTime = Date.now();
+
+      if (cooldownEndTime > currentTime) {
+        setCooldownActive(true);
+        setCooldownTime(Math.ceil((cooldownEndTime - currentTime) / 1000));
+
+        const timer = setInterval(() => {
+          setCooldownTime((prevTime) => {
+            if (prevTime <= 1) {
+              clearInterval(timer);
+              setCooldownActive(false);
+              localStorage.removeItem("resendCooldownEnd");
+              return 0;
+            }
+            return prevTime - 1;
+          });
+        }, 1000);
+
+        return () => clearInterval(timer);
+      } else {
+        localStorage.removeItem("resendCooldownEnd");
+      }
+    }
+  }, []);
+
+  const handleResendVerification = async () => {
+    if (!email) {
+      toast.error("Email not found. Please try signing up again.");
+      return;
+    }
+
+    if (!captchaToken) {
+      toast.error("Please complete the captcha challenge");
+      return;
+    }
+
+    setIsResending(true);
+    try {
+      const result = await resendConfirmationEmail(email, captchaToken);
+      if (result?.error) {
+        toast.error(result.error);
+      } else {
+        toast.success("Verification email resent successfully!");
+
+        setCooldownActive(true);
+        setCooldownTime(COOLDOWN_DURATION);
+
+        const cooldownEndTime = Date.now() + COOLDOWN_DURATION * 1000;
+        localStorage.setItem("resendCooldownEnd", cooldownEndTime.toString());
+
+        const timer = setInterval(() => {
+          setCooldownTime((prevTime) => {
+            if (prevTime <= 1) {
+              clearInterval(timer);
+              setCooldownActive(false);
+              localStorage.removeItem("resendCooldownEnd");
+              return 0;
+            }
+            return prevTime - 1;
+          });
+        }, 1000);
+      }
+    } catch (error) {
+      toast.error("Failed to resend verification email");
+    } finally {
+      setIsResending(false);
+      captcha.current?.resetCaptcha();
+      setCaptchaToken(null);
+    }
   };
 
   return (
-    <section className="relative">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="pb-12 pt-32 md:pb-20 md:pt-40">
-          {/* Page header */}
-          <div className="md:pb-15 mx-auto max-w-3xl pb-10 text-center text-2xl md:text-3xl lg:text-4xl">
-            <h1 className="h1 leading-tight">
-              We&apos;ve sent you an email for Confirmation
-            </h1>
-          </div>
-          <div className="mx-auto max-w-xl">
-            <div className="flex items-center">
-              <div
-                className="mr-3 grow border-t border-dotted border-gray-700"
-                aria-hidden="true"
-              ></div>
-              <div className="text-gray-700">
-                If you&apos;ve already confirmed your email, please sign in
-                below
-              </div>
-              <div
-                className="ml-3 grow border-t border-dotted border-gray-700"
-                aria-hidden="true"
-              ></div>
-            </div>
-            <div className="-mx-3 mt-11 flex flex-wrap">
-              <div className="w-full px-3 text-center">
-                <Button
-                  size={"lg"}
-                  onClick={handleClick}
-                  className="w-full bg-primary-700 text-white-main hover:bg-primary-800 hover:shadow-sm"
+    <main className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <section className="sm:mx-auto sm:w-full sm:max-w-md">
+        <header>
+          <h1 className="mt-10 text-center text-3xl font-bold leading-9 text-primary-700 dark:text-primary-400">
+            Verify your email
+          </h1>
+        </header>
+        <article>
+          <p className="mt-5 text-center text-lg text-gray-600 dark:text-gray-300">
+            We&apos;ve sent a verification link to your email address.
+            <br />
+            Please check your inbox to verify your account.
+          </p>
+          {email && (
+            <p className="mt-2 text-center text-sm text-gray-500 dark:text-gray-400">
+              Verification email sent to:{" "}
+              <strong className="font-semibold">{email}</strong>
+            </p>
+          )}
+          <div className="mt-8 flex flex-col gap-4">
+            {!cooldownActive && (
+              <figure className="flex justify-center">
+                <HCaptcha
+                  ref={captcha}
+                  sitekey={HCAPTCHA_SITE_KEY_PUBLIC}
+                  onVerify={(token) => {
+                    setCaptchaToken(token);
+                  }}
+                />
+              </figure>
+            )}
+
+            <Button
+              onClick={handleResendVerification}
+              disabled={isResending || !captchaToken || cooldownActive}
+              variant="outline"
+              className="w-full"
+            >
+              {isResending
+                ? "Resending..."
+                : cooldownActive
+                  ? `Resend available in ${cooldownTime}s`
+                  : "Resend verification email"}
+            </Button>
+            <footer className="text-center">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Already verified?{" "}
+                <Link
+                  href="/signin"
+                  className="font-semibold text-primary-700 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300"
                 >
                   Sign in
-                </Button>
-                <div className="mt-4 text-gray-400">
-                  Make sure to check your spam folder if you don&apos;t see it!
-                </div>
-                {email && (
-                  <div className="mt-2 text-gray-400">
-                    Didn&apos;t receive an email?{" "}
-                    <Button
-                      onClick={() => handleResendEmail()}
-                      variant={"link"}
-                      className="p-0 text-gray-700 hover:text-primary-800"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "Resending..." : "Resend email"}
-                    </Button>
-                  </div>
-                )}
-              </div>
-            </div>
+                </Link>
+              </p>
+            </footer>
           </div>
-        </div>
-      </div>
-    </section>
+        </article>
+      </section>
+    </main>
   );
 }
