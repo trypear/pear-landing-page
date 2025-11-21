@@ -72,30 +72,7 @@ export default function MobileVideoSection() {
                   />
                 </div>
               </div>
-              <div className="relative aspect-[16/12] w-full overflow-hidden rounded-lg">
-                <motion.div
-                  key={video.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="h-full w-full"
-                >
-                  <video
-                    ref={(el) => {
-                      if (el) videoRefs.current[video.id] = el;
-                    }}
-                    className="h-full w-full object-cover"
-                    muted
-                    playsInline
-                    autoPlay
-                    loop
-                    controlsList="nodownload nofullscreen noremoteplayback"
-                    disablePictureInPicture
-                  >
-                    <source src={video.videoUrl} type="video/mp4" />
-                  </video>
-                </motion.div>
-              </div>
+              {/* Video container removed to save bandwidth costs */}
             </div>
             {index < videoData.length - 1 && (
               <div className="my-[30px] block h-3 w-full bg-[#F4F4F4] lg:hidden"></div>

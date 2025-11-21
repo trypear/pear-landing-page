@@ -93,30 +93,7 @@ export default function DesktopVideoSection() {
         ))}
       </div>
 
-      <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-xl">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentVideo?.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="h-full w-full"
-          >
-            <video
-              ref={videoRef}
-              className="h-full w-full object-cover"
-              muted
-              playsInline
-              autoPlay
-              controlsList="nodownload nofullscreen noremoteplayback"
-              disablePictureInPicture
-            >
-              <source src={currentVideo?.videoUrl} type="video/mp4" />
-            </video>
-          </motion.div>
-        </AnimatePresence>
-      </div>
+      {/* Video container removed to save bandwidth costs */}
     </div>
   );
 }
