@@ -24,8 +24,7 @@ const nextConfiguration = {
   },
   async headers() {
     const longCache = "public, max-age=31536000, immutable";
-    const mediaCache =
-      "public, max-age=2592000, stale-while-revalidate=604800";
+    const mediaCache = "public, max-age=2592000, stale-while-revalidate=604800";
 
     return [
       {
