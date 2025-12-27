@@ -16,6 +16,7 @@
     "no-console": "warn",
     "svg-jsx/camel-case-dash": "error",
     "svg-jsx/camel-case-colon": "error",
-    "svg-jsx/no-style-string": "error"
+    "svg-jsx/no-style-string": "error",
+    "@next/next/no-img-element": "off"
   }
 }

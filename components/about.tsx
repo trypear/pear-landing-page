@@ -3,7 +3,6 @@
 import React from "react";
 import Footer from "./footer";
 import CTA from "./cta";
-import Image from "next/image";
 
 const AboutComponent: React.FC = () => {
   return (
@@ -54,7 +53,7 @@ const AboutComponent: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-center">
-                      <Image
+                      <img
                         src="/images/PearAICreatorVector.svg"
                         alt="PearAI Creator"
                         className="h-auto w-full"
@@ -82,7 +81,7 @@ const AboutComponent: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-center">
-                      <Image
+                      <img
                         src="/images/PearAIAgentVector.svg"
                         alt="PearAI Agent"
                         className="h-auto w-full"
@@ -109,7 +108,7 @@ const AboutComponent: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-center">
-                      <Image
+                      <img
                         src="/images/PearAIRouterVector.svg"
                         alt="PearAI Creator"
                         className="h-auto w-full"
@@ -136,7 +135,7 @@ const AboutComponent: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-center">
-                      <Image
+                      <img
                         src="/images/PearAIChatVector.svg"
                         alt="PearAI Agent"
                         className="h-auto w-full"
@@ -170,7 +169,7 @@ const AboutComponent: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-center">
-                      <Image
+                      <img
                         src="/images/PearAILoginVector.svg"
                         alt="PearAI Creator"
                         className="h-auto w-full"
@@ -200,7 +199,7 @@ const AboutComponent: React.FC = () => {
                       </p>
                     </div>
                     <div className="flex items-center justify-center">
-                      <Image
+                      <img
                         src="/images/PearAILaunchVector.svg"
                         alt="PearAI Agent"
                         className="h-auto w-full"

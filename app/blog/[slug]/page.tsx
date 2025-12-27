@@ -1,6 +1,5 @@
 import { cn, constructMetadata, normalizeDate } from "@/lib/utils";
 import { format, parseISO } from "date-fns";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { posts } from "@/lib/blog/postData";
 import Footer from "@/components/footer";
@@ -52,8 +51,7 @@ const PostLayout = ({ params }: { params: { slug: string } }) => {
             </div>
           )}
           <div className="relative mx-auto mt-8 aspect-video w-full max-w-2xl rounded-md bg-gray-300">
-            <Image
-              fill
+            <img
               src={post.thumbnail || ""}
               alt={post.title || "Add a Title"}
               className="h-full w-full rounded-md object-cover"

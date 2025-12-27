@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import Image from "next/image";
 
 type ChangelogEntry = {
   date: string;
@@ -47,7 +46,7 @@ const updates: ChangelogEntry[] = [
             your behalf.
           </li>
           <li className="flex items-center gap-6">
-            <Image
+            <img
               src="/images/changelogs/pearai-cline_v1.8.png"
               alt="PearAI Cline v1.8"
               width={800}
@@ -92,7 +91,7 @@ const updates: ChangelogEntry[] = [
             <strong>Added 🐋 deepseek models</strong>
           </li>
           <div className="mt-10 flex gap-4">
-            <Image
+            <img
               src="/images/changelogs/deepseek support.webp"
               alt="deepseek support"
               width={400}
@@ -104,7 +103,7 @@ const updates: ChangelogEntry[] = [
                 height: "auto",
               }}
             />
-            <Image
+            <img
               src="/images/changelogs/deepseekbenchmark.webp"
               alt="deepseekbenchmark"
               width={400}
@@ -120,7 +119,7 @@ const updates: ChangelogEntry[] = [
           <li>
             <strong>Refreshed the UI for extension and overlay 💅</strong>
           </li>
-          <Image
+          <img
             src="/images/changelogs/ui-overhaul.png"
             alt="ui overhaul"
             width={400}
@@ -145,7 +144,7 @@ const updates: ChangelogEntry[] = [
       <>
         <ul className="mt-2 list-disc space-y-3 ps-6 text-lg">
           <li className="flex items-center gap-6">
-            <Image
+            <img
               src="/images/changelogs/wrapped.svg"
               alt="Developer Wrapped 2024"
               width={800}
@@ -185,7 +184,7 @@ const updates: ChangelogEntry[] = [
             <strong>Fast Apply using relace:</strong> apply code block to your
             files a lot faster and more accurately.
           </li>
-          <Image
+          <img
             src="/images/changelogs/fastapply-relace.webp"
             alt="fastapply relace"
             width={800}
@@ -383,7 +382,7 @@ const updates: ChangelogEntry[] = [
           Welcome to the future of AI-assisted development
         </p>
         {/* <div className="relative w-20"> */}
-        <Image
+        <img
           src="/images/changelogs/CupertinoV1 - v1.0.0.png"
           alt="PearAI v1.0.0 Dashboard"
           width={800}
@@ -481,7 +480,7 @@ const updates: ChangelogEntry[] = [
             </span>
           </li>
         </ul>
-        <Image
+        <img
           src="/images/changelogs/includeFile - v0.0.1.png"
           alt="PearAI v1.0.0 Dashboard"
           width={800}

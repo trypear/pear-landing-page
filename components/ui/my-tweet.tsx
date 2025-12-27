@@ -11,11 +11,10 @@ import {
   QuotedTweet,
   enrichTweet,
 } from "react-tweet";
-import Image from "next/image";
 
 export const components: TwitterComponents = {
-  AvatarImg: (props) => <Image {...props} />,
-  MediaImg: (props) => <Image {...props} fill unoptimized />,
+  AvatarImg: ({ alt, ...props }) => <img alt={alt ?? ""} {...props} />,
+  MediaImg: ({ alt, ...props }) => <img alt={alt ?? ""} {...props} />,
 };
 
 type Props = {

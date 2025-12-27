@@ -1,5 +1,4 @@
 import { format, parseISO } from "date-fns";
-import Image from "next/image";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { normalizeDate } from "@/lib/utils";
@@ -16,8 +15,7 @@ const PostCard = ({ title, date, excerpt, thumbnail, url }: PostCardProps) => (
   <Card className="flex h-full flex-col overflow-hidden hover:bg-secondary-300/10">
     <Link href={url}>
       <div className="relative aspect-video w-full">
-        <Image
-          fill
+        <img
           src={thumbnail}
           alt={title}
           className="h-full w-full rounded-md object-cover"

@@ -1,6 +1,5 @@
 import { BUNNY_CDN_HOST } from "@/utils/constants";
 import { Check } from "lucide-react";
-import Image from "next/image";
 
 export default function OpenSource() {
   return (

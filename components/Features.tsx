@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Features() {
   return (
     <div className="bg-white-50 lg:bg-[#FBFBFB]">
@@ -93,7 +91,7 @@ export default function Features() {
                 </p>
               </div>
               <div className="relative flex items-center justify-center">
-                <Image
+                <img
                   src="/images/PearAICreatorVector.svg"
                   alt="PearAI Creator"
                   className="h-full w-full"
@@ -122,7 +120,7 @@ export default function Features() {
                 </p>
               </div>
               <div className="flex items-center justify-center">
-                <Image
+                <img
                   src="/images/PearAIAgentVector.svg"
                   alt="PearAI Agent"
                   className="h-auto w-full lg:pb-7"
@@ -157,7 +155,7 @@ export default function Features() {
                 </p>
               </div>
               <div className="relative flex-col items-center justify-center">
-                <Image
+                <img
                   src="/images/PearAILoginVector.svg"
                   alt="PearAI Creator"
                   className="h-auto w-full lg:pb-7"
@@ -192,7 +190,7 @@ export default function Features() {
                 </p>
               </div>
               <div className="relative flex items-center justify-center">
-                <Image
+                <img
                   src="/images/PearAILaunchVector.svg"
                   alt="PearAI Agent"
                   className="h-auto w-full"

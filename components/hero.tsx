@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { useEffect } from "react";
 import { useTheme } from "next-themes";
@@ -48,26 +47,23 @@ export default function Hero() {
             }}
             className="flex w-[140%]"
           >
-            <Image
+            <img
               src="/images/HeroImageLarge.svg"
               alt="PearAI Hero"
               width={1920}
               height={1080}
-              priority
             />
-            <Image
+            <img
               src="/images/HeroImageLarge.svg"
               alt="PearAI Hero"
               width={1920}
               height={1080}
-              priority
             />
-            <Image
+            <img
               src="/images/HeroImageLarge.svg"
               alt="PearAI Hero"
               width={1920}
               height={1080}
-              priority
             />
           </motion.div>
         </div>
@@ -79,7 +75,7 @@ export default function Hero() {
           className="hidden items-center gap-2 font-mono text-sm text-black lg:flex"
         >
           <span>BACKED BY</span>
-          <Image
+          <img
             src="/icons/YCLogo.svg"
             alt="Y Combinator Logo"
             width={20}

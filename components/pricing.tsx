@@ -33,7 +33,6 @@ import { useReleases } from "@/hooks/useReleases";
 import { ReleaseInfo } from "@/types/releaseTypes";
 import CTA from "./cta";
 import VersionInfo from "./ui/version-info";
-import Image from "next/image";
 interface ExtendedPricingTierProps extends PricingTierProps {
   disabled?: boolean;
   windowsRelease: ReleaseInfo;
@@ -182,13 +181,12 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
         <CardFooter className="relative p-5">
           {index === 1 && (
             <div className="absolute inset-0 flex h-[200%] -translate-y-20 items-center justify-center">
-              <Image
+              <img
                 src="/images/PricingCenterGradient.svg"
                 alt="Pricing Gradient"
                 width={400}
                 height={200}
                 className="h-full w-full"
-                priority
               />
             </div>
           )}
@@ -226,8 +224,8 @@ const PricingTier: React.FC<ExtendedPricingTierProps> = ({
                     }
                   }}
                 >
-                  <Image
-                    src="icons\ArrowDownTrayMicroIcon.svg"
+                  <img
+                    src="/icons/ArrowDownTrayMicroIcon.svg"
                     alt=""
                     width={24}
                     height={24}

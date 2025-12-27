@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { getTimePassed } from "@/utils/dateUtils";
 
@@ -72,7 +71,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
             </div>
             {screenshot && (
               <div className="pr-4 md:ml-auto md:w-full md:max-w-xs">
-                <Image
+                <img
                   src={screenshot.src}
                   alt={screenshot.alt}
                   width={screenshot.width}
